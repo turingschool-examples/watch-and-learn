@@ -24,13 +24,15 @@ describe 'vister can create an account', :js do
     fill_in 'user[password]', with: password
     fill_in 'user[password_confirmation]', with: password
 
-    click_on'Create Account'
+    VCR.use_cassette("services/find_repositories_unauthorized") do
+      click_on'Create Account'
+      expect(current_path).to eq(dashboard_path)
 
-    expect(current_path).to eq(dashboard_path)
+      expect(page).to have_content(email)
+      expect(page).to have_content(first_name)
+      expect(page).to have_content(last_name)
+      expect(page).to_not have_content('Sign In')
+    end
 
-    expect(page).to have_content(email)
-    expect(page).to have_content(first_name)
-    expect(page).to have_content(last_name)
-    expect(page).to_not have_content('Sign In')
   end
 end
