@@ -13,12 +13,22 @@ class GithubFacade
   end
 
   def followers
-    service.followers.map do |raw_follower|
-      Follower.new(raw_follower)
-    end
+    generate_github_users(service.followers)
+  end
+
+  def following
+    generate_github_users(service.following)
   end
 
   def service
     GithubService.new(@github_key)
+  end
+
+  private
+
+  def generate_github_users(json)
+    json.map do |attributes|
+      GithubUser.new(attributes)
+    end
   end
 end
