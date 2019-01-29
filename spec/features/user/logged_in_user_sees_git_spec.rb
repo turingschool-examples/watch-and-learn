@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'A registered user' do
   context 'when I visit /dashboard' do
     it 'sees a section for github' do
-      user = create(:user)
+      user = create(:user, token: ENV["DAN_GIT_API_KEY"])
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
@@ -13,7 +13,7 @@ describe 'A registered user' do
       expect(page).to have_content("5 Repos")
 
       within "#top5repos" do
-        
+
 
       end
     end

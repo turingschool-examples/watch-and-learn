@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   def show
-    binding.pry
     @repos = conn(current_user.token)
+    binding.pry
   end
 
   def new
@@ -21,7 +21,7 @@ class UsersController < ApplicationController
 
   def conn(token)
     conn = Faraday.new(url: "https://api.github.com") do |f|
-      f.headers["Authorization"] = "Token #{ENV["DAN_GIT_API_KEY"]}"
+      f.headers["Authorization"] = "Token #{token}"
       f.adapter Faraday.default_adapter
     end
     conn.get "/user/repos"
