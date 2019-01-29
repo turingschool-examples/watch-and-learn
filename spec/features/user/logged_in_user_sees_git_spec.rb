@@ -13,13 +13,13 @@ describe 'A registered user' do
         allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
         visit dashboard_path
-        save_and_open_page
+
+
         expect(page).to have_content("GitHub Section")
         expect(page).to have_content("5 Repos")
 
-        within "#top5repos" do
-
-
+        within ".top5repos" do
+          expect(page).to have_content("https://github.com/asmolentzov/little-shop")
         end
       end
     end

@@ -15,9 +15,11 @@
     <% if @repos %>
       <h1> GitHub Section </h1>
       <li> <%= @repos.count  %> Repos</li>
-      <% @repos.each do |repo| %>
-        <li> <%= repo.url %> </li>
-      <% end %>
+      <div class="top5repos">
+        <% @repos.each do |repo| %>
+        <li id=<%= repo.url %>> <%= repo.url %> </li>
+        <% end %>
+      </div>
     <% end %>
   </section>
 </section>
