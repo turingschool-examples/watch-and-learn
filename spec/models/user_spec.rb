@@ -22,7 +22,7 @@ RSpec.describe User, type: :model do
       expect(admin.admin?).to be_truthy
     end
   end
-  describe 'instance methods' do
+  describe 'instance methods', :vcr do
     it "#find_repos" do
       user = create(:user)
       expect(user.find_repos.count).to eq(5)
