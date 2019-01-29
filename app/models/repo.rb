@@ -3,6 +3,6 @@ class Repo
 
   def initialize(data)
     @name = data[:name]
-    @url  = data[:url]
+    @url  = data[:html_url]
   end
 end
