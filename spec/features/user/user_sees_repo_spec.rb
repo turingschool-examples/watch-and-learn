@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe "User Nav" do
   it "it can see section for GitHub" do
-    user = create(:user)
+    user = create(:user, token: ENV["GITHUB_API_KEY"])
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
     visit "/dashboard"
