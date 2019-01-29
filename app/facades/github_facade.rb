@@ -12,6 +12,12 @@ class GithubFacade
     repos
   end
 
+  def followers
+    service.followers.map do |raw_follower|
+      Follower.new(raw_follower)
+    end
+  end
+
   def service
     GithubService.new(@github_key)
   end

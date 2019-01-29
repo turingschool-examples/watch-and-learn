@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe Repo, type: :model do
-  xit "exists" do
+  it "exists" do
     repo = Repo.new({})
     expect(repo).to be_a(Repo)
   end
