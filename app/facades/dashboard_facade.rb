@@ -4,6 +4,9 @@ class DashboardFacade
   end
 
   def repos(quantity)
-    results = GithubService.new(@user)
+    result = GithubService.new(@user).repos_by_user
+    result.map do |raw_repo|
+      Repository.new(raw_repo)
+    end
   end
 end

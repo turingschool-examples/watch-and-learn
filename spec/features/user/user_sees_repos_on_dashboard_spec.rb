@@ -2,8 +2,8 @@ require 'rails_helper'
 
 describe ' as a user' do
   context 'when I visit dashboard' do
-    it 'should see github' do
-      user = create(:user)
+    it 'should see github', :vcr do
+      user = create(:user, github_token: ENV["GITHUB_TOKEN"])
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
@@ -12,8 +12,8 @@ describe ' as a user' do
       expect(page).to have_css(".github")
       expect(page).to have_content("Github")
     end
-    it 'should see repos' do
-      user = create(:user)
+    it 'should see repos', :vcr do
+      user = create(:user, github_token: ENV["GITHUB_TOKEN"])
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
