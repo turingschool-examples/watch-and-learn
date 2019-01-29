@@ -3,7 +3,7 @@ class GithubService
     @github_key = github_key
   end
 
-  def repos_owned
+  def owned_repos
     get_json("/user/repos?affiliation=owner")
   end
 
