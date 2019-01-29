@@ -4,15 +4,23 @@ class GithubService
   end
 
   def repositories
-    response = conn.get("/user/repos")
-    json_repos = JSON.parse(response.body, symbolize_names: true)
-
-    json_repos.map do |json_repo|
+    get_json("/user/repos").map do |json_repo|
       Repository.new(json_repo)
     end
   end
 
+  def followers
+    get_json("/user/followers").map do |json_user|
+      GithubUser.new(json_user)
+    end
+  end
+
   private
+
+  def get_json(path)
+    response = conn.get(path)
+    JSON.parse(response.body, symbolize_names: true)
+  end
 
   def conn
     Faraday.new(url: "https://api.github.com") do |fd|
