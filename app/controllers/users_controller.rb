@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def show
-    @search_repos = SearchReposFacade.new(current_user.token)
+    @search_repos = SearchReposFacade.new(current_user.token) if current_user.token
   end
 
   def new
