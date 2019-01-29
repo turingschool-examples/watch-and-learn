@@ -25,11 +25,21 @@ describe ' as a user' do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
       visit dashboard_path
-save_and_open_page
+
       within ".github" do
         expect(page).to have_css(".name-link")
       end
     end
+    it 'should not see github without token', :vcr do
+      user = create(:user)
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+      visit dashboard_path
+
+      expect(page).to_not have_content("Github")
+      expect(page).to_not have_css(".github")
+    end
+
   end
 end
 # As a logged in user
