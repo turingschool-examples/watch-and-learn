@@ -24,8 +24,8 @@ describe "Users and Followers" do
     within(".github") do
       expect(page).to have_content("Following")
       expect(page).to have_css(".following")
-      within(all(".following").first) do
-        expect(page).to have_content("Users")
+      within(all(".followee").first) do
+        expect(page).to have_content("Username")
       end
     end
   end

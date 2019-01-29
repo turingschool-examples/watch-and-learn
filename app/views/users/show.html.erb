@@ -29,7 +29,7 @@
             <h2>Following</h2>
             <% @search_github.following.each do |followee| %>
               <div class="followee">
-                <h3>Users <%= link_to followee.name, followee.url %></h3>
+                <h3>Username <%= link_to followee.name, followee.url %></h3>
               </div>
             <% end %>
           </div>

@@ -5,14 +5,9 @@ class SearchGithubFacade
   end
 
   def repos
-    all_repos = search_repo_results.map do |repo_data|
+    search_repo_results.map do |repo_data|
       Repo.new(repo_data)
-    end
-    if all_repos.length >= 5
-      all_repos[0..4]
-    else
-      all_repos
-    end
+    end.first(5)
   end
 
   def followers
