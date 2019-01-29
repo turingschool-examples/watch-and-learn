@@ -5,15 +5,15 @@ class GithubService
   end
 
   def repositories
-    get_json("user/repos")
+    get_json("user/repos").take(5)
   end
 
   private
 
   def get_json(path)
     response = connection.get(path)
+    return [] unless response.status == 200
     response = JSON.parse(response.body, symbolize_names: true)
-    response[:message] == "Requires authentication" ? [] : response
   end
 
   def connection
