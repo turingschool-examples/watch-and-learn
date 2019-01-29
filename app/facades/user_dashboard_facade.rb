@@ -7,7 +7,15 @@ class UserDashboardFacade
     repo_list[0...count]
   end
 
+  def user_followers
+    follower_list
+  end
+
   private
+
+  def follower_list
+    @follower_list ||= service.followers
+  end
 
   def repo_list
     @repo_list ||= service.repositories

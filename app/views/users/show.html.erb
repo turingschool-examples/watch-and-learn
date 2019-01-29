@@ -22,6 +22,16 @@
       </a>
     </div>
     <% end %>
+    <h1>Github Followers</h1>
+    <div id="followers">
+      <% @facade.user_followers.each do |follower| %>
+      <div class="follower">
+        <a href="<%= follower.url %>" class="user-link">
+          <p><%= follower.handle %></p>
+        </a>
+      </div>
+      <% end %>
+    </div>
   </section>
   <% end %>
 </section>
