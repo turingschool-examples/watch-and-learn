@@ -8,7 +8,11 @@ class SearchReposFacade
     all_repos = search_results.map do |repo_data|
       Repo.new(repo_data)
     end
-    all_repos[0..4]
+    if all_repos.length >= 5
+      all_repos[0..4]
+    else
+      all_repos
+    end
   end
 
   private
