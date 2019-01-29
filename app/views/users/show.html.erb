@@ -14,7 +14,9 @@
     <h2> Github </h2>
     <ul>
       <% @facade.repos(5).each do |repo| %>
-      <li class="repository"><%= repo.name %></li>
+      <li class="repository">
+        <%= link_to repo.name, repo.html_url, class: "name-link" %>
+      </li>
       <% end %>
     </ul>
   </section>
