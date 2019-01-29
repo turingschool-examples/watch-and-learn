@@ -11,7 +11,8 @@ describe 'as a logged in user' do
     expect(page).to have_content("Github")
 
     within('.github') do
-      expect(page).to have_link('repo_name')
+      # expect(page).to have_link('repo_name')
+      expect(page).to have_css(".repository", count: 5)
     end
   end
 end

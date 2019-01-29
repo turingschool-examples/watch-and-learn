@@ -13,7 +13,10 @@
   <section class="github">
     <h2>Github</h2>
     <ul>
-      <li><%= link_to 'repo_name', user_repos_path(current_user) %></li>
-    </ul>
+    <% current_user.find_repos do |repo| %>
+
+        <li><%= link_to "#{repo.name}", "#{repo.html_url}"%></li>
+    <% end %>
+  </ul>
   </section>
 </section>
