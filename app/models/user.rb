@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_secure_password
 
   def find_repos
-    get_json("/user/repos")
+    get_json('/user/repos')
   end
   def get_json(url)
     response = conn.get(url)
