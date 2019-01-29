@@ -4,6 +4,11 @@
 # or operating system, you probably want to add a global ignore instead:
 #   git config --global core.excludesfile '~/.gitignore_global'
 
+.ruby-version
+public/packs-test/manifest.json
+yarn.lock
+/spec/cassettes
+
 # Ignore bundler config.
 /.bundle
 
