@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'visitor visits tutorial index page' do
-  it 'clicks on the classroom content and is sent to the log in page' do
+  xit 'clicks on the classroom content and is sent to the log in page' do
     tutorial = create(:tutorial, classroom: true)
     video = create(:video, tutorial_id: tutorial.id)
 

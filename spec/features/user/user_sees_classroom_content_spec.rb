@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'User' do
-  it "can see classroom content when logged in" do
+  xit "can see classroom content when logged in" do
     user = create(:user)
     tutorial = create(:tutorial, classroom: true)
 
