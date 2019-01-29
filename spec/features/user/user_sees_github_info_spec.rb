@@ -6,7 +6,7 @@ describe "as a logged in user" do
       user = create(:user, github_token: ENV["GITHUB_API_KEY"])
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-      VCR.use_cassette("services/find_co_members") do
+      VCR.use_cassette("services/find_repositories") do
         visit '/dashboard'
       end
 
