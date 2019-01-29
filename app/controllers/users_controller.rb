@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   def show
+    binding.pry
+    @repos = conn(current_user.token)
   end
 
   def new
@@ -15,6 +17,14 @@ class UsersController < ApplicationController
       flash[:error] = 'Username already exists'
       render :new
     end
+  end
+
+  def conn(token)
+    conn = Faraday.new(url: "https://api.github.com") do |f|
+      f.headers["Authorization"] = "Token #{ENV["DAN_GIT_API_KEY"]}"
+      f.adapter Faraday.default_adapter
+    end
+    conn.get "/user/repos"
   end
 
   private

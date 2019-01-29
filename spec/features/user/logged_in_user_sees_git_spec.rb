@@ -12,9 +12,8 @@ describe 'A registered user' do
       expect(page).to have_content("GitHub Section")
       expect(page).to have_content("5 Repos")
 
-      within "#repos" do
-
-      #test for the attributes
+      within "#top5repos" do
+        
 
       end
     end
