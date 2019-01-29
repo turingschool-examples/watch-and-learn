@@ -3,11 +3,13 @@ class GithubFacade
     @github_key = github_key
   end
 
-  def owned_repos
-    repos = service.owned_repos
-    repos.map do |raw_repo|
-      Repo.new(raw_repo)
+  def owned_repos(num)
+    repos = []
+    service.owned_repos.each_with_index do |raw_repo, i|
+      repos << Repo.new(raw_repo)
+      break if i == num
     end
+    repos
   end
 
   def service
