@@ -36,5 +36,19 @@ describe GithubService, type: :model do
         expect(first).to have_key(:html_url)
       end
     end
+    context '#following' do
+      it 'returns following users for user given valid key' do
+        json_response = File.open('./spec/fixtures/github_user_following.json')
+        stub_request(:get, "https://api.github.com/user/following").to_return(status: 200, body: json_response)
+
+        github_service = GithubService.new(ENV["GITHUB_API_KEY"])
+        following = github_service.following
+        first = following.first
+
+        expect(following.count).to eq(3)
+        expect(first).to have_key(:login)
+        expect(first).to have_key(:html_url)
+      end
+    end
   end
 end

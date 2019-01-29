@@ -30,7 +30,7 @@ describe GithubFacade, type: :model do
 
         followers = github_facade.followers
         expect(followers.count).to eq(8)
-        expect(followers.first).to be_a(Follower)
+        expect(followers.first).to be_a(GithubUser)
       end
     end
     context '#following' do
