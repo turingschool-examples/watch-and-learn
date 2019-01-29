@@ -2,8 +2,8 @@ require 'rails_helper'
 
 describe GithubUser, type: :model do
   it "exists" do
-    follower = Follower.new({})
-    expect(follower).to be_a(Follower)
+    github_user = GithubUser.new({})
+    expect(github_user).to be_a(GithubUser)
   end
 
   it "has attributes" do
