@@ -22,4 +22,17 @@ RSpec.describe User, type: :model do
       expect(admin.admin?).to be_truthy
     end
   end
+
+  describe "Instance Methods" do
+    it "#repositories" do
+        user = create(:user, github_token: ENV["GITHUB_ACCESS_TOKEN"])
+
+        repos = user.repositories
+        expect(repos.count).to eq(5)
+
+        repos.each do |repo|
+          expect(repo).to be_a(Repository)
+        end
+    end
+  end
 end
