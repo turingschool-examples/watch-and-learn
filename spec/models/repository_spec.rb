@@ -1,7 +1,7 @@
-require "rails_helper"
+require 'rails_helper'
 
 describe Repository do
-  it "exists" do
+  it 'exists' do
     attributes = {}
     repository = Repository.new(attributes)
 
@@ -10,12 +10,12 @@ describe Repository do
 
   it 'has attributes' do
     attributes = {
-                  name: "bob",
-                  html_url: "github.com"
+                    name: 'bob',
+                    html_url: 'github.com'
     }
     repository = Repository.new(attributes)
 
-    expect(repository.name).to eq("bob")
-    expect(repository.html_url).to eq("github.com")
+    expect(repository.name).to eq('bob')
+    expect(repository.html_url).to eq('github.com')
   end
 end
