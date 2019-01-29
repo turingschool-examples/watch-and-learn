@@ -10,17 +10,17 @@ class GithubService
 
   private
 
+  def get_json(path)
+    response = connection.get(path)
+    response = JSON.parse(response.body, symbolize_names: true)
+    response[:message] == "Requires authentication" ? [] : response
+  end
+
   def connection
-    binding.pry
     Faraday.new(url: "https://api.github.com") do |f|
       f.adapter Faraday.default_adapter
       f.params = {access_token: @access_token}
     end
-  end
-
-  def get_json(path)
-    response = connection.get(path)
-    JSON.parse(response.body, symbolize_name: true)
   end
 
 end

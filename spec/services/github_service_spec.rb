@@ -13,16 +13,11 @@ describe 'on the GithubService' do
       VCR.use_cassette("services/find_repositories") do
         token = ENV["GITHUB_API_KEY"]
         repositories = GithubService.new(token).repositories
+
         expect(repositories).to be_a(Array)
         expect(repositories.first).to have_key(:name)
         expect(repositories.first).to have_key(:html_url)
       end
-    end
-
-    it '.connection' do
-    end
-
-    it '.get_json' do
     end
   end
 end
