@@ -10,4 +10,13 @@
   <section>
     <h1>Bookmarked Segments</h1>
   </section>
+  <section class="github">
+    <h2>Github</h2>
+    <ul>
+    <% current_user.find_repos do |repo| %>
+
+        <li><%= link_to "#{repo.name}", "#{repo.html_url}"%></li>
+    <% end %>
+  </ul>
+  </section>
 </section>
