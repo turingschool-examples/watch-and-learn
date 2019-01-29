@@ -11,7 +11,15 @@ class UserDashboardFacade
     follower_list
   end
 
+  def user_followings
+    following_list
+  end
+
   private
+
+  def following_list
+    @following_list ||= service.following
+  end
 
   def follower_list
     @follower_list ||= service.followers

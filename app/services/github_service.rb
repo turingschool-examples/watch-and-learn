@@ -15,6 +15,12 @@ class GithubService
     end
   end
 
+  def following
+    get_json("/user/following").map do |json_user|
+      GithubUser.new(json_user)
+    end 
+  end
+
   private
 
   def get_json(path)
