@@ -20,6 +20,16 @@
             <%= link_to(r.name, r.html_url) %>
           </div>
         <% end %>
+        <% if @followers %>
+          <div class="followers">
+            <h2>Your Followers</h2>
+            <% @followers.each do |f| %>
+              <div class="follower">
+                <%= link_to(f.login, f.html_url) %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
       </div>
     </section>
   <% end %>
