@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
   def show
-    @repos = conn(current_user.token)
-    binding.pry
+    if current_user.token
+      @repos = Repo.generate(conn(current_user.token)).take(5)
+    end
   end
 
   def new

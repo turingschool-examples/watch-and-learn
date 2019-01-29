@@ -3,18 +3,24 @@ require 'rails_helper'
 describe 'A registered user' do
   context 'when I visit /dashboard' do
     it 'sees a section for github' do
-      user = create(:user, token: ENV["DAN_GIT_API_KEY"])
+      VCR.use_cassette("all the things") do
+        user = create(:user, token: ENV["DAN_GIT_API_KEY"])
+        conn = Faraday.new(url: "https://api.github.com") do |f|
+          f.headers["Authorization"] = "Token #{user.token}"
+          f.adapter Faraday.default_adapter
+        end
 
-      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+        allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-      visit dashboard_path
+        visit dashboard_path
+        save_and_open_page
+        expect(page).to have_content("GitHub Section")
+        expect(page).to have_content("5 Repos")
 
-      expect(page).to have_content("GitHub Section")
-      expect(page).to have_content("5 Repos")
-
-      within "#top5repos" do
+        within "#top5repos" do
 
 
+        end
       end
     end
   end

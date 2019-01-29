@@ -12,9 +12,12 @@
   </section>
 
   <section>
-    <h1> GitHub Section </h1>
-    <% @repos.each do |repo| %>
-    <li> <%= repo.name %> </li>
+    <% if @repos %>
+      <h1> GitHub Section </h1>
+      <li> <%= @repos.count  %> Repos</li>
+      <% @repos.each do |repo| %>
+        <li> <%= repo.url %> </li>
+      <% end %>
     <% end %>
   </section>
 </section>
