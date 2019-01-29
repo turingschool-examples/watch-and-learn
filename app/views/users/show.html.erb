@@ -9,5 +9,13 @@
   </ul>
   <section>
     <h1>Bookmarked Segments</h1>
+    <div class="github">
+        <h1>Github</h1>
+        <% @search_repos.repos.each do |repo| %>
+          <div class="github">
+            <%= link_to repo.name, repo.url, class: "name" %>
+          </div>
+        <% end %>
+    </div>
   </section>
 </section>
