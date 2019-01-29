@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
   def show
     if current_user.github_key
-      @repos = GithubFacade.new(current_user.github_key).owned_repos
+      facade = GithubFacade.new(current_user.github_key)
+      @repos = facade.owned_repos
+      @followers = facade.followers
     end
   end
 

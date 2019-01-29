@@ -12,11 +12,22 @@
   </section>
   <% if current_user.github_key %>
     <section class="github">
-      <h1>Your Github Repositories</h1>
+      <h1>Github</h1>
       <div class="repositories">
+        <h2>Your Repositories</h2>
         <% @repos.each do |r| %>
           <div class="repository">
             <%= link_to(r.name, r.html_url) %>
+          </div>
+        <% end %>
+        <% if @followers %>
+          <div class="followers">
+            <h2>Your Followers</h2>
+            <% @followers.each do |f| %>
+              <div class="follower">
+                <%= link_to(f.login, f.html_url) %>
+              </div>
+            <% end %>
           </div>
         <% end %>
       </div>
