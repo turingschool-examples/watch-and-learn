@@ -4,6 +4,7 @@ class UsersController < ApplicationController
       facade = GithubFacade.new(current_user.github_key)
       @repos = facade.owned_repos
       @followers = facade.followers
+      @following = facade.following
     end
   end
 
