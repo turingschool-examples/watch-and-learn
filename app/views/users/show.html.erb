@@ -24,8 +24,18 @@
           <div class="followers">
             <h2>Your Followers</h2>
             <% @followers.each do |f| %>
-              <div class="follower">
+              <div class="github-user">
                 <%= link_to(f.login, f.html_url) %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+        <% if @following %>
+          <div class="following">
+            <h2>Who You Follow</h2>
+            <% @following.each do |u| %>
+              <div class="github-user">
+                <%= link_to(u.login, u.html_url) %>
               </div>
             <% end %>
           </div>
