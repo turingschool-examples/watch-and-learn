@@ -12,8 +12,9 @@
   </section>
   <% if current_user.github_key %>
     <section class="github">
-      <h1>Your Github Repositories</h1>
+      <h1>Github</h1>
       <div class="repositories">
+        <h2>Your Repositories</h2>
         <% @repos.each do |r| %>
           <div class="repository">
             <%= link_to(r.name, r.html_url) %>
