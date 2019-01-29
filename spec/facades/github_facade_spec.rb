@@ -9,13 +9,6 @@ describe GithubFacade do
   end
 
   describe 'instance methods' do
-    it '.service' do
-      key = 'adsfadsgkasl'
-      github_facade = GithubFacade.new(key)
-
-      expect(github_facade.service).to be_a(GithubService)
-    end
-
     it '.repos' do
       VCR.use_cassette("services/find_repositories") do
         key = ENV["GITHUB_API_KEY"]

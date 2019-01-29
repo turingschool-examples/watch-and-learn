@@ -23,7 +23,7 @@ describe 'User' do
     end
   end
 
-  xit 'can log out', :js do
+  it 'can log out', :js do
     user = create(:user)
 
     visit login_path
@@ -31,12 +31,11 @@ describe 'User' do
     fill_in'session[email]', with: user.email
     fill_in'session[password]', with: user.password
 
-    click_on 'Log In'
-
-    VCR.use_cassette("services/find_repositories_unauthorized") do
+    VCR.use_cassette("services/find_repositories_unauthorized_nil_token") do
+      click_on 'Log In'
       click_on 'Profile'
     end
-
+    
     expect(current_path).to eq(dashboard_path)
 
     click_on 'Log Out'
