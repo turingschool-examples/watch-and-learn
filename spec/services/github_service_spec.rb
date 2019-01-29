@@ -9,7 +9,7 @@ describe GithubService do
     expect(service).to be_a(GithubService)
   end
   it 'returns repositories', :vcr do
-    user = create(:user, github_token: ENV["GITHUB_TOKEN"])
+    user = create(:user, github_token: ENV['GITHUB_TOKEN'])
 
     service = GithubService.new(user)
 
