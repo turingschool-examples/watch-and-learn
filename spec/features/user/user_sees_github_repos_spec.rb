@@ -13,7 +13,7 @@ describe 'User Dashboard' do
       visit dashboard_path
 
       within ".github" do
-        expect(page).to have_content("Github")
+        expect(page).to have_content("Your Github Repositories")
         within ".repositories" do
           expect(page).to have_css(".repository", count: 5)
         end
@@ -31,6 +31,7 @@ describe 'User Dashboard' do
           end
         end
       end
+      
     end
   end
 end
