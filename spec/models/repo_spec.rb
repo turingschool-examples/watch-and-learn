@@ -1,28 +1,19 @@
 require 'rails_helper'
 
 describe Repo, type: :model do
-  it "exists" do
+  xit "exists" do
     repo = Repo.new({})
     expect(repo).to be_a(Repo)
   end
 
   it "has attributes" do
-    attributes = {
-      id: 160538403,
-      name: "activerecord-obstacle-course",
-      full_name: "stoic-plus/activerecord-obstacle-course",
-      owner: {},
-      html_url: "https://github.com/stoic-plus/activerecord-obstacle-course",
-      description: "Backend Module 2, Active Record practice exercises"
-    }
+    json = File.read('./spec/fixtures/github_owner_repos.json')
+    json_hash = JSON.parse(json, symbolize_names: true)
+    repo = Repo.new(json_hash.first)
 
-    repo = Repo.new(attributes)
-
-    expect(repo.id).to eq(attributes[:id])
-    expect(repo.name).to eq(attributes[:name])
-    expect(repo.full_name).to eq(attributes[:full_name])
-    expect(repo.owner).to eq(attributes[:owner])
-    expect(repo.html_url).to eq(attributes[:html_url])
-    expect(repo.description).to eq(attributes[:description])
+    expect(repo.name).to eq(json_hash.first[:name])
+    expect(repo.full_name).to eq(json_hash.first[:full_name])
+    expect(repo.html_url).to eq(json_hash.first[:html_url])
+    expect(repo.description).to eq(json_hash.first[:description])
   end
 end

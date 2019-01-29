@@ -16,10 +16,8 @@ describe GithubService, type: :model do
         first = repos.first
 
         expect(repos.count).to eq(30)
-        expect(first).to have_key(:id)
         expect(first).to have_key(:name)
         expect(first).to have_key(:full_name)
-        expect(first).to have_key(:owner)
         expect(first).to have_key(:html_url)
         expect(first).to have_key(:description)
       end
