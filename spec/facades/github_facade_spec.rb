@@ -33,5 +33,16 @@ describe GithubFacade, type: :model do
         expect(followers.first).to be_a(Follower)
       end
     end
+    context '#following' do
+      it 'returns following users for a user given valid key' do
+        json_response = File.open('./spec/fixtures/github_user_following.json')
+        stub_request(:get, "https://api.github.com/user/following").to_return(status: 200, body: json_response)
+        github_facade = GithubFacade.new(ENV["GITHUB_API_KEY"])
+
+        following = github_facade.following
+        expect(following.count).to eq(8)
+        expect(following.first).to be_a(GithubUser)
+      end
+    end
   end
 end
