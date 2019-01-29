@@ -36,5 +36,17 @@ describe 'User Dashboard' do
         end
       end
     end
+
+    context 'when not logged in with user credentials' do
+      it 'does not show github followers section' do
+        user = create(:user)
+        allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+        visit dashboard_path
+
+        expect(page).to_not have_css(".github")
+        expect(page).to_not have_css(".followers")
+        expect(page).to_not have_css(".follower")
+      end
+    end
   end
 end
