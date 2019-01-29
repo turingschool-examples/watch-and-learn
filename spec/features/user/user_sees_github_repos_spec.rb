@@ -3,19 +3,9 @@ require 'rails_helper'
 describe 'User Dashboard' do
   context "when logged in with github credentials" do
     before :each do
-      # stub_request(:get, "https://api.github.com/user/repos").
-      #   with(headers: { 'Authorization' => "token #{ENV["GITHUB_API_KEY"]}" })
-      #
-      # uri = URI.parse("https://api.github.com/user/repos")
-      # req = Net::HTTP::Get.new(uri.path)
-      # req['Authorization'] = "token #{ENV["GITHUB_API_KEY"]}"
-      #
-      # res = Net::HTTP.start(uri.host) do |http|
-      #   binding.pry
-      #   http.request(req, "abc")
-      # end
-      #
-      # binding.pry
+      json_response = File.open('./spec/fixtures/github_owner_repos.json')
+      stub_request(:get, "https://api.github.com/user/repos?affiliation=owner").to_return(status: 200, body: json_response)
+
       user = create(:user, github_key: ENV["GITHUB_API_KEY"])
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
     end
@@ -29,10 +19,18 @@ describe 'User Dashboard' do
         end
       end
     end
-    xit 'links to repos from repo names' do
+    it 'links to repos from repo names' do
+      json_response = File.read('./spec/fixtures/github_owner_repos.json')
+      repos_json = JSON.parse(json_response, symbolize_names: true)[0..4]
       visit dashboard_path
 
-
+      within ".github" do
+        within ".repositories" do
+          repos_json.each do |repo|
+            expect(page).to have_link("#{repo[:name]}", href: "#{repo[:html_url]}")
+          end
+        end
+      end
     end
   end
 end
