@@ -25,6 +25,7 @@ RSpec.describe User, type: :model do
 
   describe "Instance Methods" do
     it "#repositories" do
+      VCR.use_cassette("github-user-repos") do
         user = create(:user, github_token: ENV["GITHUB_ACCESS_TOKEN"])
 
         repos = user.repositories
@@ -33,6 +34,7 @@ RSpec.describe User, type: :model do
         repos.each do |repo|
           expect(repo).to be_a(Repository)
         end
+      end
     end
   end
 end

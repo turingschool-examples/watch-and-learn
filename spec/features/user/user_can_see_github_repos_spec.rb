@@ -8,11 +8,13 @@ describe "As a logged in user" do
 
   describe "When I visit /dashboard" do
     it "I should see a 'Github' section with a list of 5 repositories" do
-      visit dashboard_path
+      VCR.use_cassette("github-user-repos") do
+        visit dashboard_path
 
-      within("section#github") do
-        expect(page).to have_css(".repository", count: 5)
-        expect(page).to have_css(".repo-link", count: 5)
+        within("section#github") do
+          expect(page).to have_css(".repository", count: 5)
+          expect(page).to have_css(".repo-link", count: 5)
+        end
       end
     end
   end

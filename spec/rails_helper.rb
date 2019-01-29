@@ -14,7 +14,7 @@ VCR.configure do |config|
   config.hook_into :webmock
   config.configure_rspec_metadata!
   config.filter_sensitive_data("<YOUTUBE_API_KEY>") { ENV['YOUTUBE_API_KEY'] }
-  config.allow_http_connections_when_no_cassette = true
+  #config.allow_http_connections_when_no_cassette = true
 end
 
 
@@ -33,7 +33,7 @@ end
 SimpleCov.start "rails"
 
 Shoulda::Matchers.configure do |config|
-    config.integrate do |with|
+  config.integrate do |with|
     with.test_framework :rspec
     with.library :rails
   end
@@ -49,4 +49,8 @@ RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
 
   config.filter_rails_from_backtrace!
+end
+
+def stub_login(user)
+  allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 end
