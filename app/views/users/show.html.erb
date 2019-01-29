@@ -9,14 +9,22 @@
   </ul>
   <section>
     <h1>Bookmarked Segments</h1>
-    <% if @search_repos %>
+    <% if @search_github %>
       <div class="github">
         <h1>Github</h1>
-          <% @search_repos.repos.each do |repo| %>
-          <div class="repo">
-            <%= link_to repo.name, repo.url, class: "name" %>
-          </div>
+          <% @search_github.repos.each do |repo| %>
+            <div class="repo">
+              <%= link_to repo.name, repo.url, class: "name" %>
+            </div>
           <% end %>
+          <div class="followers">
+            <h2>Followers</h2>
+            <% @search_github.followers.each do |follower| %>
+              <div class="follower">
+                <h3>Username <%= link_to follower.name, follower.url %></h3>
+              </div>
+            <% end %>
+          </div>
       </div>
     <% end %>
   </section>
