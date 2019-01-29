@@ -21,6 +21,12 @@ class SearchGithubFacade
     end
   end
 
+  def following
+    search_following_results.map do |following_data|
+      Following.new(following_data)
+    end
+  end
+
   private
   def search_repo_results
     @_search_repo_results ||= service.all_repos
@@ -28,6 +34,10 @@ class SearchGithubFacade
 
   def search_follower_results
     @_search_follower_results ||= service.all_followers
+  end
+
+  def search_following_results
+    @_search_following_results ||= service.all_following
   end
 
   def service
