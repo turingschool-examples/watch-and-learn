@@ -7,7 +7,21 @@
     <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
     <li> <%= current_user.email%> </li>
   </ul>
+
   <section>
     <h1>Bookmarked Segments</h1>
   </section>
+
+  <% if current_user.repositories %>
+  <section id="github">
+    <h1>Github Repositories</h1>
+    <% current_user.repositories.each_with_index do |repo, index| %>
+    <div class="repository" id="repo-<%= index %>">
+      <a class="repo-link" href="<%= repo.url %>">
+        <p><%= repo.name %></p>
+      </a>
+    </div>
+    <% end %>
+  </section>
+  <% end %>
 </section>
