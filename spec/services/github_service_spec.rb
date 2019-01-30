@@ -24,7 +24,6 @@ describe GithubService do
 
     followers = service.followers_by_user
 
-    expect(followers.count).to eq(30)
     expect(followers.first).to have_key(:login)
     expect(followers.first).to have_key(:html_url)
   end
