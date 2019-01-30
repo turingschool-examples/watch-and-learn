@@ -14,10 +14,12 @@
   <% if @repos  %>
   <section class="github">
     <ul>
-    <% @repos.each do |repo| %>
-        <li><%= link_to "#{repo.name}", "#{repo.html_url}", class: "repository"%></li>
-    <% end %>
-  </ul>
+      <% @repos.each do |repo| %>
+          <li><%= link_to "#{repo.name}", "#{repo.html_url}", class: "repository"%></li>
+      <% end %>
+    </ul>
   </section>
+  <% else %>
+    <p>No token generated; please see api docs</p>
   <% end %>
 </section>
