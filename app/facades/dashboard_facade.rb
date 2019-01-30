@@ -5,11 +5,9 @@ class DashboardFacade
 
   def repos(quantity)
     result = GithubService.new(@user).repos_by_user
-    repositories = []
-    quantity.times do
-      repositories << Repository.new(result.shift)
-    end
-    repositories
+    result.map do |raw_repo|
+      Repository.new(raw_repo)
+    end[0..quantity - 1]
   end
 
   def followers
