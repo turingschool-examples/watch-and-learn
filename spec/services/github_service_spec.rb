@@ -29,5 +29,16 @@ describe 'on the GithubService' do
         expect(followers.first).to have_key(:html_url)
       end
     end
+
+    it '.followings' do
+      VCR.use_cassette("services/find_followings") do
+        token = ENV["GITHUB_API_KEY"]
+        followings = GithubService.new(token).followings
+
+        expect(followings).to be_a(Array)
+        expect(followings.first).to have_key(:login)
+        expect(followings.first).to have_key(:html_url)
+      end
+    end
   end
 end
