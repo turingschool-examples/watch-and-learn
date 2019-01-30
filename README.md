@@ -57,8 +57,8 @@ $ bundle exec rspec
 
 ## Contributors
 
-Justin Clark
-J Aaron Brooks Roberts
+* Justin Clark
+* J Aaron Brooks Roberts
 
 ## Deployment
 
