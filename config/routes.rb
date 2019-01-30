@@ -32,6 +32,8 @@ Rails.application.routes.draw do
   get '/about', to: 'about#show'
   get '/get_started', to: 'get_started#show'
 
+  post '/friendships', to: 'friendships#create', as: 'add_friend'
+
   # Is this being used?
   get '/video', to: 'video#show'
 

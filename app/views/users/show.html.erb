@@ -21,7 +21,11 @@
             <h2>Followers</h2>
             <% @search_github.followers.each do |follower| %>
               <div class="follower">
-                <h3>Username <%= link_to follower.name, follower.url %></h3>
+                <h3>Username <%= link_to follower.name, follower.url %> 
+                <% if user_in_database(follower.name) && user_not_friend(follower.name) %>
+                  <%= link_to "Add as Friend", add_friend_path(name: follower.name), method: :post %>
+                <% end %>
+                </h3>
               </div>
             <% end %>
           </div>
@@ -29,7 +33,11 @@
             <h2>Following</h2>
             <% @search_github.following.each do |followee| %>
               <div class="followee">
-                <h3>Username <%= link_to followee.name, followee.url %></h3>
+                <h3>Username <%= link_to followee.name, followee.url %> 
+                <% if user_in_database(followee.name) && user_not_friend(followee.name) %>
+                  <%= link_to "Add as Friend", add_friend_path(name: followee.name), method: :post %></h3>
+                <% end %>
+                </h3>
               </div>
             <% end %>
           </div>
