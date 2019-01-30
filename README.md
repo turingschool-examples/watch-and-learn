@@ -55,6 +55,17 @@ Run the test suite:
 $ bundle exec rspec
 ```
 
+## Contributors
+
+Justin Clark
+J Aaron Brooks Roberts
+
+## Deployment
+
+Our app is deployed on heroku at:
+
+`http://brownfield-of-dreams-1810.herokuapp.com/`
+
 ## Technologies
 * [Stimulus](https://github.com/stimulusjs/stimulus)
 * [will_paginate](https://github.com/mislav/will_paginate)
