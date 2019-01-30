@@ -23,7 +23,9 @@
       <h3>Followers</h3>
       <ul>
         <% @facade.followers.each do |follower| %>
-          <li class="follower"></li>
+          <li class="follower">
+            <%= link_to follower.login, follower.html_url, class: "handle-link" %>
+          </li>
         <% end %>
       </ul>
     </section>
