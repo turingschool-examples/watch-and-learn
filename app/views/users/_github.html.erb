@@ -1,0 +1,10 @@
+<% if @github_facade %>
+  <section>
+    <ul>
+      <% @github_facade.repos.each do |repo| %>
+      <h1>Your Github Repositories:</h1>
+        <li class="repo"><%= link_to(repo.name, repo.url) %></li>
+      <% end %>
+    </ul>
+  </section>
+<% end %>
