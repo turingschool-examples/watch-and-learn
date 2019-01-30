@@ -1,6 +1,6 @@
 class GithubService
-  def initialize(user)
-    @user = user
+  def initialize(token)
+    @token = token
   end
 
   def find_repos
@@ -17,6 +17,10 @@ class GithubService
       faraday.headers["Authorization"] = ENV["GITHUB_TOKEN"]
       faraday.adapter Faraday.default_adapter
     end
+  end
+
+  def self.find_repos(token)
+    new(token).find_repos
   end
 
 end
