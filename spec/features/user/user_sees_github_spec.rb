@@ -30,8 +30,5 @@ describe 'dashboard' do
         expect(page).to have_content("No token generated")
       end
     end
-    context 'as a visitor not logged in' do
-
-    end
   end
 end
