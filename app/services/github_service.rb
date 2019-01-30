@@ -4,7 +4,7 @@ class GithubService
     @access_token = access_token
   end
 
-  def repositories
+  def repos
     get_json("user/repos").take(5)
   end
 

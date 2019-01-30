@@ -12,14 +12,16 @@ describe "as a logged in user" do
         end
       end
       expect(current_path).to eq('/dashboard')
+      expect(page).to have_content("Your Github:")
 
-      expect(page).to have_content("Your Github Repositories:")
+
+      expect(page).to have_content("Repositories:")
       expect(page).to have_css(".repo", count: 5)
       within(first(".repo")) do
         expect(page).to have_link()
       end
       save_and_open_page
-      expect(page).to have_content("Your Github Followers:")
+      expect(page).to have_content("Followers:")
       within(first(".follower")) do
         expect(page).to have_link()
       end
