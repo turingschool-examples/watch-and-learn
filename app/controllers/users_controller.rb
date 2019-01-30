@@ -3,8 +3,10 @@ class UsersController < ApplicationController
     user = current_user
     if user.token
       @repos = Repo.find_all_repos(user.token)
+      @followers = Follower.find_all_followers(user.token)
     else
       @repos = nil
+      @followers = nil
     end 
   end
 
