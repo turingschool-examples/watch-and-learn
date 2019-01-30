@@ -25,5 +25,4 @@ class UsersController < ApplicationController
       flash[:error] = 'Username already exists'
     end
   end
-
 end
