@@ -7,7 +7,11 @@ class UsersController < ApplicationController
     else
       @repos = nil
       @followers = nil
+<<<<<<< HEAD
+    end 
+=======
     end
+>>>>>>> a1eab7a1a0ae62bed5bf17933dd81901f8edde63
   end
 
   def new
