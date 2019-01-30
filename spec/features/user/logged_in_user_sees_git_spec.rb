@@ -14,12 +14,12 @@ describe 'A registered user' do
 
         visit dashboard_path
 
-
         expect(page).to have_content("GitHub Section")
         expect(page).to have_content("5 Repos")
 
         within ".top5repos" do
-          expect(page).to have_content("https://github.com/asmolentzov/little-shop")
+          expect(page).to have_content("little-shop")
+          expect(page).to have_link("little-shop")
         end
       end
     end
@@ -37,16 +37,16 @@ describe 'A registered user' do
 
         visit dashboard_path
 
-
         expect(page).to have_content("GitHub Section")
         expect(page).to have_content("5 Repos")
 
         within ".top5repos" do
-          expect(page).to have_content("https://github.com/asmolentzov/little-shop")
+          expect(page).to have_content("bookclub")
+          expect(page).to have_link("bookclub")
         end
       end
     end
-    
+
     it 'does not see a section for github if it does not have a token' do
       VCR.use_cassette("no_token_cassette") do
         user = create(:user)
@@ -55,16 +55,9 @@ describe 'A registered user' do
 
         visit dashboard_path
 
-
         expect(page).to_not have_content("GitHub Section")
         expect(page).to_not have_content("Repos")
       end
     end
   end
 end
-
-
-# As a logged in user
-# When I visit /dashboard
-# Then I should see a section for "Github"
-# And under that section I should see a list of 5 repositories with the name of each Repo linking to the repo on Github
