@@ -1,5 +1,7 @@
 # Brownfield Of Dreams
 
+![agriculture-clouds-cropland-461960](https://user-images.githubusercontent.com/40776966/52017905-fa5b4500-24a5-11e9-87b5-e68f349174fd.jpg)
+
 This is the base repo for a brownfield project used at Turing for Backend Mod 3.
 
 Project Spec and Evaluation Rubric: https://github.com/turingschool-examples/brownfield-of-dreams
