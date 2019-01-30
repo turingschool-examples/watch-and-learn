@@ -12,4 +12,10 @@ class DashboardFacade
     repositories
   end
 
+  def followers
+    result = GithubService.new(@user).followers_by_user
+    result.map do |raw_follower|
+      Follower.new(raw_follower)
+    end
+  end
 end
