@@ -25,16 +25,16 @@ RSpec.describe User, type: :model do
   describe 'class methods' do
     it '.user_in_database' do
       user_1 = create(:user)
-      expect(User.user_in_database(user_1.username)).to eq(user_1)
+      expect(User.user_in_database(user_1.github_username)).to eq(user_1)
     end
   end
   describe 'instance methods' do
     it '#user_not_friend' do
       user_1 = create(:user)
       user_2 = create(:user)
-      expect(user_1.user_not_friend(user_2.username)).to eq(true)
+      expect(user_1.user_not_friend(user_2.github_username)).to eq(true)
       user_3 = create(:user, friends: [user_1])
-      expect(user_3.user_not_friend(user_1.username)).to eq(false)
+      expect(user_3.user_not_friend(user_1.github_username)).to eq(false)
     end
   end
 end

@@ -23,7 +23,7 @@
               <div class="follower">
                 <h3>Username <%= link_to follower.name, follower.url %> 
                 <% if user_in_database(follower.name) && user_not_friend(follower.name) %>
-                  <%= link_to "Add as Friend", add_friend_path(name: follower.name) %>
+                  <%= link_to "Add as Friend", add_friend_path(name: follower.name), method: :post %>
                 <% end %>
                 </h3>
               </div>
@@ -35,7 +35,7 @@
               <div class="followee">
                 <h3>Username <%= link_to followee.name, followee.url %> 
                 <% if user_in_database(followee.name) && user_not_friend(followee.name) %>
-                  <%= link_to "Add as Friend", add_friend_path(name: followee.name) %></h3>
+                  <%= link_to "Add as Friend", add_friend_path(name: followee.name), method: :post %></h3>
                 <% end %>
                 </h3>
               </div>
