@@ -11,9 +11,24 @@ describe 'dashboard' do
       visit '/dashboard'
       expect(page).to have_content('Github')
       expect(page).to have_content('Followers')
-      within('.followers') do
+      within('.followers-list') do
         expect(page).to have_link(user_1_followers.first.login)
+        expect(page).to have_link("#{user_1_followers.last.login}")
+        expect(page).to have_css(".follower")
       end
+    end
+  end
+
+  context 'as a logged in user without a token' do
+    it "does not see links to followers' githubs", :vcr do
+      user = create(:user)
+
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+      visit '/dashboard'
+
+      expect(page).to_not have_content("Followers")
+      expect(page).to_not have_css(".followers-list")
     end
   end
 end
