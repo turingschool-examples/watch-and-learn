@@ -13,4 +13,14 @@ describe 'visitor sees a video show' do
     expect(page).to have_content(video.title)
     expect(page).to have_content(tutorial.title)
   end
+
+  it 'visitor does not see tutorials that have a classroom label' do
+    tutorial = create(:tutorial, classroom: false)
+    tutorial_2 = create(:tutorial, classroom: true)
+
+    visit '/'
+
+    expect(page).to have_content(tutorial.title)
+    expect(page).to_not have_content(tutorial_2.title)
+  end
 end
