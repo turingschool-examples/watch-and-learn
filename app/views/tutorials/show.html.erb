@@ -19,7 +19,7 @@
       <% if current_user %>
       <%= button_to "Bookmark", user_videos_path(video_id: @facade.current_video.id, user_id: current_user.id), method: :post, class: "btn btn-outline mb1 teal" %>
       <% else %>
-      <%= link_to "Bookmark", login_path, class: "btn btn-outline mb1 teal" %>
+        <button class="btn btn-outline mb1 teal" onclick="tutorialBookmark()">Bookmark</button>
       <% end %>
     </div>
   </div>
@@ -56,6 +56,10 @@
         message.innerHTML = "You watched them all. Bask in the glory of your new skills."
       }
     }
+
+    function tutorialBookmark() {
+      alert("Please log in to bookmark this tutorial")
+    }
   </script>
 </div>
 
@@ -64,6 +68,9 @@
     <%= @facade.current_video.description.truncate(50) %>...
     <%= link_to "More", "#", "data-action" => "click->tutorials#showDescription", id: @facade.current_video.id, class: "show-link"%>
   </p>
+  $(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip();
+});
 </div>
 
 </main>
