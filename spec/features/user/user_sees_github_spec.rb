@@ -11,7 +11,7 @@ describe 'dashboard' do
 
       expect(page).to have_content("Github")
 
-      within('.github') do
+      within('.github-list') do
         expect(page).to have_link("2win_playlist")
         expect(page).to have_css(".repository", count: 5)
       end
@@ -40,12 +40,12 @@ describe 'dashboard' do
 
       user_1_repos = Repo.find_all_repos(token_1)
       user_2_repos = Repo.find_all_repos(token_2)
-      within('.github') do
+      within('.github-list') do
         user_2_repos = Repo.find_all_repos(token_2)
         expect(page).to have_link("#{user_1_repos.first.name}")
         # expect(page).to_not have_link("#{user_2_repos.first.name}")
       end
-    end 
+    end
     context 'as a logged in user without a token' do
       it "does not see links to github repos", :vcr do
         user = create(:user)
