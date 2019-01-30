@@ -1,10 +1,15 @@
-<% if @github_facade %>
-  <section>
-    <ul>
-      <% @github_facade.repos.each do |repo| %>
-      <h1>Your Github Repositories:</h1>
-        <li class="repo"><%= link_to(repo.name, repo.url) %></li>
-      <% end %>
-    </ul>
-  </section>
-<% end %>
+<section>
+  <hq>Your Github:</hq>
+  <h2>Repositories:</h2>
+  <ul>
+    <% @github_facade.repos.each do |repo| %>
+      <li class="repo"><%= link_to(repo.name, repo.url) %></li>
+    <% end %>
+  </ul>
+  <h2>Followers:</h2>
+  <ul>
+    <% @github_facade.followers.each do |follower| %>
+      <li class="follower"><%= link_to(follower.name, follower.url) %></li>
+    <% end %>
+  </ul>
+</section>
