@@ -28,5 +28,14 @@ describe GithubFacade do
         expect(followers.first).to be_a(Follower)
       end
     end
+    it '.followings' do
+      VCR.use_cassette("services/find_followings") do
+        key = ENV["GITHUB_API_KEY"]
+        github_facade = GithubFacade.new(key)
+        followings = github_facade.followings
+
+        expect(followings.first).to be_a(Following)
+      end
+    end
   end
 end

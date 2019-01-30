@@ -4,6 +4,7 @@ class GithubFacade
     @access_token = token
     @_followers = nil
     @_repos = nil
+    @_followings = nil
   end
 
   def repos
@@ -18,6 +19,12 @@ class GithubFacade
     end
   end
 
+  def followings
+    find_followings.map do |following|
+      Following.new(following)
+    end
+  end
+
   private
 
   def find_repos
@@ -26,6 +33,10 @@ class GithubFacade
 
   def find_followers
     @_followers ||= service.followers
+  end
+
+  def find_followings
+    @_followings ||= service.followings
   end
 
   def service

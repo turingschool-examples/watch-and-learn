@@ -12,4 +12,10 @@
       <li class="follower"><%= link_to(follower.name, follower.url) %></li>
     <% end %>
   </ul>
+  <h2>Following:</h2>
+  <ul>
+    <% @github_facade.followings.each do |following| %>
+      <li class="following"><%= link_to(following.name, following.url) %></li>
+    <% end %>
+  </ul>
 </section>
