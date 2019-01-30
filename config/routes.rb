@@ -29,9 +29,7 @@ Rails.application.routes.draw do
   delete '/logout', to: "sessions#destroy"
 
   get '/dashboard', to: 'users#show'
-  namespace :user do
-    get '/repos', to: 'repos#index'
-  end
+
   get '/about', to: 'about#show'
   get '/get_started', to: 'get_started#show'
 
