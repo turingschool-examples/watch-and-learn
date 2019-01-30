@@ -25,9 +25,8 @@ describe 'dashboard' do
 
         visit '/dashboard'
 
-        expect(page).to have_content("Github")
+        expect(page).to_not have_content("Github")
         expect(page).to_not have_css(".repository")
-        expect(page).to have_content("No token generated")
       end
     end
   end
