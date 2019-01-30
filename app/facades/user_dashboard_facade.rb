@@ -18,15 +18,15 @@ class UserDashboardFacade
   private
 
   def following_list
-    @following_list ||= service.following
+     service.following
   end
 
   def follower_list
-    @follower_list ||= service.followers
+    service.followers
   end
 
   def repo_list
-    @repo_list ||= service.repositories
+     service.repositories
   end
 
   def service
