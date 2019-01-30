@@ -16,3 +16,14 @@ describe Repo do
     expect(repository.html_url).to eq("https://github.com/le3ah")
   end
 end
+
+describe 'class methods', :vcr do
+  it ".find_all_repos" do
+    user = create(:user, token: "tokentoken")
+    token = user.token
+    repos = Repo.find_all_repos(token)
+    
+    expect(repos.count).to eq(5)
+    expect(repos.first).to be_an_instance_of(Repo)
+  end
+end

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def show
-    @user = current_user
+    @repos = Repo.find_all_repos(current_user.token) if current_user.token
   end
 
   def new
