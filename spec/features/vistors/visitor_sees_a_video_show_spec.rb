@@ -37,6 +37,6 @@ describe 'visitor sees a video show' do
 
     visit tutorial_path(tutorial)
 
-    expect(raise_error(ActionController::RoutingError.new('Not Found')))
+    expect(current_path).to eq(root_path)
   end
 end

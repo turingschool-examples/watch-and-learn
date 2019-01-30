@@ -1,14 +1,11 @@
 class TutorialsController < ApplicationController
-  before_action :require_user!
 
   def show
     tutorial = Tutorial.find(params[:id])
-    @facade = TutorialFacade.new(tutorial, params[:video_id])
-  end
-
-private
-
-  def require_user!
-    four_oh_four unless current_user || Tutorial.where('tutorials.classroom = ?', false)
+    if tutorial.classroom == false || current_user
+      @facade = TutorialFacade.new(tutorial, params[:video_id])
+    else
+      redirect_to root_path
+    end
   end
 end
