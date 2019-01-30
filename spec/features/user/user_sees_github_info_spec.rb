@@ -20,7 +20,7 @@ describe "as a logged in user" do
       within(first(".repo")) do
         expect(page).to have_link()
       end
-      save_and_open_page
+      
       expect(page).to have_content("Followers:")
       within(first(".follower")) do
         expect(page).to have_link()
