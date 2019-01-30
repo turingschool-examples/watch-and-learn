@@ -21,4 +21,15 @@
     </ul>
   </section>
   <% end %>
+
+  <% if @followers.nil? == false %>
+  <h2>Followers</h2>
+  <section class="followers">
+    <ul>
+      <% @followers.each do |follower| %>
+          <li><%= link_to "#{follower.login}", "#{follower.html_url}", class: "follower"%></li>
+      <% end %>
+    </ul>
+  </section>
+  <% end %>
 </section>
