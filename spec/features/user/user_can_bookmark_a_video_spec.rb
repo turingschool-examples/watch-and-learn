@@ -31,4 +31,24 @@ describe 'A registered user' do
     click_on 'Bookmark'
     expect(page).to have_content("Already in your bookmarks")
   end
+
+  it 'shows added bookmarks on the user dashboard' do
+    tutorial= create(:tutorial)
+    video_1 = create(:video, tutorial_id: tutorial.id, position: 2)
+    video_2 = create(:video, tutorial_id: tutorial.id, position: 1)
+    user = create(:user)
+    user_video = create(:user_video, user: user, video: video_1)
+    user_video = create(:user_video, user: user, video: video_2)
+
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+    visit dashboard_path
+    expect(page).to have_content("Bookmarked Segments")
+    within '#bookmarked_segments' do
+      expect(page).to have_content(tutorial.title)
+      within "#tutorial-#{tutorial.id}" do
+        expect(page).to have_content("#{video_2.title} #{video_1.title}")
+      end
+    end
+  end
 end

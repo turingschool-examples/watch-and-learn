@@ -7,11 +7,10 @@
     <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
     <li> <%= current_user.email%> </li>
   </ul>
-  <section>
-    <h1>Bookmarked Segments</h1>
-  </section>
-  <%= link_to 'Connect Your Github', github_login_path, class: "mt2 btn btn-primary mb1 bg-teal" %>
 
+  <%= render partial: "bookmarked_segments" %>
+
+  <%= link_to 'Connect Your Github', github_login_path, class: "mt2 btn btn-primary mb1 bg-teal" %>
   <%= render partial: "github" if @github_facade %>
 
 </section>

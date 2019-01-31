@@ -3,6 +3,7 @@ class UsersController < ApplicationController
     if current_user.github_token
       @github_facade = GithubFacade.new(current_user.github_token)
     end
+    @bookmark_facade = BookmarkFacade.new(current_user)
   end
 
   def new
