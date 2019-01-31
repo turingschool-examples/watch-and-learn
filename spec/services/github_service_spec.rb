@@ -27,4 +27,13 @@ describe GithubService do
     expect(followers.first).to have_key(:login)
     expect(followers.first).to have_key(:html_url)
   end
+  it 'returns following', :vcr do
+    user = create(:user, github_token: ENV['GITHUB_TOKEN'])
+    service = GithubService.new(user)
+    
+    following = service.following_by_user
+    
+    expect(following.first).to have_key(:login)
+    expect(following.first).to have_key(:html_url)
+  end
 end
