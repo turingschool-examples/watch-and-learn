@@ -51,7 +51,7 @@ describe ' as a user' do
       within '.github' do
         expect(page).to have_content('Following')
         expect(page).to have_css('.following')
-        within '.following' do
+        within first('.following') do
           expect(page).to have_css('.handle-link')
         end
       end
