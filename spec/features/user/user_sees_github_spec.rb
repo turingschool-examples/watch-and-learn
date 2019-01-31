@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'dashboard' do
   context 'as a logged in user with a token' do
     it 'sees Github list of 5 repositories linking to repo', :vcr do
-      user = create(:user, token: "cheezytoken")
+      user = create(:user, oauth_token: "cheezytoken")
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
@@ -18,10 +18,10 @@ describe 'dashboard' do
     end
 
     it "sees repos belonging to appropriate user ", :vcr do
-      user_1 = create(:user, token: "cheezytoken")
-      user_2 = create(:user, token: "notcheezytoken")
-      token_1 = user_1.token
-      token_2 = user_2.token
+      user_1 = create(:user, oauth_token: "cheezytoken")
+      user_2 = create(:user, oauth_token: "notcheezytoken")
+      token_1 = user_1.oauth_token
+      token_2 = user_2.oauth_token
 
       visit '/'
 
