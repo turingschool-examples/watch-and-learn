@@ -18,4 +18,11 @@ class DashboardFacade
       Follower.new(raw_follower)
     end
   end
+  
+  def following
+    result = GithubService.new(@user).following_by_user
+    result.map do |raw_following|
+      Following.new(raw_following)
+    end
+  end
 end
