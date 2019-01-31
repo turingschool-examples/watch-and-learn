@@ -42,6 +42,20 @@ describe ' as a user' do
         expect(page).to have_css('.handle-link')
       end
     end
+    it 'should see following', :vcr do
+      user = create(:user, github_token: ENV['GITHUB_TOKEN'])
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+      
+      visit dashboard_path
+      
+      within '.github' do
+        expect(page).to have_content('Following')
+        expect(page).to have_css('.following')
+        within first('.following') do
+          expect(page).to have_css('.handle-link')
+        end
+      end
+    end
     it 'should not see github without token', :vcr do
       user = create(:user)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
