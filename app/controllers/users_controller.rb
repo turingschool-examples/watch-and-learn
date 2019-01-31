@@ -9,7 +9,11 @@ class UsersController < ApplicationController
 
   def create
     user = User.create(user_params)
-    user_saved?(user) ? (redirect_to dashboard_path) : (render :new)
+    if user_saved?(user) 
+      redirect_to dashboard_path
+    else
+      render :new
+    end
   end
 
   private
