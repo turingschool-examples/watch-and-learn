@@ -7,9 +7,8 @@
     <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
     <li> <%= current_user.email%> </li>
   </ul>
-  <section>
-    <h1>Bookmarked Segments</h1>
-  </section>
+
+  <%= render partial: "bookmarked_segments" %>
 
   <%= render partial: "github" if @github_facade %>
 
