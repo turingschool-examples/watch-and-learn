@@ -9,11 +9,9 @@ class UsersController < ApplicationController
 
   def create
     user = User.create(user_params)
-    if user.save
-      session[:user_id] = user.id
+    if user_saved?(user) 
       redirect_to dashboard_path
     else
-      flash[:error] = 'Username already exists'
       render :new
     end
   end
@@ -24,4 +22,11 @@ class UsersController < ApplicationController
     params.require(:user).permit(:email, :first_name, :last_name, :password)
   end
 
+  def user_saved?(user)
+    if user.save
+      session[:user_id] = user.id
+    else
+      flash[:error] = 'Username already exists'
+    end
+  end
 end
