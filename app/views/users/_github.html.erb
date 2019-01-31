@@ -1,18 +1,18 @@
 <section>
-  <hq>Your Github:</hq>
-  <h2>Repositories:</h2>
+  <h1>Your Github:</h1>
+  <h3>Repositories:</h3>
   <ul>
     <% @github_facade.repos.each do |repo| %>
       <li class="repo"><%= link_to(repo.name, repo.url) %></li>
     <% end %>
   </ul>
-  <h2>Followers:</h2>
+  <h3>Followers:</h3>
   <ul>
     <% @github_facade.followers.each do |follower| %>
       <li class="follower"><%= link_to(follower.name, follower.url) %></li>
     <% end %>
   </ul>
-  <h2>Following:</h2>
+  <h3>Following:</h3>
   <ul>
     <% @github_facade.followings.each do |following| %>
       <li class="following"><%= link_to(following.name, following.url) %></li>
