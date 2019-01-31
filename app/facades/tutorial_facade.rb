@@ -20,6 +20,10 @@ class TutorialFacade < SimpleDelegator
     !(current_video.position >= maximum_video_position)
   end
 
+  def has_videos?
+    videos.any?
+  end
+
   private
 
   def current_video_index
