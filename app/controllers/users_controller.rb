@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  helper_method :github_oauth_link
+
   def show
     if current_user.github_key
       facade = GithubFacade.new(current_user.github_key)
@@ -29,4 +31,7 @@ class UsersController < ApplicationController
     params.require(:user).permit(:email, :first_name, :last_name, :password)
   end
 
+  def github_oauth_link
+    GithubOauthLinks::AUTHORIZE
+  end
 end

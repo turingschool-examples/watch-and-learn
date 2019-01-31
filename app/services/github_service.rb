@@ -2,7 +2,7 @@ class GithubService
   def initialize(github_key)
     @github_key = github_key
   end
-
+  
   def owned_repos
     get_json("/user/repos?affiliation=owner")
   end
@@ -12,7 +12,7 @@ class GithubService
   end
 
   def following
-    get_json("/user/following")    
+    get_json("/user/following")
   end
 
   def get_json(url)
