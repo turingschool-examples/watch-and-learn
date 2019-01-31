@@ -1,6 +1,13 @@
 <section id="bookmarked_segments">
   <h1>Bookmarked Segments</h1>
   <% @bookmark_facade.tutorials.each do |tutorial| %>
-    <h2><%= tutorial.title %></h2>
+    <div id="tutorial-<%= tutorial.id %>">
+      <h2><%= tutorial.title %></h2>
+      <ul>
+        <% tutorial.videos.each do |video| %>
+        <li><%= video.title %></li>
+        <% end %>
+      </ul>
+    </div>
   <% end %>
 </section>
