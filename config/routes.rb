@@ -38,6 +38,9 @@ Rails.application.routes.draw do
   get '/video', to: 'video#show'
 
   resources :users, only: [:new, :create, :update, :edit]
+  get '/', to: 'welcome#index'
+  get '/auth/github', as: 'github_login'
+  get '/auth/github/callback', to: 'sessions#create'
 
   resources :tutorials, only: [:show, :index] do
     resources :videos, only: [:show, :index]

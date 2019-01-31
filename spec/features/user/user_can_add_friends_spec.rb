@@ -3,8 +3,8 @@ require 'rails_helper'
 describe 'as a logged in user' do
   it 'sees add friend link next to followers and following' do
     user = create(:user, token: ENV["GITHUB_API_KEY"])
-    user_2 = create(:user, github_username: 'Maxscores')
-    user_3 = create(:user, github_username: 'maddyg91')
+    user_2 = create(:user, github_username: ENV["FRIEND_1"])
+    user_3 = create(:user, github_username: ENV["FRIEND_2"])
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
