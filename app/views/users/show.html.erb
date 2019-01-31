@@ -11,8 +11,11 @@
     <h1>Bookmarked Segments</h1>
   </section>
 
-<%= button_to "Sign in with Github", github_login_path %>
+<%= button_to "Connect to Github", github_login_path %>
 
+<% if current_user.oauth_token == nil %>
+<h3> You have no bookmarked sections </h3>
+<% else %>
   <% if @repos.nil? == false %>
   <h2>Github</h2>
   <section class="github-list">
@@ -47,4 +50,5 @@
     </ul>
   </section>
   <% end %>
+<% end %>
 </section>
