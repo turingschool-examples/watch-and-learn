@@ -31,7 +31,7 @@ describe GithubService, type: :model do
         followers = github_service.followers
         first = followers.first
 
-        expect(followers.count).to eq(8)
+        expect(followers.count).to eq(9)
         expect(first).to have_key(:login)
         expect(first).to have_key(:html_url)
       end
