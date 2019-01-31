@@ -201,7 +201,6 @@ GEM
       oauth2 (~> 1.1)
       omniauth (~> 1.9)
     os (1.0.0)
-    parslet (1.8.2)
     pg (1.1.4)
     pry (0.12.2)
       coderay (~> 1.1.0)
@@ -307,7 +306,6 @@ GEM
     thor (0.20.3)
     thread_safe (0.3.6)
     tilt (2.0.9)
-    trollop (2.9.9)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
     uber (0.1.0)
@@ -331,10 +329,6 @@ GEM
     will_paginate (3.1.6)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    yarn (0.1.1)
-      parslet (>= 1.2)
-      rack (>= 1.3)
-      trollop (>= 1.16)
     yt (0.29.1)
       activesupport
 
@@ -381,7 +375,6 @@ DEPENDENCIES
   webmock
   webpacker (~> 3.5)
   will_paginate
-  yarn
   yt (~> 0.29.1)
 
 RUBY VERSION
