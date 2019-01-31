@@ -23,6 +23,6 @@ describe "User Nav" do
 
     visit "/dashboard"
 
-    expect(page).to have_no_content("Github")
+    expect(page).to have_no_css(".github")
   end
 end
