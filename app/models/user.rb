@@ -17,6 +17,7 @@ class User < ApplicationRecord
 
   def user_not_friend(github_username)
     user = User.user_in_database(github_username)
+    !friends.include?(user)
   end
 
   def self.find_or_create_from_auth_hash(auth_hash, user)
