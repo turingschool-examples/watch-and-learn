@@ -43,6 +43,7 @@ group :development, :test do
   gem 'vcr'
   gem 'selenium-webdriver'
   gem 'chromedriver-helper'
+  gem 'capybara-email'
 end
 
 group :development do

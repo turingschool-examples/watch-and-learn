@@ -55,4 +55,12 @@ describe 'vister can create an account', :js do
     expect(page).to have_content(@last_name)
     expect(page).to_not have_content('Sign In')
   end
+
+  it 'activates new user through email' do
+    create(:user, activated: false)
+
+    visit dashboard_path
+
+    clear_email
+  end
 end

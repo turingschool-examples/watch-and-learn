@@ -16,6 +16,7 @@ class UsersController < ApplicationController
     user = User.create(user_params)
     if user.save
       session[:user_id] = user.id
+      UserActivateMailer.activate(current_user.email).deliver_now
       flash[:notice] = "Logged in as #{user.first_name}"
       redirect_to dashboard_path
     else
