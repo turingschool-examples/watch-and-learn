@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
         render :new
       end
     else
-      user = User.find_or_create_from_auth_hash(auth_hash)
+      user = User.find_or_create_from_auth_hash(auth_hash, current_user)
       session[:user_id] = user.id
       redirect_to dashboard_path
     end

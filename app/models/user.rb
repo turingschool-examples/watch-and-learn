@@ -20,12 +20,9 @@ class User < ApplicationRecord
     !friends.include?(user)
   end
 
-  def self.find_or_create_from_auth_hash(auth_hash)
-    user = User.find_or_create_by(github_username: auth_hash["info"]["nickname"])
-    user.email = auth_hash["info"]["nickname"]
-    user.first_name = auth_hash["info"]["name"] ||= "Need Name"
-    user.password = ENV["PASSWORD"]
+  def self.find_or_create_from_auth_hash(auth_hash, user)
     user.token = auth_hash["credentials"]["token"]
+    user.github_username = auth_hash["info"]["nickname"]
     user.save
     user
   end

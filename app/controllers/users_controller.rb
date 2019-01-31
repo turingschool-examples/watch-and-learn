@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def show
-    @search_github = SearchGithubFacade.new(current_user.token) if current_user.token
+    @search_github = SearchGithubFacade.new(current_user.token) if current_user && current_user.token
   end
 
   def new
