@@ -4,9 +4,6 @@ class BookmarkFacade
   end
 
   def tutorials
-    Tutorial.joins(videos: :users)
-            .where(users: {id: @user.id})
-            .group(:id)
-            .includes(:videos)
+    @user.tutorials.includes(:videos)
   end
 end

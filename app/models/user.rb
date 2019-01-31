@@ -7,4 +7,10 @@ class User < ApplicationRecord
   validates_presence_of :first_name
   enum role: [:default, :admin]
   has_secure_password
+
+  def tutorials
+    Tutorial.joins(videos: :users)
+            .where(users: {id: self.id})
+            .group(:id)
+  end
 end
