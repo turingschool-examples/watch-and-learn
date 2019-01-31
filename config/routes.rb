@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   get '/dashboard', to: 'users#show'
   get '/about', to: 'about#show'
   get '/get_started', to: 'get_started#show'
+
   get '/auth/github/callback', to: 'github/sessions#create'
 
 
