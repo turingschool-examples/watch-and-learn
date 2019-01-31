@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'User' do
   it 'user can sign in' do
-    user = create(:user)
+    user = create(:user, activated: true)
 
     visit '/'
 
@@ -19,6 +19,7 @@ describe 'User' do
     expect(page).to have_content(user.email)
     expect(page).to have_content(user.first_name)
     expect(page).to have_content(user.last_name)
+    expect(page).to have_content("Status: Active")
   end
 
   it 'can log out', :js do
