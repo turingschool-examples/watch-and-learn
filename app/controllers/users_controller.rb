@@ -2,7 +2,6 @@ class UsersController < ApplicationController
   helper_method :github_oauth_link
 
   def show
-    binding.pry
     if current_user.github_key
       facade = GithubFacade.new(current_user.github_key)
       @repos = facade.owned_repos
