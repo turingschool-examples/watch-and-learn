@@ -4,13 +4,19 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by(email: params[:session][:email])
-    if user && user.authenticate(params[:session][:password])
+    unless auth_hash
+      user = User.find_by(email: params[:session][:email])
+      if user && user.authenticate(params[:session][:password])
+        session[:user_id] = user.id
+        redirect_to dashboard_path
+      else
+        flash[:error] = "Looks like your email or password is invalid"
+        render :new
+      end
+    else
+      user = User.find_or_create_from_auth_hash(auth_hash, current_user)
       session[:user_id] = user.id
       redirect_to dashboard_path
-    else
-      flash[:error] = "Looks like your email or password is invalid"
-      render :new
     end
   end
 
@@ -19,4 +25,9 @@ class SessionsController < ApplicationController
     redirect_to root_path
   end
 
+  protected
+
+  def auth_hash
+    request.env["omniauth.auth"]
+  end
 end
