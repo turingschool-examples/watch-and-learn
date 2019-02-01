@@ -15,6 +15,10 @@ class UserDashboardFacade
     following_list
   end
 
+  def user_friends
+    @user.friends 
+  end
+
   private
 
   def following_list

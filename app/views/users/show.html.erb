@@ -28,6 +28,9 @@
       <div class="follower">
         <a href="<%= follower.url %>" class="user-link">
           <p><%= follower.handle %></p>
+      <% if follower.exists_in_database %>
+          <p><%= button_to "Add Friend", user_friendships_path(current_user, friends: follower.user_in_database) %></p>
+      <% end %>
         </a>
       </div>
       <% end %>
@@ -41,6 +44,17 @@
         </a>
       </div>
       <% end %>
+    </div>
+    <div>
+    <h1>Friends on Github</h1>
+      <ul>
+        <% @facade.user_friends.each do |user| %>
+          <li>
+          <%= user.first_name %> <%= user.last_name %>
+          <%= button_to "Remove Friend", user_friendship_path(current_user), :method => "delete" %>
+          </li>
+          <% end %>
+      </ul>
     </div>
   </section>
   <% end %>
