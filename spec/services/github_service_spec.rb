@@ -5,6 +5,22 @@ describe GithubService, type: :model do
     service = GithubService.new(ENV["GITHUB_API_KEY"])
     expect(service).to be_a(GithubService)
   end
+  describe 'class methods' do
+    context '.send_invite' do
+      it "sends invite if user has email and returns boolean for sent status" do
+        json_response = File.open('./spec/fixtures/github_user_email.json')
+        stub_request(:get, "https://api.github.com/users/stoic-plus").to_return(status: 200, body: json_response)
+
+        json_response = File.open('./spec/fixtures/github_user_no_email.json')
+        stub_request(:get, "https://api.github.com/users/NickLindeberg").to_return(status: 200, body: json_response)
+
+        sent = GithubService.send_invite('stoic-plus')
+
+        expect(sent).to be_truthy
+        open_email('ricardoledesmadev@gmail.com')
+      end
+    end
+  end
   describe 'instance methods' do
     context '#owned_repos' do
       it 'returns github repos for owner given valid key' do
