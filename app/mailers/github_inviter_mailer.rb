@@ -1,0 +1,3 @@
+class GithubInviterMailer < ApplicationMailer
+  
+end
