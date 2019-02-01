@@ -51,7 +51,7 @@
         <% @facade.user_friends.each do |user| %>
           <li>
           <%= user.first_name %> <%= user.last_name %>
-          <%= button_to "Remove Friend", user_friendship_path(current_user), :method => "delete" %>
+          <%= button_to "Remove Friend", user_friendship_path(current_user, user), :method => "delete" %>
           </li>
           <% end %>
       </ul>
