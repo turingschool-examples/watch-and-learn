@@ -1,0 +1,5 @@
+<%= form_tag :invites do |f| %>
+  <%= label_tag "github_handle", "Github Handle" %>
+  <%= text_field_tag "github_handle", nil, placeholder: "Enter user's github handle" %>
+  <%= submit_tag "Send Invite" %>
+<% end %>

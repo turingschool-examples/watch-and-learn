@@ -1,9 +1,36 @@
 require 'rails_helper'
 
 describe GithubService, type: :model do
+  include Capybara::Email::DSL
   it 'exists' do
     service = GithubService.new(ENV["GITHUB_API_KEY"])
     expect(service).to be_a(GithubService)
+  end
+  describe 'class methods' do
+    context '.send_invite' do
+      it "sends invite if user has email and returns true for sent status" do
+        json_response = File.open('./spec/fixtures/github_user_email.json')
+        stub_request(:get, "https://api.github.com/users/stoic-plus").to_return(status: 200, body: json_response)
+        user = create(:user, first_name: 'Jon', last_name: 'Doe')
+
+        sent = GithubService.send_invite(user, 'stoic-plus')
+
+        expect(sent).to be_truthy
+        open_email('ricardoledesmadev@gmail.com')
+        expect(current_email).to have_content("Hello stoic-plus,")
+        expect(current_email).to have_content("Jon, Doe has invited you to join Brownfield of Dreams. You can create an account here")
+        expect(current_email).to have_link("here", href: "http://localhost:3000/register")
+      end
+      it 'returns false if user does not have email associated with github' do
+        json_response = File.open('./spec/fixtures/github_user_no_email.json')
+        stub_request(:get, "https://api.github.com/users/NickLindeberg").to_return(status: 200, body: json_response)
+
+        user = create(:user, first_name: 'Jon', last_name: 'Doe')
+        sent = GithubService.send_invite(user, 'NickLindeberg')
+
+        expect(sent).to be_falsey
+      end
+    end
   end
   describe 'instance methods' do
     context '#owned_repos' do
