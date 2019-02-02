@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 describe 'vister can create an account', :js do
+  include Capybara::Email::DSL
   before(:each) do
     @email = 'jimbob@aol.com'
     @first_name = 'Jim'
@@ -57,10 +58,26 @@ describe 'vister can create an account', :js do
   end
 
   it 'activates new user through email' do
-    create(:user, activated: false)
+    create(:user)
+    clear_emails
 
-    visit dashboard_path
+    click_on 'Register'
 
-    clear_email
+    expect(current_path).to eq(register_path)
+
+    fill_in 'user[email]', with: @email
+    fill_in 'user[first_name]', with: @first_name
+    fill_in 'user[last_name]', with: @last_name
+    fill_in 'user[password]', with: @password
+    fill_in 'user[password_confirmation]', with: @password
+
+    click_on'Create Account'
+    user = User.last
+    open_email(@email)
+    expect(current_email).to have_content("Visit this link to activate your account")
+    current_email.save_and_open
+    expect(current_email).to have_link("Activate", href: "localhost:3000/activate?id=2")
+
+    expect(current_path).to eq(dashboard_path)
   end
 end

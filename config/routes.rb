@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   post '/login', to: "sessions#create"
   delete '/logout', to: "sessions#destroy"
   get '/activate', to: 'activate#update'
+  get '/activated', to: 'activate#show'
 
   get '/dashboard', to: 'users#show'
   get '/about', to: 'about#show'

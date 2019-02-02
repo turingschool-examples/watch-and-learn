@@ -16,7 +16,12 @@ class UsersController < ApplicationController
     user = User.create(user_params)
     if user.save
       session[:user_id] = user.id
-      UserActivateMailer.activate(current_user.email).deliver_now
+
+      # server = request.env["HTTP_HOST"]
+      server = "127.0.0.1:3000"
+      #set port in rails config
+      user = current_user
+      UserActivateMailer.activate(user, server).deliver_now
       flash[:notice] = "Logged in as #{user.first_name}"
       redirect_to dashboard_path
     else

@@ -1,7 +1,9 @@
 class UserActivateMailer < ApplicationMailer
 
-  def activate(email)
-    mail(to: email, subject: "Please Activate Your Account!")
+  def activate(user, server)
+    @user = user
+    @server = server
+    mail(to: user[:email], subject: "Please Activate Your Account!")
   end
 
 end
