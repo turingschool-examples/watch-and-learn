@@ -25,6 +25,8 @@ Capybara.register_driver :selenium do |app|
 end
 
 Capybara.javascript_driver = :selenium_chrome
+Capybara.server_port = 3000
+Capybara.app_host = "http://localhost:3000"
 
 Capybara.configure do |config|
   config.default_max_wait_time = 5
