@@ -11,7 +11,7 @@
     <h1>Bookmarked Segments</h1>
   </section>
 
-<%= button_to "Connect to Github", github_login_path %>
+<%= button_to "Connect to Github", github_login_path, class: "btn btn-primary mb1 bg-teal" %>
 
 <% if current_user.oauth_token == nil %>
 <h3> You have no bookmarked sections </h3>
