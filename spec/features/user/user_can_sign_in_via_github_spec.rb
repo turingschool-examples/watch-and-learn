@@ -7,11 +7,11 @@ describe 'login' do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
 
     visit '/dashboard'
-    
+
     expect(page).to_not have_content('Followers')
     expect(page).to_not have_content('Github')
     expect(page).to have_content('You have no bookmarked sections')
-    
+
     click_button 'Connect to Github'
 
     expect(page.status_code).to eq(200)
