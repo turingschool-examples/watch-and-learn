@@ -29,7 +29,7 @@ describe GithubFacade, type: :model do
         github_facade = GithubFacade.new(ENV["GITHUB_API_KEY"])
 
         followers = github_facade.followers
-        expect(followers.count).to eq(8)
+        expect(followers.count).to eq(9)
         expect(followers.first).to be_a(GithubUser)
       end
     end

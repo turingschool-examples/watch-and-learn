@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  helper_method :github_oauth_link
+
   def show
     if current_user.github_key
       facade = GithubFacade.new(current_user.github_key)
@@ -17,9 +19,7 @@ class UsersController < ApplicationController
     if user.save
       session[:user_id] = user.id
 
-      # server = request.env["HTTP_HOST"]
-      server = "127.0.0.1:3000"
-      #set port in rails config
+      server = request.env["HTTP_HOST"]
       user = current_user
       UserActivateMailer.activate(user, server).deliver_now
       flash[:notice] = "Logged in as #{user.first_name}"
@@ -36,4 +36,7 @@ class UsersController < ApplicationController
     params.require(:user).permit(:email, :first_name, :last_name, :password)
   end
 
+  def github_oauth_link
+    GithubOauthLinks::AUTHORIZE
+  end
 end

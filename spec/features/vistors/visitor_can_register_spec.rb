@@ -72,11 +72,13 @@ describe 'vister can create an account', :js do
     fill_in 'user[password_confirmation]', with: @password
 
     click_on'Create Account'
+
     user = User.last
     open_email(@email)
     expect(current_email).to have_content("Visit this link to activate your account")
-    current_email.save_and_open
-    expect(current_email).to have_link("Activate", href: "localhost:3000/activate?id=2")
+    expect(current_email).to have_link("Activate")
+
+    visit "/activate?id=#{user.id}"
 
     expect(current_path).to eq(dashboard_path)
   end

@@ -158,5 +158,25 @@
         "received_events_url": "https://api.github.com/users/NickLindeberg/received_events",
         "type": "User",
         "site_admin": false
+    },
+    {
+        "login": "danbriechle",
+        "id": 42418816,
+        "node_id": "MDQ6VXNlcjQyNDE4ODE2",
+        "avatar_url": "https://avatars0.githubusercontent.com/u/42418816?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/danbriechle",
+        "html_url": "https://github.com/danbriechle",
+        "followers_url": "https://api.github.com/users/danbriechle/followers",
+        "following_url": "https://api.github.com/users/danbriechle/following{/other_user}",
+        "gists_url": "https://api.github.com/users/danbriechle/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/danbriechle/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/danbriechle/subscriptions",
+        "organizations_url": "https://api.github.com/users/danbriechle/orgs",
+        "repos_url": "https://api.github.com/users/danbriechle/repos",
+        "events_url": "https://api.github.com/users/danbriechle/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/danbriechle/received_events",
+        "type": "User",
+        "site_admin": false
     }
 ]

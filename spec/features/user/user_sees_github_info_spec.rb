@@ -33,7 +33,7 @@ describe 'User Dashboard' do
         expect(page).to have_content("Github")
         within '.followers' do
           expect(page).to have_content("Your Followers")
-          expect(page).to have_css(".github-user", count: 8)
+          expect(page).to have_css(".github-user", count: 9)
         end
       end
     end
