@@ -2,8 +2,8 @@ require 'rails_helper'
 
 describe GithubService do
   it 'exists', :vcr do
-    user = create(:user, token: "tokentime")
-    token = user.token
+    user = create(:user, oauth_token: "tokentime")
+    token = user.oauth_token
 
     allow_any_instance_of(ApplicationController)
     .to receive(:current_user).and_return(user)
@@ -13,8 +13,8 @@ describe GithubService do
   end
 
   it 'gets repos by user', :vcr do
-    user = create(:user, first_name: "Wanda", token: "token")
-    token = user.token
+    user = create(:user, first_name: "Wanda", oauth_token: "token")
+    token = user.oauth_token
 
     allow_any_instance_of(ApplicationController)
     .to receive(:current_user).and_return(user)

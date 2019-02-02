@@ -18,7 +18,16 @@ VCR.configure do |config|
   config.filter_sensitive_data("<GITHUB_TOKEN>") { ENV['GITHUB_TOKEN'] }
 end
 
-
+def stub_omniauth
+  OmniAuth.config.test_mode = true
+  omniauth_hash = { 'provider' => 'github',
+                    'uid' => '12345',
+                    'credentials' => {
+                      'token' => 'w1a2n3d4a5'
+                      }
+                    }
+  OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new(omniauth_hash)
+end
 ActiveRecord::Migration.maintain_test_schema!
 
 Capybara.register_driver :selenium do |app|
