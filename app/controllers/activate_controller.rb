@@ -1,7 +1,6 @@
 class ActivateController < ApplicationController
 
   def show
-    require "pry"; binding.pry
   end
 
   def update
