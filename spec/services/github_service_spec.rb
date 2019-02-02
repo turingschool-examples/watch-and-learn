@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 describe GithubService, type: :model do
+  include Capybara::Email::DSL
   it 'exists' do
     service = GithubService.new(ENV["GITHUB_API_KEY"])
     expect(service).to be_a(GithubService)
@@ -23,7 +24,9 @@ describe GithubService, type: :model do
       it 'returns false if user does not have email associated with github' do
         json_response = File.open('./spec/fixtures/github_user_no_email.json')
         stub_request(:get, "https://api.github.com/users/NickLindeberg").to_return(status: 200, body: json_response)
-        sent = GithubService.send_invite('NickLindeberg')
+
+        user = create(:user, first_name: 'Jon', last_name: 'Doe')
+        sent = GithubService.send_invite(user, 'NickLindeberg')
 
         expect(sent).to be_falsey
       end
