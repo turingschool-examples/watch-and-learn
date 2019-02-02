@@ -13,5 +13,6 @@ describe GithubUser, type: :model do
 
     expect(follower.login).to eq(json_hash.first[:login])
     expect(follower.html_url).to eq(json_hash.first[:html_url])
+    expect(follower.email).to eq(json_hash.first[:email])
   end
 end
