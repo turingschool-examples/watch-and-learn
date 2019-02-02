@@ -5,23 +5,23 @@
     <%= form_for @user do |form| %>
       <div >
         <%= form.label :email %>
-        <%= form.email_field :email, class: "block col-12 field" %>
+        <%= form.email_field :email, class: "block col-12 field", :required => true %>
       </div>
       <div >
         <%= form.label :first_name %>
-        <%= form.text_field :first_name, class: "block col-12 field" %>
+        <%= form.text_field :first_name, class: "block col-12 field", :required => true %>
       </div>
       <div>
         <%= form.label :last_name %>
-        <%= form.text_field :last_name, class: "block col-12 field" %>
+        <%= form.text_field :last_name, class: "block col-12 field", :required => true %>
       </div>
       <div>
         <%= form.label :password %>
-        <%= form.password_field :password, class: "block col-12 field" %>
+        <%= form.password_field :password, class: "block col-12 field", :required => true %>
       </div>
       <div>
         <%= form.label :password_confirmation %>
-        <%= form.password_field :password_confirmation, class: "block col-12 field" %>
+        <%= form.password_field :password_confirmation, class: "block col-12 field", :required => true %>
       </div>
       <%= form.submit 'Create Account', class: "mt2 btn btn-primary mb1 bg-teal" %>
     <% end %>
