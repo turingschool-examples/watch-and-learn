@@ -6,6 +6,7 @@
   <ul>
     <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
     <li> <%= current_user.email%> </li>
+    <li> Status: <%= current_user.status.titleize %> </li>
   </ul>
 
   <%= render partial: "bookmarked_segments" %>

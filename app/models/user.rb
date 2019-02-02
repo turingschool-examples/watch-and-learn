@@ -5,6 +5,7 @@ class User < ApplicationRecord
   validates_presence_of :password, if: :password
   validates_presence_of :first_name
   enum role: [:default, :admin]
+  enum status: [:unactivated, :active]
   has_secure_password
 
   def tutorials
