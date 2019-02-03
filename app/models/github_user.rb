@@ -7,7 +7,7 @@ class GithubUser
     @id = attributes[:id]
   end
 
-  def exists_in_database
+  def exists_in_database?
     true if user_in_database
   end
 
