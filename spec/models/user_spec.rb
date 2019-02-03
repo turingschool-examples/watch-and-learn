@@ -6,6 +6,10 @@ RSpec.describe User, type: :model do
     it {should validate_presence_of(:first_name)}
     it {should validate_presence_of(:password)}
   end
+  describe 'relationships' do
+    it { should have_many(:friendships) }
+    it { should have_many(:friends).through(:friendships) }
+  end
 
   describe 'roles' do
     it 'can be created as default user' do
@@ -20,6 +24,20 @@ RSpec.describe User, type: :model do
 
       expect(admin.role).to eq('admin')
       expect(admin.admin?).to be_truthy
+    end
+  end
+  describe 'instance methods' do
+    describe '#friends?' do
+      it 'returns if the user has any friends' do
+        user = create(:user)
+
+        expect(user.friends?).to eq(false)
+
+        friend = create(:user)
+        user.friends << friend
+
+        expect(user.friends?).to eq(true)
+      end
     end
   end
 end

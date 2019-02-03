@@ -25,6 +25,9 @@
         <% @facade.followers.each do |follower| %>
           <li class="follower">
             <%= link_to follower.login, follower.html_url, class: "handle-link" %>
+            <% if follower.user %>
+              <%= link_to 'Add as Friend', friendships_path(friend: follower.user), method: :post, class: "btn btn-primary mb1 bg-teal" %>
+            <% end %>
           </li>
         <% end %>
       </ul>
@@ -33,9 +36,20 @@
         <% @facade.following.each do |following| %>
           <li class="following">
             <%= link_to following.login, following.html_url, class: "handle-link" %>
+            <% if following.user %>
+              <%= link_to 'Add as Friend', friendships_path(friend: following.user), method: :post, class: "btn btn-primary mb1 bg-teal" %>
+            <% end %>
           </li>
         <% end %>
       </ul>
+    </section>
+  <% end %>
+  <% if current_user.friends? %>
+    <section class="friends">
+      <h2>Friends</h2>
+      <% current_user.friends.each do |friend| %>
+        <%= friend.first_name + ' ' + friend.last_name %>
+      <% end %>
     </section>
   <% end %>
 </section>
