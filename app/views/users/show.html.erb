@@ -44,6 +44,9 @@
   <% if current_user.friends? %>
     <section class="friends">
       <h2>Friends</h2>
+      <% current_user.friends.each do |friend| %>
+        <%= friend.first_name + ' ' + friend.last_name %>
+      <% end %>
     </section>
   <% end %>
 </section>
