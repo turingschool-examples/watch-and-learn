@@ -13,7 +13,7 @@ describe 'As a logged in user' do
       within '.github' do
         expect(page).to have_link('Add as Friend', count: 1)
         within first('.follower') do
-          expect(page).to have_link('Add as Friend')  
+          expect(page).to have_link('Add as Friend')
         end
       end
     end
