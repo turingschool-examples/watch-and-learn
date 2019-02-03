@@ -33,7 +33,10 @@
   <section class="followers-list">
     <ul>
       <% @followers.each do |follower| %>
-          <li><%= link_to "#{follower.login}", "#{follower.html_url}", class: "follower"%></li>
+          <li><%= link_to "#{follower.login}", "#{follower.html_url}", class: "follower" %></li>
+
+          <li><%= link_to "Add as Friend", user_friendships_path(current_user.id), :method => :post %></li>
+
       <% end %>
     </ul>
   </section>
