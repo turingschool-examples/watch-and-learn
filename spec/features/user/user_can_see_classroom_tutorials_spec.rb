@@ -9,7 +9,7 @@ describe 'As a user' do
         tutorial3 = create(:tutorial)
         tutorial4 = create(:tutorial)
 
-        user = create(:user, github_token: ENV["GITHUB_API_KEY"])
+        user = create(:user)
         allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
         visit root_path
