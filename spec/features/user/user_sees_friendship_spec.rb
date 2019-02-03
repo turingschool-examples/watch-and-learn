@@ -11,7 +11,6 @@ describe 'As a logged in user' do
       visit dashboard_path
 
       within '.github' do
-        expect(page).to have_link('Add as Friend', count: 1)
         within first('.follower') do
           expect(page).to have_link('Add as Friend')
         end
@@ -39,6 +38,20 @@ describe 'As a logged in user' do
         expect(page).to have_content(follower.last_name)
         expect(page).to_not have_content(follower_2.first_name)
         expect(page).to_not have_content(follower_2.last_name)
+      end
+    end
+    it 'can see link Add as Friend for following', :vcr do
+      user = create(:user, github_token: ENV['GITHUB_TOKEN'])
+      following = create(:user, github_token: 'pizza', uid: '22285337')
+
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+      visit dashboard_path
+
+      within '.github' do
+        within first('.following') do
+          expect(page).to have_link("Add as Friend")
+        end
       end
     end
   end
