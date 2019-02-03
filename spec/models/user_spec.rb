@@ -22,4 +22,18 @@ RSpec.describe User, type: :model do
       expect(admin.admin?).to be_truthy
     end
   end
+  describe 'instance methods' do
+    describe '#friends?' do
+      it 'returns if the user has any friends' do
+        user = create(:user)
+
+        expect(user.friends?).to eq(false)
+
+        friend = create(:user)
+        user.friends << friend
+
+        expect(user.friends?).to eq(true)
+      end
+    end
+  end
 end
