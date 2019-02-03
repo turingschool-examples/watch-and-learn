@@ -52,3 +52,23 @@ describe 'A registered user' do
     end
   end
 end
+
+describe 'bookmark logged in or out' do
+  scenario 'when logged out it shows a tooltip and directs me to the login page' do
+    tutorial = create(:tutorial)
+    video_1 = create(:video, tutorial_id: tutorial.id, position: 1)
+    visit(tutorial_path(tutorial))
+    expect(page).to have_css("#login-to-add-bookmark-tooltip")
+    click_on "Bookmark"
+    expect(current_path).to eq(login_path)
+  end
+  scenario 'when logged in there is no tooltip' do
+    tutorial = create(:tutorial)
+    video_1 = create(:video, tutorial_id: tutorial.id, position: 1)
+    user_1 = create(:user)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
+
+    visit(tutorial_path(tutorial))
+    expect(page).to_not have_css("#login-to-add-bookmark-tooltip")
+  end
+end

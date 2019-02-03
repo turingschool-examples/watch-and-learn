@@ -13,9 +13,12 @@
   <h3><%= @facade.current_video.title %></h3>
   <div class="bookmarks-btn">
     <% if current_user %>
-    <%= button_to "Bookmark", user_videos_path(video_id: @facade.current_video.id, user_id: current_user.id), method: :post, class: "btn btn-outline mb1 teal" %>
+      <%= button_to "Bookmark", user_videos_path(video_id: @facade.current_video.id, user_id: current_user.id), method: :post, class: "btn btn-outline mb1 teal" %>
     <% else %>
-    <%= link_to "Bookmark", login_path, class: "btn btn-outline mb1 teal" %>
+      <div class="tooltip">
+        <%= link_to "Bookmark", login_path, class: "btn btn-outline mb1 teal" %>
+        <span class="tooltiptext", id="login-to-add-bookmark-tooltip">You must log in to add a bookmark</span>
+      </div>
     <% end %>
   </div>
 </div>
