@@ -17,6 +17,7 @@ describe Github::SessionsController do
         expect(current_path).to eq(dashboard_path)
 
         expect(@user.github_token).to be_truthy
+        expect(@user.github_uid).to be_truthy
         expect(page).to have_css('section#github')
       end
     end
