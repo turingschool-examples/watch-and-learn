@@ -9,12 +9,13 @@ describe Following do
   end
   it "has attributes" do
     attributes = { login: "bradpsheehan",
-                  html_url: "https://github.com/bradpsheehan"
-                  }
+                  html_url: "https://github.com/bradpsheehan",
+                  id: 12345 }
     follow = Following.new(attributes)
 
     expect(follow.login).to eq("bradpsheehan")
     expect(follow.html_url).to eq("https://github.com/bradpsheehan")
+    expect(follow.id).to eq(12345)
   end
 
   describe 'class methods', :vcr do
