@@ -2,19 +2,19 @@
   <h1>Your Github:</h1>
   <h3>Repositories:</h3>
   <ul>
-    <% @github_facade.repos.each do |repo| %>
+    <% @user_facade.repos.each do |repo| %>
       <li class="repo"><%= link_to(repo.name, repo.url) %></li>
     <% end %>
   </ul>
   <h3>Followers:</h3>
   <ul>
-    <% @github_facade.followers.each do |follower| %>
+    <% @user_facade.followers.each do |follower| %>
       <li class="follower"><%= link_to(follower.name, follower.url) %></li>
     <% end %>
   </ul>
   <h3>Following:</h3>
   <ul>
-    <% @github_facade.followings.each do |following| %>
+    <% @user_facade.followings.each do |following| %>
       <li class="following"><%= link_to(following.name, following.url) %></li>
     <% end %>
   </ul>
