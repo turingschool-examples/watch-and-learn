@@ -41,4 +41,9 @@
       </ul>
     </section>
   <% end %>
+  <% if current_user.friends? %>
+    <section class="friends">
+      <h2>Friends</h2>
+    </section>
+  <% end %>
 </section>
