@@ -78,5 +78,23 @@ describe 'As a logged in user' do
         expect(page).to_not have_content(following_2.last_name)
       end
     end
+    it 'displays flash message when Add as Friends does not work', :vcr do
+      user = create(:user, github_token: ENV['GITHUB_TOKEN'])
+      following = create(:user, github_token: 'pizza', uid: ENV['GITHUB_FOLLOWING_1'])
+
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+      visit dashboard_path
+
+      following.delete
+
+      within first('.following') do
+        click_link 'Add as Friend'
+      end
+
+      expect(current_path).to eq(dashboard_path)
+      expect(page).to have_content('Error: Unable to add friend')
+      expect(page).to_not have_css('.friends')
+    end
   end
 end
