@@ -6,7 +6,7 @@ class Github::SessionsController < ApplicationController
     user = current_user
 
     user.github_token = access_token
-    user.github_uid = uid
+    user.uid = uid
 
     user.save
 
