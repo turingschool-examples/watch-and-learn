@@ -59,7 +59,7 @@
       <li id="tutorial-<%= tutorial.id %>">
         <h4><%= tutorial.title %></h4>
         <ul>
-          <% tutorial.bookmarked_videos(current_user).each do |video| %>
+          <% tutorial.videos.each do |video| %>
             <li class="video"><%= video.title %></li>
           <% end %>
         </ul>

@@ -4,14 +4,8 @@ class Tutorial < ApplicationRecord
   accepts_nested_attributes_for :videos
   
   def self.bookmarked(user)
-    Tutorial.joins(videos: :user_videos)
+    Tutorial.includes(videos: :user_videos)
             .where(user_videos: {user_id: user})
-            .distinct
-  end
-  
-  def bookmarked_videos(user)
-    videos.joins(:user_videos)
-          .where(user_videos: {user_id: user})
-          .order(:position)
+            .order("videos.position")
   end
 end
