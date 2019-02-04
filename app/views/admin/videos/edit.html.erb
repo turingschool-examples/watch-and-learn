@@ -1,0 +1,19 @@
+<h1>EDIT: <%= @video.title %></h1>
+<%= form_for [:admin, @video] do |f| %>
+  <%= f.label :title, class: "block" %>
+  <%= f.text_field :title, class: "field block" %>
+
+  <%= f.label :description, class: "block" %>
+  <%= f.text_field :description, class: "field block" %>
+
+  <%= f.label :video_id, class: "block" %>
+  <%= f.text_field :video_id, class: "field block" %>
+
+  <%= f.label :thumbnail, class: "block" %>
+  <%= f.text_field :thumbnail, class: "field block" %>
+
+  <%= f.label :position, class: "block" %>
+  <%= f.number_field :position, class: "field block" %>
+
+  <%= f.submit "Update Video", class: "mt1 btn btn-outline" %>
+<% end %>

@@ -13,8 +13,12 @@ describe Github::SessionsController do
     it "should redirect the user to the dashboard" do
       VCR.use_cassette("github-login") do
         visit "/auth/github"
+
         expect(current_path).to eq(dashboard_path)
+
         expect(@user.github_token).to be_truthy
+        expect(@user.uid).to be_truthy
+        expect(page).to have_css('section#github')
       end
     end
   end
