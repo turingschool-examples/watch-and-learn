@@ -27,6 +27,8 @@ Rails.application.routes.draw do
   get '/login', to: "sessions#new", as: 'login'
   post '/login', to: "sessions#create"
   delete '/logout', to: "sessions#destroy"
+  post '/friends/:friend_id', to: "friendships#create", as: "friendships"
+
 
   patch '/activate/:id', to: 'activation#update', as: 'account_activation'
   get '/activate', to: 'activation#show', as: 'activation_success'

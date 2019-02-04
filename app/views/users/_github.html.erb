@@ -2,20 +2,41 @@
   <h1>Your Github:</h1>
   <h3>Repositories:</h3>
   <ul>
-    <% @github_facade.repos.each do |repo| %>
+    <% @user_facade.repos.each do |repo| %>
       <li class="repo"><%= link_to(repo.name, repo.url) %></li>
     <% end %>
   </ul>
   <h3>Followers:</h3>
   <ul>
-    <% @github_facade.followers.each do |follower| %>
-      <li class="follower"><%= link_to(follower.name, follower.url) %></li>
+    <% @user_facade.followers.each do |follower| %>
+    <li class="follower" id="follower-<%= follower.uid %>">
+       <%= link_to(follower.name, follower.url) %>
+       <% if follower.on_our_site? && !@user_facade.friends_with?(follower.id) %>
+         <%= link_to("Add Friend", friendships_path(follower.id), method: :post) %>
+       <% end %>
+    </li>
     <% end %>
   </ul>
   <h3>Following:</h3>
   <ul>
-    <% @github_facade.followings.each do |following| %>
-      <li class="following"><%= link_to(following.name, following.url) %></li>
+    <% @user_facade.followings.each do |following| %>
+    <li class="following" id="following-<%= following.uid %>">
+       <%= link_to(following.name, following.url) %>
+       <% if following.on_our_site? && !@user_facade.friends_with?(following.id) %>
+         <%= link_to("Add Friend", friendships_path(following.id), method: :post) %>
+       <% end %>
+    </li>
+
     <% end %>
   </ul>
+
+  <h3>Friends on our site:</h3>
+  <ul id="friendships">
+    <% @user_facade.updated_friends.each do |friend| %>
+    <li class="friend" id="friend-<%= friend.github_uid %>">
+       <%= "#{friend.first_name} #{friend.last_name}" %>
+    </li>
+    <% end %>
+  </ul>
+
 </section>

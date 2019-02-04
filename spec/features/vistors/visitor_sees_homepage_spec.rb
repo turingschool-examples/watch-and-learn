@@ -22,5 +22,23 @@ describe 'Visitor' do
         expect(page).to have_content(tutorial1.description)
       end
     end
+
+    it 'cannot see tutorials listed as class content' do
+      tutorial1 = create(:tutorial, classroom: true)
+      tutorial2 = create(:tutorial, classroom: true)
+      tutorial3 = create(:tutorial)
+      tutorial4 = create(:tutorial)
+
+      visit root_path
+
+      expect(page).to have_css('.tutorial', count: 2)
+
+      within(first('.tutorials')) do
+        expect(page).to have_css('.tutorial')
+        expect(page).to have_css('.tutorial-description')
+        expect(page).to have_content(tutorial3.title)
+        expect(page).to have_content(tutorial3.description)
+      end
+    end
   end
 end

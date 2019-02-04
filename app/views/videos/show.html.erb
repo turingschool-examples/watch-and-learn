@@ -1,11 +1,14 @@
+<!-- unused file? -->
 <main class="video-container">
-
   <div class="video-view">
     <iframe src= <%="https://www.youtube.com/embed/#{@video.video_id}" %>  width="450" height="300"></iframe>
     <% if current_user %>
       <%= link_to "Add to Bookmarks", user_videos_path(video_id: @video.id, user_id: current_user.id), method: :post %>
     <% else %>
-      <%= link_to "Add to Bookmarks", login_path %>
+      <div class="tooltip" >
+        <%= link_to "Add to Bookmarks", login_path %>
+        <span class="tooltiptext">You must log in to add a bookmark</span>
+      </div>
     <% end %>
   </div>
 </main>
