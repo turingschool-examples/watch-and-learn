@@ -15,6 +15,18 @@ class UserDashboardFacade
     following_list
   end
 
+  def user_friends
+    @user.friends
+  end
+
+  def user_friend?(other_user)
+    user_friends.include?(other_user)
+  end
+
+  def videos
+    @videos ||= @user.videos.includes(:tutorial).order(:tutorial_id, :position)
+  end
+
   private
 
   def following_list

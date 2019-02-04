@@ -11,7 +11,28 @@
   <section>
     <h1>Bookmarked Segments</h1>
   </section>
-
+  <div>
+<% if @facade.videos.present? %>
+      <ul>
+        <% tutorial = nil %>
+        <% @facade.videos.find_in_batches(batch_size: 5) do |batch| %>
+          <% batch.each do |video| %>
+          <li>
+              <% if tutorial != video.tutorial %>
+                <% tutorial = video.tutorial %>
+                <span class="tutorial"><%= link_to tutorial.title, tutorial_path(tutorial) %></span>
+          </li>
+          <li>
+              <% end %>
+              <%= link_to video.title, tutorial_path(tutorial, video_id: video.id) %>
+          </li>
+          <% end %>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>No bookmarks yet</p>
+    <% end %>
+  </div>
   <% if current_user.github_token %>
   <section id="github">
     <h1>Github Repositories</h1>
@@ -28,6 +49,9 @@
       <div class="follower">
         <a href="<%= follower.url %>" class="user-link">
           <p><%= follower.handle %></p>
+      <% if follower.exists_in_database? && !@facade.user_friend?(follower.user_in_database) %>
+          <p><%= button_to "Add Friend", user_friendships_path(current_user, friends: follower.user_in_database) %></p>
+      <% end %>
         </a>
       </div>
       <% end %>
@@ -41,6 +65,19 @@
         </a>
       </div>
       <% end %>
+    </div>
+    <div>
+    <h1>Friends on Github</h1>
+      <ul>
+        <% @facade.user_friends.each do |user| %>
+          <li>
+          <%= user.first_name %> <%= user.last_name %>
+          <div class="delete_friend_btn">
+            <%= button_to "Remove Friend", user_friendship_path(current_user, user), :method => "delete" %>
+          </div>
+          </li>
+        <% end %>
+      </ul>
     </div>
   </section>
   <% end %>
