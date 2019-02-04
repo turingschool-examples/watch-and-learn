@@ -53,4 +53,9 @@
       <% end %>
     </section>
   <% end %>
+  <section class="bookmarked">
+    <% @bookmarked_videos.each do |video| %>
+      <%= video.title %>
+    <% end %>
+  </section>
 </section>
