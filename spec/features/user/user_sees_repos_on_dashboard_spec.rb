@@ -45,9 +45,9 @@ describe ' as a user' do
     it 'should see following', :vcr do
       user = create(:user, github_token: ENV['GITHUB_TOKEN'])
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
-      
+
       visit dashboard_path
-      
+
       within '.github' do
         expect(page).to have_content('Following')
         expect(page).to have_css('.following')
@@ -62,7 +62,6 @@ describe ' as a user' do
 
       visit dashboard_path
 
-      expect(page).to_not have_content('Github')
       expect(page).to_not have_css('.github')
     end
   end

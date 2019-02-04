@@ -41,7 +41,13 @@ Rails.application.routes.draw do
     resources :videos, only: [:show, :index]
   end
 
+  resources :user_videos, only:[:create, :destroy]
+
+  get '/auth/github', as: 'github_login'
+  get '/auth/github/callback', to: 'github/tokens#update'
+
   resources :user_videos, only: [:create, :destroy]
 
   resources :friendships, only: [:create]
+
 end
