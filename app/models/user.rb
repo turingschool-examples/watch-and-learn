@@ -1,7 +1,9 @@
 class User < ApplicationRecord
   has_many :user_videos
   has_many :videos, through: :user_videos
-
+  has_many :friendships
+  has_many :friends, through: :friendships
+  
   validates :email, uniqueness: true, presence: true
   validates_presence_of :password, if: :password
   validates_presence_of :first_name
@@ -10,6 +12,6 @@ class User < ApplicationRecord
 
   def self.from_omniauth(auth_info, current_user)
     current_user.update!(uid: auth_info[:uid], oauth_token: auth_info[:credentials][:token])
-    current_user  
+    current_user
   end
 end
