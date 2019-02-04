@@ -45,4 +45,9 @@ Rails.application.routes.draw do
 
   get '/auth/github', as: 'github_login'
   get '/auth/github/callback', to: 'github/tokens#update'
+
+  resources :user_videos, only: [:create, :destroy]
+
+  resources :friendships, only: [:create]
+
 end
