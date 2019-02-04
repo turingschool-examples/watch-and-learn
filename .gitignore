@@ -27,6 +27,8 @@
 /config/master.key
 /spec/fixtures
 
+/spec/cassettes
+
 # Ignore application configuration
 
 /public/packs
