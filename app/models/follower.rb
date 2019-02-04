@@ -6,5 +6,4 @@ class Follower
     @url = data[:html_url]
     @uid = data[:id]
   end
-
 end
