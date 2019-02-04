@@ -1,18 +1,20 @@
 class Admin::VideosController < Admin::BaseController
   def edit
-    @video = Video.find(params[:video_id])
+    @video = Video.find(params[:id])
   end
 
   def update
     video = Video.find(params[:id])
     video.update(video_params)
+    
+    redirect_to tutorial_path(video.tutorial)
   end
 
   def create
     begin
       tutorial  = Tutorial.find(params[:tutorial_id])
-      thumbnail = YouTube::Video.by_id(new_video_params[:video_id]).thumbnail
-      video     = tutorial.videos.new(new_video_params.merge(thumbnail: thumbnail))
+      thumbnail = YouTube::Video.by_id(video_params[:video_id]).thumbnail
+      video     = tutorial.videos.new(video_params.merge(thumbnail: thumbnail))
 
       video.save
 
@@ -26,10 +28,6 @@ class Admin::VideosController < Admin::BaseController
 
   private
     def video_params
-      params.permit(:position)
-    end
-
-    def new_video_params
-      params.require(:video).permit(:title, :description, :video_id, :thumbnail)
+      params.require(:video).permit(:position, :title, :description, :video_id, :thumbnail)
     end
 end
