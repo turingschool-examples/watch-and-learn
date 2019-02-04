@@ -1,6 +1,11 @@
 class FriendshipsController < ApplicationController
   def create
-    current_user.friends << User.find_by(github_username: params[:name])
+    user = User.find_by(github_username: params[:name])
+    if user
+      current_user.friends << user
+    else
+      flash[:error] = "Invalid Friend"
+    end
     redirect_to '/dashboard'
   end
 end
