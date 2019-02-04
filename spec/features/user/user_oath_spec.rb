@@ -23,6 +23,9 @@ describe "User Oath funtionality" do
       click_on "Connect to Github"
 
       expect(page.status_code).to eq(200)
+      expect(page).to have_link(ENV["FRIEND_1"])
+      expect(page).to have_link(ENV["FRIEND_2"])
+      expect(page).to have_link(ENV["REPO_1"])
     end
   end
 end

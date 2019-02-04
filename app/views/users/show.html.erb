@@ -8,8 +8,21 @@
     <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
     <li> <%= current_user.email%> </li>
   </ul>
+  <div class="friends">
+    <h2>Friends:</h2>
+    <% current_user.friends.each do |friend| %>
+      <p><%= friend.github_username %></p>
+    <% end %>
+  </div>
   <section>
     <h1>Bookmarked Segments</h1>
+    <div class="bookmarks">
+      <ul>
+        <% current_user.bookmarks.each do |bookmark| %>
+          <li class="bookmark"><%= bookmark.tutorial.title %>, <%= bookmark.title %></li>
+        <% end %>
+      </ul>
+    </div>
     <% if @search_github %>
       <div class="github">
         <h1>Github</h1>
