@@ -47,23 +47,24 @@ describe 'friendship' do
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
     visit dashboard_path
+
     within("#follower-#{user_not_on_our_site['uid']}") do
-      expect(page).to_not have_content("Add Friend")
+      expect(page).to_not have_button("Add Friend")
     end
     within("#follower-#{user_2.github_uid}") do
-      expect(page).to have_content("Add Friend")
+      expect(page).to have_button("Add Friend")
     end
     within("#following-#{user_not_on_our_site['uid']}") do
-      expect(page).to_not have_content("Add Friend")
+      expect(page).to_not have_button("Add Friend")
     end
     within("#following-#{user_3.github_uid}") do
-      expect(page).to have_content("Add Friend")
-      click_link("Add Friend")
+      expect(page).to have_button("Add Friend")
+      click_button("Add Friend")
     end
     expect(current_path).to eq(dashboard_path)
 
     within("#following-#{user_3.github_uid}") do
-      expect(page).to_not have_content("Add Friend")
+      expect(page).to_not have_button("Add Friend")
     end
 
     within("#friendships") do

@@ -10,7 +10,9 @@
 
   <%= render partial: "bookmarked_segments" %>
 
-  <%= link_to 'Connect Your Github', github_login_path, class: "mt2 btn btn-primary mb1 bg-teal" %>
-  <%= render partial: "github" if @user_facade.has_github? %>
-
+  <% if @user_facade.has_github? %>
+    <%= render partial: "github" %>
+  <% else %>
+    <%= link_to 'Connect Your Github', github_login_path, class: "mt2 btn btn-primary mb1 bg-teal" %>
+  <% end %>
 </section>
