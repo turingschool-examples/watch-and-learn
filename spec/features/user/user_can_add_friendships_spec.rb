@@ -25,10 +25,10 @@ describe 'User Friendships' do
         expect(page).to have_link("Add #{follower_2.login} as Friend")
 
       end
-
-      click_link "Add as friend"
-
-      expect(page).to not_have
+    end
+    describe 'as a logged in user with followings' do
+      it 'shows a link to add a friend' do
+      end
     end
   end
 end
