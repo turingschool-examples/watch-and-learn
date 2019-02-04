@@ -45,5 +45,21 @@ describe 'As a logged in user' do
         expect(page).to_not have_content(video_4.title)
       end
     end
+    it 'should show videos ordered by their position in the tutorial' do
+      user = create(:user)
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+      tutorial = create(:tutorial, title: "How to Tie Your Shoes")
+      video = create(:video, title: "The Bunny Ears Technique", tutorial: tutorial, position: 1)
+      video_2 = create(:video, title: "Buy Loafers", tutorial: tutorial, position: 0)
+      create(:user_video, user: user, video: video)
+      create(:user_video, user: user, video: video_2)
+      
+      visit dashboard_path
+      
+      within("#tutorial-#{tutorial.id}") do
+        expect(all('.video')[0]).to have_content(video_2.title)
+        expect(all('.video')[1]).to have_content(video.title)
+      end
+    end
   end
 end

@@ -60,7 +60,7 @@
         <h4><%= tutorial.title %></h4>
         <ul>
           <% tutorial.bookmarked_videos(current_user).each do |video| %>
-            <li><%= video.title %></li>
+            <li class="video"><%= video.title %></li>
           <% end %>
         </ul>
       </li>
