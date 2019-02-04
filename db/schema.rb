@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(version: 2019_02_04_202223) do
     t.datetime "updated_at", null: false
     t.string "github_token"
     t.string "github_uid"
+    t.integer "email_activation_status", default: 0
     t.index ["email"], name: "index_users_on_email"
   end
 

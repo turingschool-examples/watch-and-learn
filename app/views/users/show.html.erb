@@ -6,6 +6,7 @@
   <ul>
     <li> <%= @user_facade.first_name  %> <%= @user_facade.last_name %> </li>
     <li> <%= @user_facade.email%> </li>
+    <li> Status: <%= @user_facade.email_activation_status.titleize %> </li>
   </ul>
 
   <%= render partial: "bookmarked_segments" %>

@@ -24,11 +24,14 @@ Rails.application.routes.draw do
     end
   end
 
-  get '/login', to: "sessions#new"
+  get '/login', to: "sessions#new", as: 'login'
   post '/login', to: "sessions#create"
   delete '/logout', to: "sessions#destroy"
   post '/friends/:friend_id', to: "friendships#create", as: "friendships"
 
+
+  patch '/activate/:id', to: 'activation#update', as: 'account_activation'
+  get '/activate', to: 'activation#show', as: 'activation_success'
 
   get 'auth/github', as: :github_login
   get '/auth/github/callback', to: 'auth/github/user_token#create'
