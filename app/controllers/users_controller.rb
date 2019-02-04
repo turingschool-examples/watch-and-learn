@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   def show
     @facade = DashboardFacade.new(current_user) if current_user.github_token
+    @bookmarked_tutorials = Tutorial.bookmarked(current_user)
   end
 
   def new

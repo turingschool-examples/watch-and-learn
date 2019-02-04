@@ -53,4 +53,18 @@
       <% end %>
     </section>
   <% end %>
+  <section class="bookmarked">
+    <ul>    
+    <% @bookmarked_tutorials.each do |tutorial| %>
+      <li id="tutorial-<%= tutorial.id %>">
+        <h4><%= tutorial.title %></h4>
+        <ul>
+          <% tutorial.videos.each do |video| %>
+            <li class="video"><%= video.title %></li>
+          <% end %>
+        </ul>
+      </li>
+    <% end %>
+  </ul>
+  </section>
 </section>
