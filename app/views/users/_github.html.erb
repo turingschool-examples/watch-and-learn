@@ -12,7 +12,7 @@
     <li class="follower" id="follower-<%= follower.uid %>">
        <%= link_to(follower.name, follower.url) %>
        <% if follower.on_our_site? && !@user_facade.friends_with?(follower.id) %>
-         <%= link_to("Add Friend", friendships_path(current_user, follower.id), method: :post) %>
+         <%= link_to("Add Friend", friendships_path(follower.id), method: :post) %>
        <% end %>
     </li>
     <% end %>
@@ -22,8 +22,9 @@
     <% @user_facade.followings.each do |following| %>
     <li class="following" id="following-<%= following.uid %>">
        <%= link_to(following.name, following.url) %>
+       <% binding.pry if following.name == "user_3_name"%>
        <% if following.on_our_site? && !@user_facade.friends_with?(following.id) %>
-         <%= link_to("Add Friend", friendships_path(current_user, following.id), method: :post) %>
+         <%= link_to("Add Friend", friendships_path(following.id), method: :post) %>
        <% end %>
     </li>
 
