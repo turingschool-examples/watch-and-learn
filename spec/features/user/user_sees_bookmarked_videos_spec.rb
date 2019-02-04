@@ -18,5 +18,30 @@ describe 'As a logged in user' do
         expect(page).to have_content(video.title)
       end
     end
+    it 'should organize bookmarked videos by which tutorial they are a part of' do
+      user = create(:user)
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+      tutorial = create(:tutorial, title: "How to Tie Your Shoes")
+      video = create(:video, title: "The Bunny Ears Technique", tutorial: tutorial)
+      video_2 = create(:video, title: "Buy Loafers", tutorial: tutorial)
+      create(:user_video, user: user, video: video)
+      create(:user_video, user: user, video: video_2)
+      
+      tutorial_2 = create(:tutorial, title: "How to Boil Water")
+      video_3 = create(:video, title: "Warm It Up", tutorial: tutorial_2)
+      create(:user_video, user: user, video: video_3)
+      
+      visit dashboard_path
+      
+      within("#tutorial-#{tutorial.id}") do
+        expect(page).to have_content(tutorial.title)
+        expect(page).to have_content(video.title)
+        expect(page).to have_content(video_2.title)
+      end
+      within("#tutorial-#{tutorial_2.id}") do
+        expect(page).to have_content(tutorial_2.title)
+        expect(page).to have_content(video_3.title)
+      end
+    end
   end
 end
