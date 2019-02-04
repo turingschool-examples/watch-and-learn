@@ -22,7 +22,7 @@ describe "User can see Follower and" do
         expect(page).to have_content("Add as Friend")
         click_on "Add as Friend"
       end
-      within(all(".followee")[1]) do
+      within(all(".followee")[2]) do
         expect(page).to have_no_content("Add as Friend")
       end
     end
