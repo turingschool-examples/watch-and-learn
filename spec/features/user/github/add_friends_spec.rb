@@ -47,7 +47,7 @@ describe 'friendship' do
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
     visit dashboard_path
-save_and_open_page
+
     within("#follower-#{user_not_on_our_site['uid']}") do
       expect(page).to_not have_button("Add Friend")
     end

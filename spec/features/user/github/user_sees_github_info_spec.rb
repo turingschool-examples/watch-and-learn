@@ -15,6 +15,7 @@ describe "as a logged in user" do
       end
       expect(current_path).to eq('/dashboard')
       expect(page).to have_content("Your Github:")
+      expect(page).to_not have_link("Connect Your Github")
 
 
       expect(page).to have_content("Repositories:")
