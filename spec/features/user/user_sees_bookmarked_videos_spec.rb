@@ -29,6 +29,7 @@ describe 'As a logged in user' do
       
       tutorial_2 = create(:tutorial, title: "How to Boil Water")
       video_3 = create(:video, title: "Warm It Up", tutorial: tutorial_2)
+      video_4 = create(:video, title: "Put It In the Microwave", tutorial: tutorial_2)
       create(:user_video, user: user, video: video_3)
       
       visit dashboard_path
@@ -41,6 +42,7 @@ describe 'As a logged in user' do
       within("#tutorial-#{tutorial_2.id}") do
         expect(page).to have_content(tutorial_2.title)
         expect(page).to have_content(video_3.title)
+        expect(page).to_not have_content(video_4.title)
       end
     end
   end
