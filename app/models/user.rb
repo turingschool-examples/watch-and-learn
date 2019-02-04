@@ -26,4 +26,12 @@ class User < ApplicationRecord
     user.save
     user
   end
+
+  def bookmarks
+    Video
+    .joins(:tutorial)
+    .joins(user_videos: :user)
+    .where('user_videos.user_id=?', id)
+    .order('tutorials.title, videos.position')
+  end
 end
