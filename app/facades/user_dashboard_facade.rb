@@ -14,6 +14,10 @@ class UserDashboardFacade < SimpleDelegator
     Friendship.where(user_id: @user.id, friend_id: friend_id).exists?
   end
 
+  def updated_friends
+    @user.reload.friends
+  end
+
   def has_github?
     @user.github_token ? true : false
   end

@@ -22,7 +22,6 @@
     <% @user_facade.followings.each do |following| %>
     <li class="following" id="following-<%= following.uid %>">
        <%= link_to(following.name, following.url) %>
-       <% binding.pry if following.name == "user_3_name"%>
        <% if following.on_our_site? && !@user_facade.friends_with?(following.id) %>
          <%= link_to("Add Friend", friendships_path(following.id), method: :post) %>
        <% end %>
@@ -30,4 +29,14 @@
 
     <% end %>
   </ul>
+
+  <h3>Friends on our site:</h3>
+  <ul id="friendships">
+    <% @user_facade.updated_friends.each do |friend| %>
+    <li class="friend" id="friend-<%= friend.github_uid %>">
+       <%= "#{friend.first_name} #{friend.last_name}" %>
+    </li>
+    <% end %>
+  </ul>
+
 </section>
