@@ -8,4 +8,9 @@ class Tutorial < ApplicationRecord
             .where(user_videos: {user_id: user})
             .distinct
   end
+  
+  def bookmarked_videos(user)
+    videos.joins(:user_videos)
+          .where(user_videos: {user_id: user})
+  end
 end
