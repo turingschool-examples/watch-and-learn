@@ -10,6 +10,10 @@ class UserDashboardFacade < SimpleDelegator
     @bookmark_facade.tutorials
   end
 
+  def friends_with?(friend_id)
+    Friendship.where(user_id: @user.id, friend_id: friend_id).exists?
+  end
+
   def has_github?
     @user.github_token ? true : false
   end
