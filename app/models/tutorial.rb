@@ -12,5 +12,6 @@ class Tutorial < ApplicationRecord
   def bookmarked_videos(user)
     videos.joins(:user_videos)
           .where(user_videos: {user_id: user})
+          .order(:position)
   end
 end

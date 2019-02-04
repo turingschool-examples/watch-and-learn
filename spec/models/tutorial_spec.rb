@@ -25,16 +25,18 @@ RSpec.describe Tutorial, type: :model do
   end
   describe 'Instance Methods' do
     describe '#bookmarked_videos' do
-      it 'returns all the videos in a tutorial bookmarked by the user' do
+      it 'returns all the videos in a tutorial bookmarked by the user by position' do
         user = create(:user)
         tutorial = create(:tutorial, title: "How to Tie Your Shoes")
-        video = create(:video, title: "The Bunny Ears Technique", tutorial: tutorial)
-        video_2 = create(:video, title: "Buy Loafers", tutorial: tutorial)
+        video = create(:video, title: "The Bunny Ears Technique", tutorial: tutorial, position: 1)
+        video_2 = create(:video, title: "Buy Loafers", tutorial: tutorial, position: 2)
         video_3 = create(:video, title: "Use Velcro", tutorial: tutorial)
+        video_4 = create(:video, title: "Do not wear shoes", tutorial: tutorial, position: 0)
         create(:user_video, user: user, video: video)
         create(:user_video, user: user, video: video_2)
+        create(:user_video, user: user, video: video_4)
         
-        expect(tutorial.bookmarked_videos(user)).to eq([video, video_2])
+        expect(tutorial.bookmarked_videos(user)).to eq([video_4, video, video_2])
       end
     end
   end
