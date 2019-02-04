@@ -18,6 +18,10 @@ VCR.configure do |config|
 end
 
 
+OmniAuth.config.on_failure = Proc.new { |env|
+  OmniAuth::FailureEndpoint.new(env).redirect_to_failure
+}
+
 ActiveRecord::Migration.maintain_test_schema!
 
 Capybara.register_driver :selenium do |app|
