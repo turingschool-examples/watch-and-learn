@@ -1,6 +1,6 @@
 <section id="bookmarked_segments">
   <h1>Bookmarked Segments</h1>
-  <% @bookmark_facade.tutorials.each do |tutorial| %>
+  <% @user_facade.my_bookmarked_tutorials.each do |tutorial| %>
     <div id="tutorial-<%= tutorial.id %>">
       <h2><%= tutorial.title %></h2>
       <ul>
