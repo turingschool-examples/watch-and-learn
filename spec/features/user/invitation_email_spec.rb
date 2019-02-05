@@ -12,9 +12,9 @@ describe 'a registered user on the dashboard page' do
 
     click_on 'Send an Invite'
 
-    expect(current_path).to eq(invite_path)
+    expect(current_path).to eq(new_invite_path)
 
-    fill_in 'user[github_handle]', with: github_handle
+    fill_in :invite_github_handle, with: github_handle
     click_on 'Send Invite'
 
     expect(current_path).to eq(dashboard_path)

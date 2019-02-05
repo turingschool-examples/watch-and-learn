@@ -34,7 +34,8 @@ Rails.application.routes.draw do
   get '/activate/:id', to: 'activation#edit', as: 'account_activation_landing'
   get '/activate', to: 'activation#show', as: 'activation_success'
 
-  get '/invite', to: 'invite#show', as: 'invite'
+  get '/invite', to: 'invite#new', as: 'new_invite'
+  post '/invite', to: 'invite#create', as: 'invite'
 
   get 'auth/github', as: :github_login
   get '/auth/github/callback', to: 'auth/github/user_token#create'
