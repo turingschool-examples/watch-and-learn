@@ -2,7 +2,7 @@ class FriendshipsController < ApplicationController
   def create
     @friendship = Friendship.new(user_id: params[:user_id], friend_id: params[:friends])
     if @friendship.save
-      flash[:notice] = "Added friend."
+      flash[:notice] = "Added friend: #{@friendship.friend.first_name}"
       redirect_to dashboard_path
     else
       flash[:error] = "Unable to add friend."
