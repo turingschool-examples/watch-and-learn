@@ -4,9 +4,9 @@ class Admin::TutorialsController < Admin::BaseController
   end
 
   def create
-    tutorial = Tutorial.create(tutorial_create_params)
-    flash[:success] = 'Successfully created tutorial.'
-    redirect_to tutorial_path(tutorial)
+    tutorial = Tutorial.new(tutorial_create_params)
+    successful_tutorial_creation_actions(tutorial)    if tutorial.save
+    unsuccessful_tutorial_creation_actions  unless tutorial.save
   end
 
   def new
@@ -22,9 +22,20 @@ class Admin::TutorialsController < Admin::BaseController
   end
 
   private
+
+  def successful_tutorial_creation_actions(tutorial)
+    flash[:success] = 'Successfully created tutorial.'
+    redirect_to tutorial_path(tutorial)
+  end
+
+  def unsuccessful_tutorial_creation_actions
+
+  end
+
   def tutorial_update_params
     params.require(:tutorial).permit(:tag_list)
   end
+
   def tutorial_create_params
     params.require(:tutorial).permit(:title, :description, :thumbnail)
   end
