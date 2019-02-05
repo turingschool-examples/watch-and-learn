@@ -36,4 +36,11 @@ describe GithubService do
     expect(following.first).to have_key(:login)
     expect(following.first).to have_key(:html_url)
   end
+  it 'returns email from a username' do
+    email_info = '{"email":"user@example.com"}'
+    stub_request(:post, 'www.github.com').to_return(body: email_info, status: 200)
+    
+    response = GithubService.email_by_username(ENV['GITHUB_HANDLE'])
+    expect(response[:email]).to eq('user@example.com')
+  end
 end
