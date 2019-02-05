@@ -9,6 +9,7 @@
     <li> <%= current_user.email %> </li>
     <li>Status <%= current_user.activated ? "Active" : "Not Active" %></li>
   </ul>
+  <%= link_to 'Send an Invite', send_invite_path %>
   <div class="friends">
     <h2>Friends:</h2>
     <% current_user.friends.each do |friend| %>

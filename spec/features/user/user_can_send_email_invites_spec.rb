@@ -15,7 +15,7 @@ describe 'as a registered user' do
     expect(page).to have_content('Successfully sent invite!')
   end
 
-  it 'can send email invites to friends' do
+  it 'can not send email invites to friends with no email' do
     user = create(:user, token: ENV["GITHUB_API_KEY"])
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 

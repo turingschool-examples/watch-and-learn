@@ -16,6 +16,14 @@ class GithubService
     get_json("/user/following")
   end
 
+  def find_email(github_handle)
+    get_json("/users/#{github_handle}")
+  end
+
+  def find_my_name
+    get_json("/user")
+  end
+
   private
 
   def get_json(url)

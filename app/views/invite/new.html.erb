@@ -1,0 +1,6 @@
+<h1>Invite your friend with a GitHub account to join our site</h1>
+<%= form_tag send_invite_path do %>
+  <%= label_tag :github_handle %>
+  <%= text_field_tag :github_handle %>
+  <%= submit_tag "Send Invite" %>
+<% end %>
