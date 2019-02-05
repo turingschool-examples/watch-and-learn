@@ -1,4 +1,8 @@
 class ActivationController < ApplicationController
+
+  def edit
+  end
+
   def update
     if current_user && current_user.id == params[:id].to_i
       activate(current_user)
