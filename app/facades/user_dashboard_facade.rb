@@ -16,6 +16,7 @@ class UserDashboardFacade
   end
 
   def user_friends
+    @user.reload
     @user.friends
   end
 
@@ -42,6 +43,6 @@ class UserDashboardFacade
   end
 
   def service
-    GithubService.new(@user.github_token)
+    @service ||= GithubService.new(@user.github_token)
   end
 end
