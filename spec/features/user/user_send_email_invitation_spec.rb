@@ -21,5 +21,17 @@ describe 'As a registered user' do
       expect(page).to have_field('Github Handle')
       expect(page).to have_button('Send Invite')
     end
+    it 'can send an invite' do
+      user = create(:user)
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+      
+      visit invite_path
+      
+      fill_in 'Github Handle', with: ENV['GITHUB_HANDLE']
+      click_on 'Send Invite'
+      
+      expect(current_path).to eq(dashboard_path)
+      expect(page).to have_content('Successfully sent invite!')
+    end
   end
 end
