@@ -1,0 +1,53 @@
+<section id="github">
+  <div id="repositories">
+    <h1>Github Repositories</h1>
+    <% @facade.user_repos(5).each_with_index do |repo, index| %>
+    <div class="repository" id="repo-<%= index %>">
+      <a class="repo-link" href="<%= repo.url %>">
+        <p><%= repo.name %></p>
+      </a>
+    </div>
+    <% end %>
+  </div>
+
+  <div id="followers">
+    <h1>Github Followers</h1>
+    <% @facade.user_followers.each do |follower| %>
+    <div class="follower">
+      <a href="<%= follower.url %>" class="user-link">
+        <p>
+          <%= follower.handle %>
+          <% if follower.exists_in_database? && !@facade.user_friend?(follower.user_in_database) %>
+            <%= link_to "Add Friend", user_friendships_path(current_user, friends: follower.user_in_database) %>
+          <% end %>
+        </p>
+      </a>
+    </div>
+    <% end %>
+  </div>
+
+  <div id="followings">
+    <h1>Following on Github</h1>
+    <% @facade.user_followings.each do |following| %>
+    <div class="following">
+      <a href="<%= following.url %>" class="user-link">
+        <p><%= following.handle %></p>
+      </a>
+    </div>
+    <% end %>
+  </div>
+
+  <div id="friends">
+    <h1>Friends on Github</h1>
+    <ul>
+      <% @facade.user_friends.each do |user| %>
+      <li>
+        <%= user.first_name %> <%= user.last_name %>
+        <div class="delete_friend_btn">
+          <%= button_to "Remove Friend", user_friendship_path(current_user, user), :method => "delete" %>
+        </div>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+</section>
