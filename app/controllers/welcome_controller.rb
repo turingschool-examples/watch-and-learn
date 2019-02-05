@@ -1,9 +1,15 @@
 class WelcomeController < ApplicationController
   def index
-    if params[:tag]
-      @tutorials = Tutorial.tagged_with(params[:tag]).paginate(:page => params[:page], :per_page => 5)
+    tutorials = if current_user
+      Tutorial.all
     else
-      @tutorials = Tutorial.all.paginate(:page => params[:page], :per_page => 5)
+      Tutorial.without_classroom
+    end
+
+    if params[:tag]
+      @tutorials = tutorials.tagged_with(params[:tag]).paginate(:page => params[:page], :per_page => 5)
+    else
+      @tutorials = tutorials.paginate(:page => params[:page], :per_page => 5)
     end
   end
 end
