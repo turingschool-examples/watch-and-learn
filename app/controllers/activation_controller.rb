@@ -1,9 +1,11 @@
 class ActivationController < ApplicationController
+
+  def edit
+  end
+
   def update
     if current_user && current_user.id == params[:id].to_i
-      activate(current_user)
-      redirect_to(activation_success_path)
-      flash[:success] = "Thank you! Your account is now activated."
+      successful_user_activation_actions(current_user)
     else
       redirect_to(login_path)
     end
@@ -14,8 +16,10 @@ class ActivationController < ApplicationController
 
   private
 
-  def activate(user)
+  def successful_user_activation_actions(user)
+    flash[:success] = "Thank you! Your account is now activated."
     user.update(email_activation_status: 'active')
     reload_current_user
+    redirect_to(activation_success_path)
   end
 end
