@@ -1,4 +1,9 @@
 <h2>New Tutorial</h2>
+
+<% @tutorial.errors.full_messages.each do |error| %>
+  <p><%= error %></p>
+<% end %>
+
 <%= form_for [:admin, @tutorial] do |f| %>
   <%= f.label :title %>
   <%= f.text_field :title, class: "block col-4 field" %>
