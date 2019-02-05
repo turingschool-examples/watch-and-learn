@@ -61,7 +61,7 @@
 
   <h4>Description</h4>
   <p data-controller="tutorials" id="description-<%= @facade.current_video.id %>">
-    <%= @facade.current_video.description.truncate(50) %>...
+    <%= @facade.current_video.description.truncate(50) if @facade.current_video.description %>...
     <%= link_to "More", "#", "data-action" => "click->tutorials#showDescription", id: @facade.current_video.id, class: "show-link"%>
   </p>
 </div>
