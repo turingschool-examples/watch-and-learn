@@ -41,6 +41,8 @@ Rails.application.routes.draw do
   get '/', to: 'welcome#index'
   get '/auth/github', as: 'github_login'
   get '/auth/github/callback', to: 'sessions#create'
+  get '/confirmation', to: 'confirmation#create', as: 'send_email'
+  get '/confirmation/:id', to: 'confirmation#update', as: 'confirmation'
 
   resources :tutorials, only: [:show, :index] do
     resources :videos, only: [:show, :index]

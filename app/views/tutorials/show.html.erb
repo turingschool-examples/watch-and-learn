@@ -16,11 +16,15 @@
   <div class="title-bookmark">
     <h3><%= @facade.current_video.title if @facade.current_video %></h3>
     <div class="bookmarks-btn">
+      <div class="tooltip">
       <% if current_user && @facade.current_video %>
-      <%= button_to "Bookmark", user_videos_path(video_id: @facade.current_video.id, user_id: current_user.id), method: :post, class: "btn btn-outline mb1 teal" %>
+          <%= button_to "Bookmark", user_videos_path(video_id: @facade.current_video.id, user_id: current_user.id), method: :post, class: "btn btn-outline mb1 teal" %>
+          <span class="tooltiptext">Warning This Will Stop Video</span>
       <% else %>
-      <%= link_to "Bookmark this", login_path, class: "btn btn-outline mb1 teal", data: {confirm: "Are you sure?"} %>
+          <%= link_to "Bookmark this", login_path, class: "btn btn-outline mb1 teal" %>
+          <span class="tooltiptext">Warning This Will Stop Video</span>
       <% end %>
+      </div>
     </div>
   </div>
 

@@ -6,7 +6,8 @@
   <h3>Account Details</h3>
   <ul>
     <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
-    <li> <%= current_user.email%> </li>
+    <li> <%= current_user.email %> </li>
+    <li>Status <%= current_user.activated ? "Active" : "Not Active" %></li>
   </ul>
   <div class="friends">
     <h2>Friends:</h2>
