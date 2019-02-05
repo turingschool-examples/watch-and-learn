@@ -4,9 +4,9 @@ class Admin::TutorialsController < Admin::BaseController
   end
 
   def create
-    tutorial = Tutorial.new(tutorial_create_params)
-    successful_tutorial_creation_actions(tutorial)    if tutorial.save
-    unsuccessful_tutorial_creation_actions  unless tutorial.save
+    @tutorial = Tutorial.new(tutorial_create_params)
+    successful_tutorial_creation_actions(@tutorial)    if @tutorial.save
+    unsuccessful_tutorial_creation_actions        unless @tutorial.save
   end
 
   def new
@@ -29,7 +29,7 @@ class Admin::TutorialsController < Admin::BaseController
   end
 
   def unsuccessful_tutorial_creation_actions
-
+    render :new
   end
 
   def tutorial_update_params
