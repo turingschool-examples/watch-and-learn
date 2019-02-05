@@ -12,7 +12,11 @@ describe 'When a user views a tutorial marked as classroom content' do
       user = create(:user)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
       
-      visit tutorial_path(@classroom_tutorial)
+      visit root_path
+      
+      expect(page).to have_content(@classroom_tutorial.title)
+      expect(page).to have_content(@tutorial.title)
+      click_link(@classroom_tutorial.title)
       
       expect(current_path).to eq(tutorial_path(@classroom_tutorial))
       expect(page).to have_content(@classroom_tutorial.title)
@@ -25,6 +29,11 @@ describe 'When a user views a tutorial marked as classroom content' do
   
   context 'as a visitor to the site' do
     it 'does not see the tutorial' do
+      visit root_path
+      
+      expect(page).to_not have_content(@classroom_tutorial.title)
+      expect(page).to have_content(@tutorial.title)
+      
       expect{visit tutorial_path(@classroom_tutorial)}.to raise_error(ActionController::RoutingError)
       
       visit tutorial_path(@tutorial)
