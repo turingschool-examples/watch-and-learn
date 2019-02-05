@@ -31,6 +31,7 @@ Rails.application.routes.draw do
 
 
   patch '/activate/:id', to: 'activation#update', as: 'account_activation'
+  get '/activate/:id', to: 'activation#edit', as: 'account_activation_landing'
   get '/activate', to: 'activation#show', as: 'activation_success'
 
   get 'auth/github', as: :github_login
