@@ -22,12 +22,18 @@ describe 'admin_can_add_a_video' do
     visit admin_dashboard_path
     expect(page).to have_content(tut_title)
   end
-# And I fill in 'title' with a meaningful name
-# And I fill in 'description' with a some content
-# And I fill in 'thumbnail' with a valid YouTube thumbnail
-# And I click on 'Save'
-# Then I should be on '/tutorials/{NEW_TUTORIAL_ID}'
-# And I should see a flash message that says "Successfully created tutorial."
-#
+  scenario 'with bad info' do
+    fill_in :tutorial_title, with: ''
+    fill_in :tutorial_description, with: ''
+    fill_in :tutorial_thumbnail, with: ''
+    click_on "Save"
+    expect(Tutorial.count).to eq(0)
+    
+    expect(page).to_not have_content('Successfully created tutorial.')
+
+    expect(page).to have_content("Title can't be blank")
+    expect(page).to have_content("Description can't be blank")
+    expect(page).to have_content("Thumbnail can't be blank")
+  end
 
 end
