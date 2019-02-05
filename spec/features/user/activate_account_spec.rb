@@ -6,7 +6,8 @@ describe 'a registered user can activate their account' do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
     visit dashboard_path
     expect(page).to have_content('Status: Unactivated')
-    page.driver.submit :patch, account_activation_path(user_1), {}
+    visit account_activation_landing_path(user_1)
+    click_on("Activate Now")
     expect(current_path).to eq(activation_success_path)
     expect(page).to have_content("Thank you! Your account is now activated.")
 
