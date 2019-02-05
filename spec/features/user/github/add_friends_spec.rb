@@ -71,4 +71,14 @@ describe 'friendship' do
       expect(page).to have_content(user_3.first_name + " " + user_3.last_name)
     end
   end
+  it "gives an error message if an incorrect post request is made" do
+    page.driver.submit :post, friendships_path(1), {}
+    expect(page).to have_content("You must be logged in to perform that action.")
+    expect(current_path).to eq(login_path)
+
+    user = create(:user, id: 1)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+    page.driver.submit :post, friendships_path(10000021321321), {}
+    expect(page).to have_content("Friendship not created. Invalid id")
+  end
 end
