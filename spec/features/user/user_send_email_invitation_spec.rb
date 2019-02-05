@@ -22,6 +22,9 @@ describe 'As a registered user' do
       expect(page).to have_button('Send Invite')
     end
     it 'can send an invite' do
+      response = '{"email":"user@example.com"}'
+      stub_request(:post, 'www.github.com').to_return(body: response, status: 200)
+      
       user = create(:user)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
       
