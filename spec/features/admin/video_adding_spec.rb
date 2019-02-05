@@ -25,15 +25,15 @@ describe 'admin_can_add_a_video' do
   scenario 'with bad info' do
     fill_in :tutorial_title, with: ''
     fill_in :tutorial_description, with: ''
-    fill_in :tutorial_thumbnail, with: ''
+    fill_in :tutorial_thumbnail, with: 'slksdf'
     click_on "Save"
     expect(Tutorial.count).to eq(0)
-    
+
     expect(page).to_not have_content('Successfully created tutorial.')
 
     expect(page).to have_content("Title can't be blank")
     expect(page).to have_content("Description can't be blank")
-    expect(page).to have_content("Thumbnail can't be blank")
+    expect(page).to have_content("Thumbnail must be a valid link")
   end
 
 end
