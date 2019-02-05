@@ -32,6 +32,10 @@ describe 'As a registered user' do
       
       expect(current_path).to eq(dashboard_path)
       expect(page).to have_content('Successfully sent invite!')
+      
+      visit invite_path
+      fill_in 'Github Handle', with: 'octocat'
+      expect { click_on 'Send Invite' }.to change { ActionMailer::Base.deliveries.count }.by(1)
     end
     it 'can not send an invite if the user does not have email associated with Github', :vcr do
       user = create(:user)
