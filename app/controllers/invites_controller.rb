@@ -4,7 +4,8 @@ class InvitesController < ApplicationController
   end
   
   def create
-    email = GithubService.email_by_username(params[:github_handle])
+    user_info = GithubService.info_by_username(params[:github_handle])
+    
     redirect_to dashboard_path
   end
 end
