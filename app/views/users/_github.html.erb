@@ -12,13 +12,14 @@
 
   <div id="followers">
     <h1>Github Followers</h1>
+
     <% @facade.user_followers.each do |follower| %>
     <div class="follower">
       <a href="<%= follower.url %>" class="user-link">
         <p>
           <%= follower.handle %>
           <% if follower.exists_in_database? && !@facade.user_friend?(follower.user_in_database) %>
-            <%= link_to "Add Friend", user_friendships_path(current_user, friends: follower.user_in_database) %>
+            <%= button_to "Add Friend", user_friendships_path(current_user, friends: follower.user_in_database) %>
           <% end %>
         </p>
       </a>
