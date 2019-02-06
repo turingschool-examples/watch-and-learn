@@ -23,7 +23,7 @@ class GithubService
   
   def token_conn
     Faraday.new(url: 'https://api.github.com') do |faraday|
-      faraday.headers['Authorization'] = @user.github_token
+      faraday.params['access_token'] = @user.github_token
       faraday.adapter Faraday.default_adapter
     end
   end
