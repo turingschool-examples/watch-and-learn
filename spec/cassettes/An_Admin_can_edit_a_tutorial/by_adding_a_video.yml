@@ -116,6 +116,6 @@ http_interactions:
           }
          ]
         }
-    http_version: 
+    http_version:
   recorded_at: Wed, 24 Oct 2018 21:50:41 GMT
 recorded_with: VCR 4.0.0

@@ -16,6 +16,14 @@ class GithubService
     get_json("user/following")
   end
 
+  def invitee(invitee_handle)
+    get_json("users/#{invitee_handle}")
+  end
+
+  def inviter
+    get_json("user")
+  end
+
   private
 
   def get_json(path)
