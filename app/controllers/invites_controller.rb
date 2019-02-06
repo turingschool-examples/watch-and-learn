@@ -4,10 +4,10 @@ class InvitesController < ApplicationController
   end
   
   def create
-    invitee_info = GithubService.new(current_user).info_by_username(params[:github_handle])
-    inviter_info = GithubService.new(current_user).user_info
-    if invitee_info[:email]
-      InviterMailer.invite(invitee_info, inviter_info).deliver_now
+    presenter = InvitePresenter.new(current_user, params[:github_handle])
+    
+    if presenter.invitee_info[:email]
+      InviterMailer.invite(presenter.invitee_info, presenter.inviter_info).deliver_now
       flash[:notice] = 'Successfully sent invite!'
     else
       flash[:notice] = "The Github user you selected doesn't have an email address associated with their account."
