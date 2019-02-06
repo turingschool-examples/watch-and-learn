@@ -8,7 +8,7 @@ describe 'When a user views a tutorial marked as classroom content' do
     create(:video, tutorial: @tutorial)
   end
   context 'as a logged in user' do
-    it 'sees the tutorial' do
+    it 'sees the tutorial on the welcome page' do
       user = create(:user)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
       
@@ -20,8 +20,13 @@ describe 'When a user views a tutorial marked as classroom content' do
       
       expect(current_path).to eq(tutorial_path(@classroom_tutorial))
       expect(page).to have_content(@classroom_tutorial.title)
+    end
+    it 'sees the tutorial on the tutorial page' do
+      user = create(:user)
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
       
       visit tutorial_path(@tutorial)
+      
       expect(current_path).to eq(tutorial_path(@tutorial))
       expect(page).to have_content(@tutorial.title)
     end
@@ -32,13 +37,9 @@ describe 'When a user views a tutorial marked as classroom content' do
       visit root_path
       
       expect(page).to_not have_content(@classroom_tutorial.title)
-      expect(page).to have_content(@tutorial.title)
+      expect(page).to_not have_content(@tutorial.title)
       
       expect{visit tutorial_path(@classroom_tutorial)}.to raise_error(ActionController::RoutingError)
-      
-      visit tutorial_path(@tutorial)
-      expect(current_path).to eq(tutorial_path(@tutorial))
-      expect(page).to have_content(@tutorial.title)
     end
   end
 end
