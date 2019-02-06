@@ -19,6 +19,10 @@ class GithubService
     get_json("/users/#{username}")
   end
   
+  def user_info
+    get_json('/user')
+  end
+  
   private 
   
   def token_conn
@@ -27,22 +31,9 @@ class GithubService
       faraday.adapter Faraday.default_adapter
     end
   end
-  
-  # def self.application_conn
-  #   Faraday.new(url: 'https://api.github.com') do |faraday|
-  #     faraday.params['client_id'] = ENV['GITHUB_CLIENT_ID']
-  #     faraday.params['client_secret'] = ENV['GITHUB_CLIENT_SECRET']
-  #     faraday.adapter Faraday.default_adapter
-  #   end
-  # end
 
   def get_json(url)
     response = token_conn.get(url)
     JSON.parse(response.body, symbolize_names: true)
   end
-  
-  # def self.get_json_by_username(username)
-  #   response = application_conn.get("/users/#{username}")
-  #   JSON.parse(response.body, symbolize_names: true)
-  # end
 end
