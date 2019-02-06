@@ -11,7 +11,6 @@ gem 'coffee-rails', '~> 4.2'
 gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bcrypt', '~> 3.1.7'
-gem 'sprockets-es6'
 
 gem 'webpacker', '~> 3.5'
 
@@ -30,6 +29,7 @@ gem 'acts-as-taggable-on', '~> 6.0'
 gem 'omniauth-census', git: "https://github.com/turingschool-projects/omniauth-census"
 gem 'sprockets-es6'
 gem 'omniauth-github'
+gem 'capybara-email'
 
 
 
