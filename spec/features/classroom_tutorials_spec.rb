@@ -2,9 +2,9 @@ require 'rails_helper'
 
 describe 'When a user views a tutorial marked as classroom content' do
   before(:each) do
-    @classroom_tutorial = create(:tutorial, classroom: true)
+    @classroom_tutorial = create(:tutorial, title: 'This is a classroom-only tutorial', classroom: true)
     create(:video, tutorial: @classroom_tutorial)
-    @tutorial = create(:tutorial)
+    @tutorial = create(:tutorial, title: 'Anyone can see this tutorial')
     create(:video, tutorial: @tutorial)
   end
   context 'as a logged in user' do
@@ -37,7 +37,7 @@ describe 'When a user views a tutorial marked as classroom content' do
       visit root_path
       
       expect(page).to_not have_content(@classroom_tutorial.title)
-      expect(page).to_not have_content(@tutorial.title)
+      expect(page).to have_content(@tutorial.title)
       
       expect{visit tutorial_path(@classroom_tutorial)}.to raise_error(ActionController::RoutingError)
     end
