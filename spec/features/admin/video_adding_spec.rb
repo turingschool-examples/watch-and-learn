@@ -41,7 +41,7 @@ describe 'non admins are redirected' do
   end
   it 'redirects a user' do
     user = create(:user)
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
     expect{visit new_admin_tutorial_path}.to raise_error(ActionController::RoutingError)
   end
 end
