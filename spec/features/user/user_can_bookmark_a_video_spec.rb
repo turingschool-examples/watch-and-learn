@@ -31,4 +31,23 @@ describe 'A registered user' do
     click_on 'Bookmark'
     expect(page).to have_content("Already in your bookmarks")
   end
+  it "can see a list of all bookmarked segments" do
+    tutorial= create(:tutorial, title: "How to Tie Your Shoes")
+    video = create(:video, tutorial_id: tutorial.id)
+    video_1 = create(:video, title: "The Bunny Ears Technique", tutorial: tutorial)
+
+    user = create(:user, github_token: ENV["GITHUB_TOKEN"])
+    user_video_1 = UserVideo.new(user_id: user.id, video_id: video.id)
+
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+    visit '/dashboard'
+
+    expect(page).to have_content("Bookmarked Segments")
+
+    within(".bookmarked_videos") do
+      expect(page).to have_content(video.title)
+      expect(page).to_not have_content(video_1.title)
+    end
+  end
 end
