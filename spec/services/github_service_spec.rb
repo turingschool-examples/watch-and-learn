@@ -41,13 +41,23 @@ describe 'on the GithubService' do
       end
     end
 
-    it '.invitee' do
-      token = ENV["GITHUB_API_KEY"]
-      handle = 'stoic-plus'
-      VCR.use_cassette('services/find_invitee') do
-        invitee = GithubService.new(token).invitee(handle)
-        expect(invitee).to have_key(:name)
-        expect(invitee).to have_key(:email)
+    describe '.invitee' do
+      scenario "has email" do
+        token = ENV["GITHUB_API_KEY"]
+        handle = 'stoic-plus'
+        VCR.use_cassette('services/find_invitee') do
+          invitee = GithubService.new(token).invitee(handle)
+          expect(invitee).to have_key(:name)
+          expect(invitee).to have_key(:email)
+        end
+      end
+      scenario "has no email" do
+        token = ENV["GITHUB_API_KEY"]
+        handle = 'Bradniedt'
+        VCR.use_cassette('services/find_invitee_no_email') do
+          invitee = GithubService.new(token).invitee(handle)
+          expect(invitee[:email]).to eq(nil)
+        end
       end
     end
 
