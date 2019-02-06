@@ -27,14 +27,20 @@ describe 'a registered user on the dashboard page' do
           VCR.use_cassette("services/find_followers") do
             VCR.use_cassette("services/find_followings") do
               click_on 'Send Invite'
-            end
           end
         end
       end
     end
+  end
 
     expect(current_path).to eq(dashboard_path)
     expect(page).to have_content('Successfully sent invite!')
     expect(page).to_not have_content("The Github user you selected doesn't have an email address associated with their account.")
+
+    open_email("ricardoledesmadev@gmail.com")
+    expect(current_email).to have_content("Hello Ricardo Ledesma, Justin Mauldin has invited you to join Turing Tutorials. You can create an account")
+    current_email.click_link("Click here to create your account")
+
+    expect(current_path).to eq(register_path)
   end
 end
