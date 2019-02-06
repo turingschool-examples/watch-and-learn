@@ -3,17 +3,17 @@ require 'rails_helper'
 describe 'dashboard' do
   context 'as a logged in user with a token' do
     it "sees a Following section within the Github section", :vcr do
-      user_1 = create(:user, oauth_token: ENV["GITHUB_TOKEN"])
-      token_1 = user_1.oauth_token
-      user_1_followers = Following.find_all_following(token_1)
+      user_1 = create(:user, github_token: ENV["GITHUB_TOKEN"])
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
+      facade_user = UserDashboardFacade.new(user_1)
+      following = facade_user.find_all_following
 
       visit '/dashboard'
       expect(page).to have_content('Github')
       expect(page).to have_content('Following')
       within('.following-list') do
-        expect(page).to have_link(user_1_followers.first.login)
-        expect(page).to have_link(user_1_followers.last.login)
+        expect(page).to have_link(following.first.login)
+        expect(page).to have_link(following.last.login)
         expect(page).to have_css(".following")
       end
     end

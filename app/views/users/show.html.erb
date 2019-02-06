@@ -7,56 +7,46 @@
     <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
     <li> <%= current_user.email%> </li>
   </ul>
-  <section>
-    <h1>Bookmarked Segments</h1>
-  </section>
 
 <%= button_to "Connect to Github", github_login_path, class: "btn btn-primary mb1 bg-teal" %>
 
-<% if current_user.oauth_token == nil %>
-<h3> You have no bookmarked sections </h3>
+<% if current_user.github_token == nil %>
+  <h3> You have no bookmarked sections </h3>
 <% else %>
-  <% if @repos.nil? == false %>
-  <h2>Github</h2>
-  <section class="github-list">
-    <ul>
-      <% @repos.each do |repo| %>
+  <% @user_facade %>
+    <section>
+      <h1>Bookmarked Segments</h1>
+    </section>
+
+    <section class="github-list">
+      <h2>Github Repos</h2>
+      <ul>
+        <% @user_facade.find_all_repos.each do |repo| %>
           <li><%= link_to "#{repo.name}", "#{repo.html_url}", class: "repository"%></li>
-      <% end %>
-    </ul>
-    <% end %>
-  </section>
-
-
-  <% if @followers.nil? == false %>
-  <h2>Followers</h2>
-  <section class="followers-list">
-    <ul>
-      <% @followers.each do |follower| %>
-      <div class="follower-<%= follower.login %>" >
-
-        <% if follower.has_account? %>
-            <li><%= link_to "#{follower.login}", "#{follower.html_url}" %>
-            <%= link_to "Add #{follower.login} as Friend", user_friendships_path(current_user.id), :method => :post %></li>
-        <% else  %>
-          <li><%= link_to "#{follower.login}", "#{follower.html_url}" %></li>
         <% end %>
-      </div>
-      <% end %>
-    </ul>
-  </section>
-  <% end %>
-</section>
+      </ul>
+    <section>
 
-  <% if @following.nil? == false %>
-  <h2>Following</h2>
-  <section class="following-list">
-    <ul>
-      <% @following.each do |follow| %>
-          <li><%= link_to "#{follow.login}", "#{follow.html_url}", class: "following"%></li>
+    <section class="following-list">
+      <h2>Following</h2>
+      <% @user_facade.find_all_following.each_with_index do |follow, index| %>
+        <div class="follow-<%= index %>" >
+        <li><%= link_to "#{follow.login}", "#{follow.html_url}", class: "following"%></li>
+            <% if follow.user %>
+              <%= link_to "Add as Friend", user_friendships_path(follow.user.id), :method => :post %>
+            <% end %>
+        </div>
       <% end %>
-    </ul>
-  </section>
-  <% end %>
+    <section>
+
+    <section class="followers-list">
+      <h2>Followers</h2>
+      <% @user_facade.find_all_followers.each_with_index do |follower, index| %>
+        <div class="follower-<%= index %>" >
+          <li><%= link_to "#{follower.login}", "#{follower.html_url}", class: "follower"%></li>
+          <% if follower.user %>
+            <li><%= link_to "Add as Friend", user_friendships_path(follower.user.id), :method => :post %></li>
+          <% end %>
+      <% end %>
+    <section>
 <% end %>
-</section>

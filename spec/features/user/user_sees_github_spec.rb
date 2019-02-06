@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'dashboard' do
   context 'as a logged in user with a token' do
     it 'sees Github list of 5 repositories linking to repo', :vcr do
-      user = create(:user, oauth_token: ENV["GITHUB_TOKEN"])
+      user = create(:user, github_token: ENV["GITHUB_TOKEN"])
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
