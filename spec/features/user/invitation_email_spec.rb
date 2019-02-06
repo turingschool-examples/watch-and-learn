@@ -21,11 +21,13 @@ describe 'a registered user on the dashboard page' do
 
     fill_in :invite_github_handle, with: github_handle
 
-    VCR.use_cassette("services/find_email") do
-      VCR.use_cassette("services/find_repositories") do
-        VCR.use_cassette("services/find_followers") do
-          VCR.use_cassette("services/find_followings") do
-            click_on 'Send Invite'
+    VCR.use_cassette("services/find_invitee") do
+      VCR.use_cassette("services/find_inviter") do
+        VCR.use_cassette("services/find_repositories") do
+          VCR.use_cassette("services/find_followers") do
+            VCR.use_cassette("services/find_followings") do
+              click_on 'Send Invite'
+            end
           end
         end
       end
