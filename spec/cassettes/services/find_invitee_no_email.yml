@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.github.com/users/stoic-plus?access_token=<GITHUB_API_KEY>
+    uri: https://api.github.com/users/Bradniedt?access_token=<GITHUB_API_KEY>
     body:
       encoding: US-ASCII
       string: ''
@@ -21,7 +21,7 @@ http_interactions:
       Server:
       - GitHub.com
       Date:
-      - Wed, 06 Feb 2019 23:02:55 GMT
+      - Wed, 06 Feb 2019 23:08:14 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -31,7 +31,7 @@ http_interactions:
       X-Ratelimit-Limit:
       - '5000'
       X-Ratelimit-Remaining:
-      - '4994'
+      - '4992'
       X-Ratelimit-Reset:
       - '1549497694'
       Cache-Control:
@@ -39,9 +39,9 @@ http_interactions:
       Vary:
       - Accept, Authorization, Cookie, X-GitHub-OTP
       Etag:
-      - W/"67971852d84d581c8602d17248b63a04"
+      - W/"d695c93a7a27998a68ba337a9d2c9ebd"
       Last-Modified:
-      - Fri, 01 Feb 2019 20:25:50 GMT
+      - Wed, 06 Feb 2019 17:58:13 GMT
       X-Oauth-Scopes:
       - repo, user
       X-Accepted-Oauth-Scopes:
@@ -67,11 +67,12 @@ http_interactions:
       Content-Security-Policy:
       - default-src 'none'
       X-Github-Request-Id:
-      - D7AD:51C5:7979A8:F5468F:5C5B679F
+      - D8C4:74A7:70A000:E5017D:5C5B68DE
     body:
       encoding: ASCII-8BIT
-      string: '{"login":"stoic-plus","id":27703353,"node_id":"MDQ6VXNlcjI3NzAzMzUz","avatar_url":"https://avatars0.githubusercontent.com/u/27703353?v=4","gravatar_id":"","url":"https://api.github.com/users/stoic-plus","html_url":"https://github.com/stoic-plus","followers_url":"https://api.github.com/users/stoic-plus/followers","following_url":"https://api.github.com/users/stoic-plus/following{/other_user}","gists_url":"https://api.github.com/users/stoic-plus/gists{/gist_id}","starred_url":"https://api.github.com/users/stoic-plus/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/stoic-plus/subscriptions","organizations_url":"https://api.github.com/users/stoic-plus/orgs","repos_url":"https://api.github.com/users/stoic-plus/repos","events_url":"https://api.github.com/users/stoic-plus/events{/privacy}","received_events_url":"https://api.github.com/users/stoic-plus/received_events","type":"User","site_admin":false,"name":"Ricardo
-        Ledesma","company":null,"blog":"","location":"Denver, Colorado","email":"ricardoledesmadev@gmail.com","hireable":true,"bio":null,"public_repos":52,"public_gists":10,"followers":9,"following":3,"created_at":"2017-04-17T19:56:10Z","updated_at":"2019-02-01T20:25:50Z"}'
+      string: '{"login":"Bradniedt","id":22285337,"node_id":"MDQ6VXNlcjIyMjg1MzM3","avatar_url":"https://avatars0.githubusercontent.com/u/22285337?v=4","gravatar_id":"","url":"https://api.github.com/users/Bradniedt","html_url":"https://github.com/Bradniedt","followers_url":"https://api.github.com/users/Bradniedt/followers","following_url":"https://api.github.com/users/Bradniedt/following{/other_user}","gists_url":"https://api.github.com/users/Bradniedt/gists{/gist_id}","starred_url":"https://api.github.com/users/Bradniedt/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/Bradniedt/subscriptions","organizations_url":"https://api.github.com/users/Bradniedt/orgs","repos_url":"https://api.github.com/users/Bradniedt/repos","events_url":"https://api.github.com/users/Bradniedt/events{/privacy}","received_events_url":"https://api.github.com/users/Bradniedt/received_events","type":"User","site_admin":false,"name":"Brad
+        Niedt","company":null,"blog":"","location":"Denver, Colorado","email":null,"hireable":true,"bio":"Back
+        End Engineering student at  Turing School of Software Design (1810BE). ","public_repos":43,"public_gists":16,"followers":13,"following":13,"created_at":"2016-09-19T03:05:59Z","updated_at":"2019-02-06T17:58:13Z"}'
     http_version: 
-  recorded_at: Wed, 06 Feb 2019 23:02:53 GMT
+  recorded_at: Wed, 06 Feb 2019 23:08:12 GMT
 recorded_with: VCR 4.0.0

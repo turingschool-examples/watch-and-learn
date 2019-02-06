@@ -43,4 +43,38 @@ describe 'a registered user on the dashboard page' do
 
     expect(current_path).to eq(register_path)
   end
+
+  it "Gives an error message if there is no email found for that github user" do
+    user_1 = create(:user, github_token: ENV["GITHUB_API_KEY"])
+    github_handle = 'Bradniedt'
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
+
+    VCR.use_cassette("services/find_repositories") do
+      VCR.use_cassette("services/find_followers") do
+        VCR.use_cassette("services/find_followings") do
+          visit dashboard_path
+        end
+      end
+    end
+
+    click_on 'Send an Invite'
+
+    fill_in :invite_github_handle, with: github_handle
+
+    VCR.use_cassette("services/find_invitee_no_email") do
+      VCR.use_cassette("services/find_inviter") do
+        VCR.use_cassette("services/find_repositories") do
+          VCR.use_cassette("services/find_followers") do
+            VCR.use_cassette("services/find_followings") do
+              click_on 'Send Invite'
+          end
+        end
+      end
+    end
+  end
+
+    expect(current_path).to eq(dashboard_path)
+    expect(page).to_not have_content('Successfully sent invite!')
+    expect(page).to have_content("The Github user you selected doesn't have an email address associated with their account.")
+  end
 end
