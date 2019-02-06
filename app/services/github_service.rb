@@ -1,6 +1,6 @@
 class GithubService
-  def initialize(token)
-    @token = token
+  def initialize(user)
+    @user = user
   end
 
   def find_repos
@@ -15,28 +15,21 @@ class GithubService
     get_json('/user/following')
   end
 
+
+  private
+
   def get_json(url)
     response = conn.get(url)
     JSON.parse(response.body, symbolize_names: true).take(5)
   end
 
   def conn
+    # binding.pry
+    token = @user.github_token
     Faraday.new(url: "https://api.github.com") do |faraday|
-      faraday.headers["Authorization"] = @token
+      faraday.params["access_token"] = token
       faraday.adapter Faraday.default_adapter
     end
-  end
-
-  def self.find_repos(token)
-    new(token).find_repos
-  end
-
-  def self.find_followers(token)
-    new(token).find_followers
-  end
-
-  def self.find_following(token)
-    new(token).find_following
   end
 
 end
