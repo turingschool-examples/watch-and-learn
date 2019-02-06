@@ -4,9 +4,9 @@ class Tutorial < ApplicationRecord
   accepts_nested_attributes_for :videos
 
   def update_positions
-    if videos.any?(){"position = 0"}
+    if videos.any?(){'position = 0'}
       max_position = videos.maximum(:position)
-      videos.where("position=?", 0).each do |video|
+      videos.where('position=?', 0).each do |video|
         max_position += 1
         video.update(position: max_position)
       end

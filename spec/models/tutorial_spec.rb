@@ -43,8 +43,8 @@ RSpec.describe Tutorial, type: :model do
 
       prework_tutorial.update_positions
 
-      expect(video_2.position).to eq(5)
-      expect(video_3.position).to eq(6)
+      expect(Video.second.position).to eq(5)
+      expect(Video.third.position).to eq(6)
     end
   end
 end
