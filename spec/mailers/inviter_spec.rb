@@ -14,7 +14,7 @@ RSpec.describe InviterMailer, type: :mailer do
       expect(@mail.to.first).to eq(@user_info[:email])
     end
     it 'renders the email content' do
-      expect(@mail.body.encoded).to have_content("#{@user.first_name + ' ' + @user.last_name} has invited you to join BROWNFIELD OF DREAMS Turing Tutorials. You can create an account")
+      expect(@mail.body.encoded).to have_content('has invited you to join BROWNFIELD OF DREAMS Turing Tutorials. You can create an account')
     end
   end
 end
