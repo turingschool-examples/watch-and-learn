@@ -26,6 +26,8 @@ class UsersController < ApplicationController
   def user_saved?(user)
     if user.save
       session[:user_id] = user.id
+      flash[:success] = "Logged in as #{user.first_name} #{user.last_name}"
+      flash[:notice] = 'This account has not yet been activated. Please check your email.'
     else
       flash[:error] = 'Username already exists'
     end
