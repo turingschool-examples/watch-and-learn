@@ -17,7 +17,7 @@ class GithubService
   end
 
   def invitee(invitee_handle)
-    get_json("users/#{github_handle}")
+    get_json("users/#{invitee_handle}")
   end
 
   def inviter

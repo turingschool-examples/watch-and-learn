@@ -18,7 +18,7 @@ class GithubInvitationFacade
   end
 
   def find_inviter
-    @_inviter ||= service.inviter(@invitee_handle)
+    @_inviter ||= service.inviter
   end
 
   def service
