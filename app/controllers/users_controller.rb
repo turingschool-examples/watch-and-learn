@@ -1,15 +1,7 @@
 class UsersController < ApplicationController
   def show
-    user = current_user
-    if user.oauth_token
-      @repos = Repo.find_all_repos(user.oauth_token)
-      @followers = Follower.find_all_followers(user.oauth_token)
-      @following = Following.find_all_following(user.oauth_token)
-    else
-      @repos = nil
-      @followers = nil
-      @following = nil
-    end
+    @user_facade = UserDashboardFacade.new(current_user) if current_user.github_token
+
   end
 
   def new
