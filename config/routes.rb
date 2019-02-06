@@ -43,6 +43,8 @@ Rails.application.routes.draw do
   get '/auth/github/callback', to: 'sessions#create'
   get '/confirmation', to: 'confirmation#create', as: 'send_email'
   get '/confirmation/:id', to: 'confirmation#update', as: 'confirmation'
+  get '/invite', to: 'invite#new', as: 'send_invite'
+  post '/invite', to: 'invite#create'
 
   resources :tutorials, only: [:show, :index] do
     resources :videos, only: [:show, :index]

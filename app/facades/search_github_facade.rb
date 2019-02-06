@@ -22,6 +22,14 @@ class SearchGithubFacade
     end
   end
 
+  def find_email(github_handle)
+    search_email_results(github_handle)[:email]
+  end
+
+  def find_my_name
+    search_my_name[:login]
+  end
+
   private
   def search_repo_results
     @_search_repo_results ||= service.all_repos
@@ -33,6 +41,14 @@ class SearchGithubFacade
 
   def search_following_results
     @_search_following_results ||= service.all_following
+  end
+
+  def search_email_results(github_handle)
+    @_search_email_results ||= service.find_email(github_handle)
+  end
+
+  def search_my_name
+    @_search_my_name ||= service.find_my_name
   end
 
   def service
