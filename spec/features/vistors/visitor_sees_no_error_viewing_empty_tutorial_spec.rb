@@ -74,7 +74,7 @@ describe 'as a user or visitor' do
     visit "/tutorials/#{prework_tutorial.id}"
 
     expect(page.status_code).to eq(200)
-    expect(video_2.position).to eq(5)
-    expect(video_3.position).to eq(6)
+    expect(Video.second.position).to eq(5)
+    expect(Video.third.position).to eq(6)
   end
 end
