@@ -1,0 +1,4 @@
+Hello <%= @invitee.name %>,
+
+<%= "#{@user.first_name} {@user.last_name}" %> has invited you to join Turing Tutorials.
+You can create an account <%= link_to("Click here to create your account", new_user_url) %>.
