@@ -137,6 +137,5 @@ describe 'as a visitor' do
       expect(page).to have_content('Back End Engineering - Prework')
       expect(page).to have_content('Back End Engineering - Module 3')
     end
-
   end
 end
