@@ -1,6 +1,15 @@
 require 'rails_helper'
 
 describe 'a registered user on the dashboard page' do
+  it 'cannot invite someone if your github is not connected' do
+    user = create(:user)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+    visit '/dashboard'
+
+    expect(page).to_not have_link("Send an Invite")
+  end
+  
   it 'can invite someone with a github handle to the account' do
     user_1 = create(:user, github_token: ENV["GITHUB_API_KEY"])
     github_handle = 'stoic-plus'
