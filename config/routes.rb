@@ -52,4 +52,5 @@ Rails.application.routes.draw do
   
   get '/invite', to: 'invites#new'
   post '/invite', to: 'invites#create'
+  get '/signup', to: 'users#new'
 end
