@@ -4,7 +4,7 @@ class InvitesController < ApplicationController
   end
   
   def create
-    user_info = GithubService.info_by_username(params[:github_handle])
+    user_info = GithubService.new(current_user).info_by_username(params[:github_handle])
     if user_info[:email]
       InviterMailer.invite(user_info, current_user).deliver_now
       flash[:notice] = 'Successfully sent invite!'

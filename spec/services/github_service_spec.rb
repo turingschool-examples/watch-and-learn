@@ -37,7 +37,10 @@ describe GithubService do
     expect(following.first).to have_key(:html_url)
   end
   it 'returns email from a username', :vcr do
-    response = GithubService.info_by_username('octocat')
-    expect(response[:email]).to eq('octocat@github.com')
+    user = create(:user, github_token: ENV['GITHUB_TOKEN'])
+    service = GithubService.new(user)
+    
+    user_info = service.info_by_username('octocat')
+    expect(user_info[:email]).to eq('octocat@github.com')
   end
 end
