@@ -19,6 +19,16 @@ Bundler.require(*Rails.groups)
 
 module PersonalProject
   class Application < Rails::Application
+    config.action_mailer.delivery_method = :smtp
+
+    config.action_mailer.smtp_settings = {
+      authentication:       :plain,
+      address:              "smtp.mailgun.org",
+      port:                 587,
+      domain:               ENV['MAILGUN_DOMAIN'],
+      user_name:            ENV['MAILGUN_USER_NAME'],
+      password:             ENV['MAILGUN_PASSWORD']
+    }
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
 
