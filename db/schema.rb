@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 2019_02_05_211809) do
     t.index ["user_id"], name: "index_friendships_on_user_id"
   end
 
-  create_table "invitation", force: :cascade do |t|
+  create_table "invitations", force: :cascade do |t|
     t.string "invitee_handle"
     t.string "invitee_name"
     t.string "invitee_email"
