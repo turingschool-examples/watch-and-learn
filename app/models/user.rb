@@ -10,4 +10,11 @@ class User < ApplicationRecord
   enum role: [:default, :admin]
   has_secure_password
 
+  def bookmark_videos
+    Video.joins(:user_videos)
+    .where("videos.id = user_videos.video_id")
+    .where("user_videos.user_id = ?", id)
+    .order(:position)
+    .order(:tutorial_id)
+  end
 end
