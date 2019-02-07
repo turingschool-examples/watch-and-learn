@@ -73,7 +73,7 @@ Rails.application.configure do
     :authentication => :plain,
   }
   config.action_mailer.delivery_method = :smtp
-  # config.action_mailer.default_url_options = { :host => 'localhost' }
+  config.action_mailer.default_url_options = { :host => 'http://brownfield-of-dreams-1810.herokuapp.com' }
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
