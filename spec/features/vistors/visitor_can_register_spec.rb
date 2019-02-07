@@ -54,5 +54,6 @@ describe 'Visitor can create an account', :js do
     expect(page).to have_content("Logged in as #{first_name} #{last_name}")
     expect(page).to have_content('This account has not yet been activated. Please check your email.')
     expect(User.last.activated).to eq(false)
+    expect(User.last.activation_token).to_not be_nil
   end
 end
