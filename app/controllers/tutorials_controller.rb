@@ -9,4 +9,8 @@ class TutorialsController < ApplicationController
       @facade = TutorialFacade.new(tutorial, params[:video_id])
     end
   end
+
+  def index
+    @tutorials = Tutorial.all
+  end
 end
