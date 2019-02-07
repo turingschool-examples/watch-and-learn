@@ -67,5 +67,16 @@ describe UserDashboardFacade do
         expect(user_1).to have_received(:github_token).twice
       end
     end
+    it '.updated_friends' do
+      user_1 = spy("user with non-updated friends")
+      user_1_updated = spy("user with updated friends")
+      allow(user_1).to receive(:reload) { user_1_updated }
+      allow(user_1_updated).to receive(:friends) { "an updated list of friends" }
+
+      facade = UserDashboardFacade.new(user_1)
+      expect(facade.updated_friends).to eq("an updated list of friends")
+      expect(user_1).to have_received(:reload)
+      expect(user_1_updated).to have_received(:friends)
+    end
   end
 end
