@@ -41,7 +41,7 @@ Rails.application.routes.draw do
   get '/auth/github/callback', to: 'auth/github/user_token#create'
 
   get '/dashboard', to: 'users#show'
-  get '/get_started', to: 'get_started#show'
+  get '/get_started', to: 'get_started#show', as: "get_started"
 
   resources :users, only: [:new, :create, :update, :edit]
 
