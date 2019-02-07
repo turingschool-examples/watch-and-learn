@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe UserDashboardFacade do
   it "it exists" do
-    user = create(:user)
+    user = double
     facade = UserDashboardFacade.new(user)
 
     expect(facade).to be_a(UserDashboardFacade)
