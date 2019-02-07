@@ -22,6 +22,7 @@ describe "As a logged in user" do
         end
       end
     end
+
     it "I can remove a friend" do
       VCR.use_cassette('github_add_friend') do
         visit dashboard_path
@@ -36,6 +37,7 @@ describe "As a logged in user" do
           click_on("Remove Friend")
 
           expect(page).to_not have_content("#{@user_2.first_name} #{@user_2.last_name}")
+          expect(current_path).to eql(dashboard_path)
         end
 
         expect(page).to have_content("Friend removed.")
