@@ -1,5 +1,5 @@
 require "rails_helper"
-describe 'admin_can_add_a_video' do
+describe 'admin_can_add_a_tutorial' do
   before(:each) do
     admin = create(:admin)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
