@@ -12,7 +12,7 @@ RSpec.describe Follower, type: :model do
   end
   describe 'instance methods' do
     it '.on_our_site?' do
-      user = create(:user, github_uid: 1)
+      create(:user, github_uid: 1)
       follower_1 = Follower.new({id: '1', login: "bla", html_url: "http://www.website.com"})
       follower_2 = Follower.new({id: '2', login: "bla", html_url: "http://www.website.com"})
 
