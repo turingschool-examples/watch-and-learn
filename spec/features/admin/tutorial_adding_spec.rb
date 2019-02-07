@@ -1,11 +1,9 @@
 require "rails_helper"
-describe 'admin_can_add_a_video' do
+describe 'admin_can_add_a_tutorial' do
   before(:each) do
     admin = create(:admin)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
     visit new_admin_tutorial_path
-    #   When I visit '/admin/tutorials/new'
-
   end
   scenario 'with good info' do
     tut_title = "Learn the right stuff"
@@ -35,5 +33,15 @@ describe 'admin_can_add_a_video' do
     expect(page).to have_content("Description can't be blank")
     expect(page).to have_content("Thumbnail must be a valid link")
   end
+end
 
+describe 'non admins are redirected' do
+  it 'redirects a visitor' do
+    expect{visit new_admin_tutorial_path}.to raise_error(ActionController::RoutingError)
+  end
+  it 'redirects a user' do
+    user = create(:user)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+    expect{visit new_admin_tutorial_path}.to raise_error(ActionController::RoutingError)
+  end
 end

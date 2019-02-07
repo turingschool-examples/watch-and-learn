@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe BookmarkFacade do
   it "it exists" do
-    user = create(:user)
+    user = double
     bmf = BookmarkFacade.new(user)
     expect(bmf).to be_a(BookmarkFacade)
   end

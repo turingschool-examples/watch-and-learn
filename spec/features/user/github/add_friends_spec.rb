@@ -68,7 +68,7 @@ describe 'friendship' do
     end
 
     within("#friendships") do
-      expect(page).to have_content(user_3.first_name + " " + user_3.last_name)
+      expect(page).to have_content(user_3.name)
     end
   end
   it "gives an error message if an incorrect post request is made" do

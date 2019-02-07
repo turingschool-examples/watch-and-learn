@@ -1,5 +1,8 @@
 <div class="user-login">
   <main>
+
+<%= render partial: "/errors/resource_error_messages", locals: {resource: @user}%>
+
 <h4>Register</h4>
   <section>
     <%= form_for @user do |form| %>

@@ -1,9 +1,11 @@
 require "rails_helper"
 
 describe AccountActivatorMailer, type: :mailer do
-  let(:user) { create(:user) }
-  let(:mail) { AccountActivatorMailer.activation_request(user) }
   it "sends the user an email with a link to activate their account" do
+    user = double('user')
+    allow(user).to receive(:email) {'abc@def.ghi'}
+    mail = AccountActivatorMailer.activation_request(user)
+
     expect(mail.to).to eq([user.email])
     expect(mail.subject).to eq("Activate")
     expect(mail.from).to eq(["no-reply@turing-tutorials.io"])

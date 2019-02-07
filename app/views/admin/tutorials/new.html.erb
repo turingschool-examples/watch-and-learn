@@ -1,8 +1,6 @@
 <h2>New Tutorial</h2>
 
-<% @tutorial.errors.full_messages.each do |error| %>
-  <p><%= error %></p>
-<% end %>
+<%= render partial: "/errors/resource_error_messages", locals: {resource: @tutorial}%>
 
 <%= form_for [:admin, @tutorial] do |f| %>
   <%= f.label :title %>

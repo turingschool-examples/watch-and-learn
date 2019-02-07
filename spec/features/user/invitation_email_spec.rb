@@ -9,7 +9,7 @@ describe 'a registered user on the dashboard page' do
 
     expect(page).to_not have_link("Send an Invite")
   end
-  
+
   it 'can invite someone with a github handle to the account' do
     user_1 = create(:user, github_token: ENV["GITHUB_API_KEY"])
     github_handle = 'stoic-plus'
@@ -36,11 +36,11 @@ describe 'a registered user on the dashboard page' do
           VCR.use_cassette("services/find_followers") do
             VCR.use_cassette("services/find_followings") do
               click_on 'Send Invite'
+            end
           end
         end
       end
     end
-  end
 
     expect(current_path).to eq(dashboard_path)
     expect(page).to have_content('Successfully sent invite!')
@@ -48,8 +48,11 @@ describe 'a registered user on the dashboard page' do
 
     open_email("ricardoledesmadev@gmail.com")
     expect(current_email).to have_content("Hello Ricardo Ledesma, Justin Mauldin has invited you to join Turing Tutorials. You can create an account")
-    current_email.click_link("Click here to create your account")
+    current_email.click_link("Click here to get started")
 
+    expect(current_path).to eq(get_started_path)
+    expect(page).to have_content("Get Started")
+    click_link("Register")
     expect(current_path).to eq(register_path)
   end
 
@@ -76,11 +79,11 @@ describe 'a registered user on the dashboard page' do
           VCR.use_cassette("services/find_followers") do
             VCR.use_cassette("services/find_followings") do
               click_on 'Send Invite'
+            end
           end
         end
       end
     end
-  end
 
     expect(current_path).to eq(dashboard_path)
     expect(page).to_not have_content('Successfully sent invite!')

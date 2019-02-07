@@ -2,7 +2,8 @@ require 'rails_helper'
 
 describe UserDashboardFacade do
   it "it exists" do
-    user = create(:user)
+    user = double
+    allow(user).to receive(:github_token) {"klsfj"}
     facade = UserDashboardFacade.new(user)
 
     expect(facade).to be_a(UserDashboardFacade)
@@ -51,6 +52,41 @@ describe UserDashboardFacade do
       user_facade = UserDashboardFacade.new(user)
 
       expect(user_facade.my_bookmarked_tutorials).to eq([tutorial_1])
+    end
+    describe '#has_github?' do
+      scenario 'when true' do
+        user_1 = double("user with github")
+        allow(user_1).to receive(:github_token) { "sdf34895f" }
+        facade = UserDashboardFacade.new(user_1)
+        expect(facade.has_github?).to eq(true)
+      end
+      scenario 'when false' do
+        user_1 = spy("user without github")
+        allow(user_1).to receive(:github_token) { nil }
+        facade = UserDashboardFacade.new(user_1)
+        expect(facade.has_github?).to eq(false)
+        expect(user_1).to have_received(:github_token).twice
+      end
+    end
+    it '.updated_friends' do
+      user_1 = spy("user with non-updated friends")
+      user_1_updated = spy("user with updated friends")
+      allow(user_1).to receive(:reload) { user_1_updated }
+      allow(user_1_updated).to receive(:friends) { "an updated list of friends" }
+
+      facade = UserDashboardFacade.new(user_1)
+      expect(facade.updated_friends).to eq("an updated list of friends")
+      expect(user_1).to have_received(:reload)
+      expect(user_1_updated).to have_received(:friends)
+    end
+    it 'friends_with?' do
+      user_1, user_2, user_3 = create_list(:user, 3)
+      user_1.friends << user_2
+
+      facade = UserDashboardFacade.new(user_1)
+
+      expect(facade.friends_with?(user_2)).to eq(true)
+      expect(facade.friends_with?(user_3)).to eq(false)
     end
   end
 end

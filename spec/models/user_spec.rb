@@ -22,4 +22,20 @@ RSpec.describe User, type: :model do
       expect(admin.admin?).to be_truthy
     end
   end
+  describe 'instance methods' do
+    it 'name returns first and last name' do
+      user = create(:user, first_name: "J", last_name: "J")
+      expect(user.name).to eq("J J")
+    end
+    it '.tutorials' do
+      tutorials = create_list(:tutorial, 3)
+      create_list(:tutorial, 2)
+      videos = tutorials.map do |tutorial|
+        create(:video, tutorial: tutorial )
+      end
+      user = create(:user)
+      user.videos += videos
+      expect(user.tutorials).to eq(tutorials)
+    end
+  end
 end
