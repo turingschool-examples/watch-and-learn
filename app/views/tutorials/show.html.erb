@@ -8,22 +8,9 @@
       <li>
         <h3><%= link_to video.title, tutorial_path(video_id: video.id), class: "show-link", id: video.position %></h3>
       </li>
-    <% end %>
-  </ul>
-</div>
-
-<div class="col col-8">
-  <div class="title-bookmark">
-    <h3><%= @facade.current_video.title %></h3>
-    <div class="bookmarks-btn">
-      <% if current_user %>
-      <%= button_to "Bookmark", user_videos_path(video_id: @facade.current_video.id, user_id: current_user.id), method: :post, class: "btn btn-outline mb1 teal" %>
-      <% else %>
-      <button onClick="alert('User must login to bookmark videos.')">Bookmark</button>
-      <% link_to "Bookmark", login_path, class: "btn btn-outline mb1 teal" %>
       <% end %>
     </ul>
-  </div>
+  </div>  
 
   <div class="col col-8">
     <% if @facade.current_video %>
@@ -33,7 +20,7 @@
         <% if current_user %>
         <%= button_to "Bookmark", user_videos_path(video_id: @facade.current_video.id, user_id: current_user.id), method: :post, class: "btn btn-outline mb1 teal" %>
         <% else %>
-        <%= link_to "Bookmark", login_path, class: "btn btn-outline mb1 teal" %>
+        <button onClick="alert('User must login to bookmark videos.')">Bookmark</button>
         <% end %>
       </div>
     </div>
