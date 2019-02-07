@@ -34,7 +34,7 @@ RSpec.describe User, type: :model do
       user_video_1 = UserVideo.create(user: user, video: video_1)
       user_video_2 = UserVideo.create(user: user, video: video_2)
       user_video_3 = UserVideo.create(user: user, video: video_3)
-      # binding.pry
+  
       expect(user.bookmark_videos).to eq([video_3, video_1, video_2])
     end
   end
