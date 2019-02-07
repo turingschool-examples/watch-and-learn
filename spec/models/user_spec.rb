@@ -22,5 +22,20 @@ RSpec.describe User, type: :model do
       expect(admin.admin?).to be_truthy
     end
   end
-  
+
+  describe 'instance methods' do
+    it "#bookmark_videos" do
+      tutorial = create(:tutorial)
+      video_1 = create(:video, position: 2, tutorial: tutorial)
+      video_2 = create(:video, position: 3, tutorial: tutorial)
+      video_3 = create(:video, position: 0, tutorial: tutorial)
+      video_4 = create(:video, position: 1, tutorial: tutorial)
+      user = create(:user, github_token: ENV["GITHUB_TOKEN"])
+      user_video_1 = UserVideo.create(user: user, video: video_1)
+      user_video_2 = UserVideo.create(user: user, video: video_2)
+      user_video_3 = UserVideo.create(user: user, video: video_3)
+      # binding.pry
+      expect(user.bookmark_videos).to eq([video_3, video_1, video_2])
+    end
+  end
 end
