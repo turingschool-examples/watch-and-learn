@@ -3,6 +3,7 @@ require 'rails_helper'
 describe UserDashboardFacade do
   it "it exists" do
     user = double
+    allow(user).to receive(:github_token) {"klsfj"}
     facade = UserDashboardFacade.new(user)
 
     expect(facade).to be_a(UserDashboardFacade)
@@ -78,27 +79,14 @@ describe UserDashboardFacade do
       expect(user_1).to have_received(:reload)
       expect(user_1_updated).to have_received(:friends)
     end
-    describe 'friends_with?' do
-      before(:each) do
-        @user_1 = spy("user")
-        allow(@user_1).to receive(:id) { 21 }
-        Friendship = double("Friendship")
-        expect(Friendship).to receive(:where).with(user_id: 21, friend_id: 4) { @ar_relation }
-        @ar_relation = double('relation')
-      end
-      scenario "when true" do
-        @bool = true
-        allow(@ar_relation).to receive(:exists?) { @bool }
-      end
-      scenario "when false" do
-        @bool = false
-        allow(@ar_relation).to receive(:exists?) { @bool }
-      end
-      after(:each) do
-        facade = UserDashboardFacade.new(@user_1)
-        expect(facade.friends_with?(4)).to eq(@bool)
-        expect(@user_1).to have_received(:id)
-      end
+    it 'friends_with?' do
+      user_1, user_2, user_3 = create_list(:user, 3)
+      user_1.friends << user_2
+
+      facade = UserDashboardFacade.new(user_1)
+
+      expect(facade.friends_with?(user_2)).to eq(true)
+      expect(facade.friends_with?(user_3)).to eq(false)
     end
   end
 end

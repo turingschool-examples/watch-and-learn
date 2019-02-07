@@ -8,7 +8,7 @@ describe BookmarkFacade do
   end
   describe 'instance methods' do
     it '#tutorials' do
-      user = double("user")
+      user = create(:user)
       tutorial_1 = create(:tutorial)
       tutorial_2 = create(:tutorial)
       video_1 = create(:video, tutorial: tutorial_1)
