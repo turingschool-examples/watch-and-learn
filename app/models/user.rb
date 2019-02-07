@@ -11,7 +11,6 @@ class User < ApplicationRecord
   has_secure_password
 
   def bookmark_videos
-    # binding.pry
     Video.joins(:user_videos)
     .where("videos.id = user_videos.video_id")
     .where("user_videos.user_id = ?", id)
