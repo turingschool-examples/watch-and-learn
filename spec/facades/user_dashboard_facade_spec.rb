@@ -78,5 +78,27 @@ describe UserDashboardFacade do
       expect(user_1).to have_received(:reload)
       expect(user_1_updated).to have_received(:friends)
     end
+    describe 'friends_with?' do
+      before(:each) do
+        @user_1 = spy("user")
+        allow(@user_1).to receive(:id) { 21 }
+        Friendship = double("Friendship")
+        expect(Friendship).to receive(:where).with(user_id: 21, friend_id: 4) { @ar_relation }
+        @ar_relation = double('relation')
+      end
+      scenario "when true" do
+        @bool = true
+        allow(@ar_relation).to receive(:exists?) { @bool }
+      end
+      scenario "when false" do
+        @bool = false
+        allow(@ar_relation).to receive(:exists?) { @bool }
+      end
+      after(:each) do
+        facade = UserDashboardFacade.new(@user_1)
+        expect(facade.friends_with?(4)).to eq(@bool)
+        expect(@user_1).to have_received(:id)
+      end
+    end
   end
 end
