@@ -48,7 +48,9 @@ describe 'A registered user' do
 
     expect(page).to have_content("Bookmarked Videos")
 
-    expect(page).to have_content(video.title)
-    expect(page).to_not have_content(video_2.title)
+    within '.bookmarked_videos' do
+      expect(page).to have_content(video.title)
+      expect(page).to_not have_content(video_2.title)
+    end 
   end
 end
