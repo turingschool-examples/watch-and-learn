@@ -1,6 +1,6 @@
 class ConfirmationController < ApplicationController
   def create
-    ConfirmationNotifierMailer.confirm(current_user).deliver_now
+    ConfirmationNotifierMailer.confirm(current_user).deliver_later
     redirect_to dashboard_path
   end
 
