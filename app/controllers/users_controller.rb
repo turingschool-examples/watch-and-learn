@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
   def show
     @user_facade = UserDashboardFacade.new(current_user) if current_user.github_token
-    # binding.pry
     @bookmarked_videos = current_user.bookmark_videos if current_user.github_token
   end
 
