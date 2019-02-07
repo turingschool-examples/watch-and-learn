@@ -1,33 +1,85 @@
 require 'rails_helper'
 
 describe 'User Friendships' do
-  describe 'as a logged in user with followers' do
-    xit 'shows a link to add a friend' do
-      user = create(:user, github_token: ENV["GITHUB_TOKEN"])
-      token = user.github_token
+  describe 'as a logged in user' do
+    it 'shows a button to add as a friend' do
+      user_1 = create(:user, github_token: ENV["GITHUB_TOKEN"])
+      user_2 = create(:user, github_token: "imatoken", github_name: "mgoodhart5")
+      user_3 = create(:user, github_token: "tokentoken", github_name: "danbriechle")
+      stub_omniauth
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
+      facade_user = UserDashboardFacade.new(user_1)
+      followers = facade_user.find_all_followers
+      following = facade_user.find_all_following
 
-      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
-      followers = Follower.find_all_followers(token)
-
-      follower_wanda = Follower.new(login: "wandadog", html_url: "https://github.com/wandadog", uid: user.attributes["id"])
-
-      followers << follower_wanda
-      new_followers = followers.reverse!
-
-      follower_2 = new_followers.first
-      follower_1 = new_followers.second
       visit '/dashboard'
 
-      within ('.followers-list') do
-        within (".follower-#{follower_1.login}") do
-          expect(page).to_not have_link("Add as Friend")
+      within '.following-list' do
+        within ".follow-1" do
+          expect(page).to have_button("Add as Friend")
         end
-        expect(page).to have_link("Add #{follower_2.login} as Friend")
-
+      end
+      within '.followers-list' do
+        within ".follower-0" do
+          expect(page).to have_button("Add as Friend")
+        end
       end
     end
-    describe 'as a logged in user with followings' do
-      xit 'shows a link to add a friend' do
+
+    it 'can add friends' do
+      user_1 = create(:user, github_token: ENV["GITHUB_TOKEN"])
+      user_2 = create(:user, github_token: "imatoken", github_name: "mgoodhart5")
+      user_3 = create(:user, github_token: "tokentoken", github_name: "danbriechle")
+
+      stub_omniauth
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
+      facade_user = UserDashboardFacade.new(user_1)
+      followers = facade_user.find_all_followers
+      following = facade_user.find_all_following
+
+      visit '/dashboard'
+
+      within '.following-list' do
+        within ".follow-1" do
+          expect(page).to have_button("Add as Friend")
+          click_button "Add as Friend"
+        end
+      end
+      expect(page).to have_content("Added your new Friend!")
+      expect(current_path).to eq(dashboard_path)
+
+      within '.followers-list' do
+        within ".follower-0" do
+          expect(page).to have_button("Add as Friend")
+          click_button "Add as Friend"
+        end
+      end
+      expect(page).to have_content("Added your new Friend!")
+      expect(current_path).to eq(dashboard_path)
+    end
+
+    it 'shows a list of friends' do
+      user_1 = create(:user, github_token: ENV["GITHUB_TOKEN"])
+      user_2 = create(:user, github_token: "imatoken", github_name: "mgoodhart5")
+      user_3 = create(:user, github_token: "tokentoken", github_name: "danbriechle")
+
+      stub_omniauth
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
+      facade_user = UserDashboardFacade.new(user_1)
+      followers = facade_user.find_all_followers
+      following = facade_user.find_all_following
+
+      visit '/dashboard'
+
+      within '.following-list' do
+        within ".follow-1" do
+          click_button "Add as Friend"
+        end
+      end
+
+      within '.friend-list' do
+        expect(page).to have_content("Your Friends")
+        expect(page).to have_content("mgoodhart")
       end
     end
   end
