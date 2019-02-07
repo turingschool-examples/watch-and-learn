@@ -10,7 +10,7 @@
 
 <%= button_to "Connect to Github", github_login_path, class: "btn btn-primary mb1 bg-teal" %>
 
-<% if current_user.github_token == nil %>
+<% if !@user_facade %>
   <h3> You have no bookmarked sections </h3>
 <% else %>
   <% @user_facade %>
@@ -39,8 +39,8 @@
       <% @user_facade.find_all_following.each_with_index do |follow, index| %>
         <div class="follow-<%= index %>" >
         <li><%= link_to "#{follow.login}", "#{follow.html_url}", class: "following"%></li>
-            <% if follow.user %>
-              <%= link_to "Add as Friend", user_friendships_path(follow.user.id), :method => :post %>
+            <% if follow.has_account? %>
+              <%= button_to "Add as Friend", friendship_index_path(:github_name => follow.login), :method => :post %>
             <% end %>
         </div>
       <% end %>
@@ -51,9 +51,19 @@
       <% @user_facade.find_all_followers.each_with_index do |follower, index| %>
         <div class="follower-<%= index %>" >
           <li><%= link_to "#{follower.login}", "#{follower.html_url}", class: "follower"%></li>
-          <% if follower.user %>
-            <li><%= link_to "Add as Friend", user_friendships_path(follower.user.id), :method => :post %></li>
+          <% if follower.has_account? %>
+            <%= button_to "Add as Friend", friendship_index_path(:github_name => follower.login), :method => :post %>
           <% end %>
+          </div>
       <% end %>
+    <section>
+
+    <section class="friend-list">
+      <h2>Your Friends</h2>
+        <ul>
+        <% current_user.friends.each do |friend| %>
+          <li><%= friend.github_name %></li>
+        <% end %>
+      </ul>
     </section>
 <% end %>

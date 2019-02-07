@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
   get 'tags/:tag', to: 'welcome#index', as: :tag
   get '/register', to: 'users#new'
+  resources :friendships, only: [:create], as: "friendship"
 
   namespace :admin do
     get "/dashboard", to: "dashboard#show"
@@ -38,9 +39,7 @@ Rails.application.routes.draw do
   # Is this being used?
   get '/video', to: 'video#show'
 
-  resources :users, only: [:new, :create, :update, :edit] do
-    resources :friendships, only: [:create]
-  end 
+  resources :users, only: [:new, :create, :update, :edit]
 
   resources :tutorials, only: [:show, :index] do
     resources :videos, only: [:show, :index]
