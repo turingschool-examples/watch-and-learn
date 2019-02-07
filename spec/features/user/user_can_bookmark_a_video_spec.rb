@@ -31,7 +31,7 @@ describe 'A registered user' do
     click_on 'Bookmark'
     expect(page).to have_content("Already in your bookmarks")
   end
-  it "can see a list of all bookmarked segments" do
+  it "can see a list of all bookmarked segments", :vcr do
     tutorial= create(:tutorial, title: "How to Tie Your Shoes")
     video = create(:video, title: "The Bunny Ears Technique", tutorial: tutorial)
     tutorial_2= create(:tutorial, title: "How to Not Tie Your Shoes")
@@ -51,6 +51,6 @@ describe 'A registered user' do
     within '.bookmarked_videos' do
       expect(page).to have_content(video.title)
       expect(page).to_not have_content(video_2.title)
-    end 
+    end
   end
 end
