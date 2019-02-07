@@ -4,10 +4,17 @@ class Admin::TutorialsController < Admin::BaseController
   end
 
   def create
+    tutorial = Tutorial.create(tutorial_params)
+    flash[:success] = "Successfully created tutorial"
+    redirect_to admin_tutorial_path(tutorial.id)
   end
 
   def new
-    @tutorial = Tutorial.new
+    @tutorial ||= Tutorial.new
+  end
+
+  def show
+    @tutorial = Tutorial.find(params[:id])
   end
 
   def update
