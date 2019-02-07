@@ -5,11 +5,7 @@ class TutorialFacade < SimpleDelegator
   end
 
   def current_video
-    if @video_id
-      videos.find(@video_id)
-    else
-      videos.first
-    end
+    @video_id ? videos.find(@video_id) : videos.first
   end
 
   def next_video
