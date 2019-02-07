@@ -48,7 +48,7 @@ describe 'a registered user on the dashboard page' do
 
     open_email("ricardoledesmadev@gmail.com")
     expect(current_email).to have_content("Hello Ricardo Ledesma, Justin Mauldin has invited you to join Turing Tutorials. You can create an account")
-    current_email.click_link("Click here to create your account")
+    current_email.click_link("Click here to get started")
 
     expect(current_path).to eq(get_started_path)
     expect(page).to have_content("Get Started")
