@@ -57,9 +57,9 @@ describe 'Visitor can create an account', :js do
     expect(User.last.activation_token).to_not be_nil
   end
   it 'can click on the link in the activation email to activate their account' do
-    user = User.create(email: 'jimbob@aol.com', password: 'password', first_name: 'Jim', last_name: 'Bob')
-    
-    visit activation_path(user.activation_token)
+    user = User.create!(email: 'jimbob@aol.com', password: 'password', first_name: 'Jim', last_name: 'Bob')
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+    visit activation_path(token: user.activation_token)
     
     expect(page).to have_content('Thank you! Your account is now activated.')
     
