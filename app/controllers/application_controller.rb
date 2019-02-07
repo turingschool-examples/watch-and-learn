@@ -6,7 +6,6 @@ class ApplicationController < ActionController::Base
   helper_method :user_in_database
   helper_method :user_not_friend
 
-
   add_flash_types :success
 
   def current_user
