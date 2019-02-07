@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  before_create :create_activation_token
+  
   has_many :user_videos
   has_many :videos, through: :user_videos
 
@@ -13,5 +15,11 @@ class User < ApplicationRecord
 
   def friends?
     !(friends.empty?)
+  end
+  
+  private
+  
+  def create_activation_token
+    self.activation_token = SecureRandom.base58
   end
 end
