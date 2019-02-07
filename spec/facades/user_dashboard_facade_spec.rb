@@ -52,5 +52,20 @@ describe UserDashboardFacade do
 
       expect(user_facade.my_bookmarked_tutorials).to eq([tutorial_1])
     end
+    describe '#has_github?' do
+      scenario 'when true' do
+        user_1 = double("user with github")
+        allow(user_1).to receive(:github_token) { "sdf34895f" }
+        facade = UserDashboardFacade.new(user_1)
+        expect(facade.has_github?).to eq(true)
+      end
+      scenario 'when false' do
+        user_1 = spy("user without github")
+        allow(user_1).to receive(:github_token) { nil }
+        facade = UserDashboardFacade.new(user_1)
+        expect(facade.has_github?).to eq(false)
+        expect(user_1).to have_received(:github_token).twice
+      end
+    end
   end
 end
