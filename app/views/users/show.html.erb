@@ -8,6 +8,7 @@
     <li> <%= current_user.email%> </li>
   </ul>
 
+<%= button_to "Send an Invite", invite_path, class: "btn btn-primary mb1 bg-teal", method: :get %>
 <%= button_to "Connect to Github", github_login_path, class: "btn btn-primary mb1 bg-teal" %>
 
 <% if !@user_facade %>
