@@ -1,2 +1,4 @@
+Hello There!
 Welcome! <%= @user.email %>
-Thanks for signing up! Your account is now active!
+Thanks for signing up! Click link to activate your account:
+<%= activation_url(@user, host: "https://hidden-springs-90979.herokuapp.com" )%>

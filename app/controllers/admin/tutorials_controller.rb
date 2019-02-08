@@ -29,6 +29,6 @@
 
   private
   def tutorial_params
-    params.require(:tutorial).permit(:title, :description, :thumbnail, videos_attributes: [:title, :description, :video_id, :thumbnail, :position])
+    params.require(:tutorial).permit(:tag_list,:title, :description, :thumbnail, videos_attributes: [:title, :description, :video_id, :thumbnail, :position])
   end
 end

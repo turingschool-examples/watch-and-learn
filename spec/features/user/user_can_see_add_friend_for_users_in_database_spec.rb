@@ -43,5 +43,17 @@ describe "As a logged in user" do
         expect(page).to have_content("Friend removed.")
       end
     end
+    it "I can't remove a user as a friend that is not my friend" do
+      VCR.use_cassette("Weird remove friend") do
+
+        current_driver = Capybara.current_driver
+        Capybara.current_driver = :rack_test
+        page.driver.submit :delete, user_friendship_path(@user, @user_2), {}
+        expect(current_path).to eq(dashboard_path)
+        expect(page).to have_content("This folk is not your buddy")
+        Capybara.current_driver = current_driver
+
+      end
+    end
   end
 end

@@ -5,7 +5,7 @@ class FriendshipsController < ApplicationController
       flash[:notice] = "Added friend: #{@friendship.friend.first_name}"
       redirect_to dashboard_path
     else
-      flash[:error] = "Unable to add friend."
+      flash[:notice] = "Unable to add friend."
       redirect_to dashboard_path
     end
   end
@@ -16,7 +16,7 @@ class FriendshipsController < ApplicationController
       @friendship.destroy
       flash[:notice] = "Friend removed."
     else
-      flash[:error] = "This folk is not your buddy"
+      flash[:notice] = "This folk is not your buddy"
     end
     redirect_to dashboard_path
   end

@@ -1,5 +1,6 @@
 <main class="tutorials">
   <h2><%= @facade.title %></h2>
+  <p><%= @facade.description %></p>
   <h1 id="message"></h1>
   <div class="col col-4">
     <h4>Videos</h4>
@@ -10,7 +11,7 @@
       </li>
       <% end %>
     </ul>
-  </div>  
+  </div>
 
   <div class="col col-8">
     <% if @facade.current_video %>
