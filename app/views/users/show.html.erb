@@ -3,6 +3,9 @@
   <%= button_to 'Connect to Github', "/auth/github"%>
   <%= button_to 'Log Out', logout_path, method: 'delete', class: "btn btn-primary mb1 bg-teal" %>
   <h3>Account Details</h3>
+  <% if current_user.active == false %>
+  <p>"This account has not yet been activated. Please check your email."</p>
+  <% end %>
   <ul>
     <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
     <li> <%= current_user.email%> </li>
