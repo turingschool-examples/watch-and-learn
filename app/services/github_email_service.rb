@@ -1,26 +1,18 @@
-class GithubService
-  def initialize(user)
+class GithubEmailService
+  def initialize(user, github_handle)
     @user = user
+    @github_handle = github_handle
   end
 
-  def find_repos
-    get_json('/user/repos')
+  def find_email
+    get_json("/users/#{@github_handle}")
   end
-
-  def find_followers
-    get_json('/user/followers')
-  end
-
-  def find_following
-    get_json('/user/following')
-  end
-
 
   private
 
   def get_json(url)
     response = conn.get(url)
-    JSON.parse(response.body, symbolize_names: true).take(5)
+    JSON.parse(response.body, symbolize_names: true)
   end
 
   def conn
