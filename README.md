@@ -114,6 +114,10 @@ class Following
 ## Authorization
 We used OmniAuth for our authorization. Another new tech for us!
 
+## But our eMaIlSsssSSSSssss
+We also used MailCatcher to help us test our ability to send emails from our app.  Unfortunately, we needed a live subject:
+![emails](emails.png)
+
 ## Testing
 We used RSpec for testing and kept track of our test coverage through SimpleCov
 
