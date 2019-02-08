@@ -25,12 +25,12 @@ describe "as a logged in user" do
       end
 
       expect(page).to have_content("Followers:")
-      within(first(".follower")) do
+      within(first(".Follower")) do
         expect(page).to have_link()
       end
 
       expect(page).to have_content("Following:")
-      within(first(".following")) do
+      within(first(".Following")) do
         expect(page).to have_link()
       end
     end
