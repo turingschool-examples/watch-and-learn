@@ -8,12 +8,6 @@ Project Spec and Evaluation Rubric: https://github.com/turingschool-examples/bro
 
 Students will continue to build on the existing code base using the cards within the following Github Project: https://github.com/turingschool-examples/brownfield-of-dreams/projects/1
 
-**Learning Goals and Labels**
-
-The cards are labeled in a way that correspond to learning goals or to specific areas you might personally want to focus on.
-
-Cards should be completed from top to bottom in the To Do column. Cards labeled `good first issue` are good as filler work and will allow you to practice common Rails skills.
-
 ### About the Project
 
 This is a Ruby on Rails application used to organize YouTube content used for online learning. Each tutorial is a playlist of video segments. Within the application an admin is able to create tags for each tutorial in the database. A visitor or registered user can then filter tutorials based on these tags.
@@ -65,3 +59,68 @@ $ bundle exec rspec
 ### Versions
 * Ruby 2.4.1
 * Rails 5.2.0
+
+## A Peak into our Code:
+
+### Database Schema
+Our first step in this brownfield project was to understand the relationships involved.  We came up with this schema as a starting point:
+![schema](schema.png)
+
+### Facades
+New for us on this project was the concept of facades.  We used several to control various services throughout our project.  Once such facade looked like this:
+```
+class UserDashboardFacade
+  def initialize(user)
+    @user = user
+  end
+
+  def find_all_followers
+    data = service.find_followers
+    data.map do |raw_follower|
+      Follower.new(raw_follower)
+    end
+  end
+  ```
+
+### Services
+Speaking of services, this was also a new concept for us to explore.  Because we are consuming APIs from various places, we needed a way to control this.  One of our services, we called the Github_Service.  We used methods in this class to get our json response back from the API.
+```
+class GithubService
+  def initialize(user)
+    @user = user
+  end
+
+  def find_repos
+    get_json('/user/repos')
+  end
+
+  def find_followers
+    get_json('/user/followers')
+  end
+  ```
+
+## POROs
+It made sense to us to create a few plain old Ruby objects for this project, and I'm still enjoying the old shortcuts from our first few weeks at Turing.
+```
+class Following
+  attr_reader :login, :html_url, :user
+  def initialize(attributes)
+    @login = attributes[:login]
+    @html_url = attributes[:html_url]
+    @user = false
+  end
+  ```
+
+## Authorization
+We used OmniAuth for our authorization. Another new tech for us!
+
+## But our eMaIlSsssSSSSssss
+We also used MailCatcher to help us test our ability to send emails from our app.  Unfortunately, we needed a live subject:
+![emails](emails.png)
+
+## Testing
+We used RSpec for testing and kept track of our test coverage through SimpleCov
+
+## Contributors
+Ali Benetka - https://github.com/abenetka
+Leah Miller - https://github.com/le3ah
