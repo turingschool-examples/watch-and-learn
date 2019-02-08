@@ -41,4 +41,21 @@ describe 'Visitor' do
       end
     end
   end
+
+  it 'can click on tags' do
+    tutorial1 = create(:tutorial, classroom: true)
+    tutorial2 = create(:tutorial, classroom: true)
+    tutorial3 = create(:tutorial)
+    tutorial4 = create(:tutorial)
+    tag = ActsAsTaggableOn::Tag.create!(name: "Bongo", taggings_count: 3 )
+    tutorial4.tags << tag
+    tutorial1.tags << tag
+    visit root_path
+    click_on "Bongo"
+    expect(page).to have_content(tutorial4.title)
+    expect(page).to have_content(tutorial4.description)
+    expect(page).to_not have_content(tutorial1.title)
+    expect(page).to_not have_content(tutorial2.title)
+    expect(page).to_not have_content(tutorial3.title)
+  end
 end
