@@ -5,8 +5,8 @@ class SessionsController < ApplicationController
 
   def create
     @user = User.find_by(email: params[:session][:email])
-    successful_session if @user && @user.authenticate(params[:session][:password])
-    unsuccessful_session unless @user && @user.authenticate(params[:session][:password])
+    successful_session if login_success?
+    unsuccessful_session unless login_success?
   end
 
   def destroy
@@ -15,6 +15,10 @@ class SessionsController < ApplicationController
   end
 
   private
+
+  def login_success?
+    @user && @user.authenticate(params[:session][:password])
+  end
 
   def successful_session
     session[:user_id] = @user.id
