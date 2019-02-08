@@ -6,29 +6,12 @@
       <li class="repo"><%= link_to(repo.name, repo.url) %></li>
     <% end %>
   </ul>
-  <h3>Followers:</h3>
-  <ul>
-    <% @user_facade.followers.each do |follower| %>
-    <li class="follower" id="follower-<%= follower.uid %>">
-       <%= link_to(follower.name, follower.url) %>
-       <% if follower.on_our_site? && !@user_facade.friends_with?(follower.id) %>
-         <%= button_to("Add Friend", friendships_path(follower.id), method: :post, class: "mt2 btn btn-primary mb1 bg-teal") %>
-       <% end %>
-    </li>
-    <% end %>
-  </ul>
-  <h3>Following:</h3>
-  <ul>
-    <% @user_facade.followings.each do |following| %>
-    <li class="following" id="following-<%= following.uid %>">
-       <%= link_to(following.name, following.url) %>
-       <% if following.on_our_site? && !@user_facade.friends_with?(following.id) %>
-         <%= button_to("Add Friend", friendships_path(following.id), method: :post, class: "mt2 btn btn-primary mb1 bg-teal") %>
-       <% end %>
-    </li>
 
-    <% end %>
-  </ul>
+  <h3>Followers:</h3>
+  <%= render partial: "github_relations", locals: {relations: @user_facade.followers} %>
+
+  <h3>Following:</h3>
+  <%= render partial: "github_relations", locals: {relations: @user_facade.followings} %>
 
   <h3>Friends on our site:</h3>
   <ul id="friendships">
