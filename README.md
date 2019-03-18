@@ -65,3 +65,80 @@ $ bundle exec rspec
 ### Versions
 * Ruby 2.4.1
 * Rails 5.2.0
+
+
+### DTR
+
+
+Group Member Names: Zach Nager and Teresa Knowles
+
+Project Expectations: What does each group member hope to get out of this project? 
+-Strive for 4s but make sure we have 3s all across first. 
+-Gain a solid understanding of working with APIs 
+-Learn Oauth 
+-Learn how to squash commits and Ruby style
+
+Goals and expectations:
+-Learn more things to a good level and not just one thing very well
+	
+Team strengths:
+-Zach: happy to put in as much time as needed, high expectations
+-Teresa: trying new things, taking risks, research
+Look out for:
+-Zach: asking others for help
+-Teresa: Tend to go into "rabbit holes" trying to have additional features
+
+How to overcome obstacles:
+-Open communication
+-Honest code reviews
+-Keeping an open mind
+-Ask for help when needed after struggling for a while
+
+
+Schedule Expectations (When are we available to work together and individually?):
+-Afternoon work, no early mornings
+-Review any code from the night before every morning
+-Sundays off or remote day
+-Saturdays are work day
+-Usually we can stay at school after classes are over, 6:30-7pm. Some days Teresa will have to go home sooner
+
+
+Communication Expectations (How and often will we communicate? How do we keep lines of communication open?):
+-Daily over slack and in person
+-Late night messages are ok but might be answered the next day
+
+
+Abilities Expectations (Technical strengths and areas for desired improvement):
+Improvement:
+-Teresa: Using TDD as a design tool
+-Zach: Use declarative programming and keep OOP principles in mind
+Strengths:
+-Zach: Comfortable with Active Record and Ruby
+-Teresa: Comfortable with MVC and routes
+
+Workload Expectations (What features do we each want to work on?):
+-Do the setup together and then divide the workload as needed
+
+
+Workflow Expectations (Git workflow/Tools/Code Review/Reviewing Pull Requests): 
+-Start out working as a pair and then reasses
+-Making sure we don't overlap on work 
+-Be clear on what you're working on 
+-Never merge your own PR
+-Comment on every PR
+
+
+Expectations for giving and receiving feedback:
+-Open feedback
+-Be real
+
+
+Agenda to discuss project launch:
+
+Ideas:
+ 
+Tools: 
+-Use Github project 
+-Learn more tools (Rubocop, Hound, etc)
+
+Additional Notes:
