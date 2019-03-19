@@ -16,6 +16,14 @@ VCR.configure do |config|
   config.filter_sensitive_data("<YOUTUBE_API_KEY>") { ENV['YOUTUBE_API_KEY'] }
 end
 
+def stub_get_json(url, filename)
+  json_response = File.open("./fixtures/#{filename}")
+
+  stub_request(:get, url).
+    to_return(status: 200, body: json_response)
+
+end
+
 
 ActiveRecord::Migration.maintain_test_schema!
 
