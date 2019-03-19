@@ -19,6 +19,14 @@
         <li class="repo"><%= link_to repository.name, repository.url %></li>
       <% end %>
       </ul>
+      <section id="followers">
+        <h3>Followers</h3>
+        <ul>
+        <% facade.followers.each do |follower| %>
+          <li class='follower'><%= link_to follower.handle, follower.url %></li>
+        <% end %>
+      </ul>
+      </section>
     </section>
   <% end %>
 </section>

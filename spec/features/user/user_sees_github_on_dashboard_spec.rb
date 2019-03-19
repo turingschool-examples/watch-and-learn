@@ -24,9 +24,25 @@ describe'when I visit my dashboard' do
 
         within "#github" do
           expect(page).to have_css(".repo", count: 5)
-          expect(page).to have_link 'activerecord-obstacle-course'
-          expect(page).to have_link 'activerecord_exploration'
-          expect(page).to have_link 'apollo_14'
+          expect(page).to have_link 'battleship'
+          expect(page).to have_link 'little_shop'
+          expect(page).to have_link 'brownfield-of-dreams'
+        end
+      end
+    end
+    it 'shows me a list of my github followers' do
+      VCR.use_cassette("user/dashboard_github_follower_request") do
+        visit dashboard_path
+
+        within '#github' do
+          expect(page).to have_content('Followers')
+
+          within '#followers' do
+            expect(page).to have_css(".follower")
+            expect(page).to have_link('plapicola')
+            expect(page).to have_link('m-mrcr')
+            expect(page).to have_link('n-flint')
+          end
         end
       end
     end
