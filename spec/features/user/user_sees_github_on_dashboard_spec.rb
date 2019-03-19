@@ -9,7 +9,7 @@ describe'when I visit my dashboard' do
     end
 
     it 'I see a section for github' do
-      VCR.use_cassette("user/dashboard_github_request") do
+      VCR.use_cassette("views/dashboard_github_request") do
         visit dashboard_path
 
         within "#github" do
@@ -19,7 +19,7 @@ describe'when I visit my dashboard' do
     end
 
     it 'Within the github section I see a list of five repos linking to github' do
-      VCR.use_cassette("user/dashboard_github_request") do
+      VCR.use_cassette("views/dashboard_github_request") do
         visit dashboard_path
 
         within "#github" do
@@ -32,7 +32,7 @@ describe'when I visit my dashboard' do
     end
 
     it 'shows me a list of users who follow me' do
-      VCR.use_cassette("user/dashboard_github_request") do
+      VCR.use_cassette("views/dashboard_github_request") do
         visit dashboard_path
 
         within '#github' do
@@ -49,7 +49,7 @@ describe'when I visit my dashboard' do
     end
 
     it 'shows me a list of users I follow' do
-      VCR.use_cassette("user/dashboard_github_request") do
+      VCR.use_cassette("views/dashboard_github_request") do
         visit dashboard_path
 
         within '#github' do

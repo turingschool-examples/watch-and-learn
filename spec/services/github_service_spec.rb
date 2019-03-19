@@ -47,7 +47,7 @@ describe 'Github Service' do
         user = create(:user)
         allow_any_instance_of(User).to receive(:github_token).and_return(ENV['GITHUB_API_KEY'])
 
-        result = VCR.use_cassette("services/user_followers") {
+        result = VCR.use_cassette("services/user_following") {
           GithubService.new(user).user_following
         }
 
