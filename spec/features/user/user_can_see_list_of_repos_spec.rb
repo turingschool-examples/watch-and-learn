@@ -16,6 +16,10 @@ describe 'User' do
         expect(page).to have_css(".repository", count: 5)
         within(first(".repository")) do
           expect(page).to have_css(".name")
+
+          url = "https://github.com/juliamarco/activerecord-obstacle-course"
+
+          expect(page).to have_link("activerecord-obstacle-course", href: url)
         end
       end
     end

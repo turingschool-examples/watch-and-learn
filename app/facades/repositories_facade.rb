@@ -6,6 +6,7 @@ class RepositoriesFacade
 
   def repositories
     response = service.get_repos(@quantity)
+    # binding.pry
     response.map do |repo_data|
       Repository.new(repo_data)
     end

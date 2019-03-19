@@ -13,6 +13,10 @@ describe Repository do
   end
 
   it 'has a name' do
-    expect(@repo.name).to eq(@github_data["name"])
+    expect(@repo.name).to eq(@github_data[:name])
+  end
+
+  it 'has a full name' do
+    expect(@repo.full_name).to eq(@github_data[:full_name])
   end
 end
