@@ -24,7 +24,7 @@ describe'when I visit my dashboard' do
 
         within "#github" do
           expect(page).to have_css(".repo", count: 5)
-          expect(page).to have_link 'battleship'
+          expect(page).to have_link('battleship', href: "https://github.com/JennicaStiehl/battleship")
           expect(page).to have_link 'little_shop'
           expect(page).to have_link 'brownfield-of-dreams'
         end
@@ -40,7 +40,7 @@ describe'when I visit my dashboard' do
 
           within '#followers' do
             expect(page).to have_css(".follower")
-            expect(page).to have_link('plapicola')
+            expect(page).to have_link('plapicola', href: "https://github.com/plapicola")
             expect(page).to have_link('m-mrcr')
             expect(page).to have_link('n-flint')
           end
@@ -57,7 +57,7 @@ describe'when I visit my dashboard' do
 
           within '#followed' do
             expect(page).to have_css(".followed-user")
-            expect(page).to have_link('teresa-m-knowles')
+            expect(page).to have_link('teresa-m-knowles', href: "https://github.com/teresa-m-knowles")
             expect(page).to have_link('n-flint')
             expect(page).to have_link('plapicola')
           end
