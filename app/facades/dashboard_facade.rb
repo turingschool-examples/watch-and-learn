@@ -11,8 +11,14 @@ class DashboardFacade
   end
 
   def followers
-    @followers ||= @github.user_followers.map do |follower_info|
-      Follower.new(follower_info)
+    @followers ||= @github.user_followers.map do |github_user_info|
+      GithubUser.new(github_user_info)
+    end
+  end
+
+  def following
+    @following ||= @github.user_following.map do |github_user_info|
+      GithubUser.new(github_user_info)
     end
   end
 end

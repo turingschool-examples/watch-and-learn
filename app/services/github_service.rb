@@ -5,11 +5,15 @@ class GithubService
   end
 
   def user_repositories
-    @user_repositories ||=  get_user_repositories
+    @user_repositories ||=  get_json("/user/repos")
   end
 
   def user_followers
-    @user_followers ||= get_user_followers
+    @user_followers ||= get_json("/user/followers")
+  end
+
+  def user_following
+    @user_following ||= get_json("/user/following")
   end
 
   private
@@ -21,11 +25,7 @@ class GithubService
     end
   end
 
-  def get_user_repositories
-    JSON.parse(conn.get("/user/repos").body, symbolize_names: true)
-  end
-
-  def get_user_followers
-    JSON.parse(conn.get("/user/followers").body, symbolize_names: true)
+  def get_json(url)
+    JSON.parse(conn.get(url).body, symbolize_names: true)
   end
 end

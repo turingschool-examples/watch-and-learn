@@ -41,5 +41,21 @@ describe 'Github Service' do
         expect(result[0]).to have_key(:html_url)
       end
     end
+
+    describe '.user_following' do
+      it 'returns users being followed by the current user' do
+        user = create(:user)
+        allow_any_instance_of(User).to receive(:github_token).and_return(ENV['GITHUB_API_KEY'])
+
+        result = VCR.use_cassette("services/user_following") {
+          GithubService.new(user).user_following
+        }
+
+        expect(result).to be_a(Array)
+        expect(result[0]).to be_a(Hash)
+        expect(result[0]).to have_key(:login)
+        expect(result[0]).to have_key(:html_url)
+      end
+    end
   end
 end
