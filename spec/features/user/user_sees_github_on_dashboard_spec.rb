@@ -30,8 +30,9 @@ describe'when I visit my dashboard' do
         end
       end
     end
-    it 'shows me a list of my github followers' do
-      VCR.use_cassette("user/dashboard_github_follower_request") do
+
+    it 'shows me a list of users who follow me' do
+      VCR.use_cassette("user/dashboard_github_request") do
         visit dashboard_path
 
         within '#github' do
@@ -42,6 +43,23 @@ describe'when I visit my dashboard' do
             expect(page).to have_link('plapicola')
             expect(page).to have_link('m-mrcr')
             expect(page).to have_link('n-flint')
+          end
+        end
+      end
+    end
+
+    it 'shows me a list of users I follow' do
+      VCR.use_cassette("user/dashboard_github_request") do
+        visit dashboard_path
+
+        within '#github' do
+          expect(page).to have_content('Following')
+
+          within '#followed' do
+            expect(page).to have_css(".followed-user")
+            expect(page).to have_link('teresa-m-knowles')
+            expect(page).to have_link('n-flint')
+            expect(page).to have_link('plapicola')
           end
         end
       end
