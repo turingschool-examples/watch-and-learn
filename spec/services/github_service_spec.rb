@@ -19,6 +19,7 @@ describe GithubService do
         result = service.get_user_repos(user)
         expect(result).to be_a(Array)
         expect(result[0]).to have_key(:html_url)
+        expect(result[0]).to have_key(:full_name)
       end
     end
   end
