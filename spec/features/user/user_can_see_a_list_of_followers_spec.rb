@@ -16,10 +16,10 @@ describe "User" do
         expect(page).to have_css(".follower")
         within(first(".follower")) do
           expect(page).to have_css(".handle")
-
-          url = "https://github.com/timnallen"
-          expect(page).to have_link("timnallen", href: url)
         end
+
+        url = "https://github.com/timnallen"
+        expect(page).to have_link("timnallen", href: url)
       end
     end
   end
