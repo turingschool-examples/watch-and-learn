@@ -8,7 +8,10 @@ describe 'A registered user' do
       @user_3 = create(:user)
     end
     it 'can see a list of 5 of their GitHub repositories' do
-      WebMock.disable!
+
+      filename = 'user_repos.json'
+      url = "https://api.github.com/user/repos"
+      stub_get_json(url, filename)
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user_2)
 
