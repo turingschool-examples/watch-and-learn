@@ -14,8 +14,15 @@
     <h3>Github</h3>
     <div class="repos">
       <% facade.user_repos[0..4].each do |repo| %>
-        <%= repo.name %>
-        <%= link_to "#{repo.url}", repo.url %>
+        <%= link_to "#{repo.name}", repo.url %>
+        <br>
+        <br>
+      <% end %>
+    </div>
+    <h4>Followers</h4>
+    <div class="followers">
+      <% facade.user_followers.each do |follower| %>
+        <%= link_to "#{follower.name}", follower.url %>
         <br>
         <br>
       <% end %>

@@ -22,5 +22,21 @@ describe GithubService do
         expect(result[0]).to have_key(:full_name)
       end
     end
+    context '#get_user_followers' do
+      it 'returns followers', :vcr do
+        filename = 'user_followers.json'
+        url = "https://api.github.com/user/followers"
+        stub_get_json(url, filename)
+        user = create(:user, github_token: ENV["github_key"])
+
+        service = GithubService.new
+
+        result = service.get_user_followers(user)
+        expect(result).to be_a(Array)
+
+        expect(result[0]).to have_key(:login)
+        expect(result[0]).to have_key(:html_url)
+      end
+    end
   end
 end

@@ -16,11 +16,12 @@ describe 'A registered user' do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user_2)
 
       visit dashboard_path
+      
 
       expect(page).to have_content("Github")
       expect(page).to have_css('.repos')
       within ".repos" do
-        expect(page).to have_link('https://github.com/csvlewis/activerecord-obstacle-course')
+        expect(page).to have_link('activerecord-obstacle-course')
         expect(page).to have_link(count: 5)
       end
     end

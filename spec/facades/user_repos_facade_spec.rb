@@ -1,11 +1,11 @@
 require 'rails_helper'
 
-describe UserReposFacade do
+describe UserGithubFacade do
   it 'exists' do
     attributes = {}
-    facade = UserReposFacade.new(attributes)
+    facade = UserGithubFacade.new(attributes)
 
-    expect(facade).to be_a(UserReposFacade)
+    expect(facade).to be_a(UserGithubFacade)
   end
 
   context 'instance methods' do
@@ -16,9 +16,23 @@ describe UserReposFacade do
         stub_get_json(url, filename)
         user = create(:user, github_token: ENV['github_key'])
 
-        facade = UserReposFacade.new(user)
+        facade = UserGithubFacade.new(user)
 
         expect(facade.user_repos).to be_a(Array)
+      end
+    end
+
+    context '#user_followers' do
+      it 'returns a list of the user\'s followers' do
+        filename = 'user_followers.json'
+        url = "https://api.github.com/user/followers"
+        stub_get_json(url, filename)
+
+        user = create(:user, github_token: ENV['github_key'])
+
+        facade = UserGithubFacade.new(user)
+
+        expect(facade.user_followers).to be_a(Array)
       end
     end
   end
