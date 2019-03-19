@@ -29,7 +29,7 @@ describe 'Dashboard facade' do
           facade = DashboardFacade.new(user)
 
           expect(facade.followers).to be_a(Array)
-          expect(facade.followers.first).to be_a(Follower)
+          expect(facade.followers.first).to be_a(GithubUser)
         end
       end
     end
