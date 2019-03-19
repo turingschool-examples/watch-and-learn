@@ -11,6 +11,8 @@ describe UserReposFacade do
 
   context 'instance methods' do
     context '#user_repos' do
+      
+
       it 'returns a list of the user\'s first 5 repos' do
         WebMock.disable!
         user = create(:user, github_token: ENV['github_key'])
