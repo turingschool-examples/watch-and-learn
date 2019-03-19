@@ -8,10 +8,10 @@ RSpec.describe UserGithubReposFacade do
 
   context 'instance methods' do
     it 'returns an array of repositories' do
-      json_response = File.open('./fixtures/github_repos.json')
+      filename = 'teresa_github_repos.json'
+      url = "https://api.github.com/user/repos"
 
-      stub_request(:get, "https://api.github.com/user/repos").
-        to_return(status: 200, body: json_response)
+      stub_get_json(url,filename)
 
       facade = UserGithubReposFacade.new
       expect(facade.user_repos.class).to eq(Array)
@@ -22,10 +22,10 @@ RSpec.describe UserGithubReposFacade do
     end
 
     it 'gets top repositories' do
-      json_response = File.open('./fixtures/github_repos.json')
+      filename = 'teresa_github_repos.json'
+      url = "https://api.github.com/user/repos"
 
-      stub_request(:get, "https://api.github.com/user/repos").
-        to_return(status: 200, body: json_response)
+      stub_get_json(url,filename)
 
       facade = UserGithubReposFacade.new
 
