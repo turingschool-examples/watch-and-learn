@@ -1,4 +1,9 @@
 class UserGithubReposFacade
+
+  def initialize(user)
+    @user = user
+  end
+
   def user_repos
     response = service.get_repos
     response.map do |repo_data|
@@ -11,6 +16,6 @@ class UserGithubReposFacade
   end
 
   def service
-    GithubService.new
+    GithubService.new(@user)
   end
 end
