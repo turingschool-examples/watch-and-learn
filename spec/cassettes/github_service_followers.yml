@@ -1,0 +1,76 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.github.com/user/followers
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - token 20a2a4a23a1aab662018ca7e9176791e11a8714f
+      User-Agent:
+      - Faraday v0.12.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Tue, 19 Mar 2019 23:33:21 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4993'
+      X-Ratelimit-Reset:
+      - '1553042001'
+      Cache-Control:
+      - private, max-age=60, s-maxage=60
+      Vary:
+      - Accept, Authorization, Cookie, X-GitHub-OTP
+      Etag:
+      - W/"8840e8e3896b993046f5f06652279ff5"
+      X-Oauth-Scopes:
+      - repo, user
+      X-Accepted-Oauth-Scopes:
+      - ''
+      X-Github-Media-Type:
+      - github.v3; format=json
+      Access-Control-Expose-Headers:
+      - ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
+        X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval,
+        X-GitHub-Media-Type
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Content-Security-Policy:
+      - default-src 'none'
+      X-Github-Request-Id:
+      - CB1B:1E6F:245E29:518514:5C917C41
+    body:
+      encoding: ASCII-8BIT
+      string: '[{"login":"m-mrcr","id":28820023,"node_id":"MDQ6VXNlcjI4ODIwMDIz","avatar_url":"https://avatars3.githubusercontent.com/u/28820023?v=4","gravatar_id":"","url":"https://api.github.com/users/m-mrcr","html_url":"https://github.com/m-mrcr","followers_url":"https://api.github.com/users/m-mrcr/followers","following_url":"https://api.github.com/users/m-mrcr/following{/other_user}","gists_url":"https://api.github.com/users/m-mrcr/gists{/gist_id}","starred_url":"https://api.github.com/users/m-mrcr/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/m-mrcr/subscriptions","organizations_url":"https://api.github.com/users/m-mrcr/orgs","repos_url":"https://api.github.com/users/m-mrcr/repos","events_url":"https://api.github.com/users/m-mrcr/events{/privacy}","received_events_url":"https://api.github.com/users/m-mrcr/received_events","type":"User","site_admin":false},{"login":"n-flint","id":34421236,"node_id":"MDQ6VXNlcjM0NDIxMjM2","avatar_url":"https://avatars3.githubusercontent.com/u/34421236?v=4","gravatar_id":"","url":"https://api.github.com/users/n-flint","html_url":"https://github.com/n-flint","followers_url":"https://api.github.com/users/n-flint/followers","following_url":"https://api.github.com/users/n-flint/following{/other_user}","gists_url":"https://api.github.com/users/n-flint/gists{/gist_id}","starred_url":"https://api.github.com/users/n-flint/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/n-flint/subscriptions","organizations_url":"https://api.github.com/users/n-flint/orgs","repos_url":"https://api.github.com/users/n-flint/repos","events_url":"https://api.github.com/users/n-flint/events{/privacy}","received_events_url":"https://api.github.com/users/n-flint/received_events","type":"User","site_admin":false},{"login":"MaryBork","id":38509894,"node_id":"MDQ6VXNlcjM4NTA5ODk0","avatar_url":"https://avatars1.githubusercontent.com/u/38509894?v=4","gravatar_id":"","url":"https://api.github.com/users/MaryBork","html_url":"https://github.com/MaryBork","followers_url":"https://api.github.com/users/MaryBork/followers","following_url":"https://api.github.com/users/MaryBork/following{/other_user}","gists_url":"https://api.github.com/users/MaryBork/gists{/gist_id}","starred_url":"https://api.github.com/users/MaryBork/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/MaryBork/subscriptions","organizations_url":"https://api.github.com/users/MaryBork/orgs","repos_url":"https://api.github.com/users/MaryBork/repos","events_url":"https://api.github.com/users/MaryBork/events{/privacy}","received_events_url":"https://api.github.com/users/MaryBork/received_events","type":"User","site_admin":false},{"login":"PeregrineReed","id":39976770,"node_id":"MDQ6VXNlcjM5OTc2Nzcw","avatar_url":"https://avatars3.githubusercontent.com/u/39976770?v=4","gravatar_id":"","url":"https://api.github.com/users/PeregrineReed","html_url":"https://github.com/PeregrineReed","followers_url":"https://api.github.com/users/PeregrineReed/followers","following_url":"https://api.github.com/users/PeregrineReed/following{/other_user}","gists_url":"https://api.github.com/users/PeregrineReed/gists{/gist_id}","starred_url":"https://api.github.com/users/PeregrineReed/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/PeregrineReed/subscriptions","organizations_url":"https://api.github.com/users/PeregrineReed/orgs","repos_url":"https://api.github.com/users/PeregrineReed/repos","events_url":"https://api.github.com/users/PeregrineReed/events{/privacy}","received_events_url":"https://api.github.com/users/PeregrineReed/received_events","type":"User","site_admin":false},{"login":"plapicola","id":41562392,"node_id":"MDQ6VXNlcjQxNTYyMzky","avatar_url":"https://avatars1.githubusercontent.com/u/41562392?v=4","gravatar_id":"","url":"https://api.github.com/users/plapicola","html_url":"https://github.com/plapicola","followers_url":"https://api.github.com/users/plapicola/followers","following_url":"https://api.github.com/users/plapicola/following{/other_user}","gists_url":"https://api.github.com/users/plapicola/gists{/gist_id}","starred_url":"https://api.github.com/users/plapicola/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/plapicola/subscriptions","organizations_url":"https://api.github.com/users/plapicola/orgs","repos_url":"https://api.github.com/users/plapicola/repos","events_url":"https://api.github.com/users/plapicola/events{/privacy}","received_events_url":"https://api.github.com/users/plapicola/received_events","type":"User","site_admin":false},{"login":"tnodland","id":42710030,"node_id":"MDQ6VXNlcjQyNzEwMDMw","avatar_url":"https://avatars2.githubusercontent.com/u/42710030?v=4","gravatar_id":"","url":"https://api.github.com/users/tnodland","html_url":"https://github.com/tnodland","followers_url":"https://api.github.com/users/tnodland/followers","following_url":"https://api.github.com/users/tnodland/following{/other_user}","gists_url":"https://api.github.com/users/tnodland/gists{/gist_id}","starred_url":"https://api.github.com/users/tnodland/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/tnodland/subscriptions","organizations_url":"https://api.github.com/users/tnodland/orgs","repos_url":"https://api.github.com/users/tnodland/repos","events_url":"https://api.github.com/users/tnodland/events{/privacy}","received_events_url":"https://api.github.com/users/tnodland/received_events","type":"User","site_admin":false},{"login":"Mackenzie-Frey","id":42525195,"node_id":"MDQ6VXNlcjQyNTI1MTk1","avatar_url":"https://avatars0.githubusercontent.com/u/42525195?v=4","gravatar_id":"","url":"https://api.github.com/users/Mackenzie-Frey","html_url":"https://github.com/Mackenzie-Frey","followers_url":"https://api.github.com/users/Mackenzie-Frey/followers","following_url":"https://api.github.com/users/Mackenzie-Frey/following{/other_user}","gists_url":"https://api.github.com/users/Mackenzie-Frey/gists{/gist_id}","starred_url":"https://api.github.com/users/Mackenzie-Frey/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/Mackenzie-Frey/subscriptions","organizations_url":"https://api.github.com/users/Mackenzie-Frey/orgs","repos_url":"https://api.github.com/users/Mackenzie-Frey/repos","events_url":"https://api.github.com/users/Mackenzie-Frey/events{/privacy}","received_events_url":"https://api.github.com/users/Mackenzie-Frey/received_events","type":"User","site_admin":false},{"login":"TyMazey","id":43197720,"node_id":"MDQ6VXNlcjQzMTk3NzIw","avatar_url":"https://avatars3.githubusercontent.com/u/43197720?v=4","gravatar_id":"","url":"https://api.github.com/users/TyMazey","html_url":"https://github.com/TyMazey","followers_url":"https://api.github.com/users/TyMazey/followers","following_url":"https://api.github.com/users/TyMazey/following{/other_user}","gists_url":"https://api.github.com/users/TyMazey/gists{/gist_id}","starred_url":"https://api.github.com/users/TyMazey/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/TyMazey/subscriptions","organizations_url":"https://api.github.com/users/TyMazey/orgs","repos_url":"https://api.github.com/users/TyMazey/repos","events_url":"https://api.github.com/users/TyMazey/events{/privacy}","received_events_url":"https://api.github.com/users/TyMazey/received_events","type":"User","site_admin":false},{"login":"timnallen","id":42568362,"node_id":"MDQ6VXNlcjQyNTY4MzYy","avatar_url":"https://avatars1.githubusercontent.com/u/42568362?v=4","gravatar_id":"","url":"https://api.github.com/users/timnallen","html_url":"https://github.com/timnallen","followers_url":"https://api.github.com/users/timnallen/followers","following_url":"https://api.github.com/users/timnallen/following{/other_user}","gists_url":"https://api.github.com/users/timnallen/gists{/gist_id}","starred_url":"https://api.github.com/users/timnallen/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/timnallen/subscriptions","organizations_url":"https://api.github.com/users/timnallen/orgs","repos_url":"https://api.github.com/users/timnallen/repos","events_url":"https://api.github.com/users/timnallen/events{/privacy}","received_events_url":"https://api.github.com/users/timnallen/received_events","type":"User","site_admin":false}]'
+    http_version: 
+  recorded_at: Tue, 19 Mar 2019 23:33:21 GMT
+recorded_with: VCR 4.0.0
