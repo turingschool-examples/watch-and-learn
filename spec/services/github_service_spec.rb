@@ -8,8 +8,10 @@ describe GithubService do
 
   context 'instance methods' do
     context '#get_user_repos' do
-      it 'returns repos' do
-        WebMock.disable!
+      it 'returns repos', :vcr do
+        filename = 'user_repos.json'
+        url = "https://api.github.com/user/repos"
+        stub_get_json(url, filename)
         user = create(:user, github_token: ENV["github_key"])
 
         service = GithubService.new

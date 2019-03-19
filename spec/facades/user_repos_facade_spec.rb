@@ -2,7 +2,6 @@ require 'rails_helper'
 
 describe UserReposFacade do
   it 'exists' do
-    WebMock.disable!
     attributes = {}
     facade = UserReposFacade.new(attributes)
 
@@ -11,10 +10,10 @@ describe UserReposFacade do
 
   context 'instance methods' do
     context '#user_repos' do
-      
-
       it 'returns a list of the user\'s first 5 repos' do
-        WebMock.disable!
+        filename = 'user_repos.json'
+        url = "https://api.github.com/user/repos"
+        stub_get_json(url, filename)
         user = create(:user, github_token: ENV['github_key'])
 
         facade = UserReposFacade.new(user)

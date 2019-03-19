@@ -14,7 +14,16 @@ VCR.configure do |config|
   config.hook_into :webmock
   config.configure_rspec_metadata!
   config.filter_sensitive_data("<YOUTUBE_API_KEY>") { ENV['YOUTUBE_API_KEY'] }
+  config.filter_sensitive_data("<GITHUB_API_KEY>") { ENV['github_key'] }
 end
+
+
+def stub_get_json(url, filename)
+  json_response = File.open("./fixtures/#{filename}")
+  stub_request(:get, url).
+    to_return(body: json_response, status: 200)
+end
+
 
 
 ActiveRecord::Migration.maintain_test_schema!
