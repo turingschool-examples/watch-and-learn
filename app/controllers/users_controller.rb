@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
   def show
+    render locals: {
+      facade: DashboardRepoFacade.new(User.find_token(session[:user_id])
+    }
   end
 
   def new
