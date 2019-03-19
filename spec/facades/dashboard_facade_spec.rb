@@ -33,5 +33,18 @@ describe 'Dashboard facade' do
         end
       end
     end
+
+    describe '.following' do
+      it 'returns all followed users on github' do
+        user = create(:user)
+        allow_any_instance_of(User).to receive(:github_token).and_return(ENV['GITHUB_API_KEY'])
+        VCR.use_cassette("/facades/dashboard_following_request") do
+          facade = DashboardFacade.new(user)
+
+          expect(facade.following).to be_a(Array)
+          expect(facade.following.first).to be_a(GithubUser)
+        end
+      end
+    end
   end
 end
