@@ -6,4 +6,8 @@ FactoryBot.define do
     playlist_id { Faker::Crypto.md5 }
     classroom { false }
   end
+
+  factory :classroom_tutorial, parent: :tutorial do
+    classroom { true }
+  end
 end
