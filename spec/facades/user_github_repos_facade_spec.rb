@@ -14,11 +14,22 @@ RSpec.describe UserGithubReposFacade do
         to_return(status: 200, body: json_response)
 
       facade = UserGithubReposFacade.new
-      expect(facade.repos.class).to eq(Array)
-      
-      facade.repos.each do |repo|
+      expect(facade.user_repos.class).to eq(Array)
+
+      facade.user_repos.each do |repo|
         expect(repo.class).to eq(Repository)
       end
+    end
+
+    it 'gets top repositories' do
+      json_response = File.open('./fixtures/github_repos.json')
+
+      stub_request(:get, "https://api.github.com/user/repos").
+        to_return(status: 200, body: json_response)
+
+      facade = UserGithubReposFacade.new
+
+      expect(facade.top_user_repos(5).count).to eq(5)
     end
 
   end

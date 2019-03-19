@@ -13,7 +13,7 @@
   <section>
     <h1>Github</h1>
     <ul>
-    <%= facade.user_repos.each do |repo|  %>
+    <% facade.top_user_repos(5).each do |repo|  %>
     <li class = 'user_repo'>
       <%= link_to repo.name, repo.address, class: 'name' %> </li>
     <% end %>
