@@ -31,6 +31,21 @@ describe'when I visit my dashboard' do
       end
     end
 
+    it 'users see repos based on there github token' do
+      VCR.use_cassette("views/alt_user_dashboard_github_request") do
+        user = create(:user)
+        allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+        allow_any_instance_of(User).to receive(:github_token).and_return(ENV['ALT_GITHUB_API_KEY'])
+        visit dashboard_path
+
+        within "#github" do
+          expect(page).to have_css(".repo", count: 5)
+          expect(page).to_not have_link('battleship', href: "https://github.com/JennicaStiehl/battleship")
+          expect(page).to have_link('activerecord-obstacle-course', href: "https://github.com/plapicola/activerecord-obstacle-course")
+        end
+      end
+    end
+
     it 'shows me a list of users who follow me' do
       VCR.use_cassette("views/dashboard_github_request") do
         visit dashboard_path
