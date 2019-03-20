@@ -36,5 +36,17 @@ RSpec.describe UserDashboardFacade do
       expect(facade.top_user_repos(5).count).to eq(5)
     end
 
+    it 'gets the github users the current user follows' do
+      filename = 'users_that_user_1_follows.json'
+      url = "https://api.github.com/user/following"
+
+      stub_get_json(url,filename)
+
+      facade = UserDashboardFacade.new(@user)
+
+      expect(facade.users_followed.count).to eq(12)
+
+    end
+
   end
 end

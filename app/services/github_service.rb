@@ -4,6 +4,11 @@ class GithubService
     @user = user
   end
 
+  def get_users_followed
+    get_json("user/following")
+
+  end
+
   def get_repos
     get_json("user/repos")
   end
