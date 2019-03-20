@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe UserDashboardFacade do
   before :each do
     @user = create(:user)
-    create(:github_token, user: @user, token: ENV['USER_2_GITHUB_TOKEN'])
+    create(:github_token, user: @user, token: ENV['USER_1_GITHUB_TOKEN'])
   end
   it 'exists' do
     facade = UserDashboardFacade.new(@user)

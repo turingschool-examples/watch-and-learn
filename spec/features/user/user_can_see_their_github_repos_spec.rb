@@ -37,7 +37,7 @@ RSpec.describe 'User can see their Github repositories' do
 
         within(first('.user_repo')) do
           expect(page).to have_css('.name')
-          expect(page).to have_link('battleship', href: "https://github.com/m-mrcr/battleship")
+          expect(page).to have_link('activerecord-obstacle-course', href: "https://github.com/teresa-m-knowles/activerecord-obstacle-course")
         end
       end
 
@@ -52,7 +52,7 @@ RSpec.describe 'User can see their Github repositories' do
         user2 = create(:user)
         create(:github_token, user: user2, token: ENV['USER_2_GITHUB_TOKEN'])
 
-        allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user1)
+        allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user2)
 
         visit '/dashboard'
 
