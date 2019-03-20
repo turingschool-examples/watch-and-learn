@@ -25,6 +25,20 @@ def stub_get_json(url, filename)
     to_return(body: json_response, status: 200)
 end
 
+def  mock_user_dashboard_github
+  filename = 'user_following.json'
+  url = "https://api.github.com/user/following"
+  stub_get_json(url, filename)
+
+  filename = 'user_followers.json'
+  url = "https://api.github.com/user/followers"
+  stub_get_json(url, filename)
+
+  filename = 'user_repos.json'
+  url = "https://api.github.com/user/repos"
+  stub_get_json(url, filename)
+end
+
 
 
 ActiveRecord::Migration.maintain_test_schema!
