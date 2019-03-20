@@ -14,7 +14,14 @@ class DashboardFacade
   def followers
     response = service.get_followers
     response.map do |follower_data|
-      Follower.new(follower_data)
+      GithubUser.new(follower_data)
+    end
+  end
+
+  def following
+    response = service.get_following
+    response.map do |following_data|
+      GithubUser.new(following_data)
     end
   end
 
