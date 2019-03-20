@@ -8,7 +8,12 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
   get 'tags/:tag', to: 'welcome#index', as: :tag
+  get '/about', to: 'about#show'
+  get '/get_started', to: 'get_started#show'
+
   get '/register', to: 'users#new'
+  get '/dashboard', to: 'users#show'
+  resources :users, only: [:create, :update, :edit]
 
   namespace :admin do
     get "/dashboard", to: "dashboard#show"
@@ -28,14 +33,9 @@ Rails.application.routes.draw do
   post '/login', to: "sessions#create"
   delete '/logout', to: "sessions#destroy"
 
-  get '/dashboard', to: 'users#show'
-  get '/about', to: 'about#show'
-  get '/get_started', to: 'get_started#show'
-
   # Is this being used?
   get '/video', to: 'video#show'
 
-  resources :users, only: [:new, :create, :update, :edit]
 
   resources :tutorials, only: [:show, :index] do
     resources :videos, only: [:show, :index]
