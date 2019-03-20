@@ -13,7 +13,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      flash[:success] = "Welcome, you are now registered and logged in."
+      flash[:success] = "Logged in as #{@user.first_name}."
+      flash[:success] = "This account has not yet been activated. Please check your email."
       redirect_to dashboard_path
     else
       flash[:error] = 'Email already exists'

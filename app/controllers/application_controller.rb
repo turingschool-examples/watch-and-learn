@@ -14,9 +14,10 @@ class ApplicationController < ActionController::Base
     current_user.user_videos.find_by(video_id: id)
   end
 
-  def tutorial_name(id)
-    Tutorial.find(id).title
-  end
+  #Don't appear to need
+  # def tutorial_name(id)
+  #   Tutorial.find(id).title
+  # end
 
   def four_oh_four
     raise ActionController::RoutingError.new('Not Found')
