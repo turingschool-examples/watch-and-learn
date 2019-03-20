@@ -3,7 +3,7 @@ module OmniauthHelper
     OmniAuth.config.test_mode = true
 
     OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({
-      provider: 'github'.
+      provider: 'github',
       extra: {
 
       },
