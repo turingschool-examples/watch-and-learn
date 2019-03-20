@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe "User" do
-  it 'can see a list of followers' do
+  it 'can see a list of following' do
     user = create(:user)
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
@@ -9,12 +9,12 @@ describe "User" do
     VCR.use_cassette("dashboard") do
       visit '/dashboard'
 
-      expect(page).to have_css("#followers")
-      expect(page).to have_content("Followers")
+      expect(page).to have_css("#following")
+      expect(page).to have_content("Following")
 
-      within "#followers" do
-        expect(page).to have_css(".follower")
-        within(first(".follower")) do
+      within "#following" do
+        expect(page).to have_css(".user")
+        within(first(".user")) do
           expect(page).to have_css(".handle")
         end
 

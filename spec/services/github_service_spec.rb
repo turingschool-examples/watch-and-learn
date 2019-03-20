@@ -29,6 +29,16 @@ describe GithubService do
         expect(result[0]).to have_key(:login)
       end
     end
-  end
 
+    it "get following" do
+      VCR.use_cassette("github service following") do
+        service = GithubService.new
+
+        result = service.get_following
+        expect(result).to be_a(Array)
+        expect(result[0]).to be_a(Hash)
+        expect(result[0]).to have_key(:login)
+      end
+    end
+  end
 end
