@@ -4,9 +4,7 @@ module OmniauthHelper
 
     OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({
       provider: 'github',
-      extra: {
-
-      },
+      uid: "1234",
       credentials: {
         token: 'github_token_goes_here'
       }

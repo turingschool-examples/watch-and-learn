@@ -25,12 +25,13 @@ context 'As a user without a github token' do
     click_button 'Log In'
     stub_github
 
+
     VCR.use_cassette('views/dashboard_github_request') do
       click_button 'Connect to GitHub'
 
       expect(current_path).to eq(dashboard_path)
       expect(page).to have_content 'Following'
-      expect(page).to have_content 'Follers'
+      expect(page).to have_content 'Followers'
       expect(page).to have_content 'battleship'
     end
   end
