@@ -26,6 +26,26 @@
         <%= link_to repo.name, repo.address, class: 'name' %> </li>
       <% end %>
     </ul>
+
+      <section class="repositories"
+        <h3>My Repositiories:</h3>
+        <ul>
+          <% facade.top_user_repos(5).each do |repo|  %>
+            <li class = 'user_repo'>
+            <%= link_to repo.name, repo.address, class: 'name' %> </li>
+          <% end %>
+        </ul>
+      </section>
+      <section class="followers"
+        <h3>My Followers:</h3>
+        <ul>
+          <% facade.user_followers.each do |follower|  %>
+            <li class="user_follower">
+            <%= link_to follower.name, follower.address, class: 'name' %> </li>
+          <% end %>
+        </ul>
+      </section>
+
     </section>
   <% end %>
 </section>

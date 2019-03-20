@@ -28,7 +28,15 @@ RSpec.describe GithubService do
 
       expect(first_user_followed[:login]).to eq("jamisonordway")
       expect(first_user_followed[:html_url]).to eq("https://github.com/jamisonordway")
+    end 
 
+    it "gets user followers", :vcr do
+      service = GithubService.new(@user1)
+
+      results = service.get_followers
+      follower = results.first
+      expect(follower[:login]).to eq("Mackenzie-Frey")
+      expect(follower[:html_url]).to eq("https://github.com/Mackenzie-Frey")
     end
 
   end
