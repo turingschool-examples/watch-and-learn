@@ -1,4 +1,4 @@
-class UserGithubReposFacade
+class UserDashboardFacade
 
   def initialize(user)
     @user = user
@@ -8,6 +8,13 @@ class UserGithubReposFacade
     response = service.get_repos
     response.map do |repo_data|
       Repository.new(repo_data)
+    end
+  end
+
+  def user_followers
+    response = service.get_followers
+    response.map do |follower_data|
+      Follower.new(follower_data)
     end
   end
 
