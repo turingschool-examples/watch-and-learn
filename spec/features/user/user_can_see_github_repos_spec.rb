@@ -13,10 +13,14 @@ describe 'A registered user' do
       url = "https://api.github.com/user/repos"
       stub_get_json(url, filename)
 
+      filename = 'user_followers.json'
+      url = "https://api.github.com/user/followers"
+      stub_get_json(url, filename)
+
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user_2)
 
       visit dashboard_path
-      
+
 
       expect(page).to have_content("Github")
       expect(page).to have_css('.repos')

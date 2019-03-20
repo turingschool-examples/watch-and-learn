@@ -38,5 +38,23 @@ describe GithubService do
         expect(result[0]).to have_key(:html_url)
       end
     end
+
+    context '#get_user_following' do
+      it 'returns following' do
+        WebMock.disable!
+        # filename = 'user_following.json'
+        # url = "https://api.github.com/user/following"
+        # stub_get_json(url, filename)
+        user = create(:user, github_token: ENV["github_key"])
+
+        service = GithubService.new
+
+        result = service.get_user_following(user)
+        expect(result).to be_a(Array)
+
+        expect(result[0]).to have_key(:login)
+        expect(result[0]).to have_key(:html_url)
+      end
+    end
   end
 end
