@@ -6,6 +6,9 @@ class UserDashboardFacade
 
   def users_followed
     response = service.get_users_followed
+    response.map do |user_data|
+      GithubUser.new(user_data)
+    end
 
   end
 
