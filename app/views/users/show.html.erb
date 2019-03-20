@@ -13,6 +13,13 @@
   <% if current_user.github_token %>
     <section class='github'>
       <h1>Github</h1>
+
+    <section class='users_followed'>
+      <h2>Following</h2>
+      <% facade.users_followed.each do |user_followed| %>
+      <li class = 'following'> <%= link_to user_followed.name, user_followed.address, class:'handle' %> </li>
+      <% end  %>
+    </section>
       <ul>
       <% facade.top_user_repos(5).each do |repo|  %>
       <li class = 'user_repo'>
