@@ -17,6 +17,13 @@ class UserGithubFacade
     end
   end
 
+  def user_following
+    response = service.get_user_following(@user)
+    response.map do |following_data|
+      Following.new(following_data)
+    end
+  end
+
   def service
     GithubService.new
   end

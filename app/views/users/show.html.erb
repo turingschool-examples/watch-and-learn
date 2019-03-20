@@ -27,5 +27,13 @@
         <br>
       <% end %>
     </div>
+    <h4>Following</h4>
+    <div class="following">
+      <% facade.user_following.each do |following| %>
+        <%= link_to "#{following.name}", following.url %>
+        <br>
+        <br>
+      <% end %>
+    </div>
   <% end %>
 </section>
