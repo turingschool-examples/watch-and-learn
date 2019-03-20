@@ -11,7 +11,7 @@
     <h1>Bookmarked Segments</h1>
   </section>
   <% if current_user.github_token %>
-    <section>
+    <section class='github'>
       <h1>Github</h1>
       <ul>
       <% facade.top_user_repos(5).each do |repo|  %>
