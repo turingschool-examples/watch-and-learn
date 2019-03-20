@@ -1,8 +1,12 @@
 require 'rails_helper'
 
 describe GithubService do
+  before :each do
+    @user = create(:user, github_token: ENV['GITHUB_API_KEY'])
+  end
+
   it "exists" do
-    service = GithubService.new
+    service = GithubService.new(@user.github_token)
 
     expect(service).to be_a(GithubService)
   end
@@ -10,7 +14,7 @@ describe GithubService do
   describe "Instance Methods" do
     it "#get_repos" do
       VCR.use_cassette("services/get_repos") do
-        repos = GithubService.new.get_repos
+        repos = GithubService.new(@user.github_token).get_repos
 
         expect(repos[0]).to be_a(Hash)
         expect(repos[0]).to have_key(:name)

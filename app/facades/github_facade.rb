@@ -11,6 +11,6 @@ class GithubFacade
   end
 
   def service
-    GithubService.new(@user.token)
+    GithubService.new(@user.github_token)
   end
 end
