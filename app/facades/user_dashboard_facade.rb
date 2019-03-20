@@ -24,8 +24,8 @@ class UserDashboardFacade
 #change from Follower.new to GithubUser.new
   def user_followers
     response = service.get_followers
-    response.map do |follower_data|
-      Follower.new(follower_data)
+    response.map do |user_data|
+      GithubUser.new(user_data)
     end
   end
 

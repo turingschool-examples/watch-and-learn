@@ -13,20 +13,6 @@
   <% if current_user.github_token %>
     <section class='github'>
       <h1>Github</h1>
-
-    <section class='users_followed'>
-      <h2>Following</h2>
-      <% facade.users_followed.each do |user_followed| %>
-      <li class = 'following'> <%= link_to user_followed.name, user_followed.address, class:'handle' %> </li>
-      <% end  %>
-    </section>
-      <ul>
-      <% facade.top_user_repos(5).each do |repo|  %>
-      <li class = 'user_repo'>
-        <%= link_to repo.name, repo.address, class: 'name' %> </li>
-      <% end %>
-    </ul>
-
       <section class="repositories"
         <h3>My Repositiories:</h3>
         <ul>
@@ -43,6 +29,15 @@
             <li class="user_follower">
             <%= link_to follower.name, follower.address, class: 'name' %> </li>
           <% end %>
+        </ul>
+      </section>
+      <section class='users_followed'>
+        <h3>Following</h3>
+        <ul>
+          <% facade.users_followed.each do |user_followed| %>
+            <li class = 'following'>
+            <%= link_to user_followed.name, user_followed.address, class:'handle' %> </li>
+          <% end  %>
         </ul>
       </section>
 

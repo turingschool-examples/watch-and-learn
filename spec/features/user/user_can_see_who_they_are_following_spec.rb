@@ -7,7 +7,7 @@ RSpec.describe 'User can see a list of users they are following' do
         it 'I see a list of users I follow where their handles are a link to their github profile' do
 
           user = create(:user)
-          g_token = create(:github_token, user: user, token: ENV["USER_1_GITHUB_TOKEN"])
+          create(:github_token, user: user, token: ENV["USER_1_GITHUB_TOKEN"])
 
           allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
