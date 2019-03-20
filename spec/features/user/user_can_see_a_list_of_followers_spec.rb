@@ -6,7 +6,7 @@ describe "User" do
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-    VCR.use_cassette("followers") do
+    VCR.use_cassette("dashboard") do
       visit '/dashboard'
 
       expect(page).to have_css("#followers")
