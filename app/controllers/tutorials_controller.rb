@@ -1,6 +1,8 @@
 class TutorialsController < ApplicationController
   def index
-    facade = TutorialsIndexFacade.new(current_user)
+    render locals: {
+      facade: TutorialsIndexFacade.new(current_user)
+    }
   end
 
   def show

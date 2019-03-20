@@ -10,14 +10,16 @@ describe 'Visitor' do
       visit tutorials_path
 
       expect(page).to have_css(".tutorial", count: 3)
-      within(page.find(".tutorial").first) do
+      within(page.find_all(".tutorial").first) do
         expect(page).to have_link @tutorials.first.title
         expect(page).to have_content @tutorials.first.description
       end
     end
 
     it 'sees only non-classroom content' do
-      classroom_tutorial = create(:classroom_tutorial)
+      classroom_tutorial = create(:classroom_tutorial,
+                                  title: "Unique!",
+                                  description: "Also Unique")
 
       visit tutorials_path
 

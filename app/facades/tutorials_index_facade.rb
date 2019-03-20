@@ -7,7 +7,7 @@ class TutorialsIndexFacade
     if @user
       @tutorial ||= Tutorial.all
     else
-      @tutorial ||= Tutorial.public
+      @tutorial ||= Tutorial.public_tutorials
     end
   end
 end
