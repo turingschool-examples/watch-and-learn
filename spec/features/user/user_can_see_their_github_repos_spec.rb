@@ -47,10 +47,12 @@ RSpec.describe 'User can see their Github repositories' do
 
         stub_get_json(url,filename)
 
-        user = create(:user)
-        create(:github_token, user: user, token: ENV['USER_2_GITHUB_TOKEN'])
+        user1 = create(:user)
+        create(:github_token, user: user1, token: ENV['USER_1_GITHUB_TOKEN'])
+        user2 = create(:user)
+        create(:github_token, user: user2, token: ENV['USER_2_GITHUB_TOKEN'])
 
-        allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+        allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user1)
 
         visit '/dashboard'
 
