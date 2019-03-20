@@ -1,12 +1,16 @@
 class GithubFacade
+  def initialize(user)
+    @user = user
+  end
+
   def repos
     response = service.get_repos
     response.map do |repo|
       Repo.new(repo)
-    end
+    end.take(5)
   end
 
   def service
-    GithubService.new
+    GithubService.new(@user.token)
   end
 end
