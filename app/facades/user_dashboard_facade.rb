@@ -1,7 +1,12 @@
-class UserGithubReposFacade
+class UserDashboardFacade
 
   def initialize(user)
     @user = user
+  end
+
+  def users_followed
+    response = service.get_users_followed
+
   end
 
   def user_repos
