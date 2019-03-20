@@ -38,10 +38,9 @@ describe UserGithubFacade do
 
     context '#user_following' do
       it 'returns a list of the people a user is following' do
-        WebMock.disable!
-        # filename = 'user_following.json'
-        # url = "https://api.github.com/user/following"
-        # stub_get_json(url, filename)
+        filename = 'user_following.json'
+        url = "https://api.github.com/user/following"
+        stub_get_json(url, filename)
 
         user = create(:user, github_token: ENV['github_key'])
 
