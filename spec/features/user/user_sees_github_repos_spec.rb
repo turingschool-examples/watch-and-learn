@@ -9,11 +9,9 @@ describe "A registered user" do
       visit dashboard_path
 
       within ".user_github" do
+        expect(page).to have_content("GitHub")
         expect(page).to have_content("activerecord-obstacle-course")
-        expect(page).to have_content("apollo_14")
-        expect(page).to have_content("backend_prework")
-        expect(page).to have_content("battleship")
-        expect(page).to have_content("book_club")
+        expect(page).to have_css(".name", count: 5)
       end
     end
   end
