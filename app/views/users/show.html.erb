@@ -11,10 +11,10 @@
     <h1>Bookmarked Segments</h1>
   </section>
   <section class="user_github">
-    <h1>Github</h1>
+    <h1>GitHub</h1>
     <ul>
       <% facade.repos.each do |repo| %>
-        <li><%=repo.name %></li>
+        <li class="name"><%=repo.name %></li>
       <% end %>
     </ul>
   </section>
