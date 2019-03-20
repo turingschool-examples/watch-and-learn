@@ -4,14 +4,17 @@
 <div class="col col-4">
   <h4>Videos</h4>
   <ul>
-    <% @facade.videos.each do |video| %>
-      <li>
-        <h3><%= link_to video.title, tutorial_path(video_id: video.id), class: "show-link", id: video.position %></h3>
-      </li>
+    <% unless @facade.videos.empty? %>
+      <% @facade.videos.each do |video| %>
+        <li>
+          <h3><%= link_to video.title, tutorial_path(video_id: video.id), class: "show-link", id: video.position %></h3>
+        </li>
+      <% end %>
     <% end %>
   </ul>
 </div>
 
+<% unless @facade.videos.empty? %>
 <div class="col col-8">
   <div class="title-bookmark">
     <h3><%= @facade.current_video.title %></h3>
@@ -65,5 +68,6 @@
     <%= link_to "More", "#", "data-action" => "click->tutorials#showDescription", id: @facade.current_video.id, class: "show-link"%>
   </p>
 </div>
+<% end %>
 
 </main>
