@@ -5,13 +5,7 @@ describe 'A registered user' do
     it 'can see a list of all of their github followers' do
       user = create(:user, github_token: ENV["github_key"])
 
-      filename = 'user_followers.json'
-      url = "https://api.github.com/user/followers"
-      stub_get_json(url, filename)
-
-      filename = 'user_repos.json'
-      url = "https://api.github.com/user/repos"
-      stub_get_json(url, filename)
+      mock_user_dashboard_github
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 

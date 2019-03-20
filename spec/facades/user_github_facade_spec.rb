@@ -11,9 +11,8 @@ describe UserGithubFacade do
   context 'instance methods' do
     context '#user_repos' do
       it 'returns a list of the user\'s first 5 repos' do
-        filename = 'user_repos.json'
-        url = "https://api.github.com/user/repos"
-        stub_get_json(url, filename)
+        mock_user_dashboard_github
+
         user = create(:user, github_token: ENV['github_key'])
 
         facade = UserGithubFacade.new(user)
@@ -24,9 +23,7 @@ describe UserGithubFacade do
 
     context '#user_followers' do
       it 'returns a list of the user\'s followers' do
-        filename = 'user_followers.json'
-        url = "https://api.github.com/user/followers"
-        stub_get_json(url, filename)
+        mock_user_dashboard_github
 
         user = create(:user, github_token: ENV['github_key'])
 
@@ -38,9 +35,7 @@ describe UserGithubFacade do
 
     context '#user_following' do
       it 'returns a list of the people a user is following' do
-        filename = 'user_following.json'
-        url = "https://api.github.com/user/following"
-        stub_get_json(url, filename)
+        mock_user_dashboard_github
 
         user = create(:user, github_token: ENV['github_key'])
 

@@ -9,14 +9,8 @@ describe 'A registered user' do
     end
     it 'can see a list of 5 of their GitHub repositories' do
 
-      filename = 'user_repos.json'
-      url = "https://api.github.com/user/repos"
-      stub_get_json(url, filename)
-
-      filename = 'user_followers.json'
-      url = "https://api.github.com/user/followers"
-      stub_get_json(url, filename)
-
+      mock_user_dashboard_github
+      
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user_2)
 
       visit dashboard_path

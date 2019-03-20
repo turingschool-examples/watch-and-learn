@@ -9,9 +9,6 @@ describe GithubService do
   context 'instance methods' do
     context '#get_user_repos' do
       it 'returns repos', :vcr do
-        filename = 'user_repos.json'
-        url = "https://api.github.com/user/repos"
-        stub_get_json(url, filename)
         user = create(:user, github_token: ENV["github_key"])
 
         service = GithubService.new
@@ -24,9 +21,6 @@ describe GithubService do
     end
     context '#get_user_followers' do
       it 'returns followers', :vcr do
-        filename = 'user_followers.json'
-        url = "https://api.github.com/user/followers"
-        stub_get_json(url, filename)
         user = create(:user, github_token: ENV["github_key"])
 
         service = GithubService.new
@@ -40,11 +34,7 @@ describe GithubService do
     end
 
     context '#get_user_following' do
-      it 'returns following' do
-        WebMock.disable!
-        # filename = 'user_following.json'
-        # url = "https://api.github.com/user/following"
-        # stub_get_json(url, filename)
+      it 'returns following', :vcr do
         user = create(:user, github_token: ENV["github_key"])
 
         service = GithubService.new

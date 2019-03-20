@@ -1,0 +1,76 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.github.com/user/following
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - token <GITHUB_API_KEY>
+      User-Agent:
+      - Faraday v0.12.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Wed, 20 Mar 2019 18:04:48 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4997'
+      X-Ratelimit-Reset:
+      - '1553108686'
+      Cache-Control:
+      - private, max-age=60, s-maxage=60
+      Vary:
+      - Accept, Authorization, Cookie, X-GitHub-OTP
+      Etag:
+      - W/"b4b7bec70393b32353049c04261e7f51"
+      X-Oauth-Scopes:
+      - repo
+      X-Accepted-Oauth-Scopes:
+      - ''
+      X-Github-Media-Type:
+      - github.v3; format=json
+      Access-Control-Expose-Headers:
+      - ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
+        X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval,
+        X-GitHub-Media-Type
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Content-Security-Policy:
+      - default-src 'none'
+      X-Github-Request-Id:
+      - E3DD:60BE:FED8:1FDD1:5C9280C0
+    body:
+      encoding: ASCII-8BIT
+      string: '[{"login":"manojpanta","id":34468256,"node_id":"MDQ6VXNlcjM0NDY4MjU2","avatar_url":"https://avatars1.githubusercontent.com/u/34468256?v=4","gravatar_id":"","url":"https://api.github.com/users/manojpanta","html_url":"https://github.com/manojpanta","followers_url":"https://api.github.com/users/manojpanta/followers","following_url":"https://api.github.com/users/manojpanta/following{/other_user}","gists_url":"https://api.github.com/users/manojpanta/gists{/gist_id}","starred_url":"https://api.github.com/users/manojpanta/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/manojpanta/subscriptions","organizations_url":"https://api.github.com/users/manojpanta/orgs","repos_url":"https://api.github.com/users/manojpanta/repos","events_url":"https://api.github.com/users/manojpanta/events{/privacy}","received_events_url":"https://api.github.com/users/manojpanta/received_events","type":"User","site_admin":false}]'
+    http_version: 
+  recorded_at: Wed, 20 Mar 2019 18:02:57 GMT
+recorded_with: VCR 4.0.0
