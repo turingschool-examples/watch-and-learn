@@ -29,6 +29,22 @@ RSpec.describe 'Admin can create a Tutorial' do
           expect(current_path).to eq(tutorial_path(new_tutorial))
 
         end
+
+        it 'if tutorial info is missing, it reloads the page' do
+          visit admin_dashboard_path
+
+          click_link("New Tutorial")
+
+          expect(current_path).to eq(new_admin_tutorial_path)
+
+          fill_in 'tutorial[title]', with: ''
+          fill_in 'tutorial[description]', with: 'Tutorial description test'
+          fill_in 'tutorial[thumbnail]', with: 'https://i.ytimg.com/vi/qMkRHW9zE1c/hqdefault.jpg'
+          click_on "Save"
+
+          expect(Tutorial.last).to eq(nil)
+
+        end
       end
     end
   end
