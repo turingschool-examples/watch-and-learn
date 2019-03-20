@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-describe Following do
+describe GithubUser do
   it 'exists' do
-    repo = Following.new({login: 'repo1', html_url: 'www.repo.com'})
-    expect(repo).to be_a(Following)
+    repo = GithubUser.new({login: 'repo1', html_url: 'www.repo.com'})
+    expect(repo).to be_a(GithubUser)
     expect(repo.name).to eq('repo1')
     expect(repo.url).to eq('www.repo.com')
   end
