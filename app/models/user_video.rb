@@ -7,6 +7,7 @@ class UserVideo < ApplicationRecord
     test = select("user_videos.*")
     .includes(video: [:tutorial])
     .where(user: user)
+    .order("videos.position asc")
 
     test.group_by {|video| video.tutorial.title}
   end
