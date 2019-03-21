@@ -18,6 +18,14 @@ VCR.configure do |config|
   config.filter_sensitive_data("<GITHUB_CLIENT_SECRET>") { ENV['GITHUB_CLIENT_SECRET'] }
 end
 
+OmniAuth.config.test_mode = true
+
+  OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({
+    provider: 'github',
+    uid: '545457',
+    credentials: {token: "asdbjhsdfbjhwegfuewy"},
+                  extra: {raw_info: {login: "holaquetal"}}
+    })
 
 ActiveRecord::Migration.maintain_test_schema!
 
