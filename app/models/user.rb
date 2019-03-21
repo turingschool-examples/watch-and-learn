@@ -9,13 +9,8 @@ class User < ApplicationRecord
   enum role: [:default, :admin]
   has_secure_password
 
-  def self.find_or_create_from_auth_hash(auth)
-    where(uid: auth.uid).first_or_initialize.tap do |user|
-      user.uid = auth.uid
-      user.first_name = auth.info.first_name
-      user.last_name = auth.info.last_name
-      user.email = auth.info.email
-      user.save!
-    end
+  def self.github_uniq?(user, auth)
+    self.where(uid: auth.uid).empty?
   end
+
 end
