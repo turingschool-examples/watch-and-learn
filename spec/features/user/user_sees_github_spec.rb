@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe "A registered user" do
-  it "sees 5 Github repos on profile", :vcr do
+  it "sees 5 GitHub repos on profile", :vcr do
     user = create(:user, email: "test@email.com", password: "test", github_token: ENV['GITHUB_API_KEY'])
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
@@ -9,12 +9,15 @@ describe "A registered user" do
 
     within ".user_github" do
       expect(page).to have_content("GitHub")
-      expect(page).to have_content("activerecord-obstacle-course")
-      expect(page).to have_css(".name", count: 5)
+      within ".user_github_repos" do
+        expect(page).to have_content("Repositories")
+        expect(page).to have_content("activerecord-obstacle-course")
+        expect(page).to have_css(".name", count: 5)
+      end
     end
   end
 
-  it "sees only their own repos when other uses have tokens", :vcr do
+  it "sees only their own repos when other users have tokens", :vcr do
     user = create(:user, email: "mackenzie@email.com", password: "test", github_token: ENV['MF_GITHUB_TOKEN'])
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
@@ -22,12 +25,14 @@ describe "A registered user" do
 
     within ".user_github" do
       expect(page).to have_content("GitHub")
-      expect(page).to have_content("election")
-      expect(page).to have_content("little_shop")
-      expect(page).to have_content("thirsty_plants")
-      expect(page).to have_content("activerecord-obstacle-course")
-      expect(page).to have_content("alt_fuel_finder")
-      expect(page).to have_css(".name", count: 5)
+      within ".user_github_repos" do
+        expect(page).to have_content("election")
+        expect(page).to have_content("little_shop")
+        expect(page).to have_content("thirsty_plants")
+        expect(page).to have_content("activerecord-obstacle-course")
+        expect(page).to have_content("alt_fuel_finder")
+        expect(page).to have_css(".name", count: 5)
+      end
     end
   end
 
@@ -39,6 +44,31 @@ describe "A registered user" do
       visit dashboard_path
 
       expect(page).to_not have_css(".user_github")
+      expect(page).to_not have_content("Repositories")
+      expect(page).to_not have_css(".user_github_followers")
+      expect(page).to_not have_content("Followers")
+      expect(page).to_not have_css(".follower")
+      expect(page).to_not have_css(".follower_handle")
+      expect(page).to_not have_css(".follower_url")
+    end
+  end
+
+  it 'sees followers section on profile', :vcr do
+    user = create(:user, email: "test@email.com", password: "test", github_token: ENV['GITHUB_API_KEY'])
+
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+    visit dashboard_path
+
+    within ".user_github" do
+      expect(page).to have_content("GitHub")
+      within ".user_github_followers" do
+        expect(page).to have_content("Followers")
+        expect(page).to have_css(".follower", count: 5)
+        expect(page).to have_css(".follower_handle", count: 5)
+        expect(page).to have_css(".follower_url", count: 5)
+      end
     end
   end
 end
+# And I should see list of all followers with their handles linking to their Github profile
