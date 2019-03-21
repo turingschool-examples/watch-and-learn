@@ -8,6 +8,7 @@ require 'rspec/rails'
 require 'vcr'
 require 'webmock/rspec'
 require 'pry'
+require './app/helpers/authentication'
 
 VCR.configure do |config|
   config.ignore_localhost = true
@@ -66,6 +67,8 @@ RSpec.configure do |config|
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
   config.include FactoryBot::Syntax::Methods
+
+  config.include Helpers::Authentication, type: :feature
 
   config.use_transactional_fixtures = true
 

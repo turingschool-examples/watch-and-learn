@@ -1,0 +1,16 @@
+<main class="tutorials">
+  <% facade.tutorials.each do |tutorial| %>
+  <section class="tutorial">
+    <div class="tutorial-thumbnail col md-col-2">
+      <a>
+        <img class"thumbnail" src= <%= "#{tutorial.thumbnail}" %> alt="">
+      </a>
+    </div>
+
+    <div class="tutorial-description col md-col-10">
+      <%= link_to tutorial.title, tutorial_path(tutorial) %>
+      <p> <%= tutorial.description %> </p>
+    </div>
+  </section>
+  <% end %>
+</main>
