@@ -41,7 +41,6 @@ describe "A registered user" do
       user = create(:user, email: "test@email.com", password: "test")
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-
       visit dashboard_path
 
       expect(page).to_not have_css(".user_github")
