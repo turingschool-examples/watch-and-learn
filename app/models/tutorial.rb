@@ -4,4 +4,18 @@ class Tutorial < ApplicationRecord
   accepts_nested_attributes_for :videos
 
   scope :public_tutorials, -> { where(classroom: false)}
+
+  validates :title,
+    presence: true,
+    length: {
+      minimum: 1
+    }
+
+  validates :description,
+    presence: true,
+    length: {
+      minimum: 1
+    }
+
+  validates :thumbnail, url: true
 end
