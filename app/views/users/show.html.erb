@@ -12,5 +12,5 @@
   </section>
 
   <%=render partial: facade.github_partial(current_user), locals: {facade: facade}%>
-  <%= link_to 'Connect To Github', github_login_path unless current_user.github_token%>
+  <%= button_to 'Connect To Github', github_login_path, :method => :get unless current_user.github_token%>
 </section>

@@ -4,8 +4,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    if params[:code]
-      binding.pry
+    if current_user && !current_user.github_token
       current_user.update(github_token: request.env['omniauth.auth']['credentials']['token'])
       redirect_to dashboard_path
     else
