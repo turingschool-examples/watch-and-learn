@@ -1,0 +1,6 @@
+<h1>Bookmarked Segments</h1>
+<ul>
+  <% facade.bookmarked_videos.each do |video| %>
+    <li class="video"><%= link_to video.title, video_path(video.id) %></li>
+  <% end %>
+</ul>
