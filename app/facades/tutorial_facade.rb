@@ -1,6 +1,6 @@
 class TutorialFacade < SimpleDelegator
-  def initialize(tutorial_id, video_id = nil)
-    super(Tutorial.find(tutorial_id))
+  def initialize(tutorial, video_id = nil)
+    super(tutorial)
     @video = Video.find_by(id: video_id) || videos.first
   end
 

@@ -7,7 +7,7 @@ class TutorialsController < ApplicationController
 
   def show
     render locals: {
-      facade: TutorialFacade.new(params[:id], params[:video_id])
+      facade: TutorialFacade.new(Tutorial.find(params[:id]), params[:video_id])
     }
   end
 end
