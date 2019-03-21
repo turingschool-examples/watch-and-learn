@@ -24,6 +24,8 @@ describe 'User' do
       end
     end
   end
-end
 
-# And under that section I should see a list of 5 repositories with the name of each Repo linking to the repo on Github
+  it 'shows the proper repositories when there are more than one user in the database with different tokens' do
+
+  end
+end
