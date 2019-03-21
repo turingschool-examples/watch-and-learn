@@ -6,13 +6,15 @@ describe 'As an admin' do
       admin = create(:admin)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
     end
-    
+
     it 'when providing valid information' do
       visit new_admin_tutorial_path
 
-      fill_in :title, with: "I'm a test"
-      fill_in :descroption, with: "I'm a description for a test"
-      fill_in :thumbnail, with: "https://fakecompany.no/thisisathumbnail.png"
+      fill_in 'tutorial[title]', with: "I'm a test"
+      fill_in 'tutorial[description]', with: "I'm a description for a test"
+      fill_in 'tutorial[thumbnail]', with: "https://fakecompany.no/thisisathumbnail.png"
+
+      click_button 'Save'
 
       expect(current_path).to eq(tutorial_path(Tutorial.last))
       expect(page).to have_content "Successfully created \"I'm a test\"."
