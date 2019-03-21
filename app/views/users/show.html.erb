@@ -11,28 +11,32 @@
     <h1>Bookmarked Segments</h1>
   </section>
 
-  <section id="Github">
-    <h1>Github</h1>
-    <% facade.repositories.each do |repo| %>
-      <ul class="repository">
-        <li class="name"><%= link_to repo.name, "https://github.com/#{repo.full_name}" %></li>
-      </ul>
-    <% end %>
-    <section id="followers">
-      <h2>Followers</h2>
-      <% facade.followers.each do |follower| %>
-        <ul class="follower">
-          <li class="handle"><%= link_to follower.handle, "https://github.com/#{follower.handle}" %></li>
+  <%= button_to "Connect to Github", github_connect_path %>
+
+  <% if current_user.access_token %>
+    <section id="Github">
+      <h1>Github</h1>
+      <% facade.repositories.each do |repo| %>
+        <ul class="repository">
+          <li class="name"><%= link_to repo.name, "https://github.com/#{repo.full_name}" %></li>
         </ul>
       <% end %>
+      <section id="followers">
+        <h2>Followers</h2>
+        <% facade.followers.each do |follower| %>
+          <ul class="follower">
+            <li class="handle"><%= link_to follower.handle, "https://github.com/#{follower.handle}" %></li>
+          </ul>
+        <% end %>
+      </section>
+      <section id="following">
+        <h2>Following</h2>
+        <% facade.following.each do |user| %>
+          <ul class="user">
+            <li class="handle"><%= link_to user.handle, "https://github.com/#{user.handle}" %></li>
+          </ul>
+        <% end %>
+      </section>
     </section>
-    <section id="following">
-      <h2>Following</h2>
-      <% facade.following.each do |user| %>
-        <ul class="user">
-          <li class="handle"><%= link_to user.handle, "https://github.com/#{user.handle}" %></li>
-        </ul>
-      <% end %>
-    </section>
-  </section>
+  <% end %>
 </section>
