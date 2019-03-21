@@ -8,4 +8,9 @@ class User < ApplicationRecord
   validates_presence_of :first_name
   enum role: [:default, :admin]
   has_secure_password
+
+  def self.github_uniq?(user, auth)
+    self.where(uid: auth.uid).empty?
+  end
+
 end
