@@ -32,7 +32,7 @@ describe 'A registered user' do
     expect(page).to have_content("Already in your bookmarks")
   end
 
-  xit "can't add the same bookmark more than once" do
+  it "can't add the same bookmark more than once" do
     tutorial1 = create(:tutorial)
     video1 = create(:video, tutorial_id: tutorial1.id)
     video2 = create(:video, tutorial_id: tutorial1.id)

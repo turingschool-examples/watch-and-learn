@@ -28,6 +28,7 @@ RSpec.describe UserVideo, type: :model do
       uv4 = create(:user_video, user: user2, video: video3)
 
       expect(UserVideo.bookmarked_videos(user)).to eq([uv1, uv2, uv3])
+      
     end
   end
 end
