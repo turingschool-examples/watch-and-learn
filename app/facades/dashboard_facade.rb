@@ -29,4 +29,8 @@ class DashboardFacade
   def bookmark_segment
     bookmarked_videos.empty? ? 'empty_bookmarks' : 'bookmarks'
   end
+
+  def render_github
+    @user.github_token ? 'github' : 'github_connect'
+  end
 end
