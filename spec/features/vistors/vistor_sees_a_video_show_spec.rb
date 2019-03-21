@@ -13,4 +13,13 @@ describe 'visitor sees a video show' do
     expect(page).to have_content(video.title)
     expect(page).to have_content(tutorial.title)
   end
+
+  it 'visitor sees a notice that there are no videos in an empty tutorial' do
+    tutorial = create(:tutorial)
+
+    visit tutorial_path(tutorial)
+    save_and_open_page
+
+    expect(page).to have_content("This tutorial is currently empty.")
+  end
 end
