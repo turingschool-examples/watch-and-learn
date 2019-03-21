@@ -3,8 +3,8 @@ require 'rails_helper'
 describe'when I visit my dashboard' do
   context 'as a user' do
     before :each do
-      user = create(:user)
-      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+      @user = create(:user)
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
       allow_any_instance_of(User).to receive(:github_token).and_return(ENV['GITHUB_API_KEY'])
     end
 

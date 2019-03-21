@@ -21,4 +21,8 @@ class ApplicationController < ActionController::Base
   def four_oh_four
     raise ActionController::RoutingError.new('Not Found')
   end
+
+  def require_login
+    redirect_to root_path unless current_user
+  end
 end
