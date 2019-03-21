@@ -17,6 +17,13 @@ class GithubFacade
     end.take(5)
   end
 
+  def following
+    response = service.get_following
+    response.map do |following|
+      Follower.new(following)
+    end.take(5)
+  end
+
   def service
     GithubService.new(@user.github_token)
   end
