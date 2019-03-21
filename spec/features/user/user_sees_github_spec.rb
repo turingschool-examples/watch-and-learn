@@ -65,8 +65,8 @@ describe "A registered user" do
         expect(page).to have_content("Followers")
         expect(page).to have_css(".follower", count: 5)
         expect(page).to have_css(".follower_handle", count: 5)
+        expect(page).to have_link("nagerz")
       end
     end
   end
 end
-# And I should see list of all followers with their handles linking to their Github profile
