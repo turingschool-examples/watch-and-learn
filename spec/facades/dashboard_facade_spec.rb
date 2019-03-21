@@ -76,5 +76,23 @@ describe 'Dashboard facade' do
         expect(facade.bookmark_segment).to eq('bookmarks')
       end
     end
+
+    describe 'render_github' do
+      it 'returns github_connect if user is not connected to github' do
+        user = create(:user)
+        allow_any_instance_of(User).to receive(:github_token).and_return(nil)
+        facade = DashboardFacade.new(user)
+
+        expect(facade.render_github).to eq('github_connect')
+      end
+
+      it 'returns github if user is connected to github' do
+        user = create(:user)
+        allow_any_instance_of(User).to receive(:github_token).and_return("iamafaketokenhehe")
+        facade = DashboardFacade.new(user)
+
+        expect(facade.render_github).to eq('github')
+      end
+    end
   end
 end
