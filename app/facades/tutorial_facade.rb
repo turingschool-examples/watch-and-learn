@@ -1,15 +1,11 @@
 class TutorialFacade < SimpleDelegator
-  def initialize(tutorial, video_id = nil)
-    super(tutorial)
-    @video_id = video_id
+  def initialize(tutorial_id, video_id = nil)
+    super(Tutorial.find(tutorial_id))
+    @video = Video.find_by(id: video_id) || videos.first
   end
 
   def current_video
-    if @video_id
-      videos.find(@video_id)
-    else
-      videos.first
-    end
+    @video || Video.new
   end
 
   def next_video
@@ -20,10 +16,14 @@ class TutorialFacade < SimpleDelegator
     !(current_video.position >= maximum_video_position)
   end
 
+  def player_partial
+    videos.empty? ? 'empty_tutorial' : 'player'
+  end
+
   private
 
   def current_video_index
-    videos.index(current_video)
+    videos.index(current_video) || 0
   end
 
   def maximum_video_position

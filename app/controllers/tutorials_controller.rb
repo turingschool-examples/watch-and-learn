@@ -6,7 +6,8 @@ class TutorialsController < ApplicationController
   end
 
   def show
-    tutorial = Tutorial.find(params[:id])
-    @facade = TutorialFacade.new(tutorial, params[:video_id])
+    render locals: {
+      facade: TutorialFacade.new(params[:id], params[:video_id])
+    }
   end
 end
