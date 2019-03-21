@@ -7,37 +7,11 @@
     <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
     <li> <%= current_user.email%> </li>
   </ul>
-  
+
   <section id="bookmarks">
     <%= render partial: facade.bookmark_segment, locals: {facade: facade}%>
   </section>
 
-  <% if current_user.github_token %>
-    <section id="github">
-      <h1>Github</h1>
-      <ul>
-      <% facade.repositories.each do |repository| %>
-        <li class="repo"><%= link_to repository.name, repository.url %></li>
-      <% end %>
-      </ul>
-      <section id="followers">
-        <h3>Followers</h3>
-        <ul>
-        <% facade.followers.each do |follower| %>
-          <li class='follower'><%= link_to follower.handle, follower.url %></li>
-        <% end %>
-      </ul>
-      </section>
-      <section id="followed">
-        <h3>Following</h3>
-        <ul>
-          <% facade.following.each do |followed_user| %>
-            <li class="followed-user"><%= link_to followed_user.handle, followed_user.url %></li>
-          <% end %>
-        </ul>
-      </section>
-    </section>
-    <% else %>
-    <%= button_to 'Connect to GitHub', github_oauth_path %>
-  <% end %>
-</section>
+  <section id="github">
+    <%= render partial: facade.render_github, locals: {facade: facade} %>
+  </section>

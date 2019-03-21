@@ -59,5 +59,40 @@ describe 'Dashboard facade' do
         expect(facade.bookmarked_videos).to eq(expected)
       end
     end
+
+    describe 'bookmark_segment' do
+      it 'returns empty_bookmarks when user has no bookmarks' do
+        user = create(:user)
+        allow_any_instance_of(DashboardFacade).to receive(:bookmarked_videos).and_return([])
+        facade = DashboardFacade.new(user)
+
+        expect(facade.bookmark_segment).to eq('empty_bookmarks')
+      end
+      it 'returns bookmarks when a user has made bookmarks' do
+        user = create(:user)
+        allow_any_instance_of(DashboardFacade).to receive(:bookmarked_videos).and_return(["video"])
+        facade = DashboardFacade.new(user)
+
+        expect(facade.bookmark_segment).to eq('bookmarks')
+      end
+    end
+
+    describe 'render_github' do
+      it 'returns github_connect if user is not connected to github' do
+        user = create(:user)
+        allow_any_instance_of(User).to receive(:github_token).and_return(nil)
+        facade = DashboardFacade.new(user)
+
+        expect(facade.render_github).to eq('github_connect')
+      end
+
+      it 'returns github if user is connected to github' do
+        user = create(:user)
+        allow_any_instance_of(User).to receive(:github_token).and_return("iamafaketokenhehe")
+        facade = DashboardFacade.new(user)
+
+        expect(facade.render_github).to eq('github')
+      end
+    end
   end
 end
