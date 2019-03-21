@@ -22,7 +22,7 @@ describe 'As an admin' do
 
       expect(current_path).to eq(admin_dashboard_path)
       expect(Tutorial.count).to eq(1)
-      expect(page).to_not have_content(@tutorial.name)
+      expect(page).to_not have_content(@tutorial.title)
     end
 
     it 'removes the videos for the tutorial from the system' do
