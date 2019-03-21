@@ -34,7 +34,7 @@ describe 'vister can create an account', :js do
     expect(page).to_not have_content('Sign In')
   end
 
-  it 'can register with dupicate username' do
+  it "can't register with dupicate username" do
     email = 'jimbob@aol.com'
     first_name = 'Jim'
     last_name = 'Bob'

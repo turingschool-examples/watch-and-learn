@@ -8,10 +8,7 @@ RSpec.describe 'User can see their Github followers' do
         create(:github_token, user: user, token: ENV['USER_1_GITHUB_TOKEN'])
         allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-        filename = 'user_1_github_followers.json'
-        url = "https://api.github.com/user/followers"
-
-        stub_get_json(url,filename)
+        stub_user_1_dashboard
 
         visit '/dashboard'
 

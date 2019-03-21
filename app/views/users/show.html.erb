@@ -7,9 +7,21 @@
     <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
     <li> <%= current_user.email%> </li>
   </ul>
-  <section>
+
+  <section class="bookmarked-segments">
     <h1>Bookmarked Segments</h1>
+    <% facade.user_bookmarked_videos.each do |bookmark| %>
+      <article class="bookmarked-tutorial">
+        <p><%= bookmark.video.tutorial.title %></p>
+        <ul>
+          <li class="bookmarked-video">
+            <%= link_to bookmark.video.title, tutorial_video_path(bookmark.video.tutorial_id, bookmark.video.id) %>
+          </li>
+        </ul>
+      </article>
+    <% end %>
   </section>
+
   <% if current_user.github_token %>
     <section class='github'>
       <h1>Github</h1>
