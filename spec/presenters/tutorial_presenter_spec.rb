@@ -7,7 +7,7 @@ describe TutorialFacade do
       video2 = create(:video, tutorial_id: tutorial.id)
       video3 = create(:video, tutorial_id: tutorial.id)
 
-      presenter = TutorialFacade.new(tutorial.id, video2.id)
+      presenter = TutorialFacade.new(tutorial, video2.id)
 
       expect(presenter.current_video.id).to eq(video2.id)
     end
@@ -18,7 +18,7 @@ describe TutorialFacade do
       video2 = create(:video, tutorial_id: tutorial.id)
       video3 = create(:video, tutorial_id: tutorial.id)
 
-      presenter = TutorialFacade.new(tutorial.id)
+      presenter = TutorialFacade.new(tutorial)
 
       expect(presenter.current_video.id).to eq(video1.id)
     end
@@ -30,7 +30,7 @@ describe TutorialFacade do
         video2 = create(:video, tutorial_id: tutorial.id, position: 2)
         video3 = create(:video, tutorial_id: tutorial.id, position: 3)
 
-        presenter = TutorialFacade.new(tutorial.id, video1.id)
+        presenter = TutorialFacade.new(tutorial, video1.id)
 
         expect(presenter.next_video).to eq(video2)
       end
@@ -40,7 +40,7 @@ describe TutorialFacade do
         rocky = create(:video, tutorial: learn_to_fight, position: 1)
         bloodsport = create(:video, tutorial: learn_to_fight, position: 2)
 
-        presenter = TutorialFacade.new(learn_to_fight.id, bloodsport.id)
+        presenter = TutorialFacade.new(learn_to_fight, bloodsport.id)
         expect(presenter.next_video).to eq(bloodsport)
       end
     end
