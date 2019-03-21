@@ -49,7 +49,6 @@ describe "A registered user" do
       expect(page).to_not have_content("Followers")
       expect(page).to_not have_css(".follower")
       expect(page).to_not have_css(".follower_handle")
-      expect(page).to_not have_css(".follower_url")
     end
   end
 
@@ -66,7 +65,6 @@ describe "A registered user" do
         expect(page).to have_content("Followers")
         expect(page).to have_css(".follower", count: 5)
         expect(page).to have_css(".follower_handle", count: 5)
-        expect(page).to have_css(".follower_url", count: 5)
       end
     end
   end

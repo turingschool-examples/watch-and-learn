@@ -12,9 +12,9 @@
   </section>
     <% if current_user.github_token %>
       <section class="user_github">
-        <h1>GitHub</h1>
+        <h2>GitHub</h2>
         <section class="user_github_repos">
-          <h2>Repositories</h2>
+          <h3>Repositories</h3>
           <ul>
             <% facade.repos.each do |repo| %>
               <li class="name"><%= repo.name %></li>
@@ -22,12 +22,11 @@
           </ul>
         </section>
         <section class="user_github_followers">
-          <h2>Followers</h2>
+          <h3>Followers</h3>
           <ul>
             <% facade.followers.each do |follower| %>
             <section class="follower">
-              <li class="follower_handle"><%= follower.handle %></li>
-              <li class="follower_url"><%= follower.url %></li>
+              <li class="follower_handle"><%= link_to(follower.handle, follower.url) %></li>
             </section>
             <% end %>
           </ul>
