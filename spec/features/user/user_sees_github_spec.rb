@@ -69,6 +69,7 @@ describe "A registered user" do
       end
     end
   end
+
   it 'sees following section on profile', :vcr do
     user = create(:user, email: "test@email.com", password: "test", github_token: ENV['GITHUB_API_KEY'])
 
