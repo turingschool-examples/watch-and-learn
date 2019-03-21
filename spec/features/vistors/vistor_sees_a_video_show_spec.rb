@@ -18,7 +18,6 @@ describe 'visitor sees a video show' do
     tutorial = create(:tutorial)
 
     visit tutorial_path(tutorial)
-    save_and_open_page
 
     expect(page).to have_content("This tutorial is currently empty.")
   end

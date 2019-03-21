@@ -59,5 +59,22 @@ describe 'Dashboard facade' do
         expect(facade.bookmarked_videos).to eq(expected)
       end
     end
+
+    describe 'bookmark_segment' do
+      it 'returns empty_bookmarks when user has no bookmarks' do
+        user = create(:user)
+        allow_any_instance_of(DashboardFacade).to receive(:bookmarked_videos).and_return([])
+        facade = DashboardFacade.new(user)
+
+        expect(facade.bookmark_segment).to eq('empty_bookmarks')
+      end
+      it 'returns bookmarks when a user has made bookmarks' do
+        user = create(:user)
+        allow_any_instance_of(DashboardFacade).to receive(:bookmarked_videos).and_return(["video"])
+        facade = DashboardFacade.new(user)
+
+        expect(facade.bookmark_segment).to eq('bookmarks')
+      end
+    end
   end
 end
