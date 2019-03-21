@@ -12,4 +12,5 @@
   </section>
 
   <%=render partial: facade.github_partial(current_user), locals: {facade: facade}%>
+  <%= link_to 'Connect To Github', github_login_path%>
 </section>
