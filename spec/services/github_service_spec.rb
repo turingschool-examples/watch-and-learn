@@ -24,5 +24,17 @@ describe GithubService do
       expect(repos[3][:name]).to eq("battleship")
       expect(repos[4][:name]).to eq("books")
     end
+
+    it '#get_followers' do
+      json_response = File.open('fixtures/user_followers.rb')
+      stub_request(:get, "https://api.github.com/user/followers").to_return(status: 200, body: json_response)
+
+      followers = GithubService.new(@user.github_token).get_followers
+
+      expect(followers[0][:login]).to eq("nagerz")
+      expect(followers[1][:login]).to eq("Mackenzie-Frey")
+      expect(followers[0][:html_url]).to eq("https://github.com/nagerz")
+      expect(followers[1][:html_url]).to eq("https://github.com/Mackenzie-Frey")
+    end
   end
 end
