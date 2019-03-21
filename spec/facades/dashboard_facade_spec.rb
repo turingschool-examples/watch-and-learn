@@ -46,5 +46,18 @@ describe 'Dashboard facade' do
         end
       end
     end
+    describe '.bookmarked_videos' do
+      it 'returns the videos the current user has bookmarked' do
+        tutorial = create(:tutorial)
+        video = create(:video, position: 1, tutorial_id: tutorial.id)
+        user = create(:user)
+        create(:user_video, user_id: user.id, video_id: video.id)
+
+        facade = DashboardFacade.new(user)
+        expected = [video]
+
+        expect(facade.bookmarked_videos).to eq(expected)
+      end
+    end
   end
 end

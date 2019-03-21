@@ -7,8 +7,9 @@
     <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
     <li> <%= current_user.email%> </li>
   </ul>
-  <section>
-    <h1>Bookmarked Segments</h1>
+  
+  <section id="bookmarks">
+    <%= render partial: facade.bookmark_segment, locals: {facade: facade}%>
   </section>
 
   <% if current_user.github_token %>

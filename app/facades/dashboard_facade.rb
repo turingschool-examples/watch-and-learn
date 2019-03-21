@@ -21,4 +21,12 @@ class DashboardFacade
       GithubUser.new(github_user_info)
     end
   end
+
+  def bookmarked_videos
+    @bookmarks ||= User.bookmarked_videos(@user)
+  end
+
+  def bookmark_segment
+    bookmarked_videos.empty? ? 'empty_bookmarks' : 'bookmarks'
+  end
 end
