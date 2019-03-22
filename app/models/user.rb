@@ -18,6 +18,8 @@ class User < ApplicationRecord
     length: {
       minimum: 1
     }
+  validates :password,
+    confirmation: true
   has_secure_password
 
   enum role: [:default, :admin]
