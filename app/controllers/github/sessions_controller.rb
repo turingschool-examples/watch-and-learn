@@ -2,7 +2,7 @@ class Github::SessionsController < ApplicationController
   before_action :require_login
 
   def create
-    current_user.update(github_extraction)
+    current_user.update!(github_extraction)
     redirect_to dashboard_path
   end
 

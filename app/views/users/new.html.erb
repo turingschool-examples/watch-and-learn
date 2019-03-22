@@ -1,4 +1,7 @@
 <div class="user-login">
+  <% if @user.errors %>
+    <%= render partial: 'shared/errors', locals: {errors: @user.errors} %>
+  <% end %>
   <main>
 <h4>Register</h4>
   <section>

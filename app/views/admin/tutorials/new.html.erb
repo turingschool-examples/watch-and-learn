@@ -1,3 +1,6 @@
+<% if @tutorial.errors %>
+  <%= render partial: 'shared/errors', locals: {errors: @tutorial.errors} %>
+<% end %>
 <h2>New Tutorial</h2>
 <%= form_for [:admin, @tutorial] do |f| %>
   <%= f.label :title %>
@@ -10,8 +13,8 @@
   <h3>Videos</h3>
 
   <%= f.fields_for :videos do |builder| %>
-    <%= f.label :youtube_url %>
-    <%= f.text_field :video_id, class: "block col-4 field" %>
+    <%= builder.label :youtube_url %>
+    <%= builer.text_field :video_id, class: "block col-4 field" %>
   <% end %>
 
   <%= f.submit "Save", class: "mt2 btn btn-primary mb1 bg-teal"  %>
