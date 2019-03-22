@@ -9,13 +9,29 @@ require 'vcr'
 require 'webmock/rspec'
 
 VCR.configure do |config|
-  #config.allow_http_connections_when_no_cassette = true
   config.ignore_localhost = true
   config.cassette_library_dir = 'spec/cassettes'
   config.hook_into :webmock
   config.configure_rspec_metadata!
   config.filter_sensitive_data("<YOUTUBE_API_KEY>") { ENV['YOUTUBE_API_KEY'] }
 end
+
+OmniAuth.config.test_mode = true
+
+omniauth_hash = {
+"provider"=>"github",
+ "uid"=>"12345",
+ "credentials"=>{"token"=>ENV["USER_1_GITHUB_TOKEN"], "expires"=>false},
+ }
+
+
+OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new(omniauth_hash)
+# OmniAuth.config.mock_auth[:github] = :invalid_credentials
+
+
+OmniAuth.config.on_failure = Proc.new { |env|
+  OmniAuth::FailureEndpoint.new(env).redirect_to_failure
+}
 
 def stub_get_json(url, filename)
   json_response = File.open("./fixtures/#{filename}")
