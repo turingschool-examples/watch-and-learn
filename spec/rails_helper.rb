@@ -21,47 +21,7 @@ OmniAuth.config.test_mode = true
 omniauth_hash = {
 "provider"=>"github",
  "uid"=>"12345",
- "info"=>
-  {"nickname"=>"teresa-m-knowles",
-   "email"=>nil,
-   "name"=>"Teresa M Knowles",
-   "image"=>"https://avatars0.githubusercontent.com/u/13354855?v=4",
-   "urls"=>{"GitHub"=>"https://github.com/teresa-m-knowles", "Blog"=>""}},
  "credentials"=>{"token"=>ENV["USER_1_GITHUB_TOKEN"], "expires"=>false},
- "extra"=>
-  {"raw_info"=>
-    {"login"=>"teresa-m-knowles",
-     "id"=>13354855,
-     "node_id"=>"MDQ6VXNlcjEzMzU0ODU1",
-     "avatar_url"=>"https://avatars0.githubusercontent.com/u/13354855?v=4",
-     "gravatar_id"=>"",
-     "url"=>"https://api.github.com/users/teresa-m-knowles",
-     "html_url"=>"https://github.com/teresa-m-knowles",
-     "followers_url"=>"https://api.github.com/users/teresa-m-knowles/followers",
-     "following_url"=>"https://api.github.com/users/teresa-m-knowles/following{/other_user}",
-     "gists_url"=>"https://api.github.com/users/teresa-m-knowles/gists{/gist_id}",
-     "starred_url"=>"https://api.github.com/users/teresa-m-knowles/starred{/owner}{/repo}",
-     "subscriptions_url"=>"https://api.github.com/users/teresa-m-knowles/subscriptions",
-     "organizations_url"=>"https://api.github.com/users/teresa-m-knowles/orgs",
-     "repos_url"=>"https://api.github.com/users/teresa-m-knowles/repos",
-     "events_url"=>"https://api.github.com/users/teresa-m-knowles/events{/privacy}",
-     "received_events_url"=>"https://api.github.com/users/teresa-m-knowles/received_events",
-     "type"=>"User",
-     "site_admin"=>false,
-     "name"=>"Teresa M Knowles",
-     "company"=>nil,
-     "blog"=>"",
-     "location"=>nil,
-     "email"=>nil,
-     "hireable"=>true,
-     "bio"=>nil,
-     "public_repos"=>37,
-     "public_gists"=>7,
-     "followers"=>9,
-     "following"=>12,
-     "created_at"=>"2015-07-15T19:08:28Z",
-     "updated_at"=>"2019-03-22T02:39:27Z"},
-   "all_emails"=>[]}
  }
 
 

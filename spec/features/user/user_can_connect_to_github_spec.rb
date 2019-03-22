@@ -82,7 +82,6 @@ RSpec.describe 'A logged in User can connect their Github account' do
 
         it 'should show my repositories, following and followers' do
           visit '/dashboard'
-          save_and_open_page
 
           expect(page).to have_css('.repositories')
           expect(page).to have_css('.followers')
