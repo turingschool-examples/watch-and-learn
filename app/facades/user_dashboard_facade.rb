@@ -10,9 +10,7 @@ class UserDashboardFacade
     response.map do |user_data|
       GithubUser.new(user_data)
     end
-
   end
-
 
   def user_repos
     response = service.get_repos
@@ -21,7 +19,6 @@ class UserDashboardFacade
     end
   end
 
-#change from Follower.new to GithubUser.new
   def user_followers
     response = service.get_followers
     response.map do |user_data|
@@ -35,5 +32,9 @@ class UserDashboardFacade
 
   def service
     GithubService.new(@user)
+  end
+
+  def user_bookmarked_videos
+    UserVideo.bookmarked_videos(@user)
   end
 end

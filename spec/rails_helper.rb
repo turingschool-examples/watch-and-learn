@@ -9,7 +9,7 @@ require 'vcr'
 require 'webmock/rspec'
 
 VCR.configure do |config|
-  config.allow_http_connections_when_no_cassette = true
+  #config.allow_http_connections_when_no_cassette = true
   config.ignore_localhost = true
   config.cassette_library_dir = 'spec/cassettes'
   config.hook_into :webmock
@@ -22,8 +22,36 @@ def stub_get_json(url, filename)
 
   stub_request(:get, url).
     to_return(status: 200, body: json_response)
-
 end
+
+def stub_user_1_dashboard
+  filename1 = 'user_1_github_repos.json'
+  url1 = "https://api.github.com/user/repos?type=owner"
+  stub_get_json(url1, filename1)
+
+  filename2 = 'user_1_github_followers.json'
+  url2 = "https://api.github.com/user/followers"
+  stub_get_json(url2, filename2)
+
+  filename3 = 'user_1_github_following.json'
+  url3 = "https://api.github.com/user/following"
+  stub_get_json(url3, filename3)
+end
+
+def stub_user_2_dashboard
+  filename1 = 'user_2_github_repos.json'
+  url1 = "https://api.github.com/user/repos?type=owner"
+  stub_get_json(url1, filename1)
+
+  filename2 = 'user_2_github_followers.json'
+  url2 = "https://api.github.com/user/followers"
+  stub_get_json(url2, filename2)
+
+  filename3 = 'user_2_github_following.json'
+  url3 = "https://api.github.com/user/following"
+  stub_get_json(url3, filename3)
+end
+
 
 
 ActiveRecord::Migration.maintain_test_schema!

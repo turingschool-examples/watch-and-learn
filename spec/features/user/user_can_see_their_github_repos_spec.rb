@@ -20,10 +20,7 @@ RSpec.describe 'User can see their Github repositories' do
 
     describe 'under the Github section' do
       it 'I see a list of 5 repositories' do
-        filename = 'user_1_github_repos.json'
-        url = "https://api.github.com/user/repos"
-
-        stub_get_json(url,filename)
+        stub_user_1_dashboard
 
         user = create(:user)
         create(:github_token, user: user, token: ENV['USER_1_GITHUB_TOKEN'])
@@ -42,10 +39,7 @@ RSpec.describe 'User can see their Github repositories' do
       end
 
       it 'a second user sees their repositories' do
-        filename = 'user_2_github_repos.json'
-        url = "https://api.github.com/user/repos"
-
-        stub_get_json(url,filename)
+        stub_user_2_dashboard
 
         user1 = create(:user)
         create(:github_token, user: user1, token: ENV['USER_1_GITHUB_TOKEN'])
