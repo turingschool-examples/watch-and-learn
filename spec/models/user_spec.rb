@@ -15,6 +15,7 @@ RSpec.describe User, type: :model do
     it {should validate_length_of(:email).
         is_at_least(1)
     }
+    it {should validate_uniqueness_of(:email)}
   end
 
   describe 'roles' do
