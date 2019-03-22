@@ -45,7 +45,7 @@ RSpec.describe 'A logged in User can connect their Github account' do
 
       describe 'if I try to connect a github account already associated to a user' do
         it 'should not let me connect and I should see an error message' do
-          create(:user, uid: '13354855')
+          create(:user, uid: '12345')
 
           visit dashboard_path
 

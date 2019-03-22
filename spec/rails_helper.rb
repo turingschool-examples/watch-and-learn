@@ -21,7 +21,7 @@ OmniAuth.config.test_mode = true
 
 omniauth_hash = {
 "provider"=>"github",
- "uid"=>"13354855",
+ "uid"=>"12345",
  "info"=>
   {"nickname"=>"teresa-m-knowles",
    "email"=>nil,
