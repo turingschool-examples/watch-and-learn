@@ -31,6 +31,7 @@ Rails.application.routes.draw do
 
   post '/connect', to: redirect('/auth/github')
   get 'auth/:provider/callback', to: 'github_connection#create'
+  get '/auth/failure', to: redirect('/dashboard')
   get '/login', to: "sessions#new"
   post '/login', to: "sessions#create"
   delete '/logout', to: "sessions#destroy"

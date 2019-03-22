@@ -9,13 +9,70 @@ require 'vcr'
 require 'webmock/rspec'
 
 VCR.configure do |config|
-  #config.allow_http_connections_when_no_cassette = true
+  config.allow_http_connections_when_no_cassette = true
   config.ignore_localhost = true
   config.cassette_library_dir = 'spec/cassettes'
   config.hook_into :webmock
   config.configure_rspec_metadata!
   config.filter_sensitive_data("<YOUTUBE_API_KEY>") { ENV['YOUTUBE_API_KEY'] }
 end
+
+OmniAuth.config.test_mode = true
+
+omniauth_hash = {
+"provider"=>"github",
+ "uid"=>"13354855",
+ "info"=>
+  {"nickname"=>"teresa-m-knowles",
+   "email"=>nil,
+   "name"=>"Teresa M Knowles",
+   "image"=>"https://avatars0.githubusercontent.com/u/13354855?v=4",
+   "urls"=>{"GitHub"=>"https://github.com/teresa-m-knowles", "Blog"=>""}},
+ "credentials"=>{"token"=>"bc15f386df89daad35ab23549a554fccfaafd4e2", "expires"=>false},
+ "extra"=>
+  {"raw_info"=>
+    {"login"=>"teresa-m-knowles",
+     "id"=>13354855,
+     "node_id"=>"MDQ6VXNlcjEzMzU0ODU1",
+     "avatar_url"=>"https://avatars0.githubusercontent.com/u/13354855?v=4",
+     "gravatar_id"=>"",
+     "url"=>"https://api.github.com/users/teresa-m-knowles",
+     "html_url"=>"https://github.com/teresa-m-knowles",
+     "followers_url"=>"https://api.github.com/users/teresa-m-knowles/followers",
+     "following_url"=>"https://api.github.com/users/teresa-m-knowles/following{/other_user}",
+     "gists_url"=>"https://api.github.com/users/teresa-m-knowles/gists{/gist_id}",
+     "starred_url"=>"https://api.github.com/users/teresa-m-knowles/starred{/owner}{/repo}",
+     "subscriptions_url"=>"https://api.github.com/users/teresa-m-knowles/subscriptions",
+     "organizations_url"=>"https://api.github.com/users/teresa-m-knowles/orgs",
+     "repos_url"=>"https://api.github.com/users/teresa-m-knowles/repos",
+     "events_url"=>"https://api.github.com/users/teresa-m-knowles/events{/privacy}",
+     "received_events_url"=>"https://api.github.com/users/teresa-m-knowles/received_events",
+     "type"=>"User",
+     "site_admin"=>false,
+     "name"=>"Teresa M Knowles",
+     "company"=>nil,
+     "blog"=>"",
+     "location"=>nil,
+     "email"=>nil,
+     "hireable"=>true,
+     "bio"=>nil,
+     "public_repos"=>37,
+     "public_gists"=>7,
+     "followers"=>9,
+     "following"=>12,
+     "created_at"=>"2015-07-15T19:08:28Z",
+     "updated_at"=>"2019-03-22T02:39:27Z"},
+   "all_emails"=>[]}
+ }
+
+
+OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new(omniauth_hash)
+# OmniAuth.config.mock_auth[:github] = :invalid_credentials
+
+
+OmniAuth.config.on_failure = Proc.new { |env|
+  OmniAuth::FailureEndpoint.new(env).redirect_to_failure
+}
 
 def stub_get_json(url, filename)
   json_response = File.open("./fixtures/#{filename}")
