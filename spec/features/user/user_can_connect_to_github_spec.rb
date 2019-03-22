@@ -10,6 +10,7 @@ RSpec.describe 'A logged in User can connect their Github account' do
         @user_1 = create(:user)
         allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user_1)
         Rails.application.env_config["omniauth.auth"] = OmniAuth.config.mock_auth[:github]
+        stub_user_1_dashboard
       end
 
       describe 'in my dashboard' do
@@ -69,6 +70,8 @@ RSpec.describe 'A logged in User can connect their Github account' do
         token = request[:credentials][:token]
         GithubToken.create(token: token, user: @user_2)
         allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user_2)
+        stub_user_1_dashboard
+
       end
       describe 'in my dashboard' do
         it 'should not show a connect to github button' do
@@ -79,6 +82,7 @@ RSpec.describe 'A logged in User can connect their Github account' do
 
         it 'should show my repositories, following and followers' do
           visit '/dashboard'
+          save_and_open_page
 
           expect(page).to have_css('.repositories')
           expect(page).to have_css('.followers')
