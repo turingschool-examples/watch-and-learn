@@ -28,7 +28,7 @@ omniauth_hash = {
    "name"=>"Teresa M Knowles",
    "image"=>"https://avatars0.githubusercontent.com/u/13354855?v=4",
    "urls"=>{"GitHub"=>"https://github.com/teresa-m-knowles", "Blog"=>""}},
- "credentials"=>{"token"=>"bc15f386df89daad35ab23549a554fccfaafd4e2", "expires"=>false},
+ "credentials"=>{"token"=>ENV["USER_1_GITHUB_TOKEN"], "expires"=>false},
  "extra"=>
   {"raw_info"=>
     {"login"=>"teresa-m-knowles",
