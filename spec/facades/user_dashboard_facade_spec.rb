@@ -65,8 +65,8 @@ RSpec.describe UserDashboardFacade do
 
       facade = UserDashboardFacade.new(@user)
       grouped_by_tutorial = {
-        tutorial1.title => [uv1, uv2],
-        tutorial3.title => [uv3]
+        tutorial1 => [video1, video2],
+        tutorial3 => [video4]
       }
 
       expect(facade.user_bookmarked_videos).to eq(grouped_by_tutorial)

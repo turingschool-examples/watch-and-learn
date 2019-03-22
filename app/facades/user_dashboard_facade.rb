@@ -35,6 +35,6 @@ class UserDashboardFacade
   end
 
   def user_bookmarked_videos
-    UserVideo.bookmarked_videos(@user)
+    @user.bookmarks
   end
 end
