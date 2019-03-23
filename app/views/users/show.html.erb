@@ -10,49 +10,49 @@
   <section>
     <h1>Bookmarked Segments</h1>
   </section>
-    <% if current_user.github_token? %>
-      <section class="user_github">
-        <h2>GitHub</h2>
-        <section class="user_github_repos">
-          <h3>Repositories</h3>
-          <ul>
-            <% facade.repos.each do |repo| %>
-              <li class="name"><%= repo.name %></li>
-            <% end %>
-          </ul>
-        </section>
-        <section class="user_github_followers">
-          <h3>Followers</h3>
-          <ul>
-            <% facade.followers.each do |follower| %>
-            <section class="follower">
-              <section class="follower_handle_<%= follower.handle %>"
-                <li class="follower_handle"><%= link_to(follower.handle, follower.url) %></li>
-                <% if User.is_user?(follower.uid) %>
-                  <%= button_to 'Add Friend', friendships_path, method: 'create', class: "btn btn-primary mb1 bg-teal" %>
-                <% end %>
-              </section>
-            </section>
-            <% end %>
-          </ul>
-        </section>
-        <section class="user_github_following">
-          <h3>Following</h3>
-          <ul>
-            <% facade.following.each do |following| %>
-            <section class="following">
-              <section class="following_handle_<%= following.handle %>"
-                <li class="following_handle"><%= link_to(following.handle, following.url) %></li>
-                <% if User.is_user?(following.uid) %>
-                  <%= button_to 'Add Friend', friendships_path, method: 'create', class: "btn btn-primary mb1 bg-teal" %>
-                <% end %>
-              </section>
-            </section>
-            <% end %>
-          </ul>
-        </section>
+  <% if current_user.github_token? %>
+    <section class="user_github">
+      <h2>GitHub</h2>
+      <section class="user_github_repos">
+        <h3>Repositories</h3>
+        <ul>
+          <% facade.repos.each do |repo| %>
+            <li class="name"><%= repo.name %></li>
+          <% end %>
+        </ul>
       </section>
-    <% else %>
-      <%= button_to "Connect to GitHub", 'auth/github', class: "btn btn-primary mb1 bg-teal" %>
-    <% end %>
+      <section class="user_github_followers">
+        <h3>Followers</h3>
+        <ul>
+          <% facade.followers.each do |follower| %>
+          <section class="follower">
+            <section class="follower_handle_<%= follower.handle %>"
+              <li class="follower_handle"><%= link_to(follower.handle, follower.url) %></li>
+              <% if User.is_user?(follower.uid) %>
+                <%= button_to 'Add Friend', friendships_path, method: 'create', class: "btn btn-primary mb1 bg-teal" %>
+              <% end %>
+            </section>
+          </section>
+          <% end %>
+        </ul>
+      </section>
+      <section class="user_github_following">
+        <h3>Following</h3>
+        <ul>
+          <% facade.following.each do |following| %>
+          <section class="following">
+            <section class="following_handle_<%= following.handle %>"
+              <li class="following_handle"><%= link_to(following.handle, following.url) %></li>
+              <% if User.is_user?(following.uid) %>
+                <%= button_to 'Add Friend', friendships_path, method: 'create', class: "btn btn-primary mb1 bg-teal" %>
+              <% end %>
+            </section>
+          </section>
+          <% end %>
+        </ul>
+      </section>
+    </section>
+  <% else %>
+    <%= button_to "Connect to GitHub", 'auth/github', class: "btn btn-primary mb1 bg-teal" %>
+  <% end %>
 </section>
