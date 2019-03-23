@@ -2,7 +2,7 @@ class InvitesController < ApplicationController
 
   def create
     begin
-    InviteMailer.invite(current_user, params[:github_handle]).deliver_now
+      InviteMailer.invite(current_user, params[:github_handle]).deliver_now
       flash[:success] = "Successfully sent invite!"
     rescue
       flash.clear
@@ -10,5 +10,4 @@ class InvitesController < ApplicationController
     end
     redirect_to dashboard_path
   end
-
 end

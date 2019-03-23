@@ -1,0 +1,74 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.github.com/users/plapicola
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Sat, 23 Mar 2019 21:23:08 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '60'
+      X-Ratelimit-Remaining:
+      - '57'
+      X-Ratelimit-Reset:
+      - '1553379242'
+      Cache-Control:
+      - public, max-age=60, s-maxage=60
+      Vary:
+      - Accept
+      Etag:
+      - W/"b8917865c7e7c199681a93194e8e719b"
+      Last-Modified:
+      - Fri, 22 Mar 2019 20:21:59 GMT
+      X-Github-Media-Type:
+      - github.v3; format=json
+      Access-Control-Expose-Headers:
+      - ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
+        X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval,
+        X-GitHub-Media-Type
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Content-Security-Policy:
+      - default-src 'none'
+      X-Github-Request-Id:
+      - F88A:2C1D:96E2F8:175EF3D:5C96A3BC
+    body:
+      encoding: ASCII-8BIT
+      string: '{"login":"plapicola","id":41562392,"node_id":"MDQ6VXNlcjQxNTYyMzky","avatar_url":"https://avatars1.githubusercontent.com/u/41562392?v=4","gravatar_id":"","url":"https://api.github.com/users/plapicola","html_url":"https://github.com/plapicola","followers_url":"https://api.github.com/users/plapicola/followers","following_url":"https://api.github.com/users/plapicola/following{/other_user}","gists_url":"https://api.github.com/users/plapicola/gists{/gist_id}","starred_url":"https://api.github.com/users/plapicola/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/plapicola/subscriptions","organizations_url":"https://api.github.com/users/plapicola/orgs","repos_url":"https://api.github.com/users/plapicola/repos","events_url":"https://api.github.com/users/plapicola/events{/privacy}","received_events_url":"https://api.github.com/users/plapicola/received_events","type":"User","site_admin":false,"name":"Peter
+        Lapicola","company":null,"blog":"","location":null,"email":"p@lapicola.com","hireable":null,"bio":"Student
+        Developer","public_repos":36,"public_gists":4,"followers":14,"following":18,"created_at":"2018-07-23T04:47:38Z","updated_at":"2019-03-22T20:21:59Z"}'
+    http_version:
+  recorded_at: Sat, 23 Mar 2019 21:23:06 GMT
+recorded_with: VCR 4.0.0
