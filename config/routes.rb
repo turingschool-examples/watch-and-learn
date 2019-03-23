@@ -45,4 +45,5 @@ Rails.application.routes.draw do
 
   get '/auth/github', as: :github_oauth
   get '/auth/github/callback', to: 'github/sessions#create', as: :github_callback
+  get '/login/verify', to: 'sessions/validation#show', as: :validation_landing
 end

@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     @user = User.create(user_params)
     if @user.save
       session[:user_id] = @user.id
-      redirect_to dashboard_path
+      redirect_to validation_landing_path
     else
       flash[:error] = 'There are problems with the provided information.'
       render :new
