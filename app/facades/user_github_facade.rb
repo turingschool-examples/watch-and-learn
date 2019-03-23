@@ -25,6 +25,23 @@ class UserGithubFacade
     @user.friends
   end
 
+  def user_bookmarks
+    Video.joins(user_videos: :user)
+         .joins(:tutorial)
+         .select('videos.title, tutorials.id as tutorial_id, tutorials.title as tutorial_title')
+         .where(users: { id: @user.id })
+         .group('tutorials.id')
+         .group('videos.title')
+         .group('videos.position')
+         .order('tutorial_title')
+         .order(:position)
+
+    # Tutorial.joins(videos: [user_videos: :user])
+    #         .select('videos.id, tutorials.*')
+    #         .where(users: { id: @user.id })
+    #         .order('videos.position')
+  end
+
   def service
     GithubService.new
   end
