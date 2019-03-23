@@ -2,16 +2,18 @@
 <h2><%= @facade.title %></h2>
 <h1 id="message"></h1>
 <div class="col col-4">
-  <h4>Videos</h4>
-  <ul>
-    <% unless @facade.videos.empty? %>
+  <% if @facade.videos.empty? %>
+    <h4>  There are no videos for this tutorial yet. </h4>
+  <% else %>
+    <h4>Videos</h4>
+    <ul>
       <% @facade.videos.each do |video| %>
         <li>
           <h3><%= link_to video.title, tutorial_path(video_id: video.id), class: "show-link", id: video.position %></h3>
         </li>
       <% end %>
-    <% end %>
-  </ul>
+  <% end %>
+    </ul>
 </div>
 
 <% unless @facade.videos.empty? %>
