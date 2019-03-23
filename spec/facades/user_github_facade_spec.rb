@@ -45,6 +45,20 @@ describe UserGithubFacade do
       end
     end
 
+    context '#user_friends' do
+      it 'returns a list of the user\'s friends' do
+        user = create(:user, github_token: ENV['github_key'])
+        friend = create(:user)
+        friend_2 = create(:user)
+        user.friends << friend
+        user.friends << friend_2
+        facade = UserGithubFacade.new(user)
+
+        expect(facade.user_friends.count).to eq(2)
+        expect(facade.user_friends[0]).to be_a(User)
+      end
+    end
+
     context '#github_partial' do
       context 'for user with github_token' do
         it 'returns user dashboard partial path' do

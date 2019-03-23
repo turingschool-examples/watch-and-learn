@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   helper_method :find_bookmark
   helper_method :list_tags
   helper_method :tutorial_name
+  helper_method :check_user_in_database
 
   add_flash_types :success
 
@@ -20,5 +21,13 @@ class ApplicationController < ActionController::Base
 
   def four_oh_four
     raise ActionController::RoutingError.new('Not Found')
+  end
+
+  def check_user_in_database(user)
+    if  User.find_by(uid: user.uid) && !current_user.friends.include?(User.find_by(uid: user.uid))
+      true
+    else
+      false
+    end
   end
 end

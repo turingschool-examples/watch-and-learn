@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_22_223255) do
+ActiveRecord::Schema.define(version: 2019_03_22_234227) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "friendships", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.bigint "friend_id"
+    t.index ["friend_id"], name: "index_friendships_on_friend_id"
+    t.index ["user_id"], name: "index_friendships_on_user_id"
+  end
 
   create_table "taggings", id: :serial, force: :cascade do |t|
     t.integer "tag_id"
@@ -63,6 +72,7 @@ ActiveRecord::Schema.define(version: 2019_03_22_223255) do
     t.string "email"
     t.string "first_name"
     t.string "last_name"
+
     t.string "password_digest"
     t.integer "role", default: 0
     t.datetime "created_at", null: false

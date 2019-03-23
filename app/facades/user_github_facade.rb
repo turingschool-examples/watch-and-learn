@@ -21,6 +21,10 @@ class UserGithubFacade
     end
   end
 
+  def user_friends
+    @user.friends
+  end
+
   def service
     GithubService.new
   end
