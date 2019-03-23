@@ -24,7 +24,7 @@ describe InviteFacade do
         recipient = { name: "Sterling Archer"}
         invite = InviteFacade.new(nil, recipient)
 
-        expect(invite.to_address).to eq("Sterling Archer")
+        expect(invite.to_username).to eq("Sterling Archer")
       end
     end
 
@@ -32,10 +32,10 @@ describe InviteFacade do
       it 'returns the senders username' do
         user = create(:user)
         invite = InviteFacade.new(user, nil)
-        
+
         expected = user.first_name + " " + user.last_name
 
-        expect(invie.from_username).to eq(expected)
+        expect(invite.from_username).to eq(expected)
       end
     end
   end
