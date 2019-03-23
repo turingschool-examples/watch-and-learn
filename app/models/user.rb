@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  include CheckUser
   has_many :user_videos
   has_many :videos, through: :user_videos
   has_and_belongs_to_many :friendships,
@@ -15,4 +16,8 @@ class User < ApplicationRecord
   def connect_github(data)
     self.update!(github_token: data['credentials']['token'])
   end
+
+  # def self.is_user?(github_uid)
+  #   !(User.find_by(github_uid: github_uid).nil?)
+  # end
 end
