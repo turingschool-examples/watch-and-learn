@@ -22,5 +22,21 @@ describe 'A registered user without a github token' do
       expect(page).to have_content("Followers")
       expect(page).to have_content("Following")
     end
+
+    it 'cannot connect multiple user accounts to the same github account' do
+      create(:user, first_name: 'Test name', uid: 34468256)
+      user = create(:user)
+
+      login_as(user)
+
+      mock_user_dashboard_github
+      click_on 'Connect To Github'
+
+      expect(user.uid).to eq(nil)
+      expect(user.github_token).to eq(nil)
+      expect(current_path).to eq(dashboard_path)
+      expect(page).to have_button('Connect To Github')
+      expect(page).to have_content('This GitHub account is already connected to another user\'s profile')
+    end
   end
 end
