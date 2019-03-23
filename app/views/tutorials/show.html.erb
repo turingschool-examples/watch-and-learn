@@ -1,5 +1,8 @@
 <main class="tutorials">
 <h2><%= @facade.title %></h2>
+<% if @facade.classroom && !current_user%>
+  <p>You need to <%= link_to "login", login_path %> to see this tutorial. </p>
+<% else %>
 <h1 id="message"></h1>
 <div class="col col-4">
   <% if @facade.videos.empty? %>
@@ -70,6 +73,7 @@
     <%= link_to "More", "#", "data-action" => "click->tutorials#showDescription", id: @facade.current_video.id, class: "show-link"%>
   </p>
 </div>
+<% end %>
 <% end %>
 
 </main>
