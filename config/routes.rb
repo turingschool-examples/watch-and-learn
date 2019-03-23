@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'friendships/create'
   namespace :api do
     namespace :v1 do
       resources :tutorials, only:[:show, :index]

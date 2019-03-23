@@ -7,8 +7,13 @@
     <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
     <li> <%= current_user.email%> </li>
   </ul>
-  <section>
+  <section class='bookmarks'>
     <h1>Bookmarked Segments</h1>
+      <% facade.user_bookmarks.each do |bookmark| %>
+       <div> <%= bookmark.tutorial_title %>
+          <%= link_to bookmark.title, tutorial_path(bookmark.tutorial_id)%>
+        </div>
+      <% end %>
   </section>
 
   <%=render partial: facade.github_partial(current_user), locals: {facade: facade}%>

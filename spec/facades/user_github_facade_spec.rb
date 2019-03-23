@@ -84,5 +84,20 @@ describe UserGithubFacade do
         end
       end
     end
+
+    context '#user_bookmarks' do
+      it 'returns all the videos a user has bookmarked, grouped by tutorial' do
+        user = create(:user)
+        videos = create_list(:video, 5)
+        videos.each do |video|
+          create(:user_video, user: user, video: video)
+        end
+
+        facade = UserGithubFacade.new(user)
+
+        expect(facade.user_bookmarks.length).to eq(5)
+        expect(facade.user_bookmarks[0]).to be_a(Video)
+      end
+    end
   end
 end

@@ -1,7 +1,7 @@
 <h3>Github</h3>
 <div class="repos">
   <% facade.user_repos[0..4].each do |repo| %>
-    <%= link_to "#{repo.name}", repo.url %>
+    <%= link_to repo.name, repo.url %>
     <br>
     <br>
   <% end %>
@@ -9,7 +9,7 @@
 <h4>Followers</h4>
 <div class="followers">
   <% facade.user_followers.each do |follower| %>
-    <%= link_to "#{follower.name}", follower.url %>
+    <%= link_to follower.name, follower.url %>
     <%= button_to 'Add Friend', friendships_path, params: {uid: follower.uid} if  check_user_in_database(follower)%>
     <br>
     <br>
@@ -18,7 +18,7 @@
 <h4>Following</h4>
 <div class="following">
   <% facade.user_following.each do |following| %>
-    <%= link_to "#{following.name}", following.url %>
+    <%= link_to following.name, following.url %>
     <%= button_to 'Add Friend', friendships_path, params: {uid: following.uid} if  check_user_in_database(following)%>
     <br>
     <br>
