@@ -9,6 +9,7 @@ RSpec.describe User, type: :model do
 
   describe 'relationships' do
     it {should have_one(:github_token)}
+    it {should have_many(:friends)}
   end
 
   describe 'roles' do
