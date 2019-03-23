@@ -12,13 +12,13 @@
 
   <section class="bookmarked-segments">
     <h1>Bookmarked Segments</h1>
-    <% facade.user_bookmarked_videos.each do |tutorial_title, videos| %>
+    <% facade.user_bookmarked_videos.each do |tutorial, videos| %>
       <article class="bookmarked-tutorial">
-        <p><%= tutorial_title %></p>
+        <p><%= tutorial.title %></p>
         <ul>
           <% videos.each do |bookmark| %>
             <li class="bookmarked-video">
-              <%= link_to bookmark.video.title, tutorial_path(bookmark.tutorial.id, video_id: bookmark.video.id) %>
+              <%= link_to bookmark.title, tutorial_path(bookmark.tutorial.id, video_id: bookmark.id) %>
             </li>
           <% end %>
         </ul>
