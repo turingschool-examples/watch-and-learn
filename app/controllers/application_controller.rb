@@ -26,6 +26,10 @@ class ApplicationController < ActionController::Base
     redirect_to root_path unless current_user
   end
 
+  def require_github_user
+    redirect_to root_path unless current_user && current_user.github_token
+  end
+
   def require_validated_login
     flash[:error] = "You must verify your email to continue." if current_user && !current_user.verified
     redirect_to login_path unless current_user && current_user.verified

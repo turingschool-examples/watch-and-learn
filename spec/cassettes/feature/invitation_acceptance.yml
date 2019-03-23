@@ -7,6 +7,8 @@ http_interactions:
       encoding: US-ASCII
       string: ''
     headers:
+      Authorization:
+      - token <GITHUB_API_KEY>
       User-Agent:
       - Faraday v0.15.4
       Accept-Encoding:
@@ -21,7 +23,7 @@ http_interactions:
       Server:
       - GitHub.com
       Date:
-      - Sat, 23 Mar 2019 21:23:08 GMT
+      - Sat, 23 Mar 2019 22:40:57 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -29,19 +31,23 @@ http_interactions:
       Status:
       - 200 OK
       X-Ratelimit-Limit:
-      - '60'
+      - '5000'
       X-Ratelimit-Remaining:
-      - '57'
+      - '4967'
       X-Ratelimit-Reset:
-      - '1553379242'
+      - '1553384457'
       Cache-Control:
-      - public, max-age=60, s-maxage=60
+      - private, max-age=60, s-maxage=60
       Vary:
-      - Accept
+      - Accept, Authorization, Cookie, X-GitHub-OTP
       Etag:
-      - W/"b8917865c7e7c199681a93194e8e719b"
+      - W/"3de5f8a3602fc128c11f8b3e9601e276"
       Last-Modified:
-      - Fri, 22 Mar 2019 20:21:59 GMT
+      - Sat, 23 Mar 2019 21:29:07 GMT
+      X-Oauth-Scopes:
+      - repo
+      X-Accepted-Oauth-Scopes:
+      - ''
       X-Github-Media-Type:
       - github.v3; format=json
       Access-Control-Expose-Headers:
@@ -63,12 +69,12 @@ http_interactions:
       Content-Security-Policy:
       - default-src 'none'
       X-Github-Request-Id:
-      - F88A:2C1D:96E2F8:175EF3D:5C96A3BC
+      - CDE2:293A:154F64D:2BC339C:5C96B5F9
     body:
       encoding: ASCII-8BIT
       string: '{"login":"plapicola","id":41562392,"node_id":"MDQ6VXNlcjQxNTYyMzky","avatar_url":"https://avatars1.githubusercontent.com/u/41562392?v=4","gravatar_id":"","url":"https://api.github.com/users/plapicola","html_url":"https://github.com/plapicola","followers_url":"https://api.github.com/users/plapicola/followers","following_url":"https://api.github.com/users/plapicola/following{/other_user}","gists_url":"https://api.github.com/users/plapicola/gists{/gist_id}","starred_url":"https://api.github.com/users/plapicola/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/plapicola/subscriptions","organizations_url":"https://api.github.com/users/plapicola/orgs","repos_url":"https://api.github.com/users/plapicola/repos","events_url":"https://api.github.com/users/plapicola/events{/privacy}","received_events_url":"https://api.github.com/users/plapicola/received_events","type":"User","site_admin":false,"name":"Peter
-        Lapicola","company":null,"blog":"","location":null,"email":"p@lapicola.com","hireable":null,"bio":"Student
-        Developer","public_repos":36,"public_gists":4,"followers":14,"following":18,"created_at":"2018-07-23T04:47:38Z","updated_at":"2019-03-22T20:21:59Z"}'
-    http_version:
-  recorded_at: Sat, 23 Mar 2019 21:23:06 GMT
+        Lapicola","company":null,"blog":"","location":null,"email":"<HIDDEN_EMAIL>","hireable":null,"bio":"Student
+        Developer","public_repos":36,"public_gists":4,"followers":14,"following":18,"created_at":"2018-07-23T04:47:38Z","updated_at":"2019-03-23T21:29:07Z"}'
+    http_version: 
+  recorded_at: Sat, 23 Mar 2019 22:40:56 GMT
 recorded_with: VCR 4.0.0

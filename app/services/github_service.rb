@@ -1,6 +1,6 @@
 class GithubService
 
-  def initialize(user = nil)
+  def initialize(user)
     @user = user
   end
 
@@ -24,7 +24,7 @@ class GithubService
 
   def conn
     Faraday.new(url: "https://api.github.com") do |faraday|
-      faraday.headers["Authorization"] = "token #{@user.github_token}" if @user
+      faraday.headers["Authorization"] = "token #{@user.github_token}"
       faraday.adapter Faraday.default_adapter
     end
   end

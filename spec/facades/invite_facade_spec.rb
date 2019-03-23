@@ -12,10 +12,10 @@ describe InviteFacade do
 
     describe '.to_address' do
       it 'returns the recipients email adress' do
-        recipient = { email: "bob@burgers.com"}
+        recipient = { email: ENV['USER_EMAIL']}
         invite = InviteFacade.new(nil, recipient)
 
-        expect(invite.to_address).to eq("bob@burgers.com")
+        expect(invite.to_address).to eq(ENV['USER_EMAIL'])
       end
     end
 

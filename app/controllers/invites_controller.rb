@@ -1,4 +1,5 @@
 class InvitesController < ApplicationController
+  before_action :require_github_user
 
   def create
     begin

@@ -15,6 +15,8 @@ VCR.configure do |config|
   config.configure_rspec_metadata!
   config.filter_sensitive_data("<YOUTUBE_API_KEY>") { ENV['YOUTUBE_API_KEY'] }
   config.filter_sensitive_data("<GITHUB_API_KEY>") { ENV['GITHUB_API_KEY'] }
+  config.filter_sensitive_data("<ALT_GITHUB_API_KEY>") { ENV['ALT_GITHUB_API_KEY'] }
+  config.filter_sensitive_data("<HIDDEN_EMAIL>") { ENV['USER_EMAIL'] }
 end
 
 

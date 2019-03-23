@@ -8,10 +8,6 @@
     <li> <%= current_user.email%> </li>
   </ul>
 
-  <section class="invite">
-    <%= button_to 'Send an Invite', invite_path, method: :get %>
-  </section>
-
   <section id="bookmarks">
     <%= render partial: facade.bookmark_segment, locals: {facade: facade}%>
   </section>
