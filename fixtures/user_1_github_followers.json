@@ -20,6 +20,12 @@
         "site_admin": false
     },
     {
+        "login": "Zach-Nager",
+        "id": 34,
+        "html_url": "https://github.com/nagerz",
+        "type": "User"
+    },
+    {
         "login": "timnallen",
         "id": 42568362,
         "node_id": "MDQ6VXNlcjQyNTY4MzYy",

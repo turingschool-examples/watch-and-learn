@@ -43,7 +43,11 @@
         <ul>
           <% facade.user_followers.each do |follower|  %>
             <li class="user_follower">
-            <%= link_to follower.name, follower.address, class: 'name' %> </li>
+            <%= link_to follower.name, follower.address, class: 'name' %>
+            <% if follower.registered_user? && follower.not_already_friend?(current_user) %>
+              <%= button_to "Add as a Friend", new_friendship_path(user: current_user, friend: follower.id), class: 'btn btn-primary mb1 bg-teal friend-button' %>
+            <% end %>
+          </li>
           <% end %>
         </ul>
       </section>
@@ -52,9 +56,26 @@
         <ul>
           <% facade.users_followed.each do |user_followed| %>
             <li class = 'following'>
-            <%= link_to user_followed.name, user_followed.address, class:'handle' %> </li>
+            <%= link_to user_followed.name, user_followed.address, class:'handle' %>
+            <% if user_followed.registered_user? && user_followed.not_already_friend?(current_user) %>
+              <%= button_to "Add as a Friend", new_friendship_path(user: current_user, friend: user_followed.id), class: 'btn btn-primary mb1 bg-teal friend-button' %>
+            <% end %> </li>
           <% end  %>
         </ul>
+      </section>
+
+      <section class='user-friendships'>
+        <% if facade.user_friends.empty? %>
+          <h3>You have not friended anyone yet.</h3>
+        <% else %>
+          <h3>Friends:</h3>
+            <ul>
+              <% facade.user_friends.each do |friend| %>
+                <li class = 'friend'>
+                <%= friend.first_name%> <%= friend.last_name %> </li>
+              <% end %>
+            </ul>
+        <% end %>
       </section>
 
     </section>

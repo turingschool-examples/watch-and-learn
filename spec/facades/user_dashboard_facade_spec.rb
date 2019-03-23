@@ -4,48 +4,31 @@ RSpec.describe UserDashboardFacade do
   before :each do
     @user = create(:user)
     create(:github_token, user: @user, token: ENV['USER_1_GITHUB_TOKEN'])
-
+    @facade = UserDashboardFacade.new(@user)
   end
   it 'exists' do
-    facade = UserDashboardFacade.new(@user)
-    expect(facade).to be_a(UserDashboardFacade)
+    expect(@facade).to be_a(UserDashboardFacade)
   end
 
   context 'instance methods' do
+    before :each do
+      stub_user_1_dashboard
+    end
+
     it 'returns an array of repositories' do
-      filename = 'user_1_github_repos.json'
-      url = "https://api.github.com/user/repos?type=owner"
+      expect(@facade.user_repos.class).to eq(Array)
 
-      stub_get_json(url,filename)
-
-      facade = UserDashboardFacade.new(@user)
-      expect(facade.user_repos.class).to eq(Array)
-
-      facade.user_repos.each do |repo|
+      @facade.user_repos.each do |repo|
         expect(repo.class).to eq(Repository)
       end
     end
 
     it 'gets top repositories' do
-      filename = 'user_1_github_repos.json'
-      url = "https://api.github.com/user/repos?type=owner"
-
-      stub_get_json(url,filename)
-
-      facade = UserDashboardFacade.new(@user)
-
-      expect(facade.top_user_repos(5).count).to eq(5)
+      expect(@facade.top_user_repos(5).count).to eq(5)
     end
 
     it 'gets the github users the current user follows' do
-      filename = 'user_1_github_following.json'
-      url = "https://api.github.com/user/following"
-
-      stub_get_json(url,filename)
-
-      facade = UserDashboardFacade.new(@user)
-
-      expect(facade.users_followed.count).to eq(12)
+      expect(@facade.users_followed.count).to eq(13)
     end
 
     it 'gets the users bookmarked videos' do
@@ -63,13 +46,24 @@ RSpec.describe UserDashboardFacade do
       uv2 = create(:user_video, user: @user, video: video2)
       uv3 = create(:user_video, user: @user, video: video4)
 
-      facade = UserDashboardFacade.new(@user)
       grouped_by_tutorial = {
         tutorial1 => [video1, video2],
         tutorial3 => [video4]
       }
 
-      expect(facade.user_bookmarked_videos).to eq(grouped_by_tutorial)
+      expect(@facade.user_bookmarked_videos).to eq(grouped_by_tutorial)
+    end
+
+    it 'get the users friends' do
+      user2 = create(:user, uid: '12')
+      user3 = create(:user, uid: '34')
+      user4 = create(:user, uid: '56')
+
+      friendship1 = create(:friendship, user: @user, friend: user2)
+      friendship2 = create(:friendship, user: @user, friend: user3)
+
+      expect(@facade.user_friends.count).to eq(2)
+      expect(@facade.user_friends).to eq([user2, user3])
     end
 
   end
