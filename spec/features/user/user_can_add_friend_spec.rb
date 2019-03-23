@@ -4,7 +4,7 @@ describe 'A registered user' do
   context 'visiting /dashboard' do
     it 'can add followers or followings that have linked their account to github as friends' do
       user = create(:user, github_token: ENV["github_key"])
-      user1 = create(:user, uid: 25069483, first_name: 'TestName')
+      user1 = create(:user, uid: 25069483, first_name: 'TestName', github_username: 'stiehlrod')
 
       mock_user_dashboard_github
 
@@ -15,7 +15,7 @@ describe 'A registered user' do
       expect(user.friends).to eq([])
       expect(page).to have_content('Friends')
       within ".friends" do
-        expect(page).to_not have_content(user1.first_name)
+        expect(page).to_not have_content(user1.github_username)
       end
 
       within ".followers" do
@@ -25,7 +25,7 @@ describe 'A registered user' do
       expect(current_path).to eq(dashboard_path)
       expect(user.friends[0]).to be_a(User)
       within ".friends" do
-        expect(page).to have_content(user1.first_name)
+        expect(page).to have_content(user1.github_username)
       end
     end
   end
