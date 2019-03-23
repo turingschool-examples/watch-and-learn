@@ -1,0 +1,31 @@
+require 'rails_helper'
+
+RSpec.describe 'User can see a adda friend for possible friendships' do
+  describe 'As a logged in user, when I visit my dashboard' do
+    it "I can see 'add a friend' button" do
+      user1 = create(:user, uid: '12')
+      create(:github_token, user: user1, token: ENV['USER_1_GITHUB_TOKEN'])
+
+      user2 = create(:user, uid: '34')
+
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user1)
+
+      stub_user_1_dashboard
+
+      visit '/dashboard'
+
+      expect(page).to have_content("My Followers")
+
+      within(page.all('.user_follower')[0]) do
+        expect(page).to have_link('Mackenzie-Frey', href: "https://github.com/Mackenzie-Frey")
+        expect(page).to_not have_css('.friend-button')
+      end
+
+      within(page.all('.user_follower')[1]) do
+        expect(page).to have_link('Zach-Nager', href: "https://github.com/nagerz")
+        expect(page).to have_css('.friend-button', count: 1)
+        expect(page).to have_button('Add as a Friend')
+      end
+    end
+  end
+end
