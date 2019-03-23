@@ -8,6 +8,19 @@ require 'rspec/rails'
 require 'vcr'
 require 'webmock/rspec'
 
+OmniAuth.config.test_mode = true
+
+Rails.application.env_config["omniauth.auth"] = OmniAuth.config.mock_auth[:github]
+
+def set_omniauth
+  OmniAuth.config.mock_auth[:github] = nil
+
+  OmniAuth.config.mock_auth[:github] =
+  OmniAuth::AuthHash.new(
+    {"provider"=>"github", "uid"=>"42525195",
+      "credentials"=>{"token"=>"#{ENV['OAUTH_TEST_TOKEN']}", "expires"=>false}})
+end
+
 VCR.configure do |config|
   config.ignore_localhost = true
   config.cassette_library_dir = 'spec/cassettes'

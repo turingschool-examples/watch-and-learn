@@ -50,6 +50,15 @@ describe "A registered user" do
       expect(page).to_not have_css(".follower")
       expect(page).to_not have_css(".follower_handle")
     end
+
+    it "sees connect to GitHub button" do
+      user = create(:user, email: "test@email.com", password: "test")
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+      visit dashboard_path
+
+      expect(page).to have_button("Connect to GitHub")
+    end
   end
 
   it 'sees followers section on profile', :vcr do
@@ -69,6 +78,7 @@ describe "A registered user" do
       end
     end
   end
+
   it 'sees following section on profile', :vcr do
     user = create(:user, email: "test@email.com", password: "test", github_token: ENV['GITHUB_API_KEY'])
 

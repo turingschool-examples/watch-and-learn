@@ -10,7 +10,7 @@
   <section>
     <h1>Bookmarked Segments</h1>
   </section>
-    <% if current_user.github_token %>
+    <% if current_user.github_token? %>
       <section class="user_github">
         <h2>GitHub</h2>
         <section class="user_github_repos">
@@ -42,5 +42,7 @@
           </ul>
         </section>
       </section>
+    <% else %>
+      <%= button_to "Connect to GitHub", 'auth/github', class: "btn btn-primary mb1 bg-teal" %>
     <% end %>
 </section>
