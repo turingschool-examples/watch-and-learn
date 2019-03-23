@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :require_validated_login, only: :show
+
   def show
     render locals: {
       facade: DashboardFacade.new(current_user)
@@ -12,8 +14,7 @@ class UsersController < ApplicationController
   def create
     @user = User.create(user_params)
     if @user.save
-      session[:user_id] = @user.id
-      redirect_to dashboard_path
+      onboard_user
     else
       flash[:error] = 'There are problems with the provided information.'
       render :new
@@ -24,6 +25,11 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:email, :first_name, :last_name, :password, :password_confirmation)
+  end
+
+  def onboard_user
+    session[:user_id] = @user.id
+    redirect_to validation_landing_path
   end
 
 end

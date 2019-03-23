@@ -13,5 +13,8 @@
     <% end %>
   </section>
 
+  <% if current_user && !current_user.verified %>
+    <%= link_to "Send Another", validation_landing_path %>
+  <% end %>
   <p>Don't have an account? <%= link_to 'Sign up now.', new_user_path %></p>
 </div>
