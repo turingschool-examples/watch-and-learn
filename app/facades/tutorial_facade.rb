@@ -2,6 +2,7 @@ class TutorialFacade < SimpleDelegator
   def initialize(tutorial, video_id = nil)
     super(tutorial)
     @video_id = video_id
+    binding.pry
   end
 
   def current_video
