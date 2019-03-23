@@ -3,12 +3,12 @@ require 'rails_helper'
 RSpec.describe 'User can see a adda friend for possible friendships' do
   describe 'As a logged in user, when I visit my dashboard' do
     before :each do
-      user1 = create(:user, uid: '12')
-      create(:github_token, user: user1, token: ENV['USER_1_GITHUB_TOKEN'])
+      @user1 = create(:user, uid: '12')
+      create(:github_token, user: @user1, token: ENV['USER_1_GITHUB_TOKEN'])
 
-      user2 = create(:user, uid: '34')
+      @user2 = create(:user, uid: '34')
 
-      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user1)
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user1)
 
       stub_user_1_dashboard
     end
@@ -46,11 +46,11 @@ RSpec.describe 'User can see a adda friend for possible friendships' do
       end
 
       expect(current_path).to eq(dashboard_path)
-      expect(page).to have_content("Zach-Nager added as a friend.")
+      expect(page).to have_content("#{@user2.first_name} added as a friend.")
 
       within('.user-friendships') do
         expect(page).to have_css('.friend', count: 1)
-        expect(page).to have_link('Zach-Nager', href: "https://github.com/nagerz")
+        expect(page).to have_content("#{@user2.first_name} #{@user2.last_name}")
       end
     end
   end

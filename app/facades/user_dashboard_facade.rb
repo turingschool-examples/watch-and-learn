@@ -39,6 +39,10 @@ class UserDashboardFacade
   end
 
   def user_friends
+    # new_friends = []
+    # @user.friends.each do |friend|
+    #   new_friends << GithubUser.where(uid: friend.uid)
+    # end
     @user.friends
   end
 end
