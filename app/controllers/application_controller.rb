@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
   end
 
   def require_validated_login
-    flash[:error] = "You must verify your email to continue."
+    flash[:error] = "You must verify your email to continue." if current_user && !current_user.verified
     redirect_to login_path unless current_user && current_user.verified
   end
 
