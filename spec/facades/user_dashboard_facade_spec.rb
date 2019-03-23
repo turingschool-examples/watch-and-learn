@@ -62,8 +62,8 @@ RSpec.describe UserDashboardFacade do
       friendship1 = create(:friendship, user: @user, friend: user2)
       friendship2 = create(:friendship, user: @user, friend: user3)
 
-      expect(@facade.friends.count).to eq(2)
-      expect(@facade.friends).to eq([user2, user3])
+      expect(@facade.user_friends.count).to eq(2)
+      expect(@facade.user_friends).to eq([user2, user3])
     end
 
   end

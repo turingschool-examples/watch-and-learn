@@ -37,4 +37,8 @@ class UserDashboardFacade
   def user_bookmarked_videos
     @user.bookmarks
   end
+
+  def user_friends
+    @user.friends
+  end
 end

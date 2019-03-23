@@ -39,6 +39,19 @@ RSpec.describe 'User can see a adda friend for possible friendships' do
     end
 
     it 'I can click button and add a friend' do
+      visit '/dashboard'
+
+      within(page.all('.user_follower')[1]) do
+        click_button("Add as a Friend")
+      end
+
+      expect(current_path).to eq(dashboard_path)
+      expect(page).to have_content("Zach-Nager added as a friend.")
+
+      within('.user-friendships') do
+        expect(page).to have_css('.friend', count: 1)
+        expect(page).to have_link('Zach-Nager', href: "https://github.com/nagerz")
+      end
     end
   end
 end
