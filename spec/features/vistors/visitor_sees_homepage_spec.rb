@@ -29,15 +29,12 @@ describe 'Visitor' do
         tutorial_2 = create(:tutorial, classroom: false, title: 'Test Test Tutorial ')
 
         visit root_path
-
-        within(first('.tutorials')) do
-          expect(page).to have_css('.tutorial')
-          expect(page).to have_content("#{tutorial_1.title} (Classroom)")
+        within(first('.tutorial')) do
+          expect(page).to have_content("(Classroom)")
         end
 
-        within(last('.tutorials')) do
-          expect(page).to have_css('.tutorial')
-          expect(page).to_not have_content("#{tutorial_2.title} (Classroom)")
+        within(page.all('.tutorial')[1]) do
+          expect(page).to_not have_content("(Classroom)")
         end
       end
     end

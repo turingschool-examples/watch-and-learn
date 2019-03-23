@@ -9,10 +9,11 @@
       <div class="tutorial-description col md-col-9">
         <h4 class="tutorial-title-home">
 
-          <%= link_to tutorial.title , tutorial_path(tutorial), class: "title-link" %> </h4>
+          <%= link_to tutorial.title , tutorial_path(tutorial), class: "title-link" %>
           <% if tutorial.classroom %>
           (Classroom)
           <% end %>
+        </h4>
         <p class="description"><%= tutorial.description %></p> <br>
       </div>
     </div> <br>
