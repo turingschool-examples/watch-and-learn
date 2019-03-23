@@ -22,5 +22,24 @@ describe 'Visitor' do
         expect(page).to have_content(tutorial1.description)
       end
     end
+
+    describe 'if a tutorial is classroom only' do
+      it 'They should have a (Clasroom) in the title' do
+        tutorial_1 = create(:tutorial, classroom: true, title: 'Test Tutorial')
+        tutorial_2 = create(:tutorial, classroom: false, title: 'Test Test Tutorial ')
+
+        visit root_path
+
+        within(first('.tutorials')) do
+          expect(page).to have_css('.tutorial')
+          expect(page).to have_content("#{tutorial_1.title} (Classroom)")
+        end
+
+        within(last('.tutorials')) do
+          expect(page).to have_css('.tutorial')
+          expect(page).to_not have_content("#{tutorial_2.title} (Classroom)")
+        end
+      end
+    end
   end
 end
