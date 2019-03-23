@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'User can see a adda friend for possible friendships' do
   describe 'As a logged in user, when I visit my dashboard' do
-    it "I can see 'add a friend' button" do
+    before :each do
       user1 = create(:user, uid: '12')
       create(:github_token, user: user1, token: ENV['USER_1_GITHUB_TOKEN'])
 
@@ -11,7 +11,9 @@ RSpec.describe 'User can see a adda friend for possible friendships' do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user1)
 
       stub_user_1_dashboard
+    end
 
+    it "I can see 'add a friend' button" do
       visit '/dashboard'
 
       expect(page).to have_content("My Followers")
@@ -26,6 +28,17 @@ RSpec.describe 'User can see a adda friend for possible friendships' do
         expect(page).to have_css('.friend-button', count: 1)
         expect(page).to have_button('Add as a Friend')
       end
+    end
+
+    it "I can see a freindships section with no friends" do
+      visit '/dashboard'
+
+      within('.user-friendships') do
+        expect(page).to have_content("You have not friended anyone yet.")
+      end
+    end
+
+    it 'I can click button and add a friend' do
     end
   end
 end
