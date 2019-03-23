@@ -52,7 +52,7 @@
         </ul>
       </section>
       <section class='users_followed'>
-        <h3>Following</h3>
+        <h3>Following:</h3>
         <ul>
           <% facade.users_followed.each do |user_followed| %>
             <li class = 'following'>
@@ -63,21 +63,19 @@
           <% end  %>
         </ul>
       </section>
-
-      <section class='user-friendships'>
-        <% if facade.user_friends.empty? %>
-          <h3>You have not friended anyone yet.</h3>
-        <% else %>
-          <h3>Friends:</h3>
-            <ul>
-              <% facade.user_friends.each do |friend| %>
-                <li class = 'friend'>
-                <%= friend.first_name%> <%= friend.last_name %> </li>
-              <% end %>
-            </ul>
-        <% end %>
-      </section>
-
     </section>
   <% end %>
+  <section class='user-friendships'>
+    <% if facade.user_friends.empty? %>
+    <h3>You have not friended anyone yet.</h3>
+    <% else %>
+    <h3>Friends:</h3>
+    <ul>
+      <% facade.user_friends.each do |friend| %>
+      <li class = 'friend'>
+        <%= friend.first_name%> <%= friend.last_name %> </li>
+        <% end %>
+      </ul>
+      <% end %>
+  </section>
 </section>
