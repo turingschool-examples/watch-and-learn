@@ -13,4 +13,9 @@ class GithubUser
   def registered_user?
     User.where(uid: id).any?
   end
+
+  def not_already_friend?(user)
+    friend = User.where(uid: id)
+    Friendship.where(user: user, friend: friend).none?
+  end
 end

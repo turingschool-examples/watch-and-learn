@@ -28,7 +28,7 @@ RSpec.describe UserDashboardFacade do
     end
 
     it 'gets the github users the current user follows' do
-      expect(@facade.users_followed.count).to eq(12)
+      expect(@facade.users_followed.count).to eq(13)
     end
 
     it 'gets the users bookmarked videos' do

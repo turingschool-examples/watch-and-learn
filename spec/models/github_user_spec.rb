@@ -29,6 +29,23 @@ RSpec.describe GithubUser, type: :model do
 
       expect(github_user.registered_user?).to eq(true)
     end
+
+    it '#not_already_friend?' do
+      attributes = {
+        login: "jamisonordway",
+        html_url: "https://github.com/jamisonordway",
+        id: "12345"
+      }
+
+      github_user = GithubUser.new(attributes)
+
+      friend = create(:user, uid: '12345')
+      user = create(:user)
+
+      create(:friendship, user: user, friend: friend)
+
+      expect(github_user.not_already_friend?(user)).to eq(false)
+    end
   end
 
 end

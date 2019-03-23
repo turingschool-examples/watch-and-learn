@@ -20,6 +20,12 @@
         "site_admin": false
     },
     {
+        "login": "Zach-Nager",
+        "id": 34,
+        "html_url": "https://github.com/nagerz",
+        "type": "User"
+    },
+    {
         "login": "n-flint",
         "id": 34421236,
         "node_id": "MDQ6VXNlcjM0NDIxMjM2",

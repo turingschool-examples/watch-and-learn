@@ -14,7 +14,7 @@ RSpec.describe 'User can see their Github followers' do
 
         expect(page).to have_content("My Followers")
 
-        expect(page).to have_css('.user_follower', count: 9)
+        expect(page).to have_css('.user_follower', count: 10)
 
         within(first('.user_follower')) do
           expect(page).to have_css('.name')

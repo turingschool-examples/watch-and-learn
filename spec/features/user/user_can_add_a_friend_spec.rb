@@ -23,7 +23,17 @@ RSpec.describe 'User can see a adda friend for possible friendships' do
         expect(page).to_not have_css('.friend-button')
       end
 
+      within(page.all('.following')[0]) do
+        expect(page).to_not have_css('.friend-button')
+      end
+
       within(page.all('.user_follower')[1]) do
+        expect(page).to have_link('Zach-Nager', href: "https://github.com/nagerz")
+        expect(page).to have_css('.friend-button', count: 1)
+        expect(page).to have_button('Add as a Friend')
+      end
+
+      within(page.all('.following')[1]) do
         expect(page).to have_link('Zach-Nager', href: "https://github.com/nagerz")
         expect(page).to have_css('.friend-button', count: 1)
         expect(page).to have_button('Add as a Friend')
@@ -65,6 +75,10 @@ RSpec.describe 'User can see a adda friend for possible friendships' do
       expect(page).to have_content("#{@user2.first_name} added as a friend.")
 
       within(page.all('.user_follower')[1]) do
+        expect(page).to_not have_css('.friend-button')
+      end
+
+      within(page.all('.following')[1]) do
         expect(page).to_not have_css('.friend-button')
       end
     end

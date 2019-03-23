@@ -19,7 +19,7 @@ RSpec.describe 'User can see a list of users they are following' do
             expect(page).to have_content("Following")
           end
 
-          expect(page).to have_css('.following', count: 12)
+          expect(page).to have_css('.following', count: 13)
 
           within(first('.following')) do
             expect(page).to have_css('.handle')
