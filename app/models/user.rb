@@ -8,6 +8,6 @@ class User < ApplicationRecord
   has_secure_password
 
   def connect_github(data)
-    self.update!(github_token: data.credentials.token)
+    self.update!(github_token: data['credentials']['token'])
   end
 end
