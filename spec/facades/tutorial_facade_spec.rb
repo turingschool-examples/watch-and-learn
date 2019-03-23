@@ -15,4 +15,5 @@ RSpec.describe TutorialFacade do
     @facade.description = @tutorial.description
     @facade.thumbnail = @tutorial.thumbnail
   end
+
 end
