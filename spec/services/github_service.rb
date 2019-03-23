@@ -11,26 +11,26 @@ RSpec.describe GithubService do
     expect(service).to be_a(GithubService)
   end
 
-  context "instance methods" do
-    it "gets user repositories", :vcr do
+  context "instance methods", :vcr do
+    it "gets user repositories" do
       service = GithubService.new(@user1)
 
       results = service.get_repos
       repository = results.first
-      expect(repository[:name]).to eq("battleship")
-      expect(repository[:html_url]).to eq("https://github.com/m-mrcr/battleship")
+      expect(repository[:name]).to eq("activerecord-obstacle-course")
+      expect(repository[:html_url]).to eq("https://github.com/teresa-m-knowles/activerecord-obstacle-course")
     end
 
-    it 'gets users followed', :vcr do
+    it 'gets users followed' do
       service = GithubService.new(@user1)
       results = service.get_users_followed
       first_user_followed = results.first
 
       expect(first_user_followed[:login]).to eq("jamisonordway")
       expect(first_user_followed[:html_url]).to eq("https://github.com/jamisonordway")
-    end 
+    end
 
-    it "gets user followers", :vcr do
+    it "gets user followers" do
       service = GithubService.new(@user1)
 
       results = service.get_followers
