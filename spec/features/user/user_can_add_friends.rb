@@ -20,6 +20,7 @@ describe "As a registered user connected to Github" do
 
       visit dashboard_path
 
+      #Following section
       within ".following_handle_unrealities" do
         expect(page).to_not have_button("Add Friend")
       end
@@ -33,6 +34,23 @@ describe "As a registered user connected to Github" do
         expect(page).to_not have_button("Add Friend")
       end
       within ".following_handle_plapicola" do
+        expect(page).to_not have_button("Add Friend")
+      end
+
+      #Follower section
+      within ".follower_handle_nagerz" do
+        expect(page).to have_button("Add Friend")
+      end
+      within ".follower_handle_Mackenzie-Frey" do
+        expect(page).to have_button("Add Friend")
+      end
+      within ".follower_handle_MaryBork" do
+        expect(page).to_not have_button("Add Friend")
+      end
+      within ".follower_handle_TyMazey" do
+        expect(page).to_not have_button("Add Friend")
+      end
+      within ".follower_handle_plapicola" do
         expect(page).to_not have_button("Add Friend")
       end
     end

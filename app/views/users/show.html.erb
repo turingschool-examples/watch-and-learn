@@ -26,7 +26,12 @@
           <ul>
             <% facade.followers.each do |follower| %>
             <section class="follower">
-              <li class="follower_handle"><%= link_to(follower.handle, follower.url) %></li>
+              <section class="follower_handle_<%= follower.handle %>"
+                <li class="follower_handle"><%= link_to(follower.handle, follower.url) %></li>
+                <% if User.is_user?(follower.uid) %>
+                  <%= button_to 'Add Friend', friendships_path, method: 'create', class: "btn btn-primary mb1 bg-teal" %>
+                <% end %>
+              </section>
             </section>
             <% end %>
           </ul>
