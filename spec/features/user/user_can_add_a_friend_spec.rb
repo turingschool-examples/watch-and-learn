@@ -53,5 +53,20 @@ RSpec.describe 'User can see a adda friend for possible friendships' do
         expect(page).to have_content("#{@user2.first_name} #{@user2.last_name}")
       end
     end
+
+    it 'After adding a friend, I no longer see button' do
+      visit '/dashboard'
+
+      within(page.all('.user_follower')[1]) do
+        click_button("Add as a Friend")
+      end
+
+      expect(current_path).to eq(dashboard_path)
+      expect(page).to have_content("#{@user2.first_name} added as a friend.")
+
+      within(page.all('.user_follower')[1]) do
+        expect(page).to_not have_css('.friend-button')
+      end
+    end
   end
 end
