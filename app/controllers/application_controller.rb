@@ -25,4 +25,8 @@ class ApplicationController < ActionController::Base
   def require_login
     redirect_to root_path unless current_user
   end
+
+  def require_validated_login
+    redirect_to login_path unless current_user && current_user.verified
+  end
 end

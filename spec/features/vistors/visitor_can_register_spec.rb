@@ -8,6 +8,7 @@ describe 'vister can create an account', :js do
     @password = 'password'
     @password_confirmation = 'password'
   end
+
   it 'when providing valid information' do
     visit '/'
 
@@ -71,7 +72,18 @@ describe 'vister can create an account', :js do
 
     visit 'http://localhost:1080'
 
-    click_link 'Verify Email'
+    allow_any_instance_of(ActionDispatch::Request::Session).
+      to receive(:[]).
+      and_return(User.last.id)
+
+    emails = page.find_all('tr')
+    within emails[1] do
+      find('td', text: 'Welcome to Brownfield!').click
+    end
+
+    within_frame(:css, '.body') do
+      click_link 'Verify Email'
+    end
 
     expect(current_path).to eq(dashboard_path)
 

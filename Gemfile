@@ -45,7 +45,6 @@ group :development, :test do
   gem 'vcr'
   gem 'selenium-webdriver'
   gem 'chromedriver-helper'
-  gem 'mailcatcher'
 end
 
 group :development do

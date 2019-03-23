@@ -1,0 +1,10 @@
+<h1>Hello <%= @user.first_name %></h1>
+
+<p>Welcome to Brownfield!</p>
+<p>We're glad to have you. Please click the link below to validate your email.</p>
+
+<%= link_to "Verify Email", validate_user_url(@user) %>
+
+<p>Or copy and paste the link below in your browser</p>
+
+<%= validate_user_url(@user) %>
