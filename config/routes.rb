@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'friendships/create'
   namespace :api do
     namespace :v1 do
       resources :tutorials, only:[:show, :index]
@@ -42,7 +43,8 @@ Rails.application.routes.draw do
   end
 
   resources :user_videos, only:[:create, :destroy]
-  
+  resources :friendships, only:[:create]
+
   get '/auth/github', as: :github_login
   get '/auth/github/callback', to: 'sessions#create'
 end

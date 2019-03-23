@@ -10,6 +10,7 @@
 <div class="followers">
   <% facade.user_followers.each do |follower| %>
     <%= link_to "#{follower.name}", follower.url %>
+    <%= button_to 'Add Friend', friendships_path, params: {uid: follower.uid} if  check_user_in_database(follower)%>
     <br>
     <br>
   <% end %>
@@ -18,7 +19,16 @@
 <div class="following">
   <% facade.user_following.each do |following| %>
     <%= link_to "#{following.name}", following.url %>
+    <%= button_to 'Add Friend', friendships_path, params: {uid: following.uid} if  check_user_in_database(following)%>
     <br>
     <br>
+  <% end %>
+</div>
+<h4>Friends</h4>
+<div class="friends">
+  <% facade.user_friends.each do |friend| %>
+  <%=friend.first_name%>
+  <br>
+  <br>
   <% end %>
 </div>
