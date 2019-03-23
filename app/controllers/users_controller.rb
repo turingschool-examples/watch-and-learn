@@ -29,7 +29,6 @@ class UsersController < ApplicationController
 
   def onboard_user
     session[:user_id] = @user.id
-    ValidationMailer.validate(@user).deliver_now
     redirect_to validation_landing_path
   end
 

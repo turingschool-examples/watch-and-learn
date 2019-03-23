@@ -85,6 +85,9 @@ describe 'vister can create an account', :js do
       click_link 'Verify Email'
     end
 
+    new_window = page.driver.browser.window_handles.last
+    page.driver.browser.switch_to.window(new_window)
+
     expect(current_path).to eq(dashboard_path)
 
     expect(page).to have_content(@email)
@@ -106,8 +109,8 @@ describe 'vister can create an account', :js do
 
     visit login_path
 
-    fill_in 'user[email]', with: @email
-    fill_in 'user[password]', with: @password
+    fill_in 'session_email', with: @email
+    fill_in 'session_password', with: @password
 
     click_button 'Log In'
 
