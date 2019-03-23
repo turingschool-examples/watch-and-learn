@@ -22,4 +22,18 @@ RSpec.describe User, type: :model do
       expect(admin.admin?).to be_truthy
     end
   end
+
+  context 'instance methods' do
+    it '#connect_github' do
+      user = create(:user, email: "test@email.com", password: "test")
+
+      data = {"provider"=>"github", "uid"=>"42525195",
+        "credentials"=>{"token"=>"#{ENV['OAUTH_TEST_TOKEN']}", "expires"=>false}}
+
+      expect(user.github_token).to eq(nil)
+
+      user.connect_github(data)
+      expect(user.github_token).to eq(ENV['OAUTH_TEST_TOKEN'])
+    end
+  end
 end
