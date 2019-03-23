@@ -1,4 +1,7 @@
 <h1>Github</h1>
+<section class="invite">
+  <%= button_to 'Send an Invite', invite_path, method: :get %>
+</section>
 <ul>
   <% facade.repositories.each do |repository| %>
     <li class="repo"><%= link_to repository.name, repository.url %></li>

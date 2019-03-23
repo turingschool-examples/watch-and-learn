@@ -47,4 +47,6 @@ Rails.application.routes.draw do
   get '/auth/github/callback', to: 'github/sessions#create', as: :github_callback
   get '/login/verify', to: 'sessions/validation#index', as: :validation_landing
   get '/login/verify/:id', to: 'sessions/validation#show', as: :validate_user
+  get '/invite', to: 'invites#new'
+  post '/invite', to: 'invites#create'
 end
