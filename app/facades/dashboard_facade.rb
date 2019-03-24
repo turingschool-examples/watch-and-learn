@@ -35,9 +35,9 @@ class DashboardFacade
   end
 
   def friends
-    User.select("friend_users_friends.*")
-        .distinct
-        .joins(friends: {friend_user: :friends})
-        .where(id: @user)
+    @friends ||= User.select("friend_users_friends.*")
+                     .distinct
+                     .joins(friends: {friend_user: :friends})
+                     .where(id: @user)
   end
 end

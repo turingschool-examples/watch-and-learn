@@ -102,7 +102,9 @@ describe 'As a user' do
 
       VCR.use_cassette('views/dashboard_github_request') do
         visit dashboard_path
+      end
 
+      VCR.use_cassette('views/dashboard_github_request') do
         within "#follower-#{@potential_friend.uid}" do
           click_button 'Add as Friend'
         end

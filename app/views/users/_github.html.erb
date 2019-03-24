@@ -10,12 +10,17 @@
   </ul>
 </section>
 <section class="friends">
-  <h3>Friends</h3>
-  <ul>
-    <% facade.friends.each do |friend| %>
+  <% if facade.friends.empty? %>
+    <h3>You currently have no friends ;_;</h3>
+    <p>Look through your followers and go add some!</p>
+  <% else %>
+    <h3>Friends</h3>
+    <ul>
+      <% facade.friends.each do |friend| %>
       <li id='friend-<%= friend.id %>'><%= friend.first_name + " " + friend.last_name %></li>
-    <% end %>
-  </ul>
+      <% end %>
+    </ul>
+  <% end %>
 </section>
 <section class="friend_requests">
   <h3>Friend Requests</h3>
