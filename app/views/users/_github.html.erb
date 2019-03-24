@@ -24,9 +24,15 @@
 </section>
 <section class="friend_requests">
   <h3>Friend Requests</h3>
-  <ul>
-
-  </ul>
+  <table>
+    <% facade.pending_requests do |pending_user| %>
+      <tr>
+        <td><%= pending_user.first_name + " " + pending_user.last_name %></td>
+        <td><%= button_to 'Accept', accept_friends_path(pending_user), method: :put %></td>
+        <td><%= button_to 'Decline', decline_friends_path(pending_user), method: :delete %></td>
+      </tr>
+    <% end %>
+  </table>
 </section>
 <section id="followers">
   <h3>Followers</h3>

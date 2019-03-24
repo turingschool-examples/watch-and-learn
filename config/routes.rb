@@ -51,4 +51,6 @@ Rails.application.routes.draw do
   get '/invite', to: 'invites#new'
   post '/invite', to: 'invites#create'
   post '/friends/:friend_uid', to: 'friends#create', as: :friends
+  put '/friends/:friend_uid', to: 'friends#update', as: :accept_friends
+  delete '/friends/:friend_uid', to: 'friends#destroy', as: :decline_friends
 end
