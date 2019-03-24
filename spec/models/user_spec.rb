@@ -32,8 +32,8 @@ RSpec.describe User, type: :model do
 
       expect(user.github_token).to eq(nil)
 
-      x = user.connect_github(data)
-      binding.pry
+      user.connect_github(data)
+
       expect(user.github_token).to eq(ENV['OAUTH_TEST_TOKEN'])
     end
   end
