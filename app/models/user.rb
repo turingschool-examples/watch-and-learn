@@ -13,7 +13,10 @@ class User < ApplicationRecord
   has_secure_password
 
   def connect_github(data)
-    self.update!(github_token: data['credentials']['token'])
+    binding.pry
+    self.update!(github_token: data['credentials']['token'],
+                 github_url: data[],
+                 github_handle: data[])
   end
 
   def has_friends?

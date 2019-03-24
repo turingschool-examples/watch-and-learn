@@ -3,10 +3,11 @@ require 'rails_helper'
 context 'As a registered user' do
   context 'without a github_token' do
     it 'can connect to GitHub and see', :vcr do
-      user = create(:user, email: "test@email.com", password: "test")
+      # user = create(:user, email: "test@email.com", password: "test")
+      user = create(:user, email: "mackenzie@email.com", password: "test", )
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-      set_omniauth
+      # set_omniauth
 
       visit dashboard_path
 
