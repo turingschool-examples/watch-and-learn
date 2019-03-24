@@ -109,5 +109,20 @@ describe 'Dashboard facade' do
         expect(facade.friends).to eq([current_friend])
       end
     end
+
+    describe '.pending_requests' do
+      it 'returns the requests the current user has pending' do
+        user = create(:github_user)
+        potential_friend = create(:github_user, uid: 41562392)
+        current_friend = create(:github_user)
+        requested_friend = create(:github_user)
+        current_friend_1 = Friend.create(user: user, friend_user: current_friend)
+        current_friend_2 = Friend.create(user: current_friend, friend_user: user)
+        requested_friend_1 = Friend.create(user: requested_friend, friend_user: user)
+        facade = DashboardFacade.new(user)
+
+        expect(facade.pending_requests).to eq([requested_friend])
+      end
+    end
   end
 end
