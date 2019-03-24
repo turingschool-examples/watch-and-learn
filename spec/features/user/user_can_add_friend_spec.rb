@@ -6,13 +6,13 @@ describe 'As a user' do
       @user = create(:github_user)
       @potential_friend = create(:github_user, uid: 43197720)
       @current_friend = create(:github_user)
-      current_friend_1 = Friend.new(user: @user, friend: @current_friend)
-      current_friend_2 = Friend.new(user: @current_friend, friend: @user)
+      current_friend_1 = Friend.create(user: @user, friend_user: @current_friend)
+      current_friend_2 = Friend.create(user: @current_friend, friend_user: @user)
     end
 
     it 'next to my github follwers who have accounts I see a a button to add as a friend' do
-      allow_any_instance_of(ApplicationController).to
-        receive(:current_user).and_return(@user)
+      allow_any_instance_of(ApplicationController).to(
+        receive(:current_user).and_return(@user))
 
       VCR.use_cassette('views/dashboard_github_request') do
         visit dashboard_path
@@ -24,8 +24,8 @@ describe 'As a user' do
     end
 
     it 'I also see a button next to my follwed users' do
-      allow_any_instance_of(ApplicationController).to
-        receive(:current_user).and_return(@user)
+      allow_any_instance_of(ApplicationController).to(
+        receive(:current_user).and_return(@user))
 
       VCR.use_cassette('views/dashboard_github_request') do
         visit dashboard_path
@@ -37,8 +37,8 @@ describe 'As a user' do
     end
 
     it 'I do not see a button next to follwers without accounts' do
-      allow_any_instance_of(ApplicationController).to
-        receive(:current_user).and_return(@user)
+      allow_any_instance_of(ApplicationController).to(
+        receive(:current_user).and_return(@user))
 
       VCR.use_cassette('views/dashboard_github_request') do
         visit dashboard_path
@@ -50,8 +50,8 @@ describe 'As a user' do
     end
 
     it 'I do not see a button next to followed users without accounts' do
-      allow_any_instance_of(ApplicationController).to
-        receive(:current_user).and_return(@user)
+      allow_any_instance_of(ApplicationController).to(
+        receive(:current_user).and_return(@user))
 
       VCR.use_cassette('views/dashboard_github_request') do
         visit dashboard_path
@@ -63,8 +63,8 @@ describe 'As a user' do
     end
 
     it 'I see a section for friends on my dashboard if I have friends' do
-      allow_any_instance_of(ApplicationController).to
-        receive(:current_user).and_return(@user)
+      allow_any_instance_of(ApplicationController).to(
+        receive(:current_user).and_return(@user))
 
       VCR.use_cassette('views/dashboard_github_request') do
         visit dashboard_path
@@ -79,8 +79,8 @@ describe 'As a user' do
     end
 
     it 'I do not see friends when I have no friends' do
-      allow_any_instance_of(ApplicationController).to
-        receive(:current_user).and_return(@potential_friend)
+      allow_any_instance_of(ApplicationController).to(
+        receive(:current_user).and_return(@potential_friend))
 
       expected = @current_friend.first_name + ' ' + @current_friend.last_name
 
@@ -97,8 +97,8 @@ describe 'As a user' do
     end
 
     it 'I can click this button to add a user as a friend' do
-      allow_any_instance_of(ApplicationController).to
-        receive(:current_user).and_return(@user)
+      allow_any_instance_of(ApplicationController).to(
+        receive(:current_user).and_return(@user))
 
       VCR.use_cassette('views/dashboard_github_request') do
         visit dashboard_path
@@ -116,9 +116,9 @@ describe 'As a user' do
     end
 
     it 'I see a section for pending friend requests on my dashbard' do
-      allow_any_instance_of(ApplicationController).to
-        receive(:current_user).and_return(@potential_friend)
-      potential_friendship = Friend.create(user: @user, friend: @potential_friend)
+      allow_any_instance_of(ApplicationController).to(
+        receive(:current_user).and_return(@potential_friend))
+      potential_friendship = Friend.create(user: @user, friend_user: @potential_friend)
 
       expected = @user.first_name + ' ' + @user.last_name
 
@@ -136,9 +136,9 @@ describe 'As a user' do
     end
 
     it 'I can accept pending requests' do
-      allow_any_instance_of(ApplicationController).to
-        receive(:current_user).and_return(@potential_friend)
-      potential_friendship = Friend.create(user: @user, friend: @potential_friend)
+      allow_any_instance_of(ApplicationController).to(
+        receive(:current_user).and_return(@potential_friend))
+      potential_friendship = Friend.create(user: @user, friend_user: @potential_friend)
 
       expected = @user.first_name + ' ' + @user.last_name
 
@@ -164,9 +164,9 @@ describe 'As a user' do
     end
 
     it 'I can decline pending requests' do
-      allow_any_instance_of(ApplicationController).to
-        receive(:current_user).and_return(@potential_friend)
-      potential_friendship = Friend.create(user: @user, friend: @potential_friend)
+      allow_any_instance_of(ApplicationController).to(
+        receive(:current_user).and_return(@potential_friend))
+      potential_friendship = Friend.create(user: @user, friend_user: @potential_friend)
 
       expected = @user.first_name + ' ' + @user.last_name
 
