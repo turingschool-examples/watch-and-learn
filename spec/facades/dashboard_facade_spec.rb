@@ -94,5 +94,20 @@ describe 'Dashboard facade' do
         expect(facade.render_github).to eq('github')
       end
     end
+
+    describe '.friends' do
+      it 'returns the friends of the current user' do
+        user = create(:github_user)
+        potential_friend = create(:github_user, uid: 41562392)
+        current_friend = create(:github_user)
+        requested_friend = create(:github_user)
+        current_friend_1 = Friend.create(user: user, friend_user: current_friend)
+        current_friend_2 = Friend.create(user: current_friend, friend_user: user)
+        requested_friend_1 = Friend.create(user: user, friend_user: requested_friend)
+        facade = DashboardFacade.new(user)
+
+        expect(facade.friends).to eq([current_friend])
+      end
+    end
   end
 end
