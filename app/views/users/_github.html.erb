@@ -2,18 +2,34 @@
 <section class="invite">
   <%= button_to 'Send an Invite', invite_path, method: :get %>
 </section>
-<ul>
-  <% facade.repositories.each do |repository| %>
+<section class="repositories">
+  <ul>
+    <% facade.repositories.each do |repository| %>
     <li class="repo"><%= link_to repository.name, repository.url %></li>
-  <% end %>
-</ul>
+    <% end %>
+  </ul>
+</section>
+<section class="friends">
+  <h3>Friends</h3>
+  <ul>
+    <% facade.friends.each do |friend| %>
+      <li id='friend-<%= friend.id %>'><%= friend.first_name + " " + friend.last_name %></li>
+    <% end %>
+  </ul>
+</section>
+<section class="friend_requests">
+  <h3>Friend Requests</h3>
+  <ul>
+
+  </ul>
+</section>
 <section id="followers">
   <h3>Followers</h3>
   <ul>
     <% facade.followers.each do |follower| %>
       <li class='follower' id='follower-<%= follower.uid %>'>
         <%= link_to follower.handle, follower.url %>
-        <%= button_to 'Add as Friend', friends_path(follower.uid) %>
+        <%= button_to 'Add as Friend', friends_path(follower.uid) if follower.friendable?(current_user) %>
       </li>
     <% end %>
   </ul>
@@ -24,7 +40,7 @@
     <% facade.following.each do |followed_user| %>
       <li class="followed-user" id='following-<%= followed_user.uid %>'>
         <%= link_to followed_user.handle, followed_user.url %>
-        <%= button_to 'Add as Friend', friends_path(followed_user.uid) %>
+        <%= button_to 'Add as Friend', friends_path(followed_user.uid) if followed_user.friendable?(current_user) %>
       </li>
     <% end %>
   </ul>
