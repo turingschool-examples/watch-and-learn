@@ -11,7 +11,10 @@
   <h3>Followers</h3>
   <ul>
     <% facade.followers.each do |follower| %>
-      <li class='follower'><%= link_to follower.handle, follower.url %></li>
+      <li class='follower' id='follower-<%= follower.uid %>'>
+        <%= link_to follower.handle, follower.url %>
+        <%= button_to 'Add as Friend', friend_create_path(follower.uid) %>
+      </li>
     <% end %>
   </ul>
 </section>
@@ -19,7 +22,10 @@
   <h3>Following</h3>
   <ul>
     <% facade.following.each do |followed_user| %>
-      <li class="followed-user"><%= link_to followed_user.handle, followed_user.url %></li>
+      <li class="followed-user" id='following-<%= follower.uid %>'>
+        <%= link_to followed_user.handle, followed_user.url %>
+        <%= button_to 'Add as Friend', friend_create_path(follower.uid) %>
+      </li>
     <% end %>
   </ul>
 </section>
