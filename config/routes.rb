@@ -49,4 +49,5 @@ Rails.application.routes.draw do
   get '/login/verify/:id', to: 'sessions/validation#show', as: :validate_user
   get '/invite', to: 'invites#new'
   post '/invite', to: 'invites#create'
+  post '/friends', to: 'friends#create'
 end

@@ -4,7 +4,7 @@ describe 'As a user' do
   describe 'I can add friends in the system' do
     before :each do
       @user = create(:github_user)
-      @potential_friend = create(:github_user, uid: 43197720)
+      @potential_friend = create(:github_user, uid: 41562392)
       @current_friend = create(:github_user)
       current_friend_1 = Friend.create(user: @user, friend_user: @current_friend)
       current_friend_2 = Friend.create(user: @current_friend, friend_user: @user)
