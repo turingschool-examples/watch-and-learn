@@ -17,8 +17,18 @@ def set_omniauth
 
   OmniAuth.config.mock_auth[:github] =
   OmniAuth::AuthHash.new(
-    {"provider"=>"github", "uid"=>"42525195",
-      "credentials"=>{"token"=>"#{ENV['OAUTH_TEST_TOKEN']}", "expires"=>false}})
+      {"provider"=>"github",
+     "uid"=>"42525195",
+     "info"=>
+      {"nickname"=>"Mackenzie-Frey",
+       "email"=>nil,
+       "name"=>"Mackenzie Frey",
+       "image"=>"https://avatars0.githubusercontent.com/u/42525195?v=4",
+       "urls"=>{"GitHub"=>"https://github.com/Mackenzie-Frey", "Blog"=>"https://www.linkedin.com/in/mackenzie-frey/"}},
+     "credentials"=>{"token"=>"#{ENV['OAUTH_TEST_TOKEN']}", "expires"=>false},
+     "extra"=>
+     {"raw_info"=>
+       {"login"=>"Mackenzie-Frey"} } } )
 end
 
 VCR.configure do |config|
