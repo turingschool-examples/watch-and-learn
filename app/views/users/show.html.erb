@@ -51,18 +51,20 @@
           <% end %>
         </ul>
       </section>
-      <section class="my_friends">
-        <h3>My Friends</h3>
-        <ul>
-          <% facade.friends.each do |friend| %>
-          <section class="friend">
-            <section class="friend_handle_<%= friend.handle %>"
-              <li id="friend_handle"><%= link_to(friend.handle, friend.url) %></li>
+      <% if current_user.has_friends? %>
+        <section class="my_friends">
+          <h3>My Friends</h3>
+          <ul>
+            <% current_user.friends.each do |friend| %>
+            <section class="friend">
+              <section class="friend_handle_<%= friend.handle %>"
+                <li id="friend_handle"><%= link_to(friend.handle, friend.url) %></li>
+              </section>
             </section>
-          </section>
-          <% end %>
-        </ul>
-      </section>
+            <% end %>
+          </ul>
+        </section>
+      <% end %>
     </section>
   <% else %>
     <%= button_to "Connect to GitHub", 'auth/github', class: "btn btn-primary mb1 bg-teal" %>

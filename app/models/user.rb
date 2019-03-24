@@ -7,7 +7,6 @@ class User < ApplicationRecord
       join_table:  :friendships,
       foreign_key: :user_id,
       association_foreign_key: :friend_user_id
-
   validates :email, uniqueness: true, presence: true
   validates_presence_of :first_name
   enum role: [:default, :admin]
@@ -17,7 +16,15 @@ class User < ApplicationRecord
     self.update!(github_token: data['credentials']['token'])
   end
 
-  # def self.is_user?(github_uid)
-  #   !(User.find_by(github_uid: github_uid).nil?)
-  # end
+  def has_friends?
+    self.get_friends_ids.count > 0
+  end
+
+  def get_friends_ids
+    Friendship.includes(:friend_user).select(:friend_user_id).where(user_id: self.id)
+  end
+
+  def get_friend_users
+    User.where(id: get_friends_ids)
+  end
 end

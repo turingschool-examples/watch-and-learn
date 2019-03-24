@@ -60,12 +60,6 @@ describe "As a registered user connected to Github" do
 
   context "when I click on 'Add Friend'" do
     it "I see my friends under My Friends" do
-      april = create(:user, email: "test@email.com", password: "test", github_token: ENV['GITHUB_API_KEY'], github_uid: "41272635")
-      mackenzie = create(:user, email: "mackenzie@email.com", password: "test", github_token: ENV['MF_GITHUB_TOKEN'], github_uid: "42525195")
-      zach = create(:user, email: "zach@email.com", password: "test", github_token: "faketoken", github_uid: "34927114")
-
-      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(april)
-
       visit dashboard_path
 
       expect(page).to_not have_css(".my_friends")

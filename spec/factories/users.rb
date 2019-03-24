@@ -10,4 +10,8 @@ FactoryBot.define do
   factory :admin, parent: :user do
     role { :admin }
   end
+
+  factory :friend_user, parent: :user do
+    first_name { "Friend" }
+  end
 end
