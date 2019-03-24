@@ -9,7 +9,7 @@ describe GithubUser do
   end
 
   it 'has attributes' do
-    follower = GithubUser.new({login: 'login', html_url: 'url', uid: 12})
+    follower = GithubUser.new({login: 'login', html_url: 'url', id: 12})
 
     expect(follower.handle).to eq('login')
     expect(follower.url).to eq('url')
