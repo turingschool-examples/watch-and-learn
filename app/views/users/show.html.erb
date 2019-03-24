@@ -11,7 +11,7 @@
     <h1>Bookmarked Segments</h1>
   </section>
   <% if current_user.github_token? %>
-    <section class="user_github">
+    <section id="user_github">
       <h2>GitHub</h2>
       <section class="user_github_repos">
         <h3>Repositories</h3>
@@ -27,7 +27,7 @@
           <% facade.followers.each do |follower| %>
           <section class="follower">
             <section class="follower_handle_<%= follower.handle %>"
-              <li class="follower_handle"><%= link_to(follower.handle, follower.url) %></li>
+              <li id="follower_handle"><%= link_to(follower.handle, follower.url) %></li>
               <% if User.is_user?(follower.uid) %>
                 <%= button_to 'Add Friend', friendships_path, method: 'create', class: "btn btn-primary mb1 bg-teal" %>
               <% end %>
@@ -42,7 +42,7 @@
           <% facade.following.each do |following| %>
           <section class="following">
             <section class="following_handle_<%= following.handle %>"
-              <li class="following_handle"><%= link_to(following.handle, following.url) %></li>
+              <li id="following_handle"><%= link_to(following.handle, following.url) %></li>
               <% if User.is_user?(following.uid) %>
                 <%= button_to 'Add Friend', friendships_path, method: 'create', class: "btn btn-primary mb1 bg-teal" %>
               <% end %>

@@ -10,7 +10,7 @@ context 'As a registered user' do
 
       visit dashboard_path
 
-      expect(page).to_not have_css(".user_github")
+      expect(page).to_not have_css("#user_github")
       expect(page).to_not have_css(".user_github_followers")
       expect(page).to_not have_content("Following")
       expect(page).to_not have_content("Repositories")
@@ -20,7 +20,7 @@ context 'As a registered user' do
       click_button "Connect to GitHub"
 
       expect(current_path).to eq(dashboard_path)
-      expect(page).to have_css(".user_github")
+      expect(page).to have_css("#user_github")
       expect(page).to have_content("Repositories")
       expect(page).to have_content("Followers")
       expect(page).to have_content("Following")

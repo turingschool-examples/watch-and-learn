@@ -7,7 +7,7 @@ describe "A registered user" do
 
     visit dashboard_path
 
-    within ".user_github" do
+    within "#user_github" do
       expect(page).to have_content("GitHub")
       within ".user_github_repos" do
         expect(page).to have_content("Repositories")
@@ -23,7 +23,7 @@ describe "A registered user" do
 
     visit dashboard_path
 
-    within ".user_github" do
+    within "#user_github" do
       expect(page).to have_content("GitHub")
       within ".user_github_repos" do
         expect(page).to have_content("election")
@@ -43,7 +43,7 @@ describe "A registered user" do
 
       visit dashboard_path
 
-      expect(page).to_not have_css(".user_github")
+      expect(page).to_not have_css("#user_github")
       expect(page).to_not have_content("Repositories")
       expect(page).to_not have_css(".user_github_followers")
       expect(page).to_not have_content("Followers")
@@ -68,12 +68,12 @@ describe "A registered user" do
 
     visit dashboard_path
 
-    within ".user_github" do
+    within "#user_github" do
       expect(page).to have_content("GitHub")
       within ".user_github_followers" do
         expect(page).to have_content("Followers")
         expect(page).to have_css(".follower", count: 5)
-        expect(page).to have_css(".follower_handle", count: 5)
+        expect(page).to have_css("#follower_handle", count: 5)
         expect(page).to have_link("nagerz")
       end
     end
@@ -86,12 +86,12 @@ describe "A registered user" do
 
     visit dashboard_path
 
-    within ".user_github" do
+    within "#user_github" do
       expect(page).to have_content("GitHub")
       within ".user_github_following" do
         expect(page).to have_content("Following")
         expect(page).to have_css(".following", count: 5)
-        expect(page).to have_css(".following_handle", count: 5)
+        expect(page).to have_css("#following_handle", count: 5)
         expect(page).to have_link("nagerz")
       end
     end

@@ -28,11 +28,12 @@ RSpec.describe User, type: :model do
       user = create(:user, email: "test@email.com", password: "test")
 
       data = {"provider"=>"github", "uid"=>"42525195",
-        "credentials"=>{"token"=>"#{ENV['OAUTH_TEST_TOKEN']}", "expires"=>false}}
+        "credentials"=>{"token"=>(ENV['OAUTH_TEST_TOKEN']).to_s, "expires"=>false}}
 
       expect(user.github_token).to eq(nil)
 
-      user.connect_github(data)
+      x = user.connect_github(data)
+      binding.pry
       expect(user.github_token).to eq(ENV['OAUTH_TEST_TOKEN'])
     end
   end
