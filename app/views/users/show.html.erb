@@ -29,7 +29,7 @@
             <section class="follower_handle_<%= follower.handle %>"
               <li id="follower_handle"><%= link_to(follower.handle, follower.url) %></li>
               <% if User.is_user?(follower.uid) %>
-                <%= button_to 'Add Friend', friendships_path, method: 'create', class: "btn btn-primary mb1 bg-teal" %>
+                <%= button_to 'Add Friend', friendships_path(friend_github_uid: follower.uid), method: 'create', class: "btn btn-primary mb1 bg-teal" %>
               <% end %>
             </section>
           </section>
@@ -44,21 +44,22 @@
             <section class="following_handle_<%= following.handle %>"
               <li id="following_handle"><%= link_to(following.handle, following.url) %></li>
               <% if User.is_user?(following.uid) %>
-                <%= button_to 'Add Friend', friendships_path, method: 'create', class: "btn btn-primary mb1 bg-teal" %>
+                <%= button_to 'Add Friend', friendships_path(friend_github_uid: following.uid), method: 'create', class: "btn btn-primary mb1 bg-teal" %>
               <% end %>
             </section>
           </section>
           <% end %>
         </ul>
       </section>
+
       <% if current_user.has_friends? %>
         <section class="my_friends">
           <h3>My Friends</h3>
           <ul>
-            <% current_user.friends.each do |friend| %>
+            <% current_user.get_friend_users.each do |friend| %>
             <section class="friend">
-              <section class="friend_handle_<%= friend.handle %>"
-                <li id="friend_handle"><%= link_to(friend.handle, friend.url) %></li>
+              <section class="friend_handle_<%= friend.github_handle %>"
+                <li id="friend_handle"><%= link_to(friend.github_handle, friend.github_url) %></li>
               </section>
             </section>
             <% end %>
