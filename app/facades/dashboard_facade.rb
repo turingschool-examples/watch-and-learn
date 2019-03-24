@@ -33,4 +33,11 @@ class DashboardFacade
   def render_github
     @user.github_token ? 'github' : 'github_connect'
   end
+
+  def friends
+    User.select("friend_users_friends.*")
+        .distinct
+        .joins(friends: {friend_user: :friends})
+        .where(id: @user)
+  end
 end
