@@ -3,8 +3,7 @@
 
   <%= button_to 'Log Out', logout_path, method: 'delete', class: "btn btn-primary mb1 bg-teal" %>
   <%= button_to 'Connect to Github', connect_path, class: "btn btn-primary mb1 bg-teal" unless current_user.github_token%>
-  <%= button_to 'Send an Invite', connect_path
-  , class: "btn btn-primary mb1 bg-teal" unless current_user.github_token%>
+  <%= button_to 'Send an Invite', invite_path, method: :get, class: "btn btn-primary mb1 bg-teal" unless current_user.github_token%>
 
   <h3>Account Details</h3>
   <ul>
@@ -47,7 +46,7 @@
             <li class="user_follower">
             <%= link_to follower.name, follower.address, class: 'name' %>
             <% if follower.registered_user? && follower.not_already_friend?(current_user) %>
-              <%= button_to "Add as a Friend", new_friendship_path(user: current_user, friend: follower.id), class: 'btn btn-primary mb1 bg-teal friend-button' %>
+              <%= button_to "Add as a Friend", new_friendship_path(friend: follower.id), class: 'btn btn-primary mb1 bg-teal friend-button' %>
             <% end %>
           </li>
           <% end %>
