@@ -15,4 +15,9 @@ FactoryBot.define do
   factory :non_validated_user, parent: :user do
     verified { false }
   end
+
+  factory :github_user, parent: :user do
+    github_token { ENV['GITHUB_API_KEY']}
+    sequence :uid { |n| n }
+  end
 end

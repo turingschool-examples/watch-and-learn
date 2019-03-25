@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'friends/create'
   namespace :api do
     namespace :v1 do
       resources :tutorials, only:[:show, :index]
@@ -49,4 +50,7 @@ Rails.application.routes.draw do
   get '/login/verify/:id', to: 'sessions/validation#show', as: :validate_user
   get '/invite', to: 'invites#new'
   post '/invite', to: 'invites#create'
+  post '/friends/:friend_uid', to: 'friends#create', as: :friends
+  put '/friends/:friend_id', to: 'friends#update', as: :accept_friends
+  delete '/friends/:friend_id', to: 'friends#destroy', as: :decline_friends
 end

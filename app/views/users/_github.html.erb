@@ -2,16 +2,48 @@
 <section class="invite">
   <%= button_to 'Send an Invite', invite_path, method: :get %>
 </section>
-<ul>
-  <% facade.repositories.each do |repository| %>
+<section class="repositories">
+  <ul>
+    <% facade.repositories.each do |repository| %>
     <li class="repo"><%= link_to repository.name, repository.url %></li>
+    <% end %>
+  </ul>
+</section>
+<section class="friends">
+  <% if facade.friends.empty? %>
+    <h3>You currently have no friends ;_;</h3>
+    <p>Look through your followers and go add some!</p>
+  <% else %>
+    <h3>Friends</h3>
+    <ul>
+      <% facade.friends.each do |friend| %>
+      <li id='friend-<%= friend.id %>'><%= friend.first_name + " " + friend.last_name %></li>
+      <% end %>
+    </ul>
   <% end %>
-</ul>
+</section>
+<section class="friend-requests">
+  <h3>Friend Requests</h3>
+  <table>
+    <tbody>
+    <% facade.pending_requests.each do |pending_user| %>
+      <tr>
+        <td><%= pending_user.first_name + " " + pending_user.last_name %></td>
+        <td><%= button_to 'Accept', friends_path(pending_user), method: :put %></td>
+        <td><%= button_to 'Decline', decline_friends_path(pending_user), method: :delete %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</section>
 <section id="followers">
   <h3>Followers</h3>
   <ul>
     <% facade.followers.each do |follower| %>
-      <li class='follower'><%= link_to follower.handle, follower.url %></li>
+      <li class='follower' id='follower-<%= follower.uid %>'>
+        <%= link_to follower.handle, follower.url %>
+        <%= button_to 'Add as Friend', friends_path(follower.uid) if follower.friendable?(current_user) %>
+      </li>
     <% end %>
   </ul>
 </section>
@@ -19,7 +51,10 @@
   <h3>Following</h3>
   <ul>
     <% facade.following.each do |followed_user| %>
-      <li class="followed-user"><%= link_to followed_user.handle, followed_user.url %></li>
+      <li class="followed-user" id='following-<%= followed_user.uid %>'>
+        <%= link_to followed_user.handle, followed_user.url %>
+        <%= button_to 'Add as Friend', friends_path(followed_user.uid) if followed_user.friendable?(current_user) %>
+      </li>
     <% end %>
   </ul>
 </section>
