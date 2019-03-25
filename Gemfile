@@ -18,6 +18,10 @@ gem 'yt', '~> 0.29.1'
 gem 'google-api-client'
 gem 'faraday'
 gem 'jquery'
+
+gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
+gem 'rails-ujs', '~> 0.1.0'
+
 gem 'figaro'
 gem 'factory_bot_rails'
 gem 'faker'

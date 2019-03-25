@@ -12,12 +12,20 @@
   </tr>
   <% @facade.tutorials.each do |tutorial| %>
     <tr class="admin-tutorial-card">
-      <td><%= link_to tutorial.title, tutorial_path(tutorial) %></td>
       <td>
-        <%= link_to "Edit", edit_admin_tutorial_path(tutorial) %> |
-        <%= link_to 'Destroy', tutorial_path(tutorial),
-                               method: :delete,
-                               data: { confirm: 'Are you sure?' } %>
+        <%= link_to tutorial.title, tutorial_path(tutorial) %>
+      </td>
+
+      <td>
+        <div class="btn-group">
+
+          <%= link_to "Edit", edit_admin_tutorial_path(tutorial), class: 'btn btn-link destroy_link'%>
+
+          <%= button_to 'Destroy', admin_tutorial_path(tutorial),
+                                class: 'btn btn-link destroy_link',
+                                 method: :delete,
+                                 data: { confirm: 'Are you sure?' } %>
+        </div>
       </td>
     </tr>
   <% end %>
