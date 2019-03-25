@@ -49,7 +49,11 @@ class User < ApplicationRecord
     self.email_confirmed = true
     self.confirm_token = nil
     save!
-  end 
+  end
+
+  def activated?
+    self.email_confirmed == true
+  end
 
   private
 

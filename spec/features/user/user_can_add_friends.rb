@@ -2,9 +2,9 @@ require 'rails_helper'
 
 describe "As a registered user connected to Github" do
   before :each do
-    @april = create(:user, email: "test@email.com", password: "test", github_token: ENV['GITHUB_API_KEY'], github_uid: "41272635", github_handle: 'aprildagonese', github_url: 'https://github.com/aprildagonese')
-    @mackenzie = create(:user, email: "mackenzie@email.com", password: "test", github_token: ENV['MF_GITHUB_TOKEN'], github_uid: "42525195", github_handle: 'Mackenzie-Frey', github_url: 'https://github.com/Mackenzie-Frey')
-    @zach = create(:user, email: "zach@email.com", password: "test", github_token: "faketoken", github_uid: "34927114", github_handle: 'nagerz', github_url: 'https://github.com/nagerz')
+    @april = create(:user, email: "test@email.com", password: "test", github_token: ENV['GITHUB_API_KEY'], github_uid: "41272635", github_handle: 'aprildagonese', github_url: 'https://github.com/aprildagonese', email_confirmed: true)
+    @mackenzie = create(:user, email: "mackenzie@email.com", password: "test", github_token: ENV['MF_GITHUB_TOKEN'], github_uid: "42525195", github_handle: 'Mackenzie-Frey', github_url: 'https://github.com/Mackenzie-Frey', email_confirmed: true)
+    @zach = create(:user, email: "zach@email.com", password: "test", github_token: "faketoken", github_uid: "34927114", github_handle: 'nagerz', github_url: 'https://github.com/nagerz', email_confirmed: true)
 
     repos_json_response = File.open('fixtures/user_repos.rb')
     stub_request(:get, "https://api.github.com/user/repos").to_return(status: 200, body: repos_json_response)
@@ -78,10 +78,12 @@ describe "As a registered user connected to Github" do
         expect(page).to have_link("nagerz")
       end
     end
+  end
 
-    it "I see my friends under My Friends" do
+  context "I cannot add a friend" do
+    it "by passing through another uid" do
       visit dashboard_path
-
+      binding.pry
       expect(page).to_not have_css(".my_friends")
       expect(page).to_not have_content("My Friends")
       expect(page).to_not have_css(".friend")

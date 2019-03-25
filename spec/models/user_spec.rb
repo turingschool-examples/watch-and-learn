@@ -97,6 +97,14 @@ RSpec.describe User, type: :model do
         expect(@mackenzie.my_tutorial_videos(@tut3)).to eq([@vid8, @vid9])
       end
     end
+
+    it "#activated?" do
+      user1 = create(:user)
+      user2 = create(:user, email_confirmed: true)
+
+      expect(user1.activated?).to eq(false)
+      expect(user2.activated?).to eq(true)
+    end
   end
 
   context 'class methods' do
