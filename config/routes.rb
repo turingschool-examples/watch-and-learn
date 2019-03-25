@@ -39,7 +39,6 @@ Rails.application.routes.draw do
   # Is this being used?
   get '/video', to: 'video#show'
 
-
   resources :tutorials, only: [:show, :index] do
     resources :videos, only: [:show, :index]
   end
