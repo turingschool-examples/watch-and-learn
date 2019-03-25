@@ -1,0 +1,131 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.github.com/users/manojpanta
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - token <GITHUB_API_KEY>
+      User-Agent:
+      - Faraday v0.12.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Mon, 25 Mar 2019 21:31:29 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4999'
+      X-Ratelimit-Reset:
+      - '1553553089'
+      Cache-Control:
+      - private, max-age=60, s-maxage=60
+      Vary:
+      - Accept, Authorization, Cookie, X-GitHub-OTP
+      Etag:
+      - W/"abc056c1f305fd020a9998dc21706f1b"
+      Last-Modified:
+      - Mon, 25 Mar 2019 19:41:28 GMT
+      X-Oauth-Scopes:
+      - repo
+      X-Accepted-Oauth-Scopes:
+      - ''
+      X-Github-Media-Type:
+      - github.v3; format=json
+      Access-Control-Expose-Headers:
+      - ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
+        X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval,
+        X-GitHub-Media-Type
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Content-Security-Policy:
+      - default-src 'none'
+      X-Github-Request-Id:
+      - FD42:0698:17526E:342758:5C9948B1
+    body:
+      encoding: ASCII-8BIT
+      string: '{"login":"manojpanta","id":34468256,"node_id":"MDQ6VXNlcjM0NDY4MjU2","avatar_url":"https://avatars1.githubusercontent.com/u/34468256?v=4","gravatar_id":"","url":"https://api.github.com/users/manojpanta","html_url":"https://github.com/manojpanta","followers_url":"https://api.github.com/users/manojpanta/followers","following_url":"https://api.github.com/users/manojpanta/following{/other_user}","gists_url":"https://api.github.com/users/manojpanta/gists{/gist_id}","starred_url":"https://api.github.com/users/manojpanta/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/manojpanta/subscriptions","organizations_url":"https://api.github.com/users/manojpanta/orgs","repos_url":"https://api.github.com/users/manojpanta/repos","events_url":"https://api.github.com/users/manojpanta/events{/privacy}","received_events_url":"https://api.github.com/users/manojpanta/received_events","type":"User","site_admin":false,"name":"Manoj
+        Panta","company":null,"blog":"","location":null,"email":"manojpanta95@gmail.com","hireable":null,"bio":null,"public_repos":61,"public_gists":2,"followers":4,"following":8,"created_at":"2017-12-12T05:31:06Z","updated_at":"2019-03-25T19:41:28Z"}'
+    http_version: 
+  recorded_at: Mon, 25 Mar 2019 21:31:26 GMT
+- request:
+    method: post
+    uri: https://api.sendgrid.com/v3/mail/send
+    body:
+      encoding: UTF-8
+      string: '{"from":{"email":"mayola@dicki.co"},"subject":"Invitation to join Brownfield
+        of Dreams","personalizations":[{"to":[{"email":"manojpanta95@gmail.com"}]}],"content":[{"type":"text/plain","value":"Hello
+        manojpanta,  has invited you to join Brownfield of Dreams.You can create an
+        account here: https://brownfield-of-dreams-1811.herokuapp.com/register"}]}'
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - application/json
+      User-Agent:
+      - sendgrid/5.3.0;ruby
+      Authorization:
+      - Bearer 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
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 202
+      message: Accepted
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Mon, 25 Mar 2019 21:31:29 GMT
+      Content-Type:
+      - text/plain; charset=utf-8
+      Content-Length:
+      - '0'
+      Connection:
+      - keep-alive
+      X-Message-Id:
+      - BhcB2CwTTy2tUlqp4OX28g
+      Access-Control-Allow-Origin:
+      - https://sendgrid.api-docs.io
+      Access-Control-Allow-Methods:
+      - POST
+      Access-Control-Allow-Headers:
+      - Authorization, Content-Type, On-behalf-of, x-sg-elas-acl
+      Access-Control-Max-Age:
+      - '600'
+      X-No-Cors-Reason:
+      - https://sendgrid.com/docs/Classroom/Basics/API/cors.html
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Mon, 25 Mar 2019 21:31:27 GMT
+recorded_with: VCR 4.0.0

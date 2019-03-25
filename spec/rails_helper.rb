@@ -38,6 +38,7 @@ def  mock_user_dashboard_github
   filename = 'user_repos.json'
   url = "https://api.github.com/user/repos"
   stub_get_json(url, filename)
+
 end
 
 ActiveRecord::Migration.maintain_test_schema!

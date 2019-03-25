@@ -11,6 +11,10 @@ class GithubService
     get_json("user/following", user)
   end
 
+  def get_user_email(username, user)
+    get_json("users/#{username}", user)[:email]
+  end
+
   def get_json(url, user)
     response = conn(user).get(url)
     JSON.parse(response.body, symbolize_names: true)
