@@ -27,7 +27,7 @@ RSpec.describe User, type: :model do
     it '#connect_github' do
       user = create(:user, email: "test@email.com", password: "test")
 
-      data =       {"provider"=>"github",
+      data = {"provider"=>"github",
            "uid"=>"42525195",
            "info"=>
             {"nickname"=>"Mackenzie-Frey",
@@ -44,7 +44,10 @@ RSpec.describe User, type: :model do
 
       user.connect_github(data)
 
-      expect(user.github_token).to eq(ENV['OAUTH_TEST_TOKEN'])
+      expect(user.github_token).to eq(data['credentials']['token'])
+      expect(user.github_uid).to eq(data['uid'])
+      expect(user.github_handle).to eq(data['extra']['raw_info']['login'])
+      expect(user.github_url).to eq(data['info']['urls']['GitHub'])
     end
 
     it '#get_friend_users & #get_friends_ids & #has_friends' do
