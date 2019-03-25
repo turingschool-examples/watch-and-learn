@@ -40,7 +40,7 @@ RSpec.describe 'User can see a adda friend for possible friendships' do
       end
     end
 
-    it "I can see a freindships section with no friends" do
+    it "I can see a friendships section with no friends" do
       visit '/dashboard'
 
       within('.user-friendships') do
@@ -82,5 +82,6 @@ RSpec.describe 'User can see a adda friend for possible friendships' do
         expect(page).to_not have_css('.friend-button')
       end
     end
+
   end
 end
