@@ -250,6 +250,10 @@ GEM
       declarative-option (< 0.2.0)
       uber (< 0.2.0)
     retriable (3.1.2)
+    rspec-activemodel-mocks (1.1.0)
+      activemodel (>= 3.0)
+      activesupport (>= 3.0)
+      rspec-mocks (>= 2.99, < 4.0)
     rspec-core (3.8.0)
       rspec-support (~> 3.8.0)
     rspec-expectations (3.8.1)
@@ -373,6 +377,7 @@ DEPENDENCIES
   pry
   puma (~> 3.11)
   rails (~> 5.2.0)
+  rspec-activemodel-mocks
   rspec-rails
   rubocop (~> 0.66.0)
   sass-rails (~> 5.0)

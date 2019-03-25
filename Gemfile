@@ -45,6 +45,7 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'chromedriver-helper'
   gem 'rubocop', '~> 0.66.0', require: false
+  gem 'rspec-activemodel-mocks'
 end
 
 group :development do
