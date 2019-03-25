@@ -19,10 +19,10 @@
       <td>
         <div class="btn-group">
 
-          <%= link_to "Edit", edit_admin_tutorial_path(tutorial), class: 'btn btn-link'%>
+          <%= link_to "Edit", edit_admin_tutorial_path(tutorial), class: 'btn btn-link destroy_link'%>
 
           <%= button_to 'Destroy', admin_tutorial_path(tutorial),
-                                class: 'btn btn-link',
+                                class: 'btn btn-link destroy_link',
                                  method: :delete,
                                  data: { confirm: 'Are you sure?' } %>
         </div>
