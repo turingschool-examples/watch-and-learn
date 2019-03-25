@@ -24,10 +24,14 @@ class ApplicationController < ActionController::Base
   end
 
   def check_user_in_database(user)
-    if  User.find_by(uid: user.uid) && !current_user.friends.include?(User.find_by(uid: user.uid))
+    if User.find_by(uid: user.uid) && !current_user.friends.include?(User.find_by(uid: user.uid))
       true
     else
       false
     end
+  end
+
+  def add_position_to_videos
+    Video.where(position: nil).each { |video| video.update(position: 0) }
   end
 end
