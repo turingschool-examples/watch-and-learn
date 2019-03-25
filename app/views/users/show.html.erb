@@ -3,6 +3,8 @@
 
   <%= button_to 'Log Out', logout_path, method: 'delete', class: "btn btn-primary mb1 bg-teal" %>
   <%= button_to 'Connect to Github', connect_path, class: "btn btn-primary mb1 bg-teal" unless current_user.github_token%>
+  <%= button_to 'Send an Invite', connect_path
+  , class: "btn btn-primary mb1 bg-teal" unless current_user.github_token%>
 
   <h3>Account Details</h3>
   <ul>
