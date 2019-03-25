@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  before_create :confirmation_token
   include CheckUser
   has_many :user_videos
   has_many :videos, through: :user_videos
@@ -42,5 +43,19 @@ class User < ApplicationRecord
          .select("videos.*")
          .where(tutorials: {id: tutorial_id}, user_videos: {user_id: self.id})
          .order(:position)
+  end
+
+  def email_activate
+    self.email_confirmed = true
+    self.confirm_token = nil
+    save!
+  end 
+
+  private
+
+  def confirmation_token
+    if self.confirm_token.blank?
+      self.confirm_token = SecureRandom.urlsafe_base64.to_s
+    end
   end
 end
