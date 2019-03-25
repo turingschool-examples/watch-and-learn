@@ -129,7 +129,7 @@ describe 'As a user' do
 
         expect(current_path).to eq(dashboard_path)
 
-        within '.friend_requests' do
+        within '.friend-requests' do
           expect(page).to have_content expected
           expect(page).to have_button 'Accept'
           expect(page).to have_button 'Decline'
@@ -148,8 +148,10 @@ describe 'As a user' do
         visit dashboard_path
 
         expect(current_path).to eq(dashboard_path)
+      end
 
-        within '.friend_requests' do
+      VCR.use_cassette('views/dashboard_github_request') do
+        within '.friend-requests' do
           click_button 'Accept'
         end
 
@@ -159,7 +161,7 @@ describe 'As a user' do
           expect(page).to have_content expected
         end
 
-        within '.friend_requests' do
+        within '.friend-requests' do
           expect(page).to_not have_content expected
         end
       end
@@ -176,8 +178,10 @@ describe 'As a user' do
         visit dashboard_path
 
         expect(current_path).to eq(dashboard_path)
+      end
 
-        within '.friend_requests' do
+      VCR.use_cassette('views/dashboard_github_request') do
+        within '.friend-requests' do
           click_button 'Decline'
         end
 
@@ -187,7 +191,7 @@ describe 'As a user' do
           expect(page).to_not have_content expected
         end
 
-        within '.friend_requests' do
+        within '.friend-requests' do
           expect(page).to_not have_content expected
         end
       end

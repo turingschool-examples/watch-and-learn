@@ -22,16 +22,18 @@
     </ul>
   <% end %>
 </section>
-<section class="friend_requests">
+<section class="friend-requests">
   <h3>Friend Requests</h3>
   <table>
-    <% facade.pending_requests do |pending_user| %>
+    <tbody>
+    <% facade.pending_requests.each do |pending_user| %>
       <tr>
         <td><%= pending_user.first_name + " " + pending_user.last_name %></td>
-        <td><%= button_to 'Accept', accept_friends_path(pending_user), method: :put %></td>
+        <td><%= button_to 'Accept', friends_path(pending_user), method: :put %></td>
         <td><%= button_to 'Decline', decline_friends_path(pending_user), method: :delete %></td>
       </tr>
     <% end %>
+    </tbody>
   </table>
 </section>
 <section id="followers">
