@@ -31,7 +31,7 @@ class Admin::TutorialsController < Admin::BaseController
     tutorial.destroy
     redirect_to admin_dashboard_path
   end
-  
+
   private
   def tutorial_params
     params.require(:tutorial).permit(:tag_list, :title, :description, :thumbnail)
