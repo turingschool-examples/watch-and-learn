@@ -69,7 +69,7 @@ describe "A registered user" do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
     visit dashboard_path
-    save_and_open_page
+
     within "#user_github" do
       expect(page).to have_content("GitHub")
       within ".user_github_followers" do

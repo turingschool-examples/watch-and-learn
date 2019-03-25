@@ -12,9 +12,10 @@
   <section class="tutorials">
     <h1>Bookmarked Segments</h1>
     <% current_user.my_tutorials.each do |tutorial| %>
-      <section id="tutorial_<%=tutorial.id%>"
-        <h4><% current_user.my_tutorial_videos(tutorial).each do |video| %>
-          <li id="video_<%= video.id %>"> <%= video.name %></li>
+      <section id="tutorial_<%=tutorial.id%>">
+        <h3><%= tutorial.title %></h3>
+          <% current_user.my_tutorial_videos(tutorial).each do |video| %>
+          <li id="video_<%= video.id %>"> <%= video.title %></li>
         <% end %>
       </section>
     <% end %>
@@ -23,7 +24,7 @@
   <!-- Github Data -->
   <% if current_user.github_token? %>
   <section id="user_github">
-    <h2>GitHub</h2>
+    <h1>GitHub</h1>
     <section class="user_github_repos">
       <h3>Repositories</h3>
       <ul>

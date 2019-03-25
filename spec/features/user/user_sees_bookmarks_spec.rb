@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe "As a registered user" do
   describe "on my dashboard page" do
-    it "I see my bookmarks listed by tutorial" do
+    it "I see my bookmarks listed by tutorial", :vcr do
       # As a logged in user
       # When I visit '/dashboard'
       # Then I should see a list of all bookmarked segments under the Bookmarked Segments section
@@ -25,10 +25,12 @@ describe "As a registered user" do
 
       within ".tutorials" do
         within "#tutorial_#{tut1.id}" do
+          expect(page).to have_content("#{tut1.title}")
           expect(page).to have_css("#video_#{vid1.id}")
           expect(page).to have_css("#video_#{vid3.id}")
         end
-        within ".tutorial_#{tut2.id}" do
+        within "#tutorial_#{tut2.id}" do
+          expect(page).to have_content("#{tut2.title}")
           expect(page).to have_css("#video_#{vid5.id}")
           expect(page).to have_css("#video_#{vid7.id}")
         end
