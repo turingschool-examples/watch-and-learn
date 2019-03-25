@@ -67,6 +67,36 @@ RSpec.describe User, type: :model do
       expect(april.get_friends_ids.count).to eq(2)
       expect(april.has_friends?).to eq(true)
     end
+
+    context "Tutorials" do
+      before :each do
+        @april = create(:user, email: "test@email.com", password: "test", github_token: ENV['GITHUB_API_KEY'], github_uid: "41272635", github_handle: 'aprildagonese', github_url: 'https://github.com/aprildagonese')
+        @mackenzie = create(:user, email: "mackenzie@email.com", password: "test", github_token: ENV['MF_GITHUB_TOKEN'], github_uid: "42525195")
+        @tut1, @tut2, @tut3 = create_list(:tutorial, 3)
+        @vid1, @vid2, @vid3 = create_list(:video, 3, tutorial: @tut1)
+        @vid4, @vid5, @vid6, @vid7 = create_list(:video, 4, tutorial: @tut2)
+        @vid8, @vid9 = create_list(:video, 2, tutorial: @tut3)
+        @user_vid1 = create(:user_video, user: @april, video: @vid1)
+        @user_vid2 = create(:user_video, user: @april, video: @vid3)
+        @user_vid3 = create(:user_video, user: @april, video: @vid5)
+        @user_vid4 = create(:user_video, user: @april, video: @vid7)
+        @user_vid5 = create(:user_video, user: @mackenzie, video: @vid7)
+        @user_vid6 = create(:user_video, user: @mackenzie, video: @vid8)
+        @user_vid7 = create(:user_video, user: @mackenzie, video: @vid9)
+      end
+
+      it "#my_tutorials" do
+        expect(@april.my_tutorials).to eq([@tut1, @tut2])
+        expect(@mackenzie.my_tutorials).to eq([@tut2, @tut3])
+      end
+
+      it "#my_tutorial_videos" do
+        expect(@april.my_tutorial_videos(@tut1)).to eq([@vid1, @vid3])
+        expect(@april.my_tutorial_videos(@tut2)).to eq([@vid5, @vid7])
+        expect(@mackenzie.my_tutorial_videos(@tut2)).to eq([@vid7])
+        expect(@mackenzie.my_tutorial_videos(@tut3)).to eq([@vid8, @vid9])
+      end
+    end
   end
 
   context 'class methods' do

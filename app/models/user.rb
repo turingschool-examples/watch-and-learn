@@ -29,4 +29,17 @@ class User < ApplicationRecord
   def get_friend_users
     User.where(id: get_friends_ids)
   end
+
+  def my_tutorials
+    Tutorial.joins(videos: :user_videos)
+            .select("tutorials.*")
+            .where(user_videos: {user_id: self.id})
+            .distinct
+  end
+
+  def my_tutorial_videos(tutorial_id)
+    Video.joins(:tutorial, :user_videos)
+         .select("videos.*")
+         .where(tutorials: {id: tutorial_id}, user_videos: {user_id: self.id})
+  end
 end
