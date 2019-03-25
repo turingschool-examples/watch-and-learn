@@ -45,7 +45,7 @@
             <li class="user_follower">
             <%= link_to follower.name, follower.address, class: 'name' %>
             <% if follower.registered_user? && follower.not_already_friend?(current_user) %>
-              <%= button_to "Add as a Friend", new_friendship_path(user: current_user, friend: follower.id), class: 'btn btn-primary mb1 bg-teal friend-button' %>
+              <%= button_to "Add as a Friend", new_friendship_path(friend: follower.id), class: 'btn btn-primary mb1 bg-teal friend-button' %>
             <% end %>
           </li>
           <% end %>

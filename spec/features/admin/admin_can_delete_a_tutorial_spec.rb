@@ -21,7 +21,7 @@ RSpec.describe 'Admin can delete a Tutorial' do
           expect(page).to have_content(@tutorial_1.title)
 
           within(page.all('.admin-tutorial-card')[0]) do
-            click_link("Destroy")
+            click_button("Destroy")
           end
 
           expect(current_path).to eq(admin_dashboard_path)
@@ -40,7 +40,7 @@ RSpec.describe 'Admin can delete a Tutorial' do
           expect(page).to have_content(@tutorial_1.title)
 
           within(page.all('.admin-tutorial-card')[0]) do
-            click_link("Destroy")
+            click_button("Destroy")
           end
 
           expect(Video.where(tutorial: @tutorial_1).count).to eq(0)
@@ -59,7 +59,7 @@ RSpec.describe 'Admin can delete a Tutorial' do
 
 
           within(page.all('.admin-tutorial-card')[0]) do
-            click_link("Destroy")
+            click_button("Destroy")
           end
 
           expect(UserVideo.where(video: @videos_from_tutorial_1.first).count).to eq(0)
