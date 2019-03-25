@@ -12,9 +12,7 @@ Rails.application.routes.draw do
   get '/get_started', to: 'get_started#show'
 
   get '/register', to: 'users#new'
-  get '/dashboard', to: 'users#show'
-  get '/invite', to: 'invite#new'
-  post '/invite', to: 'invite#create'
+  get '/dashboard', to: 'users#show'\
   resources :users, only: [:create, :update, :edit]
 
   namespace :admin do
