@@ -11,7 +11,7 @@
     <% end %>
   </ul>
 </div>
-
+<% if @facade.current_video %>
 <div class="col col-8">
   <div class="title-bookmark">
     <h3><%= @facade.current_video.title %></h3>
@@ -65,5 +65,6 @@
     <%= link_to "More", "#", "data-action" => "click->tutorials#showDescription", id: @facade.current_video.id, class: "show-link"%>
   </p>
 </div>
+<% end %>
 
 </main>
