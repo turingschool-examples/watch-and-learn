@@ -20,6 +20,8 @@ RSpec.describe 'Admin can create a Tutorial' do
           fill_in 'tutorial[thumbnail]', with: 'https://i.ytimg.com/vi/qMkRHW9zE1c/hqdefault.jpg'
           click_on "Save"
 
+          expect(page).to have_content("Successfully created tutorial.")
+
           new_tutorial = Tutorial.last
           expect(new_tutorial.title).to eq('Tutorial Title Test')
           expect(current_path).to eq(admin_dashboard_path)
@@ -41,6 +43,8 @@ RSpec.describe 'Admin can create a Tutorial' do
           fill_in 'tutorial[description]', with: 'Tutorial description test'
           fill_in 'tutorial[thumbnail]', with: 'https://i.ytimg.com/vi/qMkRHW9zE1c/hqdefault.jpg'
           click_on "Save"
+
+          expect(page).to_not have_content("Successfully created tutorial.")
 
           expect(Tutorial.last).to eq(nil)
 
