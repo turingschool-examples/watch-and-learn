@@ -36,7 +36,7 @@ describe 'vistor can create an account', :js do
     expect(page).to have_content("Status: Unactivated. Please check your email to complete registration.")
     expect(page).to_not have_content('Sign In')
 
-    visit confirm_email_user_url(@user.confirm_token)
+    visit confirm_email_user_path(@user.confirm_token)
 
     expect(current_path).to eq(dashboard_path)
     expect(page).to have_content("Thank you for registering! Your account is now active.")

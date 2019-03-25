@@ -12,26 +12,13 @@ class UsersController < ApplicationController
   def create
     @user = User.create(user_params)
     if @user.save
-      UserMailer.registration_email(@user).deliver
+      UserMailer.registration_email(@user).deliver_now
       session[:user_id] = @user.id
       flash[:success] = "You are logged in as #{@user.email}, but your account is not yet active. Please check your email and click the registration link to continue."
       redirect_to dashboard_path
     else
       flash[:error] = "Oops, something went wrong! Please try again, and make sure you've entered a unique email address."
       render :new
-    end
-  end
-
-  def confirm_email
-    binding.pry
-    user = User.find_by_confirm_token(params[:id])
-    if user
-      user.email_activate
-      flash[:success] = "Thank you for registering! Your account is now active."
-      redirect_to dashboard_path
-    else
-      flash[:error] = "Sorry, this user does not exist. Please try again or contact an administrator."
-      redirect_to root_url
     end
   end
 

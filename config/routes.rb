@@ -38,10 +38,12 @@ Rails.application.routes.draw do
 
   post '/friendships', to: 'friendships#create'
 
+  get '/users/:id/confirm_email', to: 'email#update', as: :confirm_email_user
+
   resources :users, only: [:new, :create, :update, :edit] do
-    member do
-      get :confirm_email
-    end
+    # member do
+    #   get :confirm_email
+    # end
   end
 
   resources :tutorials, only: [:show, :index] do
