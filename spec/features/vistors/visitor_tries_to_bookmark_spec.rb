@@ -7,11 +7,8 @@ describe 'visitor visits video show page' do
 
     visit tutorial_path(tutorial)
 
-    click_on 'Bookmark'
+    click_on "Bookmark"
 
     expect(current_path).to eq(tutorial_path(tutorial))
-    expect(:alert.message).to match(/User must login to bookmark videos./)
-    expect(page).to have_content("User must login to bookmark videos.")
-    expect(page).to have_button('Bookmark', disabled: true)
   end
 end
