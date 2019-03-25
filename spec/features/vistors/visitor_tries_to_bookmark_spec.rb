@@ -7,7 +7,7 @@ describe 'visitor visits video show page' do
 
     visit tutorial_path(tutorial)
 
-    click_on "Bookmark"
+    click_button 'Bookmark'
 
     expect(current_path).to eq(tutorial_path(tutorial))
   end
