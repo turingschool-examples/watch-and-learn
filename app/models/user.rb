@@ -14,6 +14,7 @@ class User < ApplicationRecord
   has_secure_password
 
   def connect_github(data)
+    binding.pry
     self.update!(github_token: data['credentials']['token'],
                  github_url: data['extra']['raw_info']['html_url'],
                  github_handle: data['extra']['raw_info']['login'])

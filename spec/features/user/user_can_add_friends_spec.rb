@@ -22,6 +22,7 @@ describe "As a registered user connected to Github" do
   context "when my followers/following is also connected to Github" do
     it "I see a button to add them as a friend" do
       visit dashboard_path
+      
       #Following section
       within ".following_handle_unrealities" do
         expect(page).to_not have_button("Add Friend")
@@ -80,25 +81,25 @@ describe "As a registered user connected to Github" do
     end
   end
 
-  context "I cannot add a friend" do
-    it "by passing through another uid" do
-      visit dashboard_path
-      binding.pry
-      expect(page).to_not have_css(".my_friends")
-      expect(page).to_not have_content("My Friends")
-      expect(page).to_not have_css(".friend")
-      expect(page).to_not have_css(".friend_handle_nagerz")
-
-      within ".following_handle_nagerz" do
-        click_button("Add Friend")
-      end
-
-      within ".my_friends" do
-        expect(page).to have_content("My Friends")
-        expect(page).to have_css(".friend")
-        expect(page).to have_css(".friend_handle_nagerz")
-        expect(page).to have_link("nagerz")
-      end
-    end
-  end
+  # context "I cannot add a friend" do
+  #   it "by passing through another uid" do
+  #     visit dashboard_path
+  #     binding.pry
+  #     expect(page).to_not have_css(".my_friends")
+  #     expect(page).to_not have_content("My Friends")
+  #     expect(page).to_not have_css(".friend")
+  #     expect(page).to_not have_css(".friend_handle_nagerz")
+  #
+  #     within ".following_handle_nagerz" do
+  #       click_button("Add Friend")
+  #     end
+  #
+  #     within ".my_friends" do
+  #       expect(page).to have_content("My Friends")
+  #       expect(page).to have_css(".friend")
+  #       expect(page).to have_css(".friend_handle_nagerz")
+  #       expect(page).to have_link("nagerz")
+  #     end
+  #   end
+  # end
 end
