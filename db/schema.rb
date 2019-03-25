@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(version: 2019_03_24_180741) do
     t.datetime "updated_at", null: false
     t.string "github_token"
     t.string "uid"
-    t.boolean "verified"
+    t.boolean "verified", default: false
     t.index ["email"], name: "index_users_on_email"
   end
 

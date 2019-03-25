@@ -2,7 +2,8 @@
   <div class="title-bookmark">
     <h3><%= facade.current_video.title %></h3>
     <div class="bookmarks-btn">
-      <%= button_to "Bookmark", user_videos_path(video_id: facade.current_video.id), method: :post, class: "btn btn-outline mb1 teal" %>
+      <%= button_tag "Bookmark",type: 'button', onclick: 'bookmarkVideo()', class: "btn btn-outline mb1 teal" %>
+      <!-- user_videos_path(video_id: facade.current_video.id) -->
     </div>
   </div>
 
@@ -38,6 +39,22 @@
         message.innerHTML = "You watched them all. Bask in the glory of your new skills."
       }
     }
+
+    function bookmarkVideo() {
+      console.log('<%= facade.current_video.video_id %>')
+      fetch('/api/v1/bookmarks', {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json; charset=utf-8",
+        },
+        body: JSON.stringify({video_id:"<%= facade.current_video.id %>", authenticity_token:"<%= form_authenticity_token %>"})
+      })
+      .then((response) => JSON.parse(response))
+      .then(function(response){
+        console.log("hello");
+      });
+    }
+
   </script>
 </div>
   <h4>Description</h4>

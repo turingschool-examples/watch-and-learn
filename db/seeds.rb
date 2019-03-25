@@ -123,11 +123,12 @@ User.create!({
               role: :admin,
               verified: true
             })
-
-user = create(:github_user)
-potential_friend = create(:github_user, uid: 41562392)
-current_friend = create(:github_user)
-requested_friend = create(:github_user)
-current_friend_1 = Friend.create(user: user, friend_user: current_friend)
-current_friend_2 = Friend.create(user: current_friend, friend_user: user)
-requested_friend_1 = Friend.create(user: requested_friend, friend_user: user)
+            
+User.create!({
+              email: 'admin@example.com',
+              first_name: 'Bossy',
+              last_name: 'McBosserton',
+              password:  "password",
+              role: :admin,
+              verified: true
+            })
