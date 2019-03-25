@@ -9,7 +9,6 @@ describe 'A registered user' do
       login_as(user)
 
       visit tutorial_path(tutorial)
-      save_and_open_page
 
       expect(page).to have_content(tutorial.title)
     end
