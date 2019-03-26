@@ -1,7 +1,6 @@
 require 'sendgrid-ruby'
 require 'json'
-class InvitationMailer
-  include SendGrid
+class InvitationMailer < ApplicationMailer
 
   def self.invite(sender_username, sender_email, recipient_username, recipient_email)
       from = Email.new(email: sender_email)
@@ -11,9 +10,10 @@ class InvitationMailer
       mail = SendGrid::Mail.new(from, subject, to, content)
       mail.to_json
       sg = SendGrid::API.new(api_key: ENV['SENDGRID_API_KEY'], host: 'https://api.sendgrid.com')
-      response = sg.client.mail._('send').post(request_body: mail.to_json)
+      response = sg.client.mail._('send'
+      ).post(request_body: mail.to_json)
       response.status_code
       response.body
       response.headers
-  end
+    end
 end
