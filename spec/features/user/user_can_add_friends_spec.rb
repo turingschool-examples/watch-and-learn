@@ -59,7 +59,7 @@ describe "As a registered user connected to Github" do
   end
 
   context "when I click on 'Add Friend'" do
-    it "I see my friends under My Friends for clicking on a following" do
+    it "I see my FOLLOWING friends under My Friends" do
       visit dashboard_path
 
       expect(page).to_not have_css(".my_friends")
@@ -83,7 +83,7 @@ describe "As a registered user connected to Github" do
       end
     end
 
-    it "I see my friends under My Friends for clicking on a follower" do
+    it "I see my FOLLOWER friends under My Friends" do
       visit dashboard_path
 
       expect(page).to_not have_css(".my_friends")
