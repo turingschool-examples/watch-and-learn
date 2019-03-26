@@ -40,11 +40,7 @@ Rails.application.routes.draw do
 
   get '/users/:id/confirm_email', to: 'email#update', as: :confirm_email_user
 
-  resources :users, only: [:new, :create, :update, :edit] do
-    # member do
-    #   get :confirm_email
-    # end
-  end
+  resources :users, only: [:new, :create, :update, :edit]
 
   resources :tutorials, only: [:show, :index] do
     resources :videos, only: [:show, :index]
