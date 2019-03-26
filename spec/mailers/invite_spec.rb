@@ -4,7 +4,7 @@ RSpec.describe InviteMailer, :type => :mailer do
   describe "invite" do
     before :each do
       @user = create(:user)
-      @github_user = create(:github_token, user: @user, token: ENV['USER_1_GITHUB_TOKEN'])
+      create(:github_token, user: @user, token: ENV['USER_1_GITHUB_TOKEN'])
 
       attributes = {
         login: "jamisonordway",
