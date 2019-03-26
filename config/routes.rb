@@ -46,4 +46,7 @@ Rails.application.routes.draw do
 
   get '/auth/github', as: :github_login
   get '/auth/github/callback', to: 'sessions#create'
+
+  get '/invite', to: 'emails#new'
+  post '/invite', to: 'emails#create'
 end

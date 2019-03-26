@@ -27,6 +27,7 @@ gem 'will_paginate'
 gem 'acts-as-taggable-on', '~> 6.0'
 gem 'omniauth-census', git: "https://github.com/turingschool-projects/omniauth-census"
 gem 'omniauth-github'
+gem 'sendgrid-ruby'
 
 
 group :development, :test do
@@ -45,6 +46,7 @@ group :development, :test do
   gem 'vcr'
   gem 'selenium-webdriver'
   gem 'chromedriver-helper'
+
 end
 
 group :development do

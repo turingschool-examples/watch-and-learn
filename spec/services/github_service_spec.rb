@@ -46,5 +46,16 @@ describe GithubService do
         expect(result[0]).to have_key(:html_url)
       end
     end
+
+    context '#get_user_email(username)' do
+      it 'returns user\'s email', :vcr do
+        user = create(:user, github_token: ENV["github_key"])
+        service = GithubService.new
+
+        result = service.get_user_email('manojpanta', user)
+        expect(result).to be_a(String)
+        expect(result).to eq('manojpanta95@gmail.com')
+      end
+    end
   end
 end
