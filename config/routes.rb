@@ -47,5 +47,6 @@ Rails.application.routes.draw do
 
   post '/friendships', to: "friendships#create", as: "new_friendship"
 
+  get '/invite', to: 'invitation#new'
   post '/invite', to: 'invitation#create'
 end

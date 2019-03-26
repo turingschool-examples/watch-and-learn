@@ -1,5 +1,9 @@
 class InvitationController < ApplicationController
 
+  def new
+    
+  end
+
   def create
     github_service = GithubService.new(current_user)
     email = github_service.get_email(params[:handle])["email"]
