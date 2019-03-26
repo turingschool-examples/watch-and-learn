@@ -59,7 +59,7 @@ describe "As a registered user connected to Github" do
   end
 
   context "when I click on 'Add Friend'" do
-    it "I see my friends under My Friends" do
+    it "I see my friends under My Friends for clicking on a following" do
       visit dashboard_path
 
       expect(page).to_not have_css(".my_friends")
@@ -69,7 +69,34 @@ describe "As a registered user connected to Github" do
 
       within ".following_handle_nagerz" do
         click_button("Add Friend")
-        expect(page).to_not have_button("Add Friend")
+      end
+
+      within ".following_handle_nagerz" do
+        expect(page).to_not have_button('Add Friend')
+      end
+
+      within ".my_friends" do
+        expect(page).to have_content("My Friends")
+        expect(page).to have_css(".friend")
+        expect(page).to have_css(".friend_handle_nagerz")
+        expect(page).to have_link("nagerz")
+      end
+    end
+
+    it "I see my friends under My Friends for clicking on a follower" do
+      visit dashboard_path
+
+      expect(page).to_not have_css(".my_friends")
+      expect(page).to_not have_content("My Friends")
+      expect(page).to_not have_css(".friend")
+      expect(page).to_not have_css(".friend_handle_nagerz")
+
+      within ".follower_handle_nagerz" do
+        click_button("Add Friend")
+      end
+
+      within ".follower_handle_nagerz" do
+        expect(page).to_not have_button('Add Friend')
       end
 
       within ".my_friends" do
