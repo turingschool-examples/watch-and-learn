@@ -8,8 +8,8 @@ class InvitationController < ApplicationController
     github_service = GithubService.new(current_user)
     user = github_service.get_user(params[:handle])
     github_user = GithubUser.new(user)
-    
-    if github_user.email
+
+    if github_user.email && current_user.github_token
       InviteMailer.invite(current_user, github_user).deliver_now
       flash[:notice] = "Successfully sent invite!"
     else
