@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'User' do
   it 'user can sign in' do
-    user = create(:user)
+    user = create(:user, email_confirmed: true)
 
     visit '/'
 
@@ -22,7 +22,7 @@ describe 'User' do
   end
 
   it 'can log out', :js do
-    user = create(:user)
+    user = create(:user, email_confirmed: true)
 
     visit login_path
 

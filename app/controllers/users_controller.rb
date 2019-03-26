@@ -10,12 +10,14 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.create(user_params)
-    if user.save
-      session[:user_id] = user.id
+    @user = User.create(user_params)
+    if @user.save
+      UserMailer.registration_email(@user).deliver_now
+      session[:user_id] = @user.id
+      flash[:success] = "You are logged in as #{@user.email}, but your account is not yet active. Please check your email and click the registration link to continue."
       redirect_to dashboard_path
     else
-      flash[:error] = 'Username already exists'
+      flash[:error] = "Oops, something went wrong! Please try again, and make sure you've entered a unique email address."
       render :new
     end
   end
