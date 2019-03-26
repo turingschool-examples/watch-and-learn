@@ -2,12 +2,14 @@ class GithubUser
 
   attr_reader :name,
               :address,
-              :id
+              :id,
+              :email
 
   def initialize(attributes)
     @name = attributes[:login]
     @address = attributes[:html_url]
     @id = attributes[:id]
+    @email = attributes[:email]
   end
 
   def registered_user?

@@ -1,3 +1,4 @@
-Hello<%= github_user.name %>,
 
-<%= current_user.name %> has invited you to join Brownfield of Dreams. You can create an account <%= link_to login_path %>
+Hello <%= @github_user.name %> ,
+
+<%= @user.first_name %> <%= @user.last_name %>has invited you to join Brownfield of Dreams. You can create an account <%= link_to login_path %>
