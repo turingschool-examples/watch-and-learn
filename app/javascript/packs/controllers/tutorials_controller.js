@@ -12,6 +12,16 @@ export default class extends Controller {
       });
   }
 
+  clickBookmark(event) {
+    event.preventDefault();
+    fetch(`/api/v1/bookmarks/${event.target.id}`, {method: 'post', body: 'foo=bar&test=1'})
+      .then((response) => response.json())
+      .then(function(response){
+        const desc = document.querySelector(`.flash-message`);
+        desc.innerHTML = response.message
+      });
+  }
+
   showAlert(event) {
     event.preventDefault();
     const desc = document.querySelector(`.flash-message`);
