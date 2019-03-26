@@ -28,7 +28,7 @@
           <section class="follower">
             <section class="follower_handle_<%= follower.handle %>"
               <li id="follower_handle"><%= link_to(follower.handle, follower.url) %></li>
-              <% if User.is_user?(follower.uid) %>
+              <% if User.is_user?(follower.uid) && follower.not_a_friend?(current_user.id) %>
                 <%= button_to 'Add Friend', friendships_path(friend_github_uid: follower.uid), method: 'create', class: "btn btn-primary mb1 bg-teal" %>
               <% end %>
             </section>
@@ -43,7 +43,7 @@
           <section class="following">
             <section class="following_handle_<%= following.handle %>"
               <li id="following_handle"><%= link_to(following.handle, following.url) %></li>
-              <% if User.is_user?(following.uid) %>
+              <% if User.is_user?(following.uid) && following.not_a_friend?(current_user.id) %>
                 <%= button_to 'Add Friend', friendships_path(friend_github_uid: following.uid), method: 'create', class: "btn btn-primary mb1 bg-teal" %>
               <% end %>
             </section>
