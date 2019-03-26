@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  require 'securerandom'
   has_many :user_videos
   has_many :videos, through: :user_videos
 
@@ -10,4 +11,10 @@ class User < ApplicationRecord
   has_many :friendships
   has_many :friends, through: :friendships
   has_secure_password
+
+  def set_activation_token
+    if activation_token.blank?
+       self.update(activation_token: SecureRandom.urlsafe_base64.to_s)
+    end
+  end
 end
