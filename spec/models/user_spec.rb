@@ -51,9 +51,9 @@ RSpec.describe User, type: :model do
     end
 
     it '#get_friend_users & #get_friends_ids & #has_friends' do
-      april = create(:user, email: "test@email.com", password: "test", github_token: ENV['GITHUB_API_KEY'], github_uid: "41272635")
-      mackenzie = create(:user, email: "mackenzie@email.com", password: "test", github_token: ENV['MF_GITHUB_TOKEN'], github_uid: "42525195")
-      zach = create(:user, email: "zach@email.com", password: "test", github_token: "faketoken", github_uid: "34927114")
+      april = create(:user, email: "test@email.com", password: "test", github_handle: "aprildagonese", github_token: ENV['GITHUB_API_KEY'], github_uid: "41272635")
+      mackenzie = create(:user, email: "mackenzie@email.com", password: "test", github_handle: "Mackenzie-Frey", github_token: ENV['MF_GITHUB_TOKEN'], github_uid: "42525195")
+      zach = create(:user, email: "zach@email.com", password: "test", github_handle: "nagerz", github_token: "faketoken", github_uid: "34927114")
 
       expect(april.get_friends_ids.count).to eq(0)
       expect(april.has_friends?).to eq(false)
@@ -99,6 +99,14 @@ RSpec.describe User, type: :model do
         expect(@mackenzie.my_tutorial_videos(@tut2)).to eq([@vid7])
         expect(@mackenzie.my_tutorial_videos(@tut3)).to eq([@vid8, @vid9])
       end
+    end
+
+    it "#activated?" do
+      user1 = create(:user, email_confirmed: false)
+      user2 = create(:user, email_confirmed: true)
+
+      expect(user1.activated?).to eq(false)
+      expect(user2.activated?).to eq(true)
     end
   end
 

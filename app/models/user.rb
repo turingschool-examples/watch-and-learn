@@ -29,7 +29,7 @@ class User < ApplicationRecord
   end
 
   def get_friend_users
-    User.where(id: get_friends_ids)
+    User.where(id: get_friends_ids).order(:github_handle)
   end
 
   def my_tutorials
@@ -50,7 +50,11 @@ class User < ApplicationRecord
     self.email_confirmed = true
     self.confirm_token = nil
     save!
-  end 
+  end
+
+  def activated?
+    self.email_confirmed == true
+  end
 
   private
 
