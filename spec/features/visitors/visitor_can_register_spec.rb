@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-describe 'vister can create an account', :js do
-  it 'can register with acceptable credentials' do
+describe 'As a visitor', :js do
+  it 'I can register with acceptable credentials' do
     email = 'jimbob@aol.com'
     first_name = 'Jim'
     last_name = 'Bob'
@@ -28,13 +28,18 @@ describe 'vister can create an account', :js do
 
     expect(current_path).to eq(dashboard_path)
 
-    expect(page).to have_content(email)
-    expect(page).to have_content(first_name)
-    expect(page).to have_content(last_name)
+    expect(page).to have_content("Logged in as #{first_name} #{last_name}.")
+
+    within(".dashboard-acct-details") do
+      expect(page).to have_content(email)
+      expect(page).to have_content(first_name)
+      expect(page).to have_content(last_name)
+    end
+
     expect(page).to_not have_content('Sign In')
   end
 
-  it "can't register with dupicate username" do
+  it "I can't register with dupicate username" do
     email = 'jimbob@aol.com'
     first_name = 'Jim'
     last_name = 'Bob'
@@ -57,5 +62,67 @@ describe 'vister can create an account', :js do
 
     expect(page).to have_content('Email already exists')
     expect(page).to have_content('Register')
+  end
+
+describe 'after registering with acceptable credentials'
+  it 'my status is inactive and I receive an activation email' do
+    email = 'jimbob@aol.com'
+    first_name = 'Jim'
+    last_name = 'Bob'
+    password = 'password'
+    password_confirmation = 'password'
+
+    visit register_path
+
+    fill_in 'user[email]', with: email
+    fill_in 'user[first_name]', with: first_name
+    fill_in 'user[last_name]', with: last_name
+    fill_in 'user[password]', with: password
+    fill_in 'user[password_confirmation]', with: password
+
+    click_on 'Create Account'
+
+    expect(current_path).to eq(dashboard_path)
+
+    expect(page).to have_content("Status: This account has not yet been activated. Please check your email.")
+
+    email = ActionMailer::Base.deliveries.last
+    email_body = email.parts.first.body.raw_source
+
+    expect(email.subject).to eq("You're almost there!")
+    expect(email_body).to have_content("Welcome! You're registration has been initiated. Please visit here to activate your account.")
+    expect(email_body).to have_link("here", href: "http://localhost:3000/activate/#{User.last.id}")
+  end
+
+  it 'I can activate my account through the link in my email' do
+    email = 'jimbob@aol.com'
+    first_name = 'Jim'
+    last_name = 'Bob'
+    password = 'password'
+    password_confirmation = 'password'
+
+    visit register_path
+
+    fill_in 'user[email]', with: email
+    fill_in 'user[first_name]', with: first_name
+    fill_in 'user[last_name]', with: last_name
+    fill_in 'user[password]', with: password
+    fill_in 'user[password_confirmation]', with: password
+
+    click_on 'Create Account'
+
+    user = User.last
+
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+    expect(current_path).to eq(dashboard_path)
+
+    expect(page).to have_content("Status: This account has not yet been activated. Please check your email.")
+
+    visit activate_path(user)
+
+    expect(page).to have_content("Thank you! Your account is now activated.")
+
+    expect(User.last.status).to eq("active")
   end
 end
