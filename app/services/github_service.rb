@@ -4,6 +4,15 @@ class GithubService
     @user = user
   end
 
+  def get_email(handle)
+    get_json("users/#{handle}")
+  end
+
+  # def check_user(handle)
+  #   get_json("search/users?q=")
+  #
+  # end
+
   def get_users_followed
     get_json("user/following")
   end
