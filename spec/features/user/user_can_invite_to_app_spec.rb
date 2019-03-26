@@ -55,8 +55,11 @@ RSpec.describe 'User can send an email invite to the application' do
             expect(page).to have_content("Successfully sent invite!")
 
             email = ActionMailer::Base.deliveries.last
-
+            email_body = email.part.first.body.raw_source
+            
             expect(email.subject).to eq("#{@user.first_name} wants to invite you to Brownfield of Dreams.")
+
+            expect(email_body).to have_link("Register", href: "http://localhost/register")
             expect(ActionMailer::Base.deliveries.count).to eq(1)
 
           end
@@ -91,7 +94,7 @@ RSpec.describe 'User can send an email invite to the application' do
             expect(current_path).to eq('/invite')
 
             fill_in 'handle', with: 'wrong-handle'
-            
+
             stub_get_json("https://api.github.com/users/wrong-handle", "wrong_username.json")
 
             click_button("Send Invite")

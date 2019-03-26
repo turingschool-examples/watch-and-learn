@@ -49,12 +49,12 @@ Rails.application.configure do
 
 
   config.action_mailer.default_url_options = {host: "localhost" }
-  
+
   config.action_mailer.delivery_method = :test
 
 
 
-  config.action_mailer.smtp_settings = { :address => "localhost", :port => 1025 }
+  config.action_mailer.smtp_settings = { :address => "http://localhost:3000", :port => 1025 }
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
