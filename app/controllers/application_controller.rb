@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  skip_before_action :verify_authenticity_token
   helper_method :current_user
   helper_method :find_bookmark
   helper_method :list_tags
