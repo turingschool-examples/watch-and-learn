@@ -1,1 +1,5 @@
-<%= form_tag %>
+<%= form_tag do%>
+<%= label_tag "Github User's handle" %>
+<%= text_field_tag :handle %>
+<%= submit_tag("Send Invite") %>
+<% end %>
