@@ -29,7 +29,7 @@ class User < ApplicationRecord
   end
 
   def get_friend_users
-    User.where(id: get_friends_ids)
+    User.where(id: get_friends_ids).order(:github_handle)
   end
 
   def my_tutorials
