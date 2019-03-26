@@ -1,4 +1,4 @@
-class EmailsController  < ApplicationController
+class InvitationController  < ApplicationController
   def new
   end
   def create
@@ -16,5 +16,4 @@ class EmailsController  < ApplicationController
   def service
     GithubService.new
   end
-
 end

@@ -1,5 +1,8 @@
 <section class="dashboard-main">
   <h1> <%= current_user.first_name %>'s Dashboard </h1>
+  <%if current_user.activated%>
+    <h1> Status: Active</h1>
+  <%end%>
 
   <%= button_to 'Log Out', logout_path, method: 'delete', class: "btn btn-primary mb1 bg-teal" %>
   <h3>Account Details</h3>
@@ -18,5 +21,5 @@
 
   <%=render partial: facade.github_partial(current_user), locals: {facade: facade}%>
   <%= button_to 'Connect To Github', github_login_path, :method => :get unless current_user.github_token%>
-  <%= button_to 'Send an Invite', invite_path, method: :get%>
+  <%= button_to 'Send an Invite', invite_path, method: :get if current_user.github_token%>
 </section>

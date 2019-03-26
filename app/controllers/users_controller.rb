@@ -11,9 +11,10 @@ class UsersController < ApplicationController
 
   def create
     user = User.new(user_params)
+
     if user.save
       user.set_activation_token
-      ActivationMailer.activate(user)
+      ActivationMailer.activate(user).deliver_now!
       session[:user_id] = user.id
       redirect_to dashboard_path
       flash[:success] = "Logged in as #{user.first_name}"

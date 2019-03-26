@@ -22,5 +22,22 @@ describe 'A visitor' do
       expect(page).to have_content("Logged in as manoj1")
       expect(page).to have_content("This account has not yet been activated. Please check your email.")
     end
+
+    context 'that has registered an account' do
+      it 'can activate their account via a link in their email' do
+        user = create(:user, activation_token: 'bsdjhfbjksbdckbs')
+        login_as(user)
+        mock_user_dashboard_github
+        visit dashboard_path
+        expect(User.find(user.id).activated).to eq(false)
+        expect(page).to_not have_content("Status: Active")
+
+        visit '/activation?token=bsdjhfbjksbdckbs'
+
+        expect(current_path).to eq(dashboard_path)
+        expect(User.find(user.id).activated).to eq(true)
+        expect(page).to have_content("Status: Active")
+      end
+    end
   end
 end
