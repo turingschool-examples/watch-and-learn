@@ -49,8 +49,19 @@ RSpec.describe 'User can send an email invite to the application' do
 
           expect(current_path).to eq('/invite')
 
-          save_and_open_page
-          fill_in 'handle', with: 'nagerz'
+          fill_in 'handle', with: 'teresa-m-knowles'
+
+          stub_get_json("https://api.github.com/users/teresa-m-knowles", "user_1_github_get_user.json")
+
+          click_button("Send Invite")
+
+          expect(page).to have_content("Successfully sent invite!")
+
+            email = ActionMailer::Base.deliveries.last
+
+            expect(email.subject).to eq("#{@user.first_name} wants to invite you to Brownfield of Dreams.")
+            expect(ActionMailer::Base.deliveries.count).to eq(1)
+
         end
 
         it 'redirects me to my dashboard and I see a success message' do
