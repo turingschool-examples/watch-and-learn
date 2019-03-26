@@ -18,5 +18,5 @@
 
   <%=render partial: facade.github_partial(current_user), locals: {facade: facade}%>
   <%= button_to 'Connect To Github', github_login_path, :method => :get unless current_user.github_token%>
-  <%= button_to 'Send an Invite', invite_path, method: :get unless current_user.github_username%>
+  <%= button_to 'Send an Invite', invite_path, method: :get%>
 </section>
