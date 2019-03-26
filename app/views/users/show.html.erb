@@ -1,5 +1,12 @@
 <section class="dashboard-main">
   <h1> <%= current_user.first_name %>'s Dashboard </h1>
+  <h6> Status:
+    <% if current_user.active? %>
+      Active
+    <% else %>
+      Inactive. Please check your email.
+    <% end %>
+  </h6>
 
   <%= button_to 'Log Out', logout_path, method: 'delete', class: "btn btn-primary mb1 bg-teal" %>
   <%= button_to 'Connect to Github', connect_path, class: "btn btn-primary mb1 bg-teal" unless current_user.github_token%>

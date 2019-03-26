@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get '/get_started', to: 'get_started#show'
 
   get '/register', to: 'users#new'
+  get '/activate/:id', to: 'activation#activate', as: :activate
   get '/dashboard', to: 'users#show'
   resources :users, only: [:create, :update, :edit]
 
