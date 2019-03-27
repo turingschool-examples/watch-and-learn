@@ -39,7 +39,7 @@ RSpec.describe 'About show page' do
       click_on 'About'
 
       expect(current_path).to eq(about_path)
-
+      
       admin = create(:user, role: 1)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
@@ -48,6 +48,7 @@ RSpec.describe 'About show page' do
       click_on 'About'
 
       expect(current_path).to eq(about_path)
+
     end
   end
 end
