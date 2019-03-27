@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'User can send an email invite to the application' do
   describe 'As a logged in user, my dashboard' do
     before :each do
-      @user = create(:user)
+      @user = create(:user, uid: 12345)
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
 
@@ -56,7 +56,7 @@ RSpec.describe 'User can send an email invite to the application' do
 
             email = ActionMailer::Base.deliveries.last
             email_body = email.part.first.body.raw_source
-            
+
             expect(email.subject).to eq("#{@user.first_name} wants to invite you to Brownfield of Dreams.")
 
             expect(email_body).to have_link("Register", href: "http://localhost/register")
@@ -81,6 +81,32 @@ RSpec.describe 'User can send an email invite to the application' do
             expect(page).to have_content("Successfully sent invite!")
 
             expect(ActionMailer::Base.deliveries.count).to eq(1)
+
+          end
+
+          it 'should not allow me to send an invite to anyone already registered(including myself)' do
+            @user.update(uid: 123456)
+
+            user_2 = create(:user, uid: 45)
+            create(:github_token, user: user_2, token: ENV['USER_2_GITHUB_TOKEN'])
+
+            allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_2)
+
+            stub_user_2_dashboard
+
+            visit dashboard_path
+
+            click_button("Send an Invite")
+
+            expect(current_path).to eq('/invite')
+
+            fill_in 'handle', with: 'teresa-m-knowles'
+
+            stub_get_json("https://api.github.com/users/teresa-m-knowles", "user_1_github_get_user.json")
+
+            click_button("Send Invite")
+
+            expect(page).to have_content("Error: That user is already a member of Brownfield of Dreams")
 
           end
         end
