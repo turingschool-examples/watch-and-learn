@@ -5,8 +5,7 @@ class InvitationController < ApplicationController
   end
 
   def create
-    github_service = GithubService.new(current_user)
-    user = github_service.get_user(params[:handle])
+    user = GithubService.new(current_user).get_user(params[:handle])
     github_user = GithubUser.new(user)
 
     if github_user.email && current_user.github_token
