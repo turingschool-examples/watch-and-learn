@@ -25,13 +25,9 @@
         <div class="title-bookmark">
           <h3><%= @facade.current_video.title %></h3>
           <div class="bookmarks-btn">
-            <% if current_user %>
-              <%= button_to "Bookmark", user_videos_path(video_id: @facade.current_video.id, user_id: current_user.id), method: :post, class: "btn btn-outline mb1 teal" %>
-            <% else %>
-              <div data-controller="tutorials" id="bookmark-<%= @facade.current_video.id %>">
-              <%= button_tag "Bookmark2", "data-action" => "click->tutorials#showAlert", onclick: "this.disabled=true", id: @facade.current_video.id, class: "btn btn-outline mb1 teal" %>
-              </div>
-            <% end %>
+            <div data-controller="tutorials" id="bookmarkz-<%= @facade.current_video.id %>">
+            <%= button_tag "Bookmark", "data-action" => "click->tutorials#clickBookmark", onclick: "this.disabled=true", id: @facade.current_video.id, class: "btn btn-outline mb1 teal" %>
+            </div>
           </div>
         </div>
 
