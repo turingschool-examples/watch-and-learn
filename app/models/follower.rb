@@ -9,17 +9,15 @@ class Follower
     @uid = follower[:id].to_s
   end
 
-  def get_user_id(github_uid)
-    User
-    .find_by(github_uid: github_uid)
-    .id
+  def not_a_friend?(current_user_id)
+    friend_id = self.get_user_id
+    Friendship.joins(:user)
+              .find_by(user_id: current_user_id, friend_user_id: friend_id)
+              .nil?
   end
 
-  def not_a_friend?(current_user_id)
-    friend_id = self.get_user_id(self.uid)
-    Friendship
-    .joins(:user)
-    .find_by(user_id: current_user_id, friend_user_id: friend_id)
-    .nil?
+  def get_user_id
+    User.find_by(github_uid: self.uid)
+        .id
   end
 end
