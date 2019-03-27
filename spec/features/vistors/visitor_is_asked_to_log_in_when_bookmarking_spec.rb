@@ -6,9 +6,10 @@ describe 'visitor visits video show page' do
     video = create(:video, tutorial_id: tutorial.id)
 
     visit tutorial_path(tutorial)
+    expect(page).to_not have_content('User must login to bookmark videos')
 
-    click_on 'Bookmark'
-
-    expect(current_path).to eq(login_path)
+    click_link 'Bookmark'
+    expect(current_path).to eq(tutorial_path(tutorial))
+    expect(page).to have_content('User must login to bookmark videos')
   end
 end
