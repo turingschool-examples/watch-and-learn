@@ -125,4 +125,42 @@ describe 'after registering with acceptable credentials'
 
     expect(User.last.status).to eq("active")
   end
+
+  it "I can't activate my account unless I'm logged in" do
+    user = create(:user)
+
+    expect(user.status).to eq("inactive")
+
+    visit activate_path(user)
+
+    expect(current_path).to eq(login_path)
+
+    expect(page).to have_content("You must be logged in to activate your account. Please login and try again.")
+
+    expect(user.status).to eq("inactive")
+  end
+
+  it "I can't activate other accounts" do
+    user = create(:user)
+    other_user = create(:user)
+
+    expect(user.status).to eq("inactive")
+    expect(other_user.status).to eq("inactive")
+
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+    visit activate_path(other_user)
+
+    expect(page).to have_content("The page you're looking for could not be found.")
+
+    expect(user.status).to eq("inactive")
+    expect(other_user.status).to eq("inactive")
+
+    visit activate_path(user)
+
+    expect(page).to have_content("Thank you! Your account is now activated.")
+
+    expect(user.status).to eq("active")
+    expect(other_user.status).to eq("inactive")
+  end
 end
