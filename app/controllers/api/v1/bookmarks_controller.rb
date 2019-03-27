@@ -1,6 +1,7 @@
 class Api::V1::BookmarksController < ApplicationController
+  skip_before_action :verify_authenticity_token
+
   def create
-    binding.pry
     if current_user
       video = Video.find(params[:id])
       user_video = current_user.user_videos.new(video: video)

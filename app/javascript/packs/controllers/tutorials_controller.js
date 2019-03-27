@@ -14,7 +14,7 @@ export default class extends Controller {
 
   clickBookmark(event) {
     event.preventDefault();
-    fetch(`/api/v1/bookmarks/${event.target.id}`, {method: 'post', body: 'foo=bar&test=1'})
+    fetch(`/api/v1/bookmarks/${event.target.id}`, {method: 'post', body: "test"})
       .then((response) => response.json())
       .then(function(response){
         const desc = document.querySelector(`.flash-message`);
