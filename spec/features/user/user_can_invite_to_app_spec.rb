@@ -59,7 +59,7 @@ RSpec.describe 'User can send an email invite to the application' do
 
             expect(email.subject).to eq("#{@user.first_name} wants to invite you to Brownfield of Dreams.")
 
-            expect(email_body).to have_link("Register", href: "http://localhost/register")
+            expect(email_body).to have_link("register", href: "http://localhost/register")
             expect(ActionMailer::Base.deliveries.count).to eq(1)
 
           end
