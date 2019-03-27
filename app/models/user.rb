@@ -11,7 +11,10 @@ class User < ApplicationRecord
   validates :email, uniqueness: true, presence: true
   validates_presence_of :password
   validates_presence_of :first_name
+
   enum role: [:default, :admin]
+  enum status: [:inactive, :active]
+
   has_secure_password
 
   def self.github_uniq?(user, auth)
@@ -19,7 +22,7 @@ class User < ApplicationRecord
   end
 
   def bookmarks
-     unordered_bookmarks = videos.includes(:tutorial)
+    unordered_bookmarks = videos.includes(:tutorial)
     .order("videos.position asc")
 
     unordered_bookmarks.group_by {|video| video.tutorial}

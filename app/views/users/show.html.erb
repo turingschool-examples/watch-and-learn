@@ -1,5 +1,14 @@
 <section class="dashboard-main">
   <h1> <%= current_user.first_name %>'s Dashboard </h1>
+
+  <h6> Status:
+    <% if current_user.active? %>
+      Active
+    <% else %>
+      This account has not yet been activated. Please check your email.
+    <% end %>
+  </h6>
+
   <%= button_to 'Log Out', logout_path, method: 'delete', class: "btn btn-primary mb1 bg-teal" %>
 
   <% if current_user.github_token %>
@@ -9,11 +18,13 @@
   <% end %>
 
 
-  <h3>Account Details</h3>
-  <ul>
-    <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
-    <li> <%= current_user.email%> </li>
-  </ul>
+  <section class="dashboard-acct-details">
+    <h3>Account Details</h3>
+    <ul>
+      <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
+      <li> <%= current_user.email%> </li>
+    </ul>
+  </section>
 
   <section class="bookmarked-segments">
     <h1>Bookmarked Segments</h1>
