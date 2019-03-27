@@ -4,6 +4,10 @@ class GithubService
     @user = user
   end
 
+  def get_user(handle)
+    get_json("users/#{handle}")
+  end
+
   def get_users_followed
     get_json("user/following")
   end
@@ -17,6 +21,7 @@ class GithubService
   end
 
   def get_json(url)
+    
     response = conn.get(url)
     JSON.parse(response.body, symbolize_names: true)
   end

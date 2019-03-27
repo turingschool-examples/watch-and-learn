@@ -48,4 +48,7 @@ Rails.application.routes.draw do
   resources :user_videos, only:[:create, :destroy]
 
   post '/friendships', to: "friendships#create", as: "new_friendship"
+
+  get '/invite', to: 'invitation#new'
+  post '/invite', to: 'invitation#create'
 end
