@@ -18,4 +18,12 @@ describe YouTube::Video, type: :model do
       end
     end
   end
+
+  describe 'instance methods' do
+    describe '#find_playlist_videos' do
+      it 'returns a YouTube videos by YouTube Playlist ID', :vcr do
+        expect(YouTube::Video.find_playlist_videos('PLpFmLQlYTnx-umq6uGwkhO7Cr_V7rwgyM').first).to be_a(YouTube::Video)
+      end
+    end
+  end
 end
