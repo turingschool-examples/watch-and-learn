@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe 'User' do
@@ -6,19 +8,19 @@ describe 'User' do
 
     visit '/'
 
-    click_on "Sign In"
+    click_on 'Sign In'
 
-    expect(current_path).to eq(login_path)
+    expect(page.has_current_path?(login_path)).to be(true)
 
     fill_in 'session[email]', with: user.email
     fill_in 'session[password]', with: user.password
 
     click_on 'Log In'
 
-    expect(current_path).to eq(dashboard_path)
-    expect(page).to have_content(user.email)
-    expect(page).to have_content(user.first_name)
-    expect(page).to have_content(user.last_name)
+    expect(page.has_current_path?(dashboard_path)).to be(true)
+    expect(page.has_content?(user.email)).to be(true)
+    expect(page.has_content?(user.first_name)).to be(true)
+    expect(page.has_content?(user.last_name)).to be(true)
   end
 
   it 'can log out', :js do
@@ -33,19 +35,19 @@ describe 'User' do
 
     click_on 'Profile'
 
-    expect(current_path).to eq(dashboard_path)
+    expect(page.has_current_path?(dashboard_path)).to be(true)
 
     click_on 'Log Out'
 
-    expect(current_path).to eq(root_path)
-    expect(page).to_not have_content(user.first_name)
-    expect(page).to have_content('SIGN IN')
+    expect(page.has_current_path?(root_path)).to be(true)
+    expect(page.has_content?(user.first_name)).to be(false)
+    expect(page.has_content?('SIGN IN')).to be(true)
   end
 
   it 'is shown an error when incorrect info is entered' do
     user = create(:user)
-    fake_email = "email@email.com"
-    fake_password = "123"
+    fake_email = 'email@email.com'
+    fake_password = '123'
 
     visit login_path
 
@@ -54,6 +56,6 @@ describe 'User' do
 
     click_on 'Log In'
 
-    expect(page).to have_content("Looks like your email or password is invalid")
+    expect(page.has_content?('Looks like your email or password is invalid')).to be(true)
   end
 end

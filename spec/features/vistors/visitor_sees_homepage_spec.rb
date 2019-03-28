@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe 'Visitor' do
@@ -13,13 +15,13 @@ describe 'Visitor' do
 
       visit root_path
 
-      expect(page).to have_css('.tutorial', count: 2)
+      expect(page.has_css?('.tutorial', count: 2)).to be(true)
 
       within(first('.tutorials')) do
-        expect(page).to have_css('.tutorial')
-        expect(page).to have_css('.tutorial-description')
-        expect(page).to have_content(tutorial1.title)
-        expect(page).to have_content(tutorial1.description)
+        expect(page.has_css?('.tutorial')).to be(true)
+        expect(page.has_css?('.tutorial-description')).to be(true)
+        expect(page.has_content?(tutorial1.title)).to be(true)
+        expect(page.has_content?(tutorial1.description)).to be(true)
       end
     end
   end

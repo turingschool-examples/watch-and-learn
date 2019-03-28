@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe 'A registered user' do
@@ -10,7 +12,7 @@ describe 'A registered user' do
 
       visit tutorial_path(tutorial)
 
-      expect(page).to have_content(tutorial.title)
+      expect(page.has_content?(tutorial.title)).to be(true)
     end
   end
 end
