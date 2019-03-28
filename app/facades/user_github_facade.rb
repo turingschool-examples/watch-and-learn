@@ -6,20 +6,20 @@ class UserGithubFacade
   end
 
   def user_repos
-    @user_repos ||= service.get_user_repos(@user).map do |repo_data|
-      Repo.new(repo_data)
+    @user_repos ||= service.get_user_repos(@user).map do |data|
+      Repo.new(data)
     end
   end
 
   def user_followers
-    @user_followers ||= service.get_user_followers(@user).map do |follower_data|
-      GithubUser.new(follower_data)
+    @user_followers ||= service.get_user_followers(@user).map do |data|
+      GithubUser.new(data)
     end
   end
 
   def user_following
-    @user_following ||= service.get_user_following(@user).map do |following_data|
-      GithubUser.new(following_data)
+    @user_following ||= service.get_user_following(@user).map do |data|
+      GithubUser.new(data)
     end
   end
 
@@ -30,18 +30,14 @@ class UserGithubFacade
   def user_bookmarks
     Video.joins(user_videos: :user)
          .joins(:tutorial)
-         .select('videos.title, tutorials.id as tutorial_id, tutorials.title as tutorial_title')
+         .select('videos.title, tutorials.id as tutorial_id')
+         .select('tutorials.title as tutorial_title')
          .where(users: { id: @user.id })
          .group('tutorials.id')
          .group('videos.title')
          .group('videos.position')
          .order('tutorial_title')
          .order(:position)
-
-    # Tutorial.joins(videos: [user_videos: :user])
-    #         .select('videos.id, tutorials.*')
-    #         .where(users: { id: @user.id })
-    #         .order('videos.position')
   end
 
   def service

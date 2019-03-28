@@ -51,9 +51,9 @@ describe UserGithubFacade do
       it 'returns a list of the user\'s friends' do
         user = create(:user, github_token: ENV['github_key'])
         friend = create(:user)
-        friend_2 = create(:user)
+        friend2 = create(:user)
         user.friends << friend
-        user.friends << friend_2
+        user.friends << friend2
         facade = UserGithubFacade.new(user)
 
         expect(facade.user_friends.count).to eq(2)
@@ -69,8 +69,8 @@ describe UserGithubFacade do
           user = create(:user, github_token: ENV['github_key'])
 
           facade = UserGithubFacade.new(user)
-
-          expect(facade.github_partial(user)).to eq('user_dashboard_github_info.html.erb')
+          assertion = 'user_dashboard_github_info.html.erb'
+          expect(facade.github_partial(user)).to eq(assertion)
         end
       end
 
@@ -81,8 +81,8 @@ describe UserGithubFacade do
           user = create(:user)
 
           facade = UserGithubFacade.new(user)
-
-          expect(facade.github_partial(user)).to eq('user_dashboard_no_github_token.html.erb')
+          assertion = 'user_dashboard_no_github_token.html.erb'
+          expect(facade.github_partial(user)).to eq(assertion)
         end
       end
     end

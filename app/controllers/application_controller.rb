@@ -26,7 +26,8 @@ class ApplicationController < ActionController::Base
   end
 
   def check_user_in_database(user)
-    if User.find_by(uid: user.uid) && !current_user.friends.include?(User.find_by(uid: user.uid))
+    user = User.find_by(uid: user.uid)
+    if user && !current_user.friends.include?(user)
       true
     else
       false

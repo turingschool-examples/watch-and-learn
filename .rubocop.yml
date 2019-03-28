@@ -5,6 +5,8 @@ AllCops:
     - 'node_modules/**/*'
     - 'bin/*'
     - 'lib/tasks/*'
+    - 'spec/rails_helper.rb'
+    - 'Rakefile'
 
 Style/Documentation:
   Enabled: false
