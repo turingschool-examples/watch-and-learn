@@ -56,4 +56,18 @@ describe 'User' do
 
     expect(page).to have_content("Looks like your email or password is invalid")
   end
+
+  it "cannot log in without clicking a registration link" do
+    user = create(:user, email_confirmed: false)
+
+    visit login_path
+    
+    fill_in 'session[email]', with: user.email
+    fill_in 'session[password]', with: user.password
+
+    click_on 'Log In'
+
+    expect(current_path).to eq(login_path)
+    expect(page).to have_content("Please check your email and click on the registration link to continue")
+  end
 end
