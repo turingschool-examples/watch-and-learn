@@ -26,9 +26,15 @@ https://github.com/Mackenzie-Frey/brownfield-of-dreams/projects/1
 
 ## Local Setup
 
-To set up Brownfield of Dreams in your local environment, you'll need API keys for
+To set up Brownfield of Dreams in your local environment with full functionality, you'll need accounts and API keys for YouTube, GitHub, GitHub OAuth, and SendGrid (if you want to send emails). The team used Figaro to store keys inside an application.yml file. Wherever you choose to store your keys, they should be set to the following variables:
 
-First you'll need to setup an API key with YouTube and have it defined within `ENV['YOUTUBE_API_KEY']`. There will be one failing spec if you don't have this set up.
+```
+'ENV[YOUTUBE_API_KEY]' = your_youtube_key
+'ENV[GITHUB_API_KEY]' = your_github_key
+'ENV[GITHUB_OAUTH_CLIENT_ID]' = your_github_oauth_client_id
+'ENV[GITHUB_OAUTH_CLIENT_SECRET]' = your_github_oauth_client_secret
+'ENV[SENDGRID_PASSWORD]' = your_sendgrid_password
+```
 
 Clone down the repo
 ```
@@ -54,8 +60,15 @@ $ rake db:migrate
 $ rake db:seed
 ```
 
+Install and run MailCatcher, if you'd like to see test emails without sending real mail
+```
+$ gem install mailcatcher
+$ mailcatcher
+```
+Go to http://localhost:1080/ to see your mail, when you send it
+
 Run the test suite:
-```ruby
+```
 $ bundle exec rspec
 ```
 
@@ -67,15 +80,13 @@ $ bundle exec rspec
 * [vcr](https://github.com/vcr/vcr)
 * [selenium-webdriver](https://www.seleniumhq.org/docs/03_webdriver.jsp)
 * [chromedriver-helper](http://chromedriver.chromium.org/)
-* Ruby 2.4.1
-* Rails 5.2.0
-* RSpec
-* Pry
-* FactoryBot
-* SimpleCov
-* RoboCop
-* Postman
-* Waffle.io
-* GitHub
-
-#### [Project Specification & Evaluation Rubric](https://github.com/turingschool-examples/brownfield-of-dreams)
+* [Ruby 2.4.1](https://www.ruby-lang.org/en/)
+* [Rails 5.2.0](https://rubyonrails.org/)
+* [RSpec](http://rspec.info/)
+* [Pry](https://github.com/pry/pry)
+* [FactoryBot](https://github.com/thoughtbot/factory_bot)
+* [SimpleCov](https://rubygems.org/gems/simplecov/versions/0.12.0)
+* [RuboCop](https://github.com/rubocop-hq/rubocop)
+* [Postman](https://www.getpostman.com/)
+* [GitHub Projects](https://github.com/features/project-management/)
+* [GitHub](https://github.com/)
