@@ -6,8 +6,8 @@ describe 'A registered user' do
   context 'visiting /dashboard' do
     before do
       create(:user, github_token: 'abcd')
-      @user_2 = create(:user, github_token: ENV['github_key'])
-      @user_3 = create(:user)
+      @user2 = create(:user, github_token: ENV['github_key'])
+      @user3 = create(:user)
     end
 
     it 'can see a list of 5 of their GitHub repositories' do

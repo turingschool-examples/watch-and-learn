@@ -1,3 +1,10 @@
+AllCops:
+  Exclude:
+    - 'db/migrate/*'
+    - 'fixtures/*'
+    - 'node_modules/**/*'
+    - 'bin/*'
+
 Style/Documentation:
   Enabled: false
 

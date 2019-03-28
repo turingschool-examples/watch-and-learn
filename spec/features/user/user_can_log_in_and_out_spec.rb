@@ -45,7 +45,7 @@ describe 'User' do
   end
 
   it 'is shown an error when incorrect info is entered' do
-    user = create(:user)
+    create(:user)
     fake_email = 'email@email.com'
     fake_password = '123'
 

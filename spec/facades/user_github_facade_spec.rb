@@ -51,9 +51,9 @@ describe UserGithubFacade do
       it 'returns a list of the user\'s friends' do
         user = create(:user, github_token: ENV['github_key'])
         friend = create(:user)
-        friend_2 = create(:user)
+        friend2 = create(:user)
         user.friends << friend
-        user.friends << friend_2
+        user.friends << friend2
         facade = described_class.new(user)
 
         expect(facade.user_friends.count).to eq(2)
