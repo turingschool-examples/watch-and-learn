@@ -1,14 +1,16 @@
+# frozen_string_literal: true
+
 class YoutubeService
   def video_info(id)
-    params = {part: "snippet,contentDetails,statistics", id: id}
+    params = { part: 'snippet,contentDetails,statistics', id: id }
 
-    get_json("youtube/v3/videos", params)
+    get_json('youtube/v3/videos', params)
   end
 
   def playlist_videos(playlist_id)
-    params = {part: "contentDetails,snippet,status", playlistId: playlist_id}
+    params = { part: 'contentDetails,snippet,status', playlistId: playlist_id }
 
-    get_json("youtube/v3/playlistItems", params)[:items]
+    get_json('youtube/v3/playlistItems', params)[:items]
   end
 
   private
@@ -19,8 +21,8 @@ class YoutubeService
   end
 
   def conn
-    Faraday.new(url: "https://www.googleapis.com") do |f|
-      f.adapter  Faraday.default_adapter
+    Faraday.new(url: 'https://www.googleapis.com') do |f|
+      f.adapter Faraday.default_adapter
       f.params[:key] = ENV['YOUTUBE_API_KEY']
     end
   end

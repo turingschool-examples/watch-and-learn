@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe GithubService do
@@ -9,7 +11,7 @@ describe GithubService do
   context 'instance methods' do
     context '#get_user_repos' do
       it 'returns repos', :vcr do
-        user = create(:user, github_token: ENV["github_key"])
+        user = create(:user, github_token: ENV['github_key'])
 
         service = GithubService.new
 
@@ -20,8 +22,8 @@ describe GithubService do
       end
     end
     context '#get_user_followers' do
-    it 'returns followers', :vcr do
-        user = create(:user, github_token: ENV["github_key"])
+      it 'returns followers', :vcr do
+        user = create(:user, github_token: ENV['github_key'])
 
         service = GithubService.new
 
@@ -35,7 +37,7 @@ describe GithubService do
 
     context '#get_user_following' do
       it 'returns following', :vcr do
-        user = create(:user, github_token: ENV["github_key"])
+        user = create(:user, github_token: ENV['github_key'])
 
         service = GithubService.new
 
@@ -49,7 +51,7 @@ describe GithubService do
 
     context '#get_user_email(username)' do
       it 'returns user\'s email', :vcr do
-        user = create(:user, github_token: ENV["github_key"])
+        user = create(:user, github_token: ENV['github_key'])
         service = GithubService.new
 
         result = service.get_user_email('manojpanta', user)

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe 'A registered user without a github token' do
@@ -7,8 +9,8 @@ describe 'A registered user without a github token' do
       login_as(user)
 
       visit dashboard_path
-      expect(page).to_not have_content("Followers")
-      expect(page).to_not have_content("Following")
+      expect(page).to_not have_content('Followers')
+      expect(page).to_not have_content('Following')
 
       mock_user_dashboard_github
 
@@ -22,13 +24,13 @@ describe 'A registered user without a github token' do
       expect(User.find(user.id).github_username).to be_a(String)
       expect(User.find(user.id).uid).to be_a(Integer)
 
-      expect(page).to_not have_link("Connect To Github")
-      expect(page).to have_content("Followers")
-      expect(page).to have_content("Following")
+      expect(page).to_not have_link('Connect To Github')
+      expect(page).to have_content('Followers')
+      expect(page).to have_content('Following')
     end
 
     it 'cannot connect multiple user accounts to the same github account' do
-      create(:user, first_name: 'Test name', uid: 34468256)
+      create(:user, first_name: 'Test name', uid: 34_468_256)
       user = create(:user)
 
       login_as(user)

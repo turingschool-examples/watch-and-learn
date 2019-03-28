@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module YouTube
   class Video
     attr_reader :thumbnail,
@@ -13,7 +15,7 @@ module YouTube
         @video_id = data[:contentDetails][:videoId]
         @title = data[:snippet][:title]
         @description = data[:snippet][:description]
-        @position= data[:snippet][:position]
+        @position = data[:snippet][:position]
       end
     end
 

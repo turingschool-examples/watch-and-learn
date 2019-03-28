@@ -1,15 +1,11 @@
-class ActivationMailer < ApplicationMailer
+# frozen_string_literal: true
 
+class ActivationMailer < ApplicationMailer
   def activate(user)
     @activation_token = user.activation_token
-    mail(to: user.email, from: 'BrownfieldOfDreams@gmail.com',subject: "Activate Your Account Here")
+    mail(to: user.email, from: 'BrownfieldOfDreams@gmail.com', subject: 'Activate Your Account Here')
   end
 end
-
-
-
-
-
 
 # from = Email.new(email: 'Admin@gmail.com')
 # subject = "Activate Your Brownfield of Dreams Account"

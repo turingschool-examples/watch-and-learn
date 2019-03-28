@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Helpers
   module Authentication
     def login_as(user)
@@ -7,7 +9,6 @@ module Helpers
       click_button 'Log In'
     end
 
-    def logout
-    end
+    def logout; end
   end
 end

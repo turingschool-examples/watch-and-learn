@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UserGithubFacade
   def initialize(user)
     @user = user
@@ -46,12 +48,11 @@ class UserGithubFacade
     GithubService.new
   end
 
-
   def github_partial(current_user)
     if current_user.github_token
-      "user_dashboard_github_info.html.erb"
+      'user_dashboard_github_info.html.erb'
     else
-      "user_dashboard_no_github_token.html.erb"
+      'user_dashboard_no_github_token.html.erb'
     end
   end
 end

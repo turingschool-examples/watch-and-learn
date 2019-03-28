@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 describe 'An admin deleting a tutorial' do
   it 'also deletes all of its related videos' do

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe 'A visitor' do
@@ -19,8 +21,8 @@ describe 'A visitor' do
       expect(User.first.activation_token).to be_a(String)
       expect(User.first.activated).to eq(false)
 
-      expect(page).to have_content("Logged in as manoj1")
-      expect(page).to have_content("This account has not yet been activated. Please check your email.")
+      expect(page).to have_content('Logged in as manoj1')
+      expect(page).to have_content('This account has not yet been activated. Please check your email.')
     end
 
     context 'that has registered an account' do
@@ -30,13 +32,13 @@ describe 'A visitor' do
         mock_user_dashboard_github
         visit dashboard_path
         expect(User.find(user.id).activated).to eq(false)
-        expect(page).to_not have_content("Status: Active")
+        expect(page).to_not have_content('Status: Active')
 
         visit '/activation?token=bsdjhfbjksbdckbs'
 
         expect(current_path).to eq(dashboard_path)
         expect(User.find(user.id).activated).to eq(true)
-        expect(page).to have_content("Status: Active")
+        expect(page).to have_content('Status: Active')
       end
     end
   end

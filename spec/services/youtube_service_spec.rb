@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe YoutubeService do
@@ -9,11 +11,11 @@ describe YoutubeService do
   context 'instance methods' do
     context '#playlist_videos(playlist_id)' do
       it 'returns videos', :vcr do
-        user = create(:user, github_token: ENV["github_key"])
+        user = create(:user, github_token: ENV['github_key'])
 
         service = YoutubeService.new
 
-        result = service.playlist_videos("PLpFmLQlYTnx-umq6uGwkhO7Cr_V7rwgyM")
+        result = service.playlist_videos('PLpFmLQlYTnx-umq6uGwkhO7Cr_V7rwgyM')
         expect(result).to be_a(Array)
         expect(result.count).to eq(2)
         expect(result.first).to have_key(:snippet)
