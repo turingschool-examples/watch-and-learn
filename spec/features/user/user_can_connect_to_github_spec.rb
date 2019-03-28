@@ -42,7 +42,9 @@ describe 'A registered user without a github token' do
       expect(user.github_token).to eq(nil)
       expect(current_path).to eq(dashboard_path)
       expect(page).to have_button('Connect To Github')
+      # rubocop:disable Metrics/LineLength
       expect(page).to have_content('This GitHub account is already connected to another user\'s profile')
+      # rubocop:enable Metrics/LineLength
     end
   end
 end

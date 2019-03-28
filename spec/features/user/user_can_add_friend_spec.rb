@@ -4,6 +4,7 @@ require 'rails_helper'
 
 describe 'A registered user' do
   context 'visiting /dashboard' do
+    # rubocop:disable Metrics/LineLength
     it 'can add followers or followings that have linked their account to github as friends' do
       user = create(:user, github_token: ENV['github_key'])
       user1 = create(:user, uid: 25_069_483, first_name: 'TestName', github_username: 'stiehlrod')
@@ -11,6 +12,7 @@ describe 'A registered user' do
       mock_user_dashboard_github
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+      # rubocop:enable Metrics/LineLength
 
       visit dashboard_path
 

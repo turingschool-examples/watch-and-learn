@@ -8,8 +8,9 @@ describe 'A registered user' do
       user = create(:user, github_token: ENV['github_key'])
 
       mock_user_dashboard_github
-
+      # rubocop:disable Metrics/LineLength
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+      # rubocop:enable Metrics/LineLength
 
       visit dashboard_path
 

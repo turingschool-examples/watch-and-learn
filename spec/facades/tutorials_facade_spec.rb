@@ -44,7 +44,8 @@ describe TutorialsFacade do
 
           facade = TutorialsFacade.new(tutorials)
 
-          expect(facade.tutorials_partial(user)).to eq('user_tutorials.html.erb')
+          path = 'user_tutorials.html.erb'
+          expect(facade.tutorials_partial(user)).to eq(path)
         end
       end
 
@@ -54,7 +55,8 @@ describe TutorialsFacade do
 
           facade = TutorialsFacade.new(tutorials)
 
-          expect(facade.tutorials_partial(nil)).to eq('visitor_tutorials.html.erb')
+          path = 'visitor_tutorials.html.erb'
+          expect(facade.tutorials_partial(nil)).to eq(path)
         end
       end
     end

@@ -22,7 +22,9 @@ describe 'A visitor' do
       expect(User.first.activated).to eq(false)
 
       expect(page).to have_content('Logged in as manoj1')
+      # rubocop:disable Metrics/LineLength
       expect(page).to have_content('This account has not yet been activated. Please check your email.')
+      # rubocop:enable Metrics/LineLength
     end
 
     context 'that has registered an account' do
