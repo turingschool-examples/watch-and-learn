@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-describe 'An admin user can change the position of a video in a playlist', :js do
-  it 'by dragging it and saving the new position' do
+describe 'Admin saves video position' do
+  it 'An admin user can save the position of a video in a playlist', :js do
     admin = create(:user, role: 1)
     tutorial = create(:tutorial)
     create(:video, title: 'video_1', tutorial: tutorial)
@@ -17,6 +17,7 @@ describe 'An admin user can change the position of a video in a playlist', :js d
 
     click_link('Save Video Order')
     sleep(0.1)
+
     expect(Video.find_by(title: 'video_1').position).to eq(1)
     expect(Video.find_by(title: 'video_5').position).to eq(5)
   end
