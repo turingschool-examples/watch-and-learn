@@ -9,7 +9,7 @@ class User < ApplicationRecord
       foreign_key: :user_id,
       association_foreign_key: :friend_user_id
   validates :email, uniqueness: true, presence: true
-  validates_presence_of :first_name
+  
   enum role: [:default, :admin]
   has_secure_password
 
