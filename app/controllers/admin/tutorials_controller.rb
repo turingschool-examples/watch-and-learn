@@ -18,7 +18,7 @@ class Admin::TutorialsController < Admin::BaseController
 
       redirect_to admin_dashboard_path
     else
-      flash[:error] = "Failed to make."
+      flash[:error] = "Tutorial could not be saved. Please check the playlist id and information."
 
       render :new
     end
@@ -58,6 +58,9 @@ class Admin::TutorialsController < Admin::BaseController
     youtube_tutorial = YouTube::Tutorial.by_id(playlist_id)
     title = youtube_tutorial.title
     description = youtube_tutorial.description
+    if description == ""
+      description = "This tutorial has no description."
+    end
     thumbnail = youtube_tutorial.thumbnail
 
     playlist_params = {title: title, description: description, thumbnail: thumbnail, playlist_id: playlist_id}
