@@ -4,9 +4,20 @@ class Admin::TutorialsController < Admin::BaseController
   end
 
   def create
-    tutorial = Tutorial.create(tutorial_params)
-    flash[:success] = 'Successfully created tutorial'
-    redirect_to tutorial_path(tutorial)
+    begin
+      tutorial = Tutorial.create(tutorial_params)
+      if tutorial_params[:playlist_id] !=''
+        videos   = YouTube::Video.find_playlist_videos(tutorial_params[:playlist_id])
+        videos.each do |video|
+          tutorial.videos.create(video_id: video.video_id, thumbnail: video.thumbnail,title: video.title, description: video.description, position: video.position )
+        end
+      end
+      flash[:success] = "Successfully created tutorial. #{view_context.link_to 'View It Here.', tutorial_path(tutorial)}"
+      redirect_to admin_dashboard_path
+    rescue
+      flash[:error] = "Unable to find playlist you are looking for."
+      redirect_to new_admin_tutorial_path
+    end
   end
 
   def new
@@ -23,6 +34,6 @@ class Admin::TutorialsController < Admin::BaseController
 
   private
   def tutorial_params
-    params.require(:tutorial).permit(:tag_list, :title, :description, :thumbnail)
+    params.require(:tutorial).permit(:tag_list, :title, :description, :thumbnail, :playlist_id)
   end
 end
