@@ -15,6 +15,7 @@ class User < ApplicationRecord
   has_secure_password
 
   def set_activation_token
-    update(activation_token: SecureRandom.urlsafe_base64.to_s) if activation_token.blank?
+    condition = activation_token.blank?
+    update(activation_token: SecureRandom.urlsafe_base64.to_s) if condition
   end
 end

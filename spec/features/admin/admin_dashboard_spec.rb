@@ -6,8 +6,9 @@ feature 'An admin visiting the admin dashboard' do
   scenario 'can see all tutorials' do
     admin = create(:admin)
     create_list(:tutorial, 2)
-
+    # rubocop:disable Metrics/LineLength
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+    # rubocop:enable Metrics/LineLength
 
     visit '/admin/dashboard'
 

@@ -7,7 +7,9 @@ describe 'An Admin can edit a tutorial' do
   let(:admin)    { create(:admin) }
 
   scenario 'by adding a video', :js, :vcr do
+    # rubocop:disable Metrics/LineLength
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+    # rubocop:enable Metrics/LineLength
 
     visit edit_admin_tutorial_path(tutorial)
     click_on 'Add Video'

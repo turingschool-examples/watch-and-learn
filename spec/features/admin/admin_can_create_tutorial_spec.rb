@@ -5,7 +5,9 @@ require 'rails_helper'
 describe 'an Admin' do
   it 'can create a new tutorial by filling out a form in admin new tutorial path' do
     admin = create(:user, role: 1)
+    # rubocop:disable Metrics/LineLength
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+    # rubocop:enable Metrics/LineLength
 
     visit new_admin_tutorial_path(admin)
     expect(Tutorial.count).to eq(0)
@@ -21,7 +23,9 @@ describe 'an Admin' do
 
   it 'can create a new tutorial with a youtube playlist', :vcr do
     admin = create(:user, role: 1)
+    # rubocop:disable Metrics/LineLength
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+    # rubocop:enable Metrics/LineLength
 
     visit new_admin_tutorial_path(admin)
     click_on 'Import YouTube Playlist'
