@@ -17,7 +17,7 @@ The project was meant to teach the experience of taking over existing code, wres
 - Sending email via Rails & SendGrid
 
 ## Schema
-<!-- ![Alt text](./public/schema_diagram.png?raw=true "Database Schema") -->
+![Database Schema](app/assets/images/db_schema.png "Database Schema")
 
 ## Project Board
 
