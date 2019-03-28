@@ -13,3 +13,7 @@
 //= require rails-ujs
 //= require activestorage
 //= require_tree .
+
+function showFormForPlayListId() {
+  document.querySelector('.playlist-id').style.display = 'block';
+}

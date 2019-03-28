@@ -1,0 +1,20 @@
+.playlist-id-1 {
+  display: none;
+  -webkit-appearance: textfield;
+
+}
+.playlist-id-2 {
+  display: none;
+  -webkit-appearance: textfield !important;
+  border-radius: 3px;
+  border: 1px solid #BBB;
+}
+.import-button {
+  padding: 8px 15px;
+  background-color: #39cccc;
+  color: white;
+  font-size: large;
+  font-weight: 600;
+  border-radius: 3px;
+  border: none;
+}

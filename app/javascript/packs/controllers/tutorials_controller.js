@@ -2,7 +2,11 @@ import { Controller } from 'stimulus'
 
 export default class extends Controller {
 
+  showDescriptionHere(event) {
+
+  }
   showDescription(event) {
+    console.log('in descri', event.target.id)
     event.preventDefault();
     fetch(`/api/v1/videos/${event.target.id}`)
       .then((response) => response.json())
