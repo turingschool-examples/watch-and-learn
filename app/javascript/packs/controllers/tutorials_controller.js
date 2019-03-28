@@ -22,11 +22,11 @@ export default class extends Controller {
       });
   }
 
-  showAlert(event) {
-    event.preventDefault();
-    const desc = document.querySelector(`.flash-message`);
-    desc.innerHTML = "User must login to bookmark videos."
-  }
+  // showAlert(event) {
+  //   event.preventDefault();
+  //   const desc = document.querySelector(`.flash-message`);
+  //   desc.innerHTML = "User must login to bookmark videos."
+  // }
 
   showVideoForm(event) {
     event.preventDefault();

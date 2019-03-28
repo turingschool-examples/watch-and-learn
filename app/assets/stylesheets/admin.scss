@@ -16,6 +16,42 @@
   opacity: 1;
 }
 
+#new-playlist-form {
+  background:#EEE;
+  border-radius: 3px;
+  border: 1px solid #CCC;
+  padding: 10px;
+  display: none;
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: height 350ms ease-in-out, opacity 750ms ease-in-out;
+}
+
+#new-playlist-form.is-visible {
+  display: block;
+  height: auto;
+  opacity: 1;
+}
+
+#new-tutorial-form {
+  background:#EEE;
+  border-radius: 3px;
+  border: 1px solid #CCC;
+  padding: 10px;
+  display: none;
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: height 350ms ease-in-out, opacity 750ms ease-in-out;
+}
+
+#new-tutorial-form.is-visible {
+  display: block;
+  height: auto;
+  opacity: 1;
+}
+
 .btn-link {
     color: #0074d9;
     display: inline;

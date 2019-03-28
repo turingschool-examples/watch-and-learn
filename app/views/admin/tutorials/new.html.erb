@@ -1,18 +1,30 @@
 <h2>New Tutorial</h2>
-<%= form_for [:admin, @tutorial] do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title, class: "block col-4 field" %>
-  <%= f.label :description %>
-  <%= f.text_area :description, class: "block col-4 field"  %>
-  <%= f.label :thumbnail %>
-  <%= f.text_field :thumbnail, class: "block col-4 field"  %>
+<div data-controller="videos">
+  <%= link_to "Import Youtube Playlist", "#", "data-action" => "click->videos#showPlaylistForm", class: "video-position-submit btn btn-outline"%>
+  -or-
+  <%= link_to "Add Videos Individually", "#", "data-action" => "click->videos#showTutorialForm", class: "video-position-submit btn btn-outline"%>
+</div>
 
-  <h3>Videos</h3>
+<div class="mt1" id="new-playlist-form">
+  <h3>New YouTube Video Playlist</h3>
+  <%= form_for [:admin, @tutorial] do |f| %>
+    <%= f.label "Playlist ID", class: "block" %>
+    <%= f.text_field :playlist_id, class: "field block"%>
 
-  <%= f.fields_for :videos do |builder| %>
-    <%= f.label :youtube_url %>
-    <%= f.text_field :video_id, class: "block col-4 field" %>
+    <%= f.submit "Create Playlist", class: "mt1 btn btn-primary bg-teal"  %>
   <% end %>
+</div>
 
-  <%= f.submit "Save", class: "mt2 btn btn-primary mb1 bg-teal"  %>
-<% end %>
+<div class="mt1" id="new-tutorial-form">
+  <h3>Enter Tutorial Information</h3>
+  <%= form_for [:admin, @tutorial] do |f| %>
+    <%= f.label :title %>
+    <%= f.text_field :title, class: "block col-4 field" %>
+    <%= f.label :description %>
+    <%= f.text_area :description, class: "block col-4 field"  %>
+    <%= f.label :thumbnail %>
+    <%= f.text_field :thumbnail, class: "block col-4 field"  %>
+
+    <%= f.submit "Save", class: "mt1 btn btn-primary bg-teal"  %>
+  <% end %>
+</div>

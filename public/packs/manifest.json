@@ -1,6 +1,8 @@
 {
-  "application.js": "/packs/application-a04aa1a6e0b0766bf9ed.js",
-  "application.js.map": "/packs/application-a04aa1a6e0b0766bf9ed.js.map",
-  "controllers/tutorials_controller.js": "/packs/controllers/tutorials_controller-9f18cb3e177135f51960.js",
-  "controllers/tutorials_controller.js.map": "/packs/controllers/tutorials_controller-9f18cb3e177135f51960.js.map"
+  "application.js": "/packs/application-66a89028a84944911ddb.js",
+  "application.js.map": "/packs/application-66a89028a84944911ddb.js.map",
+  "controllers/tutorials_controller.js": "/packs/controllers/tutorials_controller-681c910a90d87221ebd8.js",
+  "controllers/tutorials_controller.js.map": "/packs/controllers/tutorials_controller-681c910a90d87221ebd8.js.map",
+  "controllers/videos_controller.js": "/packs/controllers/videos_controller-6f563ca52b90c290f519.js",
+  "controllers/videos_controller.js.map": "/packs/controllers/videos_controller-6f563ca52b90c290f519.js.map"
 }
