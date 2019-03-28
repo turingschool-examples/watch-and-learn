@@ -6,7 +6,7 @@ RSpec.describe UserActivatorMailer, type: :mailer do
       @user = create(:user)
 
       @subject = "You're almost there!"
-      @body = "Welcome! You're registration has been initiated. Please visit"
+      @body = "Welcome! Your registration has been initiated. Please visit"
       @mail = UserActivatorMailer.inform(@user)
     end
 

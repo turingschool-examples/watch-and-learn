@@ -90,7 +90,7 @@ describe 'after registering with acceptable credentials'
     email_body = email.parts.first.body.raw_source
 
     expect(email.subject).to eq("You're almost there!")
-    expect(email_body).to have_content("Welcome! You're registration has been initiated. Please visit here to activate your account.")
+    expect(email_body).to have_content("Welcome! Your registration has been initiated. Please visit here to activate your account.")
     expect(email_body).to have_link("here", href: "http://localhost:3000/activate/#{User.last.id}")
   end
 
