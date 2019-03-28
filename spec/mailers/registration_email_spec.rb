@@ -17,10 +17,6 @@ RSpec.describe UserMailer, type: :mailer do
       expect(mail.from).to eq(['no-reply@brownfield.com'])
     end
 
-    it 'assigns @name' do
-      expect(mail.body.encoded).to match(user.first_name)
-    end
-
     it 'assigns @confirmation_url' do
       expect(mail.body.encoded)
         .to match("http://localhost:3000/users/#{user.confirm_token}/confirm_email")

@@ -71,6 +71,23 @@ RSpec.describe User, type: :model do
       expect(april.has_friends?).to eq(true)
     end
 
+    it "#activated?" do
+      user1 = create(:user, email_confirmed: false)
+      user2 = create(:user, email_confirmed: true)
+
+      expect(user1.activated?).to eq(false)
+      expect(user2.activated?).to eq(true)
+    end
+
+    it "#email_activate" do
+      user = create(:user, email_confirmed: false, confirm_token: "123456")
+
+      user.email_activate
+
+      expect(user.email_confirmed).to eq(true)
+      expect(user.confirm_token).to eq(nil)
+    end
+
     context "Tutorials" do
       before :each do
         @april = create(:user, email: "test@email.com", password: "test", github_token: ENV['GITHUB_API_KEY'], github_uid: "41272635", github_handle: 'aprildagonese', github_url: 'https://github.com/aprildagonese')
@@ -99,14 +116,6 @@ RSpec.describe User, type: :model do
         expect(@mackenzie.my_tutorial_videos(@tut2)).to eq([@vid7])
         expect(@mackenzie.my_tutorial_videos(@tut3)).to eq([@vid8, @vid9])
       end
-    end
-
-    it "#activated?" do
-      user1 = create(:user, email_confirmed: false)
-      user2 = create(:user, email_confirmed: true)
-
-      expect(user1.activated?).to eq(false)
-      expect(user2.activated?).to eq(true)
     end
   end
 
