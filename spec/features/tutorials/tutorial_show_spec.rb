@@ -23,4 +23,8 @@ RSpec.describe "Tutorial show page" do
     expect(current_path).to eq(tutorial_path(tut2))
     expect(page).to have_content("This tutorial doesn't have any videos yet, but we're working on it!")
   end
+
+  it "doesn't display classroom content to non-logged-in users" do 
+    user
+  end
 end
