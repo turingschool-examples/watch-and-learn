@@ -31,7 +31,7 @@ module PersonalProject
     config.action_mailer.smtp_settings = {
       address:              'smtp.sendgrid.net',
       port:                 '587',
-      domain:               'https://desolate-cove-48498.herokuapp.com/',
+      domain:               'heroku.com',
       user_name:            ENV["SENDGRID_USERNAME"],
       password:             ENV["SENDGRID_PASSWORD"],
       authentication:       'plain',
