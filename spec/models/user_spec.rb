@@ -23,4 +23,18 @@ RSpec.describe User, type: :model do
       expect(admin.admin?).to be_truthy
     end
   end
+
+  describe 'instance methods' do
+    describe '#set_activation_token' do
+      it 'assigns a random, url-safe string to a user as an activation token' do
+        user = create(:user)
+
+        expect(user.activation_token).to eq(nil)
+
+        user.set_activation_token
+
+        expect(user.activation_token).to be_a(String)
+      end
+    end
+  end
 end

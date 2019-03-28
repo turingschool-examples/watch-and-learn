@@ -19,7 +19,8 @@ class UsersController < ApplicationController
       flash[:success] = "Logged in as #{user.first_name}"
       flash[:error] = "This account has not yet been activated. Please check your email."
     else
-      flash[:error] = 'Username already exists'
+      @user = User.new
+      flash[:error] = 'Email already exists'
       render :new
     end
   end
