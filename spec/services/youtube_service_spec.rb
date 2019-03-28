@@ -11,7 +11,7 @@ describe YoutubeService do
   context 'instance methods' do
     context '#playlist_videos(playlist_id)' do
       it 'returns videos', :vcr do
-        user = create(:user, github_token: ENV['github_key'])
+        create(:user, github_token: ENV['github_key'])
 
         service = YoutubeService.new
 
