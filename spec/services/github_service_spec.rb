@@ -20,7 +20,7 @@ describe GithubService do
       end
     end
     context '#get_user_followers' do
-      it 'returns followers', :vcr do
+    it 'returns followers', :vcr do
         user = create(:user, github_token: ENV["github_key"])
 
         service = GithubService.new
