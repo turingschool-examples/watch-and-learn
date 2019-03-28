@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  before_create :confirmation_token
   include CheckUser
   has_many :user_videos
   has_many :videos, through: :user_videos
@@ -13,9 +14,10 @@ class User < ApplicationRecord
   has_secure_password
 
   def connect_github(data)
-    self.update!(github_token: data['credentials']['token'],
-                 github_url: data['extra']['raw_info']['html_url'],
-                 github_handle: data['extra']['raw_info']['login'])
+    self.update!( github_uid: data["uid"],
+                  github_token: data['credentials']['token'],
+                  github_url: data['info']['urls']['GitHub'],
+                  github_handle: data['extra']['raw_info']['login'] )
   end
 
   def has_friends?
@@ -27,7 +29,7 @@ class User < ApplicationRecord
   end
 
   def get_friend_users
-    User.where(id: get_friends_ids)
+    User.where(id: get_friends_ids).order(:github_handle)
   end
 
   def my_tutorials
@@ -42,5 +44,23 @@ class User < ApplicationRecord
          .select("videos.*")
          .where(tutorials: {id: tutorial_id}, user_videos: {user_id: self.id})
          .order(:position)
+  end
+
+  def email_activate
+    self.email_confirmed = true
+    self.confirm_token = nil
+    save!
+  end
+
+  def activated?
+    self.email_confirmed == true
+  end
+
+  private
+
+  def confirmation_token
+    if self.confirm_token.blank?
+      self.confirm_token = SecureRandom.urlsafe_base64.to_s
+    end
   end
 end

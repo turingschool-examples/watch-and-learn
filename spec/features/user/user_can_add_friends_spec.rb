@@ -2,9 +2,9 @@ require 'rails_helper'
 
 describe "As a registered user connected to Github" do
   before :each do
-    @april = create(:user, email: "test@email.com", password: "test", github_token: ENV['GITHUB_API_KEY'], github_uid: "41272635", github_handle: 'aprildagonese', github_url: 'https://github.com/aprildagonese')
-    @mackenzie = create(:user, email: "mackenzie@email.com", password: "test", github_token: ENV['MF_GITHUB_TOKEN'], github_uid: "42525195", github_handle: 'Mackenzie-Frey', github_url: 'https://github.com/Mackenzie-Frey')
-    @zach = create(:user, email: "zach@email.com", password: "test", github_token: "faketoken", github_uid: "34927114", github_handle: 'nagerz', github_url: 'https://github.com/nagerz')
+    @april = create(:user, email: "test@email.com", password: "test", github_token: ENV['GITHUB_API_KEY'], github_uid: "41272635", github_handle: 'aprildagonese', github_url: 'https://github.com/aprildagonese', email_confirmed: true)
+    @mackenzie = create(:user, email: "mackenzie@email.com", password: "test", github_token: ENV['MF_GITHUB_TOKEN'], github_uid: "42525195", github_handle: 'Mackenzie-Frey', github_url: 'https://github.com/Mackenzie-Frey', email_confirmed: true)
+    @zach = create(:user, email: "zach@email.com", password: "test", github_token: "faketoken", github_uid: "34927114", github_handle: 'nagerz', github_url: 'https://github.com/nagerz', email_confirmed: true)
 
     repos_json_response = File.open('fixtures/user_repos.rb')
     stub_request(:get, "https://api.github.com/user/repos").to_return(status: 200, body: repos_json_response)
@@ -22,6 +22,7 @@ describe "As a registered user connected to Github" do
   context "when my followers/following is also connected to Github" do
     it "I see a button to add them as a friend" do
       visit dashboard_path
+
       #Following section
       within ".following_handle_unrealities" do
         expect(page).to_not have_button("Add Friend")
@@ -59,7 +60,7 @@ describe "As a registered user connected to Github" do
   end
 
   context "when I click on 'Add Friend'" do
-    it "I see my friends under My Friends" do
+    it "I see my FOLLOWING friends under My Friends" do
       visit dashboard_path
 
       expect(page).to_not have_css(".my_friends")
@@ -69,6 +70,10 @@ describe "As a registered user connected to Github" do
 
       within ".following_handle_nagerz" do
         click_button("Add Friend")
+      end
+
+      within ".following_handle_nagerz" do
+        expect(page).to_not have_button('Add Friend')
       end
 
       within ".my_friends" do
@@ -79,7 +84,7 @@ describe "As a registered user connected to Github" do
       end
     end
 
-    it "I see my friends under My Friends" do
+    it "I see my FOLLOWER friends under My Friends" do
       visit dashboard_path
 
       expect(page).to_not have_css(".my_friends")
@@ -87,8 +92,12 @@ describe "As a registered user connected to Github" do
       expect(page).to_not have_css(".friend")
       expect(page).to_not have_css(".friend_handle_nagerz")
 
-      within ".following_handle_nagerz" do
+      within ".follower_handle_nagerz" do
         click_button("Add Friend")
+      end
+
+      within ".follower_handle_nagerz" do
+        expect(page).to_not have_button('Add Friend')
       end
 
       within ".my_friends" do
@@ -99,4 +108,5 @@ describe "As a registered user connected to Github" do
       end
     end
   end
+
 end

@@ -26,7 +26,6 @@ gem 'omniauth-google-oauth2'
 gem 'will_paginate'
 gem 'acts-as-taggable-on', '~> 6.0'
 gem 'omniauth-census', git: "https://github.com/turingschool-projects/omniauth-census"
-gem 'figaro'
 gem "omniauth-github"
 
 group :development, :test do
@@ -45,6 +44,7 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'chromedriver-helper'
   gem 'rubocop', '~> 0.66.0', require: false
+  gem 'rspec-activemodel-mocks'
 end
 
 group :development do

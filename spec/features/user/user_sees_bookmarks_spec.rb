@@ -23,7 +23,7 @@ describe "As a registered user" do
 
       visit dashboard_path
 
-      within ".tutorials" do
+      within ".bookmark-tutorials" do
         within "#tutorial_#{tut1.id}" do
           expect(page).to have_content("#{tut1.title}")
           expect(page).to have_css("#video_#{vid1.id}")

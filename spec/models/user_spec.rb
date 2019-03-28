@@ -27,7 +27,7 @@ RSpec.describe User, type: :model do
     it '#connect_github' do
       user = create(:user, email: "test@email.com", password: "test")
 
-      data =       {"provider"=>"github",
+      data = {"provider"=>"github",
            "uid"=>"42525195",
            "info"=>
             {"nickname"=>"Mackenzie-Frey",
@@ -44,13 +44,16 @@ RSpec.describe User, type: :model do
 
       user.connect_github(data)
 
-      expect(user.github_token).to eq(ENV['OAUTH_TEST_TOKEN'])
+      expect(user.github_token).to eq(data['credentials']['token'])
+      expect(user.github_uid).to eq(data['uid'])
+      expect(user.github_handle).to eq(data['extra']['raw_info']['login'])
+      expect(user.github_url).to eq(data['info']['urls']['GitHub'])
     end
 
     it '#get_friend_users & #get_friends_ids & #has_friends' do
-      april = create(:user, email: "test@email.com", password: "test", github_token: ENV['GITHUB_API_KEY'], github_uid: "41272635")
-      mackenzie = create(:user, email: "mackenzie@email.com", password: "test", github_token: ENV['MF_GITHUB_TOKEN'], github_uid: "42525195")
-      zach = create(:user, email: "zach@email.com", password: "test", github_token: "faketoken", github_uid: "34927114")
+      april = create(:user, email: "test@email.com", password: "test", github_handle: "aprildagonese", github_token: ENV['GITHUB_API_KEY'], github_uid: "41272635")
+      mackenzie = create(:user, email: "mackenzie@email.com", password: "test", github_handle: "Mackenzie-Frey", github_token: ENV['MF_GITHUB_TOKEN'], github_uid: "42525195")
+      zach = create(:user, email: "zach@email.com", password: "test", github_handle: "nagerz", github_token: "faketoken", github_uid: "34927114")
 
       expect(april.get_friends_ids.count).to eq(0)
       expect(april.has_friends?).to eq(false)
@@ -66,6 +69,23 @@ RSpec.describe User, type: :model do
       expect(april.get_friend_users).to eq([mackenzie, zach])
       expect(april.get_friends_ids.count).to eq(2)
       expect(april.has_friends?).to eq(true)
+    end
+
+    it "#activated?" do
+      user1 = create(:user, email_confirmed: false)
+      user2 = create(:user, email_confirmed: true)
+
+      expect(user1.activated?).to eq(false)
+      expect(user2.activated?).to eq(true)
+    end
+
+    it "#email_activate" do
+      user = create(:user, email_confirmed: false, confirm_token: "123456")
+
+      user.email_activate
+
+      expect(user.email_confirmed).to eq(true)
+      expect(user.confirm_token).to eq(nil)
     end
 
     context "Tutorials" do

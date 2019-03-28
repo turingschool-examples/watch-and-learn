@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>Thanks for registering! Please click <%= link_to "here", confirm_email_user_url(@user.confirm_token) %> to confirm your account: <%= confirm_email_user_url(@user.confirm_token) %>.</p>
+  </body>
+</html>
