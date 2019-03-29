@@ -24,7 +24,6 @@ RSpec.describe User, type: :model do
       # rubocop:disable Metrics/LineLength
       admin = User.create(email: 'admin@email.com', password: 'admin', first_name: 'Bob', role: 1)
       # rubocop:enable Metrics/LineLength
-
       expect(admin.role).to eq('admin')
       expect(admin.admin?).to be_truthy
     end

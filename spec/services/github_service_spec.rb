@@ -51,13 +51,15 @@ describe GithubService do
     end
 
     context '#get_user_email(username)' do
-      it 'returns user\'s email', :vcr do
+      it 'returns user\'s email' do
         user = create(:user, github_token: ENV['github_key'])
         service = GithubService.new
+        ##exmple of test spying
+        allow(service).to receive(:get_user_email).with('manojpanta', user).and_return('manojpanta')
 
         result = service.get_user_email('manojpanta', user)
         expect(result.is_a?(String)).to be(true)
-        expect(result).to eq('manojpanta95@gmail.com')
+        expect(result).to eq('manojpanta')
       end
     end
   end
