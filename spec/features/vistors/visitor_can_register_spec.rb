@@ -39,7 +39,7 @@ describe 'Visitor registration' do
     end
   end
 
-  it 'visitor cannot create an account if the email they choose is already taken' do
+  it 'visitor cannot create an account if the email they enter is taken' do
     create(:user, email: @email)
 
     visit '/'

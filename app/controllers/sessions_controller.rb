@@ -9,13 +9,16 @@ class SessionsController < ApplicationController
     if current_user && !current_user.github_token
       current_user.update(uid: request.env['omniauth.auth']['uid'])
       if User.find(current_user.id).uid
-        current_user.update(github_token: request.env['omniauth.auth']['credentials']['token'])
-        current_user.update(github_username: request.env['omniauth.auth']['extra']['raw_info']['login'])
-        redirect_to dashboard_path
+        request1 = request.env['omniauth.auth']['credentials']['token']
+        request2 = request.env['omniauth.auth']['extra']['raw_info']['login']
+        current_user.update(github_token: request1)
+        current_user.update(github_username: request2)
       else
+        # rubocop:disable Metrics/LineLength
         flash[:error] = "This GitHub account is already connected to another user's profile"
-        redirect_to dashboard_path
+        # rubocop:enable Metrics/LineLength
       end
+      redirect_to dashboard_path
     else
       user = User.find_by(email: params[:session][:email])
       if user&.authenticate(params[:session][:password])

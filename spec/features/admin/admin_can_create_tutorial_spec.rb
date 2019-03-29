@@ -3,9 +3,9 @@
 require 'rails_helper'
 
 describe 'an Admin' do
+  # rubocop:disable Metrics/LineLength
   it 'can create a new tutorial by filling out a form in admin new tutorial path' do
     admin = create(:user, role: 1)
-    # rubocop:disable Metrics/LineLength
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
     # rubocop:enable Metrics/LineLength
 
@@ -14,7 +14,8 @@ describe 'an Admin' do
 
     fill_in 'tutorial[title]', with: 'first tutorial'
     fill_in 'tutorial[description]', with: 'this is first tutorial'
-    fill_in 'tutorial[thumbnail]', with: 'https://i.ytimg.com/vi/qMkRHW9zE1c/hqdefault.jpg'
+    url = 'https://i.ytimg.com/vi/qMkRHW9zE1c/hqdefault.jpg'
+    fill_in 'tutorial[thumbnail]', with: url
 
     click_on 'Save'
     expect(Tutorial.count).to eq(1)
@@ -32,7 +33,8 @@ describe 'an Admin' do
     fill_in 'tutorial[playlist_id]', with: 'PLpFmLQlYTnx-umq6uGwkhO7Cr_V7rwgyM'
     fill_in 'tutorial[title]', with: 'first tutorial'
     fill_in 'tutorial[description]', with: 'this is first tutorial'
-    fill_in 'tutorial[thumbnail]', with: 'https://i.ytimg.com/vi/qMkRHW9zE1c/hqdefault.jpg'
+    url = 'https://i.ytimg.com/vi/qMkRHW9zE1c/hqdefault.jpg'
+    fill_in 'tutorial[thumbnail]', with: url
     click_on 'Save'
     expect(Tutorial.count).to eq(1)
     expect(current_path).to eq('/admin/dashboard')
