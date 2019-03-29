@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TutorialsFacade
   def initialize(data)
     @data = data
@@ -8,16 +10,14 @@ class TutorialsFacade
   end
 
   def visitor_tutorials
-    @data.select do |tutorial|
-      !tutorial.classroom?
-    end
+    @data.reject(&:classroom?)
   end
 
   def tutorials_partial(user)
-    if user != nil
-      "user_tutorials.html.erb"
+    if !user.nil?
+      'user_tutorials.html.erb'
     else
-      "visitor_tutorials.html.erb"
+      'visitor_tutorials.html.erb'
     end
   end
 end

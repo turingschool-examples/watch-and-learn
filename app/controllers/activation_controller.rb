@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ActivationController < ApplicationController
   def show
     user = User.find_by(activation_token: params[:token])

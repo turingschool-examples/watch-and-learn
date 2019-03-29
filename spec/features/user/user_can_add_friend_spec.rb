@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe 'A registered user' do
   context 'visiting /dashboard' do
     it 'can add followers or followings that have linked their account to github as friends' do
-      user = create(:user, github_token: ENV["github_key"])
-      user1 = create(:user, uid: 25069483, first_name: 'TestName', github_username: 'stiehlrod')
+      user = create(:user, github_token: ENV['github_key'])
+      user1 = create(:user, uid: 25_069_483, first_name: 'TestName', github_username: 'stiehlrod')
 
       mock_user_dashboard_github
 
@@ -13,19 +15,19 @@ describe 'A registered user' do
       visit dashboard_path
 
       expect(user.friends).to eq([])
-      expect(page).to have_content('Friends')
-      within ".friends" do
-        expect(page).to_not have_content(user1.github_username)
+      expect(page.has_content?('Friends')).to be(true)
+      within '.friends' do
+        expect(page.has_content?(user1.github_username)).to be(false)
       end
 
-      within ".followers" do
+      within '.followers' do
         click_button('Add Friend')
       end
 
-      expect(current_path).to eq(dashboard_path)
-      expect(user.friends[0]).to be_a(User)
-      within ".friends" do
-        expect(page).to have_content(user1.github_username)
+      expect(page.has_current_path?(dashboard_path)).to be(true)
+      expect(user.friends[0].is_a?(User)).to be(true)
+      within '.friends' do
+        expect(page.has_content?(user1.github_username)).to be(true)
       end
     end
   end

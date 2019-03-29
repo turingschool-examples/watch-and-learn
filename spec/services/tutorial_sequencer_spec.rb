@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe TutorialSequencer do
@@ -6,17 +8,17 @@ describe TutorialSequencer do
   let(:vid_2)    { create(:video, tutorial: tutorial, position: 2) }
   let(:vid_3)    { create(:video, tutorial: tutorial, position: 3) }
 
-  it "exists" do
+  it 'exists' do
     sequence = [vid_1.id, vid_2.id, vid_3.id]
-    tutorial_sequencer = TutorialSequencer.new(tutorial, sequence)
-    expect(tutorial_sequencer).to be_a TutorialSequencer
+    tutorial_sequencer = described_class.new(tutorial, sequence)
+    expect(tutorial_sequencer.is_a?(described_class)).to be(true)
   end
 
-  context "instance methods" do
-    context "#run!" do
-      it "updates the positions of the videos" do
+  context 'instance methods' do
+    context '#run!' do
+      it 'updates the positions of the videos' do
         sequence = [vid_3.id, vid_1.id, vid_2.id]
-        tutorial_sequencer = TutorialSequencer.new(tutorial, sequence)
+        tutorial_sequencer = described_class.new(tutorial, sequence)
 
         tutorial_sequencer.run!
 
@@ -29,7 +31,7 @@ describe TutorialSequencer do
         allow(tutorial).to receive(:videos).and_return([vid_1, vid_2, vid_3])
 
         sequence = [vid_2.id, vid_1.id, vid_3.id]
-        tutorial_sequencer = TutorialSequencer.new(tutorial, sequence)
+        tutorial_sequencer = described_class.new(tutorial, sequence)
 
         expect(vid_1).to receive(:update).with(position: 2).once
         expect(vid_2).to receive(:update).with(position: 1).once

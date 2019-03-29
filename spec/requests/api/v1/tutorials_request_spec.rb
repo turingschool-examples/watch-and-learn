@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe 'Tutorials API' do
@@ -10,10 +12,9 @@ describe 'Tutorials API' do
     video3 = create(:video, tutorial_id: tutorial2.id)
     video4 = create(:video, tutorial_id: tutorial2.id)
 
-
     get '/api/v1/tutorials'
 
-    expect(response).to be_successful
+    expect(response.successful?).to be(true)
 
     parsed = JSON.parse(response.body, symbolize_names: true)
 
@@ -31,12 +32,12 @@ describe 'Tutorials API' do
 
     video1 = create(:video, tutorial_id: tutorial1.id)
     video2 = create(:video, tutorial_id: tutorial1.id)
-    video3 = create(:video, tutorial_id: tutorial2.id)
-    video4 = create(:video, tutorial_id: tutorial2.id)
+    create(:video, tutorial_id: tutorial2.id)
+    create(:video, tutorial_id: tutorial2.id)
 
     get "/api/v1/tutorials/#{tutorial1.id}"
 
-    expect(response).to be_successful
+    expect(response.successful?).to be(true)
 
     parsed = JSON.parse(response.body, symbolize_names: true)
 

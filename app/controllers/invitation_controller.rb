@@ -1,6 +1,8 @@
-class InvitationController  < ApplicationController
-  def new
-  end
+# frozen_string_literal: true
+
+class InvitationController < ApplicationController
+  def new; end
+
   def create
     email = service.get_user_email(params[:github_handle], current_user)
     if email

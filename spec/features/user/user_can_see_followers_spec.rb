@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe 'A registered user' do
   context 'visiting /dashboard' do
     it 'can see a list of all of their github followers' do
-      user = create(:user, github_token: ENV["github_key"])
+      user = create(:user, github_token: ENV['github_key'])
 
       mock_user_dashboard_github
 
@@ -11,12 +13,12 @@ describe 'A registered user' do
 
       visit dashboard_path
 
-      expect(page).to have_content("Github")
-      expect(page).to have_content("Followers")
+      expect(page.has_content?('Github')).to be(true)
+      expect(page.has_content?('Followers')).to be(true)
 
-      expect(page).to have_css('.followers')
-      within ".followers" do
-        expect(page).to have_link('stiehlrod')
+      expect(page.has_css?('.followers')).to be(true)
+      within '.followers' do
+        expect(page.has_link?('stiehlrod')).to be(true)
       end
     end
   end
