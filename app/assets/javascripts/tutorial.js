@@ -26,3 +26,9 @@ function onPlayerStateChange(event) {
     message.innerHTML = "You watched them all. Bask in the glory of your new skills."
   }
 }
+
+
+function showFormForPlayListId() {
+  console.log('hello world!')
+  document.querySelector('.playlist-id').style.display = 'block';
+}

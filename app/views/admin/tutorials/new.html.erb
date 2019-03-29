@@ -7,6 +7,9 @@
   <%= f.label :thumbnail %>
   <%= f.text_field :thumbnail, class: "block col-4 field"  %>
 
+  <%= f.label :playlist_id, class: 'playlist-id-1' %>
+  <%= f.text_field :playlist_id, class: "playlist-id-2 col-4"  %>
+
   <h3>Videos</h3>
 
   <%= f.fields_for :videos do |builder| %>
@@ -15,4 +18,13 @@
   <% end %>
 
   <%= f.submit "Save", class: "mt2 btn btn-primary mb1 bg-teal"  %>
-<% end %>
+<% end %><button onclick="showFormForPlayListId()" class='import-button'>Import YouTube Playlist</button>
+
+
+<script>
+function showFormForPlayListId() {
+  document.querySelector('.playlist-id-1').style.display = 'block';
+  document.querySelector('.playlist-id-2').style.display = 'block';
+  document.querySelector('.import-button').style.display = 'none';
+}
+</script>
