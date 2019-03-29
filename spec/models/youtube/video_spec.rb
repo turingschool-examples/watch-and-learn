@@ -3,12 +3,27 @@ require 'rails_helper'
 describe YouTube::Video, type: :model do
   before :each do
     @hash = { items: [snippet: { thumbnails: { high: { url: 'test' } } }] }
+    @hash1 = {snippet: {thumbnails: {high: {url: 'this is url'}},
+                        title: 'this is title',
+                        description: 'this is description',
+                        position: 'this is position'},
+              contentDetails: {videoId: 2}}
   end
   it 'exists' do
     video = YouTube::Video.new(@hash)
 
     expect(video).to be_a(YouTube::Video)
     expect(video.thumbnail).to eq('test')
+  end
+
+  it 'has instance methods thumnail, video_id, title, description, position' do
+    video = YouTube::Video.new(@hash1)
+    expect(video).to be_a(YouTube::Video)
+    expect(video.thumbnail).to eq('this is url')
+    expect(video.video_id).to eq(2)
+    expect(video.title).to eq('this is title')
+    expect(video.description).to eq('this is description')
+    expect(video.position).to eq('this is position')
   end
 
   describe 'instance methods' do

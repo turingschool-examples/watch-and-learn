@@ -15,7 +15,7 @@ describe YoutubeService do
 
         result = service.playlist_videos("PLpFmLQlYTnx-umq6uGwkhO7Cr_V7rwgyM")
         expect(result).to be_a(Array)
-        expect(result.count).to eq(2)
+        expect(result.count).to eq(3)
         expect(result.first).to have_key(:snippet)
         expect(result.first).to have_key(:contentDetails)
       end

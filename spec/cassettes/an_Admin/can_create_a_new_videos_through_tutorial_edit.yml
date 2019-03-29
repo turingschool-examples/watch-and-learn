@@ -1,0 +1,164 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.googleapis.com/youtube/v3/videos?id=v5LcjH8CXXg%20&key=<YOUTUBE_API_KEY>&part=snippet,contentDetails,statistics
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.12.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - Thu, 28 Mar 2019 23:45:07 GMT
+      Date:
+      - Thu, 28 Mar 2019 23:45:07 GMT
+      Cache-Control:
+      - private, max-age=0, must-revalidate, no-transform
+      Etag:
+      - '"XpPGQXPnxQJhLgs6enD_n8JR4Qk/XyvbBLDDNAF-QEwzexK2KiZQ-4U"'
+      Vary:
+      - Origin
+      - X-Origin
+      Content-Type:
+      - application/json; charset=UTF-8
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      Server:
+      - GSE
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="46,44,43,39"
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+         "kind": "youtube#videoListResponse",
+         "etag": "\"XpPGQXPnxQJhLgs6enD_n8JR4Qk/XyvbBLDDNAF-QEwzexK2KiZQ-4U\"",
+         "pageInfo": {
+          "totalResults": 1,
+          "resultsPerPage": 1
+         },
+         "items": [
+          {
+           "kind": "youtube#video",
+           "etag": "\"XpPGQXPnxQJhLgs6enD_n8JR4Qk/tCBiFsD9ZkhfK3X1bxcxYPDtoiw\"",
+           "id": "v5LcjH8CXXg",
+           "snippet": {
+            "publishedAt": "2018-11-14T13:42:21.000Z",
+            "channelId": "UCsObGXVUdSh-bHT7CdVXrrw",
+            "title": "When Football Is Too Easy For Lionel Messi - HD",
+            "description": "Lionel Messi can not just do things that no other footballer was ever been able to do, he can also make it look easier than anybody before. In every game he is full of new ideas to invent new skills or score amazing goals. Football is too easy for Lionel Messi!\n\nFacebook: https://www.facebook.com/magicalmessithechannel/\n\nLionel Messi, FC Barcelona, Argentina, Football, 2018 - 2019\n\n\nMagicalMessi - as magical as Messi",
+            "thumbnails": {
+             "default": {
+              "url": "https://i.ytimg.com/vi/v5LcjH8CXXg/default.jpg",
+              "width": 120,
+              "height": 90
+             },
+             "medium": {
+              "url": "https://i.ytimg.com/vi/v5LcjH8CXXg/mqdefault.jpg",
+              "width": 320,
+              "height": 180
+             },
+             "high": {
+              "url": "https://i.ytimg.com/vi/v5LcjH8CXXg/hqdefault.jpg",
+              "width": 480,
+              "height": 360
+             },
+             "standard": {
+              "url": "https://i.ytimg.com/vi/v5LcjH8CXXg/sddefault.jpg",
+              "width": 640,
+              "height": 480
+             },
+             "maxres": {
+              "url": "https://i.ytimg.com/vi/v5LcjH8CXXg/maxresdefault.jpg",
+              "width": 1280,
+              "height": 720
+             }
+            },
+            "channelTitle": "MagicalMessi",
+            "tags": [
+             "Lionel Messi",
+             "Messi",
+             "MagicalMessi",
+             "magical",
+             "lionel",
+             "When football is too easy",
+             "too easy",
+             "football",
+             "makes it look",
+             "easy",
+             "skills",
+             "goals",
+             "best",
+             "top",
+             "fc barcelona",
+             "argentina",
+             "2018",
+             "2019",
+             "even human",
+             "extraterrestrial",
+             "magic",
+             "no space",
+             "impossible",
+             "never give up",
+             "the movie",
+             "Ronaldo",
+             "who is the boss",
+             "that no one expected",
+             "ridiculous skills",
+             "motivational",
+             "motivation",
+             "cheecky things",
+             "only lionel messi can do",
+             "angry",
+             "that shocked the world",
+             "dribblings",
+             "highlights",
+             "all goals",
+             "real madrid",
+             "world's greatest"
+            ],
+            "categoryId": "17",
+            "liveBroadcastContent": "none",
+            "localized": {
+             "title": "When Football Is Too Easy For Lionel Messi - HD",
+             "description": "Lionel Messi can not just do things that no other footballer was ever been able to do, he can also make it look easier than anybody before. In every game he is full of new ideas to invent new skills or score amazing goals. Football is too easy for Lionel Messi!\n\nFacebook: https://www.facebook.com/magicalmessithechannel/\n\nLionel Messi, FC Barcelona, Argentina, Football, 2018 - 2019\n\n\nMagicalMessi - as magical as Messi"
+            },
+            "defaultAudioLanguage": "en-GB"
+           },
+           "contentDetails": {
+            "duration": "PT7M45S",
+            "dimension": "2d",
+            "definition": "hd",
+            "caption": "false",
+            "licensedContent": false,
+            "projection": "rectangular"
+           },
+           "statistics": {
+            "viewCount": "1236850",
+            "likeCount": "22813",
+            "dislikeCount": "297",
+            "favoriteCount": "0",
+            "commentCount": "1279"
+           }
+          }
+         ]
+        }
+    http_version: 
+  recorded_at: Thu, 28 Mar 2019 23:45:06 GMT
+recorded_with: VCR 4.0.0
