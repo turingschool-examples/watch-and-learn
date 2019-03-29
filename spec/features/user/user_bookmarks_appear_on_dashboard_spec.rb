@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe 'A registered user without a github token' do
@@ -13,11 +15,11 @@ describe 'A registered user without a github token' do
       visit dashboard_path
 
       within '.bookmarks' do
-        expect(page).to have_link(count: 5)
+        expect(page.has_link?(count: 5)).to be(true)
         click_link(videos[0].title)
       end
 
-      expect(current_path).to eq(tutorial_path(videos[0].tutorial))
+      expect(page.has_current_path?(tutorial_path(videos[0].tutorial))).to be(true)
     end
   end
 end
