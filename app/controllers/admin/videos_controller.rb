@@ -12,12 +12,14 @@ class Admin::VideosController < Admin::BaseController
 
   def create
     begin
-      tutorial  = Tutorial.find(params[:tutorial_id])
+      tutorial = Tutorial.find(params[:tutorial_id])
       thumbnail = YouTube::Video.by_id(new_video_params[:video_id]).thumbnail
-      video     = tutorial.videos.new(new_video_params.merge(thumbnail: thumbnail))
+      video = tutorial.videos.new(new_video_params.merge(thumbnail: thumbnail))
       video.save
       flash[:success] = 'Successfully created video.'
+      # rubocop:disable Metrics/LineLength
     rescue StandardError # Sorry about this. We should get more specific instead of swallowing all errors.
+      # rubocop:enable Metrics/LineLength
       flash[:error] = 'Unable to create video.'
     end
 
