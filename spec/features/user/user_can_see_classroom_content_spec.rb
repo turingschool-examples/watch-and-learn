@@ -11,13 +11,13 @@ describe 'A registered user' do
 
       visit tutorials_path
       within('.tutorials') do
-        expect(page.has_link?(count: 1)).to be(true)
+        expect(page).to have_link(count: 1)
       end
 
       login_as(user)
       visit tutorials_path
       within('.tutorials') do
-        expect(page.has_link?(count: 11)).to be(true)
+        expect(page).to have_link(count: 11)
       end
     end
   end

@@ -1,18 +1,17 @@
 AllCops:
   Exclude:
-    - 'db/migrate/*'
+    - 'db/**/*'
     - 'fixtures/*'
     - 'node_modules/**/*'
     - 'bin/*'
+    - 'lib/tasks/*'
+    - 'spec/rails_helper.rb'
+    - 'Rakefile'
+    - 'config/**/*'
 
 Style/Documentation:
   Enabled: false
 
-Metrics/LineLength:
-  Enabled: false
-
-Metrics/MethodLength:
-  Enabled: false
-
 Metrics/BlockLength:
-  Enabled: false
+  Exclude:
+    - 'spec/**/*'

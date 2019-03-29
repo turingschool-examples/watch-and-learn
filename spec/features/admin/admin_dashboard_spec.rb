@@ -2,15 +2,16 @@
 
 require 'rails_helper'
 
-describe 'An admin visiting the admin dashboard' do
-  it 'can see all tutorials' do
+feature 'An admin visiting the admin dashboard' do
+  scenario 'can see all tutorials' do
     admin = create(:admin)
     create_list(:tutorial, 2)
-
+    # rubocop:disable Metrics/LineLength
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+    # rubocop:enable Metrics/LineLength
 
     visit '/admin/dashboard'
 
-    expect(page.has_css?('.admin-tutorial-card', count: 2)).to be(true)
+    expect(page).to have_css('.admin-tutorial-card', count: 2)
   end
 end

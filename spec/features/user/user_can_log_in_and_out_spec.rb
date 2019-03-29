@@ -56,6 +56,6 @@ describe 'User' do
 
     click_on 'Log In'
 
-    expect(page.has_content?('Looks like your email or password is invalid')).to be(true)
+    expect(page).to have_content('Looks like your email or password is invalid')
   end
 end

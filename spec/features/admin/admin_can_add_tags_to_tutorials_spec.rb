@@ -7,8 +7,9 @@ describe 'An admin user can add tags to tutorials' do
     admin = create(:user, role: 1)
     tutorial = create(:tutorial)
     create(:video, tutorial_id: tutorial.id)
-
+    # rubocop:disable Metrics/LineLength
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+    # rubocop:enable Metrics/LineLength
 
     visit '/admin/dashboard'
 
@@ -23,13 +24,13 @@ describe 'An admin user can add tags to tutorials' do
     visit root_path
 
     within('.categories') do
-      expect(page.has_content?('Ruby')).to be(true)
+      expect(page).to have_content('Ruby')
     end
 
     within('.categories') do
       click_on 'Ruby'
     end
 
-    expect(page.has_current_path?('/tags/Ruby')).to be(true)
+    expect(current_path).to eq('/tags/Ruby')
   end
 end

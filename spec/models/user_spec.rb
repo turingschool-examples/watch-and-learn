@@ -4,22 +4,26 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   describe 'validations' do
-    it { is_expected.to validate_presence_of(:email) }
-    it { is_expected.to validate_presence_of(:first_name) }
-    it { is_expected.to validate_presence_of(:password) }
-    it { is_expected.to validate_uniqueness_of(:uid) }
+    it { should validate_presence_of(:email) }
+    it { should validate_presence_of(:first_name) }
+    it { should validate_presence_of(:password) }
+    it { should validate_uniqueness_of(:uid) }
   end
 
   describe 'roles' do
     it 'can be created as default user' do
+      # rubocop:disable Metrics/LineLength
       user = User.create(email: 'user@email.com', password: 'password', first_name: 'Jim', role: 0)
+      # rubocop:enable Metrics/LineLength
 
       expect(user.role).to eq('default')
       expect(user.default?).to be_truthy
     end
 
     it 'can be created as an Admin user' do
+      # rubocop:disable Metrics/LineLength
       admin = User.create(email: 'admin@email.com', password: 'admin', first_name: 'Bob', role: 1)
+      # rubocop:enable Metrics/LineLength
 
       expect(admin.role).to eq('admin')
       expect(admin.admin?).to be_truthy

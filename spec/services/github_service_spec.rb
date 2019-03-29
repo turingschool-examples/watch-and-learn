@@ -53,7 +53,7 @@ describe GithubService do
     context '#get_user_email(username)' do
       it 'returns user\'s email', :vcr do
         user = create(:user, github_token: ENV['github_key'])
-        service = described_class.new
+        service = GithubService.new
 
         result = service.get_user_email('manojpanta', user)
         expect(result.is_a?(String)).to be(true)

@@ -30,11 +30,11 @@ end
 
 def mock_youtube_playlist
   filename = 'video_list.json'
-  url = "https://www.googleapis.com/youtube/v3/playlistItems"
+  url = 'https://www.googleapis.com/youtube/v3/playlistItems'
   stub_get_json(url, filename)
 end
 
-def  mock_user_dashboard_github
+def mock_user_dashboard_github
   filename = 'user_following.json'
   url = 'https://api.github.com/user/following'
   stub_get_json(url, filename)

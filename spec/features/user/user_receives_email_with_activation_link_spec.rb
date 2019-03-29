@@ -21,8 +21,10 @@ describe 'A visitor' do
       expect(User.first.activation_token.is_a?(String)).to be(true)
       expect(User.first.activated).to eq(false)
 
-      expect(page.has_content?('Logged in as manoj1')).to be(true)
-      expect(page.has_content?('This account has not yet been activated. Please check your email.')).to be(true)
+      expect(page).to have_content('Logged in as manoj1')
+      # rubocop:disable Metrics/LineLength
+      expect(page).to have_content('This account has not yet been activated. Please check your email.')
+      # rubocop:enable Metrics/LineLength
     end
 
     context 'that has registered an account' do
@@ -32,13 +34,13 @@ describe 'A visitor' do
         mock_user_dashboard_github
         visit dashboard_path
         expect(User.find(user.id).activated).to eq(false)
-        expect(page.has_content?('Status: Active')).to be(false)
+        expect(page).to_not have_content('Status: Active')
 
         visit '/activation?token=bsdjhfbjksbdckbs'
 
         expect(page.has_current_path?(dashboard_path)).to be(true)
         expect(User.find(user.id).activated).to eq(true)
-        expect(page.has_content?('Status: Active')).to be(true)
+        expect(page).to have_content('Status: Active')
       end
     end
   end

@@ -11,12 +11,16 @@ module YouTube
       if data[:items]
         @thumbnail = data[:items].first[:snippet][:thumbnails][:high][:url]
       else
-        @thumbnail = data[:snippet][:thumbnails][:high][:url]
-        @video_id = data[:contentDetails][:videoId]
-        @title = data[:snippet][:title]
-        @description = data[:snippet][:description]
-        @position= data[:snippet][:position]
+        assign_variables(data)
       end
+    end
+
+    def assign_variables(data)
+      @thumbnail = data[:snippet][:thumbnails][:high][:url]
+      @video_id = data[:contentDetails][:videoId]
+      @title = data[:snippet][:title]
+      @description = data[:snippet][:description]
+      @position = data[:snippet][:position]
     end
 
     def self.by_id(id)

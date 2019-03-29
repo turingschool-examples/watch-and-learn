@@ -14,12 +14,7 @@ class UsersController < ApplicationController
   def create
     user = User.new(user_params)
     if user.save
-      user.set_activation_token
-      ActivationMailer.activate(user).deliver_now!
-      session[:user_id] = user.id
-      redirect_to dashboard_path
-      flash[:success] = "Logged in as #{user.first_name}"
-      flash[:error] = 'This account has not yet been activated. Please check your email.'
+      send_mail_and_redirect(user)
     else
       @user = User.new
       flash[:error] = 'Email already exists'
@@ -28,6 +23,17 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def send_mail_and_redirect(user)
+    user.set_activation_token
+    ActivationMailer.activate(user).deliver_now!
+    session[:user_id] = user.id
+    redirect_to dashboard_path
+    flash[:success] = "Logged in as #{user.first_name}"
+    # rubocop:disable Metrics/LineLength
+    flash[:error] = 'This account has not yet been activated. Please check your email.'
+    # rubocop:enable Metrics/LineLength
+  end
 
   def user_params
     params.require(:user).permit(:email, :first_name, :last_name, :password)

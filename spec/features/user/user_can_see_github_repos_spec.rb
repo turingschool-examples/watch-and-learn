@@ -9,27 +9,29 @@ describe 'A registered user' do
       @user2 = create(:user, github_token: ENV['github_key'])
       @user3 = create(:user)
     end
-
     it 'can see a list of 5 of their GitHub repositories' do
       mock_user_dashboard_github
-
-      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user_2)
+      # rubocop:disable Metrics/LineLength
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user2)
+      # rubocop:enable Metrics/LineLength
 
       visit dashboard_path
 
-      expect(page.has_content?('Github')).to be(true)
-      expect(page.has_css?('.repos')).to be(true)
+      expect(page).to have_content('Github')
+      expect(page).to have_css('.repos')
       within '.repos' do
-        expect(page.has_link?('activerecord-obstacle-course')).to be(true)
-        expect(page.has_link?(count: 5)).to be(true)
+        expect(page).to have_link('activerecord-obstacle-course')
+        expect(page).to have_link(count: 5)
       end
     end
 
     it 'cannot see a GitHub section if they do not have a token' do
-      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user_3)
+      # rubocop:disable Metrics/LineLength
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user3)
+      # rubocop:enable Metrics/LineLength
 
       visit dashboard_path
-      expect(page.has_content?('Github')).to be(false)
+      expect(page).to_not have_content('Github')
     end
   end
 end
