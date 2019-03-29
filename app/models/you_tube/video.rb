@@ -11,13 +11,11 @@ module YouTube
       if data[:items]
         @thumbnail = data[:items].first[:snippet][:thumbnails][:high][:url]
       else
-        assign_variables
+        assign_variables(data)
       end
     end
 
-    # rubocop:disable Metrics/AbcSize
-    def assign_variables
-      # rubocop:enable Metrics/AbcSize
+    def assign_variables(data)
       @thumbnail = data[:snippet][:thumbnails][:high][:url]
       @video_id = data[:contentDetails][:videoId]
       @title = data[:snippet][:title]
