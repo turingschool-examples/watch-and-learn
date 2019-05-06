@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'As a user' do
-  context 'When I visit my profile page' do
+  context 'When I visit my profile page', :vcr do
     it 'shows a list of repos' do
       user = create(:user)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
@@ -15,6 +15,6 @@ RSpec.describe 'As a user' do
         expect(page.all('li').count).to eq(5)
       end
     end
-    
+
   end
 end

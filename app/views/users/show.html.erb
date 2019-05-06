@@ -13,7 +13,9 @@
   <section class="github">
     <h1>Your Repositories</h1>
     <ul>
-      <li></li>
+      <% facade.repos.each do |repo| %>
+        <li><%= link_to repo.name, repo.url %></li>
+      <% end %>
     </ul>
   </section>
 </section>
