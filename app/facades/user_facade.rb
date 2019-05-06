@@ -11,6 +11,12 @@ class UserFacade
   def repos
     service = GithubService.new(token: @token)
     repos = service.get_repos
+    repos.map do |repo|
+      Repository.new(repo)
+    end
   end
 
+  def token?
+    @token.nil?
+  end
 end
