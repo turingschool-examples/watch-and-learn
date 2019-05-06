@@ -33,3 +33,7 @@
 /node_modules
 yarn-debug.log*
 .yarn-integrity
+Gemfile.lock
+package.json
+public/packs-test/manifest.json
+yarn.lock
