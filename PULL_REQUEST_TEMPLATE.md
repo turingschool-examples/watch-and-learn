@@ -19,7 +19,7 @@
 ### Description of Changes:
 
 
-closes# 
+closes#
 
 ### Check the correct boxes
 - [] This broke nothing
@@ -27,6 +27,7 @@ closes#
 - [] This broke everything
 
 ### Testing Changes
+- COVERAGE SCORE: 
 - [] No Tests have been changed
 - [] Some Tests have been changed
 - [] All of the Tests have been changed (Please describe what in the world happened)
@@ -35,4 +36,4 @@ closes#
 - [] My code has no unused/commented out code
 - [] I have reviewed my code
 - [] I have commented my code, particularly in hard-to-understand areas
-- [] I have fully tested my cod
+- [] I have fully tested my code
