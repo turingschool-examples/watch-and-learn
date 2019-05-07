@@ -10,6 +10,15 @@ class Admin::TutorialsController < Admin::BaseController
     @tutorial = Tutorial.new
   end
 
+  # def create
+  #   @tutorial = Tutorial.new(tutorial_params)
+  #   binding.pry
+  #   if @tutorial.save
+  #     flash[:success] = "#{tutorial.title} created!"
+  #     redirect_to edit_admin_tutorial_path(@tutorial)
+  #   end
+  # end
+
   def update
     tutorial = Tutorial.find(params[:id])
     if tutorial.update(tutorial_params)
