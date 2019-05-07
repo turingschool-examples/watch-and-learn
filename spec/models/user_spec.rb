@@ -22,4 +22,15 @@ RSpec.describe User, type: :model do
       expect(admin.admin?).to be_truthy
     end
   end
+
+  # describe 'instance methods' do
+  #   it '#repos' do
+  #     user = create(:user)
+
+
+  #     expected = user.repos.count
+
+  #     expect(expected).to eq(5)
+  #   end
+  # end
 end
