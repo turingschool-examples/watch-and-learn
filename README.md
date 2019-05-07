@@ -22,35 +22,46 @@ A visitor is able to see all of the content on the application but in order to b
 
 ## Local Setup
 
-First you'll need to setup an API key with YouTube and have it defined within `ENV['YOUTUBE_API_KEY']`. There will be one failing spec if you don't have this set up.
 
 Clone down the repo
 ```
-$ git clone
+git clone
 ```
 
 Install the gem packages
 ```
-$ bundle install
+bundle install
 ```
 
 Install node packages for stimulus
 ```
-$ brew install node
-$ brew install yarn
-$ yarn add stimulus
+brew install node
+brew install yarn
+yarn add stimulus
 ```
+
+Next, you'll need to setup an API key:
+    * Visit [here](https://developers.google.com/youtube/v3/getting-started) and follow the steps to generate an API key for YouTube
+    *Note*: Generate an API key NOT an OAuth 2.0 credential
+
+    * Use the `figaro` gem to generate an `application.yml` as follows:
+    ```
+    bundle exec figaro install
+    ```
+
+    * Copy the key generated earlier and paste that key in the `application.yml` in the following format:
+    ```
+    YOUTUBE_API_KEY: '<YouTune generated API key>'
+    ```
 
 Set up the database
 ```
-$ rake db:create
-$ rake db:migrate
-$ rake db:seed
+rake db:{create,migrate,seed}
 ```
 
 Run the test suite:
-```ruby
-$ bundle exec rspec
+```
+bundle exec rspec
 ```
 
 ## Technologies
