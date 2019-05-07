@@ -1,5 +1,10 @@
 class UsersController < ApplicationController
   def show
+    # binding.pry
+    user = current_user
+    render locals: {
+      facade: GitHubFacade.new(user)
+    }
   end
 
   def new
