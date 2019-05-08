@@ -1,11 +1,11 @@
 <section class="dashboard-main">
-  <h1> <%= current_user.first_name %>'s Dashboard </h1>
+  <h1> <%= facade.user.first_name %>'s Dashboard </h1>
 
   <%= button_to 'Log Out', logout_path, method: 'delete', class: "btn btn-primary mb1 bg-teal" %>
   <h3>Account Details</h3>
   <ul>
-    <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
-    <li> <%= current_user.email%> </li>
+    <li> <%= facade.user.first_name  %> <%= facade.user.last_name %> </li>
+    <li> <%= facade.user.email%> </li>
   </ul>
   <section>
     <h1>Bookmarked Segments</h1>
@@ -13,11 +13,31 @@
 
 
   <section>
-    <h3>Github</h3>
+    <h1>Github</h1>
+    <h3>Repository's</h3>
       <% facade.repositories.each do |repo| %>
       <ul>
-        <li class='repository'><%= link_to "#{repo.name}", repo.url %></li>
+        <li class='repository'><%= link_to repo.name, repo.url %></li>
       </ul>
       <% end %>
   </section>
+
+  <section>
+    <h3>Followers</h3>
+    <% facade.followers.each do |follower| %>
+    <ul>
+      <li class='follower'><%= link_to follower.handle, follower.url %></li>
+    </ul>
+    <% end %>
+  </section>
+
+  <section>
+    <h3>Following</h3>
+    <% facade.following.each do |following| %>
+    <ul>
+      <li class='follower'><%= link_to following.handle, following.url %></li>
+    </ul>
+    <% end %>
+  </section>
+
 </section>
