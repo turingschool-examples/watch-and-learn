@@ -7,6 +7,7 @@ describe "An Admin can edit a tutorial" do
   scenario "by adding a video", :js, :vcr do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
+    create(:video, tutorial: tutorial)
     visit edit_admin_tutorial_path(tutorial)
 
     click_on "Add Video"
@@ -18,8 +19,9 @@ describe "An Admin can edit a tutorial" do
 
     expect(current_path).to eq(edit_admin_tutorial_path(tutorial))
 
-    within(first(".video")) do
+    within all(".video").last do
       expect(page).to have_content("How to tie your shoes.")
     end
+    expect(Video.last.position).to eq(2)
   end
 end
