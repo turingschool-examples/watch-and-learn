@@ -1,5 +1,14 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
   def show
+    # binding.pry
+    user = current_user
+    if user.github_token
+      render locals: {
+        facade: GitHubFacade.new(user)
+      }
+    end
   end
 
   def new
@@ -22,5 +31,4 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:email, :first_name, :last_name, :password)
   end
-
 end

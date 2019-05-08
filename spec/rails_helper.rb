@@ -1,21 +1,26 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 ENV['RAILS_ENV'] ||= 'test'
-require File.expand_path('../../config/environment', __FILE__)
+require File.expand_path('../config/environment', __dir__)
 
-abort("The Rails environment is running in production mode!") if Rails.env.production?
+abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'rspec/rails'
 require 'vcr'
 require 'webmock/rspec'
 
 VCR.configure do |config|
   config.ignore_localhost = true
-  config.cassette_library_dir = 'spec/cassettes'
+  config.cassette_library_dir = './spec/cassettes'
   config.hook_into :webmock
   config.configure_rspec_metadata!
-  config.filter_sensitive_data("<YOUTUBE_API_KEY>") { ENV['YOUTUBE_API_KEY'] }
+  config.filter_sensitive_data('<YOUTUBE_API_KEY>') { ENV['YOUTUBE_API_KEY'] }
+  config.filter_sensitive_data('<token>') { ENV['token'] }
+  config.ignore_request do |_request|
+    URI('https://api.github.com/users/earl-stephens/repos.json')
+  end
 end
-
 
 ActiveRecord::Migration.maintain_test_schema!
 
@@ -29,10 +34,10 @@ Capybara.configure do |config|
   config.default_max_wait_time = 5
 end
 
-SimpleCov.start "rails"
+SimpleCov.start 'rails'
 
 Shoulda::Matchers.configure do |config|
-    config.integrate do |with|
+  config.integrate do |with|
     with.test_framework :rspec
     with.library :rails
   end
