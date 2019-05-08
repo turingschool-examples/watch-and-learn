@@ -8,40 +8,4 @@ class User < ApplicationRecord
   enum role: [:default, :admin]
   has_secure_password
 
-  def repos
-    five_repos = service.take(5)
-  end
-
-  private
-
-    # def user_data
-    #   @_user_data ||= service[:results]
-    # end
-
-    def service
-      @_service ||= GithubService.new(self.id).get_repos
-    end
 end
-
-
-# class Repos
-#
-#   def initialize(data)
-#     @argument = argument
-#     @name = data["name"]
-#     @date = data["date"]
-#   end
-#
-# end
-#
-# class GithubFacade
-#
-#   create object
-#
-#
-# end
-#
-# class GithubService
-#
-#
-# end
