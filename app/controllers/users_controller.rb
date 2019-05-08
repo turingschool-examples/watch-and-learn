@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   def show
+    # facade w current user
   end
 
   def new

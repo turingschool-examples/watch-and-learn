@@ -22,3 +22,26 @@ class User < ApplicationRecord
       @_service ||= GithubService.new(self.id).get_repos
     end
 end
+
+
+# class Repos
+#
+#   def initialize(data)
+#     @argument = argument
+#     @name = data["name"]
+#     @date = data["date"]
+#   end
+#
+# end
+#
+# class GithubFacade
+#
+#   create object
+#
+#
+# end
+#
+# class GithubService
+#
+#
+# end

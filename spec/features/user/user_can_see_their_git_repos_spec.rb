@@ -6,12 +6,11 @@ describe 'as a logged in user on my dashboard' do
     stub_request(:get, "https://api.github.com/user/repos").
       to_return(status: 200, body: json_response)
 
-    # As a logged in user
     user = create(:user, git_key: ENV["GITHUB_API_KEY"])
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
     # When I visit /dashboard
     visit dashboard_path
-    save_and_open_page
+
     # Then I should see a section for "Github"
     expect(page).to have_content("Github")
 
