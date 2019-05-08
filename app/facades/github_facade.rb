@@ -18,6 +18,12 @@ class GithubFacade
     end
   end
 
+  def followings
+    following_data.map do |following_data|
+      Following.new(following_data)
+    end
+  end
+
   private
 
   def repo_data
@@ -26,6 +32,10 @@ class GithubFacade
 
   def follower_data
     @_follower_data ||= service.get_followers
+  end
+
+  def following_data
+    @_following_data ||= service.get_following
   end
 
   def service

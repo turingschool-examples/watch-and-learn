@@ -20,5 +20,11 @@ feature "users can see github info" do
       expect(page).to have_css(".github-followers")
       expect(page).to have_css(".follower")
     end
+
+    it "shows my followings", :vcr do
+      expect(page).to have_content("Following")
+      expect(page).to have_css(".github-followings")
+      expect(page).to have_css(".following")
+    end
   end
 end
