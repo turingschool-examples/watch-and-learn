@@ -1,7 +1,7 @@
 class GithubService
 
-  def initialize(user_id)
-    @user = User.find(user_id)
+  def initialize(user)
+    @user = user
   end
 
   def get_repos

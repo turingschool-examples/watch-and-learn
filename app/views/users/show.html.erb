@@ -12,9 +12,9 @@
   </section>
   <section class='github'>
     <h2>Github</h2>
-    <% current_user.repos.each do |repo| %>
+    <% facade.repos(5).each do |repo| %>
       <ul class='repository'>
-      <li><%= link_to repo["name"] %></li>
+        <li><%= link_to repo.name %></li>
       </ul>
     <%end%>
   </section>
