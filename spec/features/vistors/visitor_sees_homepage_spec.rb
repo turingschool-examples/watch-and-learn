@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'Visitor' do
   describe 'on the home page' do
-    it 'can see a list of tutorials' do
+    it 'can see a list of tutorials', :vcr do
       tutorial1 = create(:tutorial)
       tutorial2 = create(:tutorial)
 
