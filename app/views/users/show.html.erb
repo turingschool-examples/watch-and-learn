@@ -22,4 +22,16 @@
     <% end %>
 
   </section>
+
+  <section class="github-followers">
+    <h3>Followers</h3>
+    <% facade.followers.each do |follower| %>
+      <ul>
+        <li class="follower">
+          <%= link_to follower.login, follower.html_url %>
+        </li>
+      </ul>
+    <% end %>
+  </section>
+
 </section>
