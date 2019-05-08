@@ -13,8 +13,8 @@ AddMissingUniqueIndices.class_eval do
     remove_index :taggings, :tag_id if index_exists?(:taggings, :tag_id)
     remove_index :taggings, %i[taggable_id taggable_type context]
     add_index :taggings,
-              %i[tag_id taggable_id taggable_type context tagger_id tagger_type],
-              unique: true, name: 'taggings_idx'
+            %i[tag_id taggable_id taggable_type context tagger_id tagger_type],
+            unique: true, name: 'taggings_idx'
   end
 
   def self.down

@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-
+# PORO for repos
 class Repo
   attr_reader :name,
               :url
