@@ -24,4 +24,21 @@ describe "An Admin can edit a tutorial" do
     end
     expect(Video.last.position).to eq(2)
   end
+
+  scenario "it sees an error if the video wasn't created" do
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+
+    visit edit_admin_tutorial_path(tutorial)
+
+    click_on "Add Video"
+
+    fill_in "video[title]", with: "How to tie your shoes."
+    fill_in "video[description]", with: "Over, under, around and through, Meet Mr. Bunny Rabbit, pull and through."
+
+    click_on "Create Video"
+
+    expect(current_path).to eq(edit_admin_tutorial_path(tutorial))
+    expect(page).to have_content("Unable to create video.")
+    expect(Video.all.count).to eq(0)
+  end
 end
