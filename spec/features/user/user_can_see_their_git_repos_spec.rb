@@ -6,15 +6,35 @@ describe 'as a logged in user on my dashboard' do
     stub_request(:get, "https://api.github.com/user/repos").
       to_return(status: 200, body: json_response)
 
-    user = create(:user)
+    user = create(:user, git_key: "bananas")
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
-    # When I visit /dashboard
+
     visit dashboard_path
 
-    # Then I should see a section for "Github"
-    expect(page).to have_content("Github")
+    expect(page).to have_css('.github')
 
-    # And under that section I should see a list of 5 repositories with the name of each Repo linking to the repo on Github
     expect(page).to have_css('.repository', count: 5)
+
+    within first ".repository" do
+      expect(page).to have_css('.link')
+    end
   end
+
+  it 'does not see a section for github, or any repos if missing github token' do
+    json_response = File.open("./fixtures/user_repos.json")
+    stub_request(:get, "https://api.github.com/user/repos").
+      to_return(status: 200, body: json_response)
+
+    user = create(:user)
+
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+    visit dashboard_path
+
+    expect(user.git_key).to eq(nil)
+
+    expect(page).not_to have_css('.github')
+    expect(page).not_to have_css('.repository')
+  end
+
 end
