@@ -11,5 +11,26 @@ describe GithubService, type: :service do
       expect(result.first).to have_key(:name)
       expect(result.first).to have_key(:html_url)
     end
+
+    it "gets followers" do
+      service = GithubService.new
+
+      result = service.get_followers
+
+      expect(result).to be_an(Array)
+      expect(result.first).to have_key(:login)
+      expect(result.first).to have_key(:html_url)
+    end
+
+    it "gets following" do
+      service = GithubService.new
+
+      result = service.get_following
+
+      expect(result).to be_an(Array)
+      expect(result.first).to have_key(:login)
+      expect(result.first).to have_key(:html_url)
+    end
+
   end
 end
