@@ -9,6 +9,9 @@ require 'vcr'
 require 'webmock/rspec'
 
 VCR.configure do |config|
+  # config.ignore_request do |request|
+  #   URI("http://api.github.com")
+  # end
   config.ignore_localhost = true
   config.cassette_library_dir = 'spec/cassettes'
   config.hook_into :webmock

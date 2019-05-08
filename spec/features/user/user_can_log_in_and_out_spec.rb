@@ -1,8 +1,14 @@
 require 'rails_helper'
 
 describe 'User' do
+  before :each do
+    json_response = File.open("./fixtures/user_repos.json")
+    stub_request(:get, "https://api.github.com/user/repos").
+      to_return(status: 200, body: json_response)
+  end
+  
   it 'user can sign in' do
-    user = create(:user)
+    user = create(:user, git_key: ENV["GITHUB_API_KEY"])
 
     visit '/'
 
