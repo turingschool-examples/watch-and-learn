@@ -3,7 +3,6 @@ class UsersController < ApplicationController
     render locals: {
       facade: GithubFacade.new(current_user)
     }
-    # facade w current user
   end
 
   def new
