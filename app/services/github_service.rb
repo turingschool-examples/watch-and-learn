@@ -13,7 +13,7 @@ class GithubService
 
   def conn
     Faraday.new("https://api.github.com/") do |f|
-      f.params[:access_token] = "37b234d311f8471034fd13111193888eb5e9de72"
+      f.params[:access_token] = ENV["GITHUB_TOKEN_KEY"]
       f.adapter Faraday.default_adapter
     end
   end
