@@ -1,4 +1,7 @@
 require 'spec_helper'
+require 'simplecov'
+
+SimpleCov.start "rails"
 
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
@@ -29,7 +32,6 @@ Capybara.configure do |config|
   config.default_max_wait_time = 5
 end
 
-SimpleCov.start "rails"
 
 Shoulda::Matchers.configure do |config|
     config.integrate do |with|

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature "An admin visiting the admin dashboard" do
-  scenario "can see all tutorials" do
+  scenario "can see all tutorials", :vcr do
     admin = create(:admin)
     create_list(:tutorial, 2)
 
