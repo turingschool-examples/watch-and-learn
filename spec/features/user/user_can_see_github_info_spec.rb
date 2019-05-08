@@ -12,7 +12,7 @@ feature "users can see github info" do
     it "shows 5 of my repos", :vcr do
       expect(page).to have_content("Github")
       expect(page).to have_css(".github-repos")
-      expect(page).to have_css(".repos", count: 5) 
+      expect(page).to have_css(".repo", count: 5)
     end
   end
 end
