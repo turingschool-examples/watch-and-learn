@@ -1,3 +1,4 @@
+require_relative '../models/github/repo'
 class GitHubFacade
 
   def initialize(user)
@@ -5,16 +6,16 @@ class GitHubFacade
   end
 
   def repos
-    conn = Faraday.new("https://api.github.com/users/earl-stephens/repos") do |f|
-      f.headers["token"] = ENV["github_key"]
+    conn = Faraday.new("https://api.github.com/users/#{@user.username}?access_token=#{@user.github_token}") do |f|
       f.adapter Faraday.default_adapter
     end
-    binding.pry
 
-    response = conn.get
+    response = conn.get("/user/repos")
 
     data = JSON.parse(response.body, symbolize_names: true)
-    data[:results].map do |repo_data|
+    data = data.sample(5)
+    # binding.pry
+    data.map do |repo_data|
       Repo.new(repo_data)
     end
   end

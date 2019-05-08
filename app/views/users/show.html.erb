@@ -13,9 +13,13 @@
 </section>
 
 <section id="github-section">
-  <%= facade.repos.each do |repo| %>
-    <ul>
-      <li><%= link_to nil, repo.url %></li>
-    </ul>
+  <% if current_user.github_token != nil %>
+    <h3>Github Repos</h3>
+    <% facade.repos.each do |repo| %>
+    <%  %>
+      <ul>
+        <li><%= link_to repo.name, repo.url %></li>
+      </ul>
+    <% end %>
   <% end %>
 </section>
