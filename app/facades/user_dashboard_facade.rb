@@ -1,9 +1,9 @@
 class UserDashboardFacade
+attr_reader :user
 
-  def initialize(current_user)
-    @current_user = current_user
+  def initialize(user)
+    @user = user
   end
-
 
   def repositories(limit_index = 4)
     #can be refactored to
@@ -14,13 +14,33 @@ class UserDashboardFacade
     end
   end
 
+  def followers
+    follower_data.map do |follower_data|
+      Follower.new(follower_data)
+    end
+  end
+
+  def following
+    following_data.map do |following_data|
+      Follower.new(following_data)
+    end
+  end
+
   private
 
     def repository_data
-      @_repository_data ||= service.github_info
+      @_repository_data ||= service.repository_info
+    end
+
+    def follower_data
+      @_follower_info ||= service.follower_info
+    end
+
+    def following_data
+      @_following_data ||= service.following_info
     end
 
     def service
-      @_service ||= GithubService.new(@current_user)
+      @_service ||= GithubService.new(@user.github_token)
     end
 end
