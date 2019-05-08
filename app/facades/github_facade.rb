@@ -4,7 +4,7 @@ class GithubFacade
     @current_user = current_user
   end
 
-  def repos
+  def repos(quantity)
     @conn = Faraday.new("https://api.github.com") do |f|
       f.params[:access_token] = "37b234d311f8471034fd13111193888eb5e9de72"
       f.adapter Faraday.default_adapter
@@ -13,9 +13,10 @@ class GithubFacade
     response = @conn.get('/user/repos')
     repos = JSON.parse(response.body, symbolize_names: true)
 
-    repos.map do |repo_data|
+    all_repos = repos.map do |repo_data|
       Repo.new(repo_data)
     end
-  end
 
+    all_repos.sample(quantity)
+  end
 end
