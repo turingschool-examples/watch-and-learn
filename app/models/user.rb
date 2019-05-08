@@ -9,6 +9,17 @@ class User < ApplicationRecord
   has_secure_password
 
   def repos
-    repos = GithubFacade.new
+    service
   end
+
+  private
+
+    def user_data
+      @_user_data ||= service[:results]
+    end
+
+    def service
+      # require 'pry'; binding.pry
+      @_service ||= GithubService.new(self.id).get_repos
+    end
 end

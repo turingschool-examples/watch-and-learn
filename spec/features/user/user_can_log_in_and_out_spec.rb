@@ -25,6 +25,7 @@ describe 'User' do
     user = create(:user)
 
     visit login_path
+    save_and_open_page
 
     fill_in'session[email]', with: user.email
     fill_in'session[password]', with: user.password

@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'as a logged in user on my dashboard' do
   it 'sees a section for github and their collection of repos' do
     # As a logged in user
-    user = create(:user)
+    user = create(:user, git_key: "magic key")
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
     # When I visit /dashboard
