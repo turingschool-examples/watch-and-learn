@@ -1,14 +1,11 @@
 class GithubService
 
   def initialize(user_id)
-    # require 'pry'; binding.pry
     @user = User.find(user_id)
-
   end
 
   def get_repos
-    get_json("/repos#list-your-repositories")
-    require 'pry'; binding.pry
+    get_json("/user/repos")
   end
 
   private
@@ -19,9 +16,8 @@ class GithubService
     end
 
     def conn
-    # require 'pry'; binding.pry
-      Faraday.new("https://developer.github.com/v3/") do |f|
-        f.headers["X-Api-Key"] = ENV["GITHUB_KEY"]
+      Faraday.new("https://api.github.com/") do |f|
+        f.headers["X-Api-Key"] = @user.git_key
         f.adapter Faraday.default_adapter
       end
     end
