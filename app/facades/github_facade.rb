@@ -5,14 +5,18 @@ class GithubFacade
   end
 
   def repos(quantity)
-    all_repos = service.get_repos.map do |repo_data|
+    all_repos = repo_data.map do |repo_data|
       Repo.new(repo_data)
     end
-
+    
     all_repos.sample(quantity)
   end
 
   private
+
+  def repo_data
+    @_repo_data ||= service.get_repos
+  end
 
   def service
     @_service ||= GithubService.new

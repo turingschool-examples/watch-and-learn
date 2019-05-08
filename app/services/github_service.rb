@@ -1,7 +1,6 @@
 class GithubService
 
   def get_repos
-
     get_json('user/repos')
   end
 
