@@ -10,8 +10,6 @@ class GithubFacade
     limited.map do |repo_data|
       Repo.new(repo_data)
     end
-    # array of repo objects(5)
-    # service = data.something
   end
 
   private
