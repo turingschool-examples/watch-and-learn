@@ -64,7 +64,7 @@ describe 'when logged in user visits root path without a token' do
     visit dashboard_path
 
     within '#github-section' do
-      expect(page).to_not have_content('github.com')
+      expect(page).to_not have_content('Github')
     end
   end
 end

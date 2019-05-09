@@ -17,6 +17,7 @@ VCR.configure do |config|
   config.configure_rspec_metadata!
   config.filter_sensitive_data('<YOUTUBE_API_KEY>') { ENV['YOUTUBE_API_KEY'] }
   config.filter_sensitive_data('<token>') { ENV['token'] }
+  config.filter_sensitive_data('<Deonte_token>') { ENV['Deonte_token'] }
   # config.ignore_request do |_request|
   #   URI('https://api.github.com/users/earl-stephens/repos.json')
   # end

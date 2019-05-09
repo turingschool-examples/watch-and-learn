@@ -1,15 +1,23 @@
 # frozen_string_literal: true
 
+require_relative '../models/github/repo'
+require_relative '../models/github/follower'
+require_relative '../models/github/following'
 class GitHubFacade
   def initialize(user)
     @user = user
   end
 
   def repos
-    repo_output = repo_data.map do |repo_data|
+    repos_data.map do |repo_data|
       Repo.new(repo_data)
     end
-    repo_output.sample(5)
+  end
+
+  def followers
+    followers_data.map do |follower_data|
+      Follower.new(follower_data)
+    end
   end
 
   def following
@@ -20,15 +28,20 @@ class GitHubFacade
 
   private
 
-  def following_data
-    @_following_data ||= service.get_following
+  def repos_data
+    @repo_data ||= service.repos
+    @repo_data.sample(5)
   end
 
-  def repo_data
-    @_repo_data ||= service.get_repos
+  def followers_data
+    @followers_data ||= service.followers
+  end
+
+  def following_data
+    @following_data ||= service.following
   end
 
   def service
-    @_service ||= GithubService.new(@user)
+    @service ||= GitHubService.new(@user.username,@user.github_token)
   end
 end
