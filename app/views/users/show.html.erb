@@ -14,12 +14,24 @@
   <% if current_user.git_key %>
   <section class='github'>
     <h2>Github</h2>
-    <% facade.repos(5).each do |repo| %>
-      <ul class='repository'>
-        <li class='link'><%= link_to repo.name, repo.url %></li>
+    <h4>Repositories</h4>
+      <div class='repositories'>
+      <% facade.repos(5).each do |repo| %>
+        <ul class='repository'>
+          <li class='repo-link'><%= link_to repo.name, repo.url %></li>
+        </ul>
+      <%end%>
+    </div>
+    <h4>Followers</h4>
+    <div class='followers'>
+      <% facade.followers(5).each do |follower| %>
+      <ul class='follower'>
+        <li class='profile-link'><%= link_to follower.name, follower.url %></li>
       </ul>
-    <%end%>
+        <% end %>
+    </div>
   </section>
   <% end %>
+
 
 </section>

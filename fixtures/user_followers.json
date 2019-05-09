@@ -1,0 +1,42 @@
+[
+    {
+        "login": "n-flint",
+        "id": 34421236,
+        "node_id": "MDQ6VXNlcjM0NDIxMjM2",
+        "avatar_url": "https://avatars3.githubusercontent.com/u/34421236?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/n-flint",
+        "html_url": "https://github.com/n-flint",
+        "followers_url": "https://api.github.com/users/n-flint/followers",
+        "following_url": "https://api.github.com/users/n-flint/following{/other_user}",
+        "gists_url": "https://api.github.com/users/n-flint/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/n-flint/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/n-flint/subscriptions",
+        "organizations_url": "https://api.github.com/users/n-flint/orgs",
+        "repos_url": "https://api.github.com/users/n-flint/repos",
+        "events_url": "https://api.github.com/users/n-flint/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/n-flint/received_events",
+        "type": "User",
+        "site_admin": false
+    },
+    {
+        "login": "seanmsmith23",
+        "id": 4036233,
+        "node_id": "MDQ6VXNlcjQwMzYyMzM=",
+        "avatar_url": "https://avatars0.githubusercontent.com/u/4036233?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/seanmsmith23",
+        "html_url": "https://github.com/seanmsmith23",
+        "followers_url": "https://api.github.com/users/seanmsmith23/followers",
+        "following_url": "https://api.github.com/users/seanmsmith23/following{/other_user}",
+        "gists_url": "https://api.github.com/users/seanmsmith23/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/seanmsmith23/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/seanmsmith23/subscriptions",
+        "organizations_url": "https://api.github.com/users/seanmsmith23/orgs",
+        "repos_url": "https://api.github.com/users/seanmsmith23/repos",
+        "events_url": "https://api.github.com/users/seanmsmith23/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/seanmsmith23/received_events",
+        "type": "User",
+        "site_admin": false
+    }
+]
