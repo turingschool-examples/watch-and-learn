@@ -13,9 +13,16 @@ class GithubFacade
   end
 
   def followers(limit = nil)
-    limited = github_followers.take(limit)
-    limited.map do |follower_data|
+    rand_limited = github_followers.sample(limit)
+    rand_limited.map do |follower_data|
       Githubber.new(follower_data)
+    end
+  end
+
+  def followed(limit = nil)
+    rand_limited = github_followed.sample(limit)
+    rand_limited.map do |followed_date|
+      Githubber.new(followed_data)
     end
   end
 
