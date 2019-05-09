@@ -16,7 +16,7 @@ describe 'as a logged in user' do
       visit dashboard_path
 
       expect(page).to have_css('.github')
-      expect(page).to have_css('.followers')
+      expect(page).to have_css('.follower')
 
       within first('.followers') do
         expect(page).to have_css('.profile-link')
