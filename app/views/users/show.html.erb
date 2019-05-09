@@ -30,6 +30,14 @@
       </ul>
         <% end %>
     </div>
+    <h4>Followed</h4>
+    <div class='followed'>
+      <% facade.followed(5).each do |single_followed| %>
+      <ul class='single_followed'>
+        <li class='profile-link'><%= link_to single_followed.name, single_followed.url %></li>
+      </ul>
+        <% end %>
+    </div>
   </section>
   <% end %>
 
