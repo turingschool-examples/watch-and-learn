@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
-# PORO for repos
+# PORO for followers
 
-class Repo
-  attr_reader :name,
+class Follower
+  attr_reader :login,
               :url
 
   def initialize(attributes)
-    @name = attributes[:name]
+    @login = attributes[:login]
     @url = attributes[:html_url]
   end
 end
