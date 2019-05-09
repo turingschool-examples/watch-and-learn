@@ -2,7 +2,6 @@
 
 class UsersController < ApplicationController
   def show
-    # binding.pry
     user = current_user
     if user.github_token
       render locals: {
