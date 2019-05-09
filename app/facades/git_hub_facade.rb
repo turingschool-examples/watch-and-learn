@@ -34,7 +34,7 @@ class GitHubFacade
   end
 
   def followers_data
-    @follower_data ||= service.followers
+    @followers_data ||= service.followers
   end
 
   def following_data
