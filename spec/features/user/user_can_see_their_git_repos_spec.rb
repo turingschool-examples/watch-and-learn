@@ -8,7 +8,7 @@ describe 'as a logged in user on my dashboard' do
   end
 
   it 'sees a section for github and their collection of repos' do
-    user = create(:user, git_key: "bananas")
+    user = create(:user, git_key: ENV["GITHUB_API_KEY"])
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 

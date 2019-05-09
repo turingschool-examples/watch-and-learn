@@ -13,7 +13,8 @@ class GithubFacade
   end
 
   def followers(limit = nil)
-    github_followers.map do |follower_data|
+    limited = github_followers.take(limit)
+    limited.map do |follower_data|
       Githubber.new(follower_data)
     end
   end

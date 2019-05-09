@@ -24,7 +24,7 @@
     </div>
     <h4>Followers</h4>
     <div class='followers'>
-      <% facade.followers.each do |follower| %>
+      <% facade.followers(5).each do |follower| %>
       <ul class='follower'>
         <li class='profile-link'><%= link_to follower.name, follower.url %></li>
       </ul>
