@@ -15,11 +15,18 @@
 <section id="github-section">
   <% if current_user.github_token != nil %>
     <h3>Github Repos</h3>
-    <% facade.repos.each do |repo| %>
-    <%  %>
-      <ul>
-        <li><%= link_to repo.name, repo.url %></li>
-      </ul>
-    <% end %>
+    <ul>
+      <% facade.repos.each do |repo| %>
+          <li><%= link_to repo.name, repo.url %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  <% if current_user.github_token != nil %>
+    <h3>Following on Github</h3>
+    <ul>
+    <% facade.following.each do |following| %>
+      <li><%= link_to following.login, following.url %></li>
+      <% end %>
+    </ul>
   <% end %>
 </section>
