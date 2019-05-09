@@ -2,6 +2,7 @@
 
 require_relative '../models/github/repo'
 require_relative '../models/github/follower'
+require_relative '../models/github/following'
 class GitHubFacade
   def initialize(user)
     @user = user
@@ -19,6 +20,12 @@ class GitHubFacade
     end
   end
 
+  def following
+    following_output = following_data.map do |following|
+      Following.new(following)
+    end
+  end
+
   private
 
   def repos_data
@@ -28,6 +35,10 @@ class GitHubFacade
 
   def followers_data
     @_follower_data ||= service.followers
+  end
+
+  def following_data
+    @_following_data ||= service.following
   end
 
   def service
