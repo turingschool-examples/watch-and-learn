@@ -29,19 +29,19 @@ class GitHubFacade
   private
 
   def repos_data
-    @_repo_data ||= service.repos
-    @_repo_data.sample(5)
+    @repo_data ||= service.repos
+    @repo_data.sample(5)
   end
 
   def followers_data
-    @_follower_data ||= service.followers
+    @follower_data ||= service.followers
   end
 
   def following_data
-    @_following_data ||= service.following
+    @following_data ||= service.following
   end
 
   def service
-    @_service ||= GitHubService.new(@user.username,@user.github_token)
+    @service ||= GitHubService.new(@user.username,@user.github_token)
   end
 end
