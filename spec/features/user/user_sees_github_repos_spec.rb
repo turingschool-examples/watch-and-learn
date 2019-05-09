@@ -62,4 +62,29 @@ describe 'when logged in user visits root path without a token' do
       expect(page).to_not have_content('github.com')
     end
   end
+  # As a logged in user
+  # When I visit /dashboard
+  # Then I should see a section for "Github"
+  # And under that section I should see another section titled "Following"
+  # And I should see list of users I follow with their handles linking
+  # to their Github profile
+  describe 'logged in user sees the people he follows on github' do
+    it 'from the github api' do
+      user = User.create!(first_name: 'Earl',
+                          last_name: 'Stephens',
+                          email: 'sethreader@hotmail.com',
+                          password: 'password',
+                          username: 'earl-stephens')
+
+      allow_any_instance_of(ApplicationController)
+        .to receive(:current_user)
+        .and_return(user)
+
+      visit dashboard_path
+# save_and_open_page
+      within '#github-following-section' do
+        expect(page).to have_link()
+      end
+    end
+  end
 end
