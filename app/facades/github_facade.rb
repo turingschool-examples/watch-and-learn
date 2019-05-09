@@ -12,7 +12,17 @@ class GithubFacade
     end
   end
 
+  def followers(limit = nil)
+    github_followers.map do |follower_data|
+      Githubber.new(follower_data)
+    end
+  end
+
   private
+
+    def github_followers
+      @_github_followers = service.get_followers
+    end
 
     def newest_repos
       sorted = repo_data.sort_by { |repo| repo["updated_at"] }
