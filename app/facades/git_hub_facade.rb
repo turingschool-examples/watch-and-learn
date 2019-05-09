@@ -12,17 +12,16 @@ class GitHubFacade
     repo_output.sample(5)
   end
 
-  def followers
-    follower_output = follower_data.map do |follower|
-      Repo.new(follower)
+  def following
+    following_output = following_data.map do |following|
+      Following.new(following)
     end
-    follower_output.sample(5)
   end
 
   private
 
-  def follower_data
-    @_follower_data ||= service.get_followers
+  def following_data
+    @_following_data ||= service.get_following
   end
 
   def repo_data
