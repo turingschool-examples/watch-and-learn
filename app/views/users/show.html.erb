@@ -14,38 +14,39 @@
     <h1>Bookmarked Segments</h1>
   </section>
 
-  <section class="github-repos">
-    <h3>Github</h3>
-    <% facade.repos(5).each do |repo| %>
-      <ul>
-        <li class="repo">
-          <%= link_to repo.name, repo.html_url  %>
-        </li>
-      </ul>
-    <% end %>
+  <% if current_user.access_token != nil %>
+    <section class="github-repos">
+      <h3>Github</h3>
+      <% facade.repos(5).each do |repo| %>
+        <ul>
+          <li class="repo">
+            <%= link_to repo.name, repo.html_url  %>
+          </li>
+        </ul>
+      <% end %>
 
-  </section>
+    </section>
 
-  <section class="github-followers">
-    <h3>Followers</h3>
-    <% facade.followers.each do |follower| %>
-      <ul>
-        <li class="follower">
-          <%= link_to follower.login, follower.html_url %>
-        </li>
-      </ul>
-    <% end %>
-  </section>
+    <section class="github-followers">
+      <h3>Followers</h3>
+      <% facade.followers.each do |follower| %>
+        <ul>
+          <li class="follower">
+            <%= link_to follower.login, follower.html_url %>
+          </li>
+        </ul>
+      <% end %>
+    </section>
 
-  <section class="github-followings">
-    <h3>Following</h3>
-    <% facade.followings.each do |following| %>
-      <ul>
-        <li class="following">
-          <%= link_to following.login, following.html_url %>
-        </li>
-      </ul>
-    <% end %>
-  </section>
-
+    <section class="github-followings">
+      <h3>Following</h3>
+      <% facade.followings.each do |following| %>
+        <ul>
+          <li class="following">
+            <%= link_to following.login, following.html_url %>
+          </li>
+        </ul>
+      <% end %>
+    </section>
+  <% end %>
 </section>

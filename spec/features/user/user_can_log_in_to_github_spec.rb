@@ -16,7 +16,7 @@ describe "As a logged in user" do
     expect(page).to_not have_css(".follower")
     expect(page).to_not have_css(".following")
 
-    user.update(access_token: "super_secret")
+    user.update_column(:access_token, ENV["GITHUB_TOKEN_KEY"])
 
     visit dashboard_path
 
