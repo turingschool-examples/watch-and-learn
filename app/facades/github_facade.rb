@@ -21,7 +21,7 @@ class GithubFacade
 
   def followed(limit = nil)
     rand_limited = github_followed.sample(limit)
-    rand_limited.map do |followed_date|
+    rand_limited.map do |followed_data|
       Githubber.new(followed_data)
     end
   end
@@ -30,6 +30,10 @@ class GithubFacade
 
     def github_followers
       @_github_followers = service.get_followers
+    end
+
+    def github_followed
+      @_github_followed = service.get_followed
     end
 
     def newest_repos
