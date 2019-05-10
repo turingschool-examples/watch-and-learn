@@ -4,7 +4,7 @@ feature "users can see github info" do
   context "when I visit /dashboard" do
 
     before(:each) do
-      @user = create(:user)
+      @user = create(:user,access_token: ENV["GITHUB_TOKEN_KEY"])
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
       visit dashboard_path
     end

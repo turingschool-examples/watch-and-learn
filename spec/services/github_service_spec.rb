@@ -2,10 +2,13 @@ require 'rails_helper'
 
 describe GithubService, type: :service do
   context "instance methods", :vcr do
-    it "gets repos" do
-      service = GithubService.new
+    before :each do
+      user = create(:user, access_token: ENV["GITHUB_TOKEN_KEY"])
+      @service = GithubService.new(user)
+    end
 
-      result = service.get_repos
+    it "gets repos" do
+      result = @service.get_repos
 
       expect(result).to be_an(Array)
       expect(result.first).to have_key(:name)
@@ -13,9 +16,8 @@ describe GithubService, type: :service do
     end
 
     it "gets followers" do
-      service = GithubService.new
 
-      result = service.get_followers
+      result = @service.get_followers
 
       expect(result).to be_an(Array)
       expect(result.first).to have_key(:login)
@@ -23,9 +25,8 @@ describe GithubService, type: :service do
     end
 
     it "gets following" do
-      service = GithubService.new
 
-      result = service.get_following
+      result = @service.get_following
 
       expect(result).to be_an(Array)
       expect(result.first).to have_key(:login)
