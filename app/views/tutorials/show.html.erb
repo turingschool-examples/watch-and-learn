@@ -16,6 +16,9 @@
   <div class="title-bookmark">
     <h3><%= @facade.current_video.title %></h3>
     <div class="bookmarks-btn">
+      <% if current_user.admin? %>
+        <%= button_to "Edit Video", edit_admin_video_path(@facade.current_video), method: "get"%>
+      <% end %>
       <% if current_user %>
       <%= button_to "Bookmark", user_videos_path(video_id: @facade.current_video.id, user_id: current_user.id), method: :post, class: "btn btn-outline mb1 teal" %>
       <% else %>
