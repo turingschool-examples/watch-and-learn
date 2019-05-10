@@ -16,7 +16,7 @@
   <div class="title-bookmark">
     <h3><%= @facade.current_video.title %></h3>
     <div class="bookmarks-btn">
-      <% if current_user.admin? %>
+      <% if current_user && current_user.admin? %>
         <%= button_to "Edit Video", edit_admin_video_path(@facade.current_video), method: "get"%>
       <% end %>
       <% if current_user %>

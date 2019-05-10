@@ -11,10 +11,11 @@ context "As a logged-in admin" do
     visit tutorial_path(tutorial)
 
     click_button("Edit Video")
-    expect(path).to eq(edit_admin_video_path(video))
+    expect(current_path).to eq(edit_admin_video_path(video))
 
     fill_in "video[title]", with: "NEW TITLE"
-    click_link "Update Video"
+    click_button "Update Video"
+
     expect(current_path).to eq (tutorial_path(tutorial))
     expect(page).to have_content("NEW TITLE")
   end
