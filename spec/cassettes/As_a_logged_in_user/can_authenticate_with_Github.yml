@@ -21,7 +21,7 @@ http_interactions:
       Server:
       - GitHub.com
       Date:
-      - Fri, 10 May 2019 13:35:30 GMT
+      - Fri, 10 May 2019 13:39:33 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
@@ -31,7 +31,7 @@ http_interactions:
       X-Ratelimit-Limit:
       - '60'
       X-Ratelimit-Remaining:
-      - '55'
+      - '50'
       X-Ratelimit-Reset:
       - '1557498928'
       X-Github-Media-Type:
@@ -55,10 +55,10 @@ http_interactions:
       Content-Security-Policy:
       - default-src 'none'
       X-Github-Request-Id:
-      - C336:75B9:E11768:1C69E44:5CD57E22
+      - C418:5D4B:E0B2E4:1C8C4CA:5CD57F15
     body:
       encoding: UTF-8
       string: '{"message":"Requires authentication","documentation_url":"https://developer.github.com/v3/repos/#list-your-repositories"}'
     http_version: 
-  recorded_at: Fri, 10 May 2019 13:35:30 GMT
+  recorded_at: Fri, 10 May 2019 13:39:33 GMT
 recorded_with: VCR 4.0.0

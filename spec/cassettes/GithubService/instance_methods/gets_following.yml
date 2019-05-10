@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.github.com/user/following?access_token=ac2ff1451891d8be9d5d493df9d9f3c0888234b2
+    uri: https://api.github.com/user/following?access_token
     body:
       encoding: US-ASCII
       string: ''
@@ -15,35 +15,25 @@ http_interactions:
       - "*/*"
   response:
     status:
-      code: 200
-      message: OK
+      code: 401
+      message: Unauthorized
     headers:
       Server:
       - GitHub.com
       Date:
-      - Wed, 08 May 2019 17:58:39 GMT
+      - Fri, 10 May 2019 13:35:33 GMT
       Content-Type:
       - application/json; charset=utf-8
-      Transfer-Encoding:
-      - chunked
+      Content-Length:
+      - '144'
       Status:
-      - 200 OK
+      - 401 Unauthorized
       X-Ratelimit-Limit:
-      - '5000'
+      - '60'
       X-Ratelimit-Remaining:
-      - '4955'
+      - '51'
       X-Ratelimit-Reset:
-      - '1557341581'
-      Cache-Control:
-      - private, max-age=60, s-maxage=60
-      Vary:
-      - Accept, Authorization, Cookie, X-GitHub-OTP
-      Etag:
-      - W/"23e3ab4bca590c8b855b75ff1ed81026"
-      X-Oauth-Scopes:
-      - repo
-      X-Accepted-Oauth-Scopes:
-      - ''
+      - '1557498928'
       X-Github-Media-Type:
       - github.v3; format=json
       Access-Control-Expose-Headers:
@@ -65,10 +55,10 @@ http_interactions:
       Content-Security-Policy:
       - default-src 'none'
       X-Github-Request-Id:
-      - D8F7:4C0B:85808C:165CA4F:5CD318CE
+      - C380:27E7:5C7ECA:EFF8D0:5CD57E25
     body:
-      encoding: ASCII-8BIT
-      string: '[{"login":"stiehlrod","id":25069483,"node_id":"MDQ6VXNlcjI1MDY5NDgz","avatar_url":"https://avatars2.githubusercontent.com/u/25069483?v=4","gravatar_id":"","url":"https://api.github.com/users/stiehlrod","html_url":"https://github.com/stiehlrod","followers_url":"https://api.github.com/users/stiehlrod/followers","following_url":"https://api.github.com/users/stiehlrod/following{/other_user}","gists_url":"https://api.github.com/users/stiehlrod/gists{/gist_id}","starred_url":"https://api.github.com/users/stiehlrod/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/stiehlrod/subscriptions","organizations_url":"https://api.github.com/users/stiehlrod/orgs","repos_url":"https://api.github.com/users/stiehlrod/repos","events_url":"https://api.github.com/users/stiehlrod/events{/privacy}","received_events_url":"https://api.github.com/users/stiehlrod/received_events","type":"User","site_admin":false},{"login":"jalena-penaligon","id":45905026,"node_id":"MDQ6VXNlcjQ1OTA1MDI2","avatar_url":"https://avatars0.githubusercontent.com/u/45905026?v=4","gravatar_id":"","url":"https://api.github.com/users/jalena-penaligon","html_url":"https://github.com/jalena-penaligon","followers_url":"https://api.github.com/users/jalena-penaligon/followers","following_url":"https://api.github.com/users/jalena-penaligon/following{/other_user}","gists_url":"https://api.github.com/users/jalena-penaligon/gists{/gist_id}","starred_url":"https://api.github.com/users/jalena-penaligon/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/jalena-penaligon/subscriptions","organizations_url":"https://api.github.com/users/jalena-penaligon/orgs","repos_url":"https://api.github.com/users/jalena-penaligon/repos","events_url":"https://api.github.com/users/jalena-penaligon/events{/privacy}","received_events_url":"https://api.github.com/users/jalena-penaligon/received_events","type":"User","site_admin":false}]'
+      encoding: UTF-8
+      string: '{"message":"Requires authentication","documentation_url":"https://developer.github.com/v3/users/followers/#list-users-followed-by-another-user"}'
     http_version: 
-  recorded_at: Wed, 08 May 2019 17:58:39 GMT
+  recorded_at: Fri, 10 May 2019 13:35:33 GMT
 recorded_with: VCR 4.0.0
