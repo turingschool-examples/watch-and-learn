@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'as a logged in user' do
   before :each do
-    json_response = File.open("./fixtures/user_following.json")
+    json_response = File.open("./fixtures/user_followed.json")
     stub_request(:get, "https://api.github.com/user/following").
       to_return(status: 200, body: json_response)
   end
@@ -19,7 +19,7 @@ describe 'as a logged in user' do
       expect(page).to have_css('.single_followed')
 
       within first('.followed') do
-        expect(page).to have_css('.profile_link')
+        expect(page).to have_css('.profile-link')
       end
     end
   end
