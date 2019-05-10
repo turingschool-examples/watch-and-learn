@@ -1,7 +1,7 @@
-require "rails_helper"
+require 'rails_helper'
 
-context "As a logged-in admin" do
-  it "can successfully update a video for a tutorial" do
+context 'As a logged-in admin' do
+  it 'can successfully update a video for a tutorial' do
     admin = create(:admin)
     tutorial = create(:tutorial)
     video = create(:video)
@@ -10,13 +10,13 @@ context "As a logged-in admin" do
 
     visit tutorial_path(tutorial)
 
-    click_button("Edit Video")
+    click_button('Edit Video')
     expect(current_path).to eq(edit_admin_video_path(video))
 
-    fill_in "video[title]", with: "NEW TITLE"
-    click_button "Update Video"
+    fill_in 'video[title]', with: 'NEW TITLE'
+    click_button 'Update Video'
 
-    expect(current_path).to eq (tutorial_path(tutorial))
-    expect(page).to have_content("NEW TITLE")
+    expect(current_path).to eq(tutorial_path(tutorial))
+    expect(page).to have_content('NEW TITLE')
   end
 end
