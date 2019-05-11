@@ -21,7 +21,7 @@ http_interactions:
       Server:
       - GitHub.com
       Date:
-      - Sat, 11 May 2019 19:02:53 GMT
+      - Sat, 11 May 2019 19:19:55 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -31,9 +31,9 @@ http_interactions:
       X-Ratelimit-Limit:
       - '5000'
       X-Ratelimit-Remaining:
-      - '4998'
+      - '4973'
       X-Ratelimit-Reset:
-      - '1557604945'
+      - '1557605768'
       Cache-Control:
       - private, max-age=60, s-maxage=60
       Vary:
@@ -65,10 +65,10 @@ http_interactions:
       Content-Security-Policy:
       - default-src 'none'
       X-Github-Request-Id:
-      - F228:2112:A353FC:194E656:5CD71C5D
+      - F3B3:1E9F:A3EC42:1948726:5CD7205B
     body:
       encoding: ASCII-8BIT
       string: '[{"login":"asmolentzov","id":6686861,"node_id":"MDQ6VXNlcjY2ODY4NjE=","avatar_url":"https://avatars2.githubusercontent.com/u/6686861?v=4","gravatar_id":"","url":"https://api.github.com/users/asmolentzov","html_url":"https://github.com/asmolentzov","followers_url":"https://api.github.com/users/asmolentzov/followers","following_url":"https://api.github.com/users/asmolentzov/following{/other_user}","gists_url":"https://api.github.com/users/asmolentzov/gists{/gist_id}","starred_url":"https://api.github.com/users/asmolentzov/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/asmolentzov/subscriptions","organizations_url":"https://api.github.com/users/asmolentzov/orgs","repos_url":"https://api.github.com/users/asmolentzov/repos","events_url":"https://api.github.com/users/asmolentzov/events{/privacy}","received_events_url":"https://api.github.com/users/asmolentzov/received_events","type":"User","site_admin":false},{"login":"joequincy","id":3322920,"node_id":"MDQ6VXNlcjMzMjI5MjA=","avatar_url":"https://avatars2.githubusercontent.com/u/3322920?v=4","gravatar_id":"","url":"https://api.github.com/users/joequincy","html_url":"https://github.com/joequincy","followers_url":"https://api.github.com/users/joequincy/followers","following_url":"https://api.github.com/users/joequincy/following{/other_user}","gists_url":"https://api.github.com/users/joequincy/gists{/gist_id}","starred_url":"https://api.github.com/users/joequincy/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/joequincy/subscriptions","organizations_url":"https://api.github.com/users/joequincy/orgs","repos_url":"https://api.github.com/users/joequincy/repos","events_url":"https://api.github.com/users/joequincy/events{/privacy}","received_events_url":"https://api.github.com/users/joequincy/received_events","type":"User","site_admin":false},{"login":"plapicola","id":41562392,"node_id":"MDQ6VXNlcjQxNTYyMzky","avatar_url":"https://avatars1.githubusercontent.com/u/41562392?v=4","gravatar_id":"","url":"https://api.github.com/users/plapicola","html_url":"https://github.com/plapicola","followers_url":"https://api.github.com/users/plapicola/followers","following_url":"https://api.github.com/users/plapicola/following{/other_user}","gists_url":"https://api.github.com/users/plapicola/gists{/gist_id}","starred_url":"https://api.github.com/users/plapicola/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/plapicola/subscriptions","organizations_url":"https://api.github.com/users/plapicola/orgs","repos_url":"https://api.github.com/users/plapicola/repos","events_url":"https://api.github.com/users/plapicola/events{/privacy}","received_events_url":"https://api.github.com/users/plapicola/received_events","type":"User","site_admin":false}]'
     http_version: 
-  recorded_at: Sat, 11 May 2019 19:02:53 GMT
+  recorded_at: Sat, 11 May 2019 19:19:55 GMT
 recorded_with: VCR 4.0.0

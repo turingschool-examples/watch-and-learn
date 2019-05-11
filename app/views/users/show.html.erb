@@ -28,5 +28,14 @@
           <% end %>
         </ul>
     </section>
+
+    <section class="followers">
+      <h1>People who Follow you</h1>
+        <ul>
+          <% facade.followers.each do |user| %>
+            <li><%= link_to user.username, user.github_url %></li>
+          <% end %>
+        </ul>
+    </section>
   <% end %>
 </section>

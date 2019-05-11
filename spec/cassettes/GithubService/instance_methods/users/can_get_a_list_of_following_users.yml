@@ -21,7 +21,7 @@ http_interactions:
       Server:
       - GitHub.com
       Date:
-      - Sat, 11 May 2019 19:02:25 GMT
+      - Sat, 11 May 2019 19:19:55 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -31,9 +31,9 @@ http_interactions:
       X-Ratelimit-Limit:
       - '5000'
       X-Ratelimit-Remaining:
-      - '4999'
+      - '4974'
       X-Ratelimit-Reset:
-      - '1557604945'
+      - '1557605768'
       Cache-Control:
       - private, max-age=60, s-maxage=60
       Vary:
@@ -65,10 +65,10 @@ http_interactions:
       Content-Security-Policy:
       - default-src 'none'
       X-Github-Request-Id:
-      - F223:5480:160A736:2D30A65:5CD71C41
+      - F3B2:47A2:110C6DC:24F2E66:5CD7205B
     body:
       encoding: ASCII-8BIT
       string: '[{"login":"plapicola","id":41562392,"node_id":"MDQ6VXNlcjQxNTYyMzky","avatar_url":"https://avatars1.githubusercontent.com/u/41562392?v=4","gravatar_id":"","url":"https://api.github.com/users/plapicola","html_url":"https://github.com/plapicola","followers_url":"https://api.github.com/users/plapicola/followers","following_url":"https://api.github.com/users/plapicola/following{/other_user}","gists_url":"https://api.github.com/users/plapicola/gists{/gist_id}","starred_url":"https://api.github.com/users/plapicola/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/plapicola/subscriptions","organizations_url":"https://api.github.com/users/plapicola/orgs","repos_url":"https://api.github.com/users/plapicola/repos","events_url":"https://api.github.com/users/plapicola/events{/privacy}","received_events_url":"https://api.github.com/users/plapicola/received_events","type":"User","site_admin":false},{"login":"tnodland","id":42710030,"node_id":"MDQ6VXNlcjQyNzEwMDMw","avatar_url":"https://avatars2.githubusercontent.com/u/42710030?v=4","gravatar_id":"","url":"https://api.github.com/users/tnodland","html_url":"https://github.com/tnodland","followers_url":"https://api.github.com/users/tnodland/followers","following_url":"https://api.github.com/users/tnodland/following{/other_user}","gists_url":"https://api.github.com/users/tnodland/gists{/gist_id}","starred_url":"https://api.github.com/users/tnodland/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/tnodland/subscriptions","organizations_url":"https://api.github.com/users/tnodland/orgs","repos_url":"https://api.github.com/users/tnodland/repos","events_url":"https://api.github.com/users/tnodland/events{/privacy}","received_events_url":"https://api.github.com/users/tnodland/received_events","type":"User","site_admin":false}]'
     http_version: 
-  recorded_at: Sat, 11 May 2019 19:02:25 GMT
+  recorded_at: Sat, 11 May 2019 19:19:55 GMT
 recorded_with: VCR 4.0.0
