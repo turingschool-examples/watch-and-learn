@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require "rails_helper"
 
 describe 'User logs in through github omniauth' do
@@ -17,14 +18,14 @@ describe 'User logs in through github omniauth' do
 
       OmniAuth.config.test_mode = true
 
-      omniauth_hash = { 'provider' => 'github',
-                        'uid' => '12345',
-                        'info' => {
-                          'nickname' => 'djc00p'
-                        },
-                        'credentials' => {
-                          'token' => ENV['Deonte_token']
-                        }}
+      omniauth_hash = {'provider' => 'github',
+                       'uid' => '12345',
+                       'info' => {
+                         'nickname' => 'djc00p'
+                       },
+                       'credentials' => {
+                         'token' => ENV['Deonte_token']
+                       }}
 
       OmniAuth.config.add_mock(:github, omniauth_hash)
 
