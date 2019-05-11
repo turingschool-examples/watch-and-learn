@@ -9,4 +9,5 @@ class GithubService
     data = JSON.parse(response.body, symbolize_names: true)
     data.take(5)
   end
+  
 end
