@@ -1,13 +1,23 @@
 <section class="dashboard-main">
-  <h1> <%= current_user.first_name %>'s Dashboard </h1>
+  <h1> <%= facade.first_name %>'s Dashboard </h1>
 
   <%= button_to 'Log Out', logout_path, method: 'delete', class: "btn btn-primary mb1 bg-teal" %>
   <h3>Account Details</h3>
   <ul>
-    <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
-    <li> <%= current_user.email%> </li>
+    <li> <%= facade.first_name  %> <%= facade.last_name %> </li>
+    <li> <%= facade.email%> </li>
   </ul>
   <section>
     <h1>Bookmarked Segments</h1>
   </section>
+  <% unless facade.token? %>
+    <section class="github">
+      <h1>Your Repositories</h1>
+      <ul>
+        <% facade.repos.each do |repo| %>
+          <li><%= link_to repo.name, repo.url %></li>
+        <% end %>
+      </ul>
+    </section>
+  <% end %>
 </section>
