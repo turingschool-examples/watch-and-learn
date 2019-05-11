@@ -1,0 +1,9 @@
+<%= form_for [@video], action: :edit, url: admin_video_path(@video) do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+  <%= f.label :thumbnail %>
+  <%= f.text_field :thumbnail %>
+  <%= f.submit "Update Video", class: :button %>
+<% end %>
