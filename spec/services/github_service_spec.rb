@@ -13,5 +13,25 @@ RSpec.describe GithubService, type: :model do
         expect(result[0]).to be_a(Hash)
       end
     end
+
+    describe 'users' do
+      it 'can get a list of following users', :vcr do
+        service = GithubService.new(token: ENV['GITHUB_TOKEN_KEY'])
+
+        result = service.get_following
+
+        expect(result).to be_a(Array)
+        expect(result[0]).to be_a(Hash)
+      end
+
+      it 'can get a list of followed users', :vcr do
+        service = GithubService.new(token: ENV['GITHUB_TOKEN_KEY'])
+
+        result = service.get_followers
+
+        expect(result).to be_a(Array)
+        expect(result[0]).to be_a(Hash)
+      end
+    end
   end
 end
