@@ -9,7 +9,6 @@ class GitHubService
   end
 
   def repos
-    binding.pry
     get_json('repos')
   end
 
