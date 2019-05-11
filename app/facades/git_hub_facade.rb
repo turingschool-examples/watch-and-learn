@@ -42,6 +42,8 @@ class GitHubFacade
   end
 
   def service
-    @service ||= GitHubService.new(@user.username,@user.github_token)
+    binding.pry
+    @service ||= GitHubService.new(@user.username, @user.github_token)
+    # binding.pry
   end
 end

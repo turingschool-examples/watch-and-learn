@@ -2,10 +2,12 @@
   <h1> <%= current_user.first_name %>'s Dashboard </h1>
 
   <%= button_to 'Log Out', logout_path, method: 'delete', class: "btn btn-primary mb1 bg-teal" %>
+  <%= button_to 'Connect to Github', '/auth/github' %>
   <h3>Account Details</h3>
   <ul>
     <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
     <li> <%= current_user.email%> </li>
+    <% %>
   </ul>
   <% %>
   <section>
@@ -18,7 +20,6 @@
     <h2>Github</h2>
     <section id="github-repos">
       <% facade.repos.each do |repo| %>
-      <%  %>
       <ul>
         <li><%= link_to repo.name, repo.url %></li>
       </ul>
@@ -44,4 +45,5 @@
       </ul>
     </section>
   <% end %>
+
 </section>
