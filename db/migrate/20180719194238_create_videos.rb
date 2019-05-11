@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# this migration creates the videos table
 class CreateVideos < ActiveRecord::Migration[5.2]
   def change
     create_table :videos do |t|
