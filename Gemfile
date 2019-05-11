@@ -18,16 +18,15 @@ gem 'google-api-client'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery'
 gem 'omniauth-census', git: 'https://github.com/turingschool-projects/omniauth-census'
+gem 'omniauth-github'
 gem 'omniauth-google-oauth2'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
 gem 'rails', '~> 5.2.0'
 gem 'sass-rails', '~> 5.0'
 # gem 'uglifier', '>= 1.3.0'
-
 gem 'webpacker', '~> 3.5'
 gem 'will_paginate'
-
 gem 'yt', '~> 0.29.1'
 
 group :development, :test do
