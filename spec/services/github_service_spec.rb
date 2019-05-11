@@ -4,7 +4,7 @@ RSpec.describe GithubService, type: :model do
   describe 'instance methods' do
     describe 'repos', :vcr do
       it 'collects repos from the api' do
-        service = GithubService.new(token: "8e08129aa359391e0f54b1192be5a9c3bb819e09")
+        service = GithubService.new(token: ENV['GITHUB_TOKEN_KEY'])
 
         result = service.get_repos
 
