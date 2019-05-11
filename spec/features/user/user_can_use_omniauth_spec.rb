@@ -1,7 +1,8 @@
+# frozen_string_literal: true
 require "rails_helper"
 
 describe 'User logs in through github omniauth' do
-  it "shows github info on dashboard" do
+  it 'shows github info on dashboard' do
     VCR.use_cassette('cassettes/can_see_github_info4') do
       user = User.create!(first_name: 'Deonte',
         last_name: 'Cooper',
