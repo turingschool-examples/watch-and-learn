@@ -19,6 +19,9 @@ class UserFacade
   def following
     service = GithubService.new(token: @token)
     users = service.get_following
+    users.map do |user|
+      GithubUser.new(user)
+    end
   end
 
   def token?
