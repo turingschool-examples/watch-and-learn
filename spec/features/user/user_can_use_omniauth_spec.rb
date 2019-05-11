@@ -24,8 +24,7 @@ describe 'User logs in through github omniauth' do
                         },
                         'credentials' => {
                           'token' => ENV['Deonte_token']
-                        }
-                      }
+                        }}
 
       OmniAuth.config.add_mock(:github, omniauth_hash)
 
