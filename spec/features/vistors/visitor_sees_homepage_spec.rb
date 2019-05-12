@@ -29,7 +29,7 @@ describe 'Visitor' do
       click_on 'About'
 
       expect(current_path).to eq(about_path)
-      expect(page).to have_content("This application is designed to pull in youtube information")
+      expect(page).to have_content('This application is designed to pull in youtube information')
     end
 
     it 'shows a get started page' do
