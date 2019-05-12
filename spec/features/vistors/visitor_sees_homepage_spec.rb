@@ -7,7 +7,7 @@ describe 'Visitor' do
     it 'can see a list of tutorials' do
       tutorial1 = create(:tutorial)
       tutorial2 = create(:tutorial)
-
+      
       visit root_path
 
       expect(page).to have_css('.tutorial', count: 2)
@@ -21,8 +21,6 @@ describe 'Visitor' do
     end
 
     it 'shows an about page' do
-      tutorial1 = create(:tutorial)
-      tutorial2 = create(:tutorial)
 
       visit root_path
 
@@ -33,8 +31,6 @@ describe 'Visitor' do
     end
 
     it 'shows a get started page' do
-      tutorial1 = create(:tutorial)
-      tutorial2 = create(:tutorial)
 
       visit root_path
 
