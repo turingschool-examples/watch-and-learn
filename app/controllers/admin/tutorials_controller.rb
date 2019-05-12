@@ -5,20 +5,17 @@ class Admin::TutorialsController < Admin::BaseController
     @tutorial = Tutorial.find(params[:id])
   end
 
-  def create; end
-
   def new
     @tutorial = Tutorial.new
   end
 
-  # def create
-  #   @tutorial = Tutorial.new(tutorial_params)
-  #   binding.pry
-  #   if @tutorial.save
-  #     flash[:success] = "#{tutorial.title} created!"
-  #     redirect_to edit_admin_tutorial_path(@tutorial)
-  #   end
-  # end
+  def create
+    @tutorial = Tutorial.new(tutorial_params)
+    if @tutorial.save
+      flash[:success] = "#{@tutorial.title} created!"
+      redirect_to edit_admin_tutorial_path(@tutorial)
+    end
+  end
 
   def update
     tutorial = Tutorial.find(params[:id])
