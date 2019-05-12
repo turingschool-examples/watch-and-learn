@@ -36,7 +36,6 @@ prework_tutorial.videos.create!({
   "position"=>4
 })
 
-
 mod_1_tutorial_data = {
   "title"=>"Back End Engineering - Module 1",
   "description"=>"Videos related to Mod 1.",

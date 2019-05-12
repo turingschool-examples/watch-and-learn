@@ -39,15 +39,15 @@ describe 'As a logged in user' do
       "thumbnail"=>"https://i.ytimg.com/vi/c2UnIQ3LRnM/hqdefault.jpg",
       "position"=>4
     })
-
-    visit tutorials_path
+# binding.pry
+    visit root_path
 
     expect(page).to_not have_content("Back End Engineering - Prework")
 
     user = create(:user)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-    visit tutorials_path
+    visit root_path
 
     expect(page).to have_content("Back End Engineering - Prework")
   end
