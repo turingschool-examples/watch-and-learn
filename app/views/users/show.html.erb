@@ -34,7 +34,7 @@
           <li class="follower" id="<%= follower.login %>">
             <%= link_to follower.login, follower.html_url %>
             <% if follower.registered? %>
-            :  <%= link_to "Add as Friend", to_a_place %>
+            :  <%= button_to "Add as Friend", friendship_path(follower) %>
             <% end %>
           </li>
       <% end %>

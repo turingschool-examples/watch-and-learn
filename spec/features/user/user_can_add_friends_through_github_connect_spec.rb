@@ -11,7 +11,10 @@ describe 'as a logged in user who has connected with github' do
    visit dashboard_path
 
    within '#jtaylor522' do
-     expect(page).to have_link("Add as Friend")
+     expect(page).to have_button("Add as Friend")
+     click_button("Add as Friend")
+     expect(current_path).to eq(dashboard_path)
    end
+
  end
 end
