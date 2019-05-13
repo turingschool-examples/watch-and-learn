@@ -17,6 +17,7 @@ describe 'as a logged in user who has connected with github' do
    end
 
    within '.friends' do
+
      expect(page).to have_content("Your Friends")
      expect(page).to have_content("jtaylor522")
    end

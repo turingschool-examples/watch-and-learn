@@ -15,8 +15,7 @@ class User < ApplicationRecord
 
   def friend?(user_login)
     friendships.any? do |friend|
-      friend.login == user_login
+      friend.friend_login == user_login
     end
   end
-
 end

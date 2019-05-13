@@ -33,8 +33,8 @@
       <% facade.followers.each do |follower| %>
           <li class='follower' id='<%= follower.login %>'>
             <%= link_to follower.login, follower.html_url %>
-            <% if follower.registered? %>
-            :  <%= button_to 'Add as Friend', friendship_path(user_id: current_user.id, friend_login: follower.login) %>
+            <% if follower.registered? && !current_user.friend?(follower.login) %>
+            :  <%= button_to 'Add as Friend', friendship_path(friend_login: follower.login) %>
             <% end %>
           </li>
       <% end %>
@@ -47,8 +47,8 @@
       <% facade.followings.each do |following| %>
           <li class='following' id='<%= following.login %>'>
             <%= link_to following.login, following.html_url %>
-            <% if follower.registered? %>
-            :  <%= button_to 'Add as Friend', friendship_path(user_id: current_user.id, friend_login: follower.login) %>
+            <% if following.registered? && !current_user.friend?(following.login) %>
+            :  <%= button_to 'Add as Friend', friendship_path(friend_login: following.login) %>
             <% end %>
           </li>
       <% end %>
