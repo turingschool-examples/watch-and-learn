@@ -25,7 +25,7 @@
         <ul>
           <% facade.following.each do |user| %>
             <li><%= link_to user.username, user.github_url %>
-            <% if user.linked_github? %>
+            <% if user.linked_github? && user.not_friend?(current_user.id) %>
               <%= link_to 'Add Friend', users_add_friend_path(user.username) %>
             <% end %></li>
           <% end %>
@@ -37,7 +37,7 @@
         <ul>
           <% facade.followers.each do |user| %>
             <li><%= link_to user.username, user.github_url %>
-            <% if user.linked_github? %>
+            <% if user.linked_github? && user.not_friend?(current_user.id) %>
               <%= link_to 'Add Friend', users_add_friend_path(user.username) %>
             <% end %></li>
           <% end %>
@@ -46,4 +46,13 @@
     <% else %>
       <%= link_to "Link your GitHub account", "/auth/github" %>
   <% end %>
+
+  <section class="friends">
+    <h1>People you have friended</h1>
+    <ul>
+      <% facade.friends.each do |friend| %>
+        <li><%= friend.github_name %></li>
+      <% end %>
+    </ul>
+  </section>
 </section>
