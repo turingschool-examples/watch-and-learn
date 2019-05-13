@@ -1,4 +1,7 @@
+require_relative "./concerns/registered_helper"
+
 class Follower
+  include RegisteredHelper
 
   attr_reader :login, :html_url
 

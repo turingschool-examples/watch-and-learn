@@ -1,10 +1,10 @@
-<section class="dashboard-main">
+<section class='dashboard-main'>
   <h1> <%= current_user.first_name %>'s Dashboard </h1>
   <% if current_user.access_token == nil %>
-    <%= link_to "Connect to Github", github_login_path %>
+    <%= link_to 'Connect to Github', github_login_path %>
   <% end %>
 
-  <%= button_to 'Log Out', logout_path, method: 'delete', class: "btn btn-primary mb1 bg-teal" %>
+  <%= button_to 'Log Out', logout_path, method: 'delete', class: 'btn btn-primary mb1 bg-teal' %>
   <h3>Account Details</h3>
   <ul>
     <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
@@ -15,38 +15,57 @@
   </section>
 
   <% if current_user.access_token != nil %>
-    <section class="github-repos">
+    <section class='github-repos'>
       <h3>Github</h3>
+      <ul>
       <% facade.repos(5).each do |repo| %>
-        <ul>
-          <li class="repo">
+          <li class='repo'>
             <%= link_to repo.name, repo.html_url  %>
           </li>
-        </ul>
       <% end %>
+    </ul>
 
     </section>
 
-    <section class="github-followers">
+    <section class='github-followers'>
       <h3>Followers</h3>
+      <ul>
       <% facade.followers.each do |follower| %>
-        <ul>
-          <li class="follower">
+          <li class='follower' id='<%= follower.login %>'>
             <%= link_to follower.login, follower.html_url %>
+            <% if follower.registered? && !current_user.friend?(follower.login) %>
+            :  <%= button_to 'Add as Friend', friendship_path(friend_login: follower.login) %>
+            <% end %>
           </li>
-        </ul>
       <% end %>
+    </ul>
     </section>
 
-    <section class="github-followings">
+    <section class='github-followings'>
       <h3>Following</h3>
+      <ul>
       <% facade.followings.each do |following| %>
-        <ul>
-          <li class="following">
+          <li class='following' id='<%= following.login %>'>
             <%= link_to following.login, following.html_url %>
+            <% if following.registered? && !current_user.friend?(following.login) %>
+            :  <%= button_to 'Add as Friend', friendship_path(friend_login: following.login) %>
+            <% end %>
           </li>
-        </ul>
       <% end %>
+    </ul>
     </section>
+
+    <% if current_user.friendships? %>
+      <section class='friends'>
+        <h3>Your Friends</h3>
+        <ul>
+          <% current_user.friendships.each do |friendship| %>
+            <li class='friend' id='<%= friendship.friend_login %>'>
+              <%= friendship.friend_login %>
+            </li>
+          <% end %>
+        </ul>
+      </section>
+    <% end %>
   <% end %>
 </section>

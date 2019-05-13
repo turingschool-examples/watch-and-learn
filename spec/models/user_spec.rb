@@ -22,4 +22,17 @@ RSpec.describe User, type: :model do
       expect(admin.admin?).to be_truthy
     end
   end
+
+  describe "friendships?" do
+    it "determines whether or not user has friendships" do
+      user = User.create(email: 'user@email.com', password: 'password', first_name:'Jim', role: 0)
+      expect(user.friendships?).to be false
+      Friendship.create(user_id: user.id, friend_id: 2, friend_login: "Friend")
+      expect(user.friendships?).to be true
+    end
+  end
+
+  describe "friend?" do
+
+  end
 end
