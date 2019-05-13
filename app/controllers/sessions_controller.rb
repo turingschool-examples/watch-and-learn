@@ -17,6 +17,7 @@ class SessionsController < ApplicationController
   def update
     user_info = request.env['omniauth.auth']
     current_user.update_column(:access_token, user_info[:credentials][:token])
+    current_user.update_column(:github_login, user_info[:extra][:raw_info][:login])
     redirect_to dashboard_path
   end
 
