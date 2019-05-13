@@ -1,0 +1,5 @@
+<h1>Enter Your Friend's GitHub Usename and we'll invite them to join!</h1>
+<%= form_tag :invite, method: :post do %>
+  <%= text_field_tag :github_handle, "Github Handle" %>
+  <%= submit_tag "Send Invite" %>
+<% end %>

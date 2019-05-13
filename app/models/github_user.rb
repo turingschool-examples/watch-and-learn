@@ -1,10 +1,12 @@
 class GithubUser
   attr_reader :username,
-              :github_url
+              :github_url,
+              :email
 
   def initialize(data)
     @username = data[:login]
     @github_url = data[:html_url]
+    @email = data[:email]
   end
 
   def linked_github?
