@@ -13,5 +13,4 @@ class User < ApplicationRecord
     friendships.count > 0
   end
 
-
 end

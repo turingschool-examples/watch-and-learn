@@ -34,7 +34,7 @@
           <li class="follower" id="<%= follower.login %>">
             <%= link_to follower.login, follower.html_url %>
             <% if follower.registered? %>
-            :  <%= button_to "Add as Friend", friendship_path(follower) %>
+            :  <%= button_to "Add as Friend", friendship_path(user_id: current_user.id, friend_login: follower.login) %>
             <% end %>
           </li>
       <% end %>
@@ -54,9 +54,11 @@
 
     <% if current_user.friendships? %>
       <section class="friends">
+        <h3>Your Friends</h3>
         <ul>
-          <% @friendships.each do |friendship| %>
-            <li class="friend" id="<%= friendship.login %>">
+          <% current_user.friendships.each do |friendship| %>
+            <li class="friend" id="<%= friendship.friend_login %>">
+              <%= friendship.friend_login %>
             </li>
           <% end %>
         </ul>

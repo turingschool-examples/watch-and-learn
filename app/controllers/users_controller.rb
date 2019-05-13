@@ -3,7 +3,6 @@ class UsersController < ApplicationController
     render locals: {
       facade: GithubFacade.new(current_user)
     }
-    @friendships = Friendship.where(user_id: current_user.id)
   end
 
   def new
