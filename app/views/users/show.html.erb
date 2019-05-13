@@ -18,6 +18,7 @@
       <% end %>
   </section>
   <% unless facade.token? %>
+    <%= link_to 'Send an Invite', invite_path %>
     <section class="github">
       <h1>Your Repositories</h1>
       <ul>
