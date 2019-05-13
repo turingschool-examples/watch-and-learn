@@ -17,6 +17,22 @@ VCR.configure do |config|
   config.filter_sensitive_data("<GITHUB_TOKEN_KEY>") { ENV['GITHUB_TOKEN_KEY'] }
 end
 
+OmniAuth.config.test_mode = true
+omniauth_hash = { 'provider' => 'github',
+                  'uid' => '12345',
+                  'info' => {
+                      'name' => 'Steve',
+                      'email' => '1234@hotmail.com',
+                      'nickname' => 'SteveTheCleric'
+                  },"credentials"=>{"token"=>"#{ENV['GITHUB_TOKEN_KEY']}", "expires"=>false},
+                  'extra' => {'raw_info' =>
+                                  { 'location' => 'Holy!',
+                                    'gravatar_id' => '123456789'
+                                  }
+                  }
+}
+OmniAuth.config.add_mock(:github, omniauth_hash)
+
 
 ActiveRecord::Migration.maintain_test_schema!
 
