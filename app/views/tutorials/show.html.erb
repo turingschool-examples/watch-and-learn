@@ -13,6 +13,7 @@
 </div>
 
 <div class="col col-8">
+  <% if @facade.videos? %>
   <div class="title-bookmark">
     <h3><%= @facade.current_video.title %></h3>
     <div class="bookmarks-btn">
@@ -64,6 +65,10 @@
     <%= @facade.current_video.description.truncate(50) %>...
     <%= link_to "More", "#", "data-action" => "click->tutorials#showDescription", id: @facade.current_video.id, class: "show-link"%>
   </p>
+  <% else %>
+  <p>This tutorial has no videos yet!</p>
+  <%= link_to "Back to homepage", root_path %>
+  <% end %>
 </div>
 
 </main>

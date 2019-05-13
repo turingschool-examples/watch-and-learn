@@ -4,6 +4,14 @@ class TutorialFacade < SimpleDelegator
     @video_id = video_id
   end
 
+  def videos?
+    if videos.count > 0
+      true
+    else
+      false
+    end
+  end
+
   def current_video
     if @video_id
       videos.find(@video_id)
