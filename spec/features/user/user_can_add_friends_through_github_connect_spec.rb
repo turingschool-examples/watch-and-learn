@@ -7,6 +7,7 @@ describe 'as a logged in user who has connected with github' do
 
    user_2 = create(:user, access_token: ENV['TEST_KEY'], github_login: 'jtaylor522')
 
+
    visit dashboard_path
 
    within '#jtaylor522' do

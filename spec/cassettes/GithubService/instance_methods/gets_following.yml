@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.github.com/user/following?access_token=cd4ebdf5fcb32eed9770950efcdca60840dbecd8
+    uri: https://api.github.com/user/following?access_token=94b2a1343aef581d335f58d48da19a129ed6ff23
     body:
       encoding: US-ASCII
       string: ''
@@ -21,7 +21,7 @@ http_interactions:
       Server:
       - GitHub.com
       Date:
-      - Fri, 10 May 2019 14:26:48 GMT
+      - Mon, 13 May 2019 14:15:24 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -31,9 +31,9 @@ http_interactions:
       X-Ratelimit-Limit:
       - '5000'
       X-Ratelimit-Remaining:
-      - '4973'
+      - '4981'
       X-Ratelimit-Reset:
-      - '1557501832'
+      - '1557760524'
       Cache-Control:
       - private, max-age=60, s-maxage=60
       Vary:
@@ -65,10 +65,10 @@ http_interactions:
       Content-Security-Policy:
       - default-src 'none'
       X-Github-Request-Id:
-      - D46B:47A6:DF455A:1C12BFD:5CD58A28
+      - DA1E:58C9:226DDCB:475FF8B:5CD97BFC
     body:
       encoding: ASCII-8BIT
       string: '[{"login":"erin-king","id":44042415,"node_id":"MDQ6VXNlcjQ0MDQyNDE1","avatar_url":"https://avatars2.githubusercontent.com/u/44042415?v=4","gravatar_id":"","url":"https://api.github.com/users/erin-king","html_url":"https://github.com/erin-king","followers_url":"https://api.github.com/users/erin-king/followers","following_url":"https://api.github.com/users/erin-king/following{/other_user}","gists_url":"https://api.github.com/users/erin-king/gists{/gist_id}","starred_url":"https://api.github.com/users/erin-king/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/erin-king/subscriptions","organizations_url":"https://api.github.com/users/erin-king/orgs","repos_url":"https://api.github.com/users/erin-king/repos","events_url":"https://api.github.com/users/erin-king/events{/privacy}","received_events_url":"https://api.github.com/users/erin-king/received_events","type":"User","site_admin":false},{"login":"jalena-penaligon","id":45905026,"node_id":"MDQ6VXNlcjQ1OTA1MDI2","avatar_url":"https://avatars0.githubusercontent.com/u/45905026?v=4","gravatar_id":"","url":"https://api.github.com/users/jalena-penaligon","html_url":"https://github.com/jalena-penaligon","followers_url":"https://api.github.com/users/jalena-penaligon/followers","following_url":"https://api.github.com/users/jalena-penaligon/following{/other_user}","gists_url":"https://api.github.com/users/jalena-penaligon/gists{/gist_id}","starred_url":"https://api.github.com/users/jalena-penaligon/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/jalena-penaligon/subscriptions","organizations_url":"https://api.github.com/users/jalena-penaligon/orgs","repos_url":"https://api.github.com/users/jalena-penaligon/repos","events_url":"https://api.github.com/users/jalena-penaligon/events{/privacy}","received_events_url":"https://api.github.com/users/jalena-penaligon/received_events","type":"User","site_admin":false}]'
     http_version: 
-  recorded_at: Fri, 10 May 2019 14:26:46 GMT
+  recorded_at: Mon, 13 May 2019 14:15:24 GMT
 recorded_with: VCR 4.0.0

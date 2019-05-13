@@ -17,36 +17,39 @@
   <% if current_user.access_token != nil %>
     <section class="github-repos">
       <h3>Github</h3>
+      <ul>
       <% facade.repos(5).each do |repo| %>
-        <ul>
           <li class="repo">
             <%= link_to repo.name, repo.html_url  %>
           </li>
-        </ul>
       <% end %>
+    </ul>
 
     </section>
 
     <section class="github-followers">
       <h3>Followers</h3>
+      <ul>
       <% facade.followers.each do |follower| %>
-        <ul>
-          <li class="follower">
+          <li class="follower" id="<%= follower.login %>">
             <%= link_to follower.login, follower.html_url %>
+            <% if follower.registered? %>
+            :  <%= link_to "Add as Friend", to_a_place %>
+            <% end %>
           </li>
-        </ul>
       <% end %>
+    </ul>
     </section>
 
     <section class="github-followings">
       <h3>Following</h3>
+      <ul>
       <% facade.followings.each do |following| %>
-        <ul>
-          <li class="following">
+          <li class="following" id="<%= following.login %>">
             <%= link_to following.login, following.html_url %>
           </li>
-        </ul>
       <% end %>
+    </ul>
     </section>
   <% end %>
 </section>
