@@ -1,18 +1,34 @@
 # Brownfield Of Dreams
 
-This is the base repo for a brownfield project used at Turing for Backend Mod 3.
+This is a Turing School of Software and Design Module 3 Backend Project.
 
-Project Spec and Evaluation Rubric: https://github.com/turingschool-examples/brownfield-of-dreams
+This project is designed as a way for Turing students to gain experience in working with pre-existing codebases and understanding the desicions and generated tech-debt of developers in a realworld setting where sometimes making something work is more important than making it looks good.
+
+Brown Field of Dreams was completed by:
+
+ * [Vincent Provenzano](https://github.com/Vjp888)
+ * [Trevor Nodland](https://github.com/tnodland)
+
+**[See This Project Live!](https://brown-field-of-dreams.herokuapp.com/)**
 
 ### Project Board
 
-Students will continue to build on the existing code base using the cards within the following Github Project: https://github.com/turingschool-examples/brownfield-of-dreams/projects/1
+See our workflow [here](https://github.com/Vjp888/brownfield-of-dreams/projects)
+
+Each of the cards were labled with a general user feature and direction. We made the adjustment to the board to include a 'Deployed' tab to make organization of what was in production and what was waiting deployment easier to manage.
 
 **Learning Goals and Labels**
 
-The cards are labeled in a way that correspond to learning goals or to specific areas you might personally want to focus on.
+What we hoped to learn:
 
-Cards should be completed from top to bottom in the To Do column. Cards labeled `good first issue` are good as filler work and will allow you to practice common Rails skills.
+  * Building on top of an existing codebase
+  * Making API calls to Authenticated sources
+  * Formatting API data into usable information
+  * Handling OAuth securely
+  * Generating and sending Email data with Rails
+  * Gain a better understanding and empathy for the reason why technical debt accrues
+  * Prioritization by working only on relevant code
+  * Working with enviromental variables to santize and protect sensitive data
 
 ### About the Project
 
@@ -22,7 +38,15 @@ A visitor is able to see all of the content on the application but in order to b
 
 ## Local Setup
 
-First you'll need to setup an API key with YouTube and have it defined within `ENV['YOUTUBE_API_KEY']`. There will be one failing spec if you don't have this set up.
+### Required API keys
+In order to run this application locally or live you will need a series of API keys, those keys include:
+
+  * YouTube API with _YouTube Data APIv3_ active. [You can the Console here](https://console.developers.google.com)
+  * A GitHub OAuth application [You can create one here](https://github.com/settings/developers)
+  * To Run the test suite you will need **two** personal access tokens [created here](https://github.com/settings/tokens)
+  * To Run live you will need a sendgrid username and password [Create one here](https://sendgrid.com/) locally you can run tests with MailCatcher
+
+#### Initial setup
 
 Clone down the repo
 ```
@@ -35,23 +59,53 @@ $ bundle install
 ```
 
 Install node packages for stimulus
+
 ```
 $ brew install node
+```
+
+```
 $ brew install yarn
+```
+
+```
 $ yarn add stimulus
 ```
 
+*Note* If Yarn give you an error you can attempt to run
+```$ rm yarn.lock && yarn``` then run ```$ yarn add stimulus``` the issue should resolve
+
 Set up the database
 ```
-$ rake db:create
-$ rake db:migrate
-$ rake db:seed
+$ rake db:{create,migrate,seed}
 ```
 
-Run the test suite:
-```ruby
-$ bundle exec rspec
+Run Figaro
 ```
+figaro install
+```
+
+Set API keys in  ```app/config/application.yml```
+
+  * `YOUTUBE_API_KEY` - Uses the Youtube API key
+  * `GITHUB_TOKEN_KEY` - Uses your personal Token (Only needed for testing)
+  * `GITHUB_ID` - Uses the OAuth App Client ID
+  * `GITHUB_SECRET` - Uses the OAuth App Client Secret
+  * `GITHUB_FREIND_TOKEN` - A secondary personal token (Only needed for testing)
+  * `SENDGRID_USERNAME` - Needed for live production to send activation and invitation emails
+  * `SENDGRID_PASSWORD` - Needed for live production to send activation and invitation emails
+
+  Once those keys are set you will be able to run the test suite with the included cassettes from VCR
+
+  **If running locally/testing** Run ```mailcatcher``` to capture outgoing mail
+
+  run ```bundle exec rspec```
+
+
+
+
+
+
 
 ## Technologies
 * [Stimulus](https://github.com/stimulusjs/stimulus)
@@ -61,6 +115,11 @@ $ bundle exec rspec
 * [vcr](https://github.com/vcr/vcr)
 * [selenium-webdriver](https://www.seleniumhq.org/docs/03_webdriver.jsp)
 * [chromedriver-helper](http://chromedriver.chromium.org/)
+* [omniauth-github](https://github.com/omniauth/omniauth-github)
+* [rspec-rails](https://github.com/rspec/rspec-rails)
+* [rubocop](https://github.com/rubocop-hq/rubocop)
+* [mailcatcher](https://mailcatcher.me/)
+* [hashids](https://hashids.org/ruby/)
 
 ### Versions
 * Ruby 2.4.1

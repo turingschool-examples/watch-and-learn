@@ -45,6 +45,7 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'chromedriver-helper'
   gem 'rubocop', '~> 0.68.1', require: false
+  gem 'mailcatcher'
 end
 
 group :development do
