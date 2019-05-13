@@ -3,6 +3,7 @@
 class UsersController < ApplicationController
   def show
     user = current_user
+    # binding.pry
     if user && user.github_token
       render locals: {
         facade: GitHubFacade.new(user)

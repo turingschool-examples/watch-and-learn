@@ -6,12 +6,18 @@
   <h3>Account Details</h3>
   <ul>
     <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
-    <li> <%= current_user.email%> </li>
-    <% %>
+    <li> <%= current_user.email %> </li>
   </ul>
-  <% %>
   <section>
     <h1>Bookmarked Segments</h1>
+      <% current_user.bookmarked_vids.each do |video| %>
+      <%  %>
+    <section class="videos-<%= video.id %>">
+
+        <%= video.title %>
+
+    </section>
+    <% end %>
   </section>
 </section>
 

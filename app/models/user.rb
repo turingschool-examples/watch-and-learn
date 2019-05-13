@@ -23,4 +23,12 @@ class User < ApplicationRecord
     self.update!(github_token: auth['credentials']['token'])
     self.update!(username: auth['info']['nickname'])
   end
+
+  def bookmarked_vids
+    Video.joins(:users)
+         .where(users: {id: self.id})
+         .group(:id)
+         .order(:tutorial_id)
+         .order(:position)
+  end
 end
