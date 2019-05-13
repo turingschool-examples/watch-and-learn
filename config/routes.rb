@@ -41,6 +41,7 @@ Rails.application.routes.draw do
   get '/video', to: 'video#show'
 
   resources :users, only: [:new, :create, :update, :edit]
+  get '/invite', to: 'invite#index'
 
   resources :tutorials, only: [:show, :index] do
     resources :videos, only: [:show, :index]
