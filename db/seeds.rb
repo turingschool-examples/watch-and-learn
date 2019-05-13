@@ -3,7 +3,7 @@ prework_tutorial_data = {
   "description"=>"Videos for prework.",
   "thumbnail"=>"https://i.ytimg.com/vi/qMkRHW9zE1c/hqdefault.jpg",
   "playlist_id"=>"PL1Y67f0xPzdN6C-LPuTQ5yzlBoz2joWa5",
-  "classroom"=>false,
+  "classroom"=>true,
 }
 prework_tutorial = Tutorial.create! prework_tutorial_data
 
@@ -35,7 +35,6 @@ prework_tutorial.videos.create!({
   "thumbnail"=>"https://i.ytimg.com/vi/c2UnIQ3LRnM/hqdefault.jpg",
   "position"=>4
 })
-
 
 mod_1_tutorial_data = {
   "title"=>"Back End Engineering - Module 1",
