@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'As a user', type: :feature do
-  describe 'when I visit my dashboard' do
+  describe 'when I visit my dashboard', :vcr do
     it 'allows me to invite people to the website' do
       # As a registered user
       user = create(:user)
@@ -15,9 +15,10 @@ RSpec.describe 'As a user', type: :feature do
 
       # Then I should be on /invite
       expect(current_path).to eq(invite_path)
+      expect(page).to have_content("Enter Your Friend's GitHub Usename and we'll invite them to join!")
 
       # And when I fill in "Github Handle" with <A VALID GITHUB HANDLE>
-      fill_in "Github Handle", with: "test-freind"
+      fill_in :github_handle, with: "test-freind"
       # And I click on "Send Invite"
       click_button "Send Invite"
       # Then I should be on /dashboard
@@ -35,7 +36,7 @@ RSpec.describe 'As a user', type: :feature do
 
       expect(current_path).to eq(invite_path)
 
-      fill_in "Github Handle", with: "tnodland"
+      fill_in :github_handle , with: "tnodland"
       click_button "Send Invite"
       failure = "The Github user you selected doesn't have an email address associated with their account."
 
@@ -52,7 +53,7 @@ RSpec.describe 'As a user', type: :feature do
 
       expect(current_path).to eq(invite_path)
 
-      fill_in "Github Handle", with: "lbivlodfbnvolidarbvlhdrsbvlksdanv"
+      fill_in :github_handle , with: "lbivlodfbnvolidarbvlhdrsbvlksdanv"
       click_button "Send Invite"
       failure = "The Github user you selected doesn't have an email address associated with their account."
 
