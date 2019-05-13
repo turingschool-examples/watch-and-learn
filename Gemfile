@@ -25,6 +25,7 @@ gem 'figaro'
 gem 'google-api-client'
 gem 'jquery'
 gem 'omniauth-census', git: 'https://github.com/turingschool-projects/omniauth-census'
+gem 'omniauth-github'
 gem 'omniauth-google-oauth2'
 gem 'rubocop', '~> 0.68.1', require: false
 gem 'will_paginate'
