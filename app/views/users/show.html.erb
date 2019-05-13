@@ -47,6 +47,9 @@
       <% facade.followings.each do |following| %>
           <li class='following' id='<%= following.login %>'>
             <%= link_to following.login, following.html_url %>
+            <% if follower.registered? %>
+            :  <%= button_to 'Add as Friend', friendship_path(user_id: current_user.id, friend_login: follower.login) %>
+            <% end %>
           </li>
       <% end %>
     </ul>
