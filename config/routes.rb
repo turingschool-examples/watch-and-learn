@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   end
 
   namespace :users do
-    get '/friends/add', to: 'friends#create', as: :add_friend
+    get '/friends/add/:login', to: 'friends#create', as: :add_friend
   end
 
   get '/login', to: "sessions#new"
