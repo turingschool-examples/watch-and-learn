@@ -51,5 +51,16 @@
       <% end %>
     </ul>
     </section>
+
+    <% if current_user.friendships? %>
+      <section class="friends">
+        <ul>
+          <% @friendships.each do |friendship| %>
+            <li class="friend" id="<%= friendship.login %>">
+            </li>
+          <% end %>
+        </ul>
+      </section>
+    <% end %>
   <% end %>
 </section>

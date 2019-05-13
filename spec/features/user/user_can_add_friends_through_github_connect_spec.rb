@@ -9,11 +9,17 @@ describe 'as a logged in user who has connected with github' do
 
 
    visit dashboard_path
+   expect(page).to_not have_content("Your Friends")
 
    within '#jtaylor522' do
      expect(page).to have_button("Add as Friend")
      click_button("Add as Friend")
      expect(current_path).to eq(dashboard_path)
+   end
+
+   within '.friends' do
+     expect(page).to have_content("Your Friends")
+     expect(page).to have_content("jtaylor522")
    end
 
  end
