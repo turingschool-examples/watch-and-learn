@@ -1,6 +1,17 @@
 # frozen_string_literal: true
 
 Rails.application.configure do
+  OmniAuth.config.test_mode = true
+  OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({
+    :provider => 'github',
+    :uid => "123",
+    :info => {
+      :name => "Josh Mejia"
+    },
+    :credentials => {
+      :token => ENV["GITHUB_API_KEY"] 
+    }
+  })
   # Settings specified here will take precedence over those in config/application.rb.
 
   # The test environment is used exclusively to run your application's

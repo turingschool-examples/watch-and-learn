@@ -8,7 +8,7 @@ describe Follower do
       }
 
     repository = Follower.new(attributes)
-    expect(repository.name).to eq("Stoovles")
+    expect(repository.handle).to eq("Stoovles")
     expect(repository.url).to eq("https://github.com/Stoovles")
   end
 

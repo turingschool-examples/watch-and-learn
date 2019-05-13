@@ -23,5 +23,11 @@ RSpec.describe User, type: :model do
       expect(admin.role).to eq('admin')
       expect(admin.admin?).to be_truthy
     end
+
+    it "user starts with nil github_token" do
+      user = create(:user)
+
+      expect(user.github_token).to eq(nil)
+    end
   end
 end
