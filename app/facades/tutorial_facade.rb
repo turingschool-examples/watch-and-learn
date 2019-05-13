@@ -5,7 +5,7 @@ class TutorialFacade < SimpleDelegator
   end
 
   def videos?
-    if videos.count > 0
+    if videos.count.positive?
       true
     else
       false
