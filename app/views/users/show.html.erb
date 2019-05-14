@@ -24,7 +24,10 @@
       <h1>People you Follow</h1>
         <ul>
           <% facade.following.each do |user| %>
-            <li><%= link_to user.username, user.github_url %></li>
+            <li><%= link_to user.username, user.github_url %>
+            <% if user.linked_github? %>
+              <%= link_to 'Add Friend', add_friend_path %>
+            <% end %></li>
           <% end %>
         </ul>
     </section>

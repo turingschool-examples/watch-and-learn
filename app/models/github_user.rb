@@ -6,4 +6,12 @@ class GithubUser
     @username = data[:login]
     @github_url = data[:html_url]
   end
+
+  def linked_github?
+    if User.find_by(github_name: @username)
+      true
+    else
+      false
+    end
+  end
 end
