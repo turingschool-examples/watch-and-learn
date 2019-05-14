@@ -93,5 +93,33 @@ describe 'a logged in user, at the dashboard' do
         end
       end
     end
+
+    it 'shows users friends' do
+      VCR.use_cassette('can_see_friendships4') do
+        deonte = User.create!(email: '45864171+djc00p@users.noreply.github.com',
+                     first_name: 'Deonte',
+                     last_name: 'Cooper',
+                     password: 'password',
+                     username: 'djc00p',
+                     github_token: ENV['Deonte_token'])
+
+        earl = User.create!(email: '34906415+earl-stephens@users.noreply.github.com',
+                     first_name: 'Earl',
+                     last_name: 'Stephens',
+                     password: 'password',
+                     username: 'earl-stephens',
+                     github_token: ENV['token'])
+
+        friendship = Friendship.create!(user_id: earl.id, friendship_id: deonte.id)
+
+        allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(earl)
+        visit dashboard_path
+
+        within ".user_friends" do
+          expect(page).to have_content("#{deonte.first_name}")
+          expect(page).to have_content("#{deonte.last_name}")
+        end
+      end
+    end
   end
 end

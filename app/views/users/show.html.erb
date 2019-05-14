@@ -8,6 +8,16 @@
     <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
     <li> <%= current_user.email %> </li>
   </ul>
+
+  <section class="user_friends">
+  <h3>Friends</h3>
+    <% current_user.friendships.each do |friend| %>
+    <ul>
+      <li><%= friend.first_name %> <%= friend.last_name %></li>
+    </ul>
+    <% end %>
+  </section>
+
   <section>
     <h1>Bookmarked Segments</h1>
       <!-- current_user.bookmarked_vids.each do |video| -->
@@ -30,7 +40,7 @@
           <li><%= link_to repo.name, repo.url %></li>
       <% end %>
       </ul>
-  <% end %>
+
 </section>
 
     <section id="github-followers">
@@ -62,4 +72,5 @@
         <% end %>
       </ul>
     </section>
+  <% end %>
 </section>
