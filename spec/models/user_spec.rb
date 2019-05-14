@@ -36,9 +36,7 @@ RSpec.describe User, type: :model do
     describe "friend?" do
 
     end
-  end
 
-  describe 'class methods' do
     it 'returns tutorials with bookmarked videos' do
       user = create(:user)
       tutorial= create(:tutorial, title: "I Love Pineapple Pizza")
@@ -49,12 +47,11 @@ RSpec.describe User, type: :model do
       user.user_videos.create(video_id: video.id)
       user.user_videos.create(video_id: video_3.id)
 
-      expect(User.display_bookmarks.first.tutorial_title).to eq(tutorial.title)
-      expect(User.display_bookmarks.first.tutorial_id).to eq(tutorial.id)
-      expect(User.display_bookmarks.first.id).to eq(video_3.id)
-      expect(User.display_bookmarks.last.id).to eq(video.id)
-      expect(User.display_bookmarks.last.title).to eq(video.title)
+      expect(user.display_bookmarks.first.tutorial_title).to eq(tutorial.title)
+      expect(user.display_bookmarks.first.tutorial_id).to eq(tutorial.id)
+      expect(user.display_bookmarks.first.id).to eq(video_3.id)
+      expect(user.display_bookmarks.last.id).to eq(video.id)
+      expect(user.display_bookmarks.last.title).to eq(video.title)
     end
   end
-  # UserVideo.joins(video: :tutorial).where('user_videos.user_id': current_user.id).select('tutorials.title as tutorial_title, tutorials.id as tutorial_id, videos.id, videos.title').order('videos.position')
 end
