@@ -56,7 +56,7 @@ describe 'a logged in user, at the dashboard' do
           end
 
           expect(current_path).to eq(dashboard_path)
-          expect(page).to have_content('Added deonte.username.to_s as a Friend')
+          expect(page).to have_content("Added #{deonte.username} as a Friend")
 
           within '#github-followers' do
             expect(page.all('li')[8]).to have_content('djc00p')
