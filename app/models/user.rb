@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   has_many :user_friendships, class_name: 'Friendship'
   has_many :friendships, through: :user_friendships,
-            source: :friendship
+                         source: :friendship
 
   validates :email, uniqueness: true, presence: true
   validates_presence_of :first_name
@@ -24,8 +24,8 @@ class User < ApplicationRecord
   end
 
   def create_from_omniauth(auth)
-    self.update!(github_token: auth['credentials']['token'])
-    self.update!(username: auth['info']['nickname'])
+    update!(github_token: auth['credentials']['token'])
+    update!(username: auth['info']['nickname'])
   end
 
   def bookmarked_vids
@@ -46,14 +46,10 @@ class User < ApplicationRecord
   end
 
   def friendship?(username)
-    user = self.github_user(username)
-    if user != nil
-      friends = Friendship.where(user_id: self.id, friendship_id: user.id)[0]
-      if friends != nil
-        true
-      end
-    else
-      nil
+    user = github_user(username)
+    unless user.nil?
+      friends = Friendship.where(user_id: id, friendship_id: user.id)[0]
+      true unless friends.nil?
     end
   end
 end

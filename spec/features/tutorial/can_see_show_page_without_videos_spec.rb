@@ -1,8 +1,9 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-
 describe 'as a visitor' do
-  it "should tutorial even is no videos" do
+  it 'should tutorial even is no videos' do
     tutorial = create(:tutorial)
 
     visit tutorial_path(tutorial.id)
