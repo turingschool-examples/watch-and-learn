@@ -18,4 +18,6 @@ class User < ApplicationRecord
       friend.friend_login == user_login
     end
   end
+
+  
 end

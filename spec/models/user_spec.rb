@@ -23,16 +23,38 @@ RSpec.describe User, type: :model do
     end
   end
 
-  describe "friendships?" do
-    it "determines whether or not user has friendships" do
-      user = User.create(email: 'user@email.com', password: 'password', first_name:'Jim', role: 0)
-      expect(user.friendships?).to be false
-      Friendship.create(user_id: user.id, friend_id: 2, friend_login: "Friend")
-      expect(user.friendships?).to be true
+  describe 'instance methods' do
+    describe "friendships?" do
+      it "determines whether or not user has friendships" do
+        user = User.create(email: 'user@email.com', password: 'password', first_name:'Jim', role: 0)
+        expect(user.friendships?).to be false
+        Friendship.create(user_id: user.id, friend_id: 2, friend_login: "Friend")
+        expect(user.friendships?).to be true
+      end
+    end
+
+    describe "friend?" do
+
     end
   end
 
-  describe "friend?" do
+  describe 'class methods' do
+    it 'returns tutorials with bookmarked videos' do
+      user = create(:user)
+      tutorial= create(:tutorial, title: "I Love Pineapple Pizza")
+      video = create(:video, title: "The Best Video", tutorial_id: tutorial.id, position: 3)
+      video_2 = create(:video, title: "The Best Video V2", tutorial_id: tutorial.id, position: 2)
+      video_3 = create(:video, title: "The Best Video V3", tutorial_id: tutorial.id, position: 1)
 
+      user.user_videos.create(video_id: video.id)
+      user.user_videos.create(video_id: video_3.id)
+
+      expect(User.display_bookmarks.first.tutorial_title).to eq(tutorial.title)
+      expect(User.display_bookmarks.first.tutorial_id).to eq(tutorial.id)
+      expect(User.display_bookmarks.first.id).to eq(video_3.id)
+      expect(User.display_bookmarks.last.id).to eq(video.id)
+      expect(User.display_bookmarks.last.title).to eq(video.title)
+    end
   end
+  # UserVideo.joins(video: :tutorial).where('user_videos.user_id': current_user.id).select('tutorials.title as tutorial_title, tutorials.id as tutorial_id, videos.id, videos.title').order('videos.position')
 end

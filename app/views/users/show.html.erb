@@ -11,7 +11,12 @@
     <li> <%= current_user.email%> </li>
   </ul>
   <section>
-    <h1>Bookmarked Segments</h1>
+    <h3>Bookmarked Segments</h3>
+    <% if current_user.user_videos == [] %>
+      <h4>You don't have any bookmarks yet!</h4>
+    <% else %>
+      <%= display_bookmarks.tutorials.each do|tutorial| %>
+    <% end %>
   </section>
 
   <% if current_user.access_token != nil %>

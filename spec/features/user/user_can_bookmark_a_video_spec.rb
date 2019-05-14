@@ -31,4 +31,20 @@ describe 'A registered user' do
     click_on 'Bookmark'
     expect(page).to have_content("Already in your bookmarks")
   end
+
+  it 'displays user bookmarks on the dashboard', :vcr do
+    tutorial= create(:tutorial, title: "I Love Pineapple Pizza")
+    video = create(:video, title: "The Best Video", tutorial_id: tutorial.id)
+    user = create(:user)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+    visit tutorial_path(tutorial)
+
+    click_on 'Bookmark'
+
+    visit dashboard_path
+
+    expect(page).to have_content("I Love Pineapple Pizza")
+    expect(page).to have_content("The Best Video")
+  end
 end
