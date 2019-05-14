@@ -4,7 +4,6 @@ class UsersController < ApplicationController
       facade: GithubFacade.new(current_user),
       bookmarks: current_user.display_bookmarks
     }
-
   end
 
   def new
