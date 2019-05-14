@@ -9,7 +9,12 @@ Rails.application.configure do
       :name => "Josh Mejia"
     },
     :credentials => {
-      :token => ENV["GITHUB_API_KEY"] 
+      :token => ENV["GITHUB_API_KEY"]
+    },
+    :extra => {
+      :raw_info => {
+        :id => "12345678"
+      }
     }
   })
   # Settings specified here will take precedence over those in config/application.rb.

@@ -21,6 +21,7 @@ describe 'As a registered User' do
         visit dashboard_path
 
         auth_hash = OmniAuth.config.mock_auth[:github]
+        binding.pry
 
         click_button "Connect to Github"
 
