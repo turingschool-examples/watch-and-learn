@@ -11,25 +11,24 @@ require 'rails_helper'
 RSpec.describe 'As a logged in user' do
   it "I should see a section for 'Github'" do
     VCR.use_cassette('user_can_see_github_followers_spec') do
+      user = User.create!(first_name: 'Earl',
+                          last_name: 'Stephens',
+                          email: 'sethreader@hotmail.com',
+                          password: 'password',
+                          username: 'earl-stephens',
+                          github_token: ENV['token'])
 
-    user = User.create!(first_name: 'Earl',
-                        last_name: 'Stephens',
-                        email: 'sethreader@hotmail.com',
-                        password: 'password',
-                        username: 'earl-stephens',
-                        github_token: ENV['token'])
+      allow_any_instance_of(ApplicationController)
+        .to receive(:current_user)
+        .and_return(user)
 
-    allow_any_instance_of(ApplicationController)
-      .to receive(:current_user)
-      .and_return(user)
+      visit dashboard_path
 
-    visit dashboard_path
-
-    within '#github-section' do
-      expect(page).to have_content('Github')
+      within '#github-section' do
+        expect(page).to have_content('Github')
+      end
     end
   end
-end
 
   it "I should see a section for 'Github'" do
     VCR.use_cassette('user_can_see_github_followers_spec2') do

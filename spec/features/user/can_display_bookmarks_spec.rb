@@ -1,4 +1,6 @@
-require "rails_helper"
+# frozen_string_literal: true
+
+require 'rails_helper'
 
 describe 'on the user show page' do
   it 'shows bookmarked videos' do
