@@ -11,20 +11,31 @@
     <li> <%= current_user.email%> </li>
   </ul>
   <section>
-    <h1>Bookmarked Segments</h1>
+    <h3>Bookmarked Segments</h3>
+    <% if current_user.user_videos.empty? %>
+      <h4>You don't have any bookmarks yet!</h4>
+    <% else %>
+      <% bookmarks.each do|tutorial, videos| %>
+        <h4><%= tutorial.values.first %></h4>
+        <ul>
+        <% videos.each do |video| %>
+          <li><%= link_to "#{video.values.first}", "/tutorials/#{tutorial.keys.first}?video_id=#{video.keys.first}" %></li>
+        <% end %>
+        </ul>
+      <% end %>
+    <% end %>
   </section>
 
   <% if current_user.access_token != nil %>
     <section class='github-repos'>
       <h3>Github</h3>
       <ul>
-      <% facade.repos(5).each do |repo| %>
-          <li class='repo'>
-            <%= link_to repo.name, repo.html_url  %>
-          </li>
-      <% end %>
-    </ul>
-
+        <% facade.repos(5).each do |repo| %>
+            <li class='repo'>
+              <%= link_to repo.name, repo.html_url  %>
+            </li>
+        <% end %>
+      </ul>
     </section>
 
     <section class='github-followers'>

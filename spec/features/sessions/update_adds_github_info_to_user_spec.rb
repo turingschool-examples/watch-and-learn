@@ -30,6 +30,7 @@ context 'as a logged-in user that has enabled github' do
       expect(page).to_not have_css('.github-repos')
 
       click_link "Connect to Github"
+      # save_and_open_page
       expect(page).to have_css(".github-followers")
       expect(page).to have_css(".github-followings")
       expect(page).to have_css('.github-repos')
