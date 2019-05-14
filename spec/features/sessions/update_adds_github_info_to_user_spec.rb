@@ -9,7 +9,7 @@ context 'as a logged-in user that has enabled github' do
        "uid"=>"45905026",
        "info"=>
         {"name"=>"Jalena Taylor"},
-       "credentials"=>{"token"=>ENV["TEST_GITHUB_TOKEN"], "expires"=>false},
+       "credentials"=>{"token"=>ENV["TEST_KEY"], "expires"=>false},
        "extra"=>
         {"raw_info"=>
           {"login"=>"jalena-penaligon",
@@ -30,13 +30,13 @@ context 'as a logged-in user that has enabled github' do
       expect(page).to_not have_css('.github-repos')
 
       click_link "Connect to Github"
-      # save_and_open_page
+
       expect(page).to have_css(".github-followers")
       expect(page).to have_css(".github-followings")
       expect(page).to have_css('.github-repos')
       expect(current_path).to eq(dashboard_path)
 
-      expect(user.access_token).to eq(ENV["TEST_GITHUB_TOKEN"])
+      expect(user.access_token).to eq(ENV["TEST_KEY"])
       expect(user.github_login).to eq("jalena-penaligon")
     end
   end
