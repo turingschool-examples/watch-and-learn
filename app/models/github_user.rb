@@ -8,10 +8,6 @@ class GithubUser
   end
 
   def linked_github?
-    if User.find_by(github_name: @username)
-      true
-    else
-      false
-    end
+    !User.find_by(github_name: @username).nil?
   end
 end
