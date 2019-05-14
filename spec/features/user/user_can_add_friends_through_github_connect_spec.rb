@@ -8,6 +8,7 @@ describe 'as a logged in user who has connected with github' do
    create(:user, access_token: ENV['TEST_KEY'], github_login: 'jtaylor522')
 
    visit dashboard_path
+   save_and_open_page
    expect(page).to_not have_content("Your Friends")
    expect(page).to have_css("#jtaylor522", count: 2)
 
@@ -19,6 +20,7 @@ describe 'as a logged in user who has connected with github' do
      end
    end
    expect(page).to have_content("You are now friends with jtaylor522")
+   save_and_open_page
 
    within ".github-followers" do
      within first '#jtaylor522' do
