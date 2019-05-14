@@ -30,13 +30,12 @@
     <section class='github-repos'>
       <h3>Github</h3>
       <ul>
-      <% facade.repos(5).each do |repo| %>
-          <li class='repo'>
-            <%= link_to repo.name, repo.html_url  %>
-          </li>
-      <% end %>
-    </ul>
-
+        <% facade.repos(5).each do |repo| %>
+            <li class='repo'>
+              <%= link_to repo.name, repo.html_url  %>
+            </li>
+        <% end %>
+      </ul>
     </section>
 
     <section class='github-followers'>
