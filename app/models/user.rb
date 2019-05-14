@@ -29,13 +29,16 @@ class User < ApplicationRecord
   end
 
   def bookmarked_vids
-  #   vids = Video.joins(:users).includes(:tutorial)
-  #        .select('tutorials.title as tutorial_title')
-  #        .group(:id, 'tutorial.id')
-  #        .order(:tutorial_id)
-  #        .order(:position)
-         # Tutorial.joins(videos: :user_videos).includes(:videos).where(user_videos: {user_id: self.id}).group(:id)
-         # binding.pry
+    @vids = videos.includes(:tutorial)
+  end
+
+  def tut_titles
+    bookmarked_vids
+    titles = []
+    @vids.each do |vid|
+      titles << vid.tutorial.title
+    end
+    titles.uniq
   end
 
   def github_user(username)

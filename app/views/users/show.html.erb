@@ -18,16 +18,20 @@
     <% end %>
   </section>
 
-  <section>
+  <section class='bookmarked_segment'>
     <h1>Bookmarked Segments</h1>
-      <!-- current_user.bookmarked_vids.each do |video| -->
-      <%  %>
-    <section class="videos-<%=  %>">
-
-        <!-- video.title -->
-
-    </section>
-    <%  %>
+    <% current_user.tut_titles.each do |title| %>
+      <h1>Tutorial:</h1>
+      <%= title %>
+      <h1>Videos</h1>
+      <% current_user.bookmarked_vids.each do |video| %>
+        <section class="videos-<%= video.id %>">
+          <% if video.tutorial.title == title %>
+            <%= video.title %>
+            <% end %>
+        </section>
+      <% end %>
+    <% end %>
   </section>
 </section>
 

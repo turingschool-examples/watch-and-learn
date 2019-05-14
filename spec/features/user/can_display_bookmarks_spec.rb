@@ -16,16 +16,14 @@ describe 'on the user show page' do
     user_video3 = UserVideo.create!(user_id: user.id, video_id: video3.id)
     user_video4 = UserVideo.create!(user_id: user.id, video_id: video4.id)
 
-    # visit tutorial_video_path(tutorial)
-    #
-    # click_button 'Bookmark'
-
     visit dashboard_path
-# save_and_open_page
-    within ".videos-#{video1.id}" do
-      # expect(page).to have_content(tutorial1.title)
+
+    within '.bookmarked_segment' do
+      expect(page).to have_content(tutorial1.title)
       expect(page).to have_content(video1.title)
-      # expect(page).to have_content(video4.title)
+      expect(page).to have_content(video4.title)
+      expect(page).to have_content(video4.title)
+      expect(page).to_not have_content(video5.title)
     end
   end
 end
