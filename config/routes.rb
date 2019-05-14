@@ -24,6 +24,10 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :users do
+    get '/friends/add', to: 'friends#create', as: :add_friend
+  end
+
   get '/login', to: "sessions#new"
   post '/login', to: "sessions#create"
   delete '/logout', to: "sessions#destroy"
