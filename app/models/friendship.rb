@@ -1,6 +1,6 @@
 class Friendship < ApplicationRecord
-  belongs_to :user, touch: true, counter_cache: true
-  belongs_to :friended_user, counter_cache: :friends_count, class_name: 'User'
+  belongs_to :user, touch: true
+  belongs_to :friended_user, class_name: 'User'
 
   validate :narcissism
 
