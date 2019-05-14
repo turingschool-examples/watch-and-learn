@@ -15,7 +15,8 @@
     <% if current_user.user_videos == [] %>
       <h4>You don't have any bookmarks yet!</h4>
     <% else %>
-      <%= display_bookmarks.tutorials.each do|tutorial| %>
+      <% bookmarks.each do|bookmark| %>
+      <%=  %>
     <% end %>
   </section>
 
