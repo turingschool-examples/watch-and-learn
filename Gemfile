@@ -42,7 +42,7 @@ group :development, :test do
   gem 'simplecov'
   gem 'vcr'
   gem 'selenium-webdriver'
-  gem 'chromedriver-helper'
+  gem 'webdrivers'
 end
 
 group :development do

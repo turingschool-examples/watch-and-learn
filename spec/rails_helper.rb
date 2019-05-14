@@ -14,6 +14,12 @@ VCR.configure do |config|
   config.hook_into :webmock
   config.configure_rspec_metadata!
   config.filter_sensitive_data("<YOUTUBE_API_KEY>") { ENV['YOUTUBE_API_KEY'] }
+
+  config.ignore_hosts(
+  "chromedriver.storage.googleapis.com",
+  "github.com/mozilla/geckodriver/releases",
+  "selenium-release.storage.googleapis.com",
+  "developer.microsoft.com/en-us/microsoft-edge/tools/webdriver")
 end
 
 
