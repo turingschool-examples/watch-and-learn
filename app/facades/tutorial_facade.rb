@@ -1,5 +1,7 @@
 # frozen_string_literal: true
+
 require 'pry'
+
 class TutorialFacade < SimpleDelegator
   def initialize(tutorial, video_id = nil)
     super(tutorial)
@@ -7,7 +9,7 @@ class TutorialFacade < SimpleDelegator
   end
 
   def check_for_nil
-    if current_video.position == nil
+    if current_video.position.nil?
       new_position = Video.order(position: :desc)
                           .second[:position] + 1
       current_video.update(position: new_position)
