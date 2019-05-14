@@ -6,4 +6,8 @@ class Tutorial < ApplicationRecord
   def self.class_content
     where(classroom: true)
   end
+
+  def self.non_class_content
+    where(classroom: false)
+  end
 end
