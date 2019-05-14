@@ -4,11 +4,9 @@ class Admin::TutorialsController < Admin::BaseController
   end
 
   def create
-    # binding.pry
     tutorial = Tutorial.create(tutorial_params)
     flash[:success] = 'Successfully created tutorial.'
     redirect_to tutorial_path(tutorial)
-    # redirect_to admin_dashboard_path
   end
 
   def new
