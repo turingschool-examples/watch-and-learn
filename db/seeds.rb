@@ -14,7 +14,7 @@ prework_tutorial.videos.create!(
   'description' => Faker::Hipster.paragraph(2, true),
   'video_id' => 'qMkRHW9zE1c',
   'thumbnail' => 'https://i.ytimg.com/vi/qMkRHW9zE1c/hqdefault.jpg',
-  'position' => 1
+  'position' => nil
 )
 prework_tutorial.videos.create!(
   'title' => 'Prework - SSH Key Setup',
@@ -131,5 +131,5 @@ User.create!(email: '45864171+djc00p@users.noreply.github.com',
              first_name: 'Deonte',
              last_name: 'Cooper',
              password: 'password',
-             username: 'djc00p', 
+             username: 'djc00p',
              github_token: ENV['Deonte_token'])
