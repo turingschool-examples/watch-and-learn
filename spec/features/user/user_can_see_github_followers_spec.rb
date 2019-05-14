@@ -19,4 +19,4 @@ describe 'as a logged in user on my dashboard' do
       end
     end
   end
-end 
+end
