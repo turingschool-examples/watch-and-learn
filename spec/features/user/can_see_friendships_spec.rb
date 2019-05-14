@@ -22,7 +22,7 @@ describe 'a logged in user, at the dashboard' do
 
         visit dashboard_path
   # save_and_open_page
-        within "#github-followers" do
+        within '#github-followers' do
           expect(page.all('li')[8]).to have_content('djc00p')
           expect(page.all('li')[8]).to have_link('Add as Friend')
         end
@@ -49,14 +49,14 @@ describe 'a logged in user, at the dashboard' do
 
           visit dashboard_path
     # save_and_open_page
-          within "#github-followers" do
+          within '#github-followers' do
             click_link 'Add as Friend'
           end
 
           expect(current_path).to eq(dashboard_path)
-          expect(page).to have_content("Added #{deonte.username} as a Friend")
+          expect(page).to have_content('Added deonte.username.to_s as a Friend')
 
-          within "#github-followers" do
+          within '#github-followers' do
             expect(page.all('li')[8]).to have_content('djc00p')
             expect(page.all('li')[8]).to_not have_link('Add as Friend')
           end
@@ -87,7 +87,7 @@ describe 'a logged in user, at the dashboard' do
 
         visit dashboard_path
   # save_and_open_page
-        within "#github-followers" do
+        within '#github-followers' do
           expect(page.all('li')[8]).to have_content('djc00p')
           expect(page.all('li')[8]).to_not have_link('Add as Friend')
         end
@@ -115,9 +115,9 @@ describe 'a logged in user, at the dashboard' do
         allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(earl)
         visit dashboard_path
 
-        within ".user_friends" do
-          expect(page).to have_content("#{deonte.first_name}")
-          expect(page).to have_content("#{deonte.last_name}")
+        within '.user_friends' do
+          expect(page).to have_content(deonte.first_name.to_s)
+          expect(page).to have_content(deonte.last_name.to_s)
         end
       end
     end
