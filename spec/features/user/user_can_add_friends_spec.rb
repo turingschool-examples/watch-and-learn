@@ -4,6 +4,7 @@ RSpec.describe "as a logged in user that has linked a github" do
   context "when I visit my dashboard" do
     it "can add other users who have linked their github as friends from their followers and followed", :vcr do
       user = create(:user)
+      binding.pry
       friend_user = create(:user, github_name: 'tnodland', token: ENV['GITHUB_FRIEND_TOKEN'])
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
