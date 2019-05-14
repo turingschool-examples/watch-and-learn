@@ -2,7 +2,8 @@ require 'rails_helper'
 
 describe 'as a logged in user on my dashboard' do
   before :each do
-    @user = create(:user, github_token: ENV["GITHUB_API_KEY"])
+    @user = create(:user, github_token: ENV["GITHUB_API_KEY"], github_id: 40487417)
+    @friend_user = create(:user, github_id: 44073660)
     @user_without_token = create(:user)
   end
 
