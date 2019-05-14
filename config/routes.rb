@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get "/friendships", to: 'friendships#create', as: :friendships
+
   namespace :api do
     namespace :v1 do
       resources :tutorials, only: %i[show index]
