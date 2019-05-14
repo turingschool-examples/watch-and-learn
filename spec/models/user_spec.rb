@@ -9,6 +9,13 @@ RSpec.describe User, type: :model do
     it { should validate_presence_of(:password) }
   end
 
+  describe 'relationships' do
+    it { should have_many(:friendships) }
+    it { should have_many(:friended_users) }
+    it { should have_many(:friends) }
+    it { should have_many(:users_who_friended) }
+  end
+
   describe 'roles' do
     it 'can be created as default user' do
       user = User.create(email: 'user@email.com', password: 'password', first_name: 'Jim', role: 0)
