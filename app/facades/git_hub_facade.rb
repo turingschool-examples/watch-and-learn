@@ -30,7 +30,7 @@ class GitHubFacade
 
   def repos_data
     @repo_data ||= service.repos
-    # binding.pry
+    # 
     @repo_data.sample(5)
   end
 
@@ -44,6 +44,6 @@ class GitHubFacade
 
   def service
     @service ||= GitHubService.new(@user.username, @user.github_token)
-    # binding.pry
+    # 
   end
 end
