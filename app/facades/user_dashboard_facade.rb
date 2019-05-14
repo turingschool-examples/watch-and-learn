@@ -26,6 +26,10 @@ attr_reader :user
     end
   end
 
+  def friends
+    @user.friended_users
+  end
+
   private
 
     def repository_data
