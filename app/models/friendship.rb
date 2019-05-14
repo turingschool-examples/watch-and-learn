@@ -3,6 +3,7 @@ class Friendship < ApplicationRecord
   belongs_to :friended_user, class_name: 'User'
 
   validate :narcissism
+  validates_presence_of :user_id, :friended_user_id
 
 
   private
