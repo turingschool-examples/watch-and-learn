@@ -4,13 +4,18 @@
 </div>
 <section class="tutorials col md-col-8">
   <% @tutorials.each do |tutorial| %>
-    <div class="tutorial">
-      <img class="thumbnail col md-col-3" src= <%="#{tutorial.thumbnail}" %> >
-      <div class="tutorial-description col md-col-9">
-        <h4 class="tutorial-title-home"><%= link_to tutorial.title, tutorial_path(tutorial), class: "title-link" %> </h4>
-        <p class="description"><%= tutorial.description %></p> <br>
-      </div>
-    </div> <br>
+    <%  %>
+    <% unless current_user == nil && tutorial.classroom == true %>
+      <div class="tutorial">
+        <img class="thumbnail col md-col-3" src= <%="#{tutorial.thumbnail}" %> >
+        <div class="tutorial-description col md-col-9">
+          <h4 class="tutorial-title-home"><%= link_to tutorial.title, tutorial_path(tutorial), class: "title-link" %> </h4>
+          <p class="description"><%= tutorial.description %></p> <br>
+        </div>
+      </div> <br>
+      <% else %>
+      <p>No videos available to display in this tutorial.</p>
+    <% end %>
   <% end %>
   <hr>
   <br>

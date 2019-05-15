@@ -43,7 +43,7 @@ mod_1_tutorial_data = {
   'description' => 'Videos related to Mod 1.',
   'thumbnail' => 'https://i.ytimg.com/vi/tZDBWXZzLPk/hqdefault.jpg',
   'playlist_id' => 'PL1Y67f0xPzdNsXqiJs1s4NlpI6ZMNdMsb',
-  'classroom' => false
+  'classroom' => true
 }
 
 m1_tutorial = Tutorial.create! mod_1_tutorial_data
