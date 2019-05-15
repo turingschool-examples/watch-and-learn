@@ -1,4 +1,10 @@
 /* Title cards */
+
+.px4 {
+  margin-top: 120px;
+  margin-bottom: 50px;
+}
+
 .turing-title {
   font-size: 65px;
   padding-left: 15px;
@@ -171,13 +177,6 @@ h4 {
   height: 200px;
 }
 
-.dashboard-main {
-  margin: auto;
-  width: 75%;
-  padding: 10px;
-  height:1000px;
-}
-
 .about-container {
   height: 1250px;
 }
@@ -277,4 +276,3 @@ div.title-bookmark {
 #tag_cloud {
   .m {font-size: 1.2em; }
 }
-

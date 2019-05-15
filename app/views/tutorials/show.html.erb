@@ -54,7 +54,7 @@
       // when video ends
       function onPlayerStateChange(event) {
         if(event.data === 0 && <%= facade.play_next_video? %>) {
-          window.location = "/tutorials/<%=facade.id%>?video_id=<%=facade.next_video.id %>";
+          window.location = "/tutorials/<%= facade.id%>?video_id=<%= facade.next_video.id %>";
         } else if(event.data === 0 && <%= facade.play_next_video? == false %>) {
           const message = document.querySelector(`#message`);
           message.innerHTML = "You watched them all. Bask in the glory of your new skills."
