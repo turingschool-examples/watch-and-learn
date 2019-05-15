@@ -26,6 +26,6 @@ describe 'visitor sees a video show' do
     click_on tutorial.title
 
     expect(current_path).to eq(tutorial_path(tutorial))
-    expect(page).to have_content("No videos in this tutorial yet!")
+    expect(page).to have_content("No videos in this tutorial yet. Check back soon!")
   end
 end
