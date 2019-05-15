@@ -15,14 +15,13 @@ RSpec.describe 'when a user has bookmarked videos' do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
       visit dashboard_path
-      binding.pry
+
       within '.bookmarks' do
         expect(page).to have_link("#{video1.title}")
-        expect(page).to have_link("#{video2.title}")
-        click_link "#{video3.title}"
+        click_link "#{video2.title}"
       end
 
-      expect(current_path).to eq(api_v1_video_show_path(video3))
+      expect(current_path).to eq(api_v1_video_path(video2))
     end
   end
 end
