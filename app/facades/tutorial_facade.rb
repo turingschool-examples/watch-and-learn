@@ -27,7 +27,6 @@ class TutorialFacade < SimpleDelegator
   end
 
   def play_next_video?
-
     current_video.position < maximum_video_position
   end
 
@@ -38,7 +37,7 @@ class TutorialFacade < SimpleDelegator
   end
 
   def maximum_video_position
-    if Video.order(position: :desc).first.position == nil
+    if Video.order(position: :desc).first.position.nil?
       new_position = Video.order(position: :desc)
                           .second[:position] + 1
       Video.order(position: :desc).first.update(position: new_position)
