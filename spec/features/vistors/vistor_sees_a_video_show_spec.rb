@@ -15,4 +15,17 @@ describe 'visitor sees a video show' do
     expect(page).to have_content(video.title)
     expect(page).to have_content(tutorial.title)
   end
+
+  #sad path
+
+  it "visitor clicks on a tutorial title with no videos in the tutorial" do
+    tutorial = create(:tutorial)
+
+    visit '/'
+
+    click_on tutorial.title
+
+    expect(current_path).to eq(tutorial_path(tutorial))
+    expect(page).to have_content("No videos in this tutorial yet!")
+  end
 end
