@@ -4,4 +4,9 @@ class Video < ApplicationRecord
   belongs_to :tutorial
 
   validates_numericality_of :position
+
+  def self.bookmarked_videos(user)
+    joins(:user_videos)
+    .where("user_videos.user_id = ?", user.id)
+  end
 end
