@@ -24,10 +24,9 @@ class User < ApplicationRecord
   end
 
   def get_bookmarks
-    UserVideo.joins(video: :tutorial)
-    .where('user_videos.user_id': self.id)
+    user_videos.joins(video: :tutorial)
     .select('tutorials.title as tutorial_title, tutorials.id as tutorial_id, videos.id, videos.title')
-    .order('tutorials.id, videos.position') 
+    .order('tutorials.id, videos.position')
   end
 
 end
