@@ -35,4 +35,8 @@ class UserFacade
   def token?
     @token.nil?
   end
+
+  def tutorials(user)
+    Tutorial.bookmarked_by(user)
+  end
 end

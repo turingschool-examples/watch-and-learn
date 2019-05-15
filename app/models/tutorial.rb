@@ -10,4 +10,9 @@ class Tutorial < ApplicationRecord
   def self.non_class_content
     where(classroom: false)
   end
+
+  def self.bookmarked_by(user)
+    joins(videos: :user_videos)
+    .where("user_videos.user_id = ?", user.id)
+  end
 end

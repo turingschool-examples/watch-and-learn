@@ -9,6 +9,13 @@
   </ul>
   <section class='bookmarks'>
     <h1>Bookmarked Segments</h1>
+      <% facade.tutorials(current_user).each do |tutorial| %>
+        <section class='tutorial_videos'>
+          <% tutorial.bookmarked_tutorial_videos(current_user).each do |video| %>
+            <p><%= link_to video.title, api_v1_video_show_path(video) %></p>
+          <% end %>
+        </section>
+      <% end %>
   </section>
   <% unless facade.token? %>
     <section class="github">
