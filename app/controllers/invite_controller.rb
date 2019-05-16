@@ -3,7 +3,9 @@ class InviteController < ApplicationController
   end
 
   def create
-    if service.get_email(params[:handle]) != nil
+    email = service.get_email(params[:handle])
+    if email != nil
+      FriendInviteMailer.invite(current_user, params[:handle], email).deliver_now
       service.get_email(params[:handle])
       flash[:success] = "Successfully sent invite!"
       redirect_to dashboard_path
