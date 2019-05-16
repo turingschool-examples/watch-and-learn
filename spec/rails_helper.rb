@@ -27,7 +27,8 @@ omniauth_hash = { 'provider' => 'github',
                   },"credentials"=>{"token"=>"#{ENV['GITHUB_TOKEN_KEY']}", "expires"=>false},
                   'extra' => {'raw_info' =>
                                   { 'location' => 'Holy!',
-                                    'gravatar_id' => '123456789'
+                                    'gravatar_id' => '123456789',
+                                    'login' => 'Vjp888'
                                   }
                   }
 }

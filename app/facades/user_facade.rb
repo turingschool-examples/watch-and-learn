@@ -1,11 +1,12 @@
 class UserFacade
-  attr_reader :first_name, :last_name, :email
+  attr_reader :first_name, :last_name, :email, :friends
 
   def initialize(user)
     @first_name = user.first_name
     @last_name = user.last_name
     @email = user.email
     @token = user.token
+    @friends = find_friends(user.friends)
   end
 
   def repos
@@ -30,6 +31,13 @@ class UserFacade
     users.map do |user|
       GithubUser.new(user)
     end
+  end
+
+  def find_friends(friends)
+    friend_list = friends.map do |friend|
+      friend.followed_user_id
+    end
+    User.find(friend_list)
   end
 
   def token?
