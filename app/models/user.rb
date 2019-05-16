@@ -13,4 +13,19 @@ class User < ApplicationRecord
   enum role: %i[default admin]
   enum email_confirmed: %i[inactive active]
   has_secure_password
+
+  def email_activation
+    self.email_confirmed = "active"
+    self.confirm_token = nil
+    save!
+  end
+
+  private
+
+  def confirmation_token
+    if self.confirm_token.blank?
+      self.confirm_token = SecureRandom.urlsafe_base64.to_s
+    end
+  end
+
 end
