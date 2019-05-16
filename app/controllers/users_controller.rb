@@ -17,6 +17,9 @@ class UsersController < ApplicationController
   def create
     user = User.create(user_params)
     if user.save
+      flash[:notice] = "Logged in as #{user.first_name}"
+      flash[:message] = "This account has not yet been activated. Please check your email."
+      ActivationMailer.inform(user).deliver_now
       session[:user_id] = user.id
       redirect_to dashboard_path
     else
@@ -24,6 +27,14 @@ class UsersController < ApplicationController
       @user = User.new
       render :new
     end
+  end
+
+  def activation
+    binding.pry
+    user =  User.find_by()
+    user.update(status: 'active')
+    flash[:notice] = 'Thank you! Your account is now activated.'
+    redirect_to dashboard_path
   end
 
   private
