@@ -8,6 +8,7 @@ describe 'vister can create an account', :js do
     password = 'password'
     password_confirmation = 'password'
 
+
     visit '/'
 
     click_on 'Sign In'
@@ -31,9 +32,9 @@ describe 'vister can create an account', :js do
     expect(page).to have_content("Logged in as: #{first_name} #{last_name}")
     expect(page).to have_content("This account has not yet been activated. Please check your email.")
 
-    user = User.find_by(email: email)
+    user = create(:user, confirm_token: 123456, email: "user3@example.com")
 
-    visit user_confirm_email_path(user)
+    visit confirm_email_user_path(user)
 
     expect(current_path).to eq(dashboard_path)
 
