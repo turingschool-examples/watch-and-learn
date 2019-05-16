@@ -11,5 +11,6 @@ class User < ApplicationRecord
   validates :email, uniqueness: true, presence: true
   validates_presence_of :first_name
   enum role: %i[default admin]
+  enum email_confirmed: %i[inactive active]
   has_secure_password
 end
