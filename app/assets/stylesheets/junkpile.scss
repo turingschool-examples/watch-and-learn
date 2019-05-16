@@ -1,4 +1,10 @@
 /* Title cards */
+
+.px4 {
+  margin-bottom: 50px;
+  margin-top: 120px;
+}
+
 .turing-title {
   font-size: 65px;
   padding-left: 15px;
@@ -106,12 +112,12 @@ h2 {
   font-size: 48px;
 }
 
-h3 {
+h4 {
   font-family: 'Open Sans', sans-serif;
   font-weight: 400;
 }
 
-h4 {
+h3 {
   font-family: 'Open Sans', sans-serif;
   font-weight: bold;
   font-size: 125%;
@@ -169,13 +175,6 @@ h4 {
 
 .tutorial {
   height: 200px;
-}
-
-.dashboard-main {
-  margin: auto;
-  width: 75%;
-  padding: 10px;
-  height:1000px;
 }
 
 .about-container {
@@ -277,4 +276,3 @@ div.title-bookmark {
 #tag_cloud {
   .m {font-size: 1.2em; }
 }
-
