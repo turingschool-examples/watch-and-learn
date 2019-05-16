@@ -37,4 +37,17 @@ RSpec.describe User, type: :model do
       expect(user.github_token).to eq(nil)
     end
   end
+
+  describe 'instance methods' do
+    it "email_activation" do
+      user = create(:user, confirm_token: "12345qwadflkawe")
+
+      expect(user.email_confirmed).to eq("inactive")
+
+      user.email_activation
+
+      expect(user.email_confirmed).to eq("active")
+      assert_nil(user.confirm_token)
+    end
+  end
 end
