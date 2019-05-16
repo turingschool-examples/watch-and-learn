@@ -12,7 +12,6 @@ context 'As a logged-in admin' do
 
     fill_in 'tutorial[title]', with: 'Meaningful Tutorial Title'
     fill_in 'tutorial[description]', with: 'The description for the meaningful tutorial above.'
-    # This is a thumbnail: https://i.ytimg.com/vi/qMkRHW9zE1c/hqdefault.jpg
     fill_in 'tutorial[thumbnail]', with: 'https://youtu.be/J7ikFUlkP_k'
     click_button 'Save'
 
@@ -32,7 +31,6 @@ context 'As a logged-in admin' do
 
     fill_in 'tutorial[title]', with: 'Meaningful Tutorial Title'
     fill_in 'tutorial[description]', with: 'The description for the meaningful tutorial above.'
-    # This is a thumbnail: https://i.ytimg.com/vi/qMkRHW9zE1c/hqdefault.jpg
     fill_in 'tutorial[thumbnail]', with: 'https://youtu.be/J7ikFUlkP_k'
     click_button 'Save'
 
