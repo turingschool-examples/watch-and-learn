@@ -1,7 +1,7 @@
 class YoutubeService
   def video_info(id)
     params = {part: "snippet,contentDetails,statistics", id: id}
-
+    # binding.pry .slice!(-11, 11)
     get_json("youtube/v3/videos", params)
   end
 

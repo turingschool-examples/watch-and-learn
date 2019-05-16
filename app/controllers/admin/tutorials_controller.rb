@@ -4,6 +4,7 @@ class Admin::TutorialsController < Admin::BaseController
   end
 
   def create
+    # thumbnail = YouTube::Video.by_id(tutorial_params[:thumbnail]).thumbnail
     tutorial = Tutorial.create(tutorial_params)
     flash[:success] = 'Successfully created tutorial.'
     redirect_to tutorial_path(tutorial)
