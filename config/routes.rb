@@ -36,7 +36,7 @@ Rails.application.routes.draw do
   get '/get_started', to: 'get_started#show'
   post '/friendship', to: 'friendships#create'
 
-  get '/invite', to: 'invite#new'
+  get '/invite', to: 'invite#new', as: :new_invite
 
   resources :users, only: [:new, :create, :update, :edit]
 

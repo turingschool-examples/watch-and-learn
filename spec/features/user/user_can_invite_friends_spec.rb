@@ -8,7 +8,7 @@ describe "As a registered, logged in user", :vcr do
     visit dashboard_path
     click_link "Send an Invite"
 
-    expect(current_path).to eq(invite_path)
+    expect(current_path).to eq(new_invite_path)
 
     expect(page).to have_content("Enter valid Github Handle")
     fill_in "github[:handle]", with: "jtaylor522"
@@ -24,7 +24,7 @@ describe "As a registered, logged in user", :vcr do
     visit dashboard_path
     click_link "Send an Invite"
 
-    expect(current_path).to eq(invite_path)
+    expect(current_path).to eq(new_invite_path)
 
     expect(page).to have_content("Enter valid Github Handle")
     fill_in "github[:handle]", with: "iamnotavalidgithubname"
