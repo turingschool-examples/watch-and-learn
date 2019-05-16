@@ -16,7 +16,7 @@
       <h4>You don't have any bookmarks yet!</h4>
     <% else %>
       <% bookmarks.each do|tutorial, videos| %>
-        <h4><%= tutorial.values.first %></h4>
+        <h4>-- <%= tutorial.values.first %></h4>
         <ul>
         <% videos.each do |video| %>
           <li><%= link_to "#{video.values.first}", "/tutorials/#{tutorial.keys.first}?video_id=#{video.keys.first}" %></li>
