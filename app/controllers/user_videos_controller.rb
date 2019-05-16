@@ -13,6 +13,11 @@ class UserVideosController < ApplicationController
     redirect_back(fallback_location: root_path)
   end
 
+  def error
+    flash[:error] = "You must login to bookmark videos."
+    redirect_to login_path
+  end
+
   private
 
   def user_video_params
