@@ -1,14 +1,14 @@
 class YoutubeService
   def video_info(id)
+    id = id.slice(-11, 11)
     params = {part: "snippet,contentDetails,statistics", id: id}
-
     get_json("youtube/v3/videos", params)
   end
 
   private
 
   def get_json(url, params)
-    response = conn.get("youtube/v3/videos", params)
+    response = conn.get(url, params)
     JSON.parse(response.body, symbolize_names: true)
   end
 

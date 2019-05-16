@@ -2,11 +2,12 @@ require 'rails_helper'
 
 context 'On a tutorial show page with no videos' do
   before :each do
-    @tutorial = Tutorial.create
+    @tutorial = create(:tutorial)
   end
   context 'as a user or visitor' do
     it 'shows an apology message' do
       message = "Sorry, no videos added yet!"
+
       visit tutorial_path(@tutorial)
       expect(page).to_not have_css('.video')
       expect(page).to have_content(message)

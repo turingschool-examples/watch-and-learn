@@ -4,8 +4,11 @@ class Admin::TutorialsController < Admin::BaseController
   end
 
   def create
-    Tutorial.create(tutorial_params)
-    redirect_to admin_dashboard_path
+    alter_tutorial_params = tutorial_params
+    alter_tutorial_params[:thumbnail] = YouTube::Video.by_id(tutorial_params[:thumbnail]).thumbnail
+    tutorial = Tutorial.create(alter_tutorial_params)
+    flash[:success] = 'Successfully created tutorial.'
+    redirect_to tutorial_path(tutorial)
   end
 
   def new
