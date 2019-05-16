@@ -25,16 +25,26 @@ describe 'as an unregistered user' do
     VCR.use_cassette('see_if_we_can_get_mail_spec2') do
       user = User.create!(first_name: 'Earl',
                           last_name: 'Stephens',
-                          email: 'sethreader@hotmail.com',
+                          email: "sethreader@hotmail.com",
                           password: 'password',
                           username: 'earl-stephens',
                           github_token: ENV['token'])
 
       expect(user.status).to eq('inactive')
 
-      visit activation_path(user.first_name)
+      visit "/activation?email=#{user.email}"
+      user.reload
 
-      expect(user.status).to eq('active')
+      expect(current_path).to eq(thankyou_path)
+      expect(page).to have_content('Thank you! Your account is now activated.')
+
+      allow_any_instance_of(ApplicationController)
+        .to receive(:current_user)
+        .and_return(user)
+
+      visit dashboard_path
+      
+      expect(page).to have_content('Status: Active')
     end
   end
 end

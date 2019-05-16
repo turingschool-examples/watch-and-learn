@@ -30,11 +30,9 @@ class UsersController < ApplicationController
   end
 
   def activation
-    binding.pry
-    user =  User.find_by()
+    user =  User.find_by(email: params[:email])
     user.update(status: 'active')
-    flash[:notice] = 'Thank you! Your account is now activated.'
-    redirect_to dashboard_path
+    redirect_to thankyou_path
   end
 
   private

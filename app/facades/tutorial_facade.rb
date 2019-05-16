@@ -17,6 +17,7 @@ class TutorialFacade < SimpleDelegator
   def current_video
     if videos.count == 0
       videos << Video.new(title: 'More to come', description: "It's a secret")
+      videos.first
     elsif @video_id
       videos.find(@video_id)
     else
