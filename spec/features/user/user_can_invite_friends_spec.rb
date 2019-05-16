@@ -2,7 +2,7 @@ require "rails_helper"
 
 describe "As a registered, logged in user", :vcr do
   it "allows me to invite friends by email" do
-    user = create(:user)
+    user = create(:user, access_token: ENV["GITHUB_TOKEN_KEY"])
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
     visit dashboard_path
@@ -18,7 +18,7 @@ describe "As a registered, logged in user", :vcr do
   end
 
   it "does not allow me to invite invalid users", :vcr do
-    user = create(:user)
+    user = create(:user, access_token: ENV["GITHUB_TOKEN_KEY"])
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
     visit dashboard_path

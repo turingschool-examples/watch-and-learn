@@ -3,6 +3,7 @@
   <% if current_user.access_token == nil %>
     <%= link_to 'Connect to Github', github_login_path %>
       <br>
+  <% else %>
       <%= link_to "Send an Invite", new_invite_path, class: 'btn btn-primary mb1 bg-teal' %>
   <% end %>
   <%= button_to 'Log Out', logout_path, method: 'delete', class: 'btn btn-primary mb1 bg-teal' %>
