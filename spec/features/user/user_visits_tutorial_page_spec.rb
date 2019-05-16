@@ -9,11 +9,8 @@ describe 'As a user' do
 
       visit tutorial_path(tutorial)
 
-      expect(page).to_not have_content('Description')
-      expect(page).to_not have_button('Bookmark')
-      expect(page).to_not have_link('Bookmark')
-      expect(page).to have_content('This tutorial has no videos yet!')
-      expect(page).to have_link('Back to homepage')
+      expect(page).to have_content('No Videos')
+      expect(page).to have_content('Check back soon!')
     end
   end
 end
