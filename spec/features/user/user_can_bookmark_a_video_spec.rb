@@ -17,6 +17,11 @@ describe 'A registered user' do
     end.to change { UserVideo.count }.by(1)
 
     expect(page).to have_content('Bookmark added to your dashboard')
+
+    visit '/dashboard'
+
+    expect(page).to have_content(video.tutorial.title)
+    expect(page).to have_content(video.title)
   end
 
   it "can't add the same bookmark more than once" do
