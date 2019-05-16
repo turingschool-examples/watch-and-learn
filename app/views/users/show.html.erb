@@ -10,8 +10,12 @@
     <li> <%= facade.user.first_name  %> <%= facade.user.last_name %> </li>
     <li> <%= facade.user.email%> </li>
   </ul>
+
   <section>
     <h1>Bookmarked Segments</h1>
+    <% current_user.videos.order(tutorial_id: :asc).order(position: :asc).each do |video| %>
+      <h3><%= video.tutorial.title %> - <%= video.title %></h3>
+    <% end %>
   </section>
 
   <% if facade.user.github_token %>
