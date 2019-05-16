@@ -36,15 +36,9 @@ Rails.application.routes.draw do
   get '/get_started', to: 'get_started#show'
   post '/friendship', to: 'friendships#create'
 
-
-  # Is this being used?
-  get '/video', to: 'video#show'
-
   resources :users, only: [:new, :create, :update, :edit]
 
-  resources :tutorials, only: [:show, :index] do
-    resources :videos, only: [:show, :index]
-  end
+  resources :tutorials, only: [:show, :index]
 
   resources :user_videos, only:[:create, :destroy]
 end
