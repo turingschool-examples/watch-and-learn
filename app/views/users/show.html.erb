@@ -16,7 +16,7 @@
       <h4>You don't have any bookmarks yet!</h4>
     <% else %>
       <% bookmarks.each do|tutorial, videos| %>
-        <h4><%= tutorial.values.first %></h4>
+        <h4>-- <%= tutorial.values.first %></h4>
         <ul>
         <% videos.each do |video| %>
           <li><%= link_to "#{video.values.first}", "/tutorials/#{tutorial.keys.first}?video_id=#{video.keys.first}" %></li>
@@ -45,7 +45,7 @@
           <li class='follower' id='<%= follower.login %>'>
             <%= link_to follower.login, follower.html_url %>
             <% if follower.registered? && !current_user.friend?(follower.login) %>
-            :  <%= button_to 'Add as Friend', friendship_path(friend_login: follower.login) %>
+            :  <%= button_to 'Add as Friend', friendship_path(friend_login: follower.login), class: 'btn btn-primary mb1 bg-teal' %>
             <% end %>
           </li>
       <% end %>
@@ -59,7 +59,7 @@
           <li class='following' id='<%= following.login %>'>
             <%= link_to following.login, following.html_url %>
             <% if following.registered? && !current_user.friend?(following.login) %>
-            :  <%= button_to 'Add as Friend', friendship_path(friend_login: following.login) %>
+            :  <%= button_to 'Add as Friend', friendship_path(friend_login: following.login), class: 'btn btn-primary mb1 bg-teal' %>
             <% end %>
           </li>
       <% end %>
