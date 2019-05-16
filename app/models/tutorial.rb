@@ -10,4 +10,14 @@ class Tutorial < ApplicationRecord
   def self.non_class_content
     where(classroom: false)
   end
+
+  def self.bookmarked_by(user)
+    joins(videos: :user_videos)
+    .where("user_videos.user_id = ?", user.id)
+  end
+
+  def bookmarked_tutorial_videos(user)
+    videos.joins(:user_videos)
+          .order(position: :asc) 
+  end
 end
