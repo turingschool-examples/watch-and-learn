@@ -1,0 +1,20 @@
+AllCops:
+  Exclude:
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'lib/tasks/**/*'
+    - 'spec/**/*'
+    - 'node_modules/**/*'
+    - 'bin/**/*'
+
+Metrics/LineLength:
+  Exclude:
+    - 'spec/**/*'
+
+Metrics/MethodLength:
+  Exclude:
+    - 'spec/**/*'
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'

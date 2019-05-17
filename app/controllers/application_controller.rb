@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
+# application controller
 class ApplicationController < ActionController::Base
   helper_method :current_user
-
 
   add_flash_types :success
 

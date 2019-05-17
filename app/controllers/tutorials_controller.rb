@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# tutorial controller
 class TutorialsController < ApplicationController
   def show
     tutorial = Tutorial.find(params[:id])
