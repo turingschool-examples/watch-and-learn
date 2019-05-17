@@ -19,6 +19,8 @@
     <% end %>
   </section>
 
+  <%= link_to 'Send an Invite', invite_path %>
+
   <section class='bookmarked_segment'>
     <h1>Bookmarked Segments</h1>
     <% current_user.tut_titles.each do |title| %>
