@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# class for invitation mailer
 class InvitationMailer < ApplicationMailer
   def invite(friend, user)
     @friend = friend[:login]
