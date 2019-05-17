@@ -5,7 +5,7 @@ require 'rails_helper'
 describe 'a logged in user, at the dashboard' do
   context 'can see a follower/following has an account' do
     it 'has link to add as friend' do
-      VCR.use_cassette('can_see_friendships') do
+      VCR.use_cassette('friendships/can_see_friendships1') do
         user = create(:user)
         deonte = User.create!(email: '45864171+djc00p@users.noreply.github.com',
                               first_name: 'Deonte',
@@ -33,7 +33,7 @@ describe 'a logged in user, at the dashboard' do
     end
 
     it 'can click on link' do
-      VCR.use_cassette('can_see_friendships2') do
+      VCR.use_cassette('friendships/can_see_friendships2') do
         user = create(:user)
         deonte = User.create!(email: '45864171+djc00p@users.noreply.github.com',
                               first_name: 'Deonte',
@@ -68,7 +68,7 @@ describe 'a logged in user, at the dashboard' do
     end
 
     it 'will not have link to add as friend' do
-      VCR.use_cassette('can_see_friendships1') do
+      VCR.use_cassette('friendships/can_see_friendships3') do
         user = create(:user)
         deonte = User.create(email: '45864171+djc00p@users.noreply.github.com',
                              first_name: 'Deonte',
@@ -99,7 +99,7 @@ describe 'a logged in user, at the dashboard' do
     end
 
     it 'shows users friends' do
-      VCR.use_cassette('can_see_friendships4') do
+      VCR.use_cassette('friendships/can_see_friendships4') do
         deonte = User.create(email: '45864171+djc00p@users.noreply.github.com',
                              first_name: 'Deonte',
                              last_name: 'Cooper',
