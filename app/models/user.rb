@@ -8,6 +8,8 @@ class User < ApplicationRecord
   has_many :friends, foreign_key: :friended_user_id, class_name: 'Friendship'
   has_many :users_who_friended, through: :friendships, source: :user
 
+  before_create :confirmation_token
+
   validates :email, uniqueness: true, presence: true
   validates_presence_of :first_name
   enum role: %i[default admin]
@@ -17,7 +19,7 @@ class User < ApplicationRecord
   def email_activation
     self.email_confirmed = "active"
     self.confirm_token = nil
-    save!
+    save!(validate: false)
   end
 
   private
