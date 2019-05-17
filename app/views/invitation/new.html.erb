@@ -1,0 +1,15 @@
+<div class="user-login">
+  <main>
+  <section>
+    <%= form_tag invite_path do %>
+      <p>
+        <%= label_tag :github_handle, name="Github Handle" %>
+        <%= text_field_tag :github_handle %>
+      </p>
+      <p>
+        <%= submit_tag 'Send Invite' %>
+      </p>
+    <% end %>
+  </section>
+  </main>
+</div>

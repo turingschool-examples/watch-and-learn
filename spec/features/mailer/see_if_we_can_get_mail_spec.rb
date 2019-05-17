@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe 'as an unregistered user' do
@@ -25,7 +27,7 @@ describe 'as an unregistered user' do
     VCR.use_cassette('see_if_we_can_get_mail_spec2') do
       user = User.create!(first_name: 'Earl',
                           last_name: 'Stephens',
-                          email: "sethreader@hotmail.com",
+                          email: 'sethreader@hotmail.com',
                           password: 'password',
                           username: 'earl-stephens',
                           github_token: ENV['token'])
@@ -43,7 +45,7 @@ describe 'as an unregistered user' do
         .and_return(user)
 
       visit dashboard_path
-      
+
       expect(page).to have_content('Status: Active')
     end
   end

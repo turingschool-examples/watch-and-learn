@@ -38,6 +38,8 @@ Rails.application.routes.draw do
   get '/get_started', to: 'get_started#show'
   get '/activation', to: 'users#activation', as: 'activation'
   get '/thankyou', to: 'thankyou#index', as: 'thankyou'
+  get '/invite', to: 'invitation#new', as: 'invite'
+  post '/invite', to: 'invitation#create'
 
   # Is this being used?
   get '/video', to: 'video#show'

@@ -26,6 +26,15 @@ class GitHubFacade
     end
   end
 
+  def github_handle(handle)
+    conn = Faraday.new("https://api.github.com/users/#{handle}") do |f|
+      f.params['access_token'] = @user.github_token
+      f.adapter Faraday.default_adapter
+    end
+    response = conn.get
+    JSON.parse(response.body, symbolize_names: true)
+  end
+
   private
 
   def repos_data

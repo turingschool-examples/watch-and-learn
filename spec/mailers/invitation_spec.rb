@@ -2,5 +2,6 @@
 
 require 'rails_helper'
 
-RSpec.describe ActivationMailer, type: :mailer do
+RSpec.describe InvitationMailer, type: :mailer do
+
 end
