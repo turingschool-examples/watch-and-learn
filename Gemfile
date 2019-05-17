@@ -28,6 +28,7 @@ gem 'omniauth-census', git: 'https://github.com/turingschool-projects/omniauth-c
 gem 'omniauth-github'
 gem 'omniauth-google-oauth2'
 gem 'rubocop', '~> 0.68.1', require: false
+gem 'sendgrid-ruby'
 gem 'will_paginate'
 gem 'yt', '~> 0.29.1'
 
