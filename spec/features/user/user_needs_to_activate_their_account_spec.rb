@@ -43,7 +43,7 @@ RSpec.describe 'as a new user' do
       # Then I should be taken to a page that says "Thank you! Your account is now activated."
 
       # And when I visit "/dashboard"
-      visit dashboard_path
+      click_link "Click here to return to your dashboard"
       # Then I should see "Status: Active"
       expect(page).to have_content('Status: Active')
     end
