@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
-class Admin::VideosController < Admin::BaseController
-
+module Admin
+  # namespaced controller for admin/videos
+  class VideosController < Admin::BaseController
     def create
       begin
         tutorial = Tutorial.find(params[:tutorial_id])
@@ -24,7 +25,8 @@ class Admin::VideosController < Admin::BaseController
 
     private
 
-  def new_video_params
-    params.require(:video).permit(:title, :description, :video_id, :thumbnail)
+    def new_video_params
+      params.require(:video).permit(:title, :description, :video_id, :thumbnail)
+    end
   end
 end
