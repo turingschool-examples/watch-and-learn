@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class InvitationController < ApplicationController
+  before_action :active_current_user?
+  
   def new; end
 
   def create

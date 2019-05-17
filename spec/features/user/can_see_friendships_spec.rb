@@ -12,7 +12,8 @@ describe 'a logged in user, at the dashboard' do
                               last_name: 'Cooper',
                               password: 'password',
                               username: 'djc00p',
-                              github_token: ENV['Deonte_token'])
+                              github_token: ENV['Deonte_token'],
+                               status: 'active')
 
         earl = User.create!(email: '34906415+earl-stephens@users.noreply.github.com',
                             first_name: 'Earl',
@@ -40,14 +41,16 @@ describe 'a logged in user, at the dashboard' do
                               last_name: 'Cooper',
                               password: 'password',
                               username: 'djc00p',
-                              github_token: ENV['Deonte_token'])
+                              github_token: ENV['Deonte_token'],
+                               status: 'active')
 
         earl = User.create(email: '34906415+earl-stephens@users.noreply.github.com',
                            first_name: 'Earl',
                            last_name: 'Stephens',
                            password: 'password',
                            username: 'earl-stephens',
-                           github_token: ENV['token'])
+                           github_token: ENV['token'],
+                           status: 'active')
         allow_any_instance_of(ApplicationController).to receive(:current_user)
           .and_return(earl)
 
@@ -82,7 +85,8 @@ describe 'a logged in user, at the dashboard' do
                            last_name: 'Stephens',
                            password: 'password',
                            username: 'earl-stephens',
-                           github_token: ENV['token'])
+                           github_token: ENV['token'],
+                           status: 'active')
 
         friendship = Friendship.create!(user_id: earl.id, friendship_id: deonte.id)
 
@@ -112,7 +116,8 @@ describe 'a logged in user, at the dashboard' do
                            last_name: 'Stephens',
                            password: 'password',
                            username: 'earl-stephens',
-                           github_token: ENV['token'])
+                           github_token: ENV['token'],
+                           status: 'active')
 
         friendship = Friendship.create!(user_id: earl.id, friendship_id: deonte.id)
 

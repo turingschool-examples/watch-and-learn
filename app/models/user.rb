@@ -13,6 +13,10 @@ class User < ApplicationRecord
   enum role: %i[default admin]
   has_secure_password
 
+  def active?
+    status == 'active'
+  end
+
   def self.from_omniauth(user_id, auth)
     user = User.find(user_id)
     if user.username.nil?
