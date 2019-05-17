@@ -29,6 +29,18 @@ class UsersController < ApplicationController
     redirect_to dashboard_path
   end
 
+  def confirm_email
+    user = User.find_by(confirm_token: params[:id])
+    if user
+      user.email_activation
+      flash[:success] = "Thank you! Your account is now activated."
+      redirect_to dashboard_path
+    else
+      flash[:error] = "Something went wrong, please try again."
+      redirect_to root_url
+    end
+  end
+
   private
 
   def user_params
