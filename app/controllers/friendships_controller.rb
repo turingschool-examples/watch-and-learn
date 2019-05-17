@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# friendship controller
 class FriendshipsController < ApplicationController
   before_action :active_current_user?
   

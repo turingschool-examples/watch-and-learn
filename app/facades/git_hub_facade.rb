@@ -3,6 +3,7 @@
 require_relative '../models/github/repo'
 require_relative '../models/github/follower'
 require_relative '../models/github/following'
+# facade for github
 class GitHubFacade
   def initialize(user)
     @user = user
@@ -21,7 +22,7 @@ class GitHubFacade
   end
 
   def following
-    following_output = following_data.map do |following|
+    following_data.map do |following|
       Following.new(following)
     end
   end
