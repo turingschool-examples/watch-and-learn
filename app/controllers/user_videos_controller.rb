@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# user videos controller
 class UserVideosController < ApplicationController
   before_action :active_current_user?
   

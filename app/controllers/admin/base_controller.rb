@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
-class Admin::BaseController < ApplicationController
-  
+module Admin
+  # base controller
+  class BaseController < ApplicationController
+  end
 end

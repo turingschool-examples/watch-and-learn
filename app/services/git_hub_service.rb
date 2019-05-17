@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 # Service PORO for github
-
 class GitHubService
   def initialize(user_name, github_token)
     @user_name = user_name
