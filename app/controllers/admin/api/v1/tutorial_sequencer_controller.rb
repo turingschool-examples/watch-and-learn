@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+<<<<<<< HEAD
 module Admin
   module Api
     module V1
@@ -19,4 +20,8 @@ module Admin
       end
     end
   end
+=======
+class Admin::Api::V1::TutorialSequencerController < Admin::Api::V1::BaseController
+
+>>>>>>> dbd5e46932153cdc79f6b9b4cd8abe8657de42de
 end

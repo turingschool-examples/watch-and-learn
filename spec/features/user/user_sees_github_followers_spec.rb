@@ -10,7 +10,7 @@ require 'rails_helper'
 
 RSpec.describe 'As a logged in user' do
   it "I should see a section for 'Github'" do
-    VCR.use_cassette('user_can_see_github_followers_spec') do
+    VCR.use_cassette('github/user_can_see_github_followers_spec') do
       user = User.create!(first_name: 'Earl',
                           last_name: 'Stephens',
                           email: 'sethreader@hotmail.com',
@@ -31,7 +31,7 @@ RSpec.describe 'As a logged in user' do
   end
 
   it "I should see a section for 'Github'" do
-    VCR.use_cassette('user_can_see_github_followers_spec2') do
+    VCR.use_cassette('github/user_can_see_github_followers_spec2') do
       user = User.create!(first_name: 'Earl',
                           last_name: 'Stephens',
                           email: 'sethreader@hotmail.com',

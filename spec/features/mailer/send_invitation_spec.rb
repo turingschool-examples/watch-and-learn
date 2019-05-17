@@ -5,7 +5,7 @@ require 'rails_helper'
 describe 'as a registered user' do
   context 'I should be active' do
     it 'should be able to send invite to friend' do
-      VCR.use_cassette('send_invitation') do
+      VCR.use_cassette('mailer/send_invitation') do
         earl = User.create!(first_name: 'Earl',
                             last_name: 'Stephens',
                             email: 'sethreader@hotmail.com',
@@ -36,7 +36,7 @@ describe 'as a registered user' do
     end
 
     it 'should not be able to send invite to friend' do
-      VCR.use_cassette('send_invitation2') do
+      VCR.use_cassette('mailer/send_invitation2') do
         earl = User.create!(first_name: 'Earl',
                             last_name: 'Stephens',
                             email: 'sethreader@hotmail.com',

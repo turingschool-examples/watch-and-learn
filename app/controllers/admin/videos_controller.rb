@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+<<<<<<< HEAD
 module Admin
   # namespaced videos controller
   class VideosController < Admin::BaseController
@@ -11,6 +12,9 @@ module Admin
       video = Video.find(params[:id])
       video.update(video_params)
     end
+=======
+class Admin::VideosController < Admin::BaseController
+>>>>>>> dbd5e46932153cdc79f6b9b4cd8abe8657de42de
 
     def create
       begin
@@ -34,6 +38,7 @@ module Admin
 
     private
 
+<<<<<<< HEAD
     def video_params
       params.permit(:position)
     end
@@ -41,5 +46,9 @@ module Admin
     def new_video_params
       params.require(:video).permit(:title, :description, :video_id, :thumbnail)
     end
+=======
+  def new_video_params
+    params.require(:video).permit(:title, :description, :video_id, :thumbnail)
+>>>>>>> dbd5e46932153cdc79f6b9b4cd8abe8657de42de
   end
 end

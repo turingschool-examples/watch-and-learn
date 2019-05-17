@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 describe 'as an unregistered user' do
-  VCR.use_cassette('see_if_we_can_get_mail_spec2') do
+  VCR.use_cassette('mailer/see_if_we_can_get_mail_spec2') do
     it 'can recieve activation email' do
       visit root_path
 
@@ -24,7 +24,7 @@ describe 'as an unregistered user' do
   end
 
   it 'should recieve email to activation' do
-    VCR.use_cassette('see_if_we_can_get_mail_spec2') do
+    VCR.use_cassette('mailer/see_if_we_can_get_mail_spec2') do
       user = User.create!(first_name: 'Earl',
                           last_name: 'Stephens',
                           email: 'sethreader@hotmail.com',
