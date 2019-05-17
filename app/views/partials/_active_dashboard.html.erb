@@ -1,0 +1,68 @@
+<h1> <%= facade.user.first_name %>'s Dashboard </h1>
+
+<%= button_to 'Log Out', logout_path, method: 'delete', class: "btn btn-primary mb1 bg-teal" %>
+<% if facade.user.github_token.nil? %>
+  <%= button_to 'Connect to Github', '/auth/github', class: "btn btn-primary mb1 bg-teal" %>
+<% end %>
+<h3>Account Details</h3>
+<ul>
+  <li> <%= facade.user.first_name  %> <%= facade.user.last_name %> </li>
+  <li> <%= facade.user.email%> </li>
+</ul>
+<section>
+  <h1>Bookmarked Segments</h1>
+</section>
+
+<% if facade.user.github_token %>
+  <section>
+    <h1>Github</h1>
+    <h3>Repositories</h3>
+      <% facade.repositories.each do |repo| %>
+      <ul>
+        <li class='repository'><%= link_to repo.name, repo.url %></li>
+      </ul>
+      <% end %>
+  </section>
+
+  <section>
+    <h3>Followers</h3>
+    <% facade.followers.each do |follower| %>
+    <ul>
+      <li class='follower'><%= link_to follower.handle, follower.url %>
+      <% if follower.not_friend_or_user? %>
+        <%= form_for :friendship, url: friendships_path, method: :post do |f| %>
+          <%= f.hidden_field(:user_id, :value => facade.user.id) %>
+          <%= f.hidden_field(:friended_user_git_id, :value => follower.git_id) %>
+          <%= f.submit "Add as Friend" %>
+        <% end %>
+      <% end %></li>
+    </ul>
+    <% end %>
+  </section>
+
+  <section>
+    <h3>Following</h3>
+    <% facade.following.each do |following| %>
+    <ul>
+      <li class='follower'><%= link_to following.handle, following.url %>
+        <% if following.not_friend_or_user? %>
+          <%= form_for :friendship, url: friendships_path, method: :post do |f| %>
+            <%= f.hidden_field(:user_id, :value => facade.user.id) %>
+            <%= f.hidden_field(:friended_user_git_id, :value => following.git_id) %>
+            <%= f.submit "Add as Friend" %>
+          <% end %>
+        <% end %></li>
+    </ul>
+    <% end %>
+  </section>
+  <% if facade.user.friends %>
+    <section>
+      <h3>Friends</h3>
+      <ul>
+        <% facade.friends.each do |friend| %>
+          <%= friend.first_name + " " + friend.last_name %>
+        <% end %>
+      </ul>
+    </section>
+  <% end %>
+<% end %>

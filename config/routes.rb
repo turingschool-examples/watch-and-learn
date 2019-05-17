@@ -38,7 +38,9 @@ Rails.application.routes.draw do
   # Is this being used?
   get '/video', to: 'video#show'
 
-  resources :users, only: %i[new create update edit]
+  resources :users, only: %i[new create update edit] do
+    member { get :confirm_email }
+  end
 
   resources :friendships, only: %i[new create]
 

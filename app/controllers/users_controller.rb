@@ -14,6 +14,7 @@ class UsersController < ApplicationController
   def create
     user = User.create(user_params)
     if user.save
+      UserMailer.registration_confirmation(user).deliver_now
       session[:user_id] = user.id
       redirect_to dashboard_path
     else
@@ -26,6 +27,18 @@ class UsersController < ApplicationController
     response = request.env['omniauth.auth']
     current_user.update(github_token: response['credentials']['token'], github_id: response['extra']['raw_info']['id'])
     redirect_to dashboard_path
+  end
+
+  def confirm_email
+    user = User.find_by(confirm_token: params[:id])
+    if user
+      user.email_activation
+      flash[:success] = "Thank you! Your account is now activated."
+      redirect_to dashboard_path
+    else
+      flash[:error] = "Something went wrong, please try again."
+      redirect_to root_url
+    end
   end
 
   private
