@@ -40,7 +40,7 @@ RSpec.describe User, type: :model do
 
   describe 'instance methods' do
     it "email_activation" do
-      user = create(:user, confirm_token: "12345qwadflkawe")
+      user = create(:user, confirm_token: "12345qwadflkawe", email_confirmed: "inactive")
 
       expect(user.email_confirmed).to eq("inactive")
 
