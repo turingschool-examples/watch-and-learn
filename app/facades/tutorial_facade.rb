@@ -7,17 +7,6 @@ class TutorialFacade < SimpleDelegator
     @video_id = video_id
   end
 
-<<<<<<< HEAD
-  def check_for_nil
-    return unless current_video.position.nil?
-
-    new_position = Video.order(position: :desc)
-                        .second[:position] + 1
-    current_video.update(position: new_position)
-  end
-
-=======
->>>>>>> dbd5e46932153cdc79f6b9b4cd8abe8657de42de
   def current_video
     if videos.count.zero?
       videos << Video.new(title: 'More to come', description: "It's a secret")
