@@ -5,6 +5,17 @@ attr_reader :user
     @user = user
   end
 
+  def inactive_user
+    "partials/#{partials[user.email_confirmed]}"
+  end
+
+  def partials
+    {
+      "inactive" => "inactive_dashboard",
+      "active"   => "active_dashboard"
+    }
+end
+
   def repositories(limit_index = 4)
     #can be refactored to
     #take a parameter which determines

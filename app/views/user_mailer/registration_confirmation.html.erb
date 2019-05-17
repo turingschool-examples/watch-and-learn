@@ -1,0 +1,5 @@
+Hello, <%= @user.first_name %>!
+
+Please visit the link below to confirm your email address:
+
+<%= link_to "Confirm My Email", confirm_email_user_url(@user.confirm_token) %>
