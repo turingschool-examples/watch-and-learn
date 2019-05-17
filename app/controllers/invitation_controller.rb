@@ -1,7 +1,7 @@
-class InvitationController < ApplicationController
-  def new
+# frozen_string_literal: true
 
-  end
+class InvitationController < ApplicationController
+  def new; end
 
   def create
     user = current_user
