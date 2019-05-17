@@ -6,6 +6,7 @@ FactoryBot.define do
     password { Faker::Color.color_name }
     role { :default }
     token { ENV['GITHUB_TOKEN_KEY'] }
+    github_name { "team_rocket" }
   end
 
   factory :admin, parent: :user do
