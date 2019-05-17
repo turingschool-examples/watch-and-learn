@@ -20,7 +20,6 @@ Rails.application.routes.draw do
     resources :tutorials, only: %i[create edit update destroy new] do
       resources :videos, only: [:create]
     end
-    resources :videos, only: %i[edit update destroy]
 
     namespace :api do
       namespace :v1 do
