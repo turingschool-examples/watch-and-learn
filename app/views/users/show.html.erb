@@ -1,6 +1,7 @@
 <section class="dashboard-main">
   <h1> <%= facade.first_name %>'s Dashboard </h1>
 
+  <p>Status: <%= facade.status %></p>
   <%= button_to 'Log Out', logout_path, method: 'delete', class: "btn btn-primary mb1 bg-teal" %>
   <h3>Account Details</h3>
   <ul>

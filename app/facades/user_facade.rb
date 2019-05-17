@@ -7,6 +7,7 @@ class UserFacade
     @email = user.email
     @token = user.token
     @friends = find_friends(user.friends)
+    @status = user.status
   end
 
   def repos
@@ -46,5 +47,13 @@ class UserFacade
 
   def tutorials(user)
     Tutorial.bookmarked_by(user)
+  end
+
+  def status
+    if @status
+      'Active'
+    else
+      'Inactive'
+    end
   end
 end
