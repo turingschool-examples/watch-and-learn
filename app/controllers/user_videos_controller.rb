@@ -3,7 +3,6 @@
 # user videos controller
 class UserVideosController < ApplicationController
   before_action :active_current_user?
-  
   def new; end
 
   def create

@@ -13,7 +13,8 @@ class ApplicationController < ActionController::Base
   def active_current_user?
     if current_user.status == 'active'
     else
-      flash[:notice] = 'Activate account before proceeding. Please check your email.'
+      flash[:notice] = 'Activate account before proceeding.'\
+                       'Please check your email.'
       redirect_back fallback_location: { action: 'show', id: current_user.id }
     end
   end
