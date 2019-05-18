@@ -1,1 +1,1 @@
-Visit <%= link_to 'here', "http://localhost:3000/activation?email=#{@user.email}"  %> to activate your account.
+Visit <%= link_to 'here', activation_url(:email => @user.email)  %> to activate your account.
