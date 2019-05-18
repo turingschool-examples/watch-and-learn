@@ -18,7 +18,15 @@ Rails.application.configure do
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = { address: 'mighty-scrubland-37934.herokuapp.com', port: 1025 }
+  config.action_mailer.smtp_settings = {
+    address:              'smtp.sendgrid.net',
+    port:                 '587',
+    domain:               'mighty-scrubland-37934.herokuapp.com',
+    user_name:            ENV['SENDGRID_USERNAME'],
+    password:             ENV['SENDGRID_PASSWORD'],
+    authentication:       'plain',
+    enable_starttls_auto: true
+  }
   config.action_mailer.default_url_options = {host: 'mighty-scrubland-37934.herokuapp.com'}
   Rails.application.routes.default_url_options[:host] = 'mighty-scrubland-37934.herokuapp.com'
     # address: 'mighty-scrubland-37934.herokuapp.com'
