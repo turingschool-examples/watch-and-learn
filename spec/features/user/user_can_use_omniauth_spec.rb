@@ -8,7 +8,8 @@ describe 'User logs in through github omniauth' do
       user = User.create!(first_name: 'Deonte',
                           last_name: 'Cooper',
                           email: '45864171+djc00p@users.noreply.github.com',
-                          password: 'password')
+                          password: 'password',
+                          status: 'active')
 
       allow_any_instance_of(ApplicationController)
         .to receive(:current_user)
@@ -27,6 +28,7 @@ describe 'User logs in through github omniauth' do
                           'token' => ENV['Deonte_token']
                         } }
 
+
       OmniAuth.config.add_mock(:github, omniauth_hash)
 
       click_button 'Connect to Github'
@@ -41,7 +43,8 @@ describe 'User logs in through github omniauth' do
                           last_name: 'Cooper',
                           email: '45864171+djc00p@users.noreply.github.com',
                           password: 'password',
-                          username: 'djc00p')
+                          username: 'djc00p',
+                          status: 'active')
 
       allow_any_instance_of(ApplicationController)
         .to receive(:current_user)

@@ -2,6 +2,7 @@
 
 # friendship controller
 class FriendshipsController < ApplicationController
+  before_action :active_current_user?
   def create
     friend = User.find_by(username: params[:friend])
     Friendship.create(user_id: current_user.id, friendship_id: friend.id)
