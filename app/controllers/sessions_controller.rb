@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
 
   def create
     if request.env['omniauth.auth']
+      user = User.from_omniauth(session[:user_id], request.env['omniauth.auth'])
       flash[:notice] = 'Logged into Github'
       redirect_to dashboard_path
     else

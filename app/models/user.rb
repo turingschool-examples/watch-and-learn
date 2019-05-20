@@ -18,6 +18,10 @@ class User < ApplicationRecord
     status == 'active'
   end
 
+  def activation_email
+    ActivationMailer.inform(self).deliver_now
+  end
+
   def self.from_omniauth(user_id, auth)
     user = User.find(user_id)
     if user.username.nil?
@@ -29,8 +33,8 @@ class User < ApplicationRecord
   end
 
   def create_from_omniauth(auth)
-    update!(github_token: auth['credentials']['token'])
-    update!(username: auth['info']['nickname'])
+    update(github_token: auth['credentials']['token'])
+    update(username: auth['info']['nickname'])
   end
 
   def bookmarked_vids

@@ -13,6 +13,7 @@
     <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
     <li> <%= current_user.email %> </li>
     <li>Status: <%= current_user.status.capitalize %></li>
+    <%= link_to 'Resend Activation', current_user %>
   </ul>
 
   <section class="user_friends">
