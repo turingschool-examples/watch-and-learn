@@ -278,3 +278,8 @@ div.title-bookmark {
   .m {font-size: 1.2em; }
 }
 
+.github-sections {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
