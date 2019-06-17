@@ -1,32 +1,32 @@
-# Brownfield Of Dreams
+# Brownfield of Dreams
 
-This is the base repo for a brownfield project used at Turing for Backend Mod 3.
+## About
 
-Project Spec and Evaluation Rubric: https://github.com/turingschool-examples/brownfield-of-dreams
+This is a paired project while students at Turing School of Software and Design's Backend Engineering program. The aim of the project is to use the following skills:
 
-### Project Board
+- Build on an existing code base and work with technical debt
+- OAuth
+- MVC design pattern
+- Consume an API with Faraday
+- Behavior Driven Development using RSpec and Capybara
+- Version control and project management within a paired environment
+- Heroku deployment
+- Experimentation with new technologies and gems
 
-Students will continue to build on the existing code base using the cards within the following Github Project: https://github.com/turingschool-examples/brownfield-of-dreams/projects/1
+The project is a Ruby on Rails application used to organize YouTube content used for online learning. GitHub API is consumed to allow users to view their repos, followers, and following as well as the ability to add friends.
 
-**Learning Goals and Labels**
+## Installation & Setup
 
-The cards are labeled in a way that correspond to learning goals or to specific areas you might personally want to focus on.
-
-Cards should be completed from top to bottom in the To Do column. Cards labeled `good first issue` are good as filler work and will allow you to practice common Rails skills.
-
-### About the Project
-
-This is a Ruby on Rails application used to organize YouTube content used for online learning. Each tutorial is a playlist of video segments. Within the application an admin is able to create tags for each tutorial in the database. A visitor or registered user can then filter tutorials based on these tags.
-
-A visitor is able to see all of the content on the application but in order to bookmark a segment they will need to register. Once registered a user can bookmark any of the segments in a tutorial page.
-
-## Local Setup
-
-First you'll need to setup an API key with YouTube and have it defined within `ENV['YOUTUBE_API_KEY']`. There will be one failing spec if you don't have this set up.
+The program can run in development from the Rails server after following the following steps in your console:
 
 Clone down the repo
 ```
-$ git clone
+$ git clone git@github.com:djc00p/brownfield-of-dreams.git
+```
+
+Change directory into the app
+```
+$ cd brownfield-of-dreams
 ```
 
 Install the gem packages
@@ -41,6 +41,11 @@ $ brew install yarn
 $ yarn add stimulus
 ```
 
+If there is a yarn error **
+```
+$ rm yarn.lock && yarn
+```
+
 Set up the database
 ```
 $ rake db:create
@@ -48,20 +53,38 @@ $ rake db:migrate
 $ rake db:seed
 ```
 
+Run the server
+```
+$ rails s
+```
+
+On browser, go to `http://localhost:3000/`
+
+## Testing
+
+The project uses <a href="https://github.com/colszowka/simplecov"> SimpleCov</a> and <a href="https://github.com/rspec/rspec"> RSpec</a> to test.
+
 Run the test suite:
-```ruby
+```
 $ bundle exec rspec
 ```
 
-## Technologies
-* [Stimulus](https://github.com/stimulusjs/stimulus)
-* [will_paginate](https://github.com/mislav/will_paginate)
-* [acts-as-taggable-on](https://github.com/mbleigh/acts-as-taggable-on)
-* [webpacker](https://github.com/rails/webpacker)
-* [vcr](https://github.com/vcr/vcr)
-* [selenium-webdriver](https://www.seleniumhq.org/docs/03_webdriver.jsp)
-* [chromedriver-helper](http://chromedriver.chromium.org/)
+## Live Web App
 
-### Versions
+The project is in live production <a href='https://mighty-scrubland-37934.herokuapp.com/'> here</a>
+
+To login as admin, `email: admin@example.com password: password`
+
+To use as a regular use, please register and connect to your GitHub account.
+
+## System Requirements
+
 * Ruby 2.4.1
 * Rails 5.2.0
+* PostgreSQL 11.2
+
+## Contributors
+
+Deonte Cooper @djc00p
+
+Earl Stephens @earl-stephens
