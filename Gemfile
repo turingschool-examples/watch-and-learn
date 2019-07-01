@@ -43,6 +43,7 @@ group :development, :test do
   gem 'vcr'
   gem 'selenium-webdriver'
   gem 'chromedriver-helper'
+  gem 'rubocop', '~> 0.72.0', require: false
 end
 
 group :development do
