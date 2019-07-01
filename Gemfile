@@ -42,7 +42,9 @@ group :development, :test do
   gem 'simplecov'
   gem 'vcr'
   gem 'selenium-webdriver'
-  gem 'chromedriver-helper'
+  gem 'webdrivers', '~> 4.0'
+  gem 'faker'
+
 end
 
 group :development do
