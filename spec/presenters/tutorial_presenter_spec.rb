@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 describe TutorialFacade do
   describe 'instance methods' do
@@ -23,7 +25,7 @@ describe TutorialFacade do
       expect(presenter.current_video.id).to eq(video1.id)
     end
 
-    context "#next_video" do
+    context '#next_video' do
       it 'can find the next video' do
         tutorial = create(:tutorial)
         video1 = create(:video, tutorial_id: tutorial.id, position: 1)
@@ -35,7 +37,7 @@ describe TutorialFacade do
         expect(presenter.next_video).to eq(video2)
       end
 
-      it "returns the last video if the current video is the last in the list" do
+      it 'returns the last video if the current video is the last in the list' do
         learn_to_fight = create(:tutorial)
         rocky = create(:video, tutorial: learn_to_fight, position: 1)
         bloodsport = create(:video, tutorial: learn_to_fight, position: 2)
