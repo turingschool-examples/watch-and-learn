@@ -10,6 +10,7 @@ Students will continue to build on the existing code base using the cards within
 
 **Learning Goals and Labels**
 
+
 The cards are labeled in a way that correspond to learning goals or to specific areas you might personally want to focus on.
 
 Cards should be completed from top to bottom in the To Do column. Cards labeled `good first issue` are good as filler work and will allow you to practice common Rails skills.
