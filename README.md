@@ -50,6 +50,11 @@ $ bundle exec rake db:migrate
 $ bundle exec rake db:seed
 ```
 
+Update Chrome driver
+```
+$ chromedriver-update 74.0.3729.6
+```
+
 Run the test suite:
 ```ruby
 $ bundle exec rspec
