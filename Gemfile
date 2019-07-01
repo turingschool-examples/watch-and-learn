@@ -20,7 +20,6 @@ gem 'faraday'
 gem 'jquery'
 gem 'figaro'
 gem 'factory_bot_rails'
-gem 'faker'
 gem 'active_model_serializers'
 gem 'omniauth-google-oauth2'
 gem 'will_paginate'
@@ -44,6 +43,7 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'webdrivers', '~> 4.0'
   gem 'faker'
+  gem 'rubocop', '~> 0.72.0', require: false
 
 end
 
