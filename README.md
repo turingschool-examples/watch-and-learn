@@ -34,6 +34,8 @@ Install the gem packages
 $ bundle install
 ```
 
+Delete `yarn.lock` file
+
 Install node packages for stimulus
 ```
 $ brew install node
@@ -43,9 +45,9 @@ $ yarn add stimulus
 
 Set up the database
 ```
-$ rake db:create
-$ rake db:migrate
-$ rake db:seed
+$ bundle exec rake db:create
+$ bundle exec rake db:migrate
+$ bundle exec rake db:seed
 ```
 
 Run the test suite:
