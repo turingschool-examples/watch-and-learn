@@ -19,4 +19,14 @@ class GithubFacade
       FollowingUser.new(user)
     end
   end
+      
+  def followers
+    github_data = GithubApiService.new(token)
+    new_response = github_data.followers
+    follower_array = new_response.map do |follower|
+      Follower.new(follower)
+    end
+    follower_array
+  end
+  
 end

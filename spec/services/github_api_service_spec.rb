@@ -4,6 +4,7 @@ require 'webmock/rspec'
 describe GithubApiService do
   before :each do
     @user = User.create(email: "john@gmail.com", first_name: "John", last_name: "smith", token: ENV['GITHUB_API_KEY'])
+
       @service = GithubApiService.new(@user.token)
 
       json_repo_response = File.open("./fixtures/user_repos.json")
@@ -48,6 +49,16 @@ describe GithubApiService do
       expect(following).to be_a Hash
       expect(following).to have_key :login
       expect(following).to have_key :html_url
+    end
+  end
+  
+  context "#followers" do
+    it "returns all github follower handles, and links to their github accounts" do
+      follower_data = @service.followers[0]
+
+      expect(follower_data).to be_a Hash
+      expect(follower_data).to have_key :login
+      expect(follower_data).to have_key :html_url
     end
   end
 end
