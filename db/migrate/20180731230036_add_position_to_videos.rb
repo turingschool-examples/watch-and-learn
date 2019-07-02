@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class AddPositionToVideos < ActiveRecord::Migration[5.2]
   def change
-    add_column :videos, :position, :integer, :default => 0
+    add_column :videos, :position, :integer, default: 0
   end
 end
