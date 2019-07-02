@@ -4,18 +4,13 @@
   <%= button_to 'Log Out', logout_path, method: 'delete', class: "btn btn-primary mb1 bg-teal" %>
   <h3>Account Details</h3>
   <ul>
-    <li> Name: <%= current_user.first_name  %> <%= current_user.last_name %> </li>
-    <li> Email: <%= current_user.email%> </li>
+    <li> Name: <%= current_user.first_name %> <%= current_user.last_name %> </li>
+    <li> Email: <%= current_user.email %> </li>
   </ul>
   <section>
     <h1>Bookmarked Segments</h1>
   </section>
   <section>
-    <h1>GitHub</h1>
-    <ul>
-      <% facade.repos(5).each do |repo| %>
-        <li><%= link_to repo.path.drop_while {|l| l != '/'}, "https://github.com/#{repo.path}" %></li> 
-      <% end %>
-    </ul>
+    <%= render partial: facade.render, locals: {facade: facade} %>
   </section>
 </section>

@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class GithubService
   def repo_info
     JSON.parse(conn.get('/user/repos').body, symbolize_names: true)

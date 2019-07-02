@@ -1,6 +1,11 @@
 class GithubFacade
-  def initialize()
-
+  attr_reader :render
+  def initialize(user)
+    if user.token != nil
+      @render = "partials/github_repos"
+    else
+      @render = "partials/github_auth_prompt"
+    end
   end
 
   def repos(limit = nil)
