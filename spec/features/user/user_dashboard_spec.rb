@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe "As a logged in user, on /dashboard" do
   before :each do
-    @user = create(:user)
+    @user = User.create(email: "john@gmail.com", first_name: "John", last_name: "smith", token: "4505955c23675653cff57fddbde04c05d6594db7")
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
     visit dashboard_path
   end
