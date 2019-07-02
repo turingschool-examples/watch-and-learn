@@ -1,14 +1,27 @@
 require 'rails_helper'
+require 'webmock/rspec'
 
 describe "As a logged in user, on /dashboard" do
   before :each do
-    @user = User.create(email: "john@gmail.com", first_name: "John", last_name: "smith", token: "4505955c23675653cff57fddbde04c05d6594db7")
+    @user = User.create(email: "john@gmail.com", first_name: "John", last_name: "smith", token: "790f5a98275d53160a72ff956ad8a4b171635419")
     @user_2 = create(:user)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
+
+    json_repo_response = File.open("./fixtures/user_repos.json")
+    stub_request(:get, "https://api.github.com/user/repos").
+         with(
+           headers: {
+       	  'Accept'=>'*/*',
+       	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+       	  'Authorization'=>'token 790f5a98275d53160a72ff956ad8a4b171635419',
+       	  'User-Agent'=>'Faraday v0.15.4'
+           }).
+         to_return(status: 200, body: json_repo_response, headers: {})
+
   end
   context "There is a section for 'Github'" do
     it "Displays list of repository names each as links to their repo" do
 
-      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
 
       visit dashboard_path
 
@@ -33,8 +46,3 @@ describe "As a logged in user, on /dashboard" do
     end
   end
 end
-
-# As a logged in user
-# When I visit /dashboard
-# Then I should see a section for "Github"
-# And under that section I should see a list of 5 repositories with the name of each Repo linking to the repo on Github
