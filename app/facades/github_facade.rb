@@ -12,4 +12,11 @@ class GithubFacade
     end
     new_array
   end
+
+  def following
+    user_data = GithubApiService.new(token).following
+    user_data.map do |user|
+      FollowingUser.new(user)
+    end
+  end
 end
