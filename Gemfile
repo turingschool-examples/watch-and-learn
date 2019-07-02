@@ -38,9 +38,9 @@ group :development, :test do
   gem 'launchy'
   gem 'shoulda-matchers'
   gem 'awesome_print'
-  gem 'webmock'
+  # gem 'webmock'
   gem 'simplecov'
-  gem 'vcr'
+  # gem 'vcr'
   gem 'selenium-webdriver'
   gem 'chromedriver-helper'
   gem 'rubocop', '~> 0.72.0', require: false
