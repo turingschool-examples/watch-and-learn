@@ -3,7 +3,9 @@ module YouTube
     attr_reader :thumbnail
 
     def initialize(data = {})
-      @thumbnail = data[:items].first[:snippet][:thumbnails][:high][:url]
+      if data[:items]
+        @thumbnail = data[:items].first[:snippet][:thumbnails][:high][:url]
+      end
     end
 
     def self.by_id(id)
