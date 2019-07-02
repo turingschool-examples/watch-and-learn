@@ -11,6 +11,10 @@ class GithubApiService
     new_response.take(limit)
   end
 
+  def following(limit = 5)
+    parsed_response(conn.get('/user/following')).take(limit)
+  end
+
   private
 
   def parsed_response(response)
