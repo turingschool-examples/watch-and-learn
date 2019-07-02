@@ -8,15 +8,19 @@
     <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
     <li> <%= current_user.email%> </li>
   </ul>
-  <div class="github">
-    <h3>Github Info</h3>
-    <ul class="github-repos">
-      <h4>Github Repos</h4>
-      <% facade.repos.each do |repo| %>
-      <li class="repo"><%= link_to repo.name, repo.url %></li>
-      <% end %>
-    </ul>
-  </div>
+
+  <% if current_user.token %>
+    <div class="github">
+      <h3>Github Info</h3>
+      <ul class="github-repos">
+        <h4>Github Repos</h4>
+        <% facade.repos.each do |repo| %>
+        <li class="repo"><%= link_to repo.name, repo.url %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <section>
     <h1>Bookmarked Segments</h1>
   </section>
