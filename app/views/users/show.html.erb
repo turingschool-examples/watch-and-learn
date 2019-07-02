@@ -12,6 +12,10 @@
   </section>
   <section>
     <h1>GitHub</h1>
-    
+    <ul>
+      <% facade.repos(5).each do |repo| %>
+        <li><%= link_to repo.path.drop_while {|l| l != '/'}, "https://github.com/#{repo.path}" %></li> 
+      <% end %>
+    </ul>
   </section>
 </section>
