@@ -5,17 +5,11 @@ class GithubFacade
   end
 
   def repos
-    conn = Faraday.new(url: "https://api.github.com") do |f|
-      f.headers["Authorization"] = "token #{@token}"
-      f.adapter Faraday.default_adapter
+    github_data = GithubApiService.new(token)
+    new_response = github_data.repos
+    new_array = new_response.map do |repo|
+      Repo.new(repo)
     end
-    response = conn.get("/user/repos")
-    parsed_response = JSON.parse(response.body, symbolize_names: true)
-    new_response = parsed_response.take(5)
-    repo_array = []
-    new_response.each do |repo|
-      repo_array << Repo.new(repo)
-    end
-    repo_array
+    new_array
   end
 end

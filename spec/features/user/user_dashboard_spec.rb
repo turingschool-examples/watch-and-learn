@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe "As a logged in user, on /dashboard" do
   before :each do
-    @user = User.create(email: "john@gmail.com", first_name: "John", last_name: "smith", token: "4505955c23675653cff57fddbde04c05d6594db7")
+    @user = User.create(email: "john@gmail.com", first_name: "John", last_name: "smith", token: "790f5a98275d53160a72ff956ad8a4b171635419")
     @user_2 = create(:user)
   end
   context "There is a section for 'Github'" do
@@ -33,8 +33,3 @@ describe "As a logged in user, on /dashboard" do
     end
   end
 end
-
-# As a logged in user
-# When I visit /dashboard
-# Then I should see a section for "Github"
-# And under that section I should see a list of 5 repositories with the name of each Repo linking to the repo on Github
