@@ -3,7 +3,7 @@ require 'webmock/rspec'
 
 describe GithubApiService do
   before :each do
-    @user = User.create(email: "john@gmail.com", first_name: "John", last_name: "smith", token: "790f5a98275d53160a72ff956ad8a4b171635419")
+    @user = User.create(email: "john@gmail.com", first_name: "John", last_name: "smith", token: ENV["GITHUB_API_KEY"])
       @service = GithubApiService.new(@user.token)
       json_repo_response = File.open("./fixtures/user_repos.json")
       stub_request(:get, "https://api.github.com/user/repos").
@@ -11,10 +11,20 @@ describe GithubApiService do
              headers: {
          	  'Accept'=>'*/*',
          	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-         	  'Authorization'=>'token 790f5a98275d53160a72ff956ad8a4b171635419',
          	  'User-Agent'=>'Faraday v0.15.4'
              }).
            to_return(status: 200, body: json_repo_response, headers: {})
+
+       json_followers_response = File.open("./fixtures/user_followers.json")
+       stub_request(:get, "https://api.github.com/user/followers").
+          with(
+            headers: {
+        	  'Accept'=>'*/*',
+        	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+        	  'Authorization'=>"token #{@user.token}",
+        	  'User-Agent'=>'Faraday v0.15.4'
+            }).
+          to_return(status: 200, body: json_followers_response, headers: {})
 
     end
 
@@ -28,6 +38,16 @@ describe GithubApiService do
       expect(repo_data).to be_a Hash
       expect(repo_data).to have_key :name
       expect(repo_data).to have_key :html_url
+    end
+  end
+
+  context "#followers" do
+    it "returns all github follower handles, and links to their github accounts" do
+      follower_data = @service.followers[0]
+
+      expect(follower_data).to be_a Hash
+      expect(follower_data).to have_key :login
+      expect(follower_data).to have_key :html_url
     end
   end
 end

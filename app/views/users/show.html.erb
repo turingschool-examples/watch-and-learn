@@ -18,6 +18,12 @@
         <li class="repo"><%= link_to repo.name, repo.url %></li>
         <% end %>
       </ul>
+      <ul class="github-followers">
+        <h4>Github Followers</h4>
+        <% facade.followers.each do |follower| %>
+        <li class="follower"><%= link_to follower.handle, follower.url %></li>
+        <% end %>
+      </ul>
     </div>
   <% end %>
 
