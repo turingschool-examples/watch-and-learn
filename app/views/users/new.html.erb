@@ -1,3 +1,6 @@
+<% @user.errors.full_messages.each do |msg| %>
+  <p><%= msg %></p>
+<% end %>
 <div class="user-login">
   <main>
 <h4>Register</h4>
