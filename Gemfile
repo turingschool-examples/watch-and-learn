@@ -38,7 +38,7 @@ group :development, :test do
   gem 'launchy'
   gem 'shoulda-matchers'
   gem 'awesome_print'
-  # gem 'webmock'
+  gem 'webmock'
   gem 'simplecov'
   # gem 'vcr'
   gem 'selenium-webdriver'

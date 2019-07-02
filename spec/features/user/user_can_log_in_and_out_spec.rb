@@ -1,6 +1,9 @@
 require 'rails_helper'
 
 describe 'User' do
+  before :each do
+    WebMock.disable!
+  end
   it 'user can sign in' do
     user = create(:user)
 

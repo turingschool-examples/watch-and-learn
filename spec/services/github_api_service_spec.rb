@@ -1,9 +1,21 @@
 require 'rails_helper'
+require 'webmock/rspec'
 
 describe GithubApiService do
   before :each do
     @user = User.create(email: "john@gmail.com", first_name: "John", last_name: "smith", token: "790f5a98275d53160a72ff956ad8a4b171635419")
       @service = GithubApiService.new(@user.token)
+      json_repo_response = File.open("./fixtures/user_repos.json")
+      stub_request(:get, "https://api.github.com/user/repos").
+           with(
+             headers: {
+         	  'Accept'=>'*/*',
+         	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+         	  'Authorization'=>'token 790f5a98275d53160a72ff956ad8a4b171635419',
+         	  'User-Agent'=>'Faraday v0.15.4'
+             }).
+           to_return(status: 200, body: json_repo_response, headers: {})
+
     end
 
     it "exists" do

@@ -1,6 +1,9 @@
 require 'rails_helper'
 
 describe "An Admin can edit a tutorial" do
+  before :each do
+    WebMock.disable!
+  end
   let(:tutorial) { create(:tutorial) }
   let(:admin)    { create(:admin) }
 
