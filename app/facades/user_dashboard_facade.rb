@@ -11,6 +11,13 @@ class UserDashboardFacade
     end
   end
 
+  def followers
+    followers_data = github_service.followers
+    followers_data.map do |follower_data|
+      Follower.new(follower_data)
+    end
+  end
+
   private
   attr_reader :user
 
