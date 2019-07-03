@@ -10,4 +10,15 @@
   <section>
     <h1>Bookmarked Segments</h1>
   </section>
+
+  <section class="github">
+    <h1>User Repositories</h1>
+    <ol>
+      <% counter = 1 %>
+      <% facade.repos.each do |repo| %>
+        <li id="repo-<%= counter %>"><%= link_to repo.name, repo.url %></li>
+        <% counter += 1 %>
+      <% end %>
+    </ol>
+  </section>
 </section>
