@@ -27,6 +27,14 @@
           </section>
         <% end %>
       </section>
+      <section id="following">
+        <h4>Following</h4>
+        <% facade.following.each_with_index do |following, i| %>
+          <section id="following-<%= i + 1 %>">
+            <p> <%= link_to following.name, following.link %></p>
+          </section>
+        <% end %>
+      </section>
     </section>
   <% end %>
 </section>

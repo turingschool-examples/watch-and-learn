@@ -12,6 +12,10 @@ class GithubService
     fetch('/user/followers')
   end
 
+  def following
+    fetch('/user/following')
+  end
+
   private
 
   def fetch(path)
