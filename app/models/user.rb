@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_one :token
   has_many :user_videos
   has_many :videos, through: :user_videos
 

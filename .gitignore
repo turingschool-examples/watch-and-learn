@@ -12,7 +12,9 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
-
+*.swp
+*.swo
+yarn.lock
 # Ignore uploaded files in development
 /storage/*
 /coverage
