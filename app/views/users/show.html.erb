@@ -19,6 +19,14 @@
           <p><%= link_to repo.name, repo.link %></p>
         </section>
       <% end %>
+      <section id="followers">
+        <h4>Followers</h4>
+        <% facade.followers.each_with_index do |follower, i| %>
+          <section id="follower-<%= i + 1 %>">
+            <p> <%= link_to follower.name, follower.link %></p>
+          </section>
+        <% end %>
+      </section>
     </section>
   <% end %>
 </section>
