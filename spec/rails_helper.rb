@@ -17,6 +17,7 @@ VCR.configure do |config|
   config.configure_rspec_metadata!
   config.filter_sensitive_data('<YOUTUBE_API_KEY>') { ENV['YOUTUBE_API_KEY'] }
   config.filter_sensitive_data('<GITHUB_TOKEN>') { ENV['GITHUB_TOKEN'] }
+  config.allow_http_connections_when_no_cassette = true
 end
 
 ActiveRecord::Migration.maintain_test_schema!
