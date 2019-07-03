@@ -27,15 +27,12 @@ describe 'User' do
         expect(page).to have_css("#repo-3")
         expect(page).to have_css("#repo-4")
         expect(page).to have_css("#repo-5")
+        expect(page).to_not have_css("#repo-6")
       end
 
       within '#repo-1' do
-        click_link
+        expect(page).to have_link("brownfield-of-dreams", href: "https://github.com/james-cape/brownfield-of-dreams")
       end
-
-      expect(current_path).to_not eq("/dashboard")
-      expect(response).to be_successful
-      expect(current_path[0,10]).to include("github.com")
     end
   end
 end
