@@ -26,6 +26,14 @@
         <li><%= link_to follower.name , follower.url %> </li>
       <% end %>
     </ul>
-    <% end %>
   </section>
+  <section class="Github_following_section">
+    <h2>Following</h2>
+    <ul>
+      <% facade.grab_following.each do |following| %>
+        <li><%= link_to following.name , following.url %> </li>
+      <% end %>
+    </ul>
+  </section>
+  <% end %>
 </section>
