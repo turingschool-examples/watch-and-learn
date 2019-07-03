@@ -11,12 +11,25 @@ describe GithubService  do
   context '#get_repos' do
     it 'returns repo data' do
       VCR.use_cassette('grab_github_service_repo') do
-        user = create(:user, username: 'CosmicSpagetti', github_token: ENV['GITHUB_TOKEN'])
+        user = create(:user, username: 'CosmicSpagetti', github_token: ENV['BILLY_GITHUB_TOKEN'])
         github = GithubService.new(user)
-        
+
         repos = github.repos
 
         expect(repos).to be_a Array
+      end
+    end
+  end
+
+  context '#get_followers' do
+    it 'returns follower data' do
+      VCR.use_cassette('grab_github_service_followers') do
+        user = create(:user, username: 'CosmicSpagetti', github_token: ENV['BILLY_GITHUB_TOKEN'])
+        github = GithubService.new(user)
+
+        followers = github.followers
+
+        expect(followers).to be_a Array
       end
     end
   end

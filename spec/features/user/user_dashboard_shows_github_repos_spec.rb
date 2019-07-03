@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'Logged in user' do
   it 'can see github repos' do
-    user = create(:user, username: 'CosmicSpagetti', github_token: ENV['GITHUB_TOKEN'])
+    user = create(:user, username: 'CosmicSpagetti', github_token: ENV['BILLY_GITHUB_TOKEN'])
 
     visit '/'
 
