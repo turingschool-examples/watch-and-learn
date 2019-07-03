@@ -2,23 +2,25 @@ require 'rails_helper'
 
 describe 'User' do
   it 'user can sign in' do
-    user = create(:user)
+    VCR.use_cassette("user_sign_in") do
+      user = create(:user)
 
-    visit '/'
+      visit '/'
 
-    click_on "Sign In"
+      click_on "Sign In"
 
-    expect(current_path).to eq(login_path)
+      expect(current_path).to eq(login_path)
 
-    fill_in 'session[email]', with: user.email
-    fill_in 'session[password]', with: user.password
+      fill_in 'session[email]', with: user.email
+      fill_in 'session[password]', with: user.password
 
-    click_on 'Log In'
+      click_on 'Log In'
 
-    expect(current_path).to eq(dashboard_path)
-    expect(page).to have_content(user.email)
-    expect(page).to have_content(user.first_name)
-    expect(page).to have_content(user.last_name)
+      expect(current_path).to eq(dashboard_path)
+      expect(page).to have_content(user.email)
+      expect(page).to have_content(user.first_name)
+      expect(page).to have_content(user.last_name)
+    end 
   end
 
   it 'can log out', :js do
