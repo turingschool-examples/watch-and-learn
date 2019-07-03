@@ -11,6 +11,13 @@ class GithubFacade
     end
   end
 
+  def grab_followers
+    data = service.followers
+    data.map do |follower|
+      Follower.new(follower)
+    end
+  end
+
   private
 
   def service
