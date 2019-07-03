@@ -1,0 +1,8 @@
+<div id="github">
+  <h1>GitHub</h1>
+  <ul>
+    <% facade.repos(5).each do |repo| %>
+      <li class="repo"><%= link_to repo.path, "https://github.com/#{repo.path}" %></li>
+    <% end %>
+  </ul>
+</div>
