@@ -12,7 +12,7 @@ feature "Github Repository edge case testing" do
 	end 
 
 	scenario "user_1 returns expected repositories" do
-		VCR.use_cassette("github/edgecase_repositories_1") do	
+		VCR.use_cassette("github/edgecase_repositories_1", :allow_playback_repeats => true) do	
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user_1)
 
 			visit dashboard_path	
@@ -23,7 +23,7 @@ feature "Github Repository edge case testing" do
 	end
 
 	scenario "user_2 returns expected repositories" do
-		VCR.use_cassette("github/edgecase_repositories_2") do 	
+		VCR.use_cassette("github/edgecase_repositories_2", :allow_playback_repeats => true) do 	
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user_2)
 
 			visit dashboard_path	
@@ -35,7 +35,7 @@ feature "Github Repository edge case testing" do
 
 	
 	scenario "user_3 returns no repositories" do
-		VCR.use_cassette("github/edgecase_repositories_3") do	
+		VCR.use_cassette("github/edgecase_repositories_3", :allow_playback_repeats => true) do	
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user_3)
 
 			visit dashboard_path	
