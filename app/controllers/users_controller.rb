@@ -3,7 +3,7 @@
 class UsersController < ApplicationController
   def show
     render locals: {
-      facade: RepoFacade.new
+      facade: GithubFacade.new
     }
   end
 
