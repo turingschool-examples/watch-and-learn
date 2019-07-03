@@ -13,12 +13,16 @@
 
   <section class="github">
     <h1>User Repositories</h1>
-    <ol>
-      <% counter = 1 %>
-      <% facade.repos.each do |repo| %>
-        <li id="repo-<%= counter %>"><%= link_to repo.name, repo.url %></li>
-        <% counter += 1 %>
-      <% end %>
-    </ol>
+    <% if facade.repos == nil %>
+      No repos found
+    <% else %>
+      <ol>
+        <% counter = 1 %>
+        <% facade.repos.each do |repo| %>
+          <li id="repo-<%= counter %>"><%= link_to repo.name, repo.url %></li>
+          <% counter += 1 %>
+        <% end %>
+      </ol>
+    <% end %>
   </section>
 </section>
