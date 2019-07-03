@@ -13,7 +13,7 @@ class GithubApiService
   end
 
   def fetch_data(uri_path)
-    repsonse = conn.get uri_path
+    response = conn.get uri_path
     JSON.parse(response.body, symbolize_names: true)
   end
 
