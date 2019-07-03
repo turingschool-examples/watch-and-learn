@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 describe 'User' do
-  it 'user can sign in' do
+  it 'user goes to dashboard and sees 5 most recently updated repos' do
     VCR.use_cassette("features/user/user_sees_repos") do
 
       user = create(:user)
@@ -32,6 +32,30 @@ describe 'User' do
 
       within '#repo-1' do
         expect(page).to have_link("brownfield-of-dreams", href: "https://github.com/james-cape/brownfield-of-dreams")
+      end
+    end
+  end
+
+  xit 'user with no repos goes to dashboard and sees no repos' do
+    VCR.use_cassette("features/user/user_sees_repos") do
+
+      user = create(:user, github_token: nil)
+
+      visit '/'
+
+      click_on 'Sign In'
+
+      expect(current_path).to eq(login_path)
+
+      fill_in 'session[email]', with: user.email
+      fill_in 'session[password]', with: user.password
+
+      click_on 'Log In'
+
+      visit '/dashboard'
+
+      within '.github' do
+        expect(page).to have_content("No repos found")
       end
     end
   end
