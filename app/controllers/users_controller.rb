@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
   def show
+    render locals: {
+      facade: UserDashboardFacade.new(ENV["GITHUB_API_KEY"])
+    }
+    #TODO update with Oauth token
   end
 
   def new
