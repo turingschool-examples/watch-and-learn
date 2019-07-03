@@ -33,4 +33,17 @@ describe GithubService  do
       end
     end
   end
+
+  context '#get_following' do
+    it 'returns following data' do
+      VCR.use_cassette('grab_github_service_following') do
+        user = create(:user, username: 'CosmicSpagetti', github_token: ENV['BILLY_GITHUB_TOKEN'])
+        github = GithubService.new(user)
+
+        following = github.following
+
+        expect(following).to be_a Array
+      end
+    end
+  end
 end

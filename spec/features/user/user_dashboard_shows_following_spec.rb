@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'Logged in user' do
-  it 'can see github followers' do
+  it 'can see who they follow on github' do
     user = create(:user, username: 'CosmicSpagetti', github_token: ENV['BILLY_GITHUB_TOKEN'])
 
     visit '/'
@@ -13,8 +13,8 @@ describe 'Logged in user' do
 
     click_on 'Log In'
 
-    within '.Github_followers_section' do
-      expect(page).to have_content('Followers')
+    within '.Github_following_section' do
+      expect(page).to have_content('Following')
       expect(page.all('li').count).to eq(3)
       expect(page).to have_link("earl-stephens")
     end
