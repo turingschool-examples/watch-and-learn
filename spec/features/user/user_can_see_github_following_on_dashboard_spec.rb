@@ -23,7 +23,6 @@ describe 'As a logged in user' do
         click_on "Log In"
 
         within "#following" do
-          save_and_open_page
           expect(page).to have_content("Following")
           expect(page).to have_all_of_selectors("#following-1", "#following-2", "#following-3", "#following-4", "#following-5")
         end
