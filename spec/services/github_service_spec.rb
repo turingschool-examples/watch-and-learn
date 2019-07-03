@@ -15,5 +15,15 @@ describe GithubService do
         expect(repo[:url]).to eq("https://api.github.com/repos/james-cape/brownfield-of-dreams")
       end
     end
+
+    it "finds current user's followers" do
+      VCR.use_cassette("follower_spec") do
+        followers = GithubService.new.follower_info
+        follower = followers.first
+
+        expect(follower[:login]).to eq("ryanmillergm")
+        expect(follower[:url]).to eq("https://api.github.com/users/ryanmillergm")
+      end
+    end
   end
 end

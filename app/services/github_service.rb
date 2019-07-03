@@ -5,8 +5,12 @@ class GithubService
     get_json('/user/repos', sort: 'updated')
   end
 
+  def follower_info
+    get_json('/user/followers')
+  end
+
   private
-  def get_json(url, params)
+  def get_json(url, params = nil)
     response = conn.get(url, params)
     JSON.parse(response.body, symbolize_names: true)
   end

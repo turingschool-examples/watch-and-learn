@@ -22,12 +22,14 @@ describe 'User' do
       visit '/dashboard'
 
       within '.github' do
-        expect(page).to have_css("#repo-1")
-        expect(page).to have_css("#repo-2")
-        expect(page).to have_css("#repo-3")
-        expect(page).to have_css("#repo-4")
-        expect(page).to have_css("#repo-5")
-        expect(page).to_not have_css("#repo-6")
+        within '.repos' do
+          expect(page).to have_css("#repo-1")
+          expect(page).to have_css("#repo-2")
+          expect(page).to have_css("#repo-3")
+          expect(page).to have_css("#repo-4")
+          expect(page).to have_css("#repo-5")
+          expect(page).to_not have_css("#repo-6")
+        end
       end
 
       within '#repo-1' do
