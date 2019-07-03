@@ -1,18 +1,16 @@
 class GithubApiService
-
   def initialize(token)
     @token = token
   end
 
   def followers
-    response = conn.get("/user/followers")
+    response = conn.get('/user/followers')
     new_response = parsed_response(response)
     new_response
   end
 
-
   def repos(limit = 5)
-    response = conn.get("/user/repos")
+    response = conn.get('/user/repos')
     new_response = parsed_response(response)
     new_response.take(limit)
   end
@@ -28,8 +26,8 @@ class GithubApiService
   end
 
   def conn
-    Faraday.new(url: "https://api.github.com") do |f|
-      f.headers["Authorization"] = "token #{@token}"
+    Faraday.new(url: 'https://api.github.com') do |f|
+      f.headers['Authorization'] = "token #{@token}"
       f.adapter Faraday.default_adapter
     end
   end
