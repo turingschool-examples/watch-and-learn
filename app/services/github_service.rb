@@ -8,6 +8,14 @@ class GithubService
     fetch('/user/repos').sample(5)
   end
 
+  def followers
+    fetch('/user/followers')
+  end
+
+  def following
+    fetch('/user/following')
+  end
+
   private
 
   def fetch(path)
@@ -17,7 +25,6 @@ class GithubService
 
   def conn
     Faraday.new(url: "https://api.github.com") do |faraday|
-      # NEXT LINE WILL NEED TO BE CHANGED FOR DIFF USERS
       faraday.headers['Authorization'] = "token #{user.github_token}"
       faraday.adapter Faraday.default_adapter
     end
