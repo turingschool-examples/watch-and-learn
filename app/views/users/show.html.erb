@@ -7,55 +7,62 @@
     <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
     <li> <%= current_user.email%> </li>
   </ul>
+
+  <% if current_user.github_token.nil? %>
+    <section id="github_oauth">
+      <h1>Authenticate with Github</h1>
+      <%= button_to 'Connect to Github', '/auth/github' %>
+    </section>
+  <% end %>
+
   <section>
     <h1>Bookmarked Segments</h1>
   </section>
 
-  <section class="github">
-    <section class="repos">
-      <h1>User Repositories</h1>
-      <% if facade.repos == nil %>
-        No repos found
-      <% else %>
-        <ol>
-          <% counter = 1 %>
-          <% facade.repos.each do |repo| %>
-            <li id="repo-<%= counter %>"><%= link_to repo.name, repo.url %></li>
-            <% counter += 1 %>
-          <% end %>
-        </ol>
-      <% end %>
-    </section>
+    <section class="github">
+      <section class="repos">
+        <h1>User Repositories</h1>
+        <% if facade.repos == nil %>
+          No repos found
+        <% else %>
+          <ol>
+            <% counter = 1 %>
+            <% facade.repos.each do |repo| %>
+              <li id="repo-<%= counter %>"><%= link_to repo.name, repo.url %></li>
+              <% counter += 1 %>
+            <% end %>
+          </ol>
+        <% end %>
+      </section>
 
-    <section class="followers">
-      <h1>Followers</h1>
-      <% if facade.followers == nil %>
-        No followers found
-      <% else %>
-        <ol>
-          <% counter = 1 %>
-          <% facade.followers.each do |follower| %>
-            <li id="follower-<%= counter %>"><%= link_to follower.name, follower.url %></li>
-            <% counter += 1 %>
-          <% end %>
-        </ol>
-      <% end %>
-    </section>
+      <section class="followers">
+        <h1>Followers</h1>
+        <% if facade.followers == nil %>
+          No followers found
+        <% else %>
+          <ol>
+            <% counter = 1 %>
+            <% facade.followers.each do |follower| %>
+              <li id="follower-<%= counter %>"><%= link_to follower.name, follower.url %></li>
+              <% counter += 1 %>
+            <% end %>
+          </ol>
+        <% end %>
+      </section>
 
-    <section class="following">
-      <h1>Following</h1>
-      <% if facade.followings == nil %>
-        No followings found
-      <% else %>
-        <ol>
-          <% counter = 1 %>
-          <% facade.followings.each do |following| %>
-            <li id="following-<%= counter %>"><%= link_to following.name, following.url %></li>
-            <% counter += 1 %>
-          <% end %>
-        </ol>
-      <% end %>
+      <section class="following">
+        <h1>Following</h1>
+        <% if facade.followings == nil %>
+          No followings found
+        <% else %>
+          <ol>
+            <% counter = 1 %>
+            <% facade.followings.each do |following| %>
+              <li id="following-<%= counter %>"><%= link_to following.name, following.url %></li>
+              <% counter += 1 %>
+            <% end %>
+          </ol>
+        <% end %>
+      </section>
     </section>
-
-  </section>
 </section>
