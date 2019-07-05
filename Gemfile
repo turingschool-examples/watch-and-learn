@@ -26,6 +26,7 @@ gem 'google-api-client'
 gem 'jquery'
 gem 'omniauth-census', git: 'https://github.com/turingschool-projects/omniauth-census'
 gem 'omniauth-google-oauth2'
+gem 'omniauth-github'
 gem 'will_paginate'
 gem 'yt', '~> 0.29.1'
 
