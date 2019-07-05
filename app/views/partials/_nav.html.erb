@@ -18,7 +18,8 @@
       <% end %>
     <% else %>
       <div class="align-middle table-cell p3">
-        <%= link_to 'Sign In With GitHub', github_login_path, class: "px2"%>
+        <%= link_to 'Sign In', login_path, class: 'px2' %>
+        <%# link_to 'Sign In With GitHub', github_login_path, class: "px2" %>
         <%= link_to 'Register', register_path %>
       </div>
     <% end %>
