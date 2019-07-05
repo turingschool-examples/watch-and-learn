@@ -2,6 +2,10 @@
 
 class GithubFacade
 
+  def initialize(user)
+    @token = user[:github_token]
+  end
+
   def repos
     github_service.repo_info.take(5).map do |repo|
       Repo.new(repo)
@@ -23,7 +27,7 @@ class GithubFacade
   private
 
   def github_service
-    GithubService.new
+    GithubService.new(@user)
   end
 
 end
