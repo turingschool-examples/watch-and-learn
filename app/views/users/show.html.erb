@@ -28,7 +28,7 @@
     </section>
 
     <section class="followers">
-      <h1>User Followers</h1>
+      <h1>Followers</h1>
       <% if facade.followers == nil %>
         No followers found
       <% else %>
@@ -36,6 +36,21 @@
           <% counter = 1 %>
           <% facade.followers.each do |follower| %>
             <li id="follower-<%= counter %>"><%= link_to follower.name, follower.url %></li>
+            <% counter += 1 %>
+          <% end %>
+        </ol>
+      <% end %>
+    </section>
+
+    <section class="following">
+      <h1>Following</h1>
+      <% if facade.followings == nil %>
+        No followings found
+      <% else %>
+        <ol>
+          <% counter = 1 %>
+          <% facade.followings.each do |following| %>
+            <li id="following-<%= counter %>"><%= link_to following.name, following.url %></li>
             <% counter += 1 %>
           <% end %>
         </ol>

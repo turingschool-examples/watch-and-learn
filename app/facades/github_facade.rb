@@ -9,8 +9,14 @@ class GithubFacade
   end
 
   def followers
-    github_service.follower_info.take(5).map do |follower|
+    github_service.follower_info.map do |follower|
       Follower.new(follower)
+    end
+  end
+
+  def followings
+    github_service.following_info.map do |following|
+      Following.new(following)
     end
   end
 
