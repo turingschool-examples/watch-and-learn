@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Follower
+class GithubUser
   attr_reader :name, :url
   def initialize(attributes)
     @name = attributes[:login]

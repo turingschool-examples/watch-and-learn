@@ -33,7 +33,7 @@ describe 'User' do
       end
 
       within '#repo-1' do
-        expect(page).to have_link("brownfield-of-dreams", href: "https://github.com/james-cape/brownfield-of-dreams")
+        expect(page).to have_link("giphy-search", href: "https://github.com/james-cape/giphy-search")
       end
     end
   end

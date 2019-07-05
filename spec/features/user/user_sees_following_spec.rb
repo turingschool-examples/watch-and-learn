@@ -4,31 +4,31 @@ require 'rails_helper'
 
 describe 'User' do
   it "user goes to dashboard and sees links to the accounts they're following" do
-    # VCR.use_cassette("features/user/user_sees_following") do
-    WebMock.disable!
-    user = create(:user)
+    VCR.use_cassette("features/user/user_sees_following") do
+      user = create(:user)
 
-    visit '/'
+      visit '/'
 
-    click_on 'Sign In'
+      click_on 'Sign In'
 
-    expect(current_path).to eq(login_path)
+      expect(current_path).to eq(login_path)
 
-    fill_in 'session[email]', with: user.email
-    fill_in 'session[password]', with: user.password
+      fill_in 'session[email]', with: user.email
+      fill_in 'session[password]', with: user.password
 
-    click_on 'Log In'
+      click_on 'Log In'
 
-    visit '/dashboard'
+      visit '/dashboard'
 
-    within '.github' do
-      within '.following' do
-        expect(page).to have_css("#following-1")
+      within '.github' do
+        within '.following' do
+          expect(page).to have_css("#following-1")
+        end
       end
-    end
 
-    within '#following-1' do
-      expect(page).to have_link("ryanmillergm", href: "https://github.com/ryanmillergm")
+      within '#following-1' do
+        expect(page).to have_link("ryanmillergm", href: "https://github.com/ryanmillergm")
+      end
     end
   end
 
