@@ -11,10 +11,15 @@ class User < ApplicationRecord
   has_secure_password
 
   def self.authenticate(id, auth_data)
+    # user = User.find(id)
+    # user.uid = auth_data.uid
+    # user.username = auth_data.info.nickname
+    # user.email = auth_data.info.email
+    # user.token = auth_data.credentials.token
     user = User.find(id)
-    user.uid = auth_data.uid
-    user.username = auth_data.info.nickname
-    user.email = auth_data.info.email
-    user.token = auth_data.credentials.token
+    user.attributes = {uid: auth_data.uid,
+                       username: auth_data.info.nickname,
+                       token: auth_data.credentials.token}
+    user.save validate: false
   end
 end
