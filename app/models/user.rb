@@ -16,6 +16,5 @@ class User < ApplicationRecord
     user.username = auth_data.info.nickname
     user.email = auth_data.info.email
     user.token = auth_data.credentials.token
-    user.save
   end
 end
