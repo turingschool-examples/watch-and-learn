@@ -7,32 +7,20 @@ class GithubFacade
   end
 
   def repos
-    if @token
-      github_service.repo_info.take(5).map do |repo|
-        Repo.new(repo)
-      end
-    else
-      "No Repositories Found"
+    github_service.repo_info.take(5).map do |repo|
+      Repo.new(repo)
     end
   end
 
   def followers
-    if @token
-      github_service.follower_info.map do |follower|
-        GithubUser.new(follower)
-      end
-    else
-      "No Followers Found"
+    github_service.follower_info.map do |follower|
+      GithubUser.new(follower)
     end
   end
 
   def followings
-    if @token
-      github_service.following_info.map do |following|
-        GithubUser.new(following)
-      end
-    else
-      "You are not following anyone."
+    github_service.following_info.map do |following|
+      GithubUser.new(following)
     end
   end
 
