@@ -19,6 +19,8 @@
     <h1>Bookmarked Segments</h1>
   </section>
 
+<% if current_user.github_token %>
+
     <section class="github">
       <section class="repos">
         <h1>User Repositories</h1>
@@ -64,5 +66,6 @@
           </ol>
         <% end %>
       </section>
+      <% end %>
     </section>
 </section>

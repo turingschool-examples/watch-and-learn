@@ -18,7 +18,7 @@ describe 'User' do
       fill_in 'session[password]', with: user.password
 
       click_on 'Log In'
-
+      
       visit '/dashboard'
 
       within '.github' do

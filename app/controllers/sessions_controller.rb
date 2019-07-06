@@ -23,6 +23,7 @@ class SessionsController < ApplicationController
 
   def manage_oauth
     auth = request.env['omniauth.auth']
+    require 'pry'; binding.pry
     current_user.update(github_token: auth[:credentials][:token])
     redirect_to dashboard_path
   end

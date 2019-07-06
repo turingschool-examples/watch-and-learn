@@ -3,25 +3,38 @@
 class GithubFacade
 
   def initialize(user)
-    @token = user[:github_token]
+    @user = user
   end
 
   def repos
-    github_service.repo_info.take(5).map do |repo|
-      Repo.new(repo)
-    end
+
+    # if github_service.repo_info[:message] == "Bad credentials"
+    #   []
+    # else
+      github_service.repo_info.take(5).map do |repo|
+        Repo.new(repo)
+      end
+    # end
   end
 
   def followers
-    github_service.follower_info.map do |follower|
-      GithubUser.new(follower)
-    end
+    # if github_service.repo_info[:message] == "Bad credentials"
+    #   []
+    # else
+      github_service.follower_info.map do |follower|
+        GithubUser.new(follower)
+      end
+    # end
   end
 
   def followings
-    github_service.following_info.map do |following|
-      GithubUser.new(following)
-    end
+    # if github_service.repo_info[:message] == "Bad credentials"
+    #   []
+    # else
+      github_service.following_info.map do |following|
+        GithubUser.new(following)
+      end
+    # end
   end
 
   private
