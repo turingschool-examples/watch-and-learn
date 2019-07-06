@@ -18,9 +18,11 @@ describe 'An admin user can create new tutorials' do
 
     new_tutorial = Tutorial.last
 
+    expect(current_path).to eq(tutorial_path(new_tutorial))
     expect(new_tutorial.title).to eq("New Videos")
     expect(new_tutorial.description).to eq("Here are the new videos")
     expect(new_tutorial.thumbnail).to eq("NothingHere")
+    expect(page).to have_content("Successfully created tutorial.")
   end
 
   it "if fields blank redirects new with error" do

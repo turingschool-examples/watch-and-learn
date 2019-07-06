@@ -8,8 +8,8 @@ class Admin::TutorialsController < Admin::BaseController
   def create
     @tutorial = Tutorial.new(tutorial_params)
     if @tutorial.save
-      flash[:message] = "Tutorial created successfully"
-      redirect_to admin_dashboard_path
+      flash[:message] = "Successfully created tutorial."
+      redirect_to tutorial_path(@tutorial)
     else
       render :new
     end
