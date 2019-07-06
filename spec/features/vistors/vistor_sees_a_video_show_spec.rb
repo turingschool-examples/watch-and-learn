@@ -8,7 +8,7 @@ describe 'visitor sees a video show' do
     video = create(:video, tutorial_id: tutorial.id)
 
     visit '/'
-
+    binding.pry
     click_on tutorial.title
 
     expect(current_path).to eq(tutorial_path(tutorial))

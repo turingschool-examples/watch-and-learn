@@ -9,7 +9,7 @@ class Video < ApplicationRecord
   after_create :update_position
 
   def update_position
-    binding.pry
+    position = 1 if position.nil?
   end
 
 end
