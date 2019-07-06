@@ -1,5 +1,6 @@
-class UserDashboardFacade
+# frozen_string_literal: true
 
+class UserDashboardFacade
   def initialize(user)
     @user = user
   end
@@ -26,10 +27,10 @@ class UserDashboardFacade
   end
 
   private
+
   attr_reader :user
 
   def github_service
     GithubService.new(user)
   end
-
 end

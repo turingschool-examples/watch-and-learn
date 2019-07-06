@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Follower
   attr_reader :name, :link
   def initialize(follower_info)
