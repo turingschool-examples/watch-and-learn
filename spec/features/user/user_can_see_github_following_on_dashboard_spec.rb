@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 # As a logged in user
@@ -9,25 +11,23 @@ require 'rails_helper'
 describe 'As a logged in user' do
   describe 'visiting their dashboard' do
     describe 'I see a section for Following' do
-
       it 'shows a list of my github following' do
-        user = create(:user, github_token: ENV["GITHUB_PAT"])
+        user = create(:user, github_token: ENV['GITHUB_PAT'])
 
         visit '/'
 
         click_link 'Sign In'
 
-        fill_in "Email", with: user.email
-        fill_in "Password", with: user.password
+        fill_in 'Email', with: user.email
+        fill_in 'Password', with: user.password
 
-        click_on "Log In"
+        click_on 'Log In'
 
-        within "#following" do
-          expect(page).to have_content("Following")
-          expect(page).to have_all_of_selectors("#following-1", "#following-2", "#following-3", "#following-4", "#following-5")
+        within '#following' do
+          expect(page).to have_content('Following')
+          expect(page).to have_all_of_selectors('#following-1', '#following-2', '#following-3', '#following-4')
         end
       end
-
     end
   end
 end
