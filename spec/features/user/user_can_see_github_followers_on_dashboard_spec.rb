@@ -9,9 +9,9 @@ require 'rails_helper'
 # And I should see list of all followers with their handles linking to their Github profile
 
 describe 'As a logged in user' do
-  describe 'Visiting the dashboard' do
+  describe 'Visiting their dashboard' do
     describe 'I see a section for github' do
-      it 'shows a list of github followers' do
+      it 'shows a list of github followers', :vcr do
         user = create(:user, github_token: ENV['GITHUB_PAT'])
 
         visit '/'

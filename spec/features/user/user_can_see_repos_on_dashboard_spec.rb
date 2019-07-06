@@ -10,7 +10,7 @@ require 'rails_helper'
 describe 'As a logged in user' do
   describe 'visiting their dashboard' do
     describe 'I see a section for github' do
-      it 'shows a list of my repos' do
+      it 'shows a list of my repos', :vcr do
         user = create(:user, github_token: ENV['GITHUB_PAT'])
 
         visit '/'

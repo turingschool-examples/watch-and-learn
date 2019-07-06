@@ -15,7 +15,7 @@ RSpec.describe 'Github Omniauth Authentication' do
     Rails.application.env_config['omniauth.auth'] = OmniAuth.config.mock_auth[:github]
   end
 
-  it 'works with valid credentials' do
+  it 'works with valid credentials', :vcr do
     user = create(:user)
 
     visit '/'

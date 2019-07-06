@@ -11,7 +11,7 @@ require 'rails_helper'
 describe 'As a logged in user' do
   describe 'visiting their dashboard' do
     describe 'I see a section for Following' do
-      it 'shows a list of my github following' do
+      it 'shows a list of my github following', :vcr do
         user = create(:user, github_token: ENV['GITHUB_PAT'])
 
         visit '/'
