@@ -2,6 +2,11 @@
 <h2><%= @facade.title %></h2>
 <h1 id="message"></h1>
 <div class="col col-4">
+  <% if %>
+    <% @facade.videos.count == 0 %>
+    <p>This Tutorial does not have any videos.</p>
+    <%= link_to "Go Back", root_path %>
+  <% else %>
   <h4>Videos</h4>
   <ul>
     <% @facade.videos.each do |video| %>
@@ -64,6 +69,7 @@
     <%= @facade.current_video.description.truncate(50) %>...
     <%= link_to "More", "#", "data-action" => "click->tutorials#showDescription", id: @facade.current_video.id, class: "show-link"%>
   </p>
+  <% end %>
 </div>
 
 </main>
