@@ -22,4 +22,21 @@ describe 'An admin user can create new tutorials' do
     expect(new_tutorial.description).to eq("Here are the new videos")
     expect(new_tutorial.thumbnail).to eq("NothingHere")
   end
+
+  it "if fields blank redirects new with error" do
+    admin = create(:user, role: 1)
+
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+
+    visit new_admin_tutorial_path
+
+    fill_in "Description", with: "Here are the new videos"
+    fill_in "Thumbnail", with: "NothingHere"
+
+    click_button "Save"
+
+    new_tutorial = Tutorial.last
+
+    expect(current_path).to be(new_admin_tutorial_path)
+  end
 end
