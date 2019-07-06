@@ -7,8 +7,7 @@ class GithubFacade
   end
 
   def repos
-
-    if github_service.repo_info[:message] == "Bad credentials"
+    if github_service.repo_info.class == Hash
       []
     else
       github_service.repo_info.take(5).map do |repo|
@@ -18,7 +17,7 @@ class GithubFacade
   end
 
   def followers
-    if github_service.repo_info[:message] == "Bad credentials"
+    if github_service.repo_info.class == Hash
       []
     else
       github_service.follower_info.map do |follower|
@@ -28,7 +27,7 @@ class GithubFacade
   end
 
   def followings
-    if github_service.repo_info[:message] == "Bad credentials"
+    if github_service.repo_info.class == Hash
       []
     else
       github_service.following_info.map do |following|
