@@ -66,3 +66,6 @@ $ bundle exec rspec
 ### Versions
 * Ruby 2.4.1
 * Rails 5.2.0
+
+### Developer Notes
+* `$ rake video_update:update_position` will update the Position value for Videos from nil to 0.
