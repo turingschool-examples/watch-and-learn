@@ -7,7 +7,7 @@ describe GithubService do
     it "finds current user's five most recently updated repos" do
       VCR.use_cassette("repo_spec") do
 
-        user = create(:user, github_token: ENV["GITHUB_TOKEN"])
+        user = create(:user, github_token: ENV["GITHUB_TOKEN_M"])
 
         repos = GithubService.new(user).repo_info.take(5)
         repo = repos.first
@@ -21,7 +21,7 @@ describe GithubService do
     it "finds current user's followers" do
       VCR.use_cassette("follower_spec") do
 
-        user = create(:user, github_token: ENV["GITHUB_TOKEN"])
+        user = create(:user, github_token: ENV["GITHUB_TOKEN_M"])
 
         followers = GithubService.new(user).follower_info
         follower = followers.first

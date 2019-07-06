@@ -5,7 +5,7 @@ require 'rails_helper'
 describe 'User' do
   it 'user goes to dashboard and sees 5 most recently updated repos' do
     VCR.use_cassette("features/user/user_sees_repos") do
-      user = create(:user, github_token: ENV["GITHUB_TOKEN"])
+      user = create(:user, github_token: ENV["GITHUB_TOKEN_M"])
 
       visit '/'
 
@@ -89,6 +89,37 @@ describe 'User' do
       visit '/dashboard'
 
       expect(page).to_not have_css(".github")
+    end
+  end
+
+  it 'user goes to dashboard and sees 5 most recently updated repos' do
+    VCR.use_cassette("features/user/user_sees_repos") do
+      user_1 = create(:user, github_token: ENV["GITHUB_TOKEN_M"])
+      user_2 = create(:user, github_token: ENV["GITHUB_TOKEN_J"])
+
+      visit '/'
+
+      click_on 'Sign In'
+
+      expect(current_path).to eq(login_path)
+
+      fill_in 'session[email]', with: user_1.email
+      fill_in 'session[password]', with: user_1.password
+
+      click_on 'Log In'
+      
+      visit '/dashboard'
+
+      within '.github' do
+        within '.repos' do
+          expect(page).to have_css("#repo-1")
+          expect(page).to have_css("#repo-2")
+          expect(page).to have_css("#repo-3")
+          expect(page).to have_css("#repo-4")
+          expect(page).to have_css("#repo-5")
+          expect(page).to_not have_css("#repo-6")
+        end
+      end
     end
   end
 end

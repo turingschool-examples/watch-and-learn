@@ -5,7 +5,7 @@ require 'rails_helper'
 describe 'User' do
   it 'user goes to dashboard and sees their followers with links to those followers githubs' do
     VCR.use_cassette("features/user/user_sees_followers") do
-      user = create(:user, github_token: ENV["GITHUB_TOKEN"])
+      user = create(:user, github_token: ENV["GITHUB_TOKEN_M"])
 
       visit '/'
 
