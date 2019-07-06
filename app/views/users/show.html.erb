@@ -24,7 +24,7 @@
     <section class="github">
       <section class="repos">
         <h1>User Repositories</h1>
-        <% if facade.repos == nil %>
+        <% if facade.repos == [] %>
           No repos found
         <% else %>
           <ol>
@@ -39,7 +39,7 @@
 
       <section class="followers">
         <h1>Followers</h1>
-        <% if facade.followers == nil %>
+        <% if facade.followers == [] %>
           No followers found
         <% else %>
           <ol>
@@ -54,7 +54,7 @@
 
       <section class="following">
         <h1>Following</h1>
-        <% if facade.followings == nil %>
+        <% if facade.followings == [] %>
           No followings found
         <% else %>
           <ol>
