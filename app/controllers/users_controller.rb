@@ -24,6 +24,7 @@ class UsersController < ApplicationController
   def update
     token = request.env['omniauth.auth']['credentials']['token']
     current_user.update_attribute(:github_token, token)
+    flash[:message] = "You are now connected to Github"
     redirect_to dashboard_path
   end
 
