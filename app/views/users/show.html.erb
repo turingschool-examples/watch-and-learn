@@ -26,6 +26,13 @@
 	        <li><%= link_to github_user.login, github_user.html_url %></li><br>
 	      <% end %>
 	      </ul>
+
+	    <h1>Following:</h1>
+	      <ul>
+	      <% facade.following(5).each do |github_user| %>
+	        <li><%= link_to github_user.login, github_user.html_url %></li><br>
+	      <% end %>
+	      </ul>
 	  </section>
 	<% end %>
 </section>
