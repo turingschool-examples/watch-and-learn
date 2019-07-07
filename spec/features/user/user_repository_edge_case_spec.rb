@@ -3,10 +3,10 @@ require 'rails_helper'
 feature "Github Repository edge case testing" do
 	before :each do 
 		@user_1 = create(:user)
-		@user_1.token = Token.create(github_token: ENV['GITHUB_API_KEY'])
+		@user_1.token = Token.create(github_token: ENV['GITHUB_API_KEY_2'])
 
 		@user_2 = create(:user)
-		@user_2.token = Token.create(github_token: ENV['GITHUB_API_KEY_2'])
+		@user_2.token = Token.create(github_token: ENV['GITHUB_API_KEY'])
 
 		@user_3 = create(:user)
 	end 
