@@ -25,7 +25,7 @@
           <section id="follower-<%= i + 1 %>">
             <p> <%= link_to follower.name, follower.link %>
             <% if facade.all_users.include?(follower.name) %>  -
-              <%= link_to "Add Friend", friend_path(follower.name), method: :patch %>
+              <%= button_to "Add Friend", add_friend_path(follower.name), method: :patch %>
             <% end %>
             </p>
           </section>
@@ -37,7 +37,7 @@
           <section id="following-<%= i + 1 %>">
             <p> <%= link_to following.name, following.link %>
             <% if facade.all_users.include?(following.name) %>  -
-              <%= link_to "Add Friend", friend_path(following.name), method: :patch %>
+              <%= button_to "Add Friend", add_friend_path(following.name), method: :patch %>
             <% end %>
             </p>
           </section>

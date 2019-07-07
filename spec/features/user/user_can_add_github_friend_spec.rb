@@ -34,12 +34,12 @@ describe "As registered user" do
       user_2 = create(:user, github_username: "lpile")
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
-
+      binding.pry
       visit dashboard_path
 
       within("#follower-7") do
-
         click_link "Add Friend"
+        save_and_open_page
 
       end
       expect(current_path).to eq(dashboard_path)
