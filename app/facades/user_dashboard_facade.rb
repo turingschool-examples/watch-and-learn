@@ -12,6 +12,15 @@ class UserDashboardFacade
     repo_objects.take(limit)
   end
 
+  def followers(limit)
+		return nil if @token.nil? || @token.github_token.nil?
+    followers = github_service.find_followers
+    github_users = followers.map do |github_user|
+      GithubUser.new(github_user)
+    end
+    github_users.take(limit)
+  end
+
   private
 
   def github_service

@@ -18,4 +18,12 @@ describe UserDashboardFacade do
       expect(@test_facade.repos(2).first.name).to eq("book_club")
     end
   end
+
+  it "#followers" do
+    VCR.use_cassette("github/followers", :allow_playback_repeats => true) do
+      expect(@test_facade.followers(2)).to be_a(Array)
+      expect(@test_facade.followers(2).first).to be_a(GithubUser)
+      expect(@test_facade.followers(2).first.login).to eq("Loomus")
+    end
+  end
 end
