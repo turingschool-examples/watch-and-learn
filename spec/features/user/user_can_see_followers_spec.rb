@@ -9,7 +9,7 @@ feature "User" do
 
 	context "As a logged in user when I visit my dashboard " do
 		it 'shows a section of followers with handles as links to github' do
-			VCR.use_cassette("github/followers", allow_playback_repeats: true) do
+			VCR.use_cassette("github/dashboard", allow_playback_repeats: true) do
       	visit dashboard_path
       	expect(page).to have_selector(".github_section")
 					
