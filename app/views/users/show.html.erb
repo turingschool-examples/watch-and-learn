@@ -19,6 +19,13 @@
 	        <li><%= link_to repo.name, repo.html_url %></li><br>
 	      <% end %>
 	      </ul>
+
+	    <h1>Followers:</h1>
+	      <ul>
+	      <% facade.followers(5).each do |github_user| %>
+	        <li><%= link_to github_user.login, github_user.html_url %></li><br>
+	      <% end %>
+	      </ul>
 	  </section>
 	<% end %>
 </section>
