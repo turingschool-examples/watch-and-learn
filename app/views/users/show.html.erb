@@ -11,12 +11,19 @@
 	    <h1>Bookmarked Segments</h1>
 	  </section>
 
-	<% if !facade.repos(1).nil? %>
+	<% if !current_user.token.nil? %>
 	  <section class="github_section">
 	    <h1>Github Repositories:</h1>
 	      <ul>
 	      <% facade.repos(5).each do |repo| %>
 	        <li><%= link_to repo.name, repo.html_url %></li><br>
+	      <% end %>
+	      </ul>
+
+	    <h1>Followers:</h1>
+	      <ul>
+	      <% facade.followers(5).each do |github_user| %>
+	        <li><%= link_to github_user.login, github_user.html_url %></li><br>
 	      <% end %>
 	      </ul>
 	  </section>
