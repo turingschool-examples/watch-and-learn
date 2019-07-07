@@ -24,6 +24,9 @@
         <% facade.followers.each_with_index do |follower, i| %>
           <section id="follower-<%= i + 1 %>">
             <p> <%= link_to follower.name, follower.link %></p>
+            <% if facade.all_users.include?(follower.name) %>
+              <%= link_to "Add Friend", root_path %>
+            <% end %>
           </section>
         <% end %>
       </section>
