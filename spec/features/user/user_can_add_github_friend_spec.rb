@@ -12,7 +12,6 @@ describe "As registered user" do
 
       visit dashboard_path
 
-      save_and_open_page
       within("#follower-1") do
         expect(page).to_not have_link("Add Friend")
       end
@@ -27,6 +26,26 @@ describe "As registered user" do
 
       within("#following-1") do
         expect(page).to_not have_link("Add Friend")
+      end
+    end
+
+    it "can add friend", :vcr do
+      user_1 = create(:user, github_token: ENV["GITHUB_PAT"])
+      user_2 = create(:user, github_username: "lpile")
+
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
+
+      visit dashboard_path
+
+      within("#follower-7") do
+
+        click_link "Add Friend"
+
+      end
+      expect(current_path).to eq(dashboard_path)
+
+      within("#friends") do
+        expect(page).to have_content(user_2.github_username)
       end
     end
   end

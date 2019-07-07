@@ -30,14 +30,6 @@ class UserDashboardFacade
     @users ||= User.all_github_usernames
   end
 
-  def friends
-    github_followers = following.map do |following|
-      following.name
-    end
-    associated_users = []
-    binding.pry
-  end
-
   private
 
   attr_reader :user
