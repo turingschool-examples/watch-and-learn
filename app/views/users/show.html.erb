@@ -23,10 +23,11 @@
         <h4>Followers</h4>
         <% facade.followers.each_with_index do |follower, i| %>
           <section id="follower-<%= i + 1 %>">
-            <p> <%= link_to follower.name, follower.link %></p>
-            <% if facade.all_users.include?(follower.name) %>
+            <p> <%= link_to follower.name, follower.link %>
+            <% if facade.all_users.include?(follower.name) %>  -
               <%= link_to "Add Friend", root_path %>
             <% end %>
+            </p>
           </section>
         <% end %>
       </section>
@@ -34,7 +35,11 @@
         <h4>Following</h4>
         <% facade.following.each_with_index do |following, i| %>
           <section id="following-<%= i + 1 %>">
-            <p> <%= link_to following.name, following.link %></p>
+            <p> <%= link_to following.name, following.link %>
+            <% if facade.all_users.include?(following.name) %>  -
+              <%= link_to "Add Friend", root_path %>
+            <% end %>
+            </p>
           </section>
         <% end %>
       </section>

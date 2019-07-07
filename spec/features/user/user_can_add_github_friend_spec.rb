@@ -12,6 +12,7 @@ describe "As registered user" do
 
       visit dashboard_path
 
+      save_and_open_page
       within("#follower-1") do
         expect(page).to_not have_link("Add Friend")
       end

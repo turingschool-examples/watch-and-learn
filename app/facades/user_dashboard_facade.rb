@@ -27,7 +27,7 @@ class UserDashboardFacade
   end
 
   def all_users
-    User.all_github_usernames
+    @users ||= User.all_github_usernames
   end
 
   def friends
