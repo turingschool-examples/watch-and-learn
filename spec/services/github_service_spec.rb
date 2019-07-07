@@ -26,4 +26,17 @@ describe GithubService do
       expect(follower[:html_url]).to eq("https://github.com/Loomus")
     end
   end
+
+  it "finds all following" do
+    VCR.use_cassette("github/following") do
+      service = GithubService.new(ENV["GITHUB_API_KEY"])
+      #TODO update to Oauth
+      following = service.find_following
+      first_following = following.first
+
+      expect(following.count).to eq(1)
+      expect(first_following[:login]).to eq("DragonQuills")
+      expect(first_following[:html_url]).to eq("https://github.com/DragonQuills")
+    end
+  end
 end
