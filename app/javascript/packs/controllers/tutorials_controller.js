@@ -22,7 +22,7 @@ export default class extends Controller {
       elem.style.display = '';
       return height;
     };
-
+ 
     var height = getHeight();
     elem.classList.add('is-visible');
     elem.style.height = height;
