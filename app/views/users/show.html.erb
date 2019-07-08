@@ -34,5 +34,7 @@
 	      <% end %>
 	      </ul>
 	  </section>
+	<% else %>
+		<%= link_to '<button type="button">Connect to Github</button>'.html_safe, "/auth/github" %>
 	<% end %>
 </section>
