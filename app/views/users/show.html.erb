@@ -45,7 +45,18 @@
           <ol>
             <% counter = 1 %>
             <% facade.followers.each do |follower| %>
-            <li><id="follower-<%= counter %>"><%= link_to follower.name, follower.url %></li>
+            <li id="follower-<%= counter %>"><%= link_to follower.name, follower.url %>
+
+
+              <% if follower.uid && !current_user.friendships.include?(follower) %>
+              
+              <%= button_to "Add as Friend", friendship_path(friend_id: follower), method: :post %>
+              <% elsif follower.uid && current_user.friendships.include?(follower) %>
+              <%= button_to "Remove Friend", friendship_path(friend_id: follower), method: :remove %>
+              <% end %> </li>
+
+
+
               <% counter += 1 %>
             <% end %>
           </ol>
@@ -60,7 +71,15 @@
           <ol>
             <% counter = 1 %>
             <% facade.followings.each do |following| %>
-            <li><id="following-<%= counter %>"><%= link_to following.name, following.url %></li>
+
+
+            <li id="following-<%= counter %>"><%= link_to following.name, following.url %>
+              <% if following.uid && !current_user.friendships.include?(following) %>
+              <%= button_to "Add as Friend", friendship_path(friend_id: following), method: :post %>
+              <% elsif following.uid && current_user.friendships.include?(following) %>
+              <%= button_to "Remove Friend", friendship_path(friend_id: following), method: :remove %>
+              <% end %> </li>
+
               <% counter += 1 %>
             <% end %>
           </ol>
