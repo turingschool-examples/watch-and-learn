@@ -1,6 +1,6 @@
 <section class="dashboard-main">
 	  <h1> <%= current_user.first_name %>'s Dashboard </h1>
-	
+
 	  <%= button_to 'Log Out', logout_path, method: 'delete', class: "btn btn-primary mb1 bg-teal" %>
 	  <h3>Account Details</h3>
 	  <ul>
@@ -21,16 +21,22 @@
 	      </ul>
 
 	    <h1>Followers:</h1>
-	      <ul>
+	      <ul class="github_followers_section">
 	      <% facade.followers(5).each do |github_user| %>
 	        <li><%= link_to github_user.login, github_user.html_url %></li><br>
+					<% if facade.valid_friend?(github_user.html_url) %>
+						<%= button_to "Add to Friends", friendships_path(user_id: current_user.id, friend_html: github_user.html_url) %>
+					<% end %>
 	      <% end %>
 	      </ul>
 
 	    <h1>Following:</h1>
-	      <ul>
+	      <ul class="github_following_section">
 	      <% facade.following(5).each do |github_user| %>
 	        <li><%= link_to github_user.login, github_user.html_url %></li><br>
+					<% if facade.valid_friend?(github_user.html_url) %>
+						<%= button_to "Add to Friends", friendships_path(user_id: current_user.id, friend_html: github_user.html_url) %>
+					<% end %>
 	      <% end %>
 	      </ul>
 	  </section>
