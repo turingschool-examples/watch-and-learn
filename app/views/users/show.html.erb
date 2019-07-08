@@ -45,7 +45,7 @@
           <ol>
             <% counter = 1 %>
             <% facade.followers.each do |follower| %>
-              <li id="follower-<%= counter %>"><%= link_to follower.name, follower.url %></li>
+            <li><id="follower-<%= counter %>"><%= link_to follower.name, follower.url %></li>
               <% counter += 1 %>
             <% end %>
           </ol>
@@ -60,7 +60,7 @@
           <ol>
             <% counter = 1 %>
             <% facade.followings.each do |following| %>
-              <li id="following-<%= counter %>"><%= link_to following.name, following.url %></li>
+            <li><id="following-<%= counter %>"><%= link_to following.name, following.url %></li>
               <% counter += 1 %>
             <% end %>
           </ol>

@@ -46,4 +46,7 @@ Rails.application.routes.draw do
 
   resources :user_videos, only: %i[create destroy]
 
+  post '/friendship', to: 'friendships#create'
+  delete '/friendship', to: 'friendship#remove'
+
 end

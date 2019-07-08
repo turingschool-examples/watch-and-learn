@@ -21,6 +21,7 @@ class GithubFacade
       []
     else
       github_service.follower_info.map do |follower|
+        binding.pry
         GithubUser.new(follower)
       end
     end
