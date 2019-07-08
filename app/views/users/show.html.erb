@@ -24,8 +24,9 @@
         <% facade.followers.each_with_index do |follower, i| %>
           <section id="follower-<%= i + 1 %>">
             <p> <%= link_to follower.name, follower.link %>
-            <% if facade.all_users.include?(follower.name) & current_user.friendships.include?(follower.name) %>  -
-              <%= button_to "Add Friend", friend_path(follower.name), method: :patch %>
+            <% if current_user.friendships.find_by(github_username: follower.name) %> - friends
+              <% elsif facade.all_users.include?(follower.name)  %>  -
+                <%= button_to "Add Friend", friend_path(follower.name), method: :patch %>
             <% end %>
             </p>
           </section>
@@ -36,8 +37,9 @@
         <% facade.following.each_with_index do |following, i| %>
           <section id="following-<%= i + 1 %>">
             <p> <%= link_to following.name, following.link %>
-            <% if facade.all_users.include?(following.name) & current_user.friendships.include?(following.name)%>  -
-              <%= button_to "Add Friend", friend_path(following.name), method: :patch %>
+            <% if current_user.friendships.find_by(github_username: following.name) %> - friends
+              <% elsif facade.all_users.include?(following.name) %>  -
+                <%= button_to "Add Friend", friend_path(following.name), method: :patch %>
             <% end %>
             </p>
           </section>
