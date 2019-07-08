@@ -10,8 +10,8 @@ RSpec.describe User, type: :model do
   end
 
   describe 'relationships' do
-    it { should have_many :friends }
-    it { should have_many :friended_users }
+    it { should have_many :user_videos }
+    it { should have_many :videos }
   end
 
   describe 'roles' do

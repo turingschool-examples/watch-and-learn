@@ -13,19 +13,19 @@ describe "As registered user" do
       visit dashboard_path
 
       within("#follower-1") do
-        expect(page).to_not have_link("Add Friend")
+        expect(page).to_not have_button("Add Friend")
       end
 
       within("#follower-7") do
-        expect(page).to have_link("Add Friend")
+        expect(page).to have_button("Add Friend")
       end
 
       within("#following-3") do
-        expect(page).to have_link("Add Friend")
+        expect(page).to have_button("Add Friend")
       end
 
       within("#following-1") do
-        expect(page).to_not have_link("Add Friend")
+        expect(page).to_not have_button("Add Friend")
       end
     end
 
@@ -39,7 +39,7 @@ describe "As registered user" do
 
       within("#follower-7") do
 
-        click_link "Add Friend"
+        click_button "Add Friend"
 
       end
       expect(current_path).to eq(dashboard_path)
