@@ -23,7 +23,12 @@
         <h4>Followers</h4>
         <% facade.followers.each_with_index do |follower, i| %>
           <section id="follower-<%= i + 1 %>">
-            <p> <%= link_to follower.name, follower.link %></p>
+            <p> <%= link_to follower.name, follower.link %>
+            <% if current_user.friendships.find_by(github_username: follower.name) %> - friends
+              <% elsif facade.all_users.include?(follower.name)  %>  -
+                <%= button_to "Add Friend", friend_path(follower.name), method: :patch %>
+            <% end %>
+            </p>
           </section>
         <% end %>
       </section>
@@ -31,10 +36,26 @@
         <h4>Following</h4>
         <% facade.following.each_with_index do |following, i| %>
           <section id="following-<%= i + 1 %>">
-            <p> <%= link_to following.name, following.link %></p>
+            <p> <%= link_to following.name, following.link %>
+            <% if current_user.friendships.find_by(github_username: following.name) %> - friends
+              <% elsif facade.all_users.include?(following.name) %>  -
+                <%= button_to "Add Friend", friend_path(following.name), method: :patch %>
+            <% end %>
+            </p>
           </section>
         <% end %>
       </section>
+        <% if !current_user.friendships.empty? %>
+        <section id="friends">
+          <h4>Friends</h4>
+          <% current_user.friendships.each do |friend, i| %>
+            <section id="friend-<%= friend.id %>">
+              <p> <%= friend.github_username %>
+              </p>
+            </section>
+          <% end %>
+        </section>
+        <% end %>
     </section>
   <% else %>
     <%= link_to "Connect To Github", github_login_path %>

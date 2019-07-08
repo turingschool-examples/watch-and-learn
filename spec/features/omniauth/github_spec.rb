@@ -9,6 +9,9 @@ RSpec.describe 'Github Omniauth Authentication' do
     OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new(
       credentials: {
         token: ENV['GITHUB_PAT']
+      },
+      info: {
+        nickname: "lpile"
       }
     )
 

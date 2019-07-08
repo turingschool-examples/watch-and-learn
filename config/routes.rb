@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   get '/auth/github', as: 'github_login'
   get '/auth/github/callback', to: 'users#update'
 
+  patch '/friends/:github_username', to: 'friends#update', as: 'friend'
+
   namespace :api do
     namespace :v1 do
       resources :tutorials, only: %i[show index]

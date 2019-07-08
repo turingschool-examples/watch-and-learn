@@ -26,6 +26,10 @@ class UserDashboardFacade
     end
   end
 
+  def all_users
+    @users ||= User.all_github_usernames
+  end
+
   private
 
   attr_reader :user
