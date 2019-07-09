@@ -1,6 +1,6 @@
 <section class="dashboard-main">
 	  <h1> <%= current_user.first_name %>'s Dashboard </h1>
-	
+
 	  <%= button_to 'Log Out', logout_path, method: 'delete', class: "btn btn-primary mb1 bg-teal" %>
 	  <h3>Account Details</h3>
 	  <ul>
@@ -13,6 +13,16 @@
 
 	<% if !current_user.token.nil? %>
 	  <section class="github_section">
+			<section class="github_friend_list">
+				<h1>Friends List</h1>
+				<ul>
+					<% facade.friends(5).each do |friend| %>
+						<li> <%= friend.first_name  %> <%= friend.last_name %> </li>
+				    <li> <%= friend.email%> </li>
+					<% end %>
+				</ul>
+			</section>
+
 	    <h1>Github Repositories:</h1>
 	      <ul>
 	      <% facade.repos(5).each do |repo| %>
@@ -21,18 +31,28 @@
 	      </ul>
 
 	    <h1>Followers:</h1>
-	      <ul>
-	      <% facade.followers(5).each do |github_user| %>
-	        <li><%= link_to github_user.login, github_user.html_url %></li><br>
-	      <% end %>
-	      </ul>
+				<section class="github_followers_section">
+		      <ul>
+		      	<% facade.followers(5).each do |github_user| %>
+			        <li><%= link_to github_user.login, github_user.html_url %></li><br>
+							<% if facade.valid_friend?(github_user.html_url) %>
+								<%= button_to "Add to Friends", friendships_path(user_id: current_user.id, friend_html: github_user.html_url) %>
+							<% end %>
+			      <% end %>
+		      </ul>
+			</section>
 
 	    <h1>Following:</h1>
+			<section class="github_following_section">
 	      <ul>
-	      <% facade.following(5).each do |github_user| %>
-	        <li><%= link_to github_user.login, github_user.html_url %></li><br>
-	      <% end %>
-	      </ul>
+		      <% facade.following(5).each do |github_user| %>
+		        <li><%= link_to github_user.login, github_user.html_url %></li><br>
+						<% if facade.valid_friend?(github_user.html_url) %>
+							<%= button_to "Add to Friends", friendships_path(user_id: current_user.id, friend_html: github_user.html_url) %>
+						<% end %>
+		      <% end %>
+		    </ul>
+			</section>
 	  </section>
 	<% else %>
 		<%= link_to '<button type="button">Connect to Github</button>'.html_safe, "/auth/github" %>

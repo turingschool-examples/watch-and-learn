@@ -30,6 +30,17 @@ class UserDashboardFacade
     github_users.take(limit)
   end
 
+  def valid_friend?(github_user_email)
+    friend = User.find_by(html_url: github_user_email)
+    user_friends = User.find(@token.user_id).friends
+    !friend.nil? && !user_friends.include?(friend)
+  end
+
+  def friends(limit)
+    user = User.find(@token.user_id)
+    user.friends.take(limit)
+  end
+
   private
 
   def github_service
