@@ -31,7 +31,7 @@ class UserDashboardFacade
   end
 
   def bookmarked_videos
-    @user.videos.order_by_tutorial_id
+    @videos ||= @user.videos.order_by_tutorial_id
   end
 
   def bookmarked_tutorial_title(id)
