@@ -21,24 +21,28 @@
 	      </ul>
 
 	    <h1>Followers:</h1>
-	      <ul class="github_followers_section">
-	      <% facade.followers(5).each do |github_user| %>
-	        <li><%= link_to github_user.login, github_user.html_url %></li><br>
-					<% if facade.valid_friend?(github_user.html_url) %>
-						<%= button_to "Add to Friends", friendships_path(user_id: current_user.id, friend_html: github_user.html_url) %>
-					<% end %>
-	      <% end %>
-	      </ul>
+				<section class="github_followers_section">
+		      <ul>
+		      	<% facade.followers(5).each do |github_user| %>
+			        <li><%= link_to github_user.login, github_user.html_url %></li><br>
+							<% if facade.valid_friend?(github_user.html_url) %>
+								<%= button_to "Add to Friends", friendships_path(user_id: current_user.id, friend_html: github_user.html_url) %>
+							<% end %>
+			      <% end %>
+		      </ul>
+			</section>
 
 	    <h1>Following:</h1>
-	      <ul class="github_following_section">
-	      <% facade.following(5).each do |github_user| %>
-	        <li><%= link_to github_user.login, github_user.html_url %></li><br>
-					<% if facade.valid_friend?(github_user.html_url) %>
-						<%= button_to "Add to Friends", friendships_path(user_id: current_user.id, friend_html: github_user.html_url) %>
-					<% end %>
-	      <% end %>
-	      </ul>
+			<section class="github_following_section">
+	      <ul>
+		      <% facade.following(5).each do |github_user| %>
+		        <li><%= link_to github_user.login, github_user.html_url %></li><br>
+						<% if facade.valid_friend?(github_user.html_url) %>
+							<%= button_to "Add to Friends", friendships_path(user_id: current_user.id, friend_html: github_user.html_url) %>
+						<% end %>
+		      <% end %>
+		    </ul>
+			</section>
 	  </section>
 	<% else %>
 		<%= link_to '<button type="button">Connect to Github</button>'.html_safe, "/auth/github" %>
