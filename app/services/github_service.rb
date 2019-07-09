@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class GithubService
-
   def initialize(user = nil)
     @user = user
   end
@@ -19,6 +18,7 @@ class GithubService
   end
 
   private
+
   def get_json(url, params = nil)
     response = conn.get(url, params)
     JSON.parse(response.body, symbolize_names: true)
