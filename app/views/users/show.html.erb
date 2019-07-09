@@ -24,7 +24,7 @@
     <section class="github">
       <section class="repos">
         <h1>User Repositories</h1>
-        <% if facade.repos == [] %>
+        <% if facade.repos.empty? %>
           No repos found
         <% else %>
           <ol>
@@ -39,14 +39,14 @@
 
       <section class="followers">
         <h1>Followers</h1>
-        <% if facade.followers == [] %>
+        <% if facade.followers.empty? %>
           No followers found
         <% else %>
           <ol>
             <% counter = 1 %>
             <% facade.followers.each do |follower| %>
             <li id="follower-<%= counter %>"><%= link_to follower.name, follower.url %>
-              <% if facade.find_user(follower) != [] && facade.find_friend(follower) == [] %>
+              <% if facade.authenticated_user?(follower) %>
                 <%= button_to "Add as Friend", friendship_path(friend_id: facade.find_user(follower)[0].id), method: :post %>
               <% end %> </li>
               <% counter += 1 %>
@@ -57,14 +57,14 @@
 
       <section class="following">
         <h1>Following</h1>
-        <% if facade.followings == [] %>
+        <% if facade.followings.empty? %>
           No followings found
         <% else %>
           <ol>
             <% counter = 1 %>
             <% facade.followings.each do |following| %>
             <li id="following-<%= counter %>"><%= link_to following.name, following.url %>
-              <% if facade.find_user(following) != [] && facade.find_friend(following) == [] %>
+              <% if facade.authenticated_user?(following) %>
                 <%= button_to "Add as Friend", friendship_path(friend_id: facade.find_user(following)[0].id), method: :post %>
               <% end %> </li>
               <% counter += 1 %>
@@ -75,7 +75,7 @@
 
       <section class="friends">
         <h1>Friends List</h1>
-        <% if facade.user_friends == [] %>
+        <% if facade.user_friends.empty? %>
           No Friends Found
         <% else %>
           <ol>

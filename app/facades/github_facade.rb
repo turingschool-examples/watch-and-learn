@@ -48,6 +48,10 @@ class GithubFacade
     @current_user.friends
   end
 
+  def authenticated_user?(github_user)
+    find_user(github_user).any? && find_friend(github_user).empty?
+  end
+
   private
 
   def github_service
