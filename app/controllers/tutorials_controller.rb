@@ -6,4 +6,3 @@ class TutorialsController < ApplicationController
     @facade = TutorialFacade.new(tutorial, params[:video_id])
   end
 end
- 
