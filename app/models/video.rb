@@ -6,10 +6,5 @@ class Video < ApplicationRecord
   has_many :user_videos
   has_many :users, through: :user_videos
   belongs_to :tutorial
-  after_create :update_position
-
-  def update_position
-    position = 1 if position.nil?
-  end
 
 end
