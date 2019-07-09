@@ -13,6 +13,16 @@
 
 	<% if !current_user.token.nil? %>
 	  <section class="github_section">
+			<section class="github_friend_list">
+				<h1>Friends List</h1>
+				<ul>
+					<% facade.friends(5).each do |friend| %>
+						<li> <%= friend.first_name  %> <%= friend.last_name %> </li>
+				    <li> <%= friend.email%> </li>
+					<% end %>
+				</ul>
+			</section>
+
 	    <h1>Github Repositories:</h1>
 	      <ul>
 	      <% facade.repos(5).each do |repo| %>
