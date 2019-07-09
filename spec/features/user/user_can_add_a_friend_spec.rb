@@ -11,7 +11,7 @@ describe "As a user on dashboard path" do
   end
 
   scenario "Links show up next to followers that have accounts in our system." do
-    VCR.use_cassette("github/dashboard_rob") do
+    VCR.use_cassette("github/dashboard_rob", :allow_playback_repeats => true) do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user_2)
       visit dashboard_path
       within(".github_followers_section") do
@@ -21,7 +21,7 @@ describe "As a user on dashboard path" do
   end
 
   scenario "Links show up next to following that have accounts in our system." do
-    VCR.use_cassette("github/dashboard_chris") do
+    VCR.use_cassette("github/dashboard_chris", :allow_playback_repeats => true) do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
       visit dashboard_path
       within(".github_following_section") do
@@ -31,7 +31,7 @@ describe "As a user on dashboard path" do
   end
 
   scenario "Adds to friendships when clicked and updates friend list" do
-    VCR.use_cassette("github/dashboard_chris") do
+    VCR.use_cassette("github/dashboard_chris", :allow_playback_repeats => true) do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
       visit dashboard_path
       within(".github_following_section") do
@@ -39,7 +39,8 @@ describe "As a user on dashboard path" do
       end
       expect(current_path).to eq(dashboard_path)
       @user.reload
-      expect(@user.friendships.first).to eq(@user_2)
+      friend = User.find(@user.friendships.first.friend_id)
+      expect(friend).to eq(@user_2)
       within(".github_friend_list") do
         expect(page).to have_content(@user_2.first_name)
       end
