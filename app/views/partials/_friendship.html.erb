@@ -1,0 +1,6 @@
+<li> id="following-<%= counter %>"><%= link_to following.name, following.url %>
+  <% if following.github_token && !current_user.friendships.include?(following) %>
+  <%= link_to "Add as Friend", friendships_path(friend_id: user), method: :post %>
+  <% elsif following.github_token && current_user.friendships.include?(following) %>
+  <%= link_to "Remove Friend", friendships_path(friend_id: user), method: :remove %>
+  <% end %> </li>

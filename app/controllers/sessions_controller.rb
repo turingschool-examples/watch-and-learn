@@ -23,7 +23,7 @@ class SessionsController < ApplicationController
 
   def manage_oauth
     auth = request.env['omniauth.auth']
-    current_user.update(github_token: auth[:credentials][:token])
+    current_user.update(github_token: auth[:credentials][:token], login: auth[:uid])
     redirect_to dashboard_path
   end
 end
