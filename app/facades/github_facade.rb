@@ -3,7 +3,7 @@
 class GithubFacade
 
   def initialize(user)
-    @current_user = user
+    @current_user = user.reload
   end
 
   def repos
@@ -37,11 +37,11 @@ class GithubFacade
   end
 
   def find_user(github_user)
-    User.where(login: github_user.uid)
+    User.where(uid: github_user.uid)
   end
 
   def find_friend(github_user)
-    @current_user.friends.where(login: github_user.uid)
+    @current_user.friends.where(uid: github_user.uid)
   end
 
   def user_friends

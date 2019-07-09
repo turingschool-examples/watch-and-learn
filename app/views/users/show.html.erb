@@ -46,14 +46,9 @@
             <% counter = 1 %>
             <% facade.followers.each do |follower| %>
             <li id="follower-<%= counter %>"><%= link_to follower.name, follower.url %>
-
-
               <% if facade.find_user(follower) != [] && facade.find_friend(follower) == [] %>
                 <%= button_to "Add as Friend", friendship_path(friend_id: facade.find_user(follower)[0].id), method: :post %>
               <% end %> </li>
-
-
-
               <% counter += 1 %>
             <% end %>
           </ol>
@@ -68,15 +63,10 @@
           <ol>
             <% counter = 1 %>
             <% facade.followings.each do |following| %>
-
-
             <li id="following-<%= counter %>"><%= link_to following.name, following.url %>
-
               <% if facade.find_user(following) != [] && facade.find_friend(following) == [] %>
-
                 <%= button_to "Add as Friend", friendship_path(friend_id: facade.find_user(following)[0].id), method: :post %>
               <% end %> </li>
-
               <% counter += 1 %>
             <% end %>
           </ol>
@@ -86,7 +76,7 @@
       <section class="friends">
         <h1>Friends List</h1>
         <% if facade.user_friends == [] %>
-          No friends found
+          No Friends Found
         <% else %>
           <ol>
             <% counter = 1 %>
@@ -97,8 +87,6 @@
           </ol>
         <% end %>
       </section>
-
-
 
     <% end %>
   </section>
