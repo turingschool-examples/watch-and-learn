@@ -20,8 +20,8 @@ class TutorialSequencer
 
   def update_position_if_changed!
     sequenced_video_ids.each.with_index(1) do |video_id, index|
-      video = videos.find do |video|
-        video.id == video_id.to_i
+      video = videos.find do |vid|
+        vid.id == video_id.to_i
       end
 
       video.update(position: index) if video.position != index

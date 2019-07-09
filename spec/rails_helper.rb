@@ -54,10 +54,10 @@ RSpec.configure do |config|
 end
 
 def stub_omniauth
-  OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({
+  OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new(
     provider: 'github',
     credentials: {
-        token: "Token_1"
-      }
-    })
+      token: 'Token_1'
+    }
+  )
 end

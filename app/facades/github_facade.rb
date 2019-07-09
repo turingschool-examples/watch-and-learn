@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class GithubFacade
-
   def initialize(user)
     @current_user = user.reload
   end
@@ -57,5 +56,4 @@ class GithubFacade
   def github_service
     GithubService.new(@current_user)
   end
-
 end

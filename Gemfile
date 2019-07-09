@@ -42,11 +42,11 @@ group :development, :test do
   gem 'launchy'
   gem 'pry'
   gem 'rspec-rails'
-  gem 'webdrivers', '~> 3.0'
   gem 'selenium-webdriver'
   gem 'shoulda-matchers'
   gem 'simplecov'
   gem 'vcr'
+  gem 'webdrivers', '~> 3.0'
   gem 'webmock'
 end
 
