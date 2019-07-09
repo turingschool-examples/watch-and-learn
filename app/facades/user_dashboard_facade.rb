@@ -30,6 +30,19 @@ class UserDashboardFacade
     @users ||= User.all_github_usernames
   end
 
+  def bookmarked_videos
+    @user.videos.order_by_tutorial_id
+  end
+
+  def bookmarked_tutorial_title(id)
+    tutorial = Tutorial.find(id)
+  end
+
+  def previous_tutorial_id(video)
+    current_index = bookmarked_videos.find_index(video)
+    previous_tutorial_id = bookmarked_videos[current_index - 1].tutorial_id
+  end
+
   private
 
   attr_reader :user

@@ -7,9 +7,23 @@
     <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
     <li> <%= current_user.email%> </li>
   </ul>
+
   <section>
     <h1>Bookmarked Segments</h1>
+    <% if !current_user.github_token.nil? %>
+      <section id='bookmarked-segments'>
+        <% facade.bookmarked_videos.each_with_index do |video, i| %>
+          <section id='video-<% i + 1 %>'>
+            <% if video.tutorial_id != facade.previous_tutorial_id(video) %>
+              <h3><%= facade.bookmarked_tutorial_title(video.tutorial_id).title %></h3>
+            <% end %>
+            <%= link_to video.title, tutorial_path(video_id: video.id, id: video.tutorial_id), class: "show-link" %>
+          </section>
+        <% end %>
+      </section>
+    <% end %>
   </section>
+
   <% if !current_user.github_token.nil? %>
     <section id='github'>
       <h2>GitHub</h2>
@@ -19,6 +33,7 @@
           <p><%= link_to repo.name, repo.link %></p>
         </section>
       <% end %>
+
       <section id="followers">
         <h4>Followers</h4>
         <% facade.followers.each_with_index do |follower, i| %>
@@ -32,6 +47,7 @@
           </section>
         <% end %>
       </section>
+
       <section id="following">
         <h4>Following</h4>
         <% facade.following.each_with_index do |following, i| %>
@@ -45,6 +61,7 @@
           </section>
         <% end %>
       </section>
+
         <% if !current_user.friendships.empty? %>
         <section id="friends">
           <h4>Friends</h4>
@@ -57,6 +74,7 @@
         </section>
         <% end %>
     </section>
+
   <% else %>
     <%= link_to "Connect To Github", github_login_path %>
   <% end %>
