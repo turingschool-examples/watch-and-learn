@@ -29,4 +29,20 @@ describe "As a user on dashboard path" do
       end
     end
   end
+
+  scenario "Adds to friendships when clicked and updates friend list" do
+    VCR.use_cassette("github/dashboard_chris") do
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
+      visit dashboard_path
+      within(".github_following_section") do
+        click_button("Add to Friends")
+      end
+      expect(current_path).to eq(dashboard_path)
+      @user.reload
+      expect(@user.friendships.first).to eq(@user_2)
+      within(".github_friend_list") do
+        expect(page).to have_content(@user_2.first_name)
+      end
+    end
+  end
 end
