@@ -15,19 +15,18 @@ describe 'As a logged in user' do
         it 'videos should be order by their position', :vcr do
           tutorial = create(:tutorial, title: 'How to Tie Your Shoes')
           video = create(:video, title: 'The Bunny Ears Technique', tutorial: tutorial)
-          user = create(:user)
+          user = create(:user, github_token: ENV['GITHUB_PAT'])
 
           allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
           visit tutorial_path(tutorial)
 
-          click_on 'Bookmark'
+          click_button 'Bookmark'
           visit dashboard_path
-
 
           expect(page).to have_content('Bookmarked Segments')
           within '#bookmarked-segments' do
-            expect(page).to have_all_of_selectors('#video-1', '#video-2', '#video-3', '#video-4', '#video-5')
+            expect(page).to have_link('The Bunny Ears Technique')
           end
         end
       end

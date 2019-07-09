@@ -40,7 +40,11 @@ class UserDashboardFacade
 
   def previous_tutorial_id(video)
     current_index = bookmarked_videos.find_index(video)
-    previous_tutorial_id = bookmarked_videos[current_index - 1].tutorial_id
+    if current_index - 1 < 0
+      nil
+    else
+      previous_tutorial_id = bookmarked_videos[current_index - 1].tutorial_id
+    end
   end
 
   private
