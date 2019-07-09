@@ -5,7 +5,7 @@ FactoryBot.define do
     email { Faker::Internet.email }
     first_name { Faker::Dog.name }
     last_name { Faker::Artist.name }
-    password { Faker::Color.color_name }
+    password { 'password' }
     role { :default }
   end
 
