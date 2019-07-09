@@ -15,12 +15,29 @@
     </section>
   <% end %>
 
-  <section>
+  <section class="bookmarked_segments">
     <h1>Bookmarked Segments</h1>
+    <% tutorial_counter = 1 %>
+    <% tutorials.each do |tutorial| %>
+      <h3>Title: <%= tutorial.title %></h3>
+      <h4>Description: <%= tutorial.description %></h4>
+      <img src=<%= tutorial.thumbnail %>>
+      <section id="tutorial-<%= tutorial_counter %>">
+        <% video_counter = 1 %>
+        <% tutorial.videos.each do |video| %>
+          <section id="video-<%= video_counter %>">
+            <h4>Title: <%= video.title %></h4>
+            <h5>Description: <%= video.description %></h5>
+            <img src=<%= video.thumbnail %>>
+          </section>
+          <% video_counter += 1 %>
+        <% end %>
+      </section>
+      <% tutorial_counter += 1 %>
+    <% end %>
   </section>
 
   <% if current_user.github_token %>
-
     <section class="github">
       <section class="repos">
         <h1>User Repositories</h1>
