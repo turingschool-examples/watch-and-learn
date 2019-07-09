@@ -31,10 +31,16 @@ class UserDashboardFacade
   end
 
   def bookmarked_videos
-    # videos = UserVideo.where(user_id: @user.id)
-    # binding.pry
-    # user_videos = Video.where(id: videos).order(:tutorial_id)
     @user.videos.order_by_tutorial_id
+  end
+
+  def bookmarked_tutorial_title(id)
+    tutorial = Tutorial.find(id)
+  end
+
+  def previous_tutorial_id(video)
+    current_index = bookmarked_videos.find_index(video)
+    previous_tutorial_id = bookmarked_videos[current_index - 1].tutorial_id
   end
 
   private

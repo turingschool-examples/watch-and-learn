@@ -14,6 +14,9 @@
       <section id='bookmarked-segments'>
         <% facade.bookmarked_videos.each_with_index do |video, i| %>
           <section id='video-<% i + 1 %>'>
+            <% if video.tutorial_id != facade.previous_tutorial_id(video) %>
+              <h3><%= facade.bookmarked_tutorial_title(video.tutorial_id).title %></h3>
+            <% end %>
             <%= link_to video.title, tutorial_path(video_id: video.id, id: video.tutorial_id), class: "show-link" %>
           </section>
         <% end %>
