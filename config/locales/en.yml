@@ -30,4 +30,13 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  activerecord:
+    attributes:
+      video:
+        video_id: "Youtube ID"
+    errors:
+      models:
+        video:
+          attributes:
+            video_id:
+              blank: "is required"
