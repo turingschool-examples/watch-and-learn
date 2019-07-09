@@ -5,7 +5,8 @@ feature "github oauth" do
 		OmniAuth.config.test_mode = true
 		OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({
 			:provider => 'github',
-			:credentials => {token: ENV['GITHUB_API_KEY']}
+			:credentials => {token: ENV['GITHUB_API_KEY']},
+			:info => { "urls" => { "GitHub" => "http://github.com/Mycobee" }}
 		})
 		@user = create(:user)
 		
