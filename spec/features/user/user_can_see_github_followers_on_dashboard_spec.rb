@@ -25,7 +25,22 @@ describe 'As a logged in user' do
 
         within '#followers' do
           expect(page).to have_content('Followers')
-          expect(page).to have_all_of_selectors('#follower-1', '#follower-2', '#follower-3', '#follower-4')
+
+          within '#follower-1' do
+            expect(page).to have_link('331smblk', href: 'https://github.com/331smblk')
+          end
+
+          within '#follower-2' do
+            expect(page).to have_link('Patrick-Duvall', href: 'https://github.com/Patrick-Duvall')
+          end
+
+          within '#follower-3' do
+            expect(page).to have_link('kylecornelissen', href: 'https://github.com/kylecornelissen')
+          end
+          
+          within '#follower-4' do
+            expect(page).to have_link('ryanmillergm', href: 'https://github.com/ryanmillergm')
+          end
         end
       end
     end

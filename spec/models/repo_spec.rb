@@ -13,4 +13,9 @@ RSpec.describe Repo do
   it 'exists' do
     expect(@repo).to be_a Repo
   end
+
+  it 'has attributes' do
+    expect(@repo.name).to eq('repo')
+    expect(@repo.link).to eq('www.google.com')
+  end
 end
