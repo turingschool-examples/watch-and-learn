@@ -30,6 +30,13 @@ class UserDashboardFacade
     @users ||= User.all_github_usernames
   end
 
+  def bookmarked_videos
+    # videos = UserVideo.where(user_id: @user.id)
+    # binding.pry
+    # user_videos = Video.where(id: videos).order(:tutorial_id)
+    @user.videos.order_by_tutorial_id
+  end
+
   private
 
   attr_reader :user

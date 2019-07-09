@@ -12,4 +12,8 @@ class Video < ApplicationRecord
     position = 1 if position.nil?
   end
 
+  def self.order_by_tutorial_id
+    order(:tutorial_id, :position)
+  end
+
 end
