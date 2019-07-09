@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
-  get "auth/github/callback", to: "sessions#manage_oauth"
+  get "auth/github/callback", to: "users#update"
 
   get '/dashboard', to: 'users#show'
   get '/about', to: 'about#show'
@@ -47,6 +47,5 @@ Rails.application.routes.draw do
   resources :user_videos, only: %i[create destroy]
 
   post '/friendship', to: 'friendships#create'
-  delete '/friendship', to: 'friendship#remove'
 
 end
