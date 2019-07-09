@@ -44,6 +44,10 @@ class GithubFacade
     @current_user.friends.where(login: github_user.uid)
   end
 
+  def user_friends
+    @current_user.friends
+  end
+
   private
 
   def github_service

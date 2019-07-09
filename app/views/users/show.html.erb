@@ -19,7 +19,7 @@
     <h1>Bookmarked Segments</h1>
   </section>
 
-<% if current_user.github_token %>
+  <% if current_user.github_token %>
 
     <section class="github">
       <section class="repos">
@@ -82,6 +82,24 @@
           </ol>
         <% end %>
       </section>
-      <% end %>
-    </section>
+
+      <section class="friends">
+        <h1>Friends List</h1>
+        <% if facade.user_friends == [] %>
+          No friends found
+        <% else %>
+          <ol>
+            <% counter = 1 %>
+            <% facade.user_friends.each do |friend| %>
+              <li id="friend-<%= counter %>"><%= friend.first_name + " " + friend.last_name %>
+              <% counter += 1 %>
+            <% end %>
+          </ol>
+        <% end %>
+      </section>
+
+
+
+    <% end %>
+  </section>
 </section>
