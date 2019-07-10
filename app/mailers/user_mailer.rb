@@ -1,4 +1,4 @@
-class UserMailer << ActionMailer::Base
+class UserMailer < ActionMailer::Base
   default from: 'no-reply@brownfield.com'
 
   def registratin_confirmation(user)
