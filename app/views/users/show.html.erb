@@ -15,21 +15,36 @@
     </section>
   <% end %>
 
-  <section>
+  <section class="bookmarked_segments">
     <h1>Bookmarked Segments</h1>
+    <% tutorial_counter = 1 %>
+    <% tutorials.each do |tutorial| %>
+      <h3><%= tutorial.title %></h3>
+      <section id="tutorial-<%= tutorial_counter %>">
+        <% video_counter = 1 %>
+        <% tutorial.videos.each do |video| %>
+          <section id="video-<%= video_counter %>">
+            <h4>Title: <%= video.title %></h4>
+            <h5>Description: <%= video.description %></h5>
+            <img src=<%= video.thumbnail %>>
+          </section>
+          <% video_counter += 1 %>
+        <% end %>
+      </section>
+      <% tutorial_counter += 1 %>
+    <% end %>
   </section>
 
   <% if current_user.github_token %>
-
     <section class="github">
       <section class="repos">
         <h1>User Repositories</h1>
-        <% if facade.repos.empty? %>
+        <% if github_facade.repos.empty? %>
           No repos found
         <% else %>
           <ol>
             <% counter = 1 %>
-            <% facade.repos.each do |repo| %>
+            <% github_facade.repos.each do |repo| %>
               <li id="repo-<%= counter %>"><%= link_to repo.name, repo.url %></li>
               <% counter += 1 %>
             <% end %>
@@ -39,15 +54,15 @@
 
       <section class="followers">
         <h1>Followers</h1>
-        <% if facade.followers.empty? %>
+        <% if github_facade.followers.empty? %>
           No followers found
         <% else %>
           <ol>
             <% counter = 1 %>
-            <% facade.followers.each do |follower| %>
+            <% github_facade.followers.each do |follower| %>
             <li id="follower-<%= counter %>"><%= link_to follower.name, follower.url %>
-              <% if facade.authenticated_user?(follower) %>
-                <%= button_to "Add as Friend", friendship_path(friend_id: facade.find_user(follower)[0].id), method: :post %>
+              <% if github_facade.authenticated_user?(follower) %>
+                <%= button_to "Add as Friend", friendship_path(friend_id: github_facade.find_user(follower)[0].id), method: :post %>
               <% end %> </li>
               <% counter += 1 %>
             <% end %>
@@ -57,15 +72,15 @@
 
       <section class="following">
         <h1>Following</h1>
-        <% if facade.followings.empty? %>
+        <% if github_facade.followings.empty? %>
           No followings found
         <% else %>
           <ol>
             <% counter = 1 %>
-            <% facade.followings.each do |following| %>
+            <% github_facade.followings.each do |following| %>
             <li id="following-<%= counter %>"><%= link_to following.name, following.url %>
-              <% if facade.authenticated_user?(following) %>
-                <%= button_to "Add as Friend", friendship_path(friend_id: facade.find_user(following)[0].id), method: :post %>
+              <% if github_facade.authenticated_user?(following) %>
+                <%= button_to "Add as Friend", friendship_path(friend_id: github_facade.find_user(following)[0].id), method: :post %>
               <% end %> </li>
               <% counter += 1 %>
             <% end %>
@@ -75,12 +90,12 @@
 
       <section class="friends">
         <h1>Friends List</h1>
-        <% if facade.user_friends.empty? %>
+        <% if github_facade.user_friends.empty? %>
           No Friends Found
         <% else %>
           <ol>
             <% counter = 1 %>
-            <% facade.user_friends.each do |friend| %>
+            <% github_facade.user_friends.each do |friend| %>
               <li id="friend-<%= counter %>"><%= friend.first_name + " " + friend.last_name %>
               <% counter += 1 %>
             <% end %>
