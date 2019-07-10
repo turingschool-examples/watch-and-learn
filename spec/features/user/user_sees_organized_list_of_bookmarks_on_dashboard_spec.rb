@@ -40,7 +40,6 @@ describe "when a user is logged in and goes to their dashboard" do
       expect(page).to have_css(".bookmarked_segments")
 
       within ".bookmarked_segments" do
-        save_and_open_page
         within "#tutorial-1" do
           within "#video-1" do
             expect(page).to have_content(video_1.title)

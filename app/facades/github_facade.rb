@@ -48,7 +48,6 @@ class GithubFacade
   end
 
   def authenticated_user?(github_user)
-    binding.pry
     find_user(github_user).any? && find_friend(github_user).empty?
   end
 
