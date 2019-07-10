@@ -2,10 +2,14 @@
 
 class UsersController < ApplicationController
   def show
-    render locals: {
-      github_facade: GithubFacade.new(current_user),
-      tutorials: Tutorial.tutorials_with_videos(current_user.id)
-    }
+    if current_user
+      render locals: {
+        github_facade: GithubFacade.new(current_user),
+        tutorials: Tutorial.tutorials_with_videos(current_user.id)
+      }
+    else
+      redirect_to root_path
+    end
   end
 
   def new
@@ -15,8 +19,8 @@ class UsersController < ApplicationController
   def create
     user = User.create(user_params)
     if user.save
-      
       session[:user_id] = user.id
+      UserNotifierMailer.inform(user, user.email).deliver_now
       flash[:message] = "Logged in as #{user.first_name} #{user.last_name}"
       flash[:notice] = "This account has not yet been activated. Please check your email."
       redirect_to dashboard_path
