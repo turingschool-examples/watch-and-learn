@@ -18,22 +18,22 @@ http_interactions:
       code: 404
       message: Not Found
     headers:
+      Server:
+      - GitHub.com
       Date:
-      - Wed, 10 Jul 2019 00:12:38 GMT
+      - Wed, 10 Jul 2019 00:44:45 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
       - chunked
-      Server:
-      - GitHub.com
       Status:
       - 404 Not Found
       X-Ratelimit-Limit:
       - '5000'
       X-Ratelimit-Remaining:
-      - '4983'
+      - '4995'
       X-Ratelimit-Reset:
-      - '1562720370'
+      - '1562723085'
       X-Github-Media-Type:
       - github.v3; format=json
       Access-Control-Expose-Headers:
@@ -55,10 +55,10 @@ http_interactions:
       Content-Security-Policy:
       - default-src 'none'
       X-Github-Request-Id:
-      - F8E9:47DB:75F46:AAD7B:5D252D76
+      - F93B:7247:1B68B6:38CB7D:5D2534FD
     body:
       encoding: ASCII-8BIT
       string: '{"message":"Not Found","documentation_url":"https://developer.github.com/v3/users/#get-a-single-user"}'
     http_version: 
-  recorded_at: Wed, 10 Jul 2019 00:12:36 GMT
+  recorded_at: Wed, 10 Jul 2019 00:44:43 GMT
 recorded_with: VCR 5.0.0

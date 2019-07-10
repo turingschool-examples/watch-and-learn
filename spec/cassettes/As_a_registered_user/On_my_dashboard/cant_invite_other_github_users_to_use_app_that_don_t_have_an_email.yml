@@ -1,0 +1,74 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.github.com/users/ryanmillergm?client_id=<GITHUB_KEY>&client_secret=<GITHUB_SECRET>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Wed, 10 Jul 2019 00:44:46 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4994'
+      X-Ratelimit-Reset:
+      - '1562723086'
+      Cache-Control:
+      - public, max-age=60, s-maxage=60
+      Vary:
+      - Accept
+      Etag:
+      - W/"4d89d74092c40723026436c9cc18b5ec"
+      Last-Modified:
+      - Sun, 07 Jul 2019 23:29:06 GMT
+      X-Github-Media-Type:
+      - github.v3; format=json
+      Access-Control-Expose-Headers:
+      - ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
+        X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval,
+        X-GitHub-Media-Type
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Content-Security-Policy:
+      - default-src 'none'
+      X-Github-Request-Id:
+      - F93C:066A:22E9B4:406379:5D2534FE
+    body:
+      encoding: ASCII-8BIT
+      string: '{"login":"ryanmillergm","id":42855291,"node_id":"MDQ6VXNlcjQyODU1Mjkx","avatar_url":"https://avatars0.githubusercontent.com/u/42855291?v=4","gravatar_id":"","url":"https://api.github.com/users/ryanmillergm","html_url":"https://github.com/ryanmillergm","followers_url":"https://api.github.com/users/ryanmillergm/followers","following_url":"https://api.github.com/users/ryanmillergm/following{/other_user}","gists_url":"https://api.github.com/users/ryanmillergm/gists{/gist_id}","starred_url":"https://api.github.com/users/ryanmillergm/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/ryanmillergm/subscriptions","organizations_url":"https://api.github.com/users/ryanmillergm/orgs","repos_url":"https://api.github.com/users/ryanmillergm/repos","events_url":"https://api.github.com/users/ryanmillergm/events{/privacy}","received_events_url":"https://api.github.com/users/ryanmillergm/received_events","type":"User","site_admin":false,"name":"Ryan
+        Miller","company":null,"blog":"","location":"Denver, Co","email":null,"hireable":null,"bio":"Back-End
+        web developer","public_repos":51,"public_gists":10,"followers":7,"following":18,"created_at":"2018-08-31T02:21:24Z","updated_at":"2019-07-07T23:29:06Z"}'
+    http_version: 
+  recorded_at: Wed, 10 Jul 2019 00:44:43 GMT
+recorded_with: VCR 5.0.0
