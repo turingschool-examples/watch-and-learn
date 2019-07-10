@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   get '/auth/github', as: 'github_login'
   get '/auth/github/callback', to: 'users#update'
 
+  get '/invite', to: 'invites#new'
+  post '/invite', to: 'invites#create'
+
   patch '/friends/:github_username', to: 'friends#update', as: 'friend'
 
   namespace :api do
