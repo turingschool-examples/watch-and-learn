@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
+
+  before_create :confirmation_token
+
   has_many :user_videos
   has_many :videos, through: :user_videos
 
@@ -18,5 +21,13 @@ class User < ApplicationRecord
 
   def self.all_github_usernames
     User.all.pluck(:github_username)
+  end
+
+  private
+
+  def confirmation_token
+    if self.confirm_token.blank?
+      self.confirm_token = SecureRandom.urlsafe_base64.to_s
+    end
   end
 end
