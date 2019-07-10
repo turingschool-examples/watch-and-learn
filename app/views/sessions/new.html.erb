@@ -1,4 +1,5 @@
 <div class="user-login">
+  <% flash.now[:notice] = params[:flash_notice] if params[:flash_notice] %>
   <section>
     <%= form_for :session, url: login_path do |f| %>
       <div>
