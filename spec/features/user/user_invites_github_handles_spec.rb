@@ -31,7 +31,7 @@ describe 'User logs in with Github' do
       expect(page).to have_content("Successfully sent invite!")
 
       # Invitee receives email with link to click on
-      visit 'http://localhost:3000/register'
+      visit '/register'
       expect(current_path).to eq(register_path)
     end
   end
@@ -62,10 +62,6 @@ describe 'User logs in with Github' do
       click_button "Send Invite"
       expect(current_path).to eq(dashboard_path)
       expect(page).to have_content("The Github user you selected doesn't have an email address associated with their account.")
-
-      # Invitee receives email with link to click on
-      visit 'http://localhost:3000/register'
-      expect(current_path).to eq(register_path)
     end
   end
 end
