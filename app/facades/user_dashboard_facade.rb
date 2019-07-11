@@ -27,11 +27,11 @@ class UserDashboardFacade
   end
 
   def all_users
-    @users ||= User.all_github_usernames
+    @all_users ||= User.all_github_usernames
   end
 
   def bookmarked_videos
-    @videos ||= @user.videos.order_by_tutorial_id
+    @bookmarked_videos ||= @user.videos.order_by_tutorial_id
   end
 
   def bookmarked_tutorial_title(id)
