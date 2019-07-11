@@ -37,7 +37,7 @@ describe 'As a logged in user' do
           within '#follower-3' do
             expect(page).to have_link('kylecornelissen', href: 'https://github.com/kylecornelissen')
           end
-          
+
           within '#follower-4' do
             expect(page).to have_link('ryanmillergm', href: 'https://github.com/ryanmillergm')
           end

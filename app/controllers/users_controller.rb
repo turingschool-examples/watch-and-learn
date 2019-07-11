@@ -17,7 +17,7 @@ class UsersController < ApplicationController
       UserMailer.registration_confirmation(@user).deliver
       session[:user_id] = @user.id
       flash[:message] = "Logged in as #{@user.first_name}"
-      flash[:success] = "This account has not yet been activated. Please check your email."
+      flash[:success] = 'This account has not yet been activated. Please check your email.'
       redirect_to dashboard_path
     else
       render :new
@@ -26,10 +26,10 @@ class UsersController < ApplicationController
 
   def update
     token = request.env['omniauth.auth']['credentials']['token']
-    nickname = request.env['omniauth.auth']["info"]["nickname"]
+    nickname = request.env['omniauth.auth']['info']['nickname']
     current_user.update_attribute(:github_username, nickname)
     current_user.update_attribute(:github_token, token)
-    flash[:message] = "You are now connected to Github"
+    flash[:message] = 'You are now connected to Github'
     redirect_to dashboard_path
   end
 
@@ -39,7 +39,7 @@ class UsersController < ApplicationController
       user.email_activate
       redirect_to welcome_path
     else
-      flash[:error] = "Sorry, User does not exist"
+      flash[:error] = 'Sorry, User does not exist'
       redirect_to root_url
     end
   end

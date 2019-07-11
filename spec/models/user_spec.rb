@@ -31,8 +31,7 @@ RSpec.describe User, type: :model do
   end
 
   describe 'class methods' do
-
-    it ".all_github_usernames" do
+    it '.all_github_usernames' do
       user_1 = create(:user, github_username: 'rocketman')
       user_2 = create(:user, github_username: 'jetman')
 
@@ -43,12 +42,10 @@ RSpec.describe User, type: :model do
       expect(usernames.first).to eq('rocketman')
       expect(usernames.last).to eq('jetman')
     end
-
   end
 
   describe 'instance methods' do
-
-    it "#email_activate" do
+    it '#email_activate' do
       user = create(:user)
 
       expect(user.email_confirmed).to be false
@@ -59,6 +56,5 @@ RSpec.describe User, type: :model do
       expect(user.email_confirmed).to be true
       expect(user.confirm_token).to eq(nil)
     end
-
   end
 end

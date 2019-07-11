@@ -36,7 +36,6 @@ describe 'As a logged in user' do
 
           within '#following-3' do
             expect(page).to have_link('Patrick-Duvall', href: 'https://github.com/Patrick-Duvall')
-
           end
 
           within '#following-4' do

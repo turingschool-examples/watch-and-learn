@@ -1,6 +1,7 @@
+# frozen_string_literal: true
+
 class InvitesController < ApplicationController
-  def new
-  end
+  def new; end
 
   def create
     data = service.email_search(params[:invite])
@@ -8,17 +9,16 @@ class InvitesController < ApplicationController
       email = data[:email]
       name = data[:name]
       InviterMailer.invite(current_user, name, email).deliver_now
-      flash.notice = "Successfully sent invite!"
+      flash.notice = 'Successfully sent invite!'
       redirect_to dashboard_path
     elsif data[:message]
-      flash.notice = "Not a valid Github Handle"
+      flash.notice = 'Not a valid Github Handle'
       redirect_to dashboard_path
     else
       flash.notice = "The Github user you selected doesn't have an email address associated with their account."
       redirect_to dashboard_path
     end
   end
-
 
   private
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class InviterMailer < ApplicationMailer
   def invite(inviter, invitee_name, invitee_email)
     @inviter = inviter

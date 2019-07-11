@@ -30,7 +30,7 @@ describe 'vister can create an account' do
 
     expect(current_path).to eq(dashboard_path)
     expect(page).to have_content("Logged in as #{User.last.first_name}")
-    expect(page).to have_content("This account has not yet been activated. Please check your email.")
+    expect(page).to have_content('This account has not yet been activated. Please check your email.')
     expect(page).to have_content(email)
     expect(page).to have_content(first_name)
     expect(page).to have_content(last_name)

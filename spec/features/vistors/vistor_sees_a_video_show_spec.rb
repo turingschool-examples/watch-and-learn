@@ -23,12 +23,12 @@ describe 'visitor sees a video show' do
 
     click_on tutorial.title
 
-    click_link "Bookmark"
+    click_link 'Bookmark'
 
     expect(current_path).to eq(tutorial_path(tutorial))
 
-    within(".notice") do
-      expect(page).to have_content("User must login to bookmark videos.")
+    within('.notice') do
+      expect(page).to have_content('User must login to bookmark videos.')
     end
   end
 end

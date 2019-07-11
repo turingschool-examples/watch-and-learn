@@ -2,11 +2,11 @@
 
 class WelcomeController < ApplicationController
   def index
-    if current_user
-      @tutorials = all_tutorials
-    else
-      @tutorials = non_classroom_tutorials
-    end
+    @tutorials = if current_user
+                   all_tutorials
+                 else
+                   non_classroom_tutorials
+                 end
   end
 
   private
@@ -27,6 +27,5 @@ class WelcomeController < ApplicationController
     end
   end
 
-  def show
-  end
+  def show; end
 end

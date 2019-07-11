@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class Admin::TutorialsController < Admin::BaseController
-
   def destroy
     Tutorial.destroy(params[:id])
     redirect_to admin_dashboard_path
@@ -14,7 +13,7 @@ class Admin::TutorialsController < Admin::BaseController
   def create
     @tutorial = Tutorial.new(tutorial_params)
     if @tutorial.save
-      flash[:message] = "Successfully created tutorial."
+      flash[:message] = 'Successfully created tutorial.'
       redirect_to tutorial_path(@tutorial)
     else
       render :new
