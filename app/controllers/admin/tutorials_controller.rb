@@ -1,6 +1,12 @@
 # frozen_string_literal: true
 
 class Admin::TutorialsController < Admin::BaseController
+
+  def destroy
+    Tutorial.destroy(params[:id])
+    redirect_to admin_dashboard_path
+  end
+
   def edit
     @tutorial = Tutorial.find(params[:id])
   end
