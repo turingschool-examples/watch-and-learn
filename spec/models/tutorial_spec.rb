@@ -15,4 +15,18 @@ RSpec.describe Tutorial, type: :model do
     it { should accept_nested_attributes_for :videos }
   end
 
+  describe 'class methods' do
+
+    it ".non_classroom" do
+      tutorial_1 = create(:tutorial)
+      tutorial_2 = create(:tutorial, classroom: true)
+
+      tutorial = Tutorial.non_classroom
+
+      expect(tutorial).to include(tutorial_1)
+      expect(tutorial).to_not include(tutorial_2)
+    end
+
+  end
+
 end
