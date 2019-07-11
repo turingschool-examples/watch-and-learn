@@ -19,3 +19,7 @@ Metrics/LineLength:
     - 'spec/factories/*'
     - 'config/**/*'
     - 'app/mailers/*'
+
+Style/Documentation:
+  Exclude:
+    - '**/*'
