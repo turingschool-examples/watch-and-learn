@@ -16,7 +16,6 @@ class User < ApplicationRecord
   def email_activate
     self.email_confirmed = true
     self.confirm_token = nil
-    save!(:validate => false)
   end
 
   validates :email, uniqueness: true, presence: true

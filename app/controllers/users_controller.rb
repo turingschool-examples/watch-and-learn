@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.create(user_params)
+    @user = User.new(user_params)
     if @user.save
       UserMailer.registration_confirmation(@user).deliver
       session[:user_id] = @user.id
@@ -20,7 +20,6 @@ class UsersController < ApplicationController
       flash[:success] = "This account has not yet been activated. Please check your email."
       redirect_to dashboard_path
     else
-      flash[:error] = "Oops, something went wrong!"
       render :new
     end
   end

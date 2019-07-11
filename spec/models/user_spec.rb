@@ -45,4 +45,20 @@ RSpec.describe User, type: :model do
     end
 
   end
+
+  describe 'instance methods' do
+
+    it "#email_activate" do
+      user = create(:user)
+
+      expect(user.email_confirmed).to be false
+      expect(user.confirm_token).to_not eq(nil)
+
+      user.email_activate
+
+      expect(user.email_confirmed).to be true
+      expect(user.confirm_token).to eq(nil)
+    end
+
+  end
 end
