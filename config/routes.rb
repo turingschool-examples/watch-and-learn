@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   end
 
   root 'welcome#index'
+  resources :welcome, only: [:show]
   get 'tags/:tag', to: 'welcome#index', as: :tag
   get '/register', to: 'users#new'
 

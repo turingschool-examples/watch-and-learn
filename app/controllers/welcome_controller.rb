@@ -8,4 +8,7 @@ class WelcomeController < ApplicationController
       @tutorials = Tutorial.all.paginate(page: params[:page], per_page: 5)
     end
   end
+
+  def show
+  end
 end

@@ -15,8 +15,10 @@ class UsersController < ApplicationController
     @user = User.create(user_params)
     if @user.save
       UserMailer.registration_confirmation(@user).deliver
-      flash[:success] = "Registration completed! Please confirm your email address."
-      redirect_to root_path
+      session[:user_id] = @user.id
+      flash[:message] = "Logged in as #{@user.first_name}"
+      flash[:success] = "This account has not yet been activated. Please check your email."
+      redirect_to dashboard_path
     else
       flash[:error] = "Oops, something went wrong!"
       render :new
@@ -36,9 +38,8 @@ class UsersController < ApplicationController
     user = User.find_by_confirm_token(params[:id])
     if user
       user.email_activate
-      session[:user_id] = user.id
-      flash[:success] = "Welcome to Brownsfield of Dreams! Your account has now been confirmed"
-      redirect_to dashboard_path
+      flash[:success] = "Thank you! Your account is now activated."
+      redirect_to welcome_path
     else
       flash[:error] = "Sorry, User does not exist"
       redirect_to root_url
