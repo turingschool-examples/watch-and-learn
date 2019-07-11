@@ -11,7 +11,6 @@ describe 'when a visitor is viewing a tutorial' do
     visit tutorial_path(tutorial)
 
     expect(page).to have_content(video.title)
-    
     click_on 'Bookmark'
 
     expect(current_path).to eq(tutorial_path(tutorial))

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class GithubService
+  attr_reader :user
   def initialize(user)
     @user = user
   end
@@ -43,8 +44,4 @@ class GithubService
       faraday.adapter Faraday.default_adapter
     end
   end
-
-  private
-
-  attr_reader :user
 end

@@ -23,7 +23,6 @@ describe 'visitor sees a video show' do
     visit '/'
 
     click_on tutorial.title
-    
     expect(page).to have_content(video.title)
 
     click_link 'Bookmark'

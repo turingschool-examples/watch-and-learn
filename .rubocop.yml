@@ -27,3 +27,7 @@ Style/Documentation:
 Style/ClassAndModuleChildren:
   Exclude:
     - 'app/controllers/**/*'
+
+Bundler/DuplicatedGem:
+  Exclude:
+    - 'Gemfile'

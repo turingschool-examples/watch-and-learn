@@ -20,8 +20,8 @@ class UserDashboardFacade
   end
 
   def following
-    following_data = github_service.following
-    following_data.map do |following_data|
+    followings_data = github_service.following
+    followings_data.map do |following_data|
       Person.new(following_data)
     end
   end
@@ -40,7 +40,7 @@ class UserDashboardFacade
 
   def previous_tutorial_id(video)
     current_index = bookmarked_videos.find_index(video)
-    if current_index - 1 < 0
+    if (current_index - 1).negative?
       nil
     else
       bookmarked_videos[current_index - 1].tutorial_id
