@@ -17,7 +17,8 @@ class UsersController < ApplicationController
       UserMailer.registration_confirmation(@user).deliver
       session[:user_id] = @user.id
       flash[:message] = "Logged in as #{@user.first_name}"
-      flash[:success] = 'This account has not yet been activated. Please check your email.'
+      msg = 'This account has not yet been activated. Please check your email.'
+      flash[:success] = msg
       redirect_to dashboard_path
     else
       render :new
@@ -47,6 +48,10 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :first_name, :last_name, :password, :password_confirmation)
+    params.require(:user).permit(:email,
+                                 :first_name,
+                                 :last_name,
+                                 :password,
+                                 :password_confirmation)
   end
 end

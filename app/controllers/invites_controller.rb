@@ -15,7 +15,9 @@ class InvitesController < ApplicationController
       flash.notice = 'Not a valid Github Handle'
       redirect_to dashboard_path
     else
-      flash.notice = "The Github user you selected doesn't have an email address associated with their account."
+      msg = "The Github user you selected doesn't \
+        have an email address associated with their account."
+      flash.notice = msg
       redirect_to dashboard_path
     end
   end

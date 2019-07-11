@@ -2,7 +2,8 @@
 
 class FriendsController < ApplicationController
   def update
-    current_user.friendships << User.find_by(github_username: params[:github_username])
+    user = User.find_by(github_username: params[:github_username])
+    current_user.friendships << user
     redirect_to dashboard_path
   end
 end

@@ -17,3 +17,5 @@ Metrics/LineLength:
     - 'spec/**/*_spec.rb'
     - 'spec/rails_helper.rb'
     - 'spec/factories/*'
+    - 'config/**/*'
+    - 'app/mailers/*'
