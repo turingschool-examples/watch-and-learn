@@ -17,6 +17,14 @@ class GithubService
     get_json('/user/following')
   end
 
+  def user(username = nil)
+    if username
+      get_json("users/#{username}")
+    else
+      get_json('user')
+    end
+  end
+
   private
 
   def get_json(url, params = nil)
