@@ -10,16 +10,14 @@ class InvitesController < ApplicationController
       name = data[:name]
       InviterMailer.invite(current_user, name, email).deliver_now
       flash.notice = 'Successfully sent invite!'
-      redirect_to dashboard_path
     elsif data[:message]
       flash.notice = 'Not a valid Github Handle'
-      redirect_to dashboard_path
     else
       msg = "The Github user you selected doesn't \
         have an email address associated with their account."
       flash.notice = msg
-      redirect_to dashboard_path
     end
+    redirect_to dashboard_path
   end
 
   private
