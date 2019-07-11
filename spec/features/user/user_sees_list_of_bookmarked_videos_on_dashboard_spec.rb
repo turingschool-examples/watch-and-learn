@@ -21,6 +21,8 @@ describe 'As a logged in user' do
 
           visit tutorial_path(tutorial)
 
+          expect(page).to have_content(video.title)
+
           click_button 'Bookmark'
           visit dashboard_path
 

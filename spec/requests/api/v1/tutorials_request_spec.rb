@@ -28,7 +28,6 @@ describe 'Tutorials API' do
 
   it 'sends a single tutorial' do
     tutorial1 = create(:tutorial)
-    tutorial2 = create(:tutorial)
 
     video1 = create(:video, tutorial_id: tutorial1.id)
     video2 = create(:video, tutorial_id: tutorial1.id)

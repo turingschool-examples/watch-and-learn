@@ -13,9 +13,7 @@ describe 'As a registered user' do
     expect(page).to have_content('Thank you! Your account is now activated.')
   end
 
-  it 'I cant confirm urecognized token', :vcr do
-    user1 = create(:user)
-
+  it 'I cant confirm unrecognized token', :vcr do
     visit 'http://localhost:3000/users/aaddwrongToken/confirm_email'
 
     expect(current_path).to eq(root_path)

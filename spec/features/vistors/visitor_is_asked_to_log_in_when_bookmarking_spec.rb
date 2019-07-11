@@ -9,6 +9,9 @@ describe 'when a visitor is viewing a tutorial' do
     video = create(:video, tutorial_id: tutorial.id)
 
     visit tutorial_path(tutorial)
+
+    expect(page).to have_content(video.title)
+    
     click_on 'Bookmark'
 
     expect(current_path).to eq(tutorial_path(tutorial))

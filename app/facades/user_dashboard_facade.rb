@@ -35,7 +35,7 @@ class UserDashboardFacade
   end
 
   def bookmarked_tutorial_title(id)
-    tutorial = Tutorial.find(id)
+    Tutorial.find(id)
   end
 
   def previous_tutorial_id(video)
@@ -43,7 +43,7 @@ class UserDashboardFacade
     if current_index - 1 < 0
       nil
     else
-      previous_tutorial_id = bookmarked_videos[current_index - 1].tutorial_id
+      bookmarked_videos[current_index - 1].tutorial_id
     end
   end
 

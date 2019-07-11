@@ -12,6 +12,8 @@ describe 'A registered user' do
 
     visit tutorial_path(tutorial)
 
+    expect(page).to have_content(video.title)
+
     expect do
       click_on 'Bookmark'
     end.to change { UserVideo.count }.by(1)
@@ -27,6 +29,8 @@ describe 'A registered user' do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
     visit tutorial_path(tutorial)
+
+    expect(page).to have_content(video.title)
 
     click_on 'Bookmark'
     expect(page).to have_content('Bookmark added to your dashboard')

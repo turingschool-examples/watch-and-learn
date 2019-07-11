@@ -17,6 +17,7 @@ describe 'As registered user' do
       end
 
       within('#follower-7') do
+        expect(page).to have_content(user2.github_username)
         expect(page).to have_button('Add Friend')
       end
 

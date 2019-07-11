@@ -35,8 +35,6 @@ describe 'An admin user can create new tutorials' do
 
     click_button 'Save'
 
-    new_tutorial = Tutorial.last
-
     expect(current_path).to eq(admin_tutorials_path)
     expect(page).to have_content("Title can't be blank")
   end

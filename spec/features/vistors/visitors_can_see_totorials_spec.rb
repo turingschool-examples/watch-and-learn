@@ -19,7 +19,7 @@ RSpec.describe 'As a visitor viewing tutorials' do
       tutorial = create(:tutorial, classroom: true)
       visit root_path
 
-      expect(page).to_not have_css('.tutorial')
+      expect(page).to_not have_content(tutorial.title)
     end
   end
 end
