@@ -1,6 +1,11 @@
 # frozen_string_literal: true
 
 class Admin::TutorialsController < Admin::BaseController
+
+  def destroy
+
+  end
+  
   def edit
     @tutorial = Tutorial.find(params[:id])
   end
