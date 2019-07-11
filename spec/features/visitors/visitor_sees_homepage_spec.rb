@@ -8,11 +8,6 @@ describe 'Visitor' do
       tutorial1 = create(:tutorial, classroom: false)
       tutorial2 = create(:tutorial, classroom: true)
 
-      create(:video, tutorial_id: tutorial1.id)
-      create(:video, tutorial_id: tutorial1.id)
-      create(:video, tutorial_id: tutorial2.id)
-      create(:video, tutorial_id: tutorial2.id)
-
       visit root_path
 
       expect(page).to have_css('.tutorial', count: 1)
