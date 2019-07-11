@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   end
 
   root 'welcome#index'
+  get '/welcome', to: 'welcome#show'
   get 'tags/:tag', to: 'welcome#index', as: :tag
   get '/register', to: 'users#new'
 
@@ -45,7 +46,11 @@ Rails.application.routes.draw do
   # Is this being used?
   get '/video', to: 'video#show'
 
-  resources :users, only: %i[new create update edit]
+  resources :users, only: %i[new create update edit] do
+    member do
+      get :confirm_email
+    end
+  end
 
   resources :tutorials, only: %i[show index] do
     resources :videos, only: %i[show index]

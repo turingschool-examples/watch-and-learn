@@ -26,4 +26,7 @@ class WelcomeController < ApplicationController
       Tutorial.non_classroom.paginate(page: params[:page], per_page: 5)
     end
   end
+
+  def show
+  end
 end
