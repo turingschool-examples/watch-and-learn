@@ -8,13 +8,8 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by(email: params[:session][:email])
     if user&.authenticate(params[:session][:password])
-      if user.email_confirmed
         session[:user_id] = user.id
         redirect_to dashboard_path
-      else
-        flash[:error] = "Please confirm your email address to activate your account."
-        redirect_to login_path
-      end
     else
       flash[:error] = 'Looks like your email or password is invalid'
       render :new

@@ -38,7 +38,6 @@ class UsersController < ApplicationController
     user = User.find_by_confirm_token(params[:id])
     if user
       user.email_activate
-      flash[:success] = "Thank you! Your account is now activated."
       redirect_to welcome_path
     else
       flash[:error] = "Sorry, User does not exist"
