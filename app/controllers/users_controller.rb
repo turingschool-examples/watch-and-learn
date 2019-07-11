@@ -32,6 +32,15 @@ class UsersController < ApplicationController
     redirect_to dashboard_path
   end
 
+  def confirm_email
+    user = User.find_by_confirm_token(params[:id])
+    if user
+      user.email_activate
+      flash[:success] = "Welcome to Brownsfield of Dreams! Your account has now been confirmed"
+      redirect_to dashboard_path
+    end
+  end
+
   private
 
   def user_params

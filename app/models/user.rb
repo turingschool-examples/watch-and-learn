@@ -28,6 +28,8 @@ class User < ApplicationRecord
   def confirmation_token
     if self.confirm_token.blank?
       self.confirm_token = SecureRandom.urlsafe_base64.to_s
+    else
+      flash[:error] = "Error: User does not exist"
     end
   end
 end
