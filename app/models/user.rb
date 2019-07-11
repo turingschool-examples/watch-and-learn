@@ -13,6 +13,12 @@ class User < ApplicationRecord
                           foreign_key: :user_id,
                           association_foreign_key: :friend_user_id
 
+  def email_activate
+    self.email_confirmed = true
+    self.confirm_token = nil
+    save!(:validate => false)
+  end
+
   validates :email, uniqueness: true, presence: true
   validates_presence_of :password
   validates_presence_of :first_name

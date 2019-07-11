@@ -13,6 +13,7 @@ class SessionsController < ApplicationController
         redirect_to dashboard_path
       else
         flash[:error] = "Please confirm your email address to activate your account."
+        redirect_to login_path
       end
     else
       flash[:error] = 'Looks like your email or password is invalid'

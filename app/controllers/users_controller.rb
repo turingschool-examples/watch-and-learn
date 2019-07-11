@@ -16,9 +16,9 @@ class UsersController < ApplicationController
     if @user.save
       UserMailer.registration_confirmation(@user).deliver
       flash[:success] = "Registration completed! Please confirm your email address."
-      session[:user_id] = @user.id
-      redirect_to dashboard_path
+      redirect_to root_path
     else
+      flash[:error] = "Oops, something went wrong!"
       render :new
     end
   end
@@ -36,8 +36,12 @@ class UsersController < ApplicationController
     user = User.find_by_confirm_token(params[:id])
     if user
       user.email_activate
+      session[:user_id] = user.id
       flash[:success] = "Welcome to Brownsfield of Dreams! Your account has now been confirmed"
       redirect_to dashboard_path
+    else
+      flash[:error] = "Sorry, User does not exist"
+      redirect_to root_url
     end
   end
 
