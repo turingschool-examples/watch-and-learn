@@ -1,0 +1,15 @@
+<div class="invite-new">
+  <main>
+<h4>Enter the Github username of the person you'd like to invite:</h4>
+  <section>
+    <%= form_tag '/invite', method: :create do %>
+      <div>
+        <%= hidden_field_tag "authenticity_token", form_authenticity_token %>
+        <%= label_tag 'Github handle' %>
+        <%= text_field_tag :invitee_github_handle %>
+      </div>
+      <%= submit_tag 'Send Invite' %>
+    <% end %>
+  </section>
+  </main>
+</div>
