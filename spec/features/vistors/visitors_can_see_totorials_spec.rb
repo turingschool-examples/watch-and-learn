@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'As a visitor viewing tutorials' do
   describe 'On the home page' do
 
-    it "shows tutorials with classroom as false" do
+    it "shows tutorials that aren't classroom content" do
       tutorial = create(:tutorial)
 
       visit root_path
