@@ -23,3 +23,7 @@ Metrics/LineLength:
 Style/Documentation:
   Exclude:
     - '**/*'
+
+Style/ClassAndModuleChildren:
+  Exclude:
+    - 'app/controllers/**/*'
