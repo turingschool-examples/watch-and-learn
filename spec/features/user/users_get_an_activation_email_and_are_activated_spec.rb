@@ -4,8 +4,8 @@ require 'rails_helper'
 
 describe 'As a registered user' do
   it 'I can confirm my email', :vcr do
-    user_1 = create(:user)
-    token = user_1.confirm_token
+    user1 = create(:user)
+    token = user1.confirm_token
 
     visit "http://localhost:3000/users/#{token}/confirm_email"
 
@@ -14,7 +14,7 @@ describe 'As a registered user' do
   end
 
   it 'I cant confirm urecognized token', :vcr do
-    user_1 = create(:user)
+    user1 = create(:user)
 
     visit 'http://localhost:3000/users/aaddwrongToken/confirm_email'
 
