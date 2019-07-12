@@ -25,17 +25,21 @@ describe 'As a logged in user' do
           end
 
           within '#following-2' do
-            expect(page).to have_link('331smblk', href: 'https://github.com/331smblk')
+            expect(page).to have_link('santisiri', href: 'https://github.com/santisiri')
           end
 
           within '#following-3' do
-            expect(page).to have_link('Patrick-Duvall', href: 'https://github.com/Patrick-Duvall')
+            expect(page).to have_link('331smblk', href: 'https://github.com/331smblk')
           end
 
           within '#following-4' do
+            expect(page).to have_link('Patrick-Duvall', href: 'https://github.com/Patrick-Duvall')
+          end
+
+          within '#following-5' do
             expect(page).to have_link('ryanmillergm', href: 'https://github.com/ryanmillergm')
           end
-          within '#following-5' do
+          within '#following-6' do
             expect(page).to have_link('kylecornelissen', href: 'https://github.com/kylecornelissen')
           end
         end
