@@ -1,3 +1,8 @@
+<% @video.errors.full_messages.each do |msg| %>
+  <section class="error-message">
+    <%= msg %>
+  </section>
+<% end %>
 <h1><%= @tutorial.title %></h1>
 <section class="col col-4 p3 border">
   <h4>Videos (<%= @tutorial.videos.count %>)</h4>
@@ -9,7 +14,7 @@
 
   <div class="mt1" id="new-video-form">
     <h3>New Video</h3>
-    <%= form_for [:admin, @tutorial, Video.new] do |f| %>
+    <%= form_for [:admin, @tutorial, @video] do |f| %>
       <%= f.label :title, class: "block" %>
       <%= f.text_field :title, class: "field block"%>
       <%= f.label :description, class: "block" %>

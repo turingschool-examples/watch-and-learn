@@ -10,4 +10,9 @@ class Video < ApplicationRecord
   def self.order_by_tutorial_id
     order(:tutorial_id, :position)
   end
+
+  def get_thumbnail
+    YouTube::Video.by_id(self.video_id).thumbnail
+  end
+
 end
