@@ -12,7 +12,8 @@ class Video < ApplicationRecord
   end
 
   def get_thumbnail
-    YouTube::Video.by_id(self.video_id).thumbnail
+    self.thumbnail = YouTube::Video.by_id(self.video_id).thumbnail
+    self.save
   end
 
 end

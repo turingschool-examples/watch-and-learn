@@ -5,6 +5,7 @@ class Admin::VideosController < Admin::BaseController
     @tutorial  = Tutorial.find(params[:tutorial_id])
     video      = @tutorial.videos.new(video_params)
     if video.save
+      video.get_thumbnail
       flash[:success] = 'Successfully created video.'
       redirect_to edit_admin_tutorial_path(@tutorial)
     else

@@ -32,7 +32,7 @@ RSpec.describe Video, type: :model do
 
       thumbnail = video.get_thumbnail
 
-      expect(thumbnail).to eq("https://i.ytimg.com/vi/J7ikFUlkP_k/hqdefault.jpg")
+      expect(thumbnail).to be true
     end
   end
 end

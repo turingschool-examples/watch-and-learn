@@ -7,7 +7,7 @@ describe 'An Admin can edit a tutorial' do
   let(:admin)    { create(:admin) }
 
   describe 'by adding a video' do
-    it 'works as intended' do
+    it 'works as intended', :vcr do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
       visit edit_admin_tutorial_path(tutorial)
