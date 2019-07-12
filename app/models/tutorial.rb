@@ -6,14 +6,12 @@ class Tutorial < ApplicationRecord
   accepts_nested_attributes_for :videos
 
   def self.filtered(user)
-    if !user
-      Tutorial.where(classroom: false)
-    else
-      Tutorial.all
-    end
+    user ? Tutorial.all : Tutorial.where(classroom: false)
   end
 
   def self.tutorials_with_videos(user_id)
-    Tutorial.includes(videos: :user_videos).where(user_videos: { user_id: user_id }).order('videos.position')
+    Tutorial.includes(videos: :user_videos)
+            .where(user_videos: { user_id: user_id })
+            .order('videos.position')
   end
 end

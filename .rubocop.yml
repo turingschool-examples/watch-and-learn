@@ -5,8 +5,22 @@ AllCops:
     - node_modules/**/*
     - spec/features/user/user_sees_bookmarks_on_dashboard_spec.rb
     - config/routes.rb
+    - bin/setup
+    - bin/update
+    - spec/rails_helper.rb
+    - config/**/*
 
 Documentation:
   Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Naming/MemoizedInstanceVariableName:
+  Enabled: false
+
+LineLength:
+  Exclude:
+    - app/controllers/admin/api/v1/tutorial_sequencer_controller.rb
 
 inherit_from: .rubocop_todo.yml

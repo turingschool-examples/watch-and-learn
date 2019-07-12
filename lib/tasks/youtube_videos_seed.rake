@@ -5,7 +5,9 @@ namespace :import do
   task :videos, [:videos] => :environment do
     tutorials = Tutorial.all
     tutorials.each do |tutorial|
-      response = Faraday.get("https://www.googleapis.com/youtube/v3/playlistItems?key=#{ENV['YOUTUBE_API_KEY']}&playlistId=#{tutorial.playlist_id}&part=snippet&maxResults=50&order=date")
+      response = Faraday.get("https://www.googleapis.com/youtube/v3/playlistIt\
+        ems?key=#{ENV['YOUTUBE_API_KEY']}&playlistId=#{tutorial.playlist_id}&p\
+        art=snippet&maxResults=50&order=date")
       data = JSON.parse(response.body, symbolize_names: true)
       data[:items].each.with_index(1) do |vid, index|
         tutorial.videos.create!(
