@@ -7,6 +7,12 @@ class Admin::TutorialsController < Admin::BaseController
   end
 
   def edit
+    if params[:video]
+      @video = Video.new(video_params)
+      @video.save
+    else
+      @video = Video.new
+    end
     @tutorial = Tutorial.find(params[:id])
   end
 
@@ -33,6 +39,14 @@ class Admin::TutorialsController < Admin::BaseController
   end
 
   private
+
+  def video_params
+    params.require(:video).permit(:title,
+                                  :description,
+                                  :video_id,
+                                  :tutorial_id,
+                                  :position)
+  end
 
   def tutorial_params
     params.require(:tutorial).permit(:tag_list,

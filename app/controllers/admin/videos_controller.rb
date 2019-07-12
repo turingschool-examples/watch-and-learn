@@ -2,17 +2,16 @@
 
 class Admin::VideosController < Admin::BaseController
   def create
-    begin
-      tutorial  = Tutorial.find(params[:tutorial_id])
-      thumbnail = YouTube::Video.by_id(video_params[:video_id]).thumbnail
-      video     = tutorial.videos.new(video_params.merge(thumbnail: thumbnail))
-      video.save
+    @tutorial  = Tutorial.find(params[:tutorial_id])
+    video      = @tutorial.videos.new(video_params)
+    if video.save
+      video.assign_thumbnail
       flash[:success] = 'Successfully created video.'
-    rescue StandardError
-      flash[:error] = 'Unable to create video.'
+      redirect_to edit_admin_tutorial_path(@tutorial)
+    else
+      params = { video: video.attributes }
+      redirect_to edit_admin_tutorial_path(@tutorial, params: params)
     end
-
-    redirect_to edit_admin_tutorial_path(id: tutorial.id)
   end
 
   private
