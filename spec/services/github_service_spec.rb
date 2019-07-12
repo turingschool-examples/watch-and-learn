@@ -28,5 +28,29 @@ describe GithubService do
         expect(follower[:url]).to include('https://api.github.com/users/')
       end
     end
+
+    it "finds current user's followings" do
+      VCR.use_cassette('following_spec') do
+        user = create(:user, active: true, github_token: ENV['GITHUB_TOKEN_M'])
+
+        followings = GithubService.new(user).following_info
+        following = followings.first
+
+        expect(following[:login].class).to eq(String)
+        expect(following[:url]).to include('https://api.github.com/users/')
+      end
+    end
+
+    it "finds current user" do
+      VCR.use_cassette('user_spec') do
+        user = create(:user, active: true, github_token: ENV['GITHUB_TOKEN_M'])
+
+        user = GithubService.new(user).user("WHomer")
+
+        expect(user[:login].class).to eq(String)
+        expect(user[:email].class).to eq(String)
+        expect(user[:url]).to include('https://api.github.com/users/')
+      end
+    end
   end
 end

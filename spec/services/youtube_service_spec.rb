@@ -1,23 +1,18 @@
 # frozen_string_literal: true
 
-class YoutubeService
-  def video_info(id)
-    params = { part: 'snippet,contentDetails,statistics', id: id }
+require 'rails_helper'
 
-    get_json('youtube/v3/videos', params)
-  end
+describe YoutubeService do
+  describe 'videos' do
+    it "finds video info" do
+      VCR.use_cassette('youtube_service_video_info_spec') do
+        video = create(:video, video_id: "qMkRHW9zE1c")
 
-  private
+        service = YoutubeService.new
+        video_info = service.video_info(video.video_id)
 
-  def get_json(_url, params)
-    response = conn.get('youtube/v3/videos', params)
-    JSON.parse(response.body, symbolize_names: true)
-  end
-
-  def conn
-    Faraday.new(url: 'https://www.googleapis.com') do |f|
-      f.adapter Faraday.default_adapter
-      f.params[:key] = ENV['YOUTUBE_API_KEY']
+        expect(video_info[:items].first[:id]).to eq(video.video_id)
+      end
     end
   end
 end

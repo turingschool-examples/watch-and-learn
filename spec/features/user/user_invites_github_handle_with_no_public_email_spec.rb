@@ -4,7 +4,7 @@ require 'rails_helper'
 
 describe 'User logs in with Github' do
   it 'then invites user with no public email' do
-    VCR.use_cassette('features/user/user_invites_non-public_email') do
+    VCR.use_cassette('features/user/user_invites_non_public_email') do
       user = create(:user, active: true, github_token: ENV['GITHUB_TOKEN_M'])
 
       visit '/'
