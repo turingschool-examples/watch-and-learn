@@ -27,10 +27,10 @@ RSpec.describe Video, type: :model do
   end
 
   describe 'instance methods' do
-    it "#get_thumbnail", :vcr do
+    it '.assign_thumbnail', :vcr do
       video = create(:video, video_id: 'J7ikFUlkP_k')
 
-      thumbnail = video.get_thumbnail
+      thumbnail = video.assign_thumbnail
 
       expect(thumbnail).to be true
     end

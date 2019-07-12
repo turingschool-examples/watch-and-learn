@@ -11,9 +11,8 @@ class Video < ApplicationRecord
     order(:tutorial_id, :position)
   end
 
-  def get_thumbnail
-    self.thumbnail = YouTube::Video.by_id(self.video_id).thumbnail
-    self.save
+  def assign_thumbnail
+    self.thumbnail = YouTube::Video.by_id(video_id).thumbnail
+    save
   end
-
 end
