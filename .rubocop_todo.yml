@@ -6,58 +6,6 @@
 # Note that changes in the inspected code, or installation of new
 # versions of RuboCop, may require this file to be generated again.
 
-# Offense count: 1
-# Configuration parameters: EnforcedStyleForLeadingUnderscores.
-# SupportedStylesForLeadingUnderscores: disallowed, required, optional
-Naming/MemoizedInstanceVariableName:
-  Exclude:
-    - 'app/controllers/sessions_controller.rb'
-
-# Offense count: 1
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: snake_case, normalcase, non_integer
-Naming/VariableNumber:
-  Exclude:
-    - 'spec/models/friendship_spec.rb'
-
-# Offense count: 8
-# Cop supports --auto-correct.
-# Configuration parameters: AutoCorrect, EnforcedStyle.
-# SupportedStyles: nested, compact
-Style/ClassAndModuleChildren:
-  Exclude:
-    - 'app/controllers/admin/api/v1/base_controller.rb'
-    - 'app/controllers/admin/api/v1/tutorial_sequencer_controller.rb'
-    - 'app/controllers/admin/base_controller.rb'
-    - 'app/controllers/admin/dashboard_controller.rb'
-    - 'app/controllers/admin/tutorials_controller.rb'
-    - 'app/controllers/admin/videos_controller.rb'
-    - 'app/controllers/api/v1/tutorials_controller.rb'
-    - 'app/controllers/api/v1/videos_controller.rb'
-
-# Offense count: 2
-Style/IdenticalConditionalBranches:
-  Exclude:
-    - 'app/controllers/friendships_controller.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
-Style/IfUnlessModifier:
-  Exclude:
-    - 'app/controllers/admin/tutorials_controller.rb'
-
-# Offense count: 2
-Style/MixinUsage:
-  Exclude:
-    - 'bin/setup'
-    - 'bin/update'
-
-# Offense count: 1
-# Cop supports --auto-correct.
-Style/UnneededInterpolation:
-  Exclude:
-    - 'spec/features/user/user_can_add_friends_spec.rb'
-
 # Offense count: 51
 # Cop supports --auto-correct.
 # Configuration parameters: AutoCorrect, AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.

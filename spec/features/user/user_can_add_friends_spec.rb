@@ -31,7 +31,7 @@ describe 'User sees functional button to add a friend' do
 
       within('.friends') do
         expect(page).to have_css('#friend-1')
-        expect(page).to have_content("#{user2.first_name}")
+        expect(page).to have_content(user2.first_name.to_s)
       end
     end
   end

@@ -7,9 +7,9 @@ RSpec.describe Friendship, type: :model do
     user1 = create(:user)
     user2 = create(:user)
 
-    friendship_1 = create(:friendship, user_id: user1.id, friend_id: user2.id)
+    friendship1 = create(:friendship, user_id: user1.id, friend_id: user2.id)
 
-    expect(user1.friendships).to eq([friendship_1])
+    expect(user1.friendships).to eq([friendship1])
     expect(user1.friends).to eq([user2])
 
     expect(user2.friendships).to eq([])
