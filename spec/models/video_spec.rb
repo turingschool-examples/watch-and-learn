@@ -25,4 +25,14 @@ RSpec.describe Video, type: :model do
       expect(videos.last).to eq(video1)
     end
   end
+
+  describe 'instance methods' do
+    it "#get_thumbnail", :vcr do
+      video = create(:video, video_id: 'J7ikFUlkP_k')
+
+      thumbnail = video.get_thumbnail
+
+      expect(thumbnail).to eq("https://i.ytimg.com/vi/J7ikFUlkP_k/hqdefault.jpg")
+    end
+  end
 end
