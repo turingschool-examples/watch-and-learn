@@ -14,9 +14,6 @@ describe 'User logs in with Github' do
     click_on 'Sign In'
 
     expect(page).to_not have_css('.github')
-    expect(page).to_not have_css('.repos')
-    expect(page).to_not have_css('.followers')
-    expect(page).to_not have_css('.following')
 
     expect(current_path).to eq(login_path)
     VCR.use_cassette('features/user/user_sees_followers') do

@@ -3,5 +3,7 @@ AllCops:
     - db/*.rb
     - db/migrate/*.rb
     - node_modules/**/*
+    - spec/features/user/user_sees_bookmarks_on_dashboard_spec.rb
+    - config/routes.rb
 
 inherit_from: .rubocop_todo.yml

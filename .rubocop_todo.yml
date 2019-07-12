@@ -9,8 +9,8 @@
 # Offense count: 15
 # Configuration parameters: CountComments, ExcludedMethods.
 # ExcludedMethods: refine
-# Metrics/BlockLength:
-#   Max: 86
+Metrics/BlockLength:
+  Max: 86
 
 # Offense count: 1
 Metrics/CyclomaticComplexity:
