@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 describe 'User' do
-  it "user goes to dashboard and sees links to the accounts they're following" do
+  it "user dashboard and shows links to the accounts they're following" do
     VCR.use_cassette('features/user/user_sees_following') do
       user = create(:user, github_token: ENV['GITHUB_TOKEN_M'])
 

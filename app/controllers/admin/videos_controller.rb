@@ -16,7 +16,9 @@ class Admin::VideosController < Admin::BaseController
   def create
     begin
       flash[:success] = 'Successfully created video.'
-    rescue StandardError # Sorry about this. We should get more specific instead of swallowing all errors.
+    rescue StandardError
+      # Sorry about this.
+      # We should get more specific instead of swallowing all errors.
       flash[:error] = 'Unable to create video.'
     end
 
@@ -39,7 +41,7 @@ class Admin::VideosController < Admin::BaseController
 
   def video_save
     thumbnail = YouTube::Video.by_id(new_video_params[:video_id]).thumbnail
-    video     = tutorial.videos.new(new_video_params.merge(thumbnail: thumbnail))
+    video = tutorial.videos.new(new_video_params.merge(thumbnail: thumbnail))
     video.save
   end
 end

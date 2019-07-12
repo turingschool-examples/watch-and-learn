@@ -29,7 +29,8 @@ class UsersController < ApplicationController
 
   def update
     auth = request.env['omniauth.auth']
-    current_user.update(github_token: auth[:credentials][:token], uid: auth[:uid])
+    current_user
+      .update(github_token: auth[:credentials][:token], uid: auth[:uid])
     redirect_to dashboard_path
   end
 
@@ -43,6 +44,7 @@ class UsersController < ApplicationController
     session[:user_id] = user.id
     UserNotifierMailer.inform(user, user.email).deliver_now
     flash[:message] = "Logged in as #{user.first_name} #{user.last_name}"
-    flash[:notice] = 'This account has not yet been activated. Please check your email.'
+    flash[:notice] = "This account has not yet been activated. Please check \
+    your email."
   end
 end
