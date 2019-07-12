@@ -2,8 +2,8 @@
 
 require 'rails_helper'
 
-describe 'User logs in with Github' do
-  it 'then user can see repo, followers, following info' do
+describe 'User' do
+  it 'authenticated user with no repos goes to dashboard and sees no repos' do
     OmniAuth.config.test_mode = true
     stub_omniauth
 
@@ -30,8 +30,7 @@ describe 'User logs in with Github' do
     expect(current_path).to eq(dashboard_path)
     expect(page).to have_css('.github')
     expect(page).to have_css('.repos')
-    expect(page).to have_css('.followers')
-    expect(page).to have_css('.following')
+    expect(page).to have_content('No repos found')
 
     OmniAuth.config.mock_auth[:github] = nil
   end

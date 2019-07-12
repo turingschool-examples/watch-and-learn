@@ -11,11 +11,4 @@ class FriendshipsController < ApplicationController
       redirect_to dashboard_path
     end
   end
-
-  def remove
-    @friendship = Friendship.find(params[:id])
-    @friendship.destroy
-    flash[:notice] = 'Successfully removed friendship.'
-    redirect_to dashboard_path
-  end
 end

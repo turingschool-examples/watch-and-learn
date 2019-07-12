@@ -3,9 +3,9 @@
 require 'rails_helper'
 
 describe 'User' do
-  it "user goes to dashboard and sees links to the accounts they're following" do
+  it 'unauthenticated user with no repos goes to dashboard and sees no repos' do
     VCR.use_cassette('features/user/user_sees_following') do
-      user = create(:user, github_token: ENV['GITHUB_TOKEN_M'])
+      user = create(:user, github_token: nil)
 
       visit '/'
 
@@ -20,11 +20,8 @@ describe 'User' do
 
       visit '/dashboard'
 
-      within '.github' do
-        within '.following' do
-          expect(page).to have_css('#following-1')
-        end
-      end
+      expect(page).to_not have_css('.github')
+      expect(page).to_not have_css('.following')
     end
   end
 end
