@@ -1,8 +1,9 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'As a visitor viewing tutorials' do
   describe 'On the home page' do
-
     it "shows tutorials that aren't classroom content" do
       tutorial = create(:tutorial)
 
@@ -18,8 +19,7 @@ RSpec.describe 'As a visitor viewing tutorials' do
       tutorial = create(:tutorial, classroom: true)
       visit root_path
 
-      expect(page).to_not have_css(".tutorial")
+      expect(page).to_not have_content(tutorial.title)
     end
-
   end
 end

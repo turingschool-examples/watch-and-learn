@@ -11,7 +11,7 @@ RSpec.describe 'Github Omniauth Authentication' do
         token: ENV['GITHUB_PAT']
       },
       info: {
-        nickname: "lpile"
+        nickname: 'lpile'
       }
     )
 

@@ -2,12 +2,6 @@
 
 require 'rails_helper'
 
-# As a logged in user
-# When I visit /dashboard
-# Then I should see a section for "Github"
-# And under that section I should see another section titled "Following"
-# And I should see list of users I follow with their handles linking to their Github profile
-
 describe 'As a logged in user' do
   describe 'visiting their dashboard' do
     describe 'I see a section for Following' do
@@ -36,7 +30,6 @@ describe 'As a logged in user' do
 
           within '#following-3' do
             expect(page).to have_link('Patrick-Duvall', href: 'https://github.com/Patrick-Duvall')
-
           end
 
           within '#following-4' do

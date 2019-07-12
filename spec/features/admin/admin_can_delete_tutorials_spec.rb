@@ -1,9 +1,10 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'As an admin on the admin' do
   describe 'on their admin dashboard' do
-
-    it "can delete tutorials" do
+    it 'can delete tutorials' do
       tutorial = create(:tutorial)
       admin = create(:user, role: 1)
       create(:video, tutorial: tutorial)
@@ -18,7 +19,7 @@ RSpec.describe 'As an admin on the admin' do
       expect(page).to_not have_content(tutorial.title)
     end
 
-    it "deletes all tutorial videos when deleted" do
+    it 'deletes all tutorial videos when deleted' do
       tutorial = create(:tutorial)
       admin = create(:user, role: 1)
       create(:video, tutorial: tutorial)
@@ -31,6 +32,5 @@ RSpec.describe 'As an admin on the admin' do
 
       expect(Video.all).to be_empty
     end
-
   end
 end

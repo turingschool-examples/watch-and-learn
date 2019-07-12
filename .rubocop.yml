@@ -1,0 +1,33 @@
+AllCops:
+  Exclude:
+    - 'db/**/*.rb'
+    - 'lib/tasks/*'
+    - 'node_modules/**/*'
+    - 'bin/*'
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*_spec.rb'
+    - 'config/routes.rb'
+    - 'config/environments/development.rb'
+    - 'lib/tasks/youtube_seed.rake'
+
+Metrics/LineLength:
+  Exclude:
+    - 'spec/**/*_spec.rb'
+    - 'spec/rails_helper.rb'
+    - 'spec/factories/*'
+    - 'config/**/*'
+    - 'app/mailers/*'
+
+Style/Documentation:
+  Exclude:
+    - '**/*'
+
+Style/ClassAndModuleChildren:
+  Exclude:
+    - 'app/controllers/**/*'
+
+Bundler/DuplicatedGem:
+  Exclude:
+    - 'Gemfile'

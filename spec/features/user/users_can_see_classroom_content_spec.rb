@@ -1,9 +1,10 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'As a registered user' do
   describe 'on the home page' do
-
-    it "shows tutorials that are classroom content" do
+    it 'shows tutorials that are classroom content' do
       tutorial = create(:tutorial, classroom: true)
       user = create(:user)
 

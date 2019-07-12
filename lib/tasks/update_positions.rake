@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 namespace :videos do
   desc 'Updating Video Positions!'
   task update_positions: :environment do
@@ -7,6 +9,6 @@ namespace :videos do
         video.save
       end
     end
-    puts "All Videos with a nil position have been updated"
+    puts 'All Videos with a nil position have been updated'
   end
 end

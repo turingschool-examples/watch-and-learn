@@ -10,5 +10,4 @@ class Video < ApplicationRecord
   def self.order_by_tutorial_id
     order(:tutorial_id, :position)
   end
-
 end
