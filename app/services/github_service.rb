@@ -18,7 +18,7 @@ class GithubService
   end
 
   def user(username = nil)
-    get_json("users/#{username}")
+    get_json("/users/#{username}")
   end
 
   private

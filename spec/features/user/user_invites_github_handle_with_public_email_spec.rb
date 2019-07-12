@@ -4,8 +4,9 @@ require 'rails_helper'
 
 describe 'User logs in with Github' do
   it 'then invites user with public email' do
-    VCR.use_cassette('features/user/user_sends_an_invite') do
-      user = create(:user, active: true, github_token: ENV['GITHUB_TOKEN_M'])
+    # VCR.use_cassette('features/user/user_sends_an_invite') do
+    WebMock.disable!
+      user = create(:user, active: true, github_token: ENV['GITHUB_TOKEN_J'])
 
       visit '/'
       click_on 'Sign In'
@@ -21,9 +22,11 @@ describe 'User logs in with Github' do
       click_button 'Send Invite'
       expect(current_path).to eq(invite_path)
 
-      fill_in 'invitee_github_handle', with: 'whomer'
+      fill_in 'invitee_github_handle', with: 'WHomer'
 
-      click_button 'Send Invite'
+      expect { click_button 'Send Invite'; sleep 10 }
+        .to change { ActionMailer::Base.deliveries.count }.by(1)
+
       expect(current_path).to eq(dashboard_path)
       expect(page).to have_content('Successfully sent invite!')
 
@@ -31,5 +34,5 @@ describe 'User logs in with Github' do
       visit '/register'
       expect(current_path).to eq(register_path)
     end
-  end
+  # end
 end
