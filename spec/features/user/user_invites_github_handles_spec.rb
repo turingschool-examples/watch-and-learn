@@ -20,15 +20,15 @@ describe 'User logs in with Github' do
 
       user.reload
       expect(current_path).to eq(dashboard_path)
-      expect(page).to have_button("Send Invite")
-      click_button "Send Invite"
+      expect(page).to have_button('Send Invite')
+      click_button 'Send Invite'
       expect(current_path).to eq(invite_path)
 
-      fill_in 'invitee_github_handle', with: "whomer"
+      fill_in 'invitee_github_handle', with: 'whomer'
 
-      click_button "Send Invite"
+      click_button 'Send Invite'
       expect(current_path).to eq(dashboard_path)
-      expect(page).to have_content("Successfully sent invite!")
+      expect(page).to have_content('Successfully sent invite!')
 
       # Invitee receives email with link to click on
       visit '/register'
@@ -53,13 +53,13 @@ describe 'User logs in with Github' do
 
       user.reload
       expect(current_path).to eq(dashboard_path)
-      expect(page).to have_button("Send Invite")
-      click_button "Send Invite"
+      expect(page).to have_button('Send Invite')
+      click_button 'Send Invite'
       expect(current_path).to eq(invite_path)
 
-      fill_in 'invitee_github_handle', with: "not-a-real-user-23452222"
+      fill_in 'invitee_github_handle', with: 'not-a-real-user-23452222'
 
-      click_button "Send Invite"
+      click_button 'Send Invite'
       expect(current_path).to eq(dashboard_path)
       expect(page).to have_content("The Github user you selected doesn't have an email address associated with their account.")
     end

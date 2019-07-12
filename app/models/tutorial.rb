@@ -14,6 +14,6 @@ class Tutorial < ApplicationRecord
   end
 
   def self.tutorials_with_videos(user_id)
-    Tutorial.includes(videos: :user_videos).where({user_videos: {user_id: user_id}}).order("videos.position")
+    Tutorial.includes(videos: :user_videos).where(user_videos: { user_id: user_id }).order('videos.position')
   end
 end

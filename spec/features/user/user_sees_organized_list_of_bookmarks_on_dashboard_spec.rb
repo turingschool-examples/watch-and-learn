@@ -5,24 +5,24 @@ require 'rails_helper'
 describe 'when a user is logged in and goes to their dashboard' do
   describe 'shows list of all bookmarks under a header' do
     it 'organizes all bookmarks by relevant tutorial and all videos by their position' do
-      user_1 = create(:user)
-      user_2 = create(:user)
+      user1 = create(:user)
+      user2 = create(:user)
 
-      tutorial_1 = create(:tutorial)
-      tutorial_2 = create(:tutorial)
-      tutorial_3 = create(:tutorial)
+      tutorial1 = create(:tutorial)
+      tutorial2 = create(:tutorial)
+      tutorial3 = create(:tutorial)
       create(:tutorial)
 
-      video_2 = create(:video, tutorial: tutorial_1, position: 2)
-      video_1 = create(:video, tutorial: tutorial_1, position: 1)
-      video_3 = create(:video, tutorial: tutorial_2, position: 1)
-      video_4 = create(:video, tutorial: tutorial_3, position: 1)
+      video2 = create(:video, tutorial: tutorial1, position: 2)
+      video1 = create(:video, tutorial: tutorial1, position: 1)
+      video3 = create(:video, tutorial: tutorial2, position: 1)
+      video4 = create(:video, tutorial: tutorial3, position: 1)
 
-      create(:user_video, video: video_1, user: user_1)
-      create(:user_video, video: video_2, user: user_1)
-      create(:user_video, video: video_3, user: user_1)
-      create(:user_video, video: video_4, user: user_1)
-      create(:user_video, video: video_1, user: user_2)
+      create(:user_video, video: video1, user: user1)
+      create(:user_video, video: video2, user: user1)
+      create(:user_video, video: video3, user: user1)
+      create(:user_video, video: video4, user: user1)
+      create(:user_video, video: video1, user: user2)
 
       visit '/'
 
@@ -30,8 +30,8 @@ describe 'when a user is logged in and goes to their dashboard' do
 
       expect(current_path).to eq(login_path)
 
-      fill_in 'session[email]', with: user_1.email
-      fill_in 'session[password]', with: user_1.password
+      fill_in 'session[email]', with: user1.email
+      fill_in 'session[password]', with: user1.password
 
       click_on 'Log In'
 
@@ -42,10 +42,10 @@ describe 'when a user is logged in and goes to their dashboard' do
       within '.bookmarked_segments' do
         within '#tutorial-1' do
           within '#video-1' do
-            expect(page).to have_content(video_1.title)
+            expect(page).to have_content(video1.title)
           end
           within '#video-2' do
-            expect(page).to have_content(video_2.title)
+            expect(page).to have_content(video2.title)
           end
           expect(page).to_not have_css('#video-3')
         end

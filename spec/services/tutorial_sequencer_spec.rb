@@ -10,35 +10,30 @@ describe TutorialSequencer do
 
   it 'exists' do
     sequence = [vid_1.id, vid_2.id, vid_3.id]
-    tutorial_sequencer = TutorialSequencer.new(tutorial, sequence)
-    expect(tutorial_sequencer).to be_a TutorialSequencer
+    expect(TutorialSequencer.new(tutorial, sequence)).to be_a TutorialSequencer
   end
 
-  context 'instance methods' do
-    context '#run!' do
-      it 'updates the positions of the videos' do
-        sequence = [vid_3.id, vid_1.id, vid_2.id]
-        tutorial_sequencer = TutorialSequencer.new(tutorial, sequence)
+  it 'updates the positions of the videos' do
+    sequence = [vid_3.id, vid_1.id, vid_2.id]
+    tutorial_sequencer = TutorialSequencer.new(tutorial, sequence)
 
-        tutorial_sequencer.run!
+    tutorial_sequencer.run!
 
-        expect(vid_1.reload.position).to eq(2)
-        expect(vid_2.reload.position).to eq(3)
-        expect(vid_3.reload.position).to eq(1)
-      end
+    expect(vid_1.reload.position).to eq(2)
+    expect(vid_2.reload.position).to eq(3)
+    expect(vid_3.reload.position).to eq(1)
+  end
 
-      it "doesn't call update unless there is a change" do
-        allow(tutorial).to receive(:videos).and_return([vid_1, vid_2, vid_3])
+  it "doesn't call update unless there is a change" do
+    allow(tutorial).to receive(:videos).and_return([vid_1, vid_2, vid_3])
 
-        sequence = [vid_2.id, vid_1.id, vid_3.id]
-        tutorial_sequencer = TutorialSequencer.new(tutorial, sequence)
+    sequence = [vid_2.id, vid_1.id, vid_3.id]
+    tutorial_sequencer = TutorialSequencer.new(tutorial, sequence)
 
-        expect(vid_1).to receive(:update).with(position: 2).once
-        expect(vid_2).to receive(:update).with(position: 1).once
-        expect(vid_3).to receive(:update).exactly(0).times
+    expect(vid_1).to receive(:update).with(position: 2).once
+    expect(vid_2).to receive(:update).with(position: 1).once
+    expect(vid_3).to receive(:update).exactly(0).times
 
-        tutorial_sequencer.run!
-      end
-    end
+    tutorial_sequencer.run!
   end
 end

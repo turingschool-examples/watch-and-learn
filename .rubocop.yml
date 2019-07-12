@@ -1,6 +1,7 @@
 AllCops:
-  Excludes:
+  Exclude:
     - db/*.rb
     - db/migrate/*.rb
+    - node_modules/**/*
 
 inherit_from: .rubocop_todo.yml
