@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
     Tutorial.find(id).title
   end
 
-  def four_oh_four
-    raise ActionController::RoutingError, 'Not Found'
+  def render_not_found
+    render file: 'public/404', status: 404
   end
 end

@@ -16,6 +16,6 @@ class Admin::Api::V1::BaseController < ActionController::API
   end
 
   def four_oh_four
-    raise ActionController::RoutingError, 'Not Found'
+    render file: 'public/404', status: 404
   end
 end
