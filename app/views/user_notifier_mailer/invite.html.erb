@@ -1,2 +1,2 @@
 Hello <%= @invitee[:name] %>,
-  <%= @inviter[:name] %> has invited you to join Jamesfield. You can create an account <%= link_to 'here.', 'http://localhost:3000/register'%>
+  <%= @inviter.first_name + " " + @inviter.last_name %> has invited you to join Jamesfield. You can create an account <%= link_to 'here.', 'http://localhost:3000/register'%>

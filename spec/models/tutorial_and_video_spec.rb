@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe Tutorial, type: :model do
+RSpec.describe 'users see tutorials and videos' do
   it 'organizes videos by tutorial in order of position' do
     create_list(:user, 2)
 
