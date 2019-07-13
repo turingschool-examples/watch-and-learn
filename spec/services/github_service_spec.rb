@@ -41,11 +41,11 @@ describe GithubService do
       end
     end
 
-    it "finds current user" do
+    it 'finds current user' do
       VCR.use_cassette('user_spec') do
         user = create(:user, active: true, github_token: ENV['GITHUB_TOKEN_M'])
 
-        user = GithubService.new(user).user("WHomer")
+        user = GithubService.new(user).user('WHomer')
 
         expect(user[:login].class).to eq(String)
         expect(user[:email].class).to eq(String)

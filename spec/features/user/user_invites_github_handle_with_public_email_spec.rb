@@ -4,8 +4,7 @@ require 'rails_helper'
 
 describe 'User logs in with Github' do
   it 'then invites user with public email' do
-    # VCR.use_cassette('features/user/user_sends_an_invite') do
-    WebMock.disable!
+    VCR.use_cassette('features/user/user_sends_an_invite') do
       user = create(:user, active: true, github_token: ENV['GITHUB_TOKEN_J'])
 
       visit '/'
@@ -34,5 +33,5 @@ describe 'User logs in with Github' do
       visit '/register'
       expect(current_path).to eq(register_path)
     end
-  # end
+  end
 end

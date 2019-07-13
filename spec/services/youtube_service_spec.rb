@@ -4,9 +4,9 @@ require 'rails_helper'
 
 describe YoutubeService do
   describe 'videos' do
-    it "finds video info" do
+    it 'finds video info' do
       VCR.use_cassette('youtube_service_video_info_spec') do
-        video = create(:video, video_id: "qMkRHW9zE1c")
+        video = create(:video, video_id: 'qMkRHW9zE1c')
 
         service = YoutubeService.new
         video_info = service.video_info(video.video_id)

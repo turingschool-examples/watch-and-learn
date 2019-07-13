@@ -4,8 +4,8 @@ require 'rails_helper'
 
 RSpec.describe Friendship, type: :model do
   describe 'relationships' do
-    it { should belong_to :user}
-    it { should belong_to :friend}
+    it { should belong_to :user }
+    it { should belong_to :friend }
   end
 
   it 'does self-referential, one-way User relationship' do
