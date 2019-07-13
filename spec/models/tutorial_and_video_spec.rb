@@ -32,4 +32,14 @@ RSpec.describe 'users see tutorials and videos' do
     expect(tutorials[1].videos.count).to eq(2)
     expect(tutorials[1].videos[0]).to eq(video3)
   end
+
+  it 'destroys dependent videos' do
+    tutorial = create(:tutorial)
+    video = create(:video)
+
+    expect(Video.count).to eq(1)
+    tutorial.videos << video
+    
+    expect { tutorial.destroy }.to change { Video.count }.by(-1)
+  end
 end
