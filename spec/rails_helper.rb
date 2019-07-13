@@ -1,4 +1,6 @@
 # frozen_string_literal: true
+require 'simplecov'
+SimpleCov.start 'rails'
 
 require 'spec_helper'
 
@@ -32,8 +34,6 @@ Capybara.javascript_driver = :selenium_chrome
 Capybara.configure do |config|
   config.default_max_wait_time = 5
 end
-
-SimpleCov.start 'rails'
 
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|
