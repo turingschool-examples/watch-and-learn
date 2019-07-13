@@ -5,6 +5,8 @@ class Tutorial < ApplicationRecord
   acts_as_taggable_on :tags, :tag_list
   accepts_nested_attributes_for :videos
 
+  validates :title, uniqueness: true
+
   def self.filtered(user)
     user ? Tutorial.all : Tutorial.where(classroom: false)
   end
