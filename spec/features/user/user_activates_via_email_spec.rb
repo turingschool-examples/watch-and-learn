@@ -25,7 +25,7 @@ describe 'user can create an account', :js do
     fill_in 'user[password]', with: password
     fill_in 'user[password_confirmation]', with: password
 
-    expect { click_on 'Create Account'; sleep 1 }
+    expect { click_on 'Create Account' }
       .to change { ActionMailer::Base.deliveries.count }.by(1)
 
     user = User.find_by(email: email)

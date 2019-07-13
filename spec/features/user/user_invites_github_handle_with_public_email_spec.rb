@@ -24,7 +24,7 @@ describe 'User logs in with Github' do
 
       fill_in 'invitee_github_handle', with: 'WHomer'
 
-      expect { click_button 'Send Invite'; sleep 1 }
+      expect { click_button 'Send Invite' }
         .to change { ActionMailer::Base.deliveries.count }.by(1)
 
       expect(current_path).to eq(dashboard_path)
