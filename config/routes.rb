@@ -37,19 +37,26 @@ Rails.application.routes.draw do
   get '/about', to: 'about#show'
   get '/get_started', to: 'get_started#show'
 
-  # Is this being used?
-  get '/video', to: 'video#show'
+  resources :users, only: %i[new create update]
 
-  resources :users, only: %i[new create update edit]
+  resources :tutorials, only: %i[show]
 
-  resources :tutorials, only: %i[show index] do
-    resources :videos, only: %i[show index]
-  end
-
-  resources :user_videos, only: %i[create destroy]
+  resources :user_videos, only: %i[create]
 
   post '/friendship', to: 'friendships#create'
 
   get '/invite', to: 'invites#new'
   post '/invite', to: 'invites#create'
+
+
+  # Is this being used?
+
+  # get '/video', to: 'video#show'
+  # admin/tutorial#destroy
+  # admin/videos#destroy
+  # users#edit
+  # videos#index (nested under resources: tutorials
+  # videos#show (nested under resources: tutorials
+  # tutorials#index
+  # user_videos#destroy
 end
