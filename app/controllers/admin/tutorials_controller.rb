@@ -8,7 +8,7 @@ class Admin::TutorialsController < Admin::BaseController
   def create
     tutorial = Tutorial.create(new_tutorial_params)
     if tutorial.save
-      flash[:message] = "Successfully created tutorial."
+      flash[:message] = 'Successfully created tutorial.'
       redirect_to tutorial_path(tutorial.id)
     else
       flash[:error] = 'Tutorial title already exists.'
@@ -30,7 +30,8 @@ class Admin::TutorialsController < Admin::BaseController
   def destroy
     tutorial = Tutorial.find(params[:id])
     tutorial.destroy
-    flash[:success] = "Deleted tutorial '#{tutorial.title}' and associated videos."
+    flash[:success] = "Deleted tutorial '#{tutorial.title}' \
+    and associated videos."
 
     redirect_to admin_dashboard_path
   end
@@ -42,6 +43,10 @@ class Admin::TutorialsController < Admin::BaseController
   end
 
   def new_tutorial_params
-    params.require(:tutorial).permit(:title, :description, :thumbnail, :playlist_id, :classroom)
+    params.require(:tutorial).permit(:title,
+                                     :description,
+                                     :thumbnail,
+                                     :playlist_id,
+                                     :classroom)
   end
 end

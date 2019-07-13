@@ -14,6 +14,7 @@ RSpec.describe UserNotifierMailer, type: :mailer do
     expect(['from@example.com']).to eq(email.from)
     expect(['friend@example.com']).to eq(email.to)
     expect('Please Activate Your Jamesfield Account').to eq(email.subject)
-    expect(email.body.encoded).to have_content(file_fixture('activation.yml').read.chomp)
+    expect(email.body.encoded)
+      .to have_content(file_fixture('activation.yml').read.chomp)
   end
 end

@@ -23,4 +23,8 @@ LineLength:
   Exclude:
     - app/controllers/admin/api/v1/tutorial_sequencer_controller.rb
 
+Metrics/BlockLength:
+  Exclude:
+    - spec/models/tutorial_and_video_spec.rb
+
 inherit_from: .rubocop_todo.yml

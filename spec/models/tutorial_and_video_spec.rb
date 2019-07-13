@@ -39,7 +39,7 @@ RSpec.describe 'users see tutorials and videos' do
 
     expect(Video.count).to eq(1)
     tutorial.videos << video
-    
+
     expect { tutorial.destroy }.to change { Video.count }.by(-1)
   end
 end

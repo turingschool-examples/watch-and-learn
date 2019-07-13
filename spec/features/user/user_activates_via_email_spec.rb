@@ -28,17 +28,15 @@ describe 'user can create an account', :js do
     expect { click_on 'Create Account' }
       .to change { ActionMailer::Base.deliveries.count }.by(1)
 
-    user = User.find_by(email: email)
     expect(current_path).to eq(dashboard_path)
 
     expect(page).to have_content("Logged in as #{first_name}")
     expect(page).to have_content('This account has not yet been activated.')
 
     # Registered but not actived user has received email with link to click
-
-    visit "/activation?email=#{user.email}"
+    visit "/activation?email=#{User.find_by(email: email).email}"
     expect(current_path).to eq(dashboard_path)
     expect(page).to have_content('Thank you! Your account is now activated.')
-    expect(user.reload.active).to eq(true)
+    expect(User.find_by(email: email).reload.active).to eq(true)
   end
 end

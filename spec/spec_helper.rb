@@ -27,7 +27,7 @@ RSpec.configure do |config|
 
   config.shared_context_metadata_behavior = :apply_to_host_groups
 
-  RSpec.configure do |teardown|
+  RSpec.configure do |_teardown|
     config.before { ActionMailer::Base.deliveries.clear }
   end
 end

@@ -25,9 +25,7 @@ class Admin::VideosController < Admin::BaseController
     redirect_to edit_admin_tutorial_path(id: tutorial.id)
   end
 
-  def destroy
-    
-  end
+  def destroy; end
 
   private
 

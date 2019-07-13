@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 describe GithubService do
-  describe 'users' do
+  describe 'current_user and their repos' do
     it "finds current user's five most recently updated repos" do
       VCR.use_cassette('repo_spec') do
         user = create(:user, github_token: ENV['GITHUB_TOKEN_M'])
@@ -17,6 +17,22 @@ describe GithubService do
       end
     end
 
+    it 'finds current user' do
+      VCR.use_cassette('user_spec') do
+        user = create(:user, active: true, github_token: ENV['GITHUB_TOKEN_M'])
+
+        user = GithubService.new(user).user('WHomer')
+
+        expect(user[:login].class).to eq(String)
+        expect(user[:email].class).to eq(String)
+        expect(user[:url]).to include('https://api.github.com/users/')
+      end
+    end
+  end
+end
+
+describe GithubService do
+  describe 'followings and followers' do
     it "finds current user's followers" do
       VCR.use_cassette('follower_spec') do
         user = create(:user, github_token: ENV['GITHUB_TOKEN_M'])
@@ -38,18 +54,6 @@ describe GithubService do
 
         expect(following[:login].class).to eq(String)
         expect(following[:url]).to include('https://api.github.com/users/')
-      end
-    end
-
-    it 'finds current user' do
-      VCR.use_cassette('user_spec') do
-        user = create(:user, active: true, github_token: ENV['GITHUB_TOKEN_M'])
-
-        user = GithubService.new(user).user('WHomer')
-
-        expect(user[:login].class).to eq(String)
-        expect(user[:email].class).to eq(String)
-        expect(user[:url]).to include('https://api.github.com/users/')
       end
     end
   end
