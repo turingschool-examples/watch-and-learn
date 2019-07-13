@@ -2,7 +2,6 @@
 
 class Invite
   def initialize(invitee, current_user)
-
     service = GithubService.new(current_user)
     @inviter = current_user
     @invitee = service.user(invitee)
