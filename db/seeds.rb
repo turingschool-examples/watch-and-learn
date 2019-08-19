@@ -9,7 +9,7 @@ prework_tutorial = Tutorial.create! prework_tutorial_data
 
 prework_tutorial.videos.create!({
   "title"=>"Prework - Environment Setup",
-  "description"=> Faker::Hipster.paragraph(2, true),
+  "description"=> Faker::Hipster.paragraphs(2, true),
   "video_id"=>"qMkRHW9zE1c",
   "thumbnail"=>"https://i.ytimg.com/vi/qMkRHW9zE1c/hqdefault.jpg",
   "position"=>1
