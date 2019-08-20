@@ -33,7 +33,7 @@ describe 'User dashboard' do
 
   it 'user sees followers' do
     expect(page).to have_content("Followers")
-    expect(page).to have_css(".follower", count: 1)
+    expect(page).to have_css(".follower", count: 3)
 
     within(first(".follower")) do
       expect(page).to have_css(".handle")
