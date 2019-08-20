@@ -11,6 +11,7 @@ gem 'coffee-rails', '~> 4.2'
 gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bcrypt', '~> 3.1.7'
+gem 'rubocop'
 
 gem 'webpacker', '~> 3.5'
 
@@ -42,7 +43,7 @@ group :development, :test do
   gem 'simplecov'
   gem 'vcr'
   gem 'selenium-webdriver'
-  gem 'chromedriver-helper'
+  gem 'webdrivers'
 end
 
 group :development do
