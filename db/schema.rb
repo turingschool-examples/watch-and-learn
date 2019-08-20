@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_20_224730) do
+ActiveRecord::Schema.define(version: 2019_08_20_225906) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,10 +50,10 @@ ActiveRecord::Schema.define(version: 2019_08_20_224730) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "user_creditials", force: :cascade do |t|
+  create_table "user_credentials", force: :cascade do |t|
     t.string "token"
     t.bigint "user_id"
-    t.index ["user_id"], name: "index_user_creditials_on_user_id"
+    t.index ["user_id"], name: "index_user_credentials_on_user_id"
   end
 
   create_table "user_videos", force: :cascade do |t|
@@ -86,7 +86,7 @@ ActiveRecord::Schema.define(version: 2019_08_20_224730) do
     t.index ["tutorial_id"], name: "index_videos_on_tutorial_id"
   end
 
-  add_foreign_key "user_creditials", "users"
+  add_foreign_key "user_credentials", "users"
   add_foreign_key "user_videos", "users"
   add_foreign_key "user_videos", "videos"
 end
