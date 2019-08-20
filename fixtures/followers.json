@@ -1,0 +1,22 @@
+[
+    {
+        "login": "JoriPeterson",
+        "id": 48265011,
+        "node_id": "MDQ6VXNlcjQ4MjY1MDEx",
+        "avatar_url": "https://avatars0.githubusercontent.com/u/48265011?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/JoriPeterson",
+        "html_url": "https://github.com/JoriPeterson",
+        "followers_url": "https://api.github.com/users/JoriPeterson/followers",
+        "following_url": "https://api.github.com/users/JoriPeterson/following{/other_user}",
+        "gists_url": "https://api.github.com/users/JoriPeterson/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/JoriPeterson/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/JoriPeterson/subscriptions",
+        "organizations_url": "https://api.github.com/users/JoriPeterson/orgs",
+        "repos_url": "https://api.github.com/users/JoriPeterson/repos",
+        "events_url": "https://api.github.com/users/JoriPeterson/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/JoriPeterson/received_events",
+        "type": "User",
+        "site_admin": false
+    }
+]
