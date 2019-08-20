@@ -17,6 +17,7 @@ describe "An Admin can edit a tutorial" do
     click_on "Create Video"
 
     expect(current_path).to eq(edit_admin_tutorial_path(tutorial))
+    expect(page).to have_content("Successfully created video.")
 
     within(first(".video")) do
       expect(page).to have_content("How to tie your shoes.")
