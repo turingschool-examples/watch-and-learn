@@ -1,12 +1,6 @@
 class FollowerFacade
-  attr_reader :followers
-
-  def initialize
-    @followers ||= get_followers
-  end
-
-  def get_followers
-    follower_data.map {|data| Follower.new(data)}
+  def followers
+    @followers ||= follower_data.map {|data| Follower.new(data)}
   end
 
   private
