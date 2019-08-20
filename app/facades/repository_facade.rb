@@ -2,7 +2,7 @@ class RepositoryFacade
   attr_reader :repositories
 
   def initialize
-    @repositories = get_repositories
+    @repositories ||= get_repositories
   end
 
   def get_repositories
