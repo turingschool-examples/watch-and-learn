@@ -3,6 +3,10 @@ class TutorialFacade < SimpleDelegator
     super(tutorial)
     @video_id = video_id
   end
+  
+  def has_videos?
+    !videos.empty?
+  end
 
   def current_video
     if @video_id

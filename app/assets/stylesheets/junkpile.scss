@@ -47,7 +47,7 @@
 }
 
 .video {
-  margin-left: 10px;
+  margin: 0px 0 50px 10px;
   height: 190px;
   width: 1000px;
 }
@@ -117,47 +117,8 @@ h4 {
   font-size: 125%;
 }
 
-.videos {
-  padding-left: 15px;
-}
-
 .thumbnail {
   max-height: 180px;
-}
-
-.bar {
-  height: 40px;
-  background-color: rgb(238, 238, 238);
-}
-
-.search-field {
-  padding: 2px;
-}
-
-.videos {
-  height: 1000px;
-}
-
-.video {
-  margin-left: 10px;
-  height: 190px;
-  width: 1000px;
-}
-
-.video-description {
-  height: 190px;
-  width: 550px;
-}
-
-.video-container{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 500px;
-}
-
-.video-view {
-  max-width: 50%;
 }
 
 .tutorials {
@@ -165,17 +126,6 @@ h4 {
   width: 75%;
   padding: 10px;
   height:1250px;
-}
-
-.tutorial {
-  height: 200px;
-}
-
-.dashboard-main {
-  margin: auto;
-  width: 75%;
-  padding: 10px;
-  height:1000px;
 }
 
 .about-container {
