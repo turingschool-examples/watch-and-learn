@@ -5,9 +5,9 @@ feature 'Github Repos' do
     user = create(:user)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-    #VCR.use_cassette("synopsis") do
+    VCR.use_cassette("synopsis") do
       visit '/dashboard'
-    #end
+    end
 
     expect(current_path).to eq(dashboard_path)
 

@@ -8,7 +8,7 @@ http_interactions:
       string: ''
     headers:
       Authorization:
-      - e65ba2534e273895ec196de3b5b383847f8f76f5
+      - token <GITHUB_TOKEN>
       User-Agent:
       - Faraday v0.12.2
       Accept-Encoding:
@@ -21,23 +21,23 @@ http_interactions:
       message: Unauthorized
     headers:
       Date:
-      - Wed, 21 Aug 2019 00:07:14 GMT
+      - Wed, 21 Aug 2019 22:23:34 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
-      - '121'
+      - '83'
       Server:
       - GitHub.com
       Status:
       - 401 Unauthorized
+      X-Github-Media-Type:
+      - github.v3; format=json
       X-Ratelimit-Limit:
       - '60'
       X-Ratelimit-Remaining:
-      - '47'
+      - '55'
       X-Ratelimit-Reset:
-      - '1566348167'
-      X-Github-Media-Type:
-      - github.v3; format=json
+      - '1566429444'
       Access-Control-Expose-Headers:
       - ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
         X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval,
@@ -57,10 +57,10 @@ http_interactions:
       Content-Security-Policy:
       - default-src 'none'
       X-Github-Request-Id:
-      - FA6F:6F65:CF239:12B3A4:5D5C8B32
+      - DFE7:0D97:D5761:131A19:5D5DC466
     body:
       encoding: UTF-8
-      string: '{"message":"Requires authentication","documentation_url":"https://developer.github.com/v3/repos/#list-your-repositories"}'
+      string: '{"message":"Bad credentials","documentation_url":"https://developer.github.com/v3"}'
     http_version: 
-  recorded_at: Wed, 21 Aug 2019 00:07:14 GMT
+  recorded_at: Wed, 21 Aug 2019 22:23:32 GMT
 recorded_with: VCR 4.0.0
