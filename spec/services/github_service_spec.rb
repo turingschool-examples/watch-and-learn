@@ -31,5 +31,17 @@ describe GithubService do
         expect(follower_data).to have_key :login
       end
     end
+
+		context "#follower_data" do
+			it "returns following", :vcr do
+				search = subject.following_data
+				expect(search).to be_an Array
+				expect(search.count).to eq 3
+				expect(search[0]).to be_a Hash
+				following_data = search[0]
+
+				expect(following_data).to have_key :login
+			end
+		end
   end
 end

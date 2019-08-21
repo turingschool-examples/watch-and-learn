@@ -35,4 +35,9 @@ describe 'User dashboard' do
       expect(page).to have_css(".handle")
     end
   end
+
+	it 'user sees followings' do
+		expect(page).to have_content("Following")
+		expect(page).to have_css(".handle")
+	end
 end
