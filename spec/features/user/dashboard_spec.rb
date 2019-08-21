@@ -8,6 +8,9 @@ describe 'User dashboard' do
     followers_json = File.open("./fixtures/followers.json")
     stub_request(:get, "https://api.github.com/user/followers").
       to_return(status: 200, body: followers_json)
+		following_json = File.open("./fixtures/following.json")
+		stub_request(:get, "https://api.github.com/user/following").
+			to_return(status: 200, body: following_json)
 
     user = create(:user)
     visit '/'
@@ -39,4 +42,9 @@ describe 'User dashboard' do
       expect(page).to have_css(".handle")
     end
   end
+
+	it 'user sees followings' do
+		expect(page).to have_content("Following")
+		expect(page).to have_css(".handle")
+	end
 end
