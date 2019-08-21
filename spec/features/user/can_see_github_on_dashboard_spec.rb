@@ -20,12 +20,11 @@ VCR.turn_off!
       end
 
       expect(page).to have_css(".github-repos", count: 5)
-save_and_open_page
-      expect((".github-repos")[0]).to eq("1903_final")
-      expect((".github-repos")[0]).to have_link("1903_final")
-      click_link("1903_final")
-      expect(current_path).to eq("https://github.com/MillsProvosty/1903_final")
-    #end
+
+      within(first(".github-repos")) do
+        expect(page).to have_link("1903_final")
+      end
+    # end
   end
 end
 
