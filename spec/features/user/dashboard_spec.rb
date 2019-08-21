@@ -4,6 +4,7 @@ describe 'User dashboard' do
   before :each do
     stub_json("https://api.github.com/user/repos", "./fixtures/repositories.json")
     stub_json("https://api.github.com/user/followers", "./fixtures/followers.json")
+    stub_json("https://api.github.com/user/following", "./fixtures/following.json")	  
 
     user = create(:user)
     visit '/'
