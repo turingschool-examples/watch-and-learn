@@ -3,6 +3,6 @@ class Repo
 
   def initialize(data)
     @full_path = data[:html_url]
-    @path = data[:name]
+    @path = data[:full_name]
   end
 end
