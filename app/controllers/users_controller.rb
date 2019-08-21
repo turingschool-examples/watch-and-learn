@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   def show
     render locals: {
-      facade: UserShowFacade.new
+      facade: UserShowFacade.new(current_user)
     }
   end
 

@@ -16,13 +16,13 @@ VCR.turn_off!
       expect(page).to have_content("Github")
 
       within(first(".github-repos")) do
-        expect(page).to have_link("1903_final")
+        expect(page).to have_link("brownfield-of-dreams")
       end
 
       expect(page).to have_css(".github-repos", count: 5)
 
       within(first(".github-repos")) do
-        expect(page).to have_link("1903_final")
+        expect(page).to have_link("brownfield-of-dreams")
       end
     # end
   end

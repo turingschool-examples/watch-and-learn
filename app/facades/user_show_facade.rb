@@ -1,13 +1,16 @@
 class UserShowFacade
+  def initialize(current_user)
+    @user = current_user
+  end
 
   def user_repos
+    # connection = GithubService.new
     conn = Faraday.new(url: "https://api.github.com") do |faraday|
-      faraday.headers["X-API-KEY"] = ENV['GITHUB_API_KEY']
+      faraday.headers["Authorization"] = ENV['GITHUB_API_KEY']
       faraday.params['per_page'] = 5
       faraday.adapter Faraday.default_adapter
    end
-
-    response = conn.get("/users/MillsProvosty/repos")
+    response = conn.get("/user/repos")
 
     repo = JSON.parse(response.body, symbolize_names: true)
 
@@ -16,5 +19,6 @@ class UserShowFacade
     end
   end
 
-
+   private
+    attr_reader :user
 end
