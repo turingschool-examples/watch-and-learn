@@ -1,12 +1,7 @@
 class FollowingFacade
-	attr_reader :following
-
-	def initialize
-		@following = following
-	end
-
+	
 	def following
-		following_data.map { |data| Following.new(data) }
+		@following = following_data.map { |data| Following.new(data) }
 	end
 
 	private
