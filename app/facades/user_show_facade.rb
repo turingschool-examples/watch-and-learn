@@ -12,10 +12,9 @@ class UserShowFacade
     repo = JSON.parse(response.body, symbolize_names: true)
 
     repo.map do |r|
-      GithubRepo.new(r).url
+      GithubRepo.new(r)
     end
   end
 
-  # private
-  #   attr_reader :username
+
 end
