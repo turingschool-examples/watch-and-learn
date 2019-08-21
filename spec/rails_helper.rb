@@ -19,6 +19,12 @@ end
 
 ActiveRecord::Migration.maintain_test_schema!
 
+def stub_json(url,filename)
+  json_response = File.open(filename)
+  stub_request(:get, url).
+    to_return(status: 200, body: json_response)
+end
+
 Capybara.register_driver :selenium do |app|
   Capybara::Selenium::Driver.new(app, browser: :chrome)
 end

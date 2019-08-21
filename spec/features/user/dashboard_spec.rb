@@ -2,15 +2,9 @@ require 'rails_helper'
 
 describe 'User dashboard' do
   before :each do
-    repos_json = File.open("./fixtures/repositories.json")
-    stub_request(:get, "https://api.github.com/user/repos").
-      to_return(status: 200, body: repos_json)
-    followers_json = File.open("./fixtures/followers.json")
-    stub_request(:get, "https://api.github.com/user/followers").
-      to_return(status: 200, body: followers_json)
-		following_json = File.open("./fixtures/following.json")
-		stub_request(:get, "https://api.github.com/user/following").
-			to_return(status: 200, body: following_json)
+    stub_json("https://api.github.com/user/repos", "./fixtures/repositories.json")
+    stub_json("https://api.github.com/user/followers", "./fixtures/followers.json")
+    stub_json("https://api.github.com/user/following", "./fixtures/following.json")	  
 
     user = create(:user)
     visit '/'
