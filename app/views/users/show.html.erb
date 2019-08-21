@@ -11,11 +11,11 @@
     <h1>Bookmarked Segments</h1>
   </section>
 
-  <<section>
+  <section>
     <h1>Github</h1>
-      <ul>
+      <ul id="repos">
         <% facade.repos.each do |repo| %>
-          <li><a href="<%= repo.full_path %>"><%= repo.path %></a></li>
+          <li class="repo"><a href="<%= repo.full_path %>"><%= repo.path %></a></li>
         <% end %>
       </ul>
   </section>
