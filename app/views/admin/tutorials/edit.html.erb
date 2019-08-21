@@ -1,53 +1,55 @@
 <h1><%= @tutorial.title %></h1>
-<section class="col col-4 p3 border">
-  <h4>Videos (<%= @tutorial.videos.count %>)</h4>
-  <p>Drag and drop to sort. Don't forget to save.</p>
-  <div data-controller="tutorials">
-    <%= link_to "Save Video Order", "#", "data-action" => "click->tutorials#updateOrder", class: "video-position-submit btn btn-outline", id: @tutorial.id %>
-    <%= link_to "Add Video", "#", "data-action" => "click->tutorials#showVideoForm", class: "video-position-submit btn btn-outline", id: @tutorial.id %>
-  </div>
+<div class='clearfix'>
+  <section class="col col-8 p3 border">
+    <h4>Videos (<%= @tutorial.videos.count %>)</h4>
+    <p>Drag and drop to sort. Don't forget to save.</p>
+    <div data-controller="tutorials">
+      <%= link_to "Save Video Order", "#", "data-action" => "click->tutorials#updateOrder", class: "video-position-submit btn btn-outline", id: @tutorial.id %>
+      <%= link_to "Add Video", "#", "data-action" => "click->tutorials#showVideoForm", class: "video-position-submit btn btn-outline", id: @tutorial.id %>
+    </div>
 
-  <div class="mt1" id="new-video-form">
-    <h3>New Video</h3>
-    <%= form_for [:admin, @tutorial, Video.new] do |f| %>
-      <%= f.label :title, class: "block" %>
-      <%= f.text_field :title, class: "field block"%>
-      <%= f.label :description, class: "block" %>
-      <%= f.text_field :description, class: "field block"%>
-      <%= f.label "YoutTube ID", class: "block" %>
-      <%= f.text_field :video_id, class: "field block"%>
+    <div class="mt1" id="new-video-form">
+      <h3>New Video</h3>
+      <%= form_for [:admin, @tutorial, Video.new] do |f| %>
+        <%= f.label :title, class: "block" %>
+        <%= f.text_field :title, class: "field block"%>
+        <%= f.label :description, class: "block" %>
+        <%= f.text_field :description, class: "field block"%>
+        <%= f.label "YoutTube ID", class: "block" %>
+        <%= f.text_field :video_id, class: "field block"%>
 
-      <%= f.submit "Create Video", class: "mt1 btn btn-outline"  %>
-    <% end %>
-  </div>
+        <%= f.submit "Create Video", class: "mt1 btn btn-outline"  %>
+      <% end %>
+    </div>
 
-  <div id="video-list">
-    <% @tutorial.videos.each do |video| %>
-      <div class="video" data-id="<%= video.id %>" class="border rounded mt2 p1">
-        <%= link_to video.title, tutorial_path(@tutorial, video_id: video.id) %><br>
-        <img class="thumbnail" src= <%="#{video.thumbnail}" %> >
-      </div>
-    <% end %>
-  </div>
-</section>
+    <div id="video-list">
+      <% @tutorial.videos.each do |video| %>
+        <div class="video" data-id="<%= video.id %>" class="border rounded mt2 p1">
+          <h4><%= link_to video.title, tutorial_path(@tutorial, video_id: video.id) %></h4>
+          <img class="thumbnail" src= <%="#{video.thumbnail}" %> >
+        </div>
+      <% end %>
+    </div>
+  </section>
 
-<section class="col col-4 p3 ml2 border">
-  <h4>Tags</h4>
+  <section class="col col-4 p3 ml2 border">
+    <h4>Tags</h4>
 
-  <ul>
-    <% @tutorial.tags.each do |tag| %>
-      <li><%= tag.name %></li>
-    <% end %>
-  </ul>
+    <ul>
+      <% @tutorial.tags.each do |tag| %>
+        <li><%= tag.name %></li>
+      <% end %>
+    </ul>
 
-  <div class="tag-field">
-    <%= form_for [:admin, @tutorial] do |f| %>
-      <%= f.label :tag_list, "Separted by commas", class: "block" %>
-      <%= f.text_field :tag_list, class: "field block" %><br>
-      <%= f.submit "Update Tags", class: "video-position-submit btn btn-outline" %>
-    <% end %>
-  </div>
-</section>
+    <div class="tag-field">
+      <%= form_for [:admin, @tutorial] do |f| %>
+        <%= f.label :tag_list, "Separted by commas", class: "block" %>
+        <%= f.text_field :tag_list, class: "field block" %><br>
+        <%= f.submit "Update Tags", class: "video-position-submit btn btn-outline" %>
+      <% end %>
+    </div>
+  </section>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.6.1/Sortable.min.js"></script>
 
