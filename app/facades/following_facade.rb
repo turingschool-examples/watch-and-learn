@@ -1,18 +1,22 @@
 class FollowingFacade
+	attr_reader :following
 
 	def initialize
 		@following = following
 	end
 
 	def following
-		# service = GithubService.new
-		service.following_data.map { |data| Following.new(data) }
+		following_data.map { |data| Following.new(data) }
 	end
 
 	private
 
 	def service
-		GithubService.new
+		@_service ||= GithubService.new
+	end
+
+	def following_data
+		@_following_data ||= service.following_data
 	end
 
 end
