@@ -4,6 +4,15 @@ class Admin::TutorialsController < Admin::BaseController
   end
 
   def create
+    creating = Tutorial.new(tutorial_params)
+    if creating.save
+      flash[:success] = 'Tutorial created.'
+      redirect_to tutorial_path(creating)
+    else
+      flash[:error] = 'Something went wrong.'
+      @tutorial = creating
+      render :new
+    end
   end
 
   def new
@@ -20,6 +29,6 @@ class Admin::TutorialsController < Admin::BaseController
 
   private
   def tutorial_params
-    params.require(:tutorial).permit(:tag_list)
+    params.require(:tutorial).permit(:title, :description, :thumbnail, :tag_list)
   end
 end
