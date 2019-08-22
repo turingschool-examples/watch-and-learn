@@ -12,13 +12,10 @@
   </section>
 
   <section>
+
     <h1>Github</h1>
-      <h3> Repos</h3>
-      <% repos.each do |repo| %>
-      <%= repo.name %>
-      <%= repo.url %>
-      <br>
-      <% end  %>
+    <%= button_to "Connect to Github", github_login_path, method: :get %>
+
   </section>
 
 </section>

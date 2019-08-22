@@ -9,7 +9,6 @@ Rails.application.routes.draw do
   root 'welcome#index'
   get 'tags/:tag', to: 'welcome#index', as: :tag
   get '/register', to: 'users#new'
-
   namespace :admin do
     get "/dashboard", to: "dashboard#show"
     resources :tutorials, only: [:create, :edit, :update, :destroy, :new] do
@@ -24,9 +23,14 @@ Rails.application.routes.draw do
     end
   end
 
+  get '/auth/github', as: :github_login
+  post '/auth/github/callback', to: 'github_sessions#create'
+
   get '/login', to: "sessions#new"
   post '/login', to: "sessions#create"
   delete '/logout', to: "sessions#destroy"
+
+  #get '/auth/:provider/callback', to: 'sessions#create'
 
   get '/dashboard', to: 'users#show'
   get '/about', to: 'about#show'
