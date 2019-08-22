@@ -1,12 +1,14 @@
 class UsersController < ApplicationController
   def show
-		token = current_user.github_token[0]
-    render locals: {
-			github_token: token,
-      repos_facade: RepositoryFacade.new("token #{token.token}"),
-      followers_facade: FollowerFacade.new("token #{token.token}"),
-			following_facade: FollowingFacade.new("token #{token.token}")
-    }
+		token = current_user.github_token
+		if token
+	    render locals: {
+				github_token: token,
+	      repos_facade: RepositoryFacade.new(token),
+	      followers_facade: FollowerFacade.new(token),
+				following_facade: FollowingFacade.new(token)
+	    }
+		end
   end
 
   def new
