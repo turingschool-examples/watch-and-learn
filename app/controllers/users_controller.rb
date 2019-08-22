@@ -1,6 +1,7 @@
 
 class UsersController < ApplicationController
   def show
+    render locals: {repos_facade: ReposFacade.new, followers_facade: FollowersFacade.new,  following_facade: FollowingFacade.new}  
   end
 
   def new

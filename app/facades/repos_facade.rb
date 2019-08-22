@@ -1,25 +1,15 @@
-class Repo
-  def initialize(username, password)
-    @username = username
-    @password = password
-  end
+  class ReposFacade
+    def repos
+      @repos ||= repo_data[0..4].map {|data| Repo.new(data)}
+    end
 
-  def all_repos
-      conn = Faraday.new(url: 'https://api.github.com/user')
-      conn.basic_auth(@username, @password)
-      conn.get('/repos')
-  end
-end
+    private
 
-#
-#       faraday.adapter Faraday.default_adapter
-#     end
-#
-#     response = conn.get("/congress/v1/members/house/#{state}/current.json")
-#
-#     JSON.parse(response.body, symbolize_names: true)[:results]
-#   end
-#
-#   private
-#   attr_reader :state
-# end
+    def service
+      @_service ||= GithubApi.new
+    end
+
+    def repo_data
+      @_repo_data ||= service.repos
+    end
+  end
