@@ -1,9 +1,10 @@
+Tutorial.delete_all
 prework_tutorial_data = {
   "title"=>"Back End Engineering - Prework",
   "description"=>"Videos for prework.",
   "thumbnail"=>"https://i.ytimg.com/vi/qMkRHW9zE1c/hqdefault.jpg",
   "playlist_id"=>"PL1Y67f0xPzdN6C-LPuTQ5yzlBoz2joWa5",
-  "classroom"=>true,
+  "classroom"=>false,
 }
 prework_tutorial = Tutorial.create! prework_tutorial_data
 
