@@ -14,9 +14,14 @@ class SessionsController < ApplicationController
     end
   end
 
+  def update
+    current_user.authenticate(request.env["omniauth.auth"])
+    flash[:success] = 'u did it'
+    redirect_to dashboard_path
+  end
+
   def destroy
     session[:user_id] = nil
     redirect_to root_path
   end
-
 end
