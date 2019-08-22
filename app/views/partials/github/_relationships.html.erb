@@ -1,0 +1,12 @@
+<ul>
+  <h3>Followers</h3>
+  <% facade.followers.each do |handle| %>
+    <li><a href='<%= handle.path %>'><%= handle.name %></a></li>
+  <% end %>
+</ul>
+<ul>
+  <h3>Following</h3>
+  <% facade.following.each do |handle| %>
+    <li><a href='<%= handle.path %>'><%= handle.name %></a></li>
+  <% end %>
+</ul>
