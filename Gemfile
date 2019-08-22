@@ -26,6 +26,7 @@ gem 'omniauth-google-oauth2'
 gem 'will_paginate'
 gem 'acts-as-taggable-on', '~> 6.0'
 gem 'omniauth-census', git: "https://github.com/turingschool-projects/omniauth-census"
+gem 'figaro'
 
 
 group :development, :test do
@@ -38,7 +39,6 @@ group :development, :test do
   gem 'launchy'
   gem 'shoulda-matchers'
   gem 'awesome_print'
-  gem 'webmock'
   gem 'simplecov'
   gem 'vcr'
   gem 'selenium-webdriver'
@@ -48,6 +48,10 @@ end
 group :development do
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
+end
+
+group :test do
+  gem 'webmock'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
