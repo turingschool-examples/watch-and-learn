@@ -10,16 +10,16 @@
   <section>
     <h1>Bookmarked Segments</h1>
   </section>
-
-  <%= button_to "Login", github_login_path %>
-
-  </section>
+  <% if facade.is_auth? %>
   <section>
     <h1>Github</h1>
-      <ul id="repos">
-        <% facade.repos.each do |repo| %>
-          <li class="repo"><a href="<%= repo.full_path %>"><%= repo.path %></a></li>
-        <% end %>
-      </ul>
+    <ul id="repos">
+      <% facade.repos.each do |repo| %>
+        <li class="repo"><a href="<%= repo.full_path %>"><%= repo.path %></a></li>
+      <% end %>
+    </ul>
   </section>
+  <% else %>
+    <%= button_to "Login", github_login_path %>
+  <% end %>
 </section>

@@ -7,10 +7,6 @@ class User < ApplicationRecord
   enum role: [:default, :admin]
   has_secure_password
 
-  def token
-    ENV['GITHUB_TOKEN']
-  end
-
   def authenticate(data)
     self.attributes = {
       uid: data.uid.to_s,
