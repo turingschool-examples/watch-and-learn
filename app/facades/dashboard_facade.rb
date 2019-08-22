@@ -1,6 +1,6 @@
 class DashboardFacade
   def initialize(user)
-    @service = GithubService.new(user.token)
+    @service = GithubService.new(user)
   end
 
   def repos
