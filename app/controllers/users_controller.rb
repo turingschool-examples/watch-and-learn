@@ -1,8 +1,8 @@
 
 class UsersController < ApplicationController
   def show
-        render text: request.env["omniauth.auth"].inspect
-      end
+    render locals: {repos_facade: ReposFacade.new, followers_facade: FollowersFacade.new,  following_facade: FollowingFacade.new}  
+  end
 
   def new
     @user = User.new

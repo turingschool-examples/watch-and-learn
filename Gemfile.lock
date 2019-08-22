@@ -354,7 +354,6 @@ DEPENDENCIES
   json
   launchy
   listen (>= 3.0.5, < 3.2)
-  omniauth
   omniauth-census!
   omniauth-github
   omniauth-google-oauth2
