@@ -1,6 +1,6 @@
 class RepositoryFacade
   def repositories
-    @repositories ||= repository_data[0..4].map {|data| Repository.new(data)}
+    @_repositories ||= repository_data[0..4].map {|data| Repository.new(data)}
   end
 
   private
