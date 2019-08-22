@@ -3,8 +3,6 @@
 
   <%= button_to 'Log Out', logout_path, method: 'delete', class: "btn btn-primary mb1 bg-teal" %>
 
-	<%= button_to 'Connect to Github', github_login_path, method: :get, class: "btn btn-primary mb1 bg-teal" %>
-
   <h3>Account Details</h3>
     <ul>
       <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
@@ -15,29 +13,37 @@
     <h1>Bookmarked Segments</h1>
   </section>
 
-  <section>
-    <h1>GitHub</h1>
+	<% unless current_user.github_token.empty? %>
+	  <section>
+	    <h1>GitHub</h1>
+			<% if session[:github_id].nil? %>
+				<%= button_to 'Connect to Github', github_login_path, method: :get, class: "btn btn-primary mb1 bg-teal" %>
+			<% else %>
+			<section><h3>Repositories</h3>
+				<% repos_facade.repositories.each do |repository| %>
+					<ul class="repository">
+						<li class="name" id="repository-#{repository.name}"><%= repository.name %></li>
+					</ul>
+				<% end %>
+			</section>
 
-    <% repos_facade.repositories.each do |repository| %>
-      <ul class="repository">
-        <li class="name" id="repository-#{repository.name}"><%= repository.name %></li>
-      </ul>
-    <% end %>
+			<section><h3>Followers</h3>
+				<% followers_facade.followers.each do |follower| %>
+					<ul class="follower">
+						<li class="handle" id="follower-#{follower.login}"><%= follower.login %></li>
+					</ul>
+				<% end %>
+			</section>
 
-    <section><h2>Followers</h2>
-      <% followers_facade.followers.each do |follower| %>
-        <ul class="follower">
-          <li class="handle" id="follower-#{follower.login}"><%= follower.login %></li>
-        </ul>
-      <% end %>
-    </section>
-
-		<section><h2>Following</h2>
-			<% following_facade.following.each do |following| %>
-				<ul class="following">
-					<li class="handle" id="following-#{following.login}"> following.login </li>
-				</ul>
+			<section><h3>Following</h3>
+				<% following_facade.following.each do |following| %>
+					<ul class="following">
+						<li class="handle" id="following-#{following.login}"><%= following.login %></li>
+					</ul>
+				<% end %>
+			</section>
 			<% end %>
-		</section>
-  </section>
+  	</section>
+	<% end %>
+
 </section>
