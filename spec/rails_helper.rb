@@ -5,8 +5,8 @@ require File.expand_path('../../config/environment', __FILE__)
 
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
-require 'vcr'
 require 'webmock/rspec'
+require 'vcr'
 
 VCR.configure do |config|
   config.ignore_localhost = true
@@ -48,4 +48,11 @@ RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
 
   config.filter_rails_from_backtrace!
+end
+
+def stub_dashboard_api_calls
+  git_hub_repos = File.open("./fixtures/github_repos.json")
+  stub_request(:get, "https://api.github.com/user/repos").to_return(status:200, body:git_hub_repos)
+  # git_hub_repos_parced = JSON.parse(git_hub_repos)
+  #add each new api call here
 end

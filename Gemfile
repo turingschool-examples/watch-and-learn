@@ -42,7 +42,7 @@ group :development, :test do
   gem 'simplecov'
   gem 'vcr'
   gem 'selenium-webdriver'
-  gem 'chromedriver-helper'
+  gem 'webdrivers'
 end
 
 group :development do
@@ -51,3 +51,4 @@ group :development do
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem "figaro"

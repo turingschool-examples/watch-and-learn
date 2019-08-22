@@ -1,9 +1,12 @@
 class UsersController < ApplicationController
   def show
+    render locals: {
+    facade: UserFacade.new
+    }
   end
 
   def new
-    @user = User.new
+    user = User.new
   end
 
   def create
@@ -18,9 +21,8 @@ class UsersController < ApplicationController
   end
 
   private
-
   def user_params
-    params.require(:user).permit(:email, :first_name, :last_name, :password)
+    params.permit(:email, :first_name, :last_name, :password, :token)
   end
 
 end
