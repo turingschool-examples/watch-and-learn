@@ -3,7 +3,6 @@ class UsersController < ApplicationController
     render locals: {
     facade: UserFacade.new
     }
-        #do I need to append .gethub_repos?
   end
 
   def new

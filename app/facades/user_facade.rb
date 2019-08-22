@@ -1,8 +1,6 @@
 class UserFacade
   def github_repos
-    @github_repos ||= repos[0..4].map do |repo|
-      Repository.new(repo)
-    end
+    @_github_repos ||= repos[0..4].map { |repo| Repository.new(repo)}
   end
 
   private

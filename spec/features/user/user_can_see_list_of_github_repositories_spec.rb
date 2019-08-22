@@ -14,11 +14,6 @@ feature 'as a user when i visit my dashboard' do
 
     within(first(".repo")) do
       expect(page).to have_css(".repo_name")
-      save_and_open_page
     end
   end
 end
-# As a logged in user
-# When I visit /dashboard
-# Then I should see a section for "Github"
-# And under that section I should see a list of 5 repositories with the name of each Repo linking to the repo on Github
