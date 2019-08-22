@@ -15,6 +15,6 @@ class User < ApplicationRecord
   end
 
   def friendship_uids
-    joins(:friendships).select('users.uid').where(friendships: {user_id: id})
+    User.joins(:friendships).select('users.uid').where(friendships: {user_id: id})
   end
 end
