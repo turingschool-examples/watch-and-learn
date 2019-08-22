@@ -9,10 +9,15 @@ class User < ApplicationRecord
   enum role: [:default, :admin]
   has_secure_password
 
-	def github_token
+	def token(website)
 		cred = user_credentials
-			.where(user_credentials: {website: "github"})
+			.where(user_credentials: {website: website})
 			.take
 		cred.nil? ? nil : cred.token
 	end
+
+  def add_credential(website, token)
+    cred = self.user_credentials.find_or_create_by(website: website)
+		cred.update_attributes(token: token)
+  end
 end
