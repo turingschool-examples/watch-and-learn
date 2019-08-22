@@ -25,6 +25,15 @@ def stub_json(url,filename)
     to_return(status: 200, body: json_response)
 end
 
+def stub_omniauth
+	OmniAuth.config.test_mode = true
+	OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({
+		"credentials" => {"token" => "1"},
+	  "provider" => 'github',
+	  "uid" => '1'
+	})
+end
+
 Capybara.register_driver :selenium do |app|
   Capybara::Selenium::Driver.new(app, browser: :chrome)
 end
