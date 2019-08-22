@@ -1,7 +1,7 @@
 class DashboardFacade
   def initialize(user)
     @service = GithubService.new(user.token)
-    @friendships = User.friendship_uids
+    @friendships = user.friendship_uids
   end
 
   def repos
@@ -21,19 +21,19 @@ class DashboardFacade
 
   def get_repos
     service.fetch_repos.take(5).map do |raw_repo|
-      Repo.new(raw_repo)
+      Github::Repo.new(raw_repo)
     end
   end
 
   def get_followers
     service.fetch_followers.map do |raw_follower|
-      GithubHandle.new(raw_follower, @friendships)
+      Github::Handle.new(raw_follower, @friendships)
     end
   end
 
   def get_following
     service.fetch_following.map do |raw_following|
-      GithubHandle.new(raw_following, @friendships)
+      Github::Handle.new(raw_following, @friendships)
     end
   end
 end
