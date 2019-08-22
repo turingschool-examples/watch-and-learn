@@ -1,15 +1,17 @@
 class GithubService
   def initialize(token)
     @conn = Faraday.new(:url => "https://api.github.com/") do |f|
-      f.headers['Authorization'] = "token b2fb15e787b174eee08fdb2b26bbb44b33993322"
+      f.headers['Authorization'] = "token #{ENV['GITHUB_TOKEN']}"
       # f.basic_auth('ktsune', token)
       f.adapter Faraday.default_adapter
     end
   end
 
-  def fetch_repos
-    fetch('/user/repos')
-  end
+  def fetch_repos; fetch('/user/repos') end
+
+  def fetch_followers; fetch('/user/followers') end
+
+  def fetch_following; fetch('/user/following') end
 
   private
   attr_reader :conn

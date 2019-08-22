@@ -11,12 +11,10 @@
     <h1>Bookmarked Segments</h1>
   </section>
 
-  <section>
+  <div id='github'>
     <h1>Github</h1>
-      <ul id="repos">
-        <% facade.repos.each do |repo| %>
-          <li class="repo"><a href="<%= repo.full_path %>"><%= repo.path %></a></li>
-        <% end %>
-      </ul>
-  </section>
+
+    <%= render partial: 'partials/github/repos', locals: {facade: facade} %>  
+    <%= render partial: 'partials/github/relationships', locals: {facade: facade} %>
+  </div>
 </section>
