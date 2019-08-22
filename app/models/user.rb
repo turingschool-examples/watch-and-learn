@@ -10,8 +10,9 @@ class User < ApplicationRecord
   has_secure_password
 
 	def github_token
-		user_credentials
+		cred = user_credentials
 			.where(user_credentials: {website: "github"})
-			.limit(1)
+			.take
+		cred.nil? ? nil : cred.token
 	end
 end
