@@ -13,11 +13,9 @@
     <h1>Bookmarked Segments</h1>
   </section>
 
-	<% if session[:github_id].nil? %>
+	<% if current_user.github_token.nil? %>
 		<%= button_to 'Connect to Github', github_login_path, method: :get, class: "btn btn-primary mb1 bg-teal" %>
 	<% else %>
-
-	<% unless github_token.nil? %>
 	  <section>
 	    <h1>GitHub</h1>
 
@@ -44,8 +42,6 @@
 					</ul>
 				<% end %>
 			</section>
-			<% end %>
   	</section>
 	<% end %>
-
 </section>
