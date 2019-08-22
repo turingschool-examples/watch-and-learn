@@ -13,12 +13,14 @@
     <h1>Bookmarked Segments</h1>
   </section>
 
-	<% unless current_user.github_token.empty? %>
+	<% if session[:github_id].nil? %>
+		<%= button_to 'Connect to Github', github_login_path, method: :get, class: "btn btn-primary mb1 bg-teal" %>
+	<% else %>
+
+	<% unless github_token.nil? %>
 	  <section>
 	    <h1>GitHub</h1>
-			<% if session[:github_id].nil? %>
-				<%= button_to 'Connect to Github', github_login_path, method: :get, class: "btn btn-primary mb1 bg-teal" %>
-			<% else %>
+
 			<section><h3>Repositories</h3>
 				<% repos_facade.repositories.each do |repository| %>
 					<ul class="repository">
