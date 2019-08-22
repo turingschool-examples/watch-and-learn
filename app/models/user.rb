@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_secure_password
 
   def authenticate(data)
+    binding.pry
     self.attributes = {
       uid: data.uid.to_s,
       handle: data.info.nickname,

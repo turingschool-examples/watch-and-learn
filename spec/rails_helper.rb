@@ -18,6 +18,7 @@ VCR.configure do |config|
   config.filter_sensitive_data("<GITHUB_TOKEN>") { ENV['GITHUB_TOKEN'] }
 end
 
+OmniAuth.config.test_mode = true
 
 ActiveRecord::Migration.maintain_test_schema!
 

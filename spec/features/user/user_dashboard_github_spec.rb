@@ -17,11 +17,5 @@ feature 'Github Repos' do
         expect(page).to have_link("JoriPeterson/battleship")
       end
     end
-
-#     scenario 'I see another section titled Followers' do
-#       scenario 'And I should see list of all followers with their handles linking to their Github profile' do
-#
-#       end
-#     end
   end
 end
