@@ -1,4 +1,8 @@
 class FollowerFacade
+	def initialize(token)
+		@token = token
+	end
+
   def followers
     @followers ||= follower_data.map {|data| Follower.new(data)}
   end
@@ -6,7 +10,7 @@ class FollowerFacade
   private
 
   def service
-    @_service ||= GithubService.new
+    @_service ||= GithubService.new(@token)
   end
 
   def follower_data

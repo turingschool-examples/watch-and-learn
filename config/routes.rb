@@ -11,17 +11,17 @@ Rails.application.routes.draw do
   get '/register', to: 'users#new'
 
   namespace :admin do
+		namespace :api do
+			namespace :v1 do
+				put "tutorial_sequencer/:tutorial_id", to: "tutorial_sequencer#update"
+			end
+		end
+
     get "/dashboard", to: "dashboard#show"
     resources :tutorials, only: [:create, :edit, :update, :destroy, :new] do
       resources :videos, only: [:create]
     end
     resources :videos, only: [:edit, :update, :destroy]
-
-    namespace :api do
-      namespace :v1 do
-        put "tutorial_sequencer/:tutorial_id", to: "tutorial_sequencer#update"
-      end
-    end
   end
 
   get '/login', to: "sessions#new"
@@ -42,4 +42,7 @@ Rails.application.routes.draw do
   end
 
   resources :user_videos, only: [:create, :destroy]
+
+	get 'auth/github', as: 'github_login'
+	get 'auth/github/callback', to: 'github/sessions#create'
 end

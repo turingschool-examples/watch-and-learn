@@ -2,11 +2,13 @@ require 'rails_helper'
 
 describe 'User dashboard' do
   before :each do
+		stub_omniauth
     stub_json("https://api.github.com/user/repos", "./fixtures/repositories.json")
     stub_json("https://api.github.com/user/followers", "./fixtures/followers.json")
     stub_json("https://api.github.com/user/following", "./fixtures/following.json")
 
     user = create(:user)
+
     visit '/'
     click_on "Sign In"
 
@@ -16,7 +18,12 @@ describe 'User dashboard' do
     fill_in 'session[password]', with: user.password
     click_on 'Log In'
 
+		allow_any_instance_of(User).to receive(:github_token).and_return(ENV['GITHUB_API_KEY'])
+
+		click_on "Connect to Github"
+
     expect(current_path).to eq(dashboard_path)
+		expect(page).to_not have_content("Connect to Github")
     expect(page).to have_content("GitHub")
   end
 
