@@ -114,5 +114,6 @@ m3_tutorial.videos.create!({
   "thumbnail"=>"https://i.ytimg.com/vi/FcgkfZEv_LI/hqdefault.jpg",
   "position"=>6
 })
-
+User.delete_all
 User.create!(email: 'admin@example.com', first_name: 'Bossy', last_name: 'McBosserton', password:  "password", role: :admin)
+User.create!(email: 'user@example.com', first_name: 'User', last_name: 'Userton', password:  "password")
