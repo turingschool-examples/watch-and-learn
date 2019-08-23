@@ -12,11 +12,16 @@
   </section>
   <section>
     <h1>Github</h1>
-
     <% facade.github_repos.each do |repo| %>
     <ul class = "repo">
         <li class ="repo_name"> <%= link_to repo.name, repo.html_url %></li>
       </ul>
     <% end %>
   </section>
+  <section>
+    <h1>Followers</h1>
+    <% facade.followers.each do |follower| %>
+      <%= link_to follower.name, follower.html_url %>
+    <% end %>
+    </section>
 </section>
