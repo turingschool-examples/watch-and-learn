@@ -4,7 +4,7 @@
   <section><h3>Repositories</h3>
     <% facade.repositories.each do |repository| %>
       <ul class="repository">
-        <li class="name" id="repository-#{repository.name}"><%= repository.name %></li>
+        <li class="name" id="repository-#{repository.name}"><%= link_to repository.name, repository.url %></li>
       </ul>
     <% end %>
   </section>
@@ -12,7 +12,7 @@
   <section><h3>Followers</h3>
     <% facade.followers.each do |follower| %>
       <ul class="follower">
-        <li class="handle" id="follower-#{follower.login}"><%= follower.login %></li>
+        <li class="handle" id="follower-#{follower.login}"><%= link_to follower.login, follower.url %></li>
       </ul>
     <% end %>
   </section>
@@ -20,7 +20,7 @@
   <section><h3>Following</h3>
     <% facade.following.each do |following| %>
       <ul class="following">
-        <li class="handle" id="following-#{following.login}"><%= following.login %></li>
+        <li class="handle" id="following-#{following.login}"><%= link_to following.login, following.url %></li>
       </ul>
     <% end %>
   </section>

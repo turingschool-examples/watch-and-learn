@@ -18,8 +18,6 @@ describe 'User dashboard' do
     fill_in 'session[password]', with: user.password
     click_on 'Log In'
 
-		allow_any_instance_of(User).to receive(:token).and_return(ENV['GITHUB_API_KEY'])
-
 		click_on "Connect to Github"
 
     expect(current_path).to eq(dashboard_path)
@@ -43,4 +41,12 @@ describe 'User dashboard' do
       expect(page).to have_css(".handle")
     end
   end
+	it 'user sees follwing' do
+		expect(page).to have_content("Following")
+		expect(page).to have_css(".following", count: 3)
+
+		within(first(".following")) do
+			expect(page).to have_css(".handle")
+		end
+	end
 end
