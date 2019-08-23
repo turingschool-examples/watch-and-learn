@@ -2,9 +2,7 @@ require 'rails_helper'
 
 feature 'as a user when I visit my dashboard' do
   scenario 'I see everyone who follows me and their GH handle is a link to their profile' do
-    # stub_dashboard_follower_api_calls
-    WebMock.allow_net_connect!
-    VCR.turn_off!
+    stub_dashboard_api_calls
 
     user = create(:user)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
