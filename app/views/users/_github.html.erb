@@ -4,7 +4,7 @@
   <section><h3>Repositories</h3>
     <% facade.repositories.each do |repository| %>
       <ul class="repository">
-        <li class="name" id="repository-#{repository.name}"><%= repository.name %></li>
+        <li class="name" id="repository-#{repository.name}"><%= link_to repository.name, repository.url %></li>
       </ul>
     <% end %>
   </section>
