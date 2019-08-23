@@ -20,8 +20,8 @@
   </section>
   <section>
     <h1>Followers</h1>
-    <% facade.followers.each do |follower| %>
-      <%= link_to follower.name, follower.html_url %>
+    <% facade.github_followers.each do |follower| %>
+      <%= link_to follower.login, follower.html_url %>
     <% end %>
     </section>
 </section>

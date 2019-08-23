@@ -14,7 +14,6 @@ class GithubService
 
   private
   def get_json(url)
-    # require 'pry';binding.pry
     response = conn.get(url)
     JSON.parse(response.body, symbolize_names: true)
   end

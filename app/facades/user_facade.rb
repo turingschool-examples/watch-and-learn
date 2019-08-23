@@ -3,6 +3,10 @@ class UserFacade
     @_github_repos ||= repos[0..4].map { |repo| Repository.new(repo)}
   end
 
+  def github_followers
+    @_github_followers ||= followers.map { |follower| Follower.new(follower)}
+  end
+
   private
 
   def service
@@ -11,5 +15,9 @@ class UserFacade
 
   def repos
     @_repos ||= service.repos
+  end
+
+  def followers
+    @_followers ||= service.followers
   end
 end
