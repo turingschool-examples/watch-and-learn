@@ -13,35 +13,6 @@
     <h1>Bookmarked Segments</h1>
   </section>
 
-	<% if current_user.github_token.nil? %>
-		<%= button_to 'Connect to Github', github_login_path, method: :get, class: "btn btn-primary mb1 bg-teal" %>
-	<% else %>
-	  <section>
-	    <h1>GitHub</h1>
+	<%= render facade.partial, facade: facade %>
 
-			<section><h3>Repositories</h3>
-				<% repos_facade.repositories.each do |repository| %>
-					<ul class="repository">
-						<li class="name" id="repository-#{repository.name}"><%= repository.name %></li>
-					</ul>
-				<% end %>
-			</section>
-
-			<section><h3>Followers</h3>
-				<% followers_facade.followers.each do |follower| %>
-					<ul class="follower">
-						<li class="handle" id="follower-#{follower.login}"><%= follower.login %></li>
-					</ul>
-				<% end %>
-			</section>
-
-			<section><h3>Following</h3>
-				<% following_facade.following.each do |following| %>
-					<ul class="following">
-						<li class="handle" id="following-#{following.login}"><%= following.login %></li>
-					</ul>
-				<% end %>
-			</section>
-  	</section>
-	<% end %>
 </section>
