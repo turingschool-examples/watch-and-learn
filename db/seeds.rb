@@ -1,3 +1,4 @@
+Video.delete_all
 Tutorial.delete_all
 prework_tutorial_data = {
   "title"=>"Back End Engineering - Prework",
@@ -13,7 +14,7 @@ prework_tutorial.videos.create!({
   "description"=> Faker::Hipster.paragraphs(2, true),
   "video_id"=>"qMkRHW9zE1c",
   "thumbnail"=>"https://i.ytimg.com/vi/qMkRHW9zE1c/hqdefault.jpg",
-  "position"=>1
+  "position"=>nil
 })
 prework_tutorial.videos.create!({
   "title"=>"Prework - SSH Key Setup",
@@ -53,7 +54,7 @@ m1_tutorial.videos.create!({
   "description"=> Faker::Hipster.paragraph(2, true),
   "video_id"=>"tZDBWXZzLPk",
   "thumbnail"=>"https://i.ytimg.com/vi/tZDBWXZzLPk/hqdefault.jpg",
-  "position"=>1
+  "position"=>3
 })
 m1_tutorial.videos.create!({
   "title"=>"How to use SimpleCov",
