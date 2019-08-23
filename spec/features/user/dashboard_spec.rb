@@ -18,7 +18,7 @@ describe 'User dashboard' do
     fill_in 'session[password]', with: user.password
     click_on 'Log In'
 
-		allow_any_instance_of(User).to receive(:github_token).and_return(ENV['GITHUB_API_KEY'])
+		allow_any_instance_of(User).to receive(:token).and_return(ENV['GITHUB_API_KEY'])
 
 		click_on "Connect to Github"
 
