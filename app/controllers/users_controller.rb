@@ -1,7 +1,8 @@
 
 class UsersController < ApplicationController
   def show
-    render locals: {repos_facade: ReposFacade.new, followers_facade: FollowersFacade.new,  following_facade: FollowingFacade.new}  
+    @user = current_user
+    
   end
 
   def new
@@ -24,5 +25,4 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:email, :first_name, :last_name, :password)
   end
-
 end

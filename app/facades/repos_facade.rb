@@ -1,4 +1,5 @@
   class ReposFacade
+
     def repos
       @repos ||= repo_data[0..4].map {|data| Repo.new(data)}
     end
