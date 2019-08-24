@@ -13,6 +13,7 @@
     <% facade.followers.each do |follower| %>
       <ul class="follower">
         <li class="handle" id="follower-#{follower.login}"><%= link_to follower.login, follower.url %></li>
+				#if follower.login == User.nickname, Add as Friend
       </ul>
     <% end %>
   </section>
