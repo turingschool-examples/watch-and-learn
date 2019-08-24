@@ -15,6 +15,12 @@ class UserGithub
     end
   end
 
+  def followings
+    user_followings(@token).map do |following|
+      Following.new(following)
+    end
+  end
+
   private
 
   def user_repos(token)
@@ -23,6 +29,10 @@ class UserGithub
 
   def user_followers(token)
     @user_followers ||= service.followers(token)
+  end
+
+  def user_followings(token)
+    @user_followings ||= service.followings(token)
   end
 
   def service
