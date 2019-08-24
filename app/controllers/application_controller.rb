@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   helper_method :find_bookmark
   helper_method :list_tags
   helper_method :tutorial_name
-  helper_method :current_token
+  helper_method :github_token
 
   add_flash_types :success
 
@@ -11,8 +11,9 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 
-  def current_token
-    
+  def github_token
+    @github_token ||= current_user.tokens.find(session[:token_id]) if session[:token_id]
+    # @github_token.token if @github_token
   end
 
   def find_bookmark(id)

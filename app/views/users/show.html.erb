@@ -10,11 +10,12 @@
   <section>
     <h1>Bookmarked Segments</h1>
   </section>
-  <% if current_token %>
+
+  <% if github_token %>
     <section class="github">
       <h1>Github</h1>
 
-      <h2>Repos</h2>
+      <h3>Repos</h3>
       <% facade.repos.each do |repo| %>
       <ul>
         <li><%= link_to repo.name, repo.html_url %></li>
@@ -22,7 +23,7 @@
       <% end %>
 
       <section class="followers">
-        <h2>Followers</h2>
+        <h3>Followers</h3>
         <% facade.followers.each do |follower| %>
         <ul>
           <li><%= link_to follower.login, follower.url %></li>
@@ -31,7 +32,7 @@
       </section>
 
       <section class="following">
-        <h2>Following</h2>
+        <h3>Following</h3>
         <% facade.followings.each do |following| %>
         <ul>
           <li><%= link_to following.login, following.url %></li>
@@ -39,4 +40,7 @@
         <% end %>
       </section>
     </section>
+
+  <% else %>
+    <%= button_to 'Connect to Github', 'auth/github', method: 'get', class: "btn btn-primary mb1 bg-teal" %>
   <% end %>

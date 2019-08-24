@@ -7,7 +7,7 @@ describe 'As a logged in user' do
         user = create(:user)
 
         allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
-        allow_any_instance_of(ApplicationController).to receive(:current_token).and_return(ENV['GITHUB_TOKEN'])
+        allow_any_instance_of(ApplicationController).to receive(:github_token).and_return(ENV['GITHUB_TOKEN'])
         json_response = File.open("./fixtures/github_repos.json")
         stub_request(:get, "https://api.github.com/user/repos?sort=updated_at&access_token=#{ENV['GITHUB_TOKEN']}").
           to_return(status: 200, body: json_response)
@@ -27,7 +27,7 @@ describe 'As a logged in user' do
         user = create(:user)
 
         allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
-        allow_any_instance_of(ApplicationController).to receive(:current_token).and_return(nil)
+        allow_any_instance_of(ApplicationController).to receive(:github_token).and_return(nil)
 
         visit dashboard_path
 
