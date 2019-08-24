@@ -14,6 +14,9 @@ VCR.configure do |config|
   config.hook_into :webmock
   config.configure_rspec_metadata!
   config.filter_sensitive_data("<YOUTUBE_API_KEY>") { ENV['YOUTUBE_API_KEY'] }
+  config.filter_sensitive_data("<GITHUB_API_KEY>") { ENV['GITHUB_API_KEY'] }
+  config.filter_sensitive_data("<GITHUB_CLIENT_ID>") { ENV['GITHUB_CLIENT_ID'] }
+  config.filter_sensitive_data("<GITHUB_CLIENT_SECRET>") { ENV['GITHUB_CLIENT_SECRET'] }
 end
 
 
@@ -59,4 +62,13 @@ def stub_dashboard_api_calls
   stub_request(:get, "https://api.github.com/user/followers").to_return(status:200, body:followers)
   following = File.open("./fixtures/following.json")
   stub_request(:get, "https://api.github.com/user/following").to_return(status:200, body:following)
+end
+
+def stub_github_oauth
+  OmniAuth.config.test_mode = true
+  OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({
+  :credentials => {token: "1", secret: "abu973ansdfas"},
+  :provider => 'github',
+  :uid => '1'
+})
 end
