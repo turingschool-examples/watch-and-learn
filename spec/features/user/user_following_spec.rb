@@ -13,8 +13,10 @@ feature 'as a user when I visit my dashboard' do
     expect(page).to have_content("Followers")
     expect(page).to have_content("Following")
 
-    expect(page).to have_link("Jake0Miller")
-    expect(page).to have_link("icorson3")
-    expect(page).to have_link("nathangthomas")
+    within ".following" do
+      expect(page).to have_link("Jake0Miller")
+      expect(page).to have_link("icorson3")
+      expect(page).to have_link("nathangthomas")
+    end
   end
 end
