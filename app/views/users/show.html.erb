@@ -24,4 +24,10 @@
       <%= link_to follower.login, follower.html_url %>
     <% end %>
     </section>
+    <section>
+      <h1>Following</h1>
+      <% facade.github_following.each do |following| %>
+        <%= link_to following.login, following.html_url %>
+      <% end %>
+      </section>
 </section>

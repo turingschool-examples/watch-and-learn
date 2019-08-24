@@ -7,8 +7,11 @@ class UserFacade
     @_github_followers ||= followers.map { |follower| Follower.new(follower)}
   end
 
-  private
+  def github_following
+    @_github_following ||= following.map { |following| Following.new(following)}
+  end
 
+  private
   def service
     @_service ||= GithubService.new
   end
@@ -19,5 +22,9 @@ class UserFacade
 
   def followers
     @_followers ||= service.followers
+  end
+
+  def following
+    @_following ||= service.following
   end
 end

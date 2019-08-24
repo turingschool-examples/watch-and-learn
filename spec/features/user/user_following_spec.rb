@@ -2,10 +2,7 @@ require 'rails_helper'
 
 feature 'as a user when I visit my dashboard' do
   scenario 'I see all users I am following on GH' do
-    stub_dashboard_following_api_calls
-
-    WebMock.allow_net_connect!
-    VCR.turn_off!
+    stub_dashboard_api_calls
 
     user = create(:user)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
@@ -17,7 +14,7 @@ feature 'as a user when I visit my dashboard' do
     expect(page).to have_content("Following")
 
     expect(page).to have_link("Jake0Miller")
-    expect(page).to have_link("tbierwirth")
+    expect(page).to have_link("icorson3")
     expect(page).to have_link("nathangthomas")
   end
 end
