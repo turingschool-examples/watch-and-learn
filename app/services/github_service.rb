@@ -7,6 +7,10 @@ class GithubService
     get_json("https://api.github.com/user/followers?access_token=#{token}")
   end
 
+  def followings(token)
+    get_json("https://api.github.com/user/following?access_token=#{token}")
+  end
+
   private
 
   def conn
