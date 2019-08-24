@@ -5,4 +5,10 @@ class Follower
     @login = attributes[:login]
 		@url = attributes[:html_url]
   end
+
+	def friendable?(login)
+		 !UserCredential.where("nickname = ?", login).empty?		 
+	end
+
+
 end
