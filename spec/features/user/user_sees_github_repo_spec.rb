@@ -13,7 +13,7 @@ describe 'As a logged in user' do
           to_return(status: 200, body: json_response)
         visit dashboard_path
 
-        within(first(".github")) do
+        within ".github" do
           expect(page).to have_content("Github")
           expect(page).to have_link("brownfield-of-dreams")
           expect(page).to have_link("rales_engine")
