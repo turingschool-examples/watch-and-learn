@@ -55,4 +55,8 @@ def stub_dashboard_api_calls
   stub_request(:get, "https://api.github.com/user/repos").to_return(status:200, body:git_hub_repos)
   # git_hub_repos_parced = JSON.parse(git_hub_repos)
   #add each new api call here
+  followers = File.open("./fixtures/followers.json")
+  stub_request(:get, "https://api.github.com/user/followers").to_return(status:200, body:followers)
+  following = File.open("./fixtures/following.json")
+  stub_request(:get, "https://api.github.com/user/following").to_return(status:200, body:following)
 end
