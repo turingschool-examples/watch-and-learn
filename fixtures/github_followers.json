@@ -1,0 +1,22 @@
+[
+    {
+        "login": "renecasco",
+        "id": 34440390,
+        "node_id": "MDQ6VXNlcjM0NDQwMzkw",
+        "avatar_url": "https://avatars1.githubusercontent.com/u/34440390?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/renecasco",
+        "html_url": "https://github.com/renecasco",
+        "followers_url": "https://api.github.com/users/renecasco/followers",
+        "following_url": "https://api.github.com/users/renecasco/following{/other_user}",
+        "gists_url": "https://api.github.com/users/renecasco/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/renecasco/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/renecasco/subscriptions",
+        "organizations_url": "https://api.github.com/users/renecasco/orgs",
+        "repos_url": "https://api.github.com/users/renecasco/repos",
+        "events_url": "https://api.github.com/users/renecasco/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/renecasco/received_events",
+        "type": "User",
+        "site_admin": false
+    }
+]

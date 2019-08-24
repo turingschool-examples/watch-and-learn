@@ -4,7 +4,7 @@ describe Follower do
   it "exists" do
     attrs = {
       login: "user",
-      url: "http://github.com/user",
+      url: "http://github.com/user"
     }
 
     follower = Follower.new(attrs)
