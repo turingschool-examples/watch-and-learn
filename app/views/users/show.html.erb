@@ -14,10 +14,20 @@
     <section class="github">
       <h1>Github</h1>
 
+      <h2>Repos</h2>
       <% facade.repos.each do |repo| %>
       <ul>
         <li><%= link_to repo.name, repo.html_url %></li>
       </ul>
       <% end %>
+
+      <section class="followers">
+        <h2>Followers</h2>
+        <% facade.followers.each do |follower| %>
+        <ul>
+          <li><%= link_to follower.login, follower.url %></li>
+        </ul>
+        <% end %>
+      </section>
+    </section>
   <% end %>
-</section>
