@@ -18,7 +18,7 @@ class User < ApplicationRecord
 		cred.nil? ? nil : cred.token
 	end
 
-  def add_credential(website, token)
+  def add_credential(website, token, nickname)
     cred = self.user_credentials.find_or_create_by(website: website)
 		cred.update_attributes(token: token)
 		cred.update_attributes(nickname: nickname)
