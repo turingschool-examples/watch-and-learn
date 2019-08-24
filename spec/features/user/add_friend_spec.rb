@@ -20,18 +20,18 @@ describe 'User dashboard' do
   end
 
   it "user sees 'add as friend' next to followers with accounts" do
-    expect(page).to have_css(".follower")
+    expect(page).to have_css(".follower", count: 3)
 
-    within(first(".follower")) do
-      expect(page).to have_button("Add as Friend")
+    within(".followers") do
+      expect(page.all('.follower')[0]).to have_button("Add as Friend")
     end
   end
 
 	it "user sees 'add as friend' next to following with accounts" do
     expect(page).to have_css(".following")
 
-    within(first(".following")) do
-      expect(page).to have_button("Add as Friend")
+    within(".followings") do
+      expect(page.all('.following')[0]).to have_button("Add as Friend")
     end
   end
 end
