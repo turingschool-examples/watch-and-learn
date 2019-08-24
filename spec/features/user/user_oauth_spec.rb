@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature 'as a user when I visit my dashboard' do
   scenario 'I can connect to Github with a link styled like a button' do
-    # stub_github_oauth
+    stub_github_oauth
     WebMock.allow_net_connect!
     VCR.turn_off!
 
