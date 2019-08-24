@@ -16,7 +16,7 @@ class GithubApi
 
   def conn
     @_conn = Faraday.new(url: "https://api.github.com") do |faraday|
-      faraday.basic_auth('wthompson92', '3d31a0c9b71f97bed245daf41070155cd6d0b73b')
+      faraday.basic_auth('pschlatt', 'c3161359aedba9c1ef97d4f84f2b139dbe30d4e6')
       faraday.adapter Faraday.default_adapter
 
   end
