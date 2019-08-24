@@ -17,29 +17,8 @@
     <%= button_to "Connect to Github", github_login_path, method: :get %>
 
     <h3>Repos</h3>
-
-    <% repos_facade.repos.each do |repo| %>
-    <ul>
-  <li><%= link_to "#{repo.name}", repo.url %></li>
-
-  </ul>
-    <% end %>
-
-    <h3>Followers</h3>
-    <% followers_facade.followers.each do |follower| %>
-      <ul>
-    <li> <%=link_to "#{follower.login}", follower.url  %> </li>
-  </ul>
-    <% end %>
-
-
-    <h3>Following</h3>
-    <% following_facade.following.each do |user| %>
-      <ul>
-  <li> <%=link_to "#{user.login}", user.url  %> </li>
-  </ul>
-    <% end %>
-
-  </section>
+    <%= @user.tokens.first.token_string %>
+    <br>
+    <%= @user.tokens.first.uid %>
 
 </section>

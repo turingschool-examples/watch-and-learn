@@ -1,10 +1,9 @@
 class Auth::Github::TokensController < ApplicationController
+
   def create
     token = request.env["omniauth.auth"]["credentials"]["token"]
     uid = request.env["omniauth.auth"]["uid"]
-
-    current_user.update(github_token: token, uid: uid)
-
+    Token.create(token_string: token, uid: uid, user_id: current_user.id)
     redirect_to dashboard_path
   end
 end
