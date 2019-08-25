@@ -23,8 +23,3 @@ feature 'as a user when I visit my dashboard' do
   end
   OmniAuth.config.mock_auth[:github] = nil
 end
-
-# Then I should go through the OAuth process
-# And I should be redirected to /dashboard
-# And I should see all of the content from the previous Github stories
-# (repos, followers, and following)
