@@ -6,10 +6,14 @@ class User < ApplicationRecord
   validates_presence_of :password
   validates_presence_of :first_name
   enum role: [:default, :admin]
-  has_secure_password 
+  has_secure_password
 
   # def github_repos
   #   Merchant.select("merchants.*, count(invoices.merchant_id) as merchant_count").joins(invoices: :transactions).where(invoices: {customer_id: id }).where("transactions.result = ?", "success").group("merchants.id").order("merchant_count desc").first
   # end
+
+  def github_update(auth_hash)
+    self.token = auth_hash["credentials"]["token"]
+  end
 
 end
