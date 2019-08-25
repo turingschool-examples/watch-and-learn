@@ -15,7 +15,12 @@ feature 'as a user when I visit my dashboard' do
     visit dashboard_path
 
     within ".followers" do
-      expect(page).to have_link("")
+      expect(page).to have_link("Add as a Friend")
+    end
+
+    within ".following" do
+      expect(page).to have_link("Add as a Friend")
+    end
   end
 end
 # Background: A user (Josh) exists in the system with a Github token. The user
