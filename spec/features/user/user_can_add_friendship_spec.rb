@@ -13,8 +13,9 @@ feature 'as a user when I visit my dashboard' do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(josh)
 
     visit dashboard_path
-    # save_and_open_page
-    # expect((".followers")[]).to eq()
+
+    within ".followers" do
+      expect(page).to have_link("")
   end
 end
 # Background: A user (Josh) exists in the system with a Github token. The user
