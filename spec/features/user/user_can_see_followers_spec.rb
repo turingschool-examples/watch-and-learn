@@ -11,10 +11,13 @@ feature 'as a user when I visit my dashboard' do
 
     expect(page).to have_content("Github")
     expect(page).to have_content("Followers")
+    expect(page).to have_css(".follower_name", count: 4)
 
-    expect(page).to have_link("ryanmillergm")
-    expect(page).to have_link("Jake0Miller")
-    expect(page).to have_link("tbierwirth")
-    expect(page).to have_link("nathangthomas")
+    within ".followers" do
+      expect(page).to have_link("ryanmillergm")
+      expect(page).to have_link("Jake0Miller")
+      expect(page).to have_link("tbierwirth")
+      expect(page).to have_link("nathangthomas")
+    end
   end
 end
