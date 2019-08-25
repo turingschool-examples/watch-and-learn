@@ -1,4 +1,9 @@
 class GithubApi
+
+  def initialize(user)
+    @user = user
+  end
+
   def repos
     get_json("/user/repos")
   end
@@ -14,13 +19,11 @@ class GithubApi
 
   private
 
-  def conn
-    @_conn = Faraday.new(url: "https://api.github.com") do |faraday|
-      faraday.basic_auth('pschlatt', '76a6bc8ef950980ab3650a9923ba80dd1e184584')
-      faraday.adapter Faraday.default_adapter
-
-  end
-
+    def conn
+      @_conn = Faraday.new(url: "https://api.github.com") do |faraday|
+        faraday.headers["Authorization"] = @user.tokens.last.token_string
+        faraday.adapter Faraday.default_adapter
+    end
 end
   def get_json(url)
     response = conn.get(url)
