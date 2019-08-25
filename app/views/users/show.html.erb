@@ -9,8 +9,20 @@
       <li> <%= current_user.email%> </li>
     </ul>
 
-  <section>
+  <section class='bookmarks'>
     <h1>Bookmarked Segments</h1>
+		<% facade.bookmarks.each do |bookmark| %>
+				<h3><%= bookmark.tutorial %></h3>
+				<section>
+					<ul class="tutorial">
+						<% bookmark.videos.each do |video| %>
+							<li class="bookmark" id="bookmark-#{video.title}">
+								<p><%= video.title %></p>
+							</li>
+						<% end %>
+					</ul>
+				</section>
+    <% end %>
   </section>
 
 	<%= render facade.partial, facade: facade %>
