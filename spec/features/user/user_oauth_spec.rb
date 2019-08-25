@@ -2,9 +2,8 @@ require 'rails_helper'
 
 feature 'as a user when I visit my dashboard' do
   scenario 'I can connect to Github with a link styled like a button' do
+    stub_dashboard_api_calls
     stub_github_oauth
-    WebMock.allow_net_connect!
-    VCR.turn_off!
 
     user = create(:user)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
