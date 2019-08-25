@@ -11,6 +11,10 @@ class User < ApplicationRecord
   enum role: [:default, :admin]
   has_secure_password
 
+	def friendable?(user)
+		return user.user_id && !self.friends.exists?(id: user.user_id)
+	end
+
 	def token(website)
 		cred = user_credentials
 			.where(user_credentials: {website: website})
@@ -23,4 +27,10 @@ class User < ApplicationRecord
 		cred.update_attributes(token: user_info["credentials"]["token"])
 		cred.update_attributes(nickname: user_info["info"]["nickname"])
   end
+
+	def bookmarks
+		videos.joins("JOIN tutorials ON videos.tutorial_id = tutorials.id")
+			.select('videos.*, tutorials.title AS tut_title')
+			.order(position: :asc)
+	end
 end

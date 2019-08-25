@@ -22,6 +22,14 @@ class DashboardFacade
 	  @friends ||= @current_user.friendships.map { |data| Friend.new(data) }
 	end
 
+	def bookmarks
+		@bookmarks ||= @current_user.bookmarks.group_by do |bookmark|
+			bookmark.tut_title
+		end.map do |tutorial, bookmarks|
+			Bookmark.new(tutorial,bookmarks)
+		end
+	end
+
   def partial
     @token.nil? ? "github_login" : "github"
   end

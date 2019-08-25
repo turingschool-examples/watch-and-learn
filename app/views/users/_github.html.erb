@@ -15,7 +15,7 @@
         <li class="handle" id="follower-#{follower.login}">
 					<%= link_to follower.login, follower.url %>
 
-					<% if follower.user_id %>
+					<% if @current_user.friendable?(follower) %>
 						<%= button_to "Add as Friend", friendships_path(follower.user_id), class: "btn btn-primary mb1 bg-teal" %>
 					<% end %>
 				</li>
@@ -29,7 +29,7 @@
         <li class="handle" id="following-#{following.login}">
 					<%= link_to following.login, following.url %>
 
-					<% if following.user_id %>
+					<% if @current_user.friendable?(following) %>
 						<%= button_to "Add as Friend", friendships_path(following), class: "btn btn-primary mb1 bg-teal" %>
 					<% end %>
 				</li>
