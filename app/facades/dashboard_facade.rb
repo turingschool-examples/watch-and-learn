@@ -18,8 +18,8 @@ class DashboardFacade
   	@following ||= following_data.map { |data| Following.new(data) }
   end
 
-	def friendships
-	  @friendships ||= @current_user.friendships
+	def friends
+	  @friends ||= @current_user.friendships.map { |data| Friend.new(data) }
 	end
 
   def partial
