@@ -3,7 +3,7 @@ class User < ApplicationRecord
   has_many :videos, through: :user_videos
   has_many :user_credentials
 	has_many :friendships
-	has_many :friends, :through => :friendships
+	has_many :friends, :through => :friendships, dependent: :destroy
 
   validates :email, uniqueness: true, presence: true
   validates_presence_of :password
@@ -18,8 +18,9 @@ class User < ApplicationRecord
 		cred.nil? ? nil : cred.token
 	end
 
-  def add_credential(website, token)
+  def add_credential(website, user_info)
     cred = self.user_credentials.find_or_create_by(website: website)
-		cred.update_attributes(token: token)
+		cred.update_attributes(token: user_info["credentials"]["token"])
+		cred.update_attributes(nickname: user_info["info"]["nickname"])
   end
 end

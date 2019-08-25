@@ -1,8 +1,9 @@
 class DashboardFacade
   attr_reader :token
 
-	def initialize(token)
-		@token = token
+	def initialize(current_user)
+		@current_user = current_user
+		@token = current_user.token("github")
 	end
 
   def repositories
@@ -16,6 +17,10 @@ class DashboardFacade
   def following
   	@following ||= following_data.map { |data| Following.new(data) }
   end
+
+	def friends
+	  @friends ||= @current_user.friendships.map { |data| Friend.new(data) }
+	end
 
   def partial
     @token.nil? ? "github_login" : "github"

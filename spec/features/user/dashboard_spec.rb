@@ -41,11 +41,25 @@ describe 'User dashboard' do
       expect(page).to have_css(".handle")
     end
   end
-	it 'user sees follwing' do
+
+	it 'user sees followings' do
 		expect(page).to have_content("Following")
 		expect(page).to have_css(".following", count: 3)
 
 		within(first(".following")) do
+			expect(page).to have_css(".handle")
+		end
+	end
+
+	it 'user sees friends' do
+		within('.followers') do
+			click_button 'Add as Friend'
+		end
+
+		expect(page).to have_content("Friends")
+		expect(page).to have_css(".friend", count: 1)
+
+		within(first(".friend")) do
 			expect(page).to have_css(".handle")
 		end
 	end
