@@ -63,4 +63,16 @@ describe 'User dashboard' do
 			expect(page).to have_css(".handle")
 		end
 	end
+
+	it 'I can not add an invalid friend' do
+    page.driver.submit :post, friendships_path(1000), {}
+
+    expect(page).to have_content("why tho")
+  end
+
+	it 'I can add a valid friend' do
+    page.driver.submit :post, friendships_path(User.all[0].id), {}
+
+    expect(page).to_not have_content("why tho")
+  end
 end
