@@ -15,8 +15,8 @@
         <li class="handle" id="follower-#{follower.login}">
 					<%= link_to follower.login, follower.url %>
 
-					<% if follower.in_system %>
-						<%= button_to "Add as Friend", friends_path, class: "btn btn-primary mb1 bg-teal" %>
+					<% if follower.user_id %>
+						<%= button_to "Add as Friend", friendships_path(follower.user_id), class: "btn btn-primary mb1 bg-teal" %>
 					<% end %>
 				</li>
       </ul>
@@ -29,8 +29,8 @@
         <li class="handle" id="following-#{following.login}">
 					<%= link_to following.login, following.url %>
 
-					<% if following.in_system %>
-						<%= button_to "Add as Friend", friends_path, class: "btn btn-primary mb1 bg-teal" %>
+					<% if following.user_id %>
+						<%= button_to "Add as Friend", friendships_path(following), class: "btn btn-primary mb1 bg-teal" %>
 					<% end %>
 				</li>
       </ul>
@@ -38,10 +38,10 @@
   </section>
 
 	<section class='friends'><h3>Friends</h3>
-    <% facade.friendships.each do |friendship| %>
+    <% facade.friends.each do |friend| %>
 			<ul class="friend">
 				<li class="handle" id="friend-#{friend.login}">
-					<%= link_to friendship.friend.login, friendship.friend.url %>
+					<%= link_to friend.login, friend.url %>
 				</li>
 			</ul>
     <% end %>
