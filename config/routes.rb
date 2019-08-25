@@ -37,7 +37,8 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create, :update, :edit]
 
-	resources :friends, only: [:create]
+	# resources :friendships, only: [:create]
+	post '/friendships/:id', to: 'friendships#create', as: :friendships
 
   resources :tutorials, only: [:show, :index] do
     resources :videos, only: [:show, :index]
