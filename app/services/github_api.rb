@@ -27,7 +27,7 @@ class GithubApi
     end
     def conn2
       @_conn2 = Faraday.new(url: "https://api.github.com") do |faraday|
-        faraday.params = {access_token: "#{@user.token.token}"}
+        faraday.params = {access_token: "#{@user.tokens.last.token_string}"}
         faraday.adapter Faraday.default_adapter
       end
     end
