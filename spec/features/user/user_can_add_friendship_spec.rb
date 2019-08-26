@@ -8,7 +8,7 @@ feature 'as a user when I visit my dashboard' do
     josh = create(:user, token: ENV["GITHUB_API_KEY"])
     josh.update(html_url: "https://github.com/glynnisoc")
     dani = create(:user, token: ENV["GITHUB_API_KEY_2"])
-    dani.update(html_url: "https://github.com/nathangthomas")
+    dani.update(html_url: "https://github.com/ryanmillergm")
     madi = create(:user)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(josh)
 
@@ -28,6 +28,8 @@ feature 'as a user when I visit my dashboard' do
 
     expect(current_path).to eq(dashboard_path)
     expect(page).to have_content("Friend Added!")
+    expect(josh.friends.first).to eq(dani)
+    expect(josh.friendships.count).to eq 1
   end
 end
 # Background: A user (Josh) exists in the system with a Github token. The user
