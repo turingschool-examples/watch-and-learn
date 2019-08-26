@@ -14,11 +14,14 @@
   <section>
 
     <h1>Github</h1>
+    <% if @user.tokens.first == nil %>
     <%= button_to "Connect to Github", github_login_path, method: :get %>
+    <% end %>
 
+    <% if @user.tokens.first != nil %>
     <h3>Repos</h3>
-    <%= @user.tokens.first.token_string %>
     <br>
-    <%= @user.tokens.first.uid %>
+    <%= @user2.repos%>
+    <% end %>
 
 </section>

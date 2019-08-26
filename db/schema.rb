@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 2019_08_24_224004) do
   end
 
   create_table "tokens", force: :cascade do |t|
-    t.string "token_string"
+    t.string "token"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(version: 2019_08_24_224004) do
     t.string "first_name"
     t.string "last_name"
     t.string "password_digest"
+    t.integer "role", default: 0
     t.integer "role", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
