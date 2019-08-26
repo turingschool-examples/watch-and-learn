@@ -1,3 +1,5 @@
+Token.delete_all
+UserVideo.delete_all
 Video.delete_all
 Tutorial.delete_all
 prework_tutorial_data = {
@@ -14,7 +16,7 @@ prework_tutorial.videos.create!({
   "description"=> Faker::Hipster.paragraphs(2, true),
   "video_id"=>"qMkRHW9zE1c",
   "thumbnail"=>"https://i.ytimg.com/vi/qMkRHW9zE1c/hqdefault.jpg",
-  "position"=>nil
+  "position"=>0
 })
 prework_tutorial.videos.create!({
   "title"=>"Prework - SSH Key Setup",

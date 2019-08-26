@@ -4,19 +4,19 @@ class UserGithub
   end
 
   def repos
-    user_repos(@token).map do |repo|
+    user_repos(@token.token).map do |repo|
       Repo.new(repo)
     end.first(5)
   end
 
   def followers
-    user_followers(@token).map do |follower|
+    user_followers(@token.token).map do |follower|
       Follower.new(follower)
     end
   end
 
   def followings
-    user_followings(@token).map do |following|
+    user_followings(@token.token).map do |following|
       Following.new(following)
     end
   end
