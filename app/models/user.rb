@@ -28,9 +28,8 @@ class User < ApplicationRecord
 		cred.update_attributes(nickname: user_info["info"]["nickname"])
   end
 
-	def bookmarks
-		videos.joins("JOIN tutorials ON videos.tutorial_id = tutorials.id")
-			.select('videos.*, tutorials.title AS tut_title')
-			.order(position: :asc)
-	end
+  def bookmarks
+    Tutorial.includes(videos: :user_videos)
+      .where(user_videos: {user_id: self.id})
+  end
 end

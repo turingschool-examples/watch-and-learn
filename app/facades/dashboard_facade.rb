@@ -23,11 +23,7 @@ class DashboardFacade
 	end
 
 	def bookmarks
-		@bookmarks ||= @current_user.bookmarks.group_by do |bookmark|
-			bookmark.tut_title
-		end.map do |tutorial, bookmarks|
-			Bookmark.new(tutorial,bookmarks)
-		end
+    @bookmarks ||= @current_user.bookmarks
 	end
 
   def partial
