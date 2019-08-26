@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   end
 
   def github_token
-    @github_token ||= current_user.tokens.find(session[:token_id]) if session[:token_id]
+    @github_token ||= current_user.github if current_user.github
     # @github_token.token if @github_token
   end
 

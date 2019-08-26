@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 2019_08_24_193245) do
 
   create_table "tokens", force: :cascade do |t|
     t.string "provider"
+    t.string "uid"
     t.string "token"
     t.bigint "user_id"
     t.index ["user_id"], name: "index_tokens_on_user_id"

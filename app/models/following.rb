@@ -3,6 +3,6 @@ class Following
 
   def initialize(attributes = {})
     @login = attributes[:login]
-    @url = attributes[:url]
+    @url = attributes[:html_url]
   end
 end
