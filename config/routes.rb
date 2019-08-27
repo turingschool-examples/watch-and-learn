@@ -29,7 +29,9 @@ Rails.application.routes.draw do
   get '/auth/github/callback', to: 'github#create'
   delete '/logout', to: "sessions#destroy"
 
-  get '/dashboard', to: 'users#show' 
+  resources :friendships, only: :create
+
+  get '/dashboard', to: 'users#show'
   get '/about', to: 'about#show'
   get '/get_started', to: 'get_started#show'
 
