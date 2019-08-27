@@ -6,7 +6,6 @@ feature 'as a user I must log in' do
     tut1 = create(:tutorial)
     tut2 = create(:tutorial, classroom: true)
 
-
     visit root_path
 
     expect(page).to have_content(tut1.title)
