@@ -40,13 +40,17 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'awesome_print'
   gem 'simplecov'
+  gem 'webmock'
+
   gem 'vcr'
   gem 'selenium-webdriver'
   gem 'webdrivers'
   gem 'rails-erd'
 end
+
 group :test do
   gem 'webmock'
+
 end
 
 

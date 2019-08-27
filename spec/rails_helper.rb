@@ -21,7 +21,7 @@ end
 def stub_omniauth
 	OmniAuth.config.test_mode = true
 	OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({
-		"credentials" => {"token" => "12345"},
+		"credentials" => {"token" => "5cfeb25b8c6a2ecba307457bf6c1e955a0878b62"},
 	  "provider" => 'github',
 	  "uid" => '12345',
 		"info" => {"nickname" => 'wt'}

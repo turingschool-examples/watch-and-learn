@@ -22,7 +22,7 @@
 
 /public/assets
 .byebug_history
-
+/fixtures/tokens_fixture.json
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
