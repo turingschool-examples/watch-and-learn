@@ -27,6 +27,12 @@ feature 'as a user when I visit my dashboard' do
     expect(current_path).to eq(dashboard_path)
     expect(page).to have_content("Friend Added!")
     expect(josh.friends.first).to eq(dani)
-    expect(josh.friendships.count).to eq 1
+    expect(josh.friendships.count).to eq 2
+
+    expect(page).to have_content("Friends")
+    within ".friends" do
+      expect(page).to have_content(dani.first_name)
+      expect(page).to have_content(dani.last_name)
+    end
   end
 end

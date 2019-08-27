@@ -38,5 +38,11 @@
         </ul>
           <% end %>
         </section>
+      <section class="friends">
+        <h1>Friends</h1>
+        <% current_user.friends.each do |friend| %>
+          <%= friend.first_name %>
+          <%= friend.last_name %>
+        <% end %>
   <% end %>
 </section>

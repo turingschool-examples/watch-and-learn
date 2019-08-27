@@ -4,6 +4,7 @@ class FriendshipsController < ApplicationController
     new_friend = User.find_by(html_url: params[:new_friend_url])
     if !new_friend.nil?
       friendship = Friendship.new(user_id: current_user.id, friend_id: new_friend.id)
+      current_user.friends.push(new_friend)
       if friendship.save
         flash[:friend] = "Friend Added!"
       else
