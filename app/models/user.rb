@@ -19,4 +19,7 @@ class User < ApplicationRecord
     self.token = auth_hash["credentials"]["token"]
   end
 
+  # def self.current
+  #   Thread.current[:user]
+  # end
 end
