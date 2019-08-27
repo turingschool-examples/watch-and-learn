@@ -1,5 +1,9 @@
 class UserFacade
 
+  def initialize(current_user)
+    @current_user = current_user
+  end
+
   def github_repos
     @_github_repos ||= repos[0..4].map { |repo| Repository.new(repo)}
   end
@@ -10,6 +14,10 @@ class UserFacade
 
   def github_following
     @_github_following ||= following.map { |following| Following.new(following)}
+  end
+
+  def friends
+    @current_user.reload.friends
   end
 
   private

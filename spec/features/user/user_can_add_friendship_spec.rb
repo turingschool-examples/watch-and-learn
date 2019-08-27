@@ -7,7 +7,7 @@ feature 'as a user when I visit my dashboard' do
 
     josh = create(:user, token: ENV["GITHUB_API_KEY"])
     josh.update(html_url: "https://github.com/glynnisoc")
-    dani = create(:user)
+    dani = create(:user, token: ENV["GITHUB_API_KEY_2"])
     dani.update(html_url: "https://github.com/ryanmillergm")
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(josh)
 
@@ -26,13 +26,14 @@ feature 'as a user when I visit my dashboard' do
     end
     expect(current_path).to eq(dashboard_path)
     expect(page).to have_content("Friend Added!")
+    josh.reload
     expect(josh.friends.first).to eq(dani)
-    expect(josh.friendships.count).to eq 2
+    expect(josh.friendships.count).to eq 1
 
     expect(page).to have_content("Friends")
+    save_and_open_page
     within ".friends" do
       expect(page).to have_content(dani.first_name)
-      expect(page).to have_content(dani.last_name)
     end
   end
 end
