@@ -31,7 +31,6 @@ feature 'as a user when I visit my dashboard' do
     expect(josh.friendships.count).to eq 1
 
     expect(page).to have_content("Friends")
-    save_and_open_page
     within ".friends" do
       expect(page).to have_content(dani.first_name)
     end
