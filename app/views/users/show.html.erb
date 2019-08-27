@@ -21,6 +21,8 @@
     <% if @user.tokens.first != nil %>
     <h3>Repos</h3>
     <br>
+
+    <%= @user.tokens.first.uid %>
     <%= @user2.repos%>
     <% end %>
 
