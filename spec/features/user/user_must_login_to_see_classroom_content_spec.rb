@@ -13,8 +13,9 @@ feature 'as a user I must log in' do
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(madi)
 
+    visit root_path
+
     expect(page).to have_content(tut1.description)
     expect(page).to have_content(tut2.description)
-    expect(page).to have_css(".tutorials col md-col-8", count: 2)
   end
 end

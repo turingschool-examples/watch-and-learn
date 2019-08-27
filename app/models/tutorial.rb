@@ -4,6 +4,6 @@ class Tutorial < ApplicationRecord
   accepts_nested_attributes_for :videos
 
   def self.public
-    where(classroom: false) && (User.current != nil)
+    where(classroom: false)
   end
 end
