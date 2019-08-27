@@ -18,6 +18,23 @@ VCR.configure do |config|
 end
 
 
+def stub_omniauth
+	OmniAuth.config.test_mode = true
+	OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({
+		"credentials" => {"token" => "12345"},
+	  "provider" => 'github',
+	  "uid" => '12345',
+		"info" => {"nickname" => 'wt'}
+	})
+end
+
+
+def stub_info(url,file)
+  json_response = File.open(file)
+  stub_request(:get, url).
+  to_return(status: 200, body: json_response)
+end
+
 ActiveRecord::Migration.maintain_test_schema!
 
 Capybara.register_driver :selenium do |app|

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_24_224004) do
+ActiveRecord::Schema.define(version: 2019_08_24_223222) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,11 +41,11 @@ ActiveRecord::Schema.define(version: 2019_08_24_224004) do
   end
 
   create_table "tokens", force: :cascade do |t|
-    t.string "token"
+    t.string "token_string"
+    t.string "uid"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "uid"
     t.index ["user_id"], name: "index_tokens_on_user_id"
   end
 
@@ -74,14 +74,9 @@ ActiveRecord::Schema.define(version: 2019_08_24_224004) do
     t.string "last_name"
     t.string "password_digest"
     t.integer "role", default: 0
-    t.integer "role", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "github_token"
-    t.string "user_name"
-    t.string "uid"
-    t.string "oauth_token"
-    t.string "oauth_token_secret"
     t.index ["email"], name: "index_users_on_email"
   end
 

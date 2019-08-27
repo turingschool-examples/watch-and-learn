@@ -13,17 +13,30 @@
 
   <section>
 
-    <h1>Github</h1>
+    <h1><u>Github</u></h1>
     <% if @user.tokens.first == nil %>
     <%= button_to "Connect to Github", github_login_path, method: :get %>
     <% end %>
 
     <% if @user.tokens.first != nil %>
-    <h3>Repos</h3>
-    <br>
+    <h3><u>Repos</u></h3>
+    <ol>
+    <% @user2.repos.each do |repo|%>
+    <li><%= link_to repo.name, repo.url %></li>
+      <% end %>
+    </ol>
 
-    <%= @user.tokens.first.uid %>
-    <%= @user2.repos%>
+    <h3><u>Followers</u></h3>
+        <% @user2.followers.each do |follower|%>
+    <ol>
+  <li> <%= link_to follower.login, follower.url %> </li>
+  <% end  %>
+  </ol>
+    <h3>Following</h3>
+    <ol>
+    <% @user2.following.each do |following|%>
+  <li><%= link_to following.login, following.url %></li>
+  <% end  %>
+</ol>
     <% end %>
-
 </section>
