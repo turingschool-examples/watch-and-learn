@@ -1,8 +1,6 @@
 class UsersController < ApplicationController
   def show
-
-    @user = current_user
-    @user2 = UserDashboardFacade.new(@user)
+    @user = UserDashboardFacade.new(current_user)
   end
 
   def new
@@ -24,7 +22,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :first_name, :last_name, :password, :github_token, :uid)
+    params.require(:user).permit(:email, :first_name, :last_name, :password)
   end
 
 end

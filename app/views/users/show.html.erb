@@ -14,28 +14,29 @@
   <section>
 
     <h1><u>Github</u></h1>
-    <% if @user.tokens.first == nil %>
+    <% if current_user.github_info == nil %>
     <%= button_to "Connect to Github", github_login_path, method: :get %>
     <% end %>
 
-    <% if @user.tokens.first != nil %>
+    <% if current_user.github_info != nil %>
     <h3><u>Repos</u></h3>
     <ol>
-    <% @user2.repos.each do |repo|%>
+    <% @user.repos.each do |repo|%>
     <li><%= link_to repo.name, repo.url %></li>
       <% end %>
     </ol>
 
     <h3><u>Followers</u></h3>
-        <% @user2.followers.each do |follower|%>
+        <% @user.followers.each do |follower|%>
     <ol>
   <li> <%= link_to follower.login, follower.url %> </li>
   <% end  %>
   </ol>
     <h3>Following</h3>
     <ol>
-    <% @user2.following.each do |following|%>
+    <% @user.following.each do |following|%>
   <li><%= link_to following.login, following.url %></li>
+  <li><%= link_to following.uid, following.url %></li>
   <% end  %>
 </ol>
     <% end %>
