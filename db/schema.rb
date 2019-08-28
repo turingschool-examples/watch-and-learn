@@ -10,10 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_24_223222) do
+ActiveRecord::Schema.define(version: 2019_08_28_030824) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "friendships", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "friend_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_friendships_on_user_id"
+  end
+
+  create_table "github_values", force: :cascade do |t|
+    t.string "token"
+    t.string "uid"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_github_values_on_user_id"
+  end
 
   create_table "taggings", id: :serial, force: :cascade do |t|
     t.integer "tag_id"
@@ -38,15 +55,6 @@ ActiveRecord::Schema.define(version: 2019_08_24_223222) do
     t.string "name"
     t.integer "taggings_count", default: 0
     t.index ["name"], name: "index_tags_on_name", unique: true
-  end
-
-  create_table "tokens", force: :cascade do |t|
-    t.string "token_string"
-    t.string "uid"
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_tokens_on_user_id"
   end
 
   create_table "tutorials", force: :cascade do |t|
@@ -74,9 +82,9 @@ ActiveRecord::Schema.define(version: 2019_08_24_223222) do
     t.string "last_name"
     t.string "password_digest"
     t.integer "role", default: 0
+    t.string "handle"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "github_token"
     t.index ["email"], name: "index_users_on_email"
   end
 
@@ -90,7 +98,7 @@ ActiveRecord::Schema.define(version: 2019_08_24_223222) do
     t.index ["tutorial_id"], name: "index_videos_on_tutorial_id"
   end
 
-  add_foreign_key "tokens", "users"
+  add_foreign_key "github_values", "users"
   add_foreign_key "user_videos", "users"
   add_foreign_key "user_videos", "videos"
 end

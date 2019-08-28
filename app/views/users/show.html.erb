@@ -1,42 +1,51 @@
 <section class="dashboard-main">
   <h1> <%= current_user.first_name %>'s Dashboard </h1>
-
   <%= button_to 'Log Out', logout_path, method: 'delete', class: "btn btn-primary mb1 bg-teal" %>
+
   <h3>Account Details</h3>
-  <ul>
-    <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
-    <li> <%= current_user.email%> </li>
-  </ul>
+    <ul>
+      <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
+      <li> <%= current_user.email%> </li>
+    </ul>
+
   <section>
     <h1>Bookmarked Segments</h1\>
   </section>
 
   <section>
-
     <h1><u>Github</u></h1>
-    <% if @user.tokens.first == nil %>
-    <%= button_to "Connect to Github", github_login_path, method: :get %>
-    <% end %>
-
-    <% if @user.tokens.first != nil %>
-    <h3><u>Repos</u></h3>
-    <ol>
-    <% @user2.repos.each do |repo|%>
-    <li><%= link_to repo.name, repo.url %></li>
+      <% if current_user.github_value == nil %>
+        <%= button_to "Connect to Github", github_login_path, method: :get %>
       <% end %>
-    </ol>
+
+      <% if current_user.github_value != nil %>
+
+        <h3><u>Repos</u></h3>
+
+        <ol>
+          <% @user.repos.each do |repo|%>
+            <li><%= link_to repo.name, repo.url %></li>
+          <% end %>
+        </ol>
 
     <h3><u>Followers</u></h3>
-        <% @user2.followers.each do |follower|%>
-    <ol>
-  <li> <%= link_to follower.login, follower.url %> </li>
-  <% end  %>
-  </ol>
+        <ol>
+          <% @user.followers.each do |follower|%>
+            <li> <%= link_to follower.login, follower.url %> </li>
+            <% if current_user.handle_exists?(follower.login)  && !current_user.has_friend?(follower.login) %>
+            <%= button_to "Add Friend", friendships_path(handle: follower.login) %>
+            <% end %>
+            <% end  %>
+          </ol>
+
     <h3>Following</h3>
-    <ol>
-    <% @user2.following.each do |following|%>
-  <li><%= link_to following.login, following.url %></li>
-  <% end  %>
-</ol>
-    <% end %>
+        <ol>
+          <% @user.following.each do |following|%>
+            <li><%= link_to following.login, following.url %></li>
+            <% if current_user.handle_exists?(following.login) && !current_user.has_friend?(following.login) %>
+            <%= button_to "Add Friend", friendships_path(handle: following.login) %>
+            <% end %>
+          <% end  %>
+        </ol>
+      <% end %>
 </section>
