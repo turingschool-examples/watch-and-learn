@@ -9,13 +9,16 @@ Rails.application.routes.draw do
   root 'welcome#index'
   get 'tags/:tag', to: 'welcome#index', as: :tag
   get '/register', to: 'users#new'
+
+  get "/friendships", to: "friendships#create"
+  post "/friendships", to: "friendships#create"
+
   namespace :admin do
     get "/dashboard", to: "dashboard#show"
     resources :tutorials, only: [:create, :edit, :update, :destroy, :new] do
       resources :videos, only: [:create]
     end
     resources :videos, only: [:edit, :update, :destroy]
-    resources :friendships, only: [:create]
 
     namespace :api do
       namespace :v1 do

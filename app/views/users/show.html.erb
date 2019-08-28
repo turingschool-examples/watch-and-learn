@@ -32,8 +32,8 @@
         <ol>
           <% @user.followers.each do |follower|%>
             <li> <%= link_to follower.login, follower.url %> </li>
-            <% if current_user.github_value.correlated?(follower.login) %>
-            <%= button_to "Add Friend" %>
+            <% if current_user.handle_exists?(follower.login)  && !current_user.has_friend?(follower.login) %>
+            <%= button_to "Add Friend", friendships_path(handle: follower.login) %>
             <% end %>
             <% end  %>
           </ol>
@@ -42,8 +42,8 @@
         <ol>
           <% @user.following.each do |following|%>
             <li><%= link_to following.login, following.url %></li>
-            <% if current_user.github_value.correlated?(following.login) %>
-            <%= button_to "Add Friend" %>
+            <% if current_user.handle_exists?(following.login) && !current_user.has_friend?(following.login) %>
+            <%= button_to "Add Friend", friendships_path(handle: following.login) %>
             <% end %>
           <% end  %>
         </ol>

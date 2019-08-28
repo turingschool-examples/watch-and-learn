@@ -26,7 +26,6 @@ ActiveRecord::Schema.define(version: 2019_08_28_030824) do
   create_table "github_values", force: :cascade do |t|
     t.string "token"
     t.string "uid"
-    t.string "handle"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -83,6 +82,7 @@ ActiveRecord::Schema.define(version: 2019_08_28_030824) do
     t.string "last_name"
     t.string "password_digest"
     t.integer "role", default: 0
+    t.string "handle"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email"
