@@ -5,11 +5,17 @@ class TutorialFacade < SimpleDelegator
   end
 
   def current_video
-    if @video_id
+    if videos == []
+      Video.new(title: "Sorry", description: "No video", video_id: "0", thumbnail: "https://cdn.pixabay.com/photo/2016/02/08/17/43/sorry-1186962__340.jpg", tutorial_id: self.id, position: 1)
+    elsif @video_id
       videos.find(@video_id)
     else
       videos.first
     end
+  end
+
+  def multiple_videos?
+    videos != []
   end
 
   def next_video
