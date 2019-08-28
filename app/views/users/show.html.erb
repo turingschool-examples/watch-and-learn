@@ -1,4 +1,10 @@
 <section class="dashboard-main">
+  <section class="status">
+    <% if current_user.inactive? %>
+      <h3>This account has not yet been activated. Please check your email.</h3>
+    <% end %>
+  </section>
+
   <h1> <%= current_user.first_name %>'s Dashboard </h1>
 
   <%= button_to 'Log Out', logout_path, method: 'delete', class: "btn btn-primary mb1 bg-teal" %>
@@ -6,6 +12,7 @@
   <ul>
     <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
     <li> <%= current_user.email%> </li>
+    <li>Status: <%= current_user.status %></li>
   </ul>
   <section>
     <h1>Bookmarked Segments</h1>

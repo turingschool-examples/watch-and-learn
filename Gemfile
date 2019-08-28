@@ -44,6 +44,8 @@ group :development, :test do
   gem 'vcr'
   gem 'selenium-webdriver'
   gem 'webdrivers'
+  gem 'email_spec'
+  gem 'action_mailer_cache_delivery'
 end
 
 group :development do

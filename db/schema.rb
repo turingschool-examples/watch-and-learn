@@ -82,6 +82,7 @@ ActiveRecord::Schema.define(version: 2019_08_27_170843) do
     t.string "last_name"
     t.string "password_digest"
     t.integer "role", default: 0
+    t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email"
