@@ -1,6 +1,6 @@
-class CreateGithubInfo < ActiveRecord::Migration[5.2]
+class CreateGithubValues < ActiveRecord::Migration[5.2]
   def change
-    create_table :github_info do |t|
+    create_table :github_values do |t|
       t.string :token
       t.string :uid
       t.string :handle
