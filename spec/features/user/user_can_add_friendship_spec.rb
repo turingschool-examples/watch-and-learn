@@ -9,12 +9,18 @@ feature 'as a user when I visit my dashboard' do
     josh.update(html_url: "https://github.com/glynnisoc")
     dani = create(:user, token: ENV["GITHUB_API_KEY_2"])
     dani.update(html_url: "https://github.com/ryanmillergm")
+    madi = create(:user)
+    madi.update(html_url: "https://github.com/Jake0Miller")
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(josh)
 
     visit dashboard_path
 
     within ".followers" do
       expect(page).to have_link("Add as a Friend")
+    end
+
+    within (page.all('.follower_name')[2]) do
+      expect(page).to_not have_link("Add as a Friend")
     end
 
     within ".following" do
