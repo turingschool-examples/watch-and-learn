@@ -5,9 +5,5 @@ feature 'tutorial show page' do
     t1 = create(:tutorial)
 
     visit tutorial_path(t1)
-
   end
 end
-
-# A possible easy fix is to default to Video.new if there aren't
-# any videos associated with the tutorial.
