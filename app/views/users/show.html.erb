@@ -48,4 +48,13 @@
           <% end  %>
         </ol>
       <% end %>
+
+      <h3>Friends</h3>
+      <% current_user.friends.each do |friend| %>
+      <ol>
+
+        <li><%= friend.handle %> </li>
+      </ol>
+      <% end  %>
+
 </section>
