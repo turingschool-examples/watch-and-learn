@@ -1,7 +1,7 @@
 <section class="dashboard-main">
   <h1> <%= current_user.first_name %>'s Dashboard </h1>
   <%= button_to 'Log Out', logout_path, method: 'delete', class: "btn btn-primary mb1 bg-teal" %>
-  
+
   <h3>Account Details</h3>
     <ul>
       <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
@@ -32,13 +32,19 @@
         <ol>
           <% @user.followers.each do |follower|%>
             <li> <%= link_to follower.login, follower.url %> </li>
+            <% if current_user.github_value.correlated?(follower.login) %>
+            <%= button_to "Add Friend" %>
+            <% end %>
             <% end  %>
-        </ol>
+          </ol>
 
     <h3>Following</h3>
         <ol>
           <% @user.following.each do |following|%>
             <li><%= link_to following.login, following.url %></li>
+            <% if current_user.github_value.correlated?(following.login) %>
+            <%= button_to "Add Friend" %>
+            <% end %>
           <% end  %>
         </ol>
       <% end %>
