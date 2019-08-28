@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   def show
     render locals: {
-      facade: UserGithub.new(github_token)
+      github: UserGithub.new(github_token)
     }
   end
 

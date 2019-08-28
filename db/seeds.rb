@@ -1,3 +1,4 @@
+Friendship.delete_all
 Token.delete_all
 UserVideo.delete_all
 Video.delete_all
@@ -121,3 +122,5 @@ m3_tutorial.videos.create!({
 User.delete_all
 User.create!(email: 'admin@example.com', first_name: 'Bossy', last_name: 'McBosserton', password:  "password", role: :admin)
 User.create!(email: 'user@example.com', first_name: 'User', last_name: 'Userton', password:  "password")
+rene = User.create!(email: 'rene@example.com', first_name: 'Rene', last_name: 'Casco', password:  "password")
+rene.tokens.create(uid: "098098", username: "renecasco", provider: "github", token: "iwfbnwipufh092837yfwiouhbf")

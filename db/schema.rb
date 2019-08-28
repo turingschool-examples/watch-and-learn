@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_24_193245) do
+ActiveRecord::Schema.define(version: 2019_08_27_170843) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "friendships", id: false, force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "friend_id"
+    t.index ["friend_id", "user_id"], name: "index_friendships_on_friend_id_and_user_id", unique: true
+    t.index ["friend_id"], name: "index_friendships_on_friend_id"
+    t.index ["user_id"], name: "index_friendships_on_user_id"
+  end
 
   create_table "taggings", id: :serial, force: :cascade do |t|
     t.integer "tag_id"
@@ -41,6 +49,7 @@ ActiveRecord::Schema.define(version: 2019_08_24_193245) do
   end
 
   create_table "tokens", force: :cascade do |t|
+    t.string "username"
     t.string "provider"
     t.string "uid"
     t.string "token"
@@ -88,6 +97,8 @@ ActiveRecord::Schema.define(version: 2019_08_24_193245) do
     t.index ["tutorial_id"], name: "index_videos_on_tutorial_id"
   end
 
+  add_foreign_key "friendships", "users"
+  add_foreign_key "friendships", "users", column: "friend_id"
   add_foreign_key "tokens", "users"
   add_foreign_key "user_videos", "users"
   add_foreign_key "user_videos", "videos"
