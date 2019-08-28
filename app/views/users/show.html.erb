@@ -36,12 +36,15 @@
           <li class="following_name"><%= link_to following.login, following.html_url %>
             <%= link_to "Add as a Friend", friendships_path(new_friend_url: following.html_url), method: :post %>
         </ul>
-          <% end %>
-        </section>
+        <% end %>
+      </section>
       <section class="friends">
         <h1>Friends</h1>
         <% facade.friends.each do |friend| %>
-          <%= friend.first_name %>
+        <ul>
+           <li><%= friend.first_name %></li>
+        </ul>
         <% end %>
+      </section>
   <% end %>
 </section>
