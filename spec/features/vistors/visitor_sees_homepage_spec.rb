@@ -33,7 +33,7 @@ describe 'Visitor' do
       video4 = create(:video, tutorial_id: tutorial2.id)
 
       visit root_path
-
+      
       expect(page).to have_css('.tutorial', count: 1)
 
       within(first('.tutorials')) do

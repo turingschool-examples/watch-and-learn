@@ -11,12 +11,23 @@
     <h1>Bookmarked Segments</h1>
   </section>
 
+  <% if !current_user.friends_list.empty? %>
+    <section class="friends">
+      <h1>Friends</h1>
+      <% current_user.friends_list.each do |friend| %>
+        <ul>
+          <li><%= friend.first_name %></li>
+        </ul>
+      <% end %>
+    </section>
+  <% end %>
+
   <% if github_token %>
     <section class="github">
       <h1>Github</h1>
 
       <h3>Repos</h3>
-      <% facade.repos.each do |repo| %>
+      <% github.repos.each do |repo| %>
       <ul>
         <li><%= link_to repo.name, repo.html_url %></li>
       </ul>
@@ -24,18 +35,26 @@
 
       <section class="followers">
         <h3>Followers</h3>
-        <% facade.followers.each do |follower| %>
+        <% github.followers.each do |follower| %>
         <ul>
-          <li><%= link_to follower.login, follower.url %></li>
+          <% if follower.user? && !current_user.friended?(follower.user?) %>
+            <li id="fr-<%= follower.login %>"><%= link_to follower.login, follower.url %><%= button_to 'Add Friend', add_friend_path(follower.user?) %></li>
+          <% else %>
+            <li id="fr-<%= follower.login %>"><%= link_to follower.login, follower.url %></li>
+          <% end %>
         </ul>
         <% end %>
       </section>
 
       <section class="following">
         <h3>Following</h3>
-        <% facade.followings.each do |following| %>
+        <% github.followings.each do |following| %>
         <ul>
-          <li><%= link_to following.login, following.url %></li>
+          <% if following.user? && !current_user.friended?(following.user?)%>
+            <li id="fg-<%= following.login %>"><%= link_to following.login, following.url %><%= button_to 'Add Friend', add_friend_path(following.user?) %></li>
+          <% else %>
+            <li id="fg-<%= following.login %>"><%= link_to following.login, following.url %></li>
+          <% end %>
         </ul>
         <% end %>
       </section>

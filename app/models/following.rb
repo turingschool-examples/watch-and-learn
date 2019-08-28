@@ -5,4 +5,11 @@ class Following
     @login = attributes[:login]
     @url = attributes[:html_url]
   end
+
+  def user?
+    User.joins(:tokens)
+      .select("users.*")
+      .where(tokens: {username: @login, provider: "github"})
+      .take
+  end
 end
