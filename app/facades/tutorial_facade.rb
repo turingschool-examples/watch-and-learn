@@ -5,13 +5,17 @@ class TutorialFacade < SimpleDelegator
   end
 
   def current_video
-    if videos.length == 0
-      Video.new(title: "Sorry", description: "No video yet", video_id: 0, tutorial_id: 0, position: 0)
+    if videos == []
+      Video.new(title: "Sorry", description: "No video", video_id: "0", thumbnail: "https://cdn.pixabay.com/photo/2016/02/08/17/43/sorry-1186962__340.jpg", tutorial_id: self.id, position: 1)
     elsif @video_id
       videos.find(@video_id)
     else
       videos.first
     end
+  end
+
+  def multiple_videos?
+    videos != []
   end
 
   def next_video
@@ -29,7 +33,6 @@ class TutorialFacade < SimpleDelegator
   end
 
   def maximum_video_position
-    binding.pry
     videos.max_by { |video| video.position }.position
   end
 end
