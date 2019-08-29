@@ -11,31 +11,29 @@ class User < ApplicationRecord
 
   has_secure_password
 
-
   def handle_exists?(handle)
-     if User.find_by(handle: handle)
-       true
-     else
-       false
-     end
-   end
+    if User.find_by(handle: handle)
+      true
+    else
+      false
+    end
+  end
 
-   def has_friend?(handle)
-     self.friends.any? do |friend|
-     friend.handle == handle
-   end
- end
+  def has_friend?(handle)
+    self.friends.any? do |friend|
+      friend.handle == handle
+    end
+  end
 
 
-def validate_user
-  self.email_confirmed = true
-  self.confirm_token = nil
-end
+  def validate_user
+    self.email_confirmed = true
+    self.confirm_token = nil
+  end
 
- def set_confirmation_token
-   if self.confirm_token.blank?
-     self.confirm_token = SecureRandom.urlsafe_base64.to_s
-   end
- end
-
+  def set_confirmation_token
+    if self.confirm_token.blank?
+      self.confirm_token = SecureRandom.urlsafe_base64.to_s
+    end
+  end
 end

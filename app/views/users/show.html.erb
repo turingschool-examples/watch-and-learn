@@ -1,7 +1,7 @@
-
+<% unless current_user.email_confirmed%>
 <h3>Logged in as <%=current_user.email%></h3>
-<h3>And I should see a message that says "This account has not yet been activated. Please check your email."</h3>
-
+<h3> This account has not yet been activated. Please check your email.</h3>
+<% else current_user.email_confirmed = true %>
 <section class="dashboard-main">
   <h1> <%= current_user.first_name %>'s Dashboard </h1>
   <%= button_to 'Log Out', logout_path, method: 'delete', class: "btn btn-primary mb1 bg-teal" %>
@@ -61,5 +61,5 @@
         <li><%= friend.handle %> </li>
       </ol>
       <% end  %>
-
+<% end %>
 </section>

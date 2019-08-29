@@ -1,11 +1,9 @@
-Hi <%= @handler.first_name %>,
-
-
-<%=  link_to "confirm", confirm_email_url(@user.confirm_token, host: "http://localhost:3000")%>
-
 <p>
 Hello <%= @handle %>,
 
-<%= @inviter %> has invited you to join Brownfield. You can create an account here:
+<%= @inviter.first_name + @nviter.last_name %> has invited you to join Brownfield. You can create an account here:
 
- <%=  link_to "Register", new_user_url(host: "http://localhost:3000")%>
+<%=  link_to "Register", new_user_url(host: "http://localhost:3000")%>
+
+
+</p>
