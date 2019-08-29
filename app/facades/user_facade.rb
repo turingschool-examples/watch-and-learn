@@ -20,6 +20,10 @@ class UserFacade
     @current_user.reload.friends
   end
 
+  def bookmarked_tutorials
+     @current_user.bookmarked_tutorials
+  end
+
   private
   def service
     @_service ||= GithubService.new

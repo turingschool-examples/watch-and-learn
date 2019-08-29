@@ -33,6 +33,7 @@ gem 'omniauth-github'
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails'
+  gem 'orderly'
   gem 'foundation-rails'
   gem 'database_cleaner'
   gem 'pry'

@@ -192,6 +192,9 @@ GEM
     omniauth-oauth2 (1.5.0)
       oauth2 (~> 1.1)
       omniauth (~> 1.2)
+    orderly (0.1.0)
+      capybara (>= 1.1)
+      rspec (>= 2.14)
     os (1.0.0)
     pg (1.0.0)
     pry (0.11.3)
@@ -237,6 +240,10 @@ GEM
       declarative-option (< 0.2.0)
       uber (< 0.2.0)
     retriable (3.1.2)
+    rspec (3.8.0)
+      rspec-core (~> 3.8.0)
+      rspec-expectations (~> 3.8.0)
+      rspec-mocks (~> 3.8.0)
     rspec-core (3.8.0)
       rspec-support (~> 3.8.0)
     rspec-expectations (3.8.1)
@@ -349,6 +356,7 @@ DEPENDENCIES
   omniauth-census!
   omniauth-github
   omniauth-google-oauth2
+  orderly
   pg (>= 0.18, < 2.0)
   pry
   puma (~> 3.11)

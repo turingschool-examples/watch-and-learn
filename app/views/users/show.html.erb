@@ -46,5 +46,17 @@
         </ul>
         <% end %>
       </section>
+
+      <section class='bookmarks'>
+        <h1>Bookmarked Segments</h1>
+        <% facade.bookmarked_tutorials.each do |tutorial| %>
+          <h3 class ='tutorial'><%= tutorial.title %></h3>
+              <% tutorial.videos.each do |video| %>
+              <ul class='videos'>
+                <li <%= "#{video.title} (video)" %> </li>
+              </ul>
+        <% end %>
+      <% end  %>
+      </section>
   <% end %>
 </section>
