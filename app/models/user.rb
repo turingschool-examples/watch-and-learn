@@ -11,15 +11,6 @@ class User < ApplicationRecord
 
   has_secure_password
 
-
-  def handle_exists?(handle)
-     if User.find_by(handle: handle)
-       true
-     else
-       false
-     end
-   end
-
    def has_friend?(handle)
      self.friends.any? do |friend|
      friend.handle == handle
