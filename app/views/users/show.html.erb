@@ -1,7 +1,11 @@
+<% unless current_user.email_confirmed == true %>
+<h3>Logged in as <%=current_user.email%></h3>
+<h3>And I should see a message that says "This account has not yet been activated. Please check your email."</h3>
+<% else %>
 <section class="dashboard-main">
   <h1> <%= current_user.first_name %>'s Dashboard </h1>
   <%= button_to 'Log Out', logout_path, method: 'delete', class: "btn btn-primary mb1 bg-teal" %>
-
+<%= link_to "Send an Invite" invite_path %>
   <h3>Account Details</h3>
     <ul>
       <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
@@ -38,7 +42,7 @@
             <% end  %>
           </ol>
 
-    <h3>Following</h3>
+    <h3><u>Following</u></h3>
         <ol>
           <% @user.following.each do |following|%>
             <li><%= link_to following.login, following.url %></li>
@@ -49,7 +53,7 @@
         </ol>
       <% end %>
 
-      <h3>Friends</h3>
+      <h3><u>Friends</u></h3>
       <% current_user.friends.each do |friend| %>
       <ol>
 
@@ -58,3 +62,4 @@
       <% end  %>
 
 </section>
+<% end %>
