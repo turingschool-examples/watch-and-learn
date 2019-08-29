@@ -12,7 +12,20 @@
     </ul>
 
   <section>
-    <h1>Bookmarked Segments</h1\>
+    <h1>Bookmarked Segments</h1>
+     <ul>
+       <%  %>
+       <% @tutorials.each do |tutorial| %>
+       <li><%= tutorial.title %>
+         <ul>
+           <% x = tutorial.videos.select do |video| %>
+           <% current_user.user_videos.pluck(:video_id).include?(video.id) %>
+           <% end %>
+           <%= x.map {|y| y.title }.join(", ") %>
+         </ul>
+       </li>
+       <% end %>
+     </ul>
   </section>
 
   <section>
@@ -55,11 +68,12 @@
       <% end %>
 
       <h3><u>Friends</u></h3>
-      <% current_user.friends.each do |friend| %>
-      <ol>
 
-        <li><%= friend.handle %> </li>
-      </ol>
-      <% end  %>
+     <% current_user.friends.each do |friend| %>
+     <ol>
+
+       <li><%= friend.handle %> </li>
+     </ol>
+     <% end  %>
 
 </section>
