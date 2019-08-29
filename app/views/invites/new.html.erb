@@ -1,0 +1,8 @@
+<h2> Invite Your Friends </h2> %>
+
+<% form_for @invite.new do |f| %>
+  <%= f.label :github_handle %>
+  <%= f.text_field :gihub_handle %>
+
+  <%= f.submit %>
+<% end %>

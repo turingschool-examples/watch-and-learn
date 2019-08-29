@@ -5,11 +5,14 @@ describe 'As registered user I can send email invites' do
     stub_dashboard_api_calls
     stub_github_oauth
 
+    user = create(:user)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
     visit dashboard_path
+    # save_and_open_page
     click_on "Send an Invite"
     expect(current_path).to eq(invite_path)
+    save_and_open_page
   end
 
   it 'if the user has an email address associated with their github account' do
