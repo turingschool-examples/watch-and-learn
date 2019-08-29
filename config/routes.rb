@@ -45,4 +45,6 @@ Rails.application.routes.draw do
   end
 
   resources :user_videos, only:[:create, :destroy]
+
+  get '/users/:id/activated', to: 'users#activated', as: 'email_activation'
 end

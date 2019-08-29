@@ -21,5 +21,11 @@ RSpec.describe User, type: :model do
       expect(admin.role).to eq('admin')
       expect(admin.admin?).to be_truthy
     end
+
+    it 'shows user as activated if status is true' do
+      user = create(:user, status: true)
+
+      expect(user.active).to eq("Active")
+    end
   end
 end
