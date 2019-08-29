@@ -16,6 +16,10 @@ class GithubApi
     get_json("/user/following")
   end
 
+  def user_email(handle)
+      get_json("/users/#{handle}")
+  end
+
   private
 
   def conn

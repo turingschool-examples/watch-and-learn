@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   get 'tags/:tag', to: 'welcome#index', as: :tag
   get '/register', to: 'users#new'
 
+  get '/invite', to: 'invites#new', as: :invite
+  post '/invite', to: 'invites#create'
+
   get "/friendships", to: "friendships#create"
   post "/friendships", to: "friendships#create"
 
