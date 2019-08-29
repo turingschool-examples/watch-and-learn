@@ -21,7 +21,7 @@ class UserFacade
   end
 
   def bookmarked_tutorials
-     @current_user.bookmarked_tutorials
+   @current_user.bookmarked_tutorials
   end
 
   private

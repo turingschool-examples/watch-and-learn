@@ -1,7 +1,6 @@
-# class Invite
-#   attr_reader :github_handle
-#
-#   def initialize(github_handle)
-#     @github_handle = github_handle
-#   end
-# end
+class Invite
+  include ActiveModel::Model
+  #This apparently makes the model quack like an ActiveRecord model without being backed by a database table.
+  attr_reader :github_handle, :email, :message
+
+end

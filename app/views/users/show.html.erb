@@ -1,17 +1,28 @@
 <section class="dashboard-main">
   <h1> <%= current_user.first_name %>'s Dashboard </h1>
   <%= button_to 'Log Out', logout_path, method: 'delete', class: "btn btn-primary mb1 bg-teal" %>
-  <%= link_to "Send an Invite", invite_path %>
+  <% link_to "Send an Invite", invite_path %>
   <h3>Account Details</h3>
   <ul>
     <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
     <li> <%= current_user.email%> </li>
   </ul>
-  <section>
+
+  <section class= 'bookmarks'>
     <h1>Bookmarked Segments</h1>
+      <% facade.bookmarked_tutorials.each do |tutorial| %>
+        <h3 class ='tutorial'><%= tutorial.title %></h3>
+          <% tutorial.videos.each do |video| %>
+          <ul class='videos'>
+            <li> <%= "#{video.title} (video)" %> </li>
+          </ul>
+      <% end %>
+    <% end  %>
   </section>
+
   <%= link_to "Connect to Github", "/auth/github", class: "btn btn-primary mb1 bg-teal" %>
   <% if !current_user.token.nil? %>
+
     <section>
       <h1>Github</h1>
       <% facade.github_repos.each do |repo| %>
@@ -20,6 +31,7 @@
         </ul>
         <% end %>
       </section>
+
       <section class="followers">
         <h1>Followers</h1>
         <% facade.github_followers.each do |follower| %>
@@ -29,6 +41,7 @@
         </ul>
         <% end %>
       </section>
+
       <section class="following">
         <h1>Following</h1>
         <% facade.github_following.each do |following| %>
@@ -38,6 +51,7 @@
         </ul>
         <% end %>
       </section>
+
       <section class="friends">
         <h1>Friends</h1>
         <% facade.friends.each do |friend| %>
@@ -47,16 +61,5 @@
         <% end %>
       </section>
 
-      <section class='bookmarks'>
-        <h1>Bookmarked Segments</h1>
-        <% facade.bookmarked_tutorials.each do |tutorial| %>
-          <h3 class ='tutorial'><%= tutorial.title %></h3>
-              <% tutorial.videos.each do |video| %>
-              <ul class='videos'>
-                <li <%= "#{video.title} (video)" %> </li>
-              </ul>
-        <% end %>
-      <% end  %>
-      </section>
   <% end %>
 </section>
