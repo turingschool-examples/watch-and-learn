@@ -23,4 +23,11 @@ class User < ApplicationRecord
     Tutorial.includes(videos: :user_videos).where(user_videos:{user_id: id}).order('videos.position')
   end
 
+  def active
+    if status == true
+      'Active'
+    else
+      'Inactive'
+    end
+  end
 end

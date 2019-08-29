@@ -1,0 +1,9 @@
+<h2> Invite Your Friends </h2>
+
+<%= form_for @invite, method: :post do |f| %>
+
+  <%= f.label :login, 'Github Handle:' %>
+  <%= f.text_field :login %>
+
+  <%= f.submit 'Send Invite' %>
+<% end %>

@@ -6,6 +6,8 @@ feature 'as a user when i visit my dashboard' do
 
     user = create(:user)
     user.token = ENV['GITHUB_API_KEY']
+    user_2 = create(:user)
+    user_2.token = ENV['GITHUB_API_KEY_2']
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
     visit dashboard_path

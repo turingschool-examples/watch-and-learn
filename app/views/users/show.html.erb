@@ -1,5 +1,6 @@
 <section class="dashboard-main">
   <h1> <%= current_user.first_name %>'s Dashboard </h1>
+  <h4>Status: <%= current_user.active %> </h4>
   <%= button_to 'Log Out', logout_path, method: 'delete', class: "btn btn-primary mb1 bg-teal" %>
   <%= link_to "Send an Invite", invite_path %>
   <h3>Account Details</h3>
@@ -37,7 +38,10 @@
         <% facade.github_followers.each do |follower| %>
         <ul>
           <li class="follower_name"><%= link_to follower.login, follower.html_url %>
-            <%= link_to "Add as a Friend", friendships_path(new_friend_url: follower.html_url), method: :post %>
+
+            <% if follower.github_user? %>
+              <%= link_to "Add as a Friend", friendships_path(new_friend_url: follower.html_url), method: :post %>
+            <% end %>
         </ul>
         <% end %>
       </section>
@@ -47,7 +51,9 @@
         <% facade.github_following.each do |following| %>
         <ul>
           <li class="following_name"><%= link_to following.login, following.html_url %>
-            <%= link_to "Add as a Friend", friendships_path(new_friend_url: following.html_url), method: :post %>
+            <% if following.github_user? %>
+              <%= link_to "Add as a Friend", friendships_path(new_friend_url: following.html_url), method: :post %>
+            <% end %>
         </ul>
         <% end %>
       </section>

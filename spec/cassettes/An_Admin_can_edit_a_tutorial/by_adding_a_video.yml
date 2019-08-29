@@ -2,6 +2,68 @@
 http_interactions:
 - request:
     method: get
+    uri: https://chromedriver.storage.googleapis.com/LATEST_RELEASE_76.0.3809
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - chromedriver.storage.googleapis.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Guploader-Uploadid:
+      - AEnB2Up2_nSf63-8O0eeFUKwyMu17uL_3_rpgFG7o3bwxT-WNDsYhALnlTduHro0tmAbqg4exQtVBUdVs_XZXR0WsufqtvURCw
+      Expires:
+      - Thu, 29 Aug 2019 19:01:31 GMT
+      Date:
+      - Thu, 29 Aug 2019 18:01:31 GMT
+      Cache-Control:
+      - public, max-age=3600
+      Last-Modified:
+      - Tue, 20 Aug 2019 18:01:31 GMT
+      Etag:
+      - '"c49a33101c8d53f95def472744518541"'
+      X-Goog-Generation:
+      - '1566324091671879'
+      X-Goog-Metageneration:
+      - '1'
+      X-Goog-Stored-Content-Encoding:
+      - identity
+      X-Goog-Stored-Content-Length:
+      - '13'
+      Content-Type:
+      - text/plain
+      Content-Language:
+      - en
+      X-Goog-Hash:
+      - crc32c=DtTKZw==
+      - md5=xJozEByNU/ld70cnRFGFQQ==
+      X-Goog-Storage-Class:
+      - STANDARD
+      Accept-Ranges:
+      - bytes
+      Content-Length:
+      - '13'
+      Server:
+      - UploadServer
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="46,43,39"
+    body:
+      encoding: UTF-8
+      string: 76.0.3809.126
+    http_version: 
+  recorded_at: Thu, 29 Aug 2019 18:01:30 GMT
+- request:
+    method: get
     uri: https://www.googleapis.com/youtube/v3/videos?id=J7ikFUlkP_k&key&part=snippet,contentDetails,statistics
     body:
       encoding: US-ASCII
@@ -24,9 +86,9 @@ http_interactions:
       Content-Type:
       - application/json; charset=UTF-8
       Date:
-      - Wed, 28 Aug 2019 13:19:09 GMT
+      - Thu, 29 Aug 2019 18:01:37 GMT
       Expires:
-      - Wed, 28 Aug 2019 13:19:09 GMT
+      - Thu, 29 Aug 2019 18:01:37 GMT
       Cache-Control:
       - private, max-age=0
       X-Content-Type-Options:
@@ -58,5 +120,5 @@ http_interactions:
          }
         }
     http_version: 
-  recorded_at: Wed, 28 Aug 2019 13:19:07 GMT
+  recorded_at: Thu, 29 Aug 2019 18:01:36 GMT
 recorded_with: VCR 4.0.0

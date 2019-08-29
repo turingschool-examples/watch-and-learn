@@ -46,5 +46,8 @@ Rails.application.routes.draw do
 
   resources :user_videos, only:[:create, :destroy]
 
+  get '/users/:id/activated', to: 'users#activated', as: 'email_activation'
+
   get '/invite', to: 'invite#new'
+  post '/invite', to: 'invite#create', as: :invites
 end
