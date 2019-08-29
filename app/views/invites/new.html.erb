@@ -12,16 +12,3 @@
  <%# automatically generated message %> %>
   <%= f.submit , 'Send Invite' %>
 <% end %>
-
-
-#auto generated email below: (Probably needs it's own file)
-
-<html>
-  <body>
-    <h1><%= "Hello #{@user.github_handle}," %></h1>
-    <p><%= "#{current_user.github_handle} has invited you to join Brownfield of Dreams. You can create and account #{link_to "HERE", new_user_path}" %></p>
-    <br>
-    <br>
-    <p><%= "Thanks for joining and having a great day!" %></p>
-  </body>
-</html>
