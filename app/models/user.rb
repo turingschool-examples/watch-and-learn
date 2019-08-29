@@ -22,12 +22,4 @@ class User < ApplicationRecord
   def bookmarked_tutorials
     Tutorial.includes(videos: :user_videos).where(user_videos:{user_id: id}).order('videos.position')
   end
-
-  # def tutorial_videos
-  #   Video.includes( )
-  # end
-
-  # def self.current
-  #   Thread.current[:user]
-  # end
 end

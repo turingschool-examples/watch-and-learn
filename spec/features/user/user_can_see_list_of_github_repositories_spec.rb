@@ -18,3 +18,5 @@ feature 'as a user when i visit my dashboard' do
     end
   end
 end
+
+ # Edge case: Make sure this shows the proper repositories when there are more than one user in the database with different tokens.
