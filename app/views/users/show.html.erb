@@ -1,8 +1,7 @@
 <section class="dashboard-main">
   <h1> <%= current_user.first_name %>'s Dashboard </h1>
-  <% if current_user.activated %>
-    <h4>Status: Active </h4>
-  <% end %>
+  <% binding.pry %>
+    <h4>Status: <%= current_user.active %> </h4>
 
   <%= button_to 'Log Out', logout_path, method: 'delete', class: "btn btn-primary mb1 bg-teal" %>
   <h3>Account Details</h3>

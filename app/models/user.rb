@@ -19,7 +19,11 @@ class User < ApplicationRecord
     self.token = auth_hash["credentials"]["token"]
   end
 
-  def activated
-    self.status = true
+  def active
+    if status == true
+      'Active'
+    else
+      'Inactive'
+    end
   end
 end

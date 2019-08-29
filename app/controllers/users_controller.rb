@@ -25,7 +25,9 @@ class UsersController < ApplicationController
 
   def activated
     user = User.find(params[:id])
-    user.update(status: true)
+    binding.pry
+    user.update!(status: true, password: current_user.password_digest)
+    binding.pry
     redirect_to dashboard_path
     flash[:activated] = "Thanks! Your account is activated!"
   end

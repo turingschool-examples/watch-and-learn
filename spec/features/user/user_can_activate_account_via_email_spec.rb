@@ -29,9 +29,10 @@ describe 'visitor can create an account' do
     user = User.last
 
     visit "/users/#{user.id}/activated"
-    
+
     expect(current_path).to eq(dashboard_path)
     expect(page).to have_content("Thanks! Your account is activated!")
+    # binding.pry
     expect(page).to have_content("Status: Active")
   end
 end
