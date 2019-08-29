@@ -18,7 +18,5 @@ feature 'as a user when i visit my dashboard' do
     within(first(".repo")) do
       expect(page).to have_css(".repo_name")
     end
-
-    # expect(page).to_not have_content(user_2.)
   end
 end
