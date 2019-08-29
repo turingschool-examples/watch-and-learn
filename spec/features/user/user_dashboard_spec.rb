@@ -24,6 +24,7 @@ describe 'As a logged in user' do
 
     end
 
+
     it "has a list of all repos" do
       visit dashboard_path
       click_on "Connect to Github"
