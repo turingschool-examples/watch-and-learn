@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   def show
     @user = UserDashboardFacade.new(current_user)
+    @tutorials = Tutorial.joins(videos: :user_videos).where("user_videos.user_id = #{current_user.id}").distinct
+    @bookmarks = current_user.user_videos
   end
 
   def new
