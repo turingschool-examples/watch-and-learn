@@ -24,20 +24,14 @@ describe 'visitor can create an account' do
     fill_in 'user[password]', with: password
     fill_in 'user[password_confirmation]', with: password
 
-    click_on'Create Account'
+    click_on 'Create Account'
 
     user = User.last
 
     visit "/users/#{user.id}/activated"
+    
+    expect(current_path).to eq(dashboard_path)
+    expect(page).to have_content("Thanks! Your account is activated!")
+    expect(page).to have_content("Status: Active")
   end
 end
-
-
-# When I check my email for the registration email
-
-# And when I click on that link
-# Then I should be taken to a page that says "Thank you! Your account is now
-# activated."
-#
-# And when I visit "/dashboard"
-# Then I should see "Status: Active"

@@ -19,7 +19,7 @@ class User < ApplicationRecord
     self.token = auth_hash["credentials"]["token"]
   end
 
-  # def self.current
-  #   Thread.current[:user]
-  # end
+  def activated
+    self.status = true
+  end
 end

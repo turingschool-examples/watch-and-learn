@@ -21,5 +21,12 @@ RSpec.describe User, type: :model do
       expect(admin.role).to eq('admin')
       expect(admin.admin?).to be_truthy
     end
+
+    it 'shows user as activated after receiving email' do
+      user = create(:user)
+      user.activated
+
+      expect(user.status).to be_truthy
+    end
   end
 end

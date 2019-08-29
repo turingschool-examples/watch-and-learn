@@ -23,6 +23,13 @@ class UsersController < ApplicationController
     end
   end
 
+  def activated
+    user = User.find(params[:id])
+    user.update(status: true)
+    redirect_to dashboard_path
+    flash[:activated] = "Thanks! Your account is activated!"
+  end
+
   private
   def user_params
     params.require(:user).permit(:email, :first_name, :last_name, :password, :token)
