@@ -16,6 +16,10 @@ class GithubApi
     get_json("/user/following")
   end
 
+  def user_email(handle)
+      get_json("/users/#{handle}")
+  end
+
   private
 
   def conn
@@ -24,6 +28,7 @@ class GithubApi
       faraday.adapter Faraday.default_adapter
     end
   end
+
 
   def get_json(url)
     response = conn.get(url)

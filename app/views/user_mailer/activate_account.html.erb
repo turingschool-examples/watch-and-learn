@@ -1,0 +1,5 @@
+Hi <%= @user.first_name %>,
+
+<p>Visit here to activate your account<p>
+
+<%=  link_to "confirm", confirm_email_url(@user.confirm_token, host: "http://localhost:3000")%>

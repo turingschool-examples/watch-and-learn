@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   get 'tags/:tag', to: 'welcome#index', as: :tag
   get '/register', to: 'users#new'
 
+  get '/invite', to: 'invites#new', as: :invite
+  post '/invite', to: 'invites#create'
+
   get "/friendships", to: "friendships#create"
   post "/friendships", to: "friendships#create"
 
@@ -26,6 +29,7 @@ Rails.application.routes.draw do
       end
     end
   end
+  get '/:token/confirm_email/', :to => "users#confirm_email", as: 'confirm_email'
 
   get '/auth/github', as: :github_login
   get '/auth/github/callback', to: 'auth/github/github_values#create'

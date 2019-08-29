@@ -7,6 +7,8 @@ class TutorialFacade < SimpleDelegator
   def current_video
     if @video_id
       videos.find(@video_id)
+    elsif videos == []
+      videos.new(title: "No video here",position: 0,description: "Please add video." )
     else
       videos.first
     end

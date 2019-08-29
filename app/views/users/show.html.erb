@@ -1,7 +1,10 @@
+
+<h3>Logged in as <%=current_user.email%></h3>
+<h3>And I should see a message that says "This account has not yet been activated. Please check your email."</h3>
+
 <section class="dashboard-main">
   <h1> <%= current_user.first_name %>'s Dashboard </h1>
   <%= button_to 'Log Out', logout_path, method: 'delete', class: "btn btn-primary mb1 bg-teal" %>
-
   <h3>Account Details</h3>
     <ul>
       <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
@@ -9,7 +12,20 @@
     </ul>
 
   <section>
-    <h1>Bookmarked Segments</h1\>
+    <h1>Bookmarked Segments</h1>
+     <ul>
+       <%  %>
+       <% @tutorials.each do |tutorial| %>
+       <li><%= tutorial.title %>
+         <ul>
+           <% x = tutorial.videos.select do |video| %>
+           <% current_user.user_videos.pluck(:video_id).include?(video.id) %>
+           <% end %>
+           <%= x.map {|y| y.title }.join(", ") %>
+         </ul>
+       </li>
+       <% end %>
+     </ul>
   </section>
 
   <section>
@@ -19,6 +35,8 @@
       <% end %>
 
       <% if current_user.github_value != nil %>
+
+      <%= link_to "Send an Invite", invite_path %>
 
         <h3><u>Repos</u></h3>
 
@@ -38,7 +56,7 @@
             <% end  %>
           </ol>
 
-    <h3>Following</h3>
+    <h3><u>Following</u></h3>
         <ol>
           <% @user.following.each do |following|%>
             <li><%= link_to following.login, following.url %></li>
@@ -48,4 +66,14 @@
           <% end  %>
         </ol>
       <% end %>
+
+      <h3><u>Friends</u></h3>
+
+     <% current_user.friends.each do |friend| %>
+     <ol>
+
+       <li><%= friend.handle %> </li>
+     </ol>
+     <% end  %>
+
 </section>
