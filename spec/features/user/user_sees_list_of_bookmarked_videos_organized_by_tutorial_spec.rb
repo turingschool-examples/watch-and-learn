@@ -34,7 +34,8 @@ feature 'as a user when I visit my dashboard' do
     within(first(".tutorial"))do
       expect(page).to have_content("How to Tie Your Shoes")
     end
-    within(first(".tutorial")) do
+    within(first(".videos")) do
+      save_and_open_page
       expect(page).to have_content("The Bunny Ears Technique")
     end
 
