@@ -25,7 +25,6 @@ describe 'visitor can create an account' do
     fill_in 'user[password_confirmation]', with: password
 
     click_on 'Create Account'
-
     user = User.last
 
     visit "/users/#{user.id}/activated"
