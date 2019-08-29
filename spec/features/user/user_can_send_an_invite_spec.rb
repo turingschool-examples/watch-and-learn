@@ -18,6 +18,7 @@ describe 'As registered user I can send email invites' do
     click_on "Send Invite"
     expect(current_path).to eq(dashboard_path)
     expect(current_page).to have_content("Successfully sent invite!")
+
   end
 
   it 'error message displays if the user does not have an associated email address' do
@@ -28,3 +29,9 @@ describe 'As registered user I can send email invites' do
     expect(current_page).to have_content("The Github user you selected doesn't have an email address associated with their account.")
   end
 end
+
+# Email should read as follows:
+
+# Hello <INVITEE_NAME_AS_IT_APPEARS_ON_GITHUB>,
+#
+# <INVITER_NAME_AS_IT_APPEARS_ON_GITHUB> has invited you to join <YOUR_APP_NAME>. You can create an account <here (should be a link to /signup)>.
