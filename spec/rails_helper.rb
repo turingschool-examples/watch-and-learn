@@ -3,6 +3,8 @@ require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 
+SimpleCov.start
+
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
 require 'webmock/rspec'
@@ -15,6 +17,7 @@ VCR.configure do |config|
   config.configure_rspec_metadata!
   config.filter_sensitive_data("<YOUTUBE_API_KEY>") { ENV['YOUTUBE_API_KEY'] }
   config.filter_sensitive_data("<GITHUB_API_KEY>") { ENV['GITHUB_API_KEY'] }
+  config.filter_sensitive_data("<GITHUB_API_KEY_2>") { ENV['GITHUB_API_KEY_2'] }
   config.filter_sensitive_data("<GITHUB_CLIENT_ID>") { ENV['GITHUB_CLIENT_ID'] }
   config.filter_sensitive_data("<GITHUB_CLIENT_SECRET>") { ENV['GITHUB_CLIENT_SECRET'] }
 end
@@ -31,8 +34,6 @@ Capybara.javascript_driver = :selenium_chrome
 Capybara.configure do |config|
   config.default_max_wait_time = 5
 end
-
-SimpleCov.start "rails"
 
 Shoulda::Matchers.configure do |config|
     config.integrate do |with|
@@ -68,7 +69,6 @@ def stub_github_oauth
   OmniAuth.config.test_mode = true
   OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({
   :credentials => {token: ENV['GITHUB_API_KEY']},
-  :provider => 'github',
-  :uid => '1'
+  :provider => 'github'
 })
 end
