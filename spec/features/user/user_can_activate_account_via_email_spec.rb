@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-describe 'vister can create an account' do
-  it ' visits the home page' do
+describe 'visitor can create an account' do
+  it 'and activate upon clicking link in email' do
     stub_dashboard_api_calls
 
     email = 'jimbob@aol.com'
@@ -24,16 +24,17 @@ describe 'vister can create an account' do
     fill_in 'user[password]', with: password
     fill_in 'user[password_confirmation]', with: password
 
+    click_on'Create Account'
 
+    user = User.last
 
-
+    visit "/users/#{user.id}/activated"
   end
 end
 
 
-# As a non-activated user
 # When I check my email for the registration email
-# I should see a message that says ""
+
 # And when I click on that link
 # Then I should be taken to a page that says "Thank you! Your account is now
 # activated."
