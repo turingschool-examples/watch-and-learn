@@ -1,11 +1,10 @@
-<% unless current_user.email_confirmed == true %>
+
 <h3>Logged in as <%=current_user.email%></h3>
 <h3>And I should see a message that says "This account has not yet been activated. Please check your email."</h3>
-<% else %>
+
 <section class="dashboard-main">
   <h1> <%= current_user.first_name %>'s Dashboard </h1>
   <%= button_to 'Log Out', logout_path, method: 'delete', class: "btn btn-primary mb1 bg-teal" %>
-<%= link_to "Send an Invite", invite_path %>
   <h3>Account Details</h3>
     <ul>
       <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
@@ -23,6 +22,8 @@
       <% end %>
 
       <% if current_user.github_value != nil %>
+
+      <%= link_to "Send an Invite", invite_path %>
 
         <h3><u>Repos</u></h3>
 
@@ -62,4 +63,3 @@
       <% end  %>
 
 </section>
-<% end %>
