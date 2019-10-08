@@ -17,3 +17,4 @@ AllCops:
     - 'node_modules/**/*'
     - 'lib/**/*'
     - 'bin/**/*'
+    - 'Rakefile'
