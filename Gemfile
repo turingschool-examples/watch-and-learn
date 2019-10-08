@@ -20,7 +20,7 @@ gem 'faraday'
 gem 'jquery'
 gem 'figaro'
 gem 'factory_bot_rails'
-gem 'faker'
+gem 'faker', git: 'https://github.com/stympy/faker'
 gem 'active_model_serializers'
 gem 'omniauth-google-oauth2'
 gem 'will_paginate'
@@ -44,6 +44,7 @@ group :development, :test do
   gem 'vcr'
   gem 'selenium-webdriver'
   gem 'webdrivers'
+  gem 'faker', git: 'https://github.com/stympy/faker'
 end
 
 group :development do
