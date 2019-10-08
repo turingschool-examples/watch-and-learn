@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe 'vister can create an account', :js do
@@ -12,11 +14,11 @@ describe 'vister can create an account', :js do
 
     click_on 'Sign In'
 
-    expect(current_path).to eq(login_path)
+    expect(page).to have_current_path(login_path, ignore_query: true)
 
     click_on 'Sign up now.'
 
-    expect(current_path).to eq(new_user_path)
+    expect(page).to have_current_path(new_user_path, ignore_query: true)
 
     fill_in 'user[email]', with: email
     fill_in 'user[first_name]', with: first_name
@@ -26,11 +28,11 @@ describe 'vister can create an account', :js do
 
     click_on'Create Account'
 
-    expect(current_path).to eq(dashboard_path)
+    expect(page).to have_current_path(dashboard_path, ignore_query: true)
 
     expect(page).to have_content(email)
     expect(page).to have_content(first_name)
     expect(page).to have_content(last_name)
-    expect(page).to_not have_content('Sign In')
+    expect(page).not_to have_content('Sign In')
   end
 end
