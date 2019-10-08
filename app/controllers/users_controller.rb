@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
   def show
+    render locals: {
+      repos: RepoFacade.new.create_repos
+    }
   end
 
   def new
