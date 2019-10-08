@@ -1,5 +1,15 @@
+Documentation:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+ Enabled: false
+
+Naming/MemoizedInstanceVariableName:
+ Enabled: false
+
 AllCops:
   TargetRubyVersion: 2.4.1
+
   Exclude:
     - 'db/**/*'
     - 'config/**/*'
@@ -7,3 +17,4 @@ AllCops:
     - 'node_modules/**/*'
     - 'lib/**/*'
     - 'bin/**/*'
+    - 'Rakefile'
