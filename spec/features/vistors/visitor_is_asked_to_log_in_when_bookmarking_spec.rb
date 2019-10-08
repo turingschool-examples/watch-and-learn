@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe 'visitor visits video show page' do
@@ -9,6 +11,6 @@ describe 'visitor visits video show page' do
 
     click_on 'Bookmark'
 
-    expect(current_path).to eq(login_path)
+    expect(page).to have_current_path(login_path, ignore_query: true)
   end
 end
