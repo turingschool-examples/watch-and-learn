@@ -10,4 +10,12 @@
   <section>
     <h1>Bookmarked Segments</h1>
   </section>
+
+  <h3>Github Section</h3>
+
+  <section class ="github">
+    <% repos.each do |repo| %>
+      <p class="repo_name_and_link"><%= link_to repo.name, repo.url %></p>
+    <% end %>
+  </section>
 </section>
