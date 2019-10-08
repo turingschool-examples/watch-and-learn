@@ -7,12 +7,16 @@
 # RuboCop will start looking for the configuration file in the directory
 # where the inspected file is and continue its way up to the root directory.
 #
-# Might want to remove this and add documentation 
+# Might want to remove this and add documentation
 Documentation:
   Enabled: false
 
 AllCops:
   Exclude:
+    - 'app/controllers/**/*'
+    - 'Rakefile'
+    - 'app/services/*'
+    - 'bin/*'
     - 'spec/**/*'
     - 'config/**/*'
     - 'lib/tasks/*'
