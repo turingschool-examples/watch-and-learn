@@ -2,6 +2,15 @@ Documentation:
   Enabled: false
 
 Style/ClassAndModuleChildren:
+  Enabled: false
+
+Naming/MemoizedInstanceVariableName:
+  Enabled: false
+
+Lint/ShadowingOuterLocalVariable:
+  Enabled: false
+
+Metrics/AbcSize:
  Enabled: false
 
 Naming/MemoizedInstanceVariableName:
