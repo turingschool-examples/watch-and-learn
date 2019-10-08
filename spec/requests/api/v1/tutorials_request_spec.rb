@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe 'Tutorials API' do
@@ -9,7 +11,6 @@ describe 'Tutorials API' do
     video2 = create(:video, tutorial_id: tutorial1.id)
     video3 = create(:video, tutorial_id: tutorial2.id)
     video4 = create(:video, tutorial_id: tutorial2.id)
-
 
     get '/api/v1/tutorials'
 
