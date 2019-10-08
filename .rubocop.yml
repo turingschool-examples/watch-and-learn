@@ -1,0 +1,9 @@
+AllCops:
+  TargetRubyVersion: 2.4.1
+  Exclude:
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'spec/**/*'
+    - 'node_modules/**/*'
+    - 'lib/**/*'
+    - 'bin/**/*'
