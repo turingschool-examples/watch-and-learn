@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 describe 'vister can create an account', :js do
-  it ' visits the home page' do
+  it ' visits the home page and signs in using regular sign in process' do
     email = 'jimbob@aol.com'
     first_name = 'Jim'
     last_name = 'Bob'
@@ -27,6 +27,22 @@ describe 'vister can create an account', :js do
     fill_in 'user[password_confirmation]', with: password
 
     click_on'Create Account'
+
+    expect(current_path).to eq(dashboard_path)
+
+    expect(page).to have_content(email)
+    expect(page).to have_content(first_name)
+    expect(page).to have_content(last_name)
+    expect(page).to_not have_content('Sign In')
+  end
+
+  it 'visits the home page and signs in using regular sign in process' do
+
+    visit '/'
+
+    click_on 'Login with Github'
+
+    expect(current_path).to eq("https://github.com/login/oauth/access_token")
 
     expect(current_path).to eq(dashboard_path)
 
