@@ -8,6 +8,17 @@
     <li> <%= current_user.email%> </li>
   </ul>
   <section>
-    <h1>Bookmarked Segments</h1>
+    <h3>Bookmarked Segments</h3>
+  </section>
+
+  <section class='github-info'>
+    <h3>GitHub</h3>
+    <section class='github-repos'>
+      <ul>
+        <% @user.repos.each do |repo| %>
+          <li><%= link_to repo.name, repo.html_url, class: 'repo-link' %></li>
+        <% end %>
+      </ul>
+    </section>
   </section>
 </section>
