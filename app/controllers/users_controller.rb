@@ -1,8 +1,13 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
   def show
+    @current_user = current_user
+    if @current_user.github_token?
     render locals: {
-      repos: RepoFacade.new.create_repos
+      repos: RepoFacade.new.create_repos(@current_user)
     }
+    end
   end
 
   def new
@@ -25,5 +30,4 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:email, :first_name, :last_name, :password)
   end
-
 end
