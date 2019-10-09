@@ -1,7 +1,13 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  def show; end
+  def show
+    if current_user.gh_token
+      render locals: {
+      github_facade: UserGithubFacade.new(current_user.gh_token)
+    }
+    end
+  end
 
   def new
     @user = User.new
