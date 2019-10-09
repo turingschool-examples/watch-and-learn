@@ -18,7 +18,7 @@ describe 'User dashboard' do
     expect(page).to have_content("Your Github Repos")
 
     within '.repos' do
-      expect(page).to have_css("Name: ")
+      expect(page).to have_css(".repo")
     end
   end
 
@@ -37,5 +37,6 @@ describe 'User dashboard' do
     visit dashboard_path
 
     expect(page).to_not have_content("Your Github Repos")
+    expect(page).to_not have_css(".repos")
   end
 end

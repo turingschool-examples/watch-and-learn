@@ -14,14 +14,14 @@
     <section>
       <h3>Github</h3>
       <section class= 'repos'>
-      <h4>Your Github Repos</h4>
-      <% github_facade.repos do |repo| %>
-        <section class="repo">
-          <p>Name: <%= repo.name %></p>
-          <%= link_to repo.html_url repo.html_url %>
-        </section>
-      <% end %>
-    </section>
+        <h4>Your Github Repos</h4>
+        <% github_facade.repos do |repo| %>
+          <section class="repo">
+            <p>Name: <%= repo.name %></p>
+            <%= link_to repo.html_url repo.html_url %>
+          </section>
+        <% end %>
+      </section>
     </section>
   <% end %>
 </section>
