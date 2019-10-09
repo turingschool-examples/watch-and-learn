@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def show
-    @repos = get_repos.first(5)
+    @user = UserFacade.new
   end
 
   def new
@@ -24,9 +24,4 @@ class UsersController < ApplicationController
     params.require(:user).permit(:email, :first_name, :last_name, :password)
   end
 
-  def get_repos
-    GithubService.new.get_repos.map do |hash|
-      Repo.new(hash)
-    end
-  end
 end
