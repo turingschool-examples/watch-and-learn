@@ -16,7 +16,7 @@
     <section class='github-repos'>
       <ul>
         <% @repos.each do |repo| %>
-          <li><%= link_to repo.name, repo.url, class: 'repo-link' %></li>
+          <li><%= link_to repo.name, repo.html_url, class: 'repo-link' %></li>
         <% end %>
       </ul>
     </section>

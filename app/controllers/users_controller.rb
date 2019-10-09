@@ -29,8 +29,15 @@ class UsersController < ApplicationController
       headers: {'Authorization' => "bearer #{ENV['GITHUB_API_KEY']}"}
     )
 
-    response = conn.get('user/repos', params: {'affiliation' => 'owner'})
+    response = conn.get do |req|
+      req.url 'user/repos'
+      req.params['affiliation'] = 'owner'
+    end
+
     parsed_data = JSON.parse(response.body, symbolize_names: true)
-    binding.pry
+
+    repos = parsed_data.map do |hash|
+      Repo.new(hash)
+    end
   end
 end
