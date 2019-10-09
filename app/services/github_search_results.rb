@@ -1,8 +1,13 @@
 # frozen_string_literal: true
 
 class GithubSearchResults
+
+  def initialize(current_user)
+    @current_user = current_user
+  end
+
   def repos
-    response = conn.get('/user/repos', access_token: ENV['github_api_key']) # .json ???
+    response = conn.get('/user/repos', access_token: @current_user.github_token) # .json ???
     repo_data = JSON.parse(response.body, symbolize_names: true)
   end
 
