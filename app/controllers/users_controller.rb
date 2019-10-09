@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   def show
+    @repos = get_repos
   end
 
   def new
@@ -23,4 +24,13 @@ class UsersController < ApplicationController
     params.require(:user).permit(:email, :first_name, :last_name, :password)
   end
 
+  def get_repos
+    conn = Faraday.new('https://api.github.com/',
+      headers: {'Authorization' => "bearer #{ENV['GITHUB_API_KEY']}"}
+    )
+
+    response = conn.get('user/repos', params: {'affiliation' => 'owner'})
+    parsed_data = JSON.parse(response.body, symbolize_names: true)
+    binding.pry
+  end
 end

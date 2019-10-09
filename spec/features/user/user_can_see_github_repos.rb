@@ -11,8 +11,8 @@ describe 'As a registered user' do
 
     click_on 'Log In'
 
-    expect(page).to have_content('GitHub')
     within '.github-info' do
+      expect(page).to have_content('GitHub')
       within '.github-repos' do
         expect(page).to have_css('.repo-link')
       end
