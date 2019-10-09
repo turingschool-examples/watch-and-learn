@@ -14,7 +14,7 @@ describe 'As a registered user' do
     within '.github-info' do
       expect(page).to have_content('GitHub')
       within '.github-repos' do
-        expect(page).to have_css('.repo-link')
+        expect(page).to have_css('.repo-link', count: 5)
       end
     end
   end

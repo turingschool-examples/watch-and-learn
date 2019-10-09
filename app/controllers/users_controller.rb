@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def show
-    @repos = get_repos
+    @repos = get_repos.first(5)
   end
 
   def new
@@ -36,7 +36,7 @@ class UsersController < ApplicationController
 
     parsed_data = JSON.parse(response.body, symbolize_names: true)
 
-    repos = parsed_data.map do |hash|
+    parsed_data.map do |hash|
       Repo.new(hash)
     end
   end
