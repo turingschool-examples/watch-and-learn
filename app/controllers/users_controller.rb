@@ -2,8 +2,10 @@
 
 class UsersController < ApplicationController
   def show
-    facade = GithubRepoFacade.new(current_user)
-    @repos = facade.repo_data
+    if current_user.github_token?
+      facade = GithubRepoFacade.new(current_user)
+      @repos = facade.repo_data
+    end
   end
 
   def new
