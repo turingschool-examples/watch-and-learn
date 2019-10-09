@@ -37,9 +37,8 @@ Rails.application.routes.draw do
   # Is this being used?
   get '/video', to: 'video#show'
 
-  namespace :sessions do
-    get '/auth/:provider/callback', to: 'github#create'
-  end
+  get '/auth/:provider/callback', to: 'github#create'
+
 
   resources :users, only: %i[new create update edit]
 

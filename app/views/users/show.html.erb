@@ -20,5 +20,7 @@
         <% end %>
       </section>
     </section>
+    <% else %>
+      <%= link_to "Connect to Github", "/auth/github", method: :get %>
   <% end %>
 </section>
