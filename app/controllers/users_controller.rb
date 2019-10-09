@@ -2,7 +2,6 @@
 
 class UsersController < ApplicationController
   def show
-    binding.pry
     if current_user.gh_token
       render locals: {
       github_facade: UserGithubFacade.new(current_user.gh_token)
