@@ -4,4 +4,10 @@ class UserFacade
       Repo.new(hash)
     end.first(5)
   end
+
+  def followers
+    GithubService.new.get_followers.map do |hash|
+      Follower.new(hash)
+    end
+  end
 end
