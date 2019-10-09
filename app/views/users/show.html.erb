@@ -11,6 +11,9 @@
     <h1>Bookmarked Segments</h1>
   </section>
 
+  <% if @current_user.github_token? %>
+
+
   <h3>Github Section</h3>
 
   <section class ="github">
@@ -18,4 +21,5 @@
       <p class="repo_name_and_link"><%= link_to repo.name, repo.url %></p>
     <% end %>
   </section>
+  <% end %>
 </section>
