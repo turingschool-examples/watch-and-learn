@@ -18,7 +18,7 @@ describe 'User dashboard' do
     expect(page).to have_content("Your Github Repos")
 
     within '.repos' do
-      expect(page).to have_css(".repo")
+      expect(page).to have_content("Name: ")
     end
   end
 
