@@ -25,18 +25,7 @@ class UsersController < ApplicationController
   end
 
   def get_repos
-    conn = Faraday.new('https://api.github.com/',
-      headers: {'Authorization' => "bearer #{ENV['GITHUB_API_KEY']}"}
-    )
-
-    response = conn.get do |req|
-      req.url 'user/repos'
-      req.params['affiliation'] = 'owner'
-    end
-
-    parsed_data = JSON.parse(response.body, symbolize_names: true)
-
-    parsed_data.map do |hash|
+    GithubService.new.get_repos.map do |hash|
       Repo.new(hash)
     end
   end
