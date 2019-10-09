@@ -7,7 +7,7 @@ require 'rails_helper'
 RSpec.describe 'github api service' do
   it 'returns repos', :vcr do
     # VCR.use_cassette("propublica_member_data") do
-    service = GithubSearchResults.new
+    service = GithubSearchResults.new(create(:user, github_token: ENV['github_api_key']))
     array_of_hashes_data = service.repos
 
     # binding.pry
