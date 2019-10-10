@@ -24,4 +24,22 @@ describe UserFacade do
     expect(data[0].name).to_not eq(nil)
     expect(data[0].html_url).to_not eq(nil)
   end
+
+  it 'can return github follower data' do
+    skip
+    user = create(:user, github_token: ENV["GITHUB_API_KEY"])
+    facade = UserFacade.new(user)
+
+    json_response = File.open('./spec/fixtures/github_follower_data.json')
+
+    stub_request(:get, "https://api.github.com/user/follower")
+    .to_return(status: 200, body: json_response)
+
+    data = facade.follower_data
+
+    expect(data[0]).to be_a(Follower)
+    expect(data.count).to eq(5)
+    expect(data[0].login).to_not eq(nil)
+    expect(data[0].html_url).to_not eq(nil)
+  end
 end

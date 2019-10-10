@@ -7,7 +7,7 @@ class UserFacade
   end
 
   def all_repo_data
-    @service.get_user_data(@current_user).map do |repo_hash|
+    @service.get_repo_data(@current_user).map do |repo_hash|
       Repo.new(repo_hash)
     end
   end
