@@ -6,7 +6,6 @@ class SessionsController < ApplicationController
   end
 
   def create
-
     user = User.find_by(email: params[:session][:email])
 
     if user&.authenticate(params[:session][:password])
@@ -16,11 +15,6 @@ class SessionsController < ApplicationController
       flash[:error] = 'Looks like your email or password is invalid'
       render :new
     end
-  end
-
-  def update
-    render text: request.env["omniauth.auth"].inspect
-    # redirect_to dashboard_path
   end
 
   def destroy
