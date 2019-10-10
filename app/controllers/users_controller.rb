@@ -22,9 +22,18 @@ class UsersController < ApplicationController
     end
   end
 
+  def github_auth
+    current_user.update_attribute(:github_token, github_token)
+    redirect_to dashboard_path
+  end
+
   private
 
   def user_params
     params.require(:user).permit(:email, :first_name, :last_name, :password)
+  end
+
+  def github_token
+    request.env["omniauth.auth"]["credentials"]["token"]
   end
 end

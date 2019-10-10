@@ -8,6 +8,8 @@
     <li> <%= current_user.email%> </li>
   </ul>
 
+  <%= link_to "Authorize GitHub", github_login_path %>
+
   <% if current_user.github_token? %>
   <h3>Github</h3>
     <h4>Github Repositories</h4>
