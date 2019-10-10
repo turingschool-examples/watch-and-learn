@@ -5,7 +5,9 @@ class UsersController < ApplicationController
     @current_user = current_user
     if @current_user.github_token?
       render locals: {
-        repos: RepoFacade.new.create_repos(@current_user)
+        repos: RepoFacade.new.create_repos(@current_user),
+        followers: FollowersFacade.new.create_followers(@current_user),
+        followed_accounts: FollowedAccountsFacade.new.create_followed_accounts(@current_user)
       }
     end
   end
