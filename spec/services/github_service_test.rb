@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'Github API service' do
-  it "User Github Data", :vcr do
+  it "User Github Repo Data", :vcr do
 
     service = GithubApiService.new
 
@@ -13,4 +13,6 @@ describe 'Github API service' do
     expect(raw_data.first).to have_key(:name)
     expect(raw_data.first).to have_key(:html_url)
   end
+
+
 end
