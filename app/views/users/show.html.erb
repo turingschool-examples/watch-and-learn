@@ -8,18 +8,18 @@
     <li> <%= current_user.email%> </li>
   </ul>
   <section>
-    <h1>Bookmarked Segments</h1>
+    <h3>Bookmarked Segments</h3>
   </section>
+
 
   <% if @current_user.github_token? %>
-
-
-  <h3>Github Section</h3>
-
-  <section class ="github">
-    <% repos.each do |repo| %>
-      <p class="repo_name_and_link"><%= link_to repo.name, repo.url %></p>
-    <% end %>
-  </section>
+    <h3>Github Section</h3>
+    <section class ="github">
+      <% repos.each do |repo| %>
+        <p class="repo_name_and_link"><%= link_to repo.name, repo.url %></p>
+      <% end %>
+    </section>
+  <% else %>
+    <%= link_to "Connect to Github", github_login_path %>
   <% end %>
 </section>
