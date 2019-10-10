@@ -5,7 +5,7 @@ describe 'Admin tutorials' do
     admin = create(:admin)
     title = 'Test Creation'
     description = 'This is not a real tutorial'
-    thumbnail = 'notarealpicture.com'
+    thumbnail = 'https://cosmolearning.org/images_dir/courses/713/profile-thumbnail-w300.jpg'
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
@@ -27,8 +27,9 @@ describe 'Admin tutorials' do
 
     click_on 'Save'
 
+    new_tutorial = Tutorial.last
 
-    expect(current_path).to eq('/admin/dashboard')
+    expect(current_path).to eq("/admin/tutorials/#{new_tutorial.id}")
 
     expect(page).to have_content(title)
   end

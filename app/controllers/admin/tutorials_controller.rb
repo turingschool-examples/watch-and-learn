@@ -8,7 +8,8 @@ class Admin::TutorialsController < Admin::BaseController
   def create
     @tutorial = Tutorial.create(create_params)
     if @tutorial.save
-      redirect_to '/admin/dashboard'
+      flash[:success] = "Sucdessfuly created tutorial"
+      redirect_to "/tutorials/#{@tutorial.id}"
     else
       flash[:error] = @tutorial.errors.full_messages.to_sentence
       render :new
