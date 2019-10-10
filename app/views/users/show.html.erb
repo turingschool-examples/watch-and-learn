@@ -9,11 +9,28 @@
   </ul>
 
   <% if current_user.github_token? %>
-    <h3>Github Repositories</h3>
+  <h3>Github</h3>
+    <h4>Github Repositories</h4>
     <section class="github-repositories">
       <ul>
-      <% @repos.each do |repo| %>
+      <% @facades.repo_data.each do |repo| %>
         <li><%= link_to repo.name, repo.html_url %></li>
+      <% end %>
+    </ul>
+    </section>
+    <h4>Followers</h4>
+    <section class="github-followers">
+      <ul>
+      <% @facades.follower_data.each do |follower| %>
+        <li><%= link_to follower.login, follower.html_url %></li>
+      <% end %>
+    </ul>
+    </section>
+    <h4>Following</h4>
+    <section class="github-following">
+      <ul>
+      <% @facades.following_data.each do |following| %>
+        <li><%= link_to following.login, following.html_url %></li>
       <% end %>
     </ul>
     </section>
