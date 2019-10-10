@@ -22,14 +22,12 @@ describe 'User Dashboard' do
     expect(page).to have_css(".github-repositories")
 
     within ".github-repositories" do
-      expect(page).to have_link("...")
-      expect(page).to have_link("a")
       expect(page).to have_link("repo_1")
       expect(page).to have_link("repo_2")
       expect(page).to have_link("repo_3")
-    end
+      expect(page).to have_link("repo_4")
+      expect(page).to have_link("repo_5")
 
-    # click_link("repo_1")
-    # expect(current_path).to eq("https://github.com/alect47/a")
+    end
   end
 end
