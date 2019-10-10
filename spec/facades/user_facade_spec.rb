@@ -26,7 +26,7 @@ describe UserFacade do
   end
 
   it 'can return github follower data' do
-    skip
+
     user = create(:user, github_token: ENV["GITHUB_API_KEY"])
     facade = UserFacade.new(user)
 
@@ -37,8 +37,8 @@ describe UserFacade do
 
     data = facade.follower_data
 
-    expect(data[0]).to be_a(Follower)
-    expect(data.count).to eq(5)
+    expect(data[0]).to be_a(GithubUser)
+    expect(data.count).to eq(8)
     expect(data[0].login).to_not eq(nil)
     expect(data[0].html_url).to_not eq(nil)
   end

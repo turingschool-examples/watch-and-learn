@@ -20,4 +20,10 @@ class UserFacade
   def repo_data
     limit_repo_five
   end
+
+  def follower_data
+    @service.get_follower_data(@current_user).map do |follower_hash|
+      GithubUser.new(follower_hash)
+    end
+  end
 end
