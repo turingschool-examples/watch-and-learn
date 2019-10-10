@@ -14,9 +14,20 @@
 
   <% if @current_user.github_token? %>
     <h3>Github Section</h3>
+    <h4>Repos</h4>
     <section class ="github">
       <% repos.each do |repo| %>
         <p class="repo_name_and_link"><%= link_to repo.name, repo.url %></p>
+      <% end %>
+
+    <h4>Followers</h4>
+      <% followers.each do |follower| %>
+        <p class="followers_name_and_link"><%= link_to follower.name, follower.url %></p>
+      <% end %>
+
+    <h4>Followed Accounts</h4>
+      <% followed_accounts.each do |followed_account| %>
+        <p class="following_name_and_link"><%= link_to followed_account.name, followed_account.url %></p>
       <% end %>
     </section>
   <% else %>
