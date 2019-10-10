@@ -26,4 +26,10 @@ class UserFacade
       GithubUser.new(follower_hash)
     end
   end
+
+  def following_data
+    @service.get_following_data(@current_user).map do |following_hash|
+      GithubUser.new(following_hash)
+    end
+  end
 end
