@@ -86,6 +86,5 @@ describe 'User Dashboard' do
       expect(page).to have_link("corneliusellen")
       expect(page).to have_link("shaviland")
     end
-      save_and_open_page
   end
 end
