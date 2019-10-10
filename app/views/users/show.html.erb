@@ -12,8 +12,10 @@
   </section>
 
   <section class='github-info'>
-    <h3>GitHub</h3>
+    <h2>GitHub</h2>
+    <hr>
     <section class='github-repos'>
+      <h3>Repos</h3>
       <ul>
         <% @user.repos.each do |repo| %>
           <li><%= link_to repo.name, repo.html_url, class: 'repo-link' %></li>
@@ -22,6 +24,7 @@
     </section>
 
     <section class='github-followers'>
+      <h3>Followers</h3>
       <ul>
         <% @user.followers.each do |follower| %>
           <li><%= link_to follower.user_name, follower.html_url, class: 'follower-link' %></li>
