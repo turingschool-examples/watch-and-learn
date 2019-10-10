@@ -12,6 +12,11 @@ describe 'User Dashboard' do
 
     stub_request(:get, "https://api.github.com/user/followers")
     .to_return(status: 200, body: follower_json_response)
+
+    following_json_response = File.open('./spec/fixtures/github_following_data.json')
+
+    stub_request(:get, "https://api.github.com/user/following")
+    .to_return(status: 200, body: following_json_response)
   end
 
   it 'displays Github repos' do
@@ -59,5 +64,28 @@ describe 'User Dashboard' do
       expect(page).to have_link("matthewdshepherd")
       expect(page).to have_link("Garrett-Iannuzzi")
     end
+  end
+
+  it 'displays Github following' do
+
+    user = create(:user, github_token: ENV["GITHUB_API_KEY"])
+
+    visit '/'
+
+    click_on 'Sign In'
+
+    fill_in 'session[email]', with: user.email
+    fill_in 'session[password]', with: user.password
+
+    click_on 'Log In'
+
+    expect(page).to have_css(".github-following")
+
+    within ".github-following" do
+      expect(page).to have_link("alect47")
+      expect(page).to have_link("corneliusellen")
+      expect(page).to have_link("shaviland")
+    end
+      save_and_open_page
   end
 end

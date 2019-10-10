@@ -26,6 +26,14 @@
       <% end %>
     </ul>
     </section>
+    <h4>Following</h4>
+    <section class="github-following">
+      <ul>
+      <% @facades.following_data.each do |following| %>
+        <li><%= link_to following.login, following.html_url %></li>
+      <% end %>
+    </ul>
+    </section>
   <% end %>
   <section>
     <h1>Bookmarked Segments</h1>
