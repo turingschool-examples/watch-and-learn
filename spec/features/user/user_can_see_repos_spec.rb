@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'User Dashboard' do
   it 'displays Github repos' do
 
-    json_response = File.open('./spec/fixtures/github_repo_view_data.json')
+    json_response = File.open('./spec/fixtures/github_repo_data.json')
 
     stub_request(:get, "https://api.github.com/user/repos")
     .to_return(status: 200, body: json_response)
