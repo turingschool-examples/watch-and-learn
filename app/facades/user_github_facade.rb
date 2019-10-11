@@ -21,7 +21,7 @@ class UserGithubFacade
   end
 
   def following
-    following.get_following.map do |repo_data|
+    service.get_following.map do |repo_data|
       GithubUser.new(repo_data)
     end
   end

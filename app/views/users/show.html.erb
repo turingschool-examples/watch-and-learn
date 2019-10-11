@@ -23,14 +23,14 @@
         <h4>Your Github Followers</h4>
         <% github_facade.following.each do |user| %>
             <p>Name: <%= link_to user.name, user.link %></p>
-            <%= image_tag user.picture, user.link %>
+            <%= image_tag user.picture %>
         <% end %>
       </section>
       <section class= 'following'>
         <h4>Github Users You Follow</h4>
         <% github_facade.followers.each do |user| %>
             <p>Name: <%= link_to user.name, user.link %></p>
-            <%= image_tag user.picture, user.link %>
+            <%= image_tag user.picture %>
         <% end %>
       </section>
     </section>
