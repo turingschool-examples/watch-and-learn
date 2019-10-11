@@ -9,7 +9,7 @@ class TutorialFacade < SimpleDelegator
   def current_video
     if @video_id
       videos.find(@video_id)
-    else
+    else videos
       videos.first
     end
   end
