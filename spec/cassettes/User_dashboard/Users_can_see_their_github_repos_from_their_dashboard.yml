@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.github.com/user/repos?access_token=b81f4ba2618ed34c563ca31ba7dfa70f872dde5e
+    uri: https://api.github.com/user/repos?access_token=b81f4ba2618ed34c563ca31ba7dfa70f872dde5
     body:
       encoding: US-ASCII
       string: ''
@@ -18,14 +18,14 @@ http_interactions:
       code: 200
       message: OK
     headers:
+      Server:
+      - GitHub.com
       Date:
       - Fri, 11 Oct 2019 17:30:59 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
       - chunked
-      Server:
-      - GitHub.com
       Status:
       - 200 OK
       X-Ratelimit-Limit:
@@ -38,7 +38,6 @@ http_interactions:
       - private, max-age=60, s-maxage=60
       Vary:
       - Accept, Authorization, Cookie, X-GitHub-OTP
-      - Accept-Encoding
       Etag:
       - W/"b411d539c89cb5d4a56f6297d50da1e3"
       X-Oauth-Scopes:
@@ -266,6 +265,7 @@ http_interactions:
       - Accept-Encoding
       Etag:
       - W/"b411d539c89cb5d4a56f6297d50da1e3"
+      - W/"105585ecf248e168e0aba6d7602899b6"
       X-Oauth-Scopes:
       - repo, user
       X-Accepted-Oauth-Scopes:
