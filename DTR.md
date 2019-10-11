@@ -1,7 +1,5 @@
 # DTR: Define the Relationship
 
-### Template for DTR Memo
-
 **Project:** 1906 Brownfield of Dreams
 
 **Group Member Names:** Josh Sherwood & Leiya Kenney
@@ -19,18 +17,17 @@
   - Work with each others' strengths, work hard, and make sure we're communicating clearly and frequently!
 
 **Schedule Expectations (When are we available to work together and individually? What constraints do we have?):**
-  - During the school week:
+  - During the school week (after school meetings are better):
     - Monday:
-    - Tuesday: Leiya meeting with mentor from 5-7p
-    - Wednesday (check-ins from 9a-12p):
-    - Thursday: Leiya might have a hockey game on Thursday at 7p
+    - Tuesday:
+    - Wednesday:
+    - Thursday:
     - Friday:
-    - Josh prefers to stay after school
 
   - During the weekend (timing TBD):
-    - Saturday: Josh hanging out with friends
-    - Sunday: Leiya can't meet before 2pm
-    - We will work individually initially and come together on Sunday afternoon
+    - Saturday: Leiya will work on solo work (first issues/bugs)
+    - Sunday: Josh will work on solo work in the morning (first issues/bugs)
+      - We will come together to work Sunday at 3pm (Friendships/Bookmarks/Email)
 
 **Communication Expectations (How and how often will we communicate? How do we keep lines of communication open? How will we make decisions as a team?):**
   - We will communicate daily and often
