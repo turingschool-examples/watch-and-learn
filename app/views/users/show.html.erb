@@ -15,23 +15,35 @@
       <h3>Github</h3>
       <section class= 'repos'>
         <h4>Your Github Repos</h4>
-        <% github_facade.repos.each do |repo| %>
-            <p>Name: <%= link_to repo.name, repo.html_url %></p>
-        <% end %>
+        <table>
+          <% github_facade.repos.each do |repo| %>
+            <tr>
+              <td><%= link_to repo.name, repo.html_url %></td>
+            </tr>
+          <% end %>
+      </table>
       </section>
       <section class= 'followers'>
         <h4>Your Github Followers</h4>
+        <table>
         <% github_facade.following.each do |user| %>
-            <p>Name: <%= link_to user.name, user.link %></p>
-            <%= image_tag user.picture %>
+          <tr>
+            <td><%= image_tag user.picture, class: 'profile-image' %></td>
+            <td><p>Name: <%= link_to user.name, user.link %></p></td>
+          </tr>
         <% end %>
+      </table>
       </section>
       <section class= 'following'>
         <h4>Github Users You Follow</h4>
+        <table>
         <% github_facade.followers.each do |user| %>
-            <p>Name: <%= link_to user.name, user.link %></p>
-            <%= image_tag user.picture %>
+          <tr>
+            <td><%= image_tag user.picture, class: 'profile-image' %></td>
+            <td><p>Name: <%= link_to user.name, user.link %></p></td>
+          </tr>
         <% end %>
+      </table>
       </section>
     </section>
     <% else %>
