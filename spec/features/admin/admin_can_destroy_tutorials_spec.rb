@@ -10,7 +10,7 @@ describe 'Admin Dashboard' do
     visit '/admin/dashboard'
 
     within(first('.admin-tutorial-card')) do
-    click_on 'Destory'
+    click_on 'Destroy'
     end
 
     expect(current_path).to eq('/admin/dashboard')
