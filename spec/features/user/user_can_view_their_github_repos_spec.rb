@@ -16,10 +16,7 @@ describe 'User dashboard' do
     visit dashboard_path
 
     expect(page).to have_content("Your Github Repos")
-
-    within '.repos' do
-      expect(page).to have_content("Name: ")
-    end
+    expect(page).to have_css('.repos')
   end
 
   it "A user without a github token will not display a github section" do
