@@ -29,7 +29,7 @@ describe 'Admin tutorials' do
 
     new_tutorial = Tutorial.last
 
-    expect(current_path).to eq("/admin/tutorials/#{new_tutorial.id}")
+    expect(current_path).to eq("/tutorials/#{new_tutorial.id}")
 
     expect(page).to have_content(title)
   end
