@@ -2,6 +2,69 @@
 http_interactions:
 - request:
     method: get
+    uri: https://chromedriver.storage.googleapis.com/LATEST_RELEASE_77.0.3865
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - chromedriver.storage.googleapis.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Guploader-Uploadid:
+      - AEnB2UreVS8M5FlGhNVs3R4RhKFxxi52yLhe-wkti00YMuRvENEvmrwBusqtkLs9I9EFnSWS2ZUkLkV5gy0pGn3zv4hzPqSCVw
+      Expires:
+      - Sat, 12 Oct 2019 19:46:47 GMT
+      Date:
+      - Sat, 12 Oct 2019 18:46:47 GMT
+      Cache-Control:
+      - public, max-age=3600
+      Last-Modified:
+      - Tue, 20 Aug 2019 18:02:50 GMT
+      Etag:
+      - '"32e80dfee0af120f7f94bbb85e52b845"'
+      X-Goog-Generation:
+      - '1566324170948144'
+      X-Goog-Metageneration:
+      - '1'
+      X-Goog-Stored-Content-Encoding:
+      - identity
+      X-Goog-Stored-Content-Length:
+      - '12'
+      Content-Type:
+      - text/plain
+      Content-Language:
+      - en
+      X-Goog-Hash:
+      - crc32c=hx6yuw==
+      - md5=MugN/uCvEg9/lLu4XlK4RQ==
+      X-Goog-Storage-Class:
+      - STANDARD
+      Accept-Ranges:
+      - bytes
+      Content-Length:
+      - '12'
+      Server:
+      - UploadServer
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="46,43",h3-Q048=":443"; ma=2592000,h3-Q046=":443";
+        ma=2592000,h3-Q043=":443"; ma=2592000
+    body:
+      encoding: UTF-8
+      string: 77.0.3865.40
+    http_version: 
+  recorded_at: Sat, 12 Oct 2019 18:46:47 GMT
+- request:
+    method: get
     uri: https://www.googleapis.com/youtube/v3/videos?id=J7ikFUlkP_k&key=<YOUTUBE_API_KEY>&part=snippet,contentDetails,statistics
     body:
       encoding: US-ASCII
@@ -19,9 +82,9 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Fri, 11 Oct 2019 17:30:52 GMT
+      - Sat, 12 Oct 2019 18:46:51 GMT
       Date:
-      - Fri, 11 Oct 2019 17:30:52 GMT
+      - Sat, 12 Oct 2019 18:46:51 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
@@ -118,5 +181,5 @@ http_interactions:
          ]
         }
     http_version: 
-  recorded_at: Fri, 11 Oct 2019 17:30:49 GMT
+  recorded_at: Sat, 12 Oct 2019 18:46:51 GMT
 recorded_with: VCR 4.0.0
