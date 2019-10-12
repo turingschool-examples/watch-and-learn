@@ -17,7 +17,7 @@ describe 'User dashboard' do
 
     visit dashboard_path
 
-    expect(page).to have_content("Github Users You Follow")
+    expect(page).to have_content("Following")
     expect(page).to have_css('.following')
   end
 end
