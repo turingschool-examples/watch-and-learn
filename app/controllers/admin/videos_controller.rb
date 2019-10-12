@@ -1,4 +1,5 @@
 class Admin::VideosController < Admin::BaseController
+  # frozen_string_literal: true
   def edit
     @video = Video.find(params[:video_id])
   end

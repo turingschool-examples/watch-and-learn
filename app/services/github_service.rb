@@ -1,19 +1,20 @@
 class GithubService
+  # frozen_string_literal: true
 
   def initialize(token)
     @token = token
   end
 
-  def get_repos
-    get_json("/user/repos")
+  def repos
+    get_json('/user/repos')
   end
 
-  def get_followers
-    get_json("/user/followers")
+  def followers
+    get_json('/user/followers')
   end
 
-  def get_following
-    get_json("/user/following")
+  def following
+    get_json('/user/following')
   end
 
   private
@@ -24,8 +25,8 @@ class GithubService
   end
 
   def conn
-    Faraday.new(url: "https://api.github.com") do |faraday|
-      faraday.params["access_token"] = @token
+    Faraday.new(url: 'https://api.github.com') do |faraday|
+      faraday.params['access_token'] = @token
       faraday.adapter Faraday.default_adapter
     end
   end
