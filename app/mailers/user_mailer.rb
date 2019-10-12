@@ -1,4 +1,4 @@
-class NewUserNotifierMailer < ApplicationMailer
+class UserMailer < ApplicationMailer
   default from: 'no-reply@brownfield.com'
 
   def registration_email(user, email)
