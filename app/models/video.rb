@@ -5,5 +5,5 @@ class Video < ApplicationRecord
   has_many :users, through: :user_videos
   belongs_to :tutorial
 
-  validates_numercality_of :position
+  validates_numericality_of :position
 end

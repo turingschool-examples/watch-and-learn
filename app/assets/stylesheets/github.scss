@@ -18,8 +18,8 @@
 .github th {
   padding-top: 12px;
   padding-bottom: 12px;
-  text-align: left;
-  background-color: #4CAF50;
+  text-align: center;
+  background-color: SlateGrey;
   color: white;
 }
 
@@ -46,7 +46,9 @@
 
 #gh-title {
   font-size: 30px;
+  font-family: sans-serif;
   text-align: center;
+  border-bottom: ridge;
 }
 
 #gh-grid {

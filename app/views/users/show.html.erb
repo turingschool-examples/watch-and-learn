@@ -13,10 +13,11 @@
   <% if current_user.gh_token %>
     <section id= 'gh-grid'>
       <h3 id='gh-title'>Github</h3>
-      <hr>
       <section class= 'repos'>
-        <h4>Repos</h4>
         <table class= 'github'>
+          <tr>
+            <th>Repos</th>
+          </tr>
           <% github_facade.repos.each do |repo| %>
             <tr>
               <td><%= link_to repo.name, repo.html_url %></td>
@@ -25,8 +26,10 @@
       </table>
       </section>
       <section class= 'followers'>
-        <h4>Followers</h4>
         <table class= 'github'>
+          <tr>
+            <th colspan="2">Followers</th>
+          </tr>
         <% github_facade.following.each do |user| %>
           <tr>
             <td><%= image_tag user.picture, class: 'profile-image' %></td>
@@ -36,8 +39,10 @@
       </table class= 'github'>
       </section>
       <section class= 'following'>
-        <h4>Following</h4>
         <table class= 'github'>
+          <tr>
+            <th colspan="2">Following</th>
+          </tr>
         <% github_facade.followers.each do |user| %>
           <tr>
             <td><%= image_tag user.picture, class: 'profile-image' %></td>
