@@ -1,7 +1,7 @@
 <main class="tutorials">
 <h2><%= @facade.title %></h2>
 <h1 id="message"></h1>
-  
+
 <div class="col col-4">
   <h4>Videos</h4>
   <ul>
@@ -25,18 +25,6 @@
         <% end %>
       </div>
   </div>
-
-  <div class="col col-8">
-    <div class="title-bookmark">
-      <h3><%= @facade.current_video.title %></h3>
-      <div class="bookmarks-btn">
-        <% if current_user %>
-        <%= button_to "Bookmark", user_videos_path(video_id: @facade.current_video.id, user_id: current_user.id), method: :post, class: "btn btn-outline mb1 teal" %>
-        <% else %>
-        <%= link_to "Bookmark", login_path, class: "btn btn-outline mb1 teal" %>
-        <% end %>
-      </div>
-    </div>
 
     <div id="player">
       <script src="https://www.youtube.com/player_api"></script>
