@@ -34,6 +34,10 @@
       <% end %>
     </ul>
     </section>
+  <% else %>
+    <section class="authorize-github">
+      <%= button_to "Authorize GitHub", github_login_path %>
+    </section>
   <% end %>
   <section>
     <h1>Bookmarked Segments</h1>
