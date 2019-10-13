@@ -9,6 +9,10 @@
   </ul>
   <section>
     <h3>Bookmarked Segments</h3>
+    <section class="bookmarks">
+      <% @bookmarks.each do |bookmark| %>
+        <%= bookmark.video.title %>
+      <% end %>
   </section>
 
 

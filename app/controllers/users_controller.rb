@@ -3,6 +3,7 @@
 class UsersController < ApplicationController
   def show
     @current_user = current_user
+    @bookmarks = @current_user.user_videos.all
     if @current_user.github_token?
       render locals: {
         repos: RepoFacade.new.create_repos(@current_user),
