@@ -6,10 +6,10 @@ class Admin::TutorialsController < Admin::BaseController
   end
 
   def create
-     tutorial = Tutorial.create!(tutorial_params)
-     video = tutorial.videos.create!(video_params)
+     @tutorial = Tutorial.create!(tutorial_params)
+     video = @tutorial.videos.create!(video_params)
      # binding.pry
-     redirect_to tutorial_path(tutorial)
+     redirect_to tutorial_path(@tutorial)
   end
 
   def new
