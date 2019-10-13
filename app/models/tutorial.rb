@@ -6,5 +6,5 @@ class Tutorial < ApplicationRecord
   accepts_nested_attributes_for :videos
 
   validates_presence_of :title, :description
-  validates :thumbnail, format: {with: /\.(png|jpg)\Z/i}
+  validates :thumbnail, format: { with: /\.(png|jpg)\Z/i }
 end

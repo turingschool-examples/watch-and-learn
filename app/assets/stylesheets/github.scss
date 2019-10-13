@@ -1,0 +1,57 @@
+.github {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  border-style: double;
+  border-width: thin;
+}
+
+.github td, .github th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.github tr:nth-child(even){background-color: #f2f2f2;}
+
+.github tr:hover {background-color: #ddd;}
+
+.github th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: SlateGrey;
+  color: white;
+}
+
+.repos {
+  float: left;
+  width: 30%;
+}
+
+.followers {
+  display: inline-block;
+  margin: 0 auto;
+  width: 30%;
+}
+
+.following {
+  float: right;
+  width: 30%;
+}
+
+.dashboard-top {
+  width: 100%;
+  text-align: center;
+}
+
+#gh-title {
+  font-size: 30px;
+  font-family: sans-serif;
+  text-align: center;
+  border-bottom: ridge;
+}
+
+#gh-grid {
+  width: 100%;
+  text-align: center;
+}

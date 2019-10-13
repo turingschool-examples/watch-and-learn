@@ -1,21 +1,23 @@
 <section class="dashboard-main">
-  <h1> <%= current_user.first_name %>'s Dashboard </h1>
+  <section class='dashboard-top'>
+    <h1> <%= current_user.first_name %>'s Dashboard </h1>
 
-  <%= button_to 'Log Out', logout_path, method: 'delete', class: "btn btn-primary mb1 bg-teal" %>
-  <h3>Account Details</h3>
-  <ul>
-    <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
-    <li> <%= current_user.email%> </li>
-  </ul>
-  <section>
-    <h1>Bookmarked Segments</h1>
+    <%= button_to 'Log Out', logout_path, method: 'delete', class: "btn btn-primary mb1 bg-teal" %>
+    <h4>Account Details</h4>
+      <h5><%= current_user.first_name  %> <%= current_user.last_name %></h5>
+      <h5><%= current_user.email%></h5>
+    <section>
+      <h4>Bookmarked Segments</h4>
+    </section>
   </section>
   <% if current_user.gh_token %>
-    <section>
-      <h3>Github</h3>
+    <section id= 'gh-grid'>
+      <h3 id='gh-title'>Github</h3>
       <section class= 'repos'>
-        <h4>Your Github Repos</h4>
-        <table>
+        <table class= 'github'>
+          <tr>
+            <th>Repos</th>
+          </tr>
           <% github_facade.repos.each do |repo| %>
             <tr>
               <td><%= link_to repo.name, repo.html_url %></td>
@@ -24,23 +26,27 @@
       </table>
       </section>
       <section class= 'followers'>
-        <h4>Your Github Followers</h4>
-        <table>
+        <table class= 'github'>
+          <tr>
+            <th colspan="2">Followers</th>
+          </tr>
         <% github_facade.following.each do |user| %>
           <tr>
             <td><%= image_tag user.picture, class: 'profile-image' %></td>
-            <td><p>Name: <%= link_to user.name, user.link %></p></td>
+            <td><p><%= link_to user.name, user.link %></p></td>
           </tr>
         <% end %>
-      </table>
+      </table class= 'github'>
       </section>
       <section class= 'following'>
-        <h4>Github Users You Follow</h4>
-        <table>
+        <table class= 'github'>
+          <tr>
+            <th colspan="2">Following</th>
+          </tr>
         <% github_facade.followers.each do |user| %>
           <tr>
             <td><%= image_tag user.picture, class: 'profile-image' %></td>
-            <td><p>Name: <%= link_to user.name, user.link %></p></td>
+            <td><p><%= link_to user.name, user.link %></p></td>
           </tr>
         <% end %>
       </table>
