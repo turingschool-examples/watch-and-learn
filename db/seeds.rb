@@ -68,7 +68,7 @@ mod_3_tutorial_data = {
   'description' => 'Video content for Mod 3.',
   'thumbnail' => 'https://i.ytimg.com/vi/R5FPYQgB6Zc/hqdefault.jpg',
   'playlist_id' => 'PL1Y67f0xPzdOq2FcpWnawJeyJ3ELUdBkJ',
-  'classroom' => false,
+  'classroom' => true,
   'tag_list' => %w[Internet BDD Ruby]
 }
 m3_tutorial = Tutorial.create! mod_3_tutorial_data
