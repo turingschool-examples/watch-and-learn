@@ -77,7 +77,7 @@ ActiveRecord::Schema.define(version: 2018_07_31_230036) do
     t.string "video_id"
     t.string "thumbnail"
     t.bigint "tutorial_id"
-    t.integer "position", default: 0
+    t.integer "position"
     t.index ["tutorial_id"], name: "index_videos_on_tutorial_id"
   end
 
