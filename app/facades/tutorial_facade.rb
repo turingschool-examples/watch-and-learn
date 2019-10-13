@@ -9,9 +9,7 @@ class TutorialFacade < SimpleDelegator
   end
 
   def current_video
-    # binding.pry
     if @video_id
-      # binding. pry
       videos.find(@video_id)
     else
       videos.first
