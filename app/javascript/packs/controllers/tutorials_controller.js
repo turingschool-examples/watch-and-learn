@@ -47,4 +47,15 @@ export default class extends Controller {
       });
   }
 
+  deleteOrder(event) {
+    const options = {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }
+    fetch(`/admin/tutorials/${event.target.id}`, options)
+    .then(res => console.log(res))
+  }
+
 }
