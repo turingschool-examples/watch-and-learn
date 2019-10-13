@@ -1,13 +1,17 @@
 # frozen_string_literal: true
 
 class TutorialFacade < SimpleDelegator
+  attr_reader :video_id
+
   def initialize(tutorial, video_id = nil)
     super(tutorial)
     @video_id = video_id
   end
 
   def current_video
+    # binding.pry
     if @video_id
+      # binding. pry
       videos.find(@video_id)
     else
       videos.first
