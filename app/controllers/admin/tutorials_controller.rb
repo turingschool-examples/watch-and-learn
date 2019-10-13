@@ -5,7 +5,16 @@ class Admin::TutorialsController < Admin::BaseController
     @tutorial = Tutorial.find(params[:id])
   end
 
-  def create; end
+  def create
+    @tutorial = Tutorial.create(create_params)
+    if @tutorial.save
+      flash[:success] = "Successfully created tutorial!"
+      redirect_to "/tutorials/#{@tutorial.id}"
+    else
+      flash[:error] = @tutorial.errors.full_messages.to_sentence
+      render :new
+    end
+  end
 
   def new
     @tutorial = Tutorial.new
@@ -19,9 +28,20 @@ class Admin::TutorialsController < Admin::BaseController
     redirect_to edit_admin_tutorial_path(tutorial)
   end
 
+  def destroy
+    tutorial = Tutorial.find(params[:id])
+    tutorial.destroy
+    redirect_to '/admin/dashboard'
+    flash[:success] = 'You have successfully deleted the tutorial'
+  end
+
   private
 
   def tutorial_params
     params.require(:tutorial).permit(:tag_list)
+  end
+
+  def create_params
+    params.require(:tutorial).permit(:title, :description, :thumbnail)
   end
 end

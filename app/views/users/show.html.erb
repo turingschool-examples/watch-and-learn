@@ -15,12 +15,38 @@
       <h3>Github</h3>
       <section class= 'repos'>
         <h4>Your Github Repos</h4>
-        <% github_facade.repos.each do |repo| %>
-            <p>Name: <%= link_to repo.name, repo.html_url %></p>
+        <table>
+          <% github_facade.repos.each do |repo| %>
+            <tr>
+              <td><%= link_to repo.name, repo.html_url %></td>
+            </tr>
+          <% end %>
+      </table>
+      </section>
+      <section class= 'followers'>
+        <h4>Your Github Followers</h4>
+        <table>
+        <% github_facade.following.each do |user| %>
+          <tr>
+            <td><%= image_tag user.picture, class: 'profile-image' %></td>
+            <td><p>Name: <%= link_to user.name, user.link %></p></td>
+          </tr>
         <% end %>
+      </table>
+      </section>
+      <section class= 'following'>
+        <h4>Github Users You Follow</h4>
+        <table>
+        <% github_facade.followers.each do |user| %>
+          <tr>
+            <td><%= image_tag user.picture, class: 'profile-image' %></td>
+            <td><p>Name: <%= link_to user.name, user.link %></p></td>
+          </tr>
+        <% end %>
+      </table>
       </section>
     </section>
     <% else %>
-      <%= link_to "Connect to Github", "/auth/github", method: :get %>
+      <%= link_to "Connect to Github", "/auth/github", method: :get, class: "btn btn-primary mb1 bg-teal" %>
   <% end %>
 </section>

@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Admin::VideosController < Admin::BaseController
   def edit
     @video = Video.find(params[:video_id])
@@ -22,9 +20,6 @@ class Admin::VideosController < Admin::BaseController
     end
     redirect_to edit_admin_tutorial_path(id: tutorial.id)
   end
-
-  # Sorry about this. We should get more specific instead of swallowing
-  # all errors. This message references line 21
 
   private
 

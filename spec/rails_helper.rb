@@ -18,6 +18,9 @@ VCR.configure do |config|
   config.hook_into :webmock
   config.configure_rspec_metadata!
   config.filter_sensitive_data('<YOUTUBE_API_KEY>') { ENV['YOUTUBE_API_KEY'] }
+  config.filter_sensitive_data('<GITHUB_USER_TOKEN>') { ENV['GITHUB_USER_TOKEN'] }
+  config.filter_sensitive_data('<CLIENT_ID>') { ENV['CLIENT_ID'] }
+  config.filter_sensitive_data('<CLIENT_SECRET>') { ENV['CLIENT_SECRET'] }
 end
 
 ActiveRecord::Migration.maintain_test_schema!
@@ -32,7 +35,11 @@ Capybara.configure do |config|
   config.default_max_wait_time = 5
 end
 
-SimpleCov.start 'rails'
+SimpleCov.start do
+  add_filter "app/channels"
+  add_filter "app/jobs"
+  add_filter "app/mailers/application_mailer"
+end
 
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|
