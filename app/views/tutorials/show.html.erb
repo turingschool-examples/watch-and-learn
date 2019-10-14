@@ -3,6 +3,10 @@
 <h1 id="message"></h1>
 <div class="col col-4">
   <h4>Videos</h4>
+  <!-- < % binding.pry %> -->
+  <% if @facade.videos.empty? %>
+  <p> There are currently no videos available for this tutorial. </p>
+  <% else %>
   <ul>
     <% @facade.videos.each do |video| %>
       <li>
@@ -65,5 +69,5 @@
     <%= link_to "More", "#", "data-action" => "click->tutorials#showDescription", id: @facade.current_video.id, class: "show-link"%>
   </p>
 </div>
-
+<% end %>
 </main>
