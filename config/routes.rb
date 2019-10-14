@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   get '/auth/github/callback', to: "users#github_auth"
   # might need to make route for auth/failure if problems with heroku
 
+  get '/register/:id', to: "users#register_email"
+
   namespace :admin do
     get '/dashboard', to: 'dashboard#show'
     resources :tutorials, only: %i[create edit update destroy new] do

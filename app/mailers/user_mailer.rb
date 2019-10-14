@@ -1,12 +1,7 @@
 class UserMailer < ApplicationMailer
-  default from: 'no-reply@brownfield.com'
-
-  def registration_email(user, email)
-    # might be unecessary
-    # @user = params[:user]
+  def registration_email(user, url)
     @user = user
-    # maybe change to just /dashboard
-    @url = "http://localhost:3000/dashboard"
-    mail(to: email, subject: 'Brownfield Account Confirmation')
+    @url = url
+    mail(to: user.email, subject: "Activate your Account")
   end
 end
