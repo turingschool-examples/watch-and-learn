@@ -29,6 +29,8 @@ describe 'email activation' do
 
     visit "register/#{user.id}"
 
+    user = User.last
+
     expect(page).to have_content("Thank you! Your account is now activated.")
     expect(user.account_registered).to eq(true)
 

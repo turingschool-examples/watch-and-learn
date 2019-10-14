@@ -30,6 +30,11 @@ class UsersController < ApplicationController
     redirect_to dashboard_path
   end
 
+  def register_email
+    user = User.find(params[:id])
+    user.update_attribute(:account_registered, true)
+  end
+
   private
 
   def user_params
