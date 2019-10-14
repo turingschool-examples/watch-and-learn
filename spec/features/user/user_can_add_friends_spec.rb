@@ -16,9 +16,9 @@ describe 'A registered user' do
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
     visit "/dashboard"
-    expect(page).to have_content("leiyakenney || Add as Friend")
-    expect(page).to have_link("Add as Friend")
-    click_link("Add as Friend")
+    #expect(page).to have_content("leiyakenney || Add as Friend")
+    expect(page).to have_button("Add as Friend")
+    click_button("Add as Friend")
     expect(page).to have_content("My Friends")
     expect(page).to have_content("My Friends\nLeiya Kenney")
   end
