@@ -39,11 +39,12 @@ describe 'user friendships' do
         click_button "Add Friend"
       end
     end
+    # binding.pry
+    expect(user.friendships.first.friendship_user_id).to eq(follower_user.id)
 
-    expect(user.friendships.first).to eq(follower_user.id)
-
-    within "#follower-#{follower_user.id}" do
+    within "#follower-#{follower_user.github_id}" do
       expect(page).to_not have_button("Add Friend")
     end
+
   end
 end
