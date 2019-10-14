@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(version: 2018_07_31_230036) do
     t.string "github_token"
     t.string "password_digest"
     t.integer "role", default: 0
+    t.boolean "account_registered", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email"

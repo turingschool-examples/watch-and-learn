@@ -15,6 +15,10 @@ class UsersController < ApplicationController
     user = User.create(user_params)
     if user.save
       session[:user_id] = user.id
+      url = server_origin
+      UserMailer.registration_email(user, url).deliver_now
+      flash[:success] = "Logged in as #{user.first_name}."
+
       redirect_to dashboard_path
     else
       flash[:error] = 'Username already exists'
@@ -27,6 +31,11 @@ class UsersController < ApplicationController
     redirect_to dashboard_path
   end
 
+  def register_email
+    user = User.find(params[:id])
+    user.update_attribute(:account_registered, true)
+  end
+
   private
 
   def user_params
@@ -35,5 +44,9 @@ class UsersController < ApplicationController
 
   def github_token
     request.env["omniauth.auth"]["credentials"]["token"]
+  end
+
+  def server_origin
+    request.env["HTTP_ORIGIN"]
   end
 end

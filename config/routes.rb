@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   get '/auth/github', as: :github_login
   get '/auth/github/callback', to: "users#github_auth"
 
+  get '/register/:id', to: "users#register_email"
+
   namespace :admin do
     get '/dashboard', to: 'dashboard#show'
     resources :tutorials, only: %i[create edit update destroy new] do
