@@ -30,7 +30,7 @@
       <% followers.each do |follower| %>
         <td class="followers_name_and_link"><%= link_to follower.name, follower.url %></td>
         <% if (find_associated_user(follower.uid).nil? == false) && (find_associated_user(follower.uid).github_username?) && (find_associated_user(follower.uid).github_username == follower.uid) %>
-          || <%= link_to "Add as Friend", "/" %>
+          || <%= button_to "Add as Friend", "/user/#{@current_user.id}/followings/#{find_associated_user(follower.uid).id}", method: 'post' %>
         <% end %>
         <br>
       <% end %>
@@ -39,6 +39,12 @@
       <% followed_accounts.each do |followed_account| %>
         <p class="following_name_and_link"><%= link_to followed_account.name, followed_account.url %></p>
       <% end %>
+      <% if @current_user.followings != [] %>
+      <h4>My Friends</h4>
+        <% @current_user.followings.each do |friendship| %>
+        <%= friendship.followed_user.first_name %> <%= friendship.followed_user.last_name %>
+      <% end %>
+    <% end %>
     </section>
   <% else %>
     <div class="btn btn-primary mb1 bg-teal">
