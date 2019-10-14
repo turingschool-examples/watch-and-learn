@@ -1,5 +1,5 @@
 class GithubUser
-  attr_reader :login, :html_url
+  attr_reader :github_id, :login, :html_url
 
   def initialize(github_user_hash)
     @github_id = github_user_hash[:id]

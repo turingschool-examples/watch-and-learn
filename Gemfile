@@ -46,6 +46,7 @@ group :development, :test do
   gem 'vcr'
   gem 'webdrivers'
   gem 'webmock'
+  gem 'active_designer'
 end
 
 group :development do

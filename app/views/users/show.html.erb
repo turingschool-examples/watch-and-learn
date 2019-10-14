@@ -22,10 +22,13 @@
     <section class="github-followers">
       <ul>
       <% @facades.follower_data.each do |follower| %>
-        <li><%= link_to follower.login, follower.html_url %></li>
-        <% if follower.is_user?  %>
-        <li><%= link_to Add Friend, friendship_path(current_user, follower) %></li>
-        <% end %>
+        <section id="follower-<%= follower.github_id %>">
+        <li><%= link_to follower.login, follower.html_url %>
+          <% if follower.is_user?  %>
+            <%= button_to "Add Friend",  %>
+          <% end %>
+        </li>
+        </section>
       <% end %>
     </ul>
     </section>
