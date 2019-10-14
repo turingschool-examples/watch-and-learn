@@ -1,5 +1,14 @@
 # frozen_string_literal: true
 
+no_video_tutorial_data = {
+  'title' => 'No Video Test',
+  'description' => 'Test tutorial without videos.',
+  'thumbnail' => 'https://img.etimg.com/thumb/msid-69533333,width-643,imgsize-35861,resizemode-4/youtube-on-android-may-get-bigger-better-video-streaming-giant-tests-enlarged-play-cancel-buttons.jpg',
+  'classroom' => false
+}
+no_video_tutorial = Tutorial.create! no_video_tutorial_data
+
+
 prework_tutorial_data = {
   'title' => 'Back End Engineering - Prework',
   'description' => 'Videos for prework.',
