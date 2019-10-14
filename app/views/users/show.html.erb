@@ -39,10 +39,10 @@
       <% followed_accounts.each do |followed_account| %>
         <p class="following_name_and_link"><%= link_to followed_account.name, followed_account.url %></p>
       <% end %>
-      <% if @current_user.followings != [] %>
+      <% if @current_user.friendships != [] %>
       <h4>My Friends</h4>
-        <% @current_user.followings.each do |friendship| %>
-        <%= friendship.followed_user.first_name %> <%= friendship.followed_user.last_name %>
+        <% @current_user.friendships.each do |friendship| %>
+        <%= friendship.friend.first_name %> <%= friendship.friend.last_name %>
       <% end %>
     <% end %>
     </section>
