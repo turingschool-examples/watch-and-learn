@@ -7,7 +7,7 @@ class Admin::TutorialsController < Admin::BaseController
 
   def create
      @tutorial = Tutorial.create!(tutorial_params)
-     video = @tutorial.videos.create!(video_params)
+     # video = @tutorial.videos.create!(tutorial_params[:video_attributes])
      # binding.pry
      redirect_to tutorial_path(@tutorial)
   end
@@ -27,7 +27,7 @@ class Admin::TutorialsController < Admin::BaseController
   private
 
   def tutorial_params
-    params.require(:tutorial).permit(:tag_list, :title, :description, :thumbnail)
+    params.require(:tutorial).permit(:tag_list, :title, :description, :thumbnail, :playlist_id, video_attributes: [:title, :description, :video_id, :thumbnail])
   end
 
   def video_params
