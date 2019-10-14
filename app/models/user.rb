@@ -8,11 +8,11 @@ class User < ApplicationRecord
   validates_presence_of :password_digest
   validates_presence_of :first_name
 
-  has_many :followings
-  has_many :followed_users, through: :followings
+  has_many :friendships
+  has_many :friends, through: :friendships
 
-  has_many :followers, foreign_key: :followed_user_id, class_name: 'Following'
-  has_many :follower_users, through: :followers, source: :user
+  #has_many :followers, foreign_key: :followed_user_id, class_name: 'Following'
+  #has_many :follower_users, through: :followers, source: :user
 
   enum role: %i[default admin]
   has_secure_password
