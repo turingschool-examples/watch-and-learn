@@ -38,10 +38,10 @@ describe 'A registered user' do
     tutorial = create(:tutorial)
     tutorial_2 = create(:tutorial)
     tutorial_3 = create(:tutorial)
-    video = create(:video, tutorial_id: tutorial.id)
-    video_2 = create(:video, tutorial_id: tutorial_2.id)
-    video_3 = create(:video, tutorial_id: tutorial_3.id)
-    video_4 = create(:video, tutorial_id: tutorial_3.id)
+    video = create(:video, tutorial_id: tutorial.id, position: 1)
+    video_2 = create(:video, tutorial_id: tutorial_2.id, position: 1)
+    video_3 = create(:video, tutorial_id: tutorial_3.id, position: 2)
+    video_4 = create(:video, tutorial_id: tutorial_3.id, position: 1)
     user = create(:user)
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
@@ -64,13 +64,8 @@ describe 'A registered user' do
     expect(page).to have_content(video_3.title)
     expect(page).to have_content(video_4.title)
 
-    within "tutorial" do
-      expect(page).to have_content(video.title)
-    end
+    expected_order = "Tutorial #{tutorial.id}\n#{video.title}\nTutorial #{tutorial_2.id}\n#{video_2.title}\nTutorial #{tutorial_3.id}\n#{video_4.title} #{video_3.title}"
 
-    within "tutorial_3" do
-      expect(page).to have_content(video_3.title)
-      expect(page).to have_content(video_4.title)
-    end
+    expect(page).to have_content(expected_order)
   end
 end
