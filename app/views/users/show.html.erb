@@ -30,7 +30,7 @@
       <% followers.each do |follower| %>
         <td class="followers_name_and_link"><%= link_to follower.name, follower.url %></td>
         <% if (find_associated_user(follower.uid).nil? == false) && (find_associated_user(follower.uid).github_username?) && (find_associated_user(follower.uid).github_username == follower.uid) %>
-          || <%= button_to "Add as Friend", "/user/#{@current_user.id}/followings/#{find_associated_user(follower.uid).id}", method: 'post' %>
+          || <%= button_to "Add as Friend", "/user/#{@current_user.id}/friendships/#{find_associated_user(follower.uid).id}", method: 'post' %>
         <% end %>
         <br>
       <% end %>
