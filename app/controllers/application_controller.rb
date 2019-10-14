@@ -5,8 +5,13 @@ class ApplicationController < ActionController::Base
   helper_method :find_bookmark
   helper_method :list_tags
   helper_method :tutorial_name
+  helper_method :find_associated_user
 
   add_flash_types :success
+
+  def find_associated_user(follower_name)
+    user = User.find_by(github_username: follower_name)
+  end
 
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
