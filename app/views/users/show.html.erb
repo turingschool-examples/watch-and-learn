@@ -25,7 +25,7 @@
         <section id="follower-<%= follower.github_id %>">
         <li><%= link_to follower.login, follower.html_url %>
           <% if follower.is_user?  %>
-            <%= button_to "Add Friend",  %>
+            <%= button_to "Add Friend", "/friendships/#{current_user.id}/#{follower.github_id}" %>
           <% end %>
         </li>
         </section>

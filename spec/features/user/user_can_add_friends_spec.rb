@@ -22,14 +22,14 @@ describe 'user friendships' do
   it "can add user's GitHub friends" do
     user = create(:user, github_id: 123, github_token: ENV["GITHUB_API_KEY"])
     follower_user = create(:user, github_id: 36523304)
-    non_user_follower = GithubUser.new({github_id: 456,
-                                        login: "non_user",
-                                        html_url: "https://github.com/tschaffer1618" })
+    non_user_follower = GithubUser.new({id: "47948268",
+                                        login: "matthewdshepherd",
+                                        html_url: "https://github.com/matthewdshepherd" })
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
     visit dashboard_path
-    save_and_open_page
+
     within ".github-followers" do
       within "#follower-#{non_user_follower.github_id}" do
         expect(page).to_not have_button("Add Friend")
