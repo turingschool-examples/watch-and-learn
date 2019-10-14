@@ -12,11 +12,23 @@ describe 'A registered user' do
 
     #tutorial = create(:tutorial, title: 'How to Tie Your Shoes', classroom: false)
     user = create(:user, github_token: ENV["GITHUB_API_KEY"], github_username: 49769068)
-    user_2 = create(:user, github_token: ENV["LEIYA_GITHUB_API_KEY"], github_username: 45922590)
+    user_2 = create(:user, github_token: ENV["LEIYA_GITHUB_API_KEY"], github_username: 45922590, first_name: "Leiya", last_name: "Kenney")
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
     visit "/dashboard"
     expect(page).to have_content("leiyakenney || Add as Friend")
     expect(page).to have_link("Add as Friend")
+    click_link("Add as Friend")
+    expect(page).to have_content("My Friends")
+    expect(page).to have_content("My Friends\nLeiya Kenney")
   end
+
+  # it 'has a following' do
+  #   #tutorial = create(:tutorial, title: 'How to Tie Your Shoes', classroom: false)
+  #   user = create(:user, github_token: ENV["GITHUB_API_KEY"], github_username: 49769068)
+  #   user_2 = create(:user, github_token: ENV["LEIYA_GITHUB_API_KEY"], github_username: 45922590)
+  #   following = Following.create!(user_id: user.id, followed_user_id: user_2.id)
+  #
+  #   binding.pry
+  # end
 end
