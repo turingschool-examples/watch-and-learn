@@ -7,9 +7,15 @@
     <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
     <li> <%= current_user.email%> </li>
   </ul>
-  <section>
-    <h3>Bookmarked Segments</h3>
-  </section>
+  <h3>Bookmarked Segments</h3>
+  <% @bookmarks.each do |bookmark| %>
+    <h2>Tutorial <%= bookmark[0] %></h2>
+    <% bookmark[1].each do |bookmark_array| %>
+    <%= bookmark_array.title %>
+    <br>
+    <% end %>
+      <br><br>
+  <% end %>
 
 
   <% if @current_user.github_token? %>
