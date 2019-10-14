@@ -15,7 +15,8 @@ class UsersController < ApplicationController
     user = User.create(user_params)
     if user.save
       session[:user_id] = user.id
-      UserMailer.registration_email(user).deliver_now
+      url = server_origin
+      UserMailer.registration_email(user, url).deliver_now
       flash[:success] = "Logged in as #{user.first_name}."
 
       redirect_to dashboard_path
@@ -43,5 +44,9 @@ class UsersController < ApplicationController
 
   def github_token
     request.env["omniauth.auth"]["credentials"]["token"]
+  end
+
+  def server_origin
+    request.env["HTTP_ORIGIN"]
   end
 end
