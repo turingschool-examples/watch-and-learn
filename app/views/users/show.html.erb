@@ -9,6 +9,15 @@
   </ul>
 
   <% if current_user.github_token? %>
+
+    <% unless current_user.friendship_users.empty? %>
+    <section class="friends">
+      <h3> Friends </h3>
+      <% current_user.friendship_users.each do |user|%>
+        <%= user.first_name%>
+      <% end %>
+    </section>
+    <% end %>
   <h3>Github</h3>
     <h4>Github Repositories</h4>
     <section class="github-repositories">
