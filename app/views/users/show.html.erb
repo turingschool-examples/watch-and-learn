@@ -24,7 +24,7 @@
       <% @facades.follower_data.each do |follower| %>
         <section id="follower-<%= follower.github_id %>">
         <li><%= link_to follower.login, follower.html_url %>
-          <% if follower.is_user?  %>
+          <% if follower.is_user? && follower.not_already_added? %>
             <%= button_to "Add Friend", "/friendships/#{current_user.id}/#{follower.github_id}" %>
           <% end %>
         </li>
