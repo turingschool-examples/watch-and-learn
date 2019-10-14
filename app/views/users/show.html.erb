@@ -23,6 +23,9 @@
       <ul>
       <% @facades.follower_data.each do |follower| %>
         <li><%= link_to follower.login, follower.html_url %></li>
+        <% if follower.is_user? %>
+        <li><%= link_to Add Friend %></li>
+        <% end %>
       <% end %>
     </ul>
     </section>
