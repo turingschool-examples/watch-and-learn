@@ -3,23 +3,7 @@
 class UsersController < ApplicationController
   def show
     @current_user = current_user
-    # binding.pry
-    # @bookmarks = @current_user.user_videos
-    #                           .joins(:video)
-    #                           .group("videos.tutorial_id")
-    #                           .order("videos.position")
-
-      @bookmarks =            @current_user.videos
-                              .select("videos.tutorial_id, videos.title, videos.position")
-                              .order(:position)
-                              .group_by(&:tutorial_id)
-
-                              # .where("user_videos.user_id = #{@current_user.id}")
-      # @bookmarks = @current_user.videos
-      #                           .joins(:users)
-      #                           .select("videos.id, videos.title, videos.tutorial_id, user_videos.*, users.id")
-      #                           .group(:tutorial_id)
-
+    @bookmarks = @current_user.videos.ordered_grouped_videos
 
     if @current_user.github_token?
       render locals: {
