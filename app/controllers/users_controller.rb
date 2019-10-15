@@ -37,8 +37,28 @@ class UsersController < ApplicationController
     user.update_attribute(:account_registered, true)
   end
 
-  private
+  def invite_guest
+  end
 
+  def send_guest_invite
+    @facade = UserFacade.new(current_user)
+
+    guest = @facade.find_github_user_data(params["github_handle"])
+
+    if guest.not_exist?
+      flash[:error] = "The GitHub username you have entered is invalid."
+      redirect_to invite_path
+    elsif guest.email?
+      UserMailer.invite_guest(current_user, guest, server_origin).deliver_now
+      redirect_to dashboard_path
+      flash[:success] = "Successfully sent invite!"
+    else
+      redirect_to dashboard_path
+      flash[:error] = "The Github user you selected doesn't have an email address associated with their account."
+    end
+  end
+
+  private
   def user_params
     params.require(:user).permit(:email, :first_name, :last_name, :password)
   end
@@ -52,6 +72,7 @@ class UsersController < ApplicationController
   end
 
   def server_origin
-    request.env["HTTP_ORIGIN"]
+    #was calling "HTTP_ORIGIN". May need to fix in production
+    request.env["HTTP_HOST"]
   end
 end
