@@ -33,7 +33,7 @@
       <% @facades.follower_data.each do |follower| %>
         <section id="follower-<%= follower.github_id %>">
         <li><%= link_to follower.login, follower.html_url %>
-          <% if follower.is_user? && follower.not_already_added? %>
+          <% if follower.show_add_friend_button? %>
             <%= button_to "Add Friend", "/friendships/#{current_user.id}/#{follower.github_id}" %>
           <% end %>
         </li>
@@ -45,7 +45,13 @@
     <section class="github-following">
       <ul>
       <% @facades.following_data.each do |following| %>
-        <li><%= link_to following.login, following.html_url %></li>
+        <section id="following-<%= following.github_id %>">
+        <li><%= link_to following.login, following.html_url %>
+          <% if following.show_add_friend_button? %>
+            <%= button_to "Add Friend", "/friendships/#{current_user.id}/#{following.github_id}" %>
+          <% end %>
+        </li>
+        </section>
       <% end %>
     </ul>
     </section>
