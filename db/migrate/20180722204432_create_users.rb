@@ -7,6 +7,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string  :first_name
       t.string  :last_name
       t.string  :github_token
+      t.string  :github_id
       t.string  :password_digest
       t.integer :role, default: 0
 

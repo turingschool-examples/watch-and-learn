@@ -24,6 +24,8 @@ class UsersController < ApplicationController
 
   def github_auth
     current_user.update_attribute(:github_token, github_token)
+    current_user.update_attribute(:github_id, github_id)
+
     redirect_to dashboard_path
   end
 
@@ -35,5 +37,9 @@ class UsersController < ApplicationController
 
   def github_token
     request.env["omniauth.auth"]["credentials"]["token"]
+  end
+
+  def github_id
+    request.env["omniauth.auth"]["uid"]
   end
 end

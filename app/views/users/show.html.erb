@@ -9,6 +9,15 @@
   </ul>
 
   <% if current_user.github_token? %>
+
+    <% unless current_user.friendship_users.empty? %>
+    <section class="friends">
+      <h3> Friends </h3>
+      <% current_user.friendship_users.each do |user|%>
+        <%= user.first_name%>
+      <% end %>
+    </section>
+    <% end %>
   <h3>Github</h3>
     <h4>Github Repositories</h4>
     <section class="github-repositories">
@@ -22,7 +31,13 @@
     <section class="github-followers">
       <ul>
       <% @facades.follower_data.each do |follower| %>
-        <li><%= link_to follower.login, follower.html_url %></li>
+        <section id="follower-<%= follower.github_id %>">
+        <li><%= link_to follower.login, follower.html_url %>
+          <% if follower.is_user? && follower.not_already_added? %>
+            <%= button_to "Add Friend", "/friendships/#{current_user.id}/#{follower.github_id}" %>
+          <% end %>
+        </li>
+        </section>
       <% end %>
     </ul>
     </section>
