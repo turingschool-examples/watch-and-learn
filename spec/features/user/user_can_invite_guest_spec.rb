@@ -34,7 +34,7 @@ describe "invite guest" do
   end
 
   it "invited guest does not have email associated with github" do
-    skip
+
     user = create(:user, github_id: 123, github_token: ENV["GITHUB_API_KEY"])
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
@@ -55,7 +55,7 @@ describe "invite guest" do
   end
 
   it "searched github handle does not exist" do
-    skip
+    
     user = create(:user, github_id: 123, github_token: ENV["GITHUB_API_KEY"])
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)

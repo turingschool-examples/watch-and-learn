@@ -22,4 +22,12 @@ class GithubUser
 
     return true if friendship == nil
   end
+
+  def email?
+    email.present?
+  end
+
+  def not_exist?
+    !github_id.present?
+  end
 end
