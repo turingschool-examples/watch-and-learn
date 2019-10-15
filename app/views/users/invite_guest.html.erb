@@ -1,0 +1,8 @@
+<div class="invite-user">
+  <section>
+    <%= form_tag "/send_guest_invite", method: :get do %>
+      <%= text_field_tag :github_handle, nil, placeholder: "GitHub Handle" %>
+      <%= submit_tag "Send Invite" %>
+    <% end %>
+  </section>
+</div>

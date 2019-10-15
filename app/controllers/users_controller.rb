@@ -37,6 +37,18 @@ class UsersController < ApplicationController
     user.update_attribute(:account_registered, true)
   end
 
+  def invite_guest
+  end
+
+  def send_guest_invite
+    @facade = UserFacade.new(current_user)
+
+    @facade.find_github_user_data(params["github_handle"])
+
+    UserMailer.registration_email(user, url).deliver_now
+    redirect_to dashboard_path
+  end
+
   private
 
   def user_params
