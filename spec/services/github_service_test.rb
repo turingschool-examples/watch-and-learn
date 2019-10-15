@@ -46,4 +46,18 @@ describe 'github api service' do
     expect(raw_data.first).to have_key(:login)
     expect(raw_data.first).to have_key(:html_url)
   end
+
+  it "search user by login" do
+    user = create(:user, github_token: ENV["GITHUB_API_KEY"])
+
+    service = GithubApiService.new
+
+    raw_data = service.search_user_login(user, "mackhalliday")
+
+    expect(service).to be_a(GithubApiService)
+    expect(raw_data).to be_a(Hash)
+
+    expect(raw_data).to have_key(:login)
+    expect(raw_data).to have_key(:email)
+  end
 end
