@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   get '/register', to: 'users#new'
   get '/auth/github', as: :github_login
   get '/auth/github/callback', to: "users#github_auth"
+  # might need to make route for auth/failure if problems with heroku
+
+  get '/register/:id', to: "users#register_email"
 
   # resources :friendships, only: [:create]
 

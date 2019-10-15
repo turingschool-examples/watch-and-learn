@@ -2,6 +2,13 @@
   <h1> <%= current_user.first_name %>'s Dashboard </h1>
 
   <%= button_to 'Log Out', logout_path, method: 'delete', class: "btn btn-primary mb1 bg-teal" %>
+
+  <% if current_user.account_registered? %>
+    <p> Status: Active </p>
+  <% else %>
+    <h3> This account has not yet been activated. Please check your email. </h3>
+  <% end %>
+
   <h3>Account Details</h3>
   <ul>
     <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
@@ -33,7 +40,7 @@
       <% @facades.follower_data.each do |follower| %>
         <section id="follower-<%= follower.github_id %>">
         <li><%= link_to follower.login, follower.html_url %>
-          <% if follower.is_user? && follower.not_already_added? %>
+          <% if follower.show_add_friend_button? %>
             <%= button_to "Add Friend", "/friendships/#{current_user.id}/#{follower.github_id}" %>
           <% end %>
         </li>
@@ -45,7 +52,13 @@
     <section class="github-following">
       <ul>
       <% @facades.following_data.each do |following| %>
-        <li><%= link_to following.login, following.html_url %></li>
+        <section id="following-<%= following.github_id %>">
+        <li><%= link_to following.login, following.html_url %>
+          <% if following.show_add_friend_button? %>
+            <%= button_to "Add Friend", "/friendships/#{current_user.id}/#{following.github_id}" %>
+          <% end %>
+        </li>
+        </section>
       <% end %>
     </ul>
     </section>

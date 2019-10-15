@@ -19,7 +19,7 @@ describe 'user friendships' do
     .to_return(status: 200, body: following_json_response)
   end
 
-  it "can add user's GitHub friends" do
+  it "can add user's GitHub friends who is follower" do
     user = create(:user, github_id: 123, github_token: ENV["GITHUB_API_KEY"])
     follower_user = create(:user, github_id: 36523304)
     non_user_follower = GithubUser.new({id: "47948268",
@@ -40,16 +40,44 @@ describe 'user friendships' do
       end
     end
 
-    # expect(user.friendships.first.friendship_user_id).to eq(follower_user.id)
-
     within "#follower-#{follower_user.github_id}" do
       expect(page).to_not have_button("Add Friend")
     end
-  
+
     within ".friends" do
       expect(page).to have_content("Friends")
       expect(page).to have_content(follower_user.first_name)
     end
+  end
 
+  it "can add user's GitHub friends who is following" do
+    user = create(:user, github_id: 123, github_token: ENV["GITHUB_API_KEY"])
+    following_user = create(:user, github_id: 23268508)
+    non_user_following = GithubUser.new({id: "24374609",
+                                        login: "corneliusellen",
+                                        html_url: "https://github.com/corneliusellen" })
+
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+    visit dashboard_path
+
+    within ".github-following" do
+      within "#following-#{non_user_following.github_id}" do
+        expect(page).to_not have_button("Add Friend")
+      end
+
+      within "#following-#{following_user.github_id}" do
+        click_button "Add Friend"
+      end
+    end
+
+    within "#following-#{following_user.github_id}" do
+      expect(page).to_not have_button("Add Friend")
+    end
+
+    within ".friends" do
+      expect(page).to have_content("Friends")
+      expect(page).to have_content(following_user.first_name)
+    end
   end
 end

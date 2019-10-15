@@ -7,12 +7,15 @@ class GithubUser
     @html_url = github_user_hash[:html_url]
   end
 
+  def show_add_friend_button?
+    is_user? && not_already_added?
+  end
+
   def is_user?
     User.find_by(github_id: @github_id)
   end
 
   def not_already_added?
-
     friend = User.find_by(github_id: self.github_id)
     friendship = Friendship.find_by(friendship_user_id: friend.id)
 
