@@ -23,28 +23,28 @@ prework_tutorial.videos.create!(
   'description' => Faker::Hipster.paragraph(2, true),
   'video_id' => 'qMkRHW9zE1c',
   'thumbnail' => 'https://i.ytimg.com/vi/qMkRHW9zE1c/hqdefault.jpg',
-  'position' => 1
+  'position' => nil
 )
 prework_tutorial.videos.create!(
   'title' => 'Prework - SSH Key Setup',
   'description' => Faker::Hipster.paragraph(2, true),
   'video_id' => 'XsPVWGKK0qI',
   'thumbnail' => 'https://i.ytimg.com/vi/XsPVWGKK0qI/hqdefault.jpg',
-  'position' => 2
+  'position' => 1
 )
 prework_tutorial.videos.create!(
   'title' => 'Prework - Strings',
   'description' => Faker::Hipster.paragraph(2, true),
   'video_id' => 'iXLwXvev4X8',
   'thumbnail' => 'https://i.ytimg.com/vi/iXLwXvev4X8/hqdefault.jpg',
-  'position' => 3
+  'position' => 2
 )
 prework_tutorial.videos.create!(
   'title' => 'Prework - Arrays',
   'description' => Faker::Hipster.paragraph(2, true),
   'video_id' => 'c2UnIQ3LRnM',
   'thumbnail' => 'https://i.ytimg.com/vi/c2UnIQ3LRnM/hqdefault.jpg',
-  'position' => 4
+  'position' => 3
 )
 
 mod_1_tutorial_data = {
