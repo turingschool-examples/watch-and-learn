@@ -12,13 +12,11 @@ class GithubUser
   end
 
   def is_user?
-    User.find_by(github_id: @github_id)
+    User.find_by(github_id: github_id)
   end
 
   def not_already_added?
-    friend = User.find_by(github_id: self.github_id)
-    friendship = Friendship.find_by(friendship_user_id: friend.id)
-
-    return true if friendship == nil
+    friend = User.find_by(github_id: github_id)
+    !Friendship.where(friendship_user_id: friend.id).exists?
   end
 end

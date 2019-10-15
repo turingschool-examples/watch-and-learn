@@ -8,6 +8,14 @@ describe 'A registered user' do
     video = create(:video, title: 'The Bunny Ears Technique', tutorial: tutorial)
     user = create(:user)
 
+    visit tutorial_path(tutorial)
+
+    expect(page).to_not have_button("Bookmark")
+
+    click_link('Please Login to Bookmark')
+
+    expect(current_path).to eq(login_path)
+
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
     visit tutorial_path(tutorial)
