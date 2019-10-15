@@ -21,14 +21,19 @@ describe 'A registered user' do
     click_button("Add as Friend")
     expect(page).to have_content("My Friends")
     expect(page).to have_content("My Friends\nLeiya Kenney")
+
+    expect(page).to have_button("Add as Friend")
+    click_button("Add as Friend")
+    expect(page).to have_content("You are already friends with this person")
   end
 
   # it 'has a following' do
   #   #tutorial = create(:tutorial, title: 'How to Tie Your Shoes', classroom: false)
   #   user = create(:user, github_token: ENV["GITHUB_API_KEY"], github_username: 49769068)
   #   user_2 = create(:user, github_token: ENV["LEIYA_GITHUB_API_KEY"], github_username: 45922590)
-  #   following = Following.create!(user_id: user.id, followed_user_id: user_2.id)
-  #
-  #   binding.pry
+  #   allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+  #   following = Friendship.create!(user_id: user.id, friend_id: user_2.id)
+  #   following_2 = Friendship.create!(user_id: user_2.id, friend_id: user.id)
+  #   visit "/dashboard"
   # end
 end
