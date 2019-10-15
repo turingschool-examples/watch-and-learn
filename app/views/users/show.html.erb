@@ -37,7 +37,11 @@
 
     <h4>Followed Accounts</h4>
       <% followed_accounts.each do |followed_account| %>
-        <p class="following_name_and_link"><%= link_to followed_account.name, followed_account.url %></p>
+        <td class="following_name_and_link"><%= link_to followed_account.name, followed_account.url %></td>
+        <% if (find_associated_user(followed_account.uid).nil? == false) && (find_associated_user(followed_account.uid).github_username?) && (find_associated_user(followed_account.uid).github_username == followed_account.uid) %>
+          || <%= button_to "Add as Friend", "/user/#{@current_user.id}/friendships/#{find_associated_user(followed_account.uid).id}", method: 'post' %>
+        <% end %>
+        <br>
       <% end %>
       <% if @current_user.friendships != [] %>
       <h4>My Friends</h4>
