@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_31_230036) do
+ActiveRecord::Schema.define(version: 2019_10_14_205519) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "friendships", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.bigint "friendship_user_id"
+    t.index ["friendship_user_id"], name: "index_friendships_on_friendship_user_id"
+    t.index ["user_id", "friendship_user_id"], name: "index_friendships_on_user_id_and_friendship_user_id", unique: true
+    t.index ["user_id"], name: "index_friendships_on_user_id"
+  end
 
   create_table "taggings", id: :serial, force: :cascade do |t|
     t.integer "tag_id"
@@ -64,6 +74,7 @@ ActiveRecord::Schema.define(version: 2018_07_31_230036) do
     t.string "first_name"
     t.string "last_name"
     t.string "github_token"
+    t.string "github_id"
     t.string "password_digest"
     t.integer "role", default: 0
     t.boolean "account_registered", default: false
