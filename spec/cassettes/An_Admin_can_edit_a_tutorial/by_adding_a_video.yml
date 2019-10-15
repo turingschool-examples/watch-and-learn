@@ -19,9 +19,15 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Thu, 10 Oct 2019 20:32:48 GMT
+<<<<<<< HEAD
+      - Sat, 12 Oct 2019 20:35:27 GMT
       Date:
-      - Thu, 10 Oct 2019 20:32:48 GMT
+      - Sat, 12 Oct 2019 20:35:27 GMT
+=======
+      - Mon, 14 Oct 2019 01:19:50 GMT
+      Date:
+      - Mon, 14 Oct 2019 01:19:50 GMT
+>>>>>>> 51f259bec23d28a1e81ff50359e984797416d0ce
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
@@ -118,5 +124,9 @@ http_interactions:
          ]
         }
     http_version: 
-  recorded_at: Thu, 10 Oct 2019 20:32:48 GMT
+<<<<<<< HEAD
+  recorded_at: Sat, 12 Oct 2019 20:35:26 GMT
+=======
+  recorded_at: Mon, 14 Oct 2019 01:19:47 GMT
+>>>>>>> 51f259bec23d28a1e81ff50359e984797416d0ce
 recorded_with: VCR 4.0.0
