@@ -30,6 +30,8 @@ describe "invite guest" do
 
     visit dashboard_path
 
+    save_and_open_page
+
     within ".bookmark" do
       within "#tutorial-#{tutorial_1.id}" do
         expect(page).to have_link(video_1.title)
