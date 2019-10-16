@@ -39,7 +39,11 @@ class UserFacade
     GithubUser.new(user_hash)
   end
 
-  def user_tutorials
+  def bookmarked_videos_by_tutorial
     @current_user.videos.order('position ASC').group_by(&:tutorial_id)
+  end
+
+  def tutorial_video_objects
+    bookmarked_videos_by_tutorial.transform_keys { |key| Tutorial.find(key)}
   end
 end
