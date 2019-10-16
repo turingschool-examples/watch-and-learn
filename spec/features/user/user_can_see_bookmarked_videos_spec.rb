@@ -30,27 +30,25 @@ describe "invite guest" do
 
     visit dashboard_path
 
-    # /tutorials/3?video_id=5
-
     within ".bookmark" do
       within "#tutorial-#{tutorial_1.id}" do
-        expect(page).to have_link(video_1.name)
-        expect(page).to have_link(video_2.name)
-        expect(page).to have_link(video_3.name)
+        expect(page).to have_link(video_1.title)
+        expect(page).to have_link(video_2.title)
+        expect(page).to have_link(video_3.title)
       end
     end
 
     within ".bookmark" do
       within "#tutorial-#{tutorial_2.id}" do
-        expect(page).to have_link(video_4.name)
-        expect(page).to_not have_link(video_5.name)
-        expect(page).to_not have_link(video_6.name)
+        expect(page).to have_link(video_4.title)
+        expect(page).to_not have_link(video_5.title)
+        expect(page).to_not have_link(video_6.title)
       end
     end
 
     within ".bookmark" do
       within "#tutorial-#{tutorial_1.id}" do
-        click_link(video_1.name)
+        click_link(video_1.title)
       end
     end
 
