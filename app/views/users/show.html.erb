@@ -70,11 +70,11 @@
   <% end %>
   <section class="bookmark">
     <h1>Bookmarked Segments</h1>
-    <% @facades.user_tutorials.each do |tutorial| %>
+    <% @facades.tutorial_video_objects.each do |tutorial, videos| %>
       <section id="tutorial-<%= tutorial.id %>">
         <h5><%= tutorial.title %></h5>
-          <p><% tutorial.videos.each do |video| %></p>
-          <%= link_to video.title, tutorial_videos_path(tutorial, video) %>
+          <p><% videos.each do |video| %></p>
+          <%= link_to video.title, "/tutorials/#{tutorial.id}?video_id=#{video.id}" %>
         <% end %>
       </section>
     <% end %>
