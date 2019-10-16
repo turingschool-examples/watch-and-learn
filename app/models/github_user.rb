@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class GithubUser
   attr_reader :github_id, :login, :html_url, :email
 
@@ -17,10 +19,10 @@ class GithubUser
   end
 
   def not_already_added?
-    friend = User.find_by(github_id: self.github_id)
+    friend = User.find_by(github_id: github_id)
     friendship = Friendship.find_by(friendship_user_id: friend.id)
 
-    return true if friendship == nil
+    return true if friendship.nil?
   end
 
   def email?

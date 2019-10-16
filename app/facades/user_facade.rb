@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UserFacade
   attr_reader :service
 
@@ -12,7 +14,7 @@ class UserFacade
     end
   end
 
-  #refactor to make data passed through dynamtic
+  # refactor to make data passed through dynamtic
   def limit_repo_five
     all_repo_data.first(5)
   end

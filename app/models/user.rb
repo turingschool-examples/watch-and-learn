@@ -11,7 +11,6 @@ class User < ApplicationRecord
   enum role: %i[default admin]
   has_secure_password
 
-
   has_many :friendships
   has_many :friendship_users, through: :friendships
 
