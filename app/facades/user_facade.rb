@@ -14,7 +14,6 @@ class UserFacade
     end
   end
 
-  # refactor to make data passed through dynamtic
   def limit_repo_five
     all_repo_data.first(5)
   end
@@ -40,10 +39,7 @@ class UserFacade
     GithubUser.new(user_hash)
   end
 
-  def tutorials
-    binding.pry
-    @current_user.videos.group(:tutorial_id).count
-
-    # @current_user.tutorials
+  def user_tutorials
+    @current_user.videos.order('position ASC').group_by(&:tutorial_id)
   end
 end
