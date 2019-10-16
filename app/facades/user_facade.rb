@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UserFacade
   attr_reader :service
 
@@ -12,7 +14,6 @@ class UserFacade
     end
   end
 
-  #refactor to make data passed through dynamtic
   def limit_repo_five
     all_repo_data.first(5)
   end
@@ -31,5 +32,22 @@ class UserFacade
     @service.get_following_data(@current_user).map do |following_hash|
       GithubUser.new(following_hash)
     end
+  end
+
+  def find_github_user_data(github_login)
+    user_hash = @service.search_user_login(@current_user, github_login)
+    GithubUser.new(user_hash)
+  end
+
+  def users_bookmarked_videos
+    @current_user.videos.vidoes_by_tutorial
+  end
+
+  def tutorial_video_objects
+    users_bookmarked_videos.transform_keys { |key| Tutorial.find(key) }
+  end
+
+  def bookmarked_videos?
+    @current_user.videos.present?
   end
 end

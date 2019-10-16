@@ -15,6 +15,11 @@ class GithubApiService
     parsed_data = JSON.parse(json_response.body, symbolize_names: true)
   end
 
+  def search_user_login(user, github_login)
+    json_response = conn(user).get("users/#{github_login}")
+    parsed_data = JSON.parse(json_response.body, symbolize_names: true)
+  end
+
   def conn(user)
     Faraday.new(
       url: 'https://api.github.com/',

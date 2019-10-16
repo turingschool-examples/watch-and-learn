@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   # might need to make route for auth/failure if problems with heroku
 
   get '/register/:id', to: "users#register_email"
+  get '/invite', to: "users#invite_guest"
+  get '/send_guest_invite', to: "users#send_guest_invite"
 
   # resources :friendships, only: [:create]
 

@@ -1,4 +1,4 @@
-e# frozen_string_literal: true
+e # frozen_string_literal: true
 
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
@@ -18,22 +18,23 @@ gem 'webpacker', '~> 3.5'
 
 gem 'active_model_serializers'
 gem 'acts-as-taggable-on', '~> 6.0'
+gem 'devise'
 gem 'factory_bot_rails'
 gem 'faker'
 gem 'faraday'
-gem 'omniauth'
-gem 'devise'
 gem 'figaro'
 gem 'google-api-client'
 gem 'jquery'
+gem 'omniauth'
 gem 'omniauth-census', git: 'https://github.com/turingschool-projects/omniauth-census'
+gem 'omniauth-github'
 gem 'omniauth-google-oauth2'
 gem 'rubocop', '~> 0.75.0', require: false
 gem 'will_paginate'
 gem 'yt', '~> 0.29.1'
-gem 'omniauth-github'
 
 group :development, :test do
+  gem 'active_designer'
   gem 'awesome_print'
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'capybara'
@@ -48,7 +49,6 @@ group :development, :test do
   gem 'vcr'
   gem 'webdrivers'
   gem 'webmock'
-  gem 'active_designer'
 end
 
 group :development do

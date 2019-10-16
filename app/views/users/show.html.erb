@@ -16,7 +16,8 @@
   </ul>
 
   <% if current_user.github_token? %>
-
+    <section class="invite-guest">
+      <%= link_to "Send an Invite", invite_path %>
     <% unless current_user.friendship_users.empty? %>
     <section class="friends">
       <h3> Friends </h3>
@@ -67,7 +68,19 @@
       <%= button_to "Authorize GitHub", github_login_path %>
     </section>
   <% end %>
-  <section>
+  <section class="bookmark">
     <h1>Bookmarked Segments</h1>
+      <% if @facades.bookmarked_videos? %>
+        <% @facades.tutorial_video_objects.each do |tutorial, videos| %>
+          <section id="tutorial-<%= tutorial.id %>">
+            <h4><%= tutorial.title %></h4>
+              <% videos.each do |video| %>
+                <ul><li><%= link_to video.title, "/tutorials/#{tutorial.id}?video_id=#{video.id}" %></li></ul>
+            <% end %>
+        </section>
+        <% end %>
+    <% else %>
+      <p> Your bookmarked videos will appear here! </p>
+    <% end %>
   </section>
 </section>
