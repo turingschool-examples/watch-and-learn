@@ -13,9 +13,10 @@ describe "user boomarks" do
     user = create(:user, github_id: 123, github_token: ENV["GITHUB_API_KEY"])
 
     tutorial_1 = create(:tutorial, title: "title_1")
-      video_1 = create(:video, title: "video_1", position: 1, tutorial_id: tutorial_1.id)
       video_2 = create(:video, title: "video_2", position: 2, tutorial_id: tutorial_1.id)
       video_3 = create(:video, title: "video_3", position: 3, tutorial_id: tutorial_1.id)
+      video_1 = create(:video, title: "video_1", position: 1, tutorial_id: tutorial_1.id)
+
 
     tutorial_2 = create(:tutorial, title: "title_2")
       video_4 = create(:video, title: "video_4", position: 1, tutorial_id: tutorial_2.id)
@@ -46,7 +47,7 @@ describe "user boomarks" do
         expect(page).to_not have_link(video_6.title)
       end
     end
-
+    
     within ".bookmark" do
       within "#tutorial-#{tutorial_1.id}" do
         click_link(video_1.title)
