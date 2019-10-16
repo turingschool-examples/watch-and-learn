@@ -39,4 +39,8 @@ class UserFacade
     user_hash = @service.search_user_login(@current_user, github_login)
     GithubUser.new(user_hash)
   end
+
+  def tutorials
+    @current_user.tutorials
+  end
 end
