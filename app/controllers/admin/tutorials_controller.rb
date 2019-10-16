@@ -7,8 +7,6 @@ class Admin::TutorialsController < Admin::BaseController
 
   def create
      @tutorial = Tutorial.create!(tutorial_params)
-     # video = @tutorial.videos.create!(tutorial_params[:video_attributes])
-     # binding.pry
      redirect_to tutorial_path(@tutorial)
   end
 
