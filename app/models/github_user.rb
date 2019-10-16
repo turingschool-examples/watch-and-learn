@@ -20,9 +20,7 @@ class GithubUser
 
   def not_already_added?
     friend = User.find_by(github_id: github_id)
-    friendship = Friendship.find_by(friendship_user_id: friend.id)
-
-    return true if friendship.nil?
+    !Friendship.where(friendship_user_id: friend.id).exists?
   end
 
   def email?

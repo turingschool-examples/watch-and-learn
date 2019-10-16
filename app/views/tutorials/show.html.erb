@@ -3,7 +3,6 @@
 <h1 id="message"></h1>
 <div class="col col-4">
   <h4>Videos</h4>
-  <!-- < % binding.pry %> -->
   <% if @facade.videos.empty? %>
   <p> There are currently no videos available for this tutorial. </p>
   <% else %>
@@ -23,7 +22,7 @@
       <% if current_user %>
       <%= button_to "Bookmark", user_videos_path(video_id: @facade.current_video.id, user_id: current_user.id), method: :post, class: "btn btn-outline mb1 teal" %>
       <% else %>
-      <%= link_to "Bookmark", login_path, class: "btn btn-outline mb1 teal" %>
+      <%= link_to "Please Login to Bookmark", login_path, class: "btn btn-outline mb1 teal" %>
       <% end %>
     </div>
   </div>

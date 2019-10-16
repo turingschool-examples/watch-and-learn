@@ -13,8 +13,7 @@ class UsersController < ApplicationController
     user = User.create(user_params)
     if user.save
       session[:user_id] = user.id
-      url = server_origin
-      UserMailer.registration_email(user, url).deliver_now
+      UserMailer.registration_email(user, server_origin).deliver_now
       flash[:success] = "Logged in as #{user.first_name}"
       redirect_to dashboard_path
     else
