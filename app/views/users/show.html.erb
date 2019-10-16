@@ -70,13 +70,15 @@
   <% end %>
   <section class="bookmark">
     <h1>Bookmarked Segments</h1>
-    <% @facades.tutorial_video_objects.each do |tutorial, videos| %>
-      <section id="tutorial-<%= tutorial.id %>">
-        <h5><%= tutorial.title %></h5>
-          <p><% videos.each do |video| %></p>
-          <%= link_to video.title, "/tutorials/#{tutorial.id}?video_id=#{video.id}" %>
+      <% if facades.tutorial_video_objects.present? %>
+        <% @facades.tutorial_video_objects.each do |tutorial, videos| %>
+          <section id="tutorial-<%= tutorial.id %>">
+            <h5><%= tutorial.title %></h5>
+              <p><% videos.each do |video| %></p>
+              <%= link_to video.title, "/tutorials/#{tutorial.id}?video_id=#{video.id}" %>
+            <% end %>
+          </section>
         <% end %>
-      </section>
     <% end %>
   </section>
 </section>
