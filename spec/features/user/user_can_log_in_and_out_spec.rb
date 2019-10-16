@@ -17,7 +17,7 @@ describe 'User' do
 
     click_on 'Log In'
 
-    save_and_open_page
+    
 
     expect(page).to have_current_path(dashboard_path, ignore_query: true)
     expect(page).to have_content(user.email)
