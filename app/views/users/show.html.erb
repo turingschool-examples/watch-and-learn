@@ -70,7 +70,7 @@
   <% end %>
   <section class="bookmark">
     <h1>Bookmarked Segments</h1>
-      <% if facades.tutorial_video_objects.present? %>
+      <% if @facades.has_bookmarked_videos? %>
         <% @facades.tutorial_video_objects.each do |tutorial, videos| %>
           <section id="tutorial-<%= tutorial.id %>">
             <h5><%= tutorial.title %></h5>
@@ -79,6 +79,8 @@
             <% end %>
           </section>
         <% end %>
+    <% else %>
+      <p> Your bookmarked videos will appear here! </p>
     <% end %>
   </section>
 </section>

@@ -46,4 +46,8 @@ class UserFacade
   def tutorial_video_objects
     bookmarked_videos_by_tutorial.transform_keys { |key| Tutorial.find(key)}
   end
+
+  def has_bookmarked_videos?
+    @current_user.videos.present?
+  end
 end
