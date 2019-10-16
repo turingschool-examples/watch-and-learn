@@ -15,7 +15,7 @@ class User < ApplicationRecord
   has_many :friendship_users, through: :friendships
 
   has_many :videos, through: :user_videos
-  has_many :tutorials, through: :user_videos
+  # has_many :tutorials, through: :user_videos
 
   # has_many :friendships, foreign_key: :friendship_user, class_name: 'Friendship'
   # has_many :friendship_users, through: :friendships, source: :user
