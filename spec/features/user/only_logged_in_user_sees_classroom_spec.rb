@@ -23,7 +23,8 @@ describe 'Hide classroom content' do
     fill_in 'session[password]', with: user.password
 
     click_on 'Log In'
-
+    visit '/'
+    
     expect(page).to have_content(tutorial_1.title)
     expect(page).to have_content(tutorial_2.title)
   end
