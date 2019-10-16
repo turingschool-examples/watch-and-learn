@@ -55,7 +55,7 @@ end
     expect(page).to_not have_css(".github-following")
 
     within ".authorize-github" do
-      click_button("Authorize GitHub")
+      click_button("Connect to Github")
     end
 
     expect(current_path).to eq(dashboard_path)
@@ -78,7 +78,7 @@ end
       expect(page).to have_link("shaviland")
     end
 
-    expect(page).not_to have_button("Authorize GitHub")
+    expect(page).not_to have_button("Connect to Github")
   end
 
   it 'user cannot reauthorize github' do
@@ -98,6 +98,6 @@ end
     expect(page).to have_css(".github-followers")
     expect(page).to have_css(".github-following")
 
-    expect(page).not_to have_button("Authorize GitHub")
+    expect(page).not_to have_button("Connect to Github")
   end
 end
