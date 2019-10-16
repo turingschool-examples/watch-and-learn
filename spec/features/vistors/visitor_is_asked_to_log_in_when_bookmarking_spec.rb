@@ -9,7 +9,7 @@ describe 'visitor visits video show page' do
 
     visit tutorial_path(tutorial)
 
-    click_on 'Bookmark'
+    click_on("Please Login to Bookmark")
 
     expect(page).to have_current_path(login_path, ignore_query: true)
   end
