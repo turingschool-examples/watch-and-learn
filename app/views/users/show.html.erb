@@ -72,7 +72,8 @@
     <h1>Bookmarked Segments</h1>
     <% @facades.tutorials.each do |tutorial| %>
       <section id="tutorial-<%= tutorial.id %>">
-        <% tutorial.videos.each do |video| %>
+        <h5><%= tutorial.title %></h5>
+          <p><% tutorial.videos.each do |video| %></p>
           <%= link_to video.title, tutorial_videos_path(tutorial, video) %>
         <% end %>
       </section>
