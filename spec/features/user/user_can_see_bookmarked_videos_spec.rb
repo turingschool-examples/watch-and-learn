@@ -9,7 +9,7 @@ require 'rails_helper'
 
 describe "invite guest" do
   it "can invite guest using github handle" do
-    
+
     user = create(:user, github_id: 123, github_token: ENV["GITHUB_API_KEY"])
 
     tutorial_1 = create(:tutorial, title: "title_1")
@@ -53,6 +53,6 @@ describe "invite guest" do
       end
     end
 
-    expect(current_path).to eq("/tutorials/#{tutorial_1.id}?video_id=#{video_1.id}")
+    expect(page).to have_current_path("/tutorials/#{tutorial_1.id}?video_id=#{video_1.id}")
   end
 end
