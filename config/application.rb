@@ -34,22 +34,14 @@ module PersonalProject
   end
 end
 
-<<<<<<< HEAD
-module BrownfieldV1
-=======
 module BrownFieldV1
->>>>>>> ce19c60001c556ab3f9e8db01bc467735113a4bc
   class Application < Rails::Application
     config.action_mailer.delivery_method = :smtp
 
     config.action_mailer.smtp_settings = {
       address:              'smtp.sendgrid.net',
       port:                 '587',
-<<<<<<< HEAD
-      domain:               'example.com',
-=======
       domain:               'warm-oasis-92262.herokuapp.com',
->>>>>>> ce19c60001c556ab3f9e8db01bc467735113a4bc
       user_name:            ENV["SENDGRID_USERNAME"],
       password:             ENV["SENDGRID_PASSWORD"],
       authentication:       'plain',
