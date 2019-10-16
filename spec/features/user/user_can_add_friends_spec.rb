@@ -80,4 +80,19 @@ describe 'user friendships' do
       expect(page).to have_content(following_user.first_name)
     end
   end
+
+  # it "cannot manually add random user as friend by visiting friendship post route" do
+  #   user_1 = create(:user, github_id: 123, github_token: ENV["GITHUB_API_KEY"])
+  #   user_2 = create(:user, github_id: 123, github_token: nil)
+  #   allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
+  #
+  #   visit dashboard_path
+  #
+  #   visit "/friendships/#{user_1.id}/#{user_2.id}"
+  #
+  #   expect(current_path).to eq(dashboard_path)
+  #
+  #   expect(page).to have_content("Cannot add friend at this time.")
+  #
+  # end
 end
