@@ -68,7 +68,14 @@
       <%= button_to "Authorize GitHub", github_login_path %>
     </section>
   <% end %>
-  <section>
+  <section class="bookmark">
     <h1>Bookmarked Segments</h1>
+    <% @facades.tutorials.each do |tutorial| %>
+      <section id="tutorial-<%= tutorial.id %>">
+        <% tutorial.videos.each do |video| %>
+          <%= link_to video.title, tutorial_videos_path(tutorial, video) %>
+        <% end %>
+      </section>
+    <% end %>
   </section>
 </section>
