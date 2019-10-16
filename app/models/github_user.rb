@@ -11,10 +11,10 @@ class GithubUser
   end
 
   def show_add_friend_button?
-    is_user? && not_already_added?
+    user? && not_already_added?
   end
 
-  def is_user?
+  def user?
     User.find_by(github_id: @github_id)
   end
 
