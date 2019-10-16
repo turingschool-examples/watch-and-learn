@@ -41,6 +41,9 @@ class UserFacade
   end
 
   def tutorials
-    @current_user.tutorials
+    binding.pry
+    @current_user.videos.group(:tutorial_id).count
+
+    # @current_user.tutorials
   end
 end
