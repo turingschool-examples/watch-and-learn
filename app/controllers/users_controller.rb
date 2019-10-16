@@ -2,9 +2,7 @@
 
 class UsersController < ApplicationController
   def show
-    if current_user.github_token?
-      @facades = UserFacade.new(current_user)
-    end
+    @facades = UserFacade.new(current_user)
   end
 
   def new
