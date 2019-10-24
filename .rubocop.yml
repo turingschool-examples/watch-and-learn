@@ -14,6 +14,11 @@ AllCops:
     - 'lib/tasks/auto_annotate_models.rake'
     - 'spec/features/visitors/*'
     - 'node_modules/**/*'
+    - 'spec/features/user/*'
+    - 'spec/features/admin/*'
+    - 'lib/tasks/youtube_seed.rake'
+    - 'db/**/*'
+
 
 
 Rails:
@@ -65,7 +70,7 @@ Rails/Output:
   Enabled: false
 
 Style/ClassAndModuleChildren:
-  EnforcedStyle: nested
+  Enabled: false
 
 
 
