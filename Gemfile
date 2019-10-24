@@ -1,7 +1,8 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.4.1'
+File.read('./.ruby-version')
+
 gem 'rails', '~> 5.2.0'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
@@ -43,6 +44,8 @@ group :development, :test do
   gem 'vcr'
   gem 'selenium-webdriver'
   gem 'webdrivers'
+  gem 'rubocop', require: false
+  gem 'rubocop-rspec', require: false
 end
 
 group :development do
