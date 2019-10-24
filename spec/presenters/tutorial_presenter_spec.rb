@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 describe TutorialFacade do
   describe 'instance methods' do
@@ -7,7 +9,7 @@ describe TutorialFacade do
       video2 = create(:video, tutorial_id: tutorial.id)
       video3 = create(:video, tutorial_id: tutorial.id)
 
-      presenter = TutorialFacade.new(tutorial, video2.id)
+      presenter = described_class.new(tutorial, video2.id)
 
       expect(presenter.current_video.id).to eq(video2.id)
     end
@@ -18,19 +20,19 @@ describe TutorialFacade do
       video2 = create(:video, tutorial_id: tutorial.id)
       video3 = create(:video, tutorial_id: tutorial.id)
 
-      presenter = TutorialFacade.new(tutorial)
+      presenter = described_class.new(tutorial)
 
       expect(presenter.current_video.id).to eq(video1.id)
     end
 
-    context "#next_video" do
+    describe "#next_video" do
       it 'can find the next video' do
         tutorial = create(:tutorial)
         video1 = create(:video, tutorial_id: tutorial.id, position: 1)
         video2 = create(:video, tutorial_id: tutorial.id, position: 2)
         video3 = create(:video, tutorial_id: tutorial.id, position: 3)
 
-        presenter = TutorialFacade.new(tutorial, video1.id)
+        presenter = described_class.new(tutorial, video1.id)
 
         expect(presenter.next_video).to eq(video2)
       end
@@ -40,7 +42,7 @@ describe TutorialFacade do
         rocky = create(:video, tutorial: learn_to_fight, position: 1)
         bloodsport = create(:video, tutorial: learn_to_fight, position: 2)
 
-        presenter = TutorialFacade.new(learn_to_fight, bloodsport.id)
+        presenter = described_class.new(learn_to_fight, bloodsport.id)
         expect(presenter.next_video).to eq(bloodsport)
       end
     end
