@@ -12,6 +12,8 @@ AllCops:
     - 'config/environments/*.rb'
     - 'bin/*'
     - 'lib/tasks/auto_annotate_models.rake'
+    - 'spec/features/visitors/*'
+
 
 Rails:
   Enabled: true
