@@ -13,6 +13,7 @@ AllCops:
     - 'bin/*'
     - 'lib/tasks/auto_annotate_models.rake'
     - 'spec/features/visitors/*'
+    - 'node_modules/**/*'
 
 
 Rails:
