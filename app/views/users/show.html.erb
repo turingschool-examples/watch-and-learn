@@ -10,4 +10,12 @@
   <section>
     <h1>Bookmarked Segments</h1>
   </section>
-</section>
+
+  <section>
+    <% facade.repositories.each do |repository|%>
+      <ul class="repository">
+        <li class="name" id="repository-#{repository.name}"> <%=repository.name%> </li>
+      </ul>
+    <% end %>
+  </section>
+</section> 

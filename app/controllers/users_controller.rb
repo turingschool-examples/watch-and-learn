@@ -1,7 +1,11 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  def show; end
+  def show
+    render locals: {
+      facade: RepositoryFacade.new
+    }
+  end
 
   def new
     @new = User.new
