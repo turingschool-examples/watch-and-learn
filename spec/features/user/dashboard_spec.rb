@@ -1,10 +1,10 @@
 require 'rails_helper'
 
 describe "User dashboard", type: :feature do
-  before each: do
+  before :each do
     repos_json = File.open("./fixtures/repositories.json")
     stub_request(:get, 'https://api.github.com/user/repos').
-    to_return(status: 200, body: json_repsonse)
+    to_return(status: 200, body: repos_json)
 
     followers_json = File.open("./fixtures/followers.json")
     stub_request(:get, 'https://api.github.com/user/followers').
@@ -16,8 +16,8 @@ describe "User dashboard", type: :feature do
 
     expect(current_path).to eq(login_path)
 
-    fill_in('session[email]'), with: user.mail
-    fill_in('session[password]'), with: user.password
+    fill_in 'session[email]', with: user.email
+    fill_in 'session[password]', with: user.password
     click_on 'Log In'
 
     expect(current_path).to eq(dashboard_path)
@@ -36,7 +36,7 @@ describe "User dashboard", type: :feature do
   it '#sees followers' do
     expect(page).to have_content("Followers")
 
-    expect(page).to have_css(".follower", count: 2)
+    expect(page).to have_css(".follower", count: 5)
 
     within(first(".follower")) do
       expect(page).to have_css(".login")
