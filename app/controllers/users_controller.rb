@@ -3,7 +3,7 @@
 class UsersController < ApplicationController
   def show
     render locals: {
-      facade: RepositoryFacade.new
+      facade: DashboardFacade.new
     }
   end
 
