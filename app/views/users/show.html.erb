@@ -12,10 +12,22 @@
   </section>
 
   <section>
+  <h1> Github </h1>
+
     <% facade.repositories.each do |repository|%>
       <ul class="repository">
         <li class="name" id="repository-#{repository.name}"> <%=repository.name%> </li>
       </ul>
     <% end %>
+  </section>
+
+  <section>
+    <h3> Followers </h3>
+    <%= facade.followers.each do |follower| %>
+      <ul class="follower">
+        <li class="name" id="follower-#{followers.login}"> <%= follower.login %> </li>
+      </ul>
+    <% end %>
+
   </section>
 </section> 
