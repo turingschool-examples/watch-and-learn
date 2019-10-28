@@ -1,5 +1,6 @@
-class DashboardFacade
+# frozen_string_literal: true
 
+class DashboardFacade
   attr_reader :repositories
 
   def initialize
@@ -7,7 +8,7 @@ class DashboardFacade
   end
 
   def service
-    @_service ||= GithubService.new
+    @service ||= GithubService.new
   end
 
   def repositories_data

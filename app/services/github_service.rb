@@ -1,5 +1,6 @@
-class GithubService
+# frozen_string_literal: true
 
+class GithubService
   def repository_data
     get_json("/user/repos")
   end
@@ -17,5 +18,4 @@ class GithubService
     response = conn.get(url)
     JSON.parse(response.body, symbolize_names: true)
   end
-  
 end
