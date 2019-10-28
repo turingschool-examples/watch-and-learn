@@ -15,6 +15,6 @@ class DashboardFacade
   end
 
   def get_repositories
-    repositories_data[0..4].map { |data| Repository.new }
+    repositories_data[0..4].map { |data| Repository.new(data) }
   end
 end
