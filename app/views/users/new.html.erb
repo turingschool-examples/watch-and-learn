@@ -1,6 +1,8 @@
 <div class="user-login">
   <main>
-<h4>Register</h4>
+<h4>Register with</h4>
+<p> <%= button_to 'Github', github_login_path, method: :get, class: "btn btn-primary" %> </p>
+<h3> Or </h3>
   <section>
     <%= form_for @new do |form| %>
       <div >
