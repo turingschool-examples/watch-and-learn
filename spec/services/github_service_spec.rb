@@ -38,5 +38,4 @@ describe GithubService do
 
     expect(following_data).to have_key(:login)
   end
-
 end
