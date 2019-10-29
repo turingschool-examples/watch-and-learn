@@ -47,6 +47,7 @@ group :development, :test do
   gem 'vcr'
   gem 'webdrivers'
   gem 'webmock'
+  gem 'omniauth-github'
 end
 
 group :development do
