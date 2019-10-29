@@ -10,6 +10,10 @@ describe "User dashboard", type: :feature do
     stub_request(:get, 'https://api.github.com/user/followers').
     to_return(status: 200, body: followers_json)
 
+    following_json = File.open("./fixtures/following.json")
+    stub_request(:get, 'https://api.github.com/user/following').
+    to_return(status: 200, body: following_json)
+
     user = create(:user)
     visit '/'
     click_on 'Sign In'
@@ -43,4 +47,13 @@ describe "User dashboard", type: :feature do
     end
   end
 
+  it '#sees following' do
+    expect(page).to have_content("Following")
+
+    expect(page).to have_css(".follow", count: 5)
+
+    within(first(".follow")) do
+      expect(page).to have_css(".login")
+    end
+  end
 end

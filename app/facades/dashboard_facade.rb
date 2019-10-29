@@ -14,7 +14,7 @@ class DashboardFacade
   end
 
   def following
-    @following ||= follow_data.[0..4].map { |data| Following.new(data)}
+    @following ||= follow_data[0..4].map { |data| Following.new(data)}
   end
 
   private

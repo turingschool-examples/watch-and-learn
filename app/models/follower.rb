@@ -3,6 +3,6 @@
 class Follower
   attr_reader :login
   def initialize(attributes = {})
-    @name = attributes[:login]
+    @login = attributes[:login]
   end
 end
