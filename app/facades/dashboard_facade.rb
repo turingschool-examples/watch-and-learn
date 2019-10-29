@@ -13,6 +13,10 @@ class DashboardFacade
     @followers ||= follower_data[0..4].map { |data| Follower.new(data) }
   end
 
+  def following
+    @following ||= follow_data.[0..4].map { |data| Following.new(data)}
+  end
+
   private
 
   def service
@@ -26,4 +30,9 @@ class DashboardFacade
   def follower_data
     @follower_data ||= service.follower_data
   end
+
+  def follow_data
+    @follow_data ||= service.follow_data
+  end
+    
 end

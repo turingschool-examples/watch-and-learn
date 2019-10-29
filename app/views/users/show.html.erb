@@ -32,7 +32,7 @@
 
     <section>
     <h3> Following </h3>
-    <%= facade.followers.each do |follow| %>
+    <%= facade.following.each do |follow| %>
       <ul class="follower">
         <li class="login" id="follow-#{follow.login}"> <%= follow.login %> </li>
       </ul>
