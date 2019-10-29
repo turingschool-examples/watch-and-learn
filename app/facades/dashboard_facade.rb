@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class DashboardFacade
-
   # def initialize
   #   @repositories = get_repositories
   # end
@@ -14,7 +13,7 @@ class DashboardFacade
     @followers ||= follower_data[0..4].map { |data| Follower.new(data) }
   end
 
-  private 
+  private
 
   def service
     @service ||= GithubService.new
@@ -25,7 +24,6 @@ class DashboardFacade
   end
 
   def follower_data
-    @followers_data ||= service.follower_data
+    @follower_data ||= service.follower_data
   end
-
 end
