@@ -9,6 +9,10 @@ class GithubService
     get_json("/user/followers")
   end
 
+  def follow_data
+    get_json("/user/following")
+  end
+
   private
 
   def conn
