@@ -25,14 +25,19 @@ VCR.configure do |config|
   config.filter_sensitive_data("<GITHUB_TOKEN_TEST>") { ENV['GITHUB_TOKEN_TEST'] }
 end
 
-
 def stub_omniauth
-	OmniAuth.config.test_mode = true
-	OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({
-		"credentials" => {"token" => "1"},
-	  "provider" => 'github',
-	  "uid" => '1'
-	})
+  OmniAuth.config.test_mode = true
+  OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new(
+    "credentials" => { "token" => "1" },
+    "provider" => 'github',
+    "uid" => '1'
+  )
+end
+
+def stub_json(url, filename)
+  json_response = File.open(filename)
+  stub_request(:get, url).
+    to_return(status: 200, body: json_response)
 end
 
 ActiveRecord::Migration.maintain_test_schema!

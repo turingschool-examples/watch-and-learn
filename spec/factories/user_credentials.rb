@@ -10,8 +10,10 @@
 #  user_id :bigint
 #
 
-class UserCredential < ApplicationRecord
-  belongs_to :user
-
-  validates :website, :token, presence: true
+FactoryBot.define do
+  factory :user_credential do
+    user { FactoryBot.create(:user) }
+    website { "github" }
+    token { ENV['GITHUB_TOKEN_TEST'] }
+  end
 end

@@ -12,7 +12,7 @@
   </section>
 
   <% if current_user.github_token.nil? %>
-    <p> <%= button_to 'Github', github_login_path, method: :get, class: "btn btn-primary" %> </p>
+    <p> <%= button_to 'Connect to Github', github_login_path, method: :get, class: "btn btn-primary" %> </p>
   <% else %>
   <section>
     <h1> Github </h1>

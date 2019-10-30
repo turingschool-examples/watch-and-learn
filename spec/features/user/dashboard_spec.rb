@@ -2,22 +2,13 @@ require 'rails_helper'
 
 describe "User dashboard", type: :feature do
   before :each do
-    repos_json = File.open("./fixtures/repositories.json")
-    stub_request(:get, 'https://api.github.com/user/repos').
-    to_return(status: 200, body: repos_json)
-
-    followers_json = File.open("./fixtures/followers.json")
-    stub_request(:get, 'https://api.github.com/user/followers').
-    to_return(status: 200, body: followers_json)
-
-    following_json = File.open("./fixtures/following.json")
-    stub_request(:get, 'https://api.github.com/user/following').
-    to_return(status: 200, body: following_json)
+    stub_omniauth
+    stub_json("https://api.github.com/user/repos", "./fixtures/repositories.json")
+    stub_json("https://api.github.com/user/followers", "./fixtures/followers.json")
+    stub_json("https://api.github.com/user/following", "./fixtures/following.json")
 
     user = create(:user)
-
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
-
+    
     visit '/'
     click_on 'Sign In'
 
@@ -27,8 +18,14 @@ describe "User dashboard", type: :feature do
     fill_in 'session[password]', with: user.password
     click_on 'Log In'
 
+    click_on "Connect to Github"
+
     expect(current_path).to eq(dashboard_path)
+    expect(page).to_not have_content("Connect to Github")
+    expect(page).to have_content("Github")
   end
+
+
 
   it '#sees repositories' do
     expect(page).to have_content("Github")
