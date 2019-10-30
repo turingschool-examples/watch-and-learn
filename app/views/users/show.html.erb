@@ -11,31 +11,35 @@
     <h1>Bookmarked Segments</h1>
   </section>
 
+  <% if current_user.github_token.nil? %>
+    <p> <%= button_to 'Github', github_login_path, method: :get, class: "btn btn-primary" %> </p>
+  <% else %>
   <section>
-  <h1> Github </h1>
+    <h1> Github </h1>
 
-    <% facade.repositories.each do |repository|%>
-      <ul class="repository">
-        <li class="name" id="repository-#{repository.name}"> <%=repository.name%> </li>
-      </ul>
-    <% end %>
-  </section>
-
-  <section>
-    <h3> Followers </h3>
-    <%= facade.followers.each do |follower| %>
-      <ul class="follower">
-        <li class="login" id="follower-#{followers.login}"> <%= follower.login %> </li>
-      </ul>
-    <% end %>
-  </section>
+      <% facade.repositories.each do |repository|%>
+        <ul class="repository">
+          <li class="name" id="repository-#{repository.name}"> <%=repository.name %> </li>
+        </ul>
+      <% end %>
+    </section>
 
     <section>
-    <h3> Following </h3>
-    <%= facade.following.each do |follow| %>
-      <ul class="follow">
-        <li class="login" id="follow-#{follow.login}"> <%= follow.login %> </li>
-      </ul>
-    <% end %>
-  </section>
+      <h3> Followers </h3>
+      <% facade.followers.each do |follower| %>
+        <ul class="follower">
+          <li class="login" id="follower-#{followers.login}"> <%= follower.login %> </li>
+        </ul>
+      <% end %>
+    </section>
+
+      <section>
+      <h3> Following </h3>
+      <% facade.following.each do |follow| %>
+        <ul class="follow">
+          <li class="login" id="follow-#{follow.login}"> <%= follow.login %> </li>
+        </ul>
+      <% end %>
+    </section>
+  <% end %>
 </section> 
