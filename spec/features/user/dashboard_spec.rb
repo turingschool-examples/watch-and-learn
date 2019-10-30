@@ -15,6 +15,9 @@ describe "User dashboard", type: :feature do
     to_return(status: 200, body: following_json)
 
     user = create(:user)
+
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
     visit '/'
     click_on 'Sign In'
 

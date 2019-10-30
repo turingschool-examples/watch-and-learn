@@ -22,6 +22,17 @@ VCR.configure do |config|
   config.hook_into :webmock
   config.configure_rspec_metadata!
   config.filter_sensitive_data("<YOUTUBE_API_KEY>") { ENV['YOUTUBE_API_KEY'] }
+  config.filter_sensitive_data("<GITHUB_TOKEN_TEST>") { ENV['GITHUB_TOKEN_TEST'] }
+end
+
+
+def stub_omniauth
+	OmniAuth.config.test_mode = true
+	OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({
+		"credentials" => {"token" => "1"},
+	  "provider" => 'github',
+	  "uid" => '1'
+	})
 end
 
 ActiveRecord::Migration.maintain_test_schema!
@@ -35,8 +46,6 @@ Capybara.javascript_driver = :selenium_chrome
 Capybara.configure do |config|
   config.default_max_wait_time = 5
 end
-
-SimpleCov.start "rails"
 
 Shoulda::Matchers.configure do |config|
   config.integrate do |with|
