@@ -1,5 +1,20 @@
 # frozen_string_literal: true
 
+# == Schema Information
+#
+# Table name: tutorials
+#
+#  id          :bigint           not null, primary key
+#  title       :string
+#  description :text
+#  thumbnail   :string
+#  playlist_id :string
+#  classroom   :boolean          default(FALSE)
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
+
 FactoryBot.define do
   factory :tutorial do
     title { Faker::Name.unique.name }
