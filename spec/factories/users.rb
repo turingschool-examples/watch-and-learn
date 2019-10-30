@@ -14,7 +14,6 @@
 #  updated_at      :datetime         not null
 #
 
-
 FactoryBot.define do
   factory :user do
     email { Faker::Internet.email }

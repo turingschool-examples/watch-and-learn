@@ -14,7 +14,6 @@
 #  updated_at  :datetime         not null
 #
 
-
 class TutorialSerializer < ActiveModel::Serializer
   attributes :id, :title, :description, :thumbnail, :videos
 
