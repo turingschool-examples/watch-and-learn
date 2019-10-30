@@ -8,7 +8,13 @@ require File.expand_path('../config/environment', __dir__)
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
 require 'vcr'
+require 'codecov'
 require 'webmock/rspec'
+require 'simplecov'
+
+SimpleCov.start do
+  add_filter "/spec/"
+end
 
 VCR.configure do |config|
   config.ignore_localhost = true
