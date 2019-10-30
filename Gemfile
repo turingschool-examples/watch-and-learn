@@ -37,6 +37,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'foundation-rails'
   gem 'launchy'
+  gem 'omniauth-github'
   gem 'pry'
   gem 'rspec-rails'
   gem 'rubocop', require: false
@@ -47,7 +48,6 @@ group :development, :test do
   gem 'vcr'
   gem 'webdrivers'
   gem 'webmock'
-  gem 'omniauth-github'
 end
 
 group :development do
