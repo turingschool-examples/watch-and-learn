@@ -19,6 +19,7 @@ gem 'webpacker', '~> 3.5'
 
 gem 'active_model_serializers'
 gem 'acts-as-taggable-on', '~> 6.0'
+gem 'annotate', '~> 2.7', '>= 2.7.4'
 gem 'factory_bot_rails'
 gem 'faker'
 gem 'faraday'
@@ -34,6 +35,7 @@ group :development, :test do
   gem 'awesome_print'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'capybara'
+  gem 'codecov', require: false
   gem 'database_cleaner'
   gem 'foundation-rails'
   gem 'launchy'
