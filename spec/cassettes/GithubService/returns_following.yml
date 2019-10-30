@@ -1,0 +1,77 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.github.com/user/followers
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - token <GITHUB_TOKEN_TEST>
+      Accept:
+      - application/vnd.github.v3+json
+      User-Agent:
+      - Faraday v0.12.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 30 Oct 2019 16:55:00 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Server:
+      - GitHub.com
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4999'
+      X-Ratelimit-Reset:
+      - '1572458100'
+      Cache-Control:
+      - private, max-age=60, s-maxage=60
+      Vary:
+      - Accept, Authorization, Cookie, X-GitHub-OTP
+      - Accept-Encoding
+      Etag:
+      - W/"212d95c1e10d322fdc19b7446348a833"
+      X-Oauth-Scopes:
+      - repo, user
+      X-Accepted-Oauth-Scopes:
+      - ''
+      X-Github-Media-Type:
+      - github.v3; format=json
+      Access-Control-Expose-Headers:
+      - ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
+        X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval,
+        X-GitHub-Media-Type
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Content-Security-Policy:
+      - default-src 'none'
+      X-Github-Request-Id:
+      - 8418:AA0C:20D268D:27BA228:5DB9C064
+    body:
+      encoding: ASCII-8BIT
+      string: '[{"login":"Bozotte","id":33292228,"node_id":"MDQ6VXNlcjMzMjkyMjI4","avatar_url":"https://avatars1.githubusercontent.com/u/33292228?v=4","gravatar_id":"","url":"https://api.github.com/users/Bozotte","html_url":"https://github.com/Bozotte","followers_url":"https://api.github.com/users/Bozotte/followers","following_url":"https://api.github.com/users/Bozotte/following{/other_user}","gists_url":"https://api.github.com/users/Bozotte/gists{/gist_id}","starred_url":"https://api.github.com/users/Bozotte/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/Bozotte/subscriptions","organizations_url":"https://api.github.com/users/Bozotte/orgs","repos_url":"https://api.github.com/users/Bozotte/repos","events_url":"https://api.github.com/users/Bozotte/events{/privacy}","received_events_url":"https://api.github.com/users/Bozotte/received_events","type":"User","site_admin":false},{"login":"MarcelALng","id":43136183,"node_id":"MDQ6VXNlcjQzMTM2MTgz","avatar_url":"https://avatars3.githubusercontent.com/u/43136183?v=4","gravatar_id":"","url":"https://api.github.com/users/MarcelALng","html_url":"https://github.com/MarcelALng","followers_url":"https://api.github.com/users/MarcelALng/followers","following_url":"https://api.github.com/users/MarcelALng/following{/other_user}","gists_url":"https://api.github.com/users/MarcelALng/gists{/gist_id}","starred_url":"https://api.github.com/users/MarcelALng/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/MarcelALng/subscriptions","organizations_url":"https://api.github.com/users/MarcelALng/orgs","repos_url":"https://api.github.com/users/MarcelALng/repos","events_url":"https://api.github.com/users/MarcelALng/events{/privacy}","received_events_url":"https://api.github.com/users/MarcelALng/received_events","type":"User","site_admin":false},{"login":"jiaad","id":45911781,"node_id":"MDQ6VXNlcjQ1OTExNzgx","avatar_url":"https://avatars1.githubusercontent.com/u/45911781?v=4","gravatar_id":"","url":"https://api.github.com/users/jiaad","html_url":"https://github.com/jiaad","followers_url":"https://api.github.com/users/jiaad/followers","following_url":"https://api.github.com/users/jiaad/following{/other_user}","gists_url":"https://api.github.com/users/jiaad/gists{/gist_id}","starred_url":"https://api.github.com/users/jiaad/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/jiaad/subscriptions","organizations_url":"https://api.github.com/users/jiaad/orgs","repos_url":"https://api.github.com/users/jiaad/repos","events_url":"https://api.github.com/users/jiaad/events{/privacy}","received_events_url":"https://api.github.com/users/jiaad/received_events","type":"User","site_admin":false},{"login":"denispasin","id":3338913,"node_id":"MDQ6VXNlcjMzMzg5MTM=","avatar_url":"https://avatars3.githubusercontent.com/u/3338913?v=4","gravatar_id":"","url":"https://api.github.com/users/denispasin","html_url":"https://github.com/denispasin","followers_url":"https://api.github.com/users/denispasin/followers","following_url":"https://api.github.com/users/denispasin/following{/other_user}","gists_url":"https://api.github.com/users/denispasin/gists{/gist_id}","starred_url":"https://api.github.com/users/denispasin/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/denispasin/subscriptions","organizations_url":"https://api.github.com/users/denispasin/orgs","repos_url":"https://api.github.com/users/denispasin/repos","events_url":"https://api.github.com/users/denispasin/events{/privacy}","received_events_url":"https://api.github.com/users/denispasin/received_events","type":"User","site_admin":false},{"login":"Al-Dnz","id":43188474,"node_id":"MDQ6VXNlcjQzMTg4NDc0","avatar_url":"https://avatars2.githubusercontent.com/u/43188474?v=4","gravatar_id":"","url":"https://api.github.com/users/Al-Dnz","html_url":"https://github.com/Al-Dnz","followers_url":"https://api.github.com/users/Al-Dnz/followers","following_url":"https://api.github.com/users/Al-Dnz/following{/other_user}","gists_url":"https://api.github.com/users/Al-Dnz/gists{/gist_id}","starred_url":"https://api.github.com/users/Al-Dnz/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/Al-Dnz/subscriptions","organizations_url":"https://api.github.com/users/Al-Dnz/orgs","repos_url":"https://api.github.com/users/Al-Dnz/repos","events_url":"https://api.github.com/users/Al-Dnz/events{/privacy}","received_events_url":"https://api.github.com/users/Al-Dnz/received_events","type":"User","site_admin":false},{"login":"AJuliette","id":42354334,"node_id":"MDQ6VXNlcjQyMzU0MzM0","avatar_url":"https://avatars3.githubusercontent.com/u/42354334?v=4","gravatar_id":"","url":"https://api.github.com/users/AJuliette","html_url":"https://github.com/AJuliette","followers_url":"https://api.github.com/users/AJuliette/followers","following_url":"https://api.github.com/users/AJuliette/following{/other_user}","gists_url":"https://api.github.com/users/AJuliette/gists{/gist_id}","starred_url":"https://api.github.com/users/AJuliette/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/AJuliette/subscriptions","organizations_url":"https://api.github.com/users/AJuliette/orgs","repos_url":"https://api.github.com/users/AJuliette/repos","events_url":"https://api.github.com/users/AJuliette/events{/privacy}","received_events_url":"https://api.github.com/users/AJuliette/received_events","type":"User","site_admin":false}]'
+    http_version: 
+  recorded_at: Wed, 30 Oct 2019 16:54:59 GMT
+recorded_with: VCR 4.0.0
