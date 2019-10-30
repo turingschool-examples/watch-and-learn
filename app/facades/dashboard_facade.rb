@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 class DashboardFacade
-  # def initialize
-  #   @repositories = get_repositories
-  # end
+  def initialize(token)
+    @token = token
+  end
 
   def repositories
     repositories_data[0..4].map { |data| Repository.new(data) }
@@ -20,7 +20,7 @@ class DashboardFacade
   private
 
   def service
-    @service ||= GithubService.new
+    @service ||= GithubService.new(@token)
   end
 
   def repositories_data

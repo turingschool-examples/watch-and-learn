@@ -2,8 +2,9 @@
 
 class UsersController < ApplicationController
   def show
+    token = current_user.github_token
     render locals: {
-      facade: DashboardFacade.new
+      facade: DashboardFacade.new(token)
     }
   end
 
