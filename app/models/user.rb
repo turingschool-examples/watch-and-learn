@@ -31,7 +31,6 @@ class User < ApplicationRecord
     credential = user_credentials.find_or_create_by(website: auth_hash["provider"])
     credential.update_attributes(token: auth_hash["credentials"]["token"])
     credential.update_attributes(nickname: auth_hash["info"]["nickname"])
-    credential.update_attributes(nickname: auth_hash["info"]["nickname"])
   end
 
   def github_token
