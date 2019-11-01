@@ -16,6 +16,7 @@ FactoryBot.define do
   factory :user_credential do
     user { FactoryBot.create(:user) }
     website { "github" }
-    token { ENV['GITHUB_TOKEN_TEST'] }
+    token { Faker::Omniauth.github[:credentials][:token] }
+    nickname { "TheMindSet" }
   end
 end

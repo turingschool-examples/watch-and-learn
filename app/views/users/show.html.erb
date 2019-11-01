@@ -29,7 +29,12 @@
       <h3> Followers </h3>
       <% facade.followers.each do |follower| %>
         <ul class="follower">
-          <li class="login" id="follower-#{followers.login}"> <%= follower.login %> </li>
+          <li class="login" id="follower-#{followers.login}"> 
+            <%= link_to follower.login, follower.url %> 
+            <% if follower.user_id %>
+              <%= button_to "Add as Friend", friendships_path(follower), class: "btn btn-primary add_friend"%>
+            <% end %>
+          </li>
         </ul>
       <% end %>
     </section>
@@ -38,7 +43,12 @@
       <h3> Following </h3>
       <% facade.following.each do |follow| %>
         <ul class="follow">
-          <li class="login" id="follow-#{follow.login}"> <%= follow.login %> </li>
+          <li class="login" id="follow-#{follow.login}">
+            <%= link_to follow.login, follow.url %> 
+            <% if follow.user_id %>
+              <%= button_to "Add as Friend", friendships_path(follow), class: "btn btn-primary add_friend"%>
+            <% end %>
+          </li>
         </ul>
       <% end %>
     </section>
