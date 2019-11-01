@@ -18,6 +18,8 @@ class User < ApplicationRecord
   has_many :user_videos
   has_many :videos, through: :user_videos
   has_many :user_credentials, dependent: :delete_all
+  has_many :friends
+  has_many :friends, through: :friendships, dependent: :delete_all
 
   validates :email, uniqueness: true, presence: true
   validates_presence_of :password
