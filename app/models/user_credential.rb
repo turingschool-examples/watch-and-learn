@@ -13,5 +13,5 @@
 class UserCredential < ApplicationRecord
   belongs_to :user
 
-  validates :website, :token, presence: true
+  validates :website, :token, :nickname, :url, presence: true
 end
