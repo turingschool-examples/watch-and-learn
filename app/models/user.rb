@@ -18,7 +18,7 @@ class User < ApplicationRecord
   has_many :user_videos
   has_many :videos, through: :user_videos
   has_many :user_credentials, dependent: :delete_all
-  has_many :friends
+  has_many :friendships
   has_many :friends, through: :friendships, dependent: :delete_all
 
   validates :email, uniqueness: true, presence: true
@@ -30,6 +30,7 @@ class User < ApplicationRecord
   def add_credentials(auth_hash)
     credential = user_credentials.find_or_create_by(website: auth_hash["provider"])
     credential.update_attributes(token: auth_hash["credentials"]["token"])
+    credential.update_attributes(nickname: auth_hash["info"]["nickname"])
     credential.update_attributes(nickname: auth_hash["info"]["nickname"])
   end
 

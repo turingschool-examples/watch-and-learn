@@ -1,8 +1,11 @@
 # frozen_string_literal: true
 
 class DashboardFacade
-  def initialize(token)
-    @token = token
+  attr_reader :token
+
+  def initialize(current_user)
+    @current_user = current_user
+    @token = current_user.github_token
   end
 
   def repositories
@@ -15,6 +18,10 @@ class DashboardFacade
 
   def following
     @following ||= follow_data[0..4].map { |data| Following.new(data) }
+  end
+
+  def friends
+    @friends ||= @current_user.friendships.map { |data| Friend.new(data) }
   end
 
   private

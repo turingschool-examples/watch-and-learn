@@ -11,16 +11,6 @@
     <h1>Bookmarked Segments</h1>
   </section>
 
-  <section>
-    <h1> Friends </h1>
-    <% facade.friends.each do |friend| %>
-      <ul>
-        <li id="friend-#{friend.login}">
-          <%= link_to friend.login, friend.url %>
-        </li>
-      </ul>
-      <% end %>
-  </section>
 
   <% if current_user.github_token.nil? %>
     <p> <%= button_to 'Connect to Github', github_login_path, method: :get, class: "btn btn-primary" %> </p>
@@ -44,7 +34,7 @@
       <% end %>
     </section>
 
-      <section>
+    <section>
       <h3> Following </h3>
       <% facade.following.each do |follow| %>
         <ul class="follow">
@@ -52,5 +42,17 @@
         </ul>
       <% end %>
     </section>
+
+    <section>
+      <h1> Friends </h1>
+      <% facade.friends.each do |friend| %>
+        <ul>
+          <li id="friend-#{friend.login}">
+            <%= link_to friend.login, friend.url %>
+          </li>
+        </ul>
+      <% end %>
+    </section>
+
   <% end %>
 </section> 
