@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
-class FriendshipsController < ApplicationRecord
+class FriendshipsController < ApplicationController
   def create
-
     friend = current_user.friendships.build(friend_id: params[:id].to_i)
     if friend.save
       redirect_to dashboard_path

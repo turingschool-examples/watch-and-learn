@@ -74,3 +74,6 @@ Style/ClassAndModuleChildren:
 
 Naming/AccessorMethodName:
   Enabled: false
+
+Style/IdenticalConditionalBranches:
+  Enabled: false

@@ -56,4 +56,10 @@ describe "User dashboard", type: :feature do
       expect(page).to have_css(".login")
     end
   end
+
+  it "can't add an invalid friend" do 
+    page.driver.submit :post, friendships_path(1000), {}
+
+    expect(page).to have_content("Something happen please retry!!")
+  end
 end
