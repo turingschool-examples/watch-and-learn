@@ -7,10 +7,22 @@
     <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
     <li> <%= current_user.email%> </li>
   </ul>
+  
   <section>
     <h1>Bookmarked Segments</h1>
+    <% facade.bookmarks.each do |bookmark| %>
+      <h3> <%= bookmark.tutorial %> </h3>
+      <section> 
+        <ul class="tutorial">
+          <% bookmark.videos.each do |video|%>
+            <li class="bookmark" id="bookmark-#{video.title}"> 
+              <p> <%= video.title %> </p>
+            </li>
+            <% end %>
+        </ul>
+      <section>
+    <% end %>
   </section>
-
 
   <% if current_user.github_token.nil? %>
     <p> <%= button_to 'Connect to Github', github_login_path, method: :get, class: "btn btn-primary" %> </p>
