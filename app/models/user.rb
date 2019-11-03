@@ -37,4 +37,10 @@ class User < ApplicationRecord
     credential = user_credentials.where(user_credentials: { website: "github" }).take
     credential.nil? ? nil : credential.token
   end
+
+  def bookmarks
+    videos.joins(:tutorial)
+          .select("videos.*, tutorials.title AS tutorial_title")
+          .order(position: :asc)
+  end
 end
