@@ -7,15 +7,15 @@ describe "User dashboard", type: :feature do
     stub_json("https://api.github.com/user/followers", "./fixtures/followers.json")
     stub_json("https://api.github.com/user/following", "./fixtures/following.json")
 
-    user = create(:user)
+    @user = create(:user)
     
     visit '/'
     click_on 'Sign In'
 
     expect(current_path).to eq(login_path)
 
-    fill_in 'session[email]', with: user.email
-    fill_in 'session[password]', with: user.password
+    fill_in 'session[email]', with: @user.email
+    fill_in 'session[password]', with: @user.password
     click_on 'Log In'
 
     click_on "Connect to Github"
@@ -61,5 +61,20 @@ describe "User dashboard", type: :feature do
     page.driver.submit :post, friendships_path(1000), {}
 
     expect(page).to have_content("Something happen please retry!!")
+  end
+
+  it "user sees bookmarks" do
+    video = create(:video)
+
+    page.driver.submit :post, user_videos_path, {user_id: @user.id, video_id: video.id}
+
+    expect(current_path).to eq(dashboard_path)
+    expect(page).to have_content("Bookmarked Segments")
+    expect(page).to have_css(".tutorial", count: 1)
+    expect(page).to have_css(".bookmark", count: 1)
+
+    within(first(".tutorial")) do
+      expect(page).to have_css(".bookmark", count: 1)
+    end
   end
 end
