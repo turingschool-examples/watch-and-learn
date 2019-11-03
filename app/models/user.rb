@@ -39,8 +39,11 @@ class User < ApplicationRecord
   end
 
   def bookmarks
-    videos.joins(:tutorial)
-          .select("videos.*, tutorials.title AS tutorial_title")
-          .order(position: :asc)
+    #   videos.joins(:tutorial)
+    #         .select("videos.*, tutorials.title AS tutorial_title")
+    #         .order(position: :asc)
+
+    Tutorial.includes(videos: :user_videos)
+            .where(user_videos: { user_id: id })
   end
 end

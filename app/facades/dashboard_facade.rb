@@ -25,9 +25,10 @@ class DashboardFacade
   end
 
   def bookmarks
-    @bookmarks ||= @current_user.bookmarks.group_by(&:tutorial_title).map do |tutorail, videos|
-      Bookmark.new(tutorail, videos)
-    end
+    # @bookmarks ||= @current_user.bookmarks.group_by(&:tutorial_title).map do |tutorail, videos|
+    #   Bookmark.new(tutorail, videos)
+    # end
+    @bookmarks ||= @current_user.bookmarks
   end
 
   private
