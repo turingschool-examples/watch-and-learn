@@ -24,6 +24,12 @@ class DashboardFacade
     @friends ||= @current_user.friendships.map { |data| Friend.new(data) }
   end
 
+  def bookmarks
+    @bookmarks ||= @current_user.bookmarks.group_by(&:tutorial_title).map do |tutorail, videos|
+      Bookmark.new(tutorail, videos)
+    end
+  end
+
   private
 
   def service
