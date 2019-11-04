@@ -10,7 +10,7 @@
 #  video_id    :string
 #  thumbnail   :string
 #  tutorial_id :bigint
-#  position    :integer          default(0)
+#  position    :integer          default(0), not null
 #
 
 class VideoSerializer < ActiveModel::Serializer

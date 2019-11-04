@@ -10,7 +10,7 @@
 #  video_id    :string
 #  thumbnail   :string
 #  tutorial_id :bigint
-#  position    :integer          default(0)
+#  position    :integer          default(0), not null
 #
 
 class Video < ApplicationRecord
@@ -18,9 +18,9 @@ class Video < ApplicationRecord
   has_many :users, through: :user_videos
   belongs_to :tutorial
 
-  validates :title, 
-            :description, 
-            :video_id, 
-            :position, 
+  validates :title,
+            :description,
+            :video_id,
+            :position,
             presence: true
 end
