@@ -34,4 +34,8 @@ RSpec.describe Video, type: :model do
     it { is_expected.to validate_presence_of(:video_id) }
     it { is_expected.to validate_presence_of(:position) }
   end
+
+  it "#position can't be nil?" do
+    expect(Video.where(position: nil).empty?).to eq(true)
+  end
 end
