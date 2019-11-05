@@ -12,11 +12,10 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.create(user_params)
+    user = User.create(user_params.merge(activate: SecureRandom.hex))
     if user.save
       session[:user_id] = user.id
       flash[:success] = "Logged as #{user.first_name} #{user.last_name}"
-
       redirect_to email_activation_path
     else
       flash[:error] = 'Username already exists'

@@ -50,5 +50,5 @@ Rails.application.routes.draw do
   post 'friendships/:id', to: 'friendships#create', as: :friendships
 
   get 'activate', to: 'activation#create', as: :email_activation
-  get 'register/:id', to: 'register#create', as: :user_activation
+  get 'register/:code', to: 'register#create', as: :user_activation
 end
