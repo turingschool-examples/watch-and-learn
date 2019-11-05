@@ -1,14 +1,24 @@
 # frozen_string_literal: true
 
 class Admin::TutorialsController < Admin::BaseController
-  def edit
-    @tutorial = Tutorial.find(params[:id])
-  end
-
-  def create; end
 
   def new
     @tutorial = Tutorial.new
+  end
+
+  def create
+    begin
+      tutorial = Tutorial.create(tutorial_params)
+      flash[:success] = "The tutorial has been created"
+    rescue
+      flash[:error] = "Something happen please retry!"
+    end
+
+    redirect_to tutorial_path(tutorial.id)
+  end
+
+  def edit
+    @tutorial = Tutorial.find(params[:id])
   end
 
   def update
@@ -22,6 +32,6 @@ class Admin::TutorialsController < Admin::BaseController
   private
 
   def tutorial_params
-    params.require(:tutorial).permit(:tag_list)
+    params.require(:tutorial).permit(:tag_list, :title, :description, :thumbnail)
   end
 end
