@@ -18,6 +18,7 @@ describe 'User' do
     click_on 'Log In'
 
     expect(page).to have_current_path(dashboard_path, ignore_query: true)
+    expect(page).to have_content("Logged as #{user.first_name} #{user.last_name}")
     expect(page).to have_content(user.email)
     expect(page).to have_content(user.first_name)
     expect(page).to have_content(user.last_name)

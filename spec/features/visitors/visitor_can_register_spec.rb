@@ -30,6 +30,7 @@ describe 'vister can create an account' do
 
     expect(page).to have_current_path(dashboard_path, ignore_query: true)
 
+    expect(page).to have_content("Logged as #{first_name} #{last_name}")
     expect(page).to have_content(email)
     expect(page).to have_content(first_name)
     expect(page).to have_content(last_name)
