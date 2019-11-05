@@ -53,5 +53,5 @@ Rails.application.routes.draw do
   get 'register/:code', to: 'register#create', as: :user_activation
 
   get '/invite', to: 'invite#new', as: :send_invitation
-  get '/invite', to: 'invite#create', as: :invite
+  post '/invite', to: 'invite#create', as: :invite
 end
