@@ -1,16 +1,14 @@
 # frozen_string_literal: true
 
 class Admin::VideosController < Admin::BaseController
-  def edit
-    @video = Video.find(params[:video_id])
-  end
 
-  def update
-    video = Video.find(params[:id])
-    video.update(video_params)
+  def new
+    @tutorial = Tutorial.find(params[:tutorial_id])
+    @video = Video.new
   end
 
   def create
+    # TODO: Don't work !!
     begin
       tutorial  = Tutorial.find(params[:tutorial_id])
       thumbnail = YouTube::Video.by_id(new_video_params[:video_id]).thumbnail
@@ -25,6 +23,16 @@ class Admin::VideosController < Admin::BaseController
 
     redirect_to edit_admin_tutorial_path(id: tutorial.id)
   end
+
+  def edit
+    @video = Video.find(params[:video_id])
+  end
+
+  def update
+    video = Video.find(params[:id])
+    video.update(video_params)
+  end
+
 
   private
 
