@@ -1,0 +1,8 @@
+<h2>Videos</h2>
+
+<%= form_for [@tutorial, @video], url: admin_tutorial_videos_path do |f| %>
+	<%= f.label :youtube_url %>
+	<%= f.text_field :video_id, class: "block col-4 field" %>
+
+	<%= f.submit "Save", class: "mt2 btn btn-primary mb1 bg-teal"  %>
+<% end %>
