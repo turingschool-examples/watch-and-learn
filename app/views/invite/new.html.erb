@@ -1,0 +1,8 @@
+<h1> Send an invitation </h1>
+
+<%= form_tag invite_path, method: :patch do %>
+  <%= label_tag :github_handle %>
+  <%= text_field_tag :github_handle%>
+
+  <%= submit_tag "Send the invitation"%>
+<% end %>

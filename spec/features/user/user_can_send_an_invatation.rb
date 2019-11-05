@@ -14,7 +14,7 @@ RSpec.describe "As a user", type: :feature do
 
   it "#can send an invitation" do
     fill_in "Github Handle", with: "Bozotte"
-    click_on "Send Invitation"
+    click_on "Send the invitation"
 
     expect(current_path).to eq(dashboard_path)
 
@@ -24,7 +24,7 @@ RSpec.describe "As a user", type: :feature do
 
   it "#can't send an invitation" do
     fill_in "Github Handle", with: "hola"
-    click_on "Send Invitation"
+    click_on "Send the invitation"
 
     expect(current_path).to eq(dashboard_path)
 
