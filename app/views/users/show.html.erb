@@ -2,9 +2,12 @@
   <h1> <%= current_user.first_name %>'s Dashboard </h1>
 
   <%= button_to 'Log Out', logout_path, method: 'delete', class: "btn btn-primary mb1 bg-teal" %>
-  <% unless current_user.activate %>
+  <% if current_user.activate %>
+    <h3> Status: Activate </h3>
+  <% else %>
     <h3> "This account is not yet activate. Please check your email"</h3>
   <% end %>
+  
   <h3>Account Details</h3>
   <ul>
     <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>

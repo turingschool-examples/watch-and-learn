@@ -51,3 +51,4 @@ Rails.application.routes.draw do
 
   get 'activate', to: 'activation#create', as: :email_activation
   get 'register/:id', to: 'register#create', as: :user_activation
+end
