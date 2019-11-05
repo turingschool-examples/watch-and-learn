@@ -18,7 +18,7 @@ class GithubService
   end
 
   def user_search(handle)
-    get_json("/user/#{handle}")
+    get_json("/users/#{handle}")
   end
 
   private
