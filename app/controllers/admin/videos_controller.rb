@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class Admin::VideosController < Admin::BaseController
-
   def new
     @tutorial = Tutorial.find(params[:tutorial_id])
     @video = Video.new
@@ -32,7 +31,6 @@ class Admin::VideosController < Admin::BaseController
     video = Video.find(params[:id])
     video.update(video_params)
   end
-
 
   private
 

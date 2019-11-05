@@ -36,6 +36,6 @@ RSpec.describe Video, type: :model do
   end
 
   it "#position can't be nil?" do
-    expect(Video.where(position: nil).empty?).to eq(true)
+    expect(described_class.where(position: nil).empty?).to eq(true)
   end
 end

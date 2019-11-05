@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class Admin::TutorialsController < Admin::BaseController
-
   def new
     @tutorial = Tutorial.new
   end
@@ -10,7 +9,7 @@ class Admin::TutorialsController < Admin::BaseController
     begin
       tutorial = Tutorial.create(tutorial_params)
       flash[:success] = "The tutorial has been created"
-    rescue
+    rescue StandardError
       flash[:error] = "Something happen please retry!"
     end
 
