@@ -10,7 +10,6 @@ class InviteController < ApplicationController
     elsif user[:email].nil?
       flash[:error] = "The user you selected doesn't have an email associated with their account."
     else
-      email = user[:email]
       flash[:success] = "Successfully sent the invitation!"
       ActivateMailer.invite(user, current_user.github_user_nickname).deliver_now
     end
@@ -20,7 +19,7 @@ class InviteController < ApplicationController
   private
 
   def service(token)
-    @_service ||= GithubService.new(token)
+    @service ||= GithubService.new(token)
   end
 
   def find_github_user(token, handle)
