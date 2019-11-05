@@ -47,4 +47,8 @@ class User < ApplicationRecord
     Tutorial.includes(videos: :user_videos)
             .where(user_videos: { user_id: id })
   end
+
+  def github_user_nickname
+    user_credentials.where(website: "github")[0].nickname
+  end
 end

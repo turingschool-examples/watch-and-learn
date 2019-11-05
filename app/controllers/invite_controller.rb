@@ -11,7 +11,7 @@ class InviteController < ApplicationController
     else
       email = user["email"]
       flash[:success] = "Successfully sent the invitation!"
-      ActivateMailer.invite(email).deliver_now
+      ActivateMailer.invite(user, current_user.github_user_nickname).deliver_now
     end
     redirect_to dashboard_path
   end

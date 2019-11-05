@@ -1,0 +1,3 @@
+<h3>Hello <%= @user[:login]%>,</h3>
+
+<h3><%= @inviter_handle %> has invited you to join Brownfield. You can create an account <%= link_to "here", ENV["LOCAL_URL"] + "/register" %>.</h3>
