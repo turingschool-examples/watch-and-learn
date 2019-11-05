@@ -12,6 +12,7 @@
 #  role            :integer          default("default")
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  activate        :boolean          default(FALSE)
 #
 
 class User < ApplicationRecord
