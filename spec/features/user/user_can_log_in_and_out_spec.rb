@@ -21,7 +21,7 @@ describe 'User' do
     expect(page).to have_content(user.last_name)
   end
 
-  it 'can log out', :js do
+  it 'can log out', :js, :vcr do
     user = create(:user)
 
     visit login_path
