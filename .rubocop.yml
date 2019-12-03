@@ -1,0 +1,22 @@
+AllCops:
+  Exclude:
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'script/**/*'
+    - 'bin/**/*'
+    - 'spec/**/*'
+    - 'public/**/*'
+    - 'db/**/*'
+    - 'lib/**/*'
+    - 'log/**/*'
+    - 'tmp/**/*'
+    - 'vendor/**/*'
+    - 'node_modules/**/*'
+    - 'Gemfile'
+    - 'Rakefile'
+
+Style:
+  Enabled: false
+
+Metrics/LineLength:
+  Max: 100
