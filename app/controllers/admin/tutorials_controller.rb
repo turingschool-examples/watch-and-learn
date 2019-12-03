@@ -4,6 +4,8 @@ class Admin::TutorialsController < Admin::BaseController
   end
 
   def create
+    tutorial = Tutorial.create(title: params["tutorial"]["title"], description: params["tutorial"]["description"], thumbnail: params["tutorial"]["thumbnail"])
+    redirect_to "/tutorials/#{tutorial.id}"
   end
 
   def new
