@@ -4,6 +4,9 @@ class Admin::TutorialsController < Admin::BaseController
   end
 
   def create
+    tutorial = Tutorial.create!(tutorial_params)
+    flash[:success] = 'Successfully created tutorial.'
+    redirect_to tutorial_path(tutorial.id)
   end
 
   def new
@@ -20,6 +23,6 @@ class Admin::TutorialsController < Admin::BaseController
 
   private
   def tutorial_params
-    params.require(:tutorial).permit(:tag_list)
+    params.require(:tutorial).permit(:tag_list, :title, :description, :thumbnail)
   end
 end
