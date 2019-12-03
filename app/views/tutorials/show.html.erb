@@ -12,6 +12,7 @@
   </ul>
 </div>
 
+<% if @facade.has_videos? %>
 <div class="col col-8">
   <div class="title-bookmark">
     <h3><%= @facade.current_video.title %></h3>
@@ -23,7 +24,6 @@
       <% end %>
     </div>
   </div>
-
   <div id="player">
     <script src="https://www.youtube.com/player_api"></script>
     <script>
@@ -66,4 +66,7 @@
   </p>
 </div>
 
+<% else %>
+<p>No videos currently</p>
+<% end %>
 </main>

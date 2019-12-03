@@ -4,12 +4,17 @@ class TutorialFacade < SimpleDelegator
     @video_id = video_id
   end
 
+  def has_videos?
+    !current_video.nil?
+  end
+
   def current_video
     if @video_id
       videos.find(@video_id)
     else
       videos.first
     end
+
   end
 
   def next_video
