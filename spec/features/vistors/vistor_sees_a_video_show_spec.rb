@@ -13,4 +13,14 @@ describe 'visitor sees a video show' do
     expect(page).to have_content(video.title)
     expect(page).to have_content(tutorial.title)
   end
+
+  it 'vistor should not see tutorials that are classroom classified' do
+    tutorial = create(:tutorial, classroom: true)
+    video = create(:video, tutorial_id: tutorial.id)
+
+    visit '/'
+    
+    expect(page).to_not have_content(tutorial.title)
+    expect(page).to_not have_content(video.title)
+  end
 end
