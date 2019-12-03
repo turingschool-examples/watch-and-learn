@@ -1,5 +1,3 @@
-#  
-
 class Admin::VideosController < Admin::BaseController
   def edit
     @video = Video.find(params[:video_id])
