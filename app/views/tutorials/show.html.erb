@@ -1,6 +1,10 @@
 <main class="tutorials">
 <h2><%= @facade.title %></h2>
 <h1 id="message"></h1>
+
+
+<% if @facade.has_videos? %>
+
 <div class="col col-4">
   <h4>Videos</h4>
   <ul>
@@ -19,7 +23,7 @@
       <% if current_user %>
       <%= button_to "Bookmark", user_videos_path(video_id: @facade.current_video.id, user_id: current_user.id), method: :post, class: "btn btn-outline mb1 teal" %>
       <% else %>
-      <%= link_to "Bookmark", login_path, class: "btn btn-outline mb1 teal" %>
+      <%= link_to "Bookmark", tutorial_path(alert: true), class: "btn btn-outline mb1 teal" %>
       <% end %>
     </div>
   </div>
@@ -66,4 +70,6 @@
   </p>
 </div>
 
+
+<% end %>
 </main>
