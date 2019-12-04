@@ -7,7 +7,10 @@ class Admin::TutorialsController < Admin::BaseController
     tutorial = Tutorial.create(new_tutorial_params)
     if tutorial.save
       video = tutorial.videos.create(new_video_params)
-      redirect_to "/tutorials/#{tutorial.id}" if tutorial.save && video.save
+      if tutorial.save && video.save
+        flash[:success] = 'Successfully created tutorial.'
+        redirect_to "/tutorials/#{tutorial.id}"
+      end
     else
       @tutorial = Tutorial.new
       flash[:error] = 'Must fill out all fields to create tutorial.'

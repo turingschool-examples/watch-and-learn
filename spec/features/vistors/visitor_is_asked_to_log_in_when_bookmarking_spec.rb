@@ -1,5 +1,3 @@
-#  
-
 require 'rails_helper'
 
 describe 'visitor visits video show page' do

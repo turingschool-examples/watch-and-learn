@@ -19,6 +19,8 @@ describe 'As an Admin' do
     id = Tutorial.last.id
 
     expect(current_path).to eq("/tutorials/#{id}")
+
+    expect(page).to have_content('Successfully created tutorial.')
   end
 
   it 'I cannot create a new tutorial with invalid params' do
