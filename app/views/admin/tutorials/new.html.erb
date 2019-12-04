@@ -1,27 +1,12 @@
 <h2>New Tutorial</h2>
 
 <%= form_for [:admin, Tutorial.new] do |f| %>
-  <section id="new_tutorial_form">
     <%= f.label :title %>
     <%= f.text_field :title, class: "block col-4 field" %>
     <%= f.label :description %>
     <%= f.text_area :description, class: "block col-4 field"  %>
     <%= f.label :thumbnail %>
     <%= f.text_field :thumbnail, class: "block col-4 field"  %>
-  </section>
-
-  <h3>Videos</h3>
-
-  <%= f.fields_for Video.new do |video_f| %>
-    <section id="new_video_form">
-      <%= video_f.label :title %>
-      <%= video_f.text_field :title, class: "block col-4 field" %>
-      <%= video_f.label :description %>
-      <%= video_f.text_field :description, class: "block col-4 field" %>
-      <%= video_f.label :video_id %>
-      <%= video_f.text_field :video_id, class: "block col-4 field" %>
-    </section>
-  <% end %>
 
   <%= f.submit "Save", class: "mt2 btn btn-primary mb1 bg-teal"  %>
 <% end %>
