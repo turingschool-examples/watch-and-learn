@@ -5,8 +5,8 @@ class Admin::TutorialsController < Admin::BaseController
 
   def create
     tutorial = Tutorial.create(tutorial_params)
-    video = tutorial.videos.create!(title: params["tutorial"]["video"]["title"], description: params["tutorial"]["video"]["description"], video_id: params["tutorial"]["video"]["video_id"])
-    if tutorial.save && video.save
+
+    if tutorial.save
       redirect_to "/tutorials/#{tutorial.id}"
       flash[:success] = "Successfully created tutorial."
     else
@@ -32,8 +32,4 @@ class Admin::TutorialsController < Admin::BaseController
   def tutorial_params
     params.require(:tutorial).permit(:title, :description, :thumbnail, :tag_list)
   end
-
-  # def video_params
-  #   params.require(:video).permit()
-  # end
 end
