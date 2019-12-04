@@ -11,6 +11,8 @@ describe 'As an Admin' do
     fill_in 'Title', with: 'title'
     fill_in 'Description', with: 'description'
     fill_in 'Thumbnail', with: 'http://i3.ytimg.com/vi/jyBY-I37P9M/maxresdefault.jpg'
+    fill_in 'videos_video_id', with: 'https://www.youtube.com/watch?v=PTbf-VL5UiE'
+    fill_in 'videos_description', with: 'Video Description'
 
     click_button 'Save'
 
@@ -24,8 +26,6 @@ describe 'As an Admin' do
     fill_in 'Thumbnail', with: 'http://i3.ytimg.com/vi/jyBY-I37P9M/maxresdefault.jpg'
 
     click_button 'Save'
-
-    expect(current_path).to eq('/admin/tutorials/new')
 
     expect(page).to have_content('Must fill out all fields to create tutorial.')
   end

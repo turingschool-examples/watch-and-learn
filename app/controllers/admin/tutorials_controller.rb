@@ -5,12 +5,13 @@ class Admin::TutorialsController < Admin::BaseController
 
   def create
     tutorial = Tutorial.create(new_tutorial_params)
-    video = tutorial.videos.create(new_video_params)
-    if tutorial.save && video.save
-      redirect_to "/tutorials/#{tutorial.id}"
+    if tutorial.save
+      video = tutorial.videos.create(new_video_params)
+      redirect_to "/tutorials/#{tutorial.id}" if tutorial.save && video.save
     else
       @tutorial = Tutorial.new
-      render :new
+      flash[:error] = 'Must fill out all fields to create tutorial.'
+      redirect_to '/admin/tutorials/new'
     end
   end
 
