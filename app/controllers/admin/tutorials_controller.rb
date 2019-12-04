@@ -12,7 +12,7 @@ class Admin::TutorialsController < Admin::BaseController
       flash[:error] = 'Tutorial was not created.'
       redirect_to new_admin_tutorial_path
     end
-  enda
+  end
 
   def new
     @tutorial = Tutorial.new
