@@ -25,4 +25,18 @@ describe 'An admin can create a new tutorial' do
 
     expect(page).to have_content('Successfully created tutorial.')
   end
+
+  it 'will receive a flash message if not created' do
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+
+    visit new_admin_tutorial_path
+
+    fill_in 'tutorial[title]', with: "How to do Rails"
+    fill_in 'tutorial[description]', with: "Here is a video description."
+
+    click_on "Save"
+    expect(current_path).to eq(new_admin_tutorial_path)
+
+    expect(page).to have_content('Tutorial was not created.')
+  end
 end
