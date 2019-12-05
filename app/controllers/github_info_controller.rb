@@ -1,7 +1,6 @@
 class GithubInfoController < ApplicationController
   def create
-    current_user.update_attribute(:token, token)
-    current_user.update_attribute(:connected?, true)
+    current_user.update(token: token, connected?: true)
     redirect_to dashboard_path
   end
 
