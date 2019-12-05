@@ -9,7 +9,9 @@
   </ul>
   <h4>Github Repo's</h4>
     <section id="Github">
-      
+      <% user_repos.limit_five.each do |repo| %>
+      <p><%= link_to repo.name, repo.html_url %></p>
+      <% end %>
     </section>
   <section>
     <h1>Bookmarked Segments</h1>
