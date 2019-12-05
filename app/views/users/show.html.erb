@@ -9,8 +9,10 @@
   </ul>
   <h4>Github Repo's</h4>
     <section id="Github">
-      <% user_repos.limit_five.each do |repo| %>
-      <p><%= link_to repo.name, repo.html_url %></p>
+      <% user_repos.limit_five.each_with_index do |repo, index| %>
+      <section id="repo-<%= index %>"> 
+        <p><%= link_to repo.name, repo.html_url %></p>
+      </section>
       <% end %>
     </section>
   <section>
