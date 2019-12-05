@@ -1,17 +1,17 @@
 <section class="dashboard-main">
-  <h1> <%= current_user.first_name %>'s Dashboard </h1>
+  <h1> <%= search_results.user.first_name %>'s Dashboard </h1>
 
   <%= button_to 'Log Out', logout_path, method: 'delete', class: "btn btn-primary mb1 bg-teal" %>
   <h3>Account Details</h3>
   <ul>
-    <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
-    <li> <%= current_user.email%> </li>
+    <li> <%= search_results.user.first_name  %> <%= search_results.user.last_name %> </li>
+    <li> <%= search_results.user.email%> </li>
   </ul>
   <section>
     <h1>Bookmarked Segments</h1>
   </section>
 
-  <% if !current_user.admin? %>
+  <% if search_results.user.github_token %>
     <section>
       <h3> GitHub </h3>
       <% search_results.github_repos.each do |repo| %>
