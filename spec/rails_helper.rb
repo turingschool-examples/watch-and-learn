@@ -14,8 +14,8 @@ VCR.configure do |config|
   config.hook_into :webmock
   config.configure_rspec_metadata!
   config.filter_sensitive_data("<YOUTUBE_API_KEY>") { ENV['YOUTUBE_API_KEY'] }
+  config.filter_sensitive_data("<USER_GITHUB_TOKEN>") { ENV['USER_GITHUB_TOKEN'] }
 end
-
 
 ActiveRecord::Migration.maintain_test_schema!
 
@@ -49,3 +49,9 @@ RSpec.configure do |config|
 
   config.filter_rails_from_backtrace!
 end
+
+OmniAuth.config.test_mode = true
+OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({
+  credentials: { token: ENV["USER_GITHUB_TOKEN"] }
+})
+Rails.application.env_config["omniauth.auth"] = OmniAuth.config.mock_auth[:github]
