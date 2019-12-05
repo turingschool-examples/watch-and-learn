@@ -11,12 +11,15 @@
     <h1>Bookmarked Segments</h1>
   </section>
 
-  <section>
-    <h3> GitHub </h3>
-    <% search_results.github_repos.each do |repo| %>
-      <ul class='repo'>
-        <li> <%= link_to repo.name, repo.html_url %> </li>
-      </ul>
-    <% end %>
-  </section>
+  <% if !current_user.admin? %>
+    <section>
+      <h3> GitHub </h3>
+      <% search_results.github_repos.each do |repo| %>
+        <ul class='repo'>
+          <li> <%= link_to repo.name, repo.html_url %> </li>
+        </ul>
+      <% end %>
+    </section>
+  <% end %>
+
 </section>
