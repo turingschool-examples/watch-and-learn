@@ -1,6 +1,10 @@
 class FetchRepos
+  def initialize(current_user)
+    @current_user = current_user
+  end
+
   def get_repos
-    service = GithubService.new
+    service = GithubService.new(@current_user)
     service.fetch
   end
 

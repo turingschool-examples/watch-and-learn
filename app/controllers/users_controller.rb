@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   def show
     render locals: {
-    user_repos: FetchRepos.new
+    user_repos: FetchRepos.new(current_user)
     }
   end
 
