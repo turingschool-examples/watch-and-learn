@@ -7,15 +7,18 @@
     <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
     <li> <%= current_user.email%> </li>
   </ul>
-  <h4>Github Repo's</h4>
-    <section id="Github">
-      <% user_repos.limit_five.each_with_index do |repo, index| %>
-      <section id="repo-<%= index %>"> 
-        <p><%= link_to repo.name, repo.html_url %></p>
+
+  <% if current_user.github_token %>
+    <h4>Github Repo's</h4>
+      <section id="Github">
+        <% user_repos.limit_five.each_with_index do |repo, index| %>
+        <section id="repo-<%= index %>">
+          <p><%= link_to repo.name, repo.html_url %></p>
+        </section>
+        <% end %>
       </section>
-      <% end %>
+    <section>
+      <h1>Bookmarked Segments</h1>
     </section>
-  <section>
-    <h1>Bookmarked Segments</h1>
   </section>
-</section>
+<% end %>
