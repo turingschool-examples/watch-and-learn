@@ -1,5 +1,10 @@
 class UsersController < ApplicationController
   def show
+    if current_user
+      render locals: {
+        user: UserDecorator.new(current_user)
+      }
+    end
   end
 
   def new
