@@ -10,21 +10,29 @@
 
   <% if current_user.github_token %>
     <h4>Github Repo's</h4>
-      <section id="Github">
-        <% user_repos.limit_five.each_with_index do |repo, index| %>
-        <section id="repo-<%= index %>">
-          <p><%= link_to repo.name, repo.html_url %></p>
-        </section>
-        <% end %>
+    <section id="Github">
+      <% user_repos.limit_five.each_with_index do |repo, index| %>
+      <section id="repo-<%= index %>">
+        <p><%= link_to repo.name, repo.html_url %></p>
       </section>
-      <h4>Followers</h4>
-        <section id="Followers">
-          <% user_info.all_followers.each_with_index do |follower, index| %>
-          <section id="follower-<%= index %>">
-            <p><%= link_to follower.login, follower.html_url %></p>
-          </section>
-          <% end %>
-        </section>
+      <% end %>
+    </section>
+    <h4>Followers</h4>
+    <section id="Followers">
+      <% user_info.all_followers.each_with_index do |follower, index| %>
+      <section id="follower-<%= index %>">
+        <p><%= link_to follower.login, follower.html_url %></p>
+      </section>
+      <% end %>
+    </section>
+    <h4>Following</h4>
+    <section id="following">
+      <% user_info.following.each_with_index do |user, index| %>
+      <section id="follow-<%= index %>">
+        <p><%= link_to user.login, user.html_url %></p>
+      </section>
+      <% end %>
+    </section>
     <section>
       <h1>Bookmarked Segments</h1>
     </section>
