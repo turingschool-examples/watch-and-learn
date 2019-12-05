@@ -2,7 +2,8 @@ class UsersController < ApplicationController
   def show
     if current_user.github_token
       render locals: {
-      user_repos: FetchReposFacade.new(current_user)
+      user_repos: UserInfoFacade.new(current_user),
+      user_info: UserInfoFacade.new(current_user)
       }
     end
   end

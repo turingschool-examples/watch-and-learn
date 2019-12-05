@@ -1,11 +1,11 @@
-class FetchReposFacade
+class UserInfoFacade
   def initialize(current_user)
     @current_user = current_user
   end
 
   def get_repos
     service = GithubService.new(@current_user)
-    service.fetch
+    service.fetch_repos
   end
 
   def limit_five
@@ -15,4 +15,11 @@ class FetchReposFacade
     end
   end
 
+  def all_followers
+    service = GithubService.new(@current_user)
+    followers = service.fetch_followers
+    followers.map do |follower|
+      Follower.new(follower[:login], follower[:html_url])
+    end
+  end
 end
