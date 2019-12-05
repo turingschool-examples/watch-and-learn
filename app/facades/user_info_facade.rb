@@ -19,7 +19,15 @@ class UserInfoFacade
     service = GithubService.new(@current_user)
     followers = service.fetch_followers
     followers.map do |follower|
-      Follower.new(follower[:login], follower[:html_url])
+      GithubUser.new(follower[:login], follower[:html_url])
+    end
+  end
+
+  def following
+    service = GithubService.new(@current_user)
+    users = service.fetch_users
+    users.map do |user|
+      GithubUser.new(user[:login], user[:html_url])
     end
   end
 end
