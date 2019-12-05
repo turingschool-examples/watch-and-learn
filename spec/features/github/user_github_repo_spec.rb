@@ -12,11 +12,21 @@ RSpec.describe "As a logged in user" do
         visit '/dashboard'
 
         within "#Github" do
-          expect(page).to have_link("")
-          expect(page).to have_link("")
-          expect(page).to have_link("")
-          expect(page).to have_link("")
-          expect(page).to have_link("")
+          within "#repo-0" do
+            expect(page).to have_link
+          end
+          within "#repo-1" do
+            expect(page).to have_link
+          end
+          within "#repo-2" do
+            expect(page).to have_link
+          end
+          within "#repo-3" do
+            expect(page).to have_link
+          end
+          within "#repo-4" do
+            expect(page).to have_link
+          end
         end
       end
     end
