@@ -1,13 +1,38 @@
 <section class="dashboard-main">
-  <h1> <%= current_user.first_name %>'s Dashboard </h1>
+  <h1> <%= @user_facade.user.first_name %>'s Dashboard </h1>
 
   <%= button_to 'Log Out', logout_path, method: 'delete', class: "btn btn-primary mb1 bg-teal" %>
   <h3>Account Details</h3>
   <ul>
-    <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
-    <li> <%= current_user.email%> </li>
+    <li> <%= @user_facade.user.first_name  %> <%= @user_facade.user.last_name %> </li>
+    <li> <%= @user_facade.user.email%> </li>
   </ul>
-  <section>
-    <h1>Bookmarked Segments</h1>
+  <% if !@user_facade.user.connected? %>
+    <%= link_to 'Connect to Github', github_info_path, method: 'get', class: "btn btn-primary mb1 bg-teal" %>
+  <% else %>
+    <section>
+      <h1>Github</h1>
+      <section>
+        <h3>Repos</h3>
+        <% @user_facade.repos.each do |repo| %>
+          <p><%= link_to repo.name, repo.link %></p>
+        <% end %>
+      </section>
+      <section>
+        <h3>Followers</h3>
+        <% @user_facade.followers.each do |follower| %>
+          <p><%= link_to follower.handle, follower.link %></p>
+        <% end %>
+      </section>
+      <section>
+        <h3>Following</h3>
+        <% @user_facade.followings.each do |following| %>
+          <p><%= link_to following.handle, following.link %></p>
+        <% end %>
+      </section>
+    </section>
+    <section>
+      <h1>Bookmarked Segments</h1>
+    </section>
+  <% end %>
   </section>
-</section>
