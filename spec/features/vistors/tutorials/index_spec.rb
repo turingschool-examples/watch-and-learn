@@ -12,5 +12,15 @@ describe 'As a visitor' do
       expect(page).to have_content(@tutorial_2.title)
       expect(page).to_not have_content(@tutorial_1.title)
     end
+
+    it 'I can click on links to the tutorial show page' do
+      video_2 = create(:video, tutorial_id: @tutorial_2.id)
+
+      click_on @tutorial_2.title
+
+      expect(current_path).to eq(tutorial_path(@tutorial_2))
+      expect(page).to have_content(video_2.title)
+      expect(page).to have_content(@tutorial_2.title)
+    end
   end
 end
