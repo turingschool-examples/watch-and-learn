@@ -1,8 +1,10 @@
 class UsersController < ApplicationController
   def show
-    render locals: {
-    user_repos: FetchRepos.new(current_user)
-    }
+    if current_user.github_token
+      render locals: {
+      user_repos: FetchReposFacade.new(current_user)
+      }
+    end
   end
 
   def new
