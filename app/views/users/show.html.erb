@@ -1,32 +1,32 @@
 <section class="dashboard-main">
-  <h1> <%= @user_facade.user.first_name %>'s Dashboard </h1>
+  <h1> <%= user_facade.user.first_name %>'s Dashboard </h1>
 
   <%= button_to 'Log Out', logout_path, method: 'delete', class: "btn btn-primary mb1 bg-teal" %>
   <h3>Account Details</h3>
   <ul>
-    <li> <%= @user_facade.user.first_name  %> <%= @user_facade.user.last_name %> </li>
-    <li> <%= @user_facade.user.email%> </li>
+    <li> <%= user_facade.user.first_name  %> <%= user_facade.user.last_name %> </li>
+    <li> <%= user_facade.user.email%> </li>
   </ul>
-  <% if !@user_facade.user.connected? %>
+  <% if !user_facade.user.connected? %>
     <%= link_to 'Connect to Github', github_info_path, method: 'get', class: "btn btn-primary mb1 bg-teal" %>
   <% else %>
     <section>
       <h1>Github</h1>
-      <section>
+      <section class='user-repos'>
         <h3>Repos</h3>
-        <% @user_facade.repos.each do |repo| %>
+        <% user_facade.repos.each do |repo| %>
           <p><%= link_to repo.name, repo.link %></p>
         <% end %>
       </section>
-      <section>
+      <section class='user-followers'>
         <h3>Followers</h3>
-        <% @user_facade.followers.each do |follower| %>
+        <% user_facade.followers.each do |follower| %>
           <p><%= link_to follower.handle, follower.link %></p>
         <% end %>
       </section>
-      <section>
+      <section class='user-followings'>
         <h3>Following</h3>
-        <% @user_facade.followings.each do |following| %>
+        <% user_facade.followings.each do |following| %>
           <p><%= link_to following.handle, following.link %></p>
         <% end %>
       </section>

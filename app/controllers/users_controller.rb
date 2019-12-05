@@ -1,10 +1,8 @@
 class UsersController < ApplicationController
   def show
-    # render local: {
-    #   user_facade: UserFacade.new(current_user)
-    # }
-
-    @user_facade = UserFacade.new(current_user)
+    render locals: {
+      user_facade: UserFacade.new(current_user)
+    }
   end
 
   def new
