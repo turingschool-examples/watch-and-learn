@@ -8,11 +8,10 @@ describe 'User' do
       visit '/dashboard'
     end
 
-    it "I a Github section with 5 of my repos, where each name is a link" do
+    it "I see a Github section with 5 of my repos, where each name is a link" do
       expect(current_path).to eq('/dashboard')
       expect(page).to have_content('Github Repositories')
       expect(page).to have_css('.github-repo', count: 5)
-      # make sure text is not empty in any
     end
   end
 end
