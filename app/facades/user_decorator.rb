@@ -4,19 +4,10 @@ class UserDecorator < SimpleDelegator
     @user = super(user)
   end
 
-  # def github_search_result
-  #   GithubSearchResult.new(@user.token)
-  # end
-
-  # def repos
-  #   github_search_result.repos[0..4]
-  # end
-
   def repos
     raw_repo_data = get_repo_data
     create_repos(raw_repo_data)
   end
-
 
   private
     attr_reader :user
