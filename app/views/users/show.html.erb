@@ -10,7 +10,7 @@
   <% if !user_facade.user.connected? %>
     <%= link_to 'Connect to Github', github_info_path, method: 'get', class: "btn btn-primary mb1 bg-teal" %>
   <% else %>
-    <section>
+    <section class='github-info'>
       <h1>Github</h1>
       <section class='user-repos'>
         <h3>Repos</h3>
