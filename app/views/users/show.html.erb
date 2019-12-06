@@ -13,13 +13,31 @@
 
   <% if search_results.user.github_token %>
     <section>
-      <h3> GitHub </h3>
-      <% search_results.github_repos.each do |repo| %>
-        <ul class='repo'>
-          <li> <%= link_to repo.name, repo.html_url %> </li>
-        </ul>
-      <% end %>
+      <h1> GitHub </h1>
+        <section class='github-repos'>
+          <h3> Repos </h3>
+            <% search_results.github_repos.each do |repo| %>
+            <ul class='repo'>
+              <li class='name'> <%= link_to repo.name, repo.html_url %> </li>
+            </ul>
+          <% end %>
+        </section>
+        <section class='github-following'>
+          <h3> Following </h3>
+            <% search_results.github_followings.each do |following| %>
+              <ul class='following'>
+                <li> <%= link_to following.login, following.html_url %></li>
+              </ul>
+            <% end %>
+        </section>
+        <section class='github_followers'>
+          <h3> Followers </h3>
+          <% search_results.github_followers.each do |follower| %>
+            <ul class='followers'>
+              <li> <%= link_to follower.login, follower.html_url %></li>
+            </ul>
+          <% end %>
+        </section>
     </section>
   <% end %>
-
 </section>

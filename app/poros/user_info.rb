@@ -12,4 +12,18 @@ class UserInfo
       Repo.new(repo)
     end
   end
+
+  def github_followings
+    service = GithubService.new(@token)
+    @github_followings ||= service.followings_by_user.map do |following|
+      Following.new(following)
+    end
+  end
+
+  def github_followers
+    service = GithubService.new(@token)
+    @github_followers ||= service.followers_by_user.map do |follower|
+      Follower.new(follower)
+    end
+  end
 end
