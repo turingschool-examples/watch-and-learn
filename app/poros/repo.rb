@@ -1,6 +1,5 @@
 class Repo
-  attr_reader :name,
-              :html_url
+  attr_reader :name, :html_url
 
   def initialize(attributes)
     @name = attributes[:name]
