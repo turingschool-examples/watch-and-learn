@@ -31,8 +31,19 @@
         <% end %>
       </section>
     </section>
-    <section>
-      <h1>Bookmarked Segments</h1>
-    </section>
   <% end %>
+  <section>
+    <h1>Bookmarked Segments</h1>
+
+      <% user_facade.user.order_videos.each do |tut, video_arr| %>
+        <section class="tutorial-<%= tut.id %>">
+          <h3><%= tut.title %></h3>
+            <% video_arr.each_with_index do |vid, index| %>
+              <section class="video-pos-<%= index %>">
+                <%= link_to vid.title, tutorial_path(id: vid.tutorial_id, video_id: vid.id) %><br>
+              </section>
+            <% end %>
+        </section>
+      <% end %>
+  </section>
   </section>
