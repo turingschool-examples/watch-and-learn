@@ -5,7 +5,33 @@ prework_tutorial_data = {
   "playlist_id"=>"PL1Y67f0xPzdN6C-LPuTQ5yzlBoz2joWa5",
   "classroom"=>false,
 }
+
+prework_tutorial_data_2 = {
+  "title"=>"Module 5 - Prework",
+  "description"=>"Videos for Module 5",
+  "thumbnail"=>"https://i.ytimg.com/vi/qMkRHW9zE1c/hqdefault.jpg",
+  "playlist_id"=>"PL1Y67f0xPzdN6C-LPuTQ5yzlBoz2joWa5",
+  "classroom"=> true,
+}
+
 prework_tutorial = Tutorial.create! prework_tutorial_data
+prework_tutorial_2 = Tutorial.create! prework_tutorial_data_2
+
+prework_tutorial_2.videos.create!({
+  "title"=>"Module 5 - Environment Setup",
+  "description"=> Faker::Hipster.paragraph(2, true),
+  "video_id"=>"qMkRHW9zE1c",
+  "thumbnail"=>"https://i.ytimg.com/vi/qMkRHW9zE1c/hqdefault.jpg",
+  "position"=> 1
+})
+
+prework_tutorial_2.videos.create!({
+  "title"=>"Module - Environment Setup",
+  "description"=> Faker::Hipster.paragraph(2, true),
+  "video_id"=>"qMkRHW9zE1c",
+  "thumbnail"=>"https://i.ytimg.com/vi/qMkRHW9zE1c/hqdefault.jpg",
+  "position"=> 2
+})
 
 prework_tutorial.videos.create!({
   "title"=>"Prework - Environment Setup",
@@ -116,3 +142,4 @@ m3_tutorial.videos.create!({
 })
 
 User.create!(email: 'admin@example.com', first_name: 'Bossy', last_name: 'McBosserton', password:  "password", role: :admin)
+User.create!(email: 'default@example.com', first_name: 'User', last_name: 'Userton', password:  "password", role: :default)
