@@ -119,3 +119,4 @@ User.create!(email: 'admin@example.com', first_name: 'Bossy', last_name: 'McBoss
 User.create!(email: 'user_1@example.com', first_name: 'Brian', last_name: 'B', password: "password", role: :default, github_token: ENV['GITHUB_TOKEN_1'])
 User.create!(email: 'user_2@example.com', first_name: 'Scott', last_name: 'R', password: "password", role: :default, github_token: ENV['GITHUB_TOKEN_2'])
 User.create!(email: 'user_3@example.com', first_name: 'Zac', last_name: 'I', password: "password", role: :default)
+User.create!(email: 'user_4@example.com', first_name: 'Ryan', last_name: 'H', password: "password", role: :default)
