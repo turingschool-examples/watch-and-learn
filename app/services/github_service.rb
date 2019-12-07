@@ -4,14 +4,22 @@ class GithubService
   end
 
   def repos_by_user
-    get_json('/user/repos')
+    get_json('/user/repos').take(5)
+  end
+
+  def followings_by_user
+    get_json('/user/following')
+  end
+
+  def followers_by_user
+    get_json('/user/followers')
   end
 
   private
 
   def get_json(url)
     response = conn.get(url)
-    JSON.parse(response.body, symbolize_names: true).take(5)
+    JSON.parse(response.body, symbolize_names: true)
   end
 
   def conn
