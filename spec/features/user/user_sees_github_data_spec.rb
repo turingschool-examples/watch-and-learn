@@ -21,7 +21,6 @@ describe 'User' do
       within("#repositories") do
         expect(page).to have_link(count: 5)
       end
-      # expect(page).to have_css('.github-repo', count: 5)
     end
 
     it "can see all github followers" do
