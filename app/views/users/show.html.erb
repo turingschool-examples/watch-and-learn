@@ -8,6 +8,10 @@
     <li> <%= current_user.email%> </li>
   </ul>
 
+    <section>
+      <%= button_to 'Connect to Github', github_login_path %>
+    </section>
+
   <% if current_user.github_token %>
     <h4>Github Repo's</h4>
     <section id="Github">
