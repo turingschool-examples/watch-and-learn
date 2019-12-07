@@ -8,17 +8,42 @@
     <li> <%= user.first_name  %> <%= user.last_name %> </li>
     <li> <%= user.email%> </li>
   </ul>
-  <section>
-    <h1>Github Repositories</h1>
-    <% if user.token %>
-      <% user.repos.each do |repo| %>
-        <%= link_to repo.name.capitalize, repo.url, class: 'github-repo' %>
+  <% if user.token %>
+    <section id="repositories">
+      <h2>Repositories</h2>
+      <% if !user.repos.empty? %>
+        <% user.repos.each do |repo| %>
+          <%= link_to repo.name.capitalize, repo.url, class: 'github-repo' %>
+        <% end %>
+      <% else %>
+        <p>You don't have any Github repositories</p>
       <% end %>
-    <% else %>
-      <p>You are not connected through GitHub!</p>
-      <%= button_to 'Connect to Github', "/auth/github", class: 'btn btn-primary mb1 bg-teal' %>
-    <% end %>
-  </section>
+    </section>
+    <section id="followers">
+      <h2>Followers</h2>
+      <% if !user.followers.empty? %>
+        <% user.followers.each do |follower| %>
+          <%= link_to follower.name.capitalize, follower.url, class: 'github-follower' %>
+        <% end %>
+      <% else %>
+        <p>You don't have any Github followers</p>
+      <% end %>
+    </section>
+    <section id="following">
+      <h2>Following</h2>
+      <% if !user.following.empty? %>
+        <% user.following.each do |following| %>
+          <%= link_to following.name.capitalize, following.url, class: 'github-following' %>
+        <% end %>
+      <% else %>
+        <p>You aren't following anyone on Github</p>
+      <% end %>
+    </section>
+  <% else %>
+    <p>You are not connected through GitHub!</p>
+    <%= button_to 'Connect to Github', "/auth/github", class: 'btn btn-primary mb1 bg-teal' %>
+  <% end %>
+
   <section>
-    <h1>Bookmarked Segments</h1>
+    <h2>Bookmarked Segments</h2>
   </section>
