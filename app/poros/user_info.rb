@@ -26,4 +26,8 @@ class UserInfo
       Follower.new(follower)
     end
   end
+
+  def has_account?(follower)
+    User.where("handle = ?", follower.login).exists?
+  end
 end

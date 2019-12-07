@@ -40,7 +40,11 @@
           <h3> Followers </h3>
           <% search_results.github_followers.each do |follower| %>
             <ul class='followers'>
-              <li class='login'> <%= link_to follower.login, follower.html_url %></li>
+              <li class='login'> <%= link_to follower.login, follower.html_url %>
+                <% if search_results.has_account?(follower) %>
+                  <%= link_to 'Add as Friend' %>
+                <% end %>
+              </li>
             </ul>
           <% end %>
         </section>
