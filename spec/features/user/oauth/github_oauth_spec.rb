@@ -5,7 +5,7 @@ RSpec.describe 'As a user when I am on my dashboard' do
     OmniAuth.config.test_mode = true
 
     OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({
-      :credentials => {:token => ENV['MY_TOKEN']}
+      :credentials => {:token => ENV['MY_TOKEN']}, :info => {:nickname => 'lrs8810'}
       })
 
     Rails.application.env_config["omniauth.auth"] = OmniAuth.config.mock_auth[:github]

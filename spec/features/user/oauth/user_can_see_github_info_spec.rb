@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'When I visit my dashboard as a user' do
   before(:each) do
-    @user = create(:user, token: ENV['MY_TOKEN'], connected?: true)
+    @user = create(:user, token: ENV['MY_TOKEN'], connected?: true, handle: 'lrs8810')
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
 
@@ -71,7 +71,7 @@ RSpec.describe 'When I visit my dashboard as a user' do
   end
 
   it 'I can only see the user repos for a specific user' do
-    user_2 = create(:user, token: 'friend', connected?: true)
+    user_2 = create(:user, token: 'friend', connected?: true, handle: 'bob')
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_2)
 
