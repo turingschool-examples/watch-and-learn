@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.github.com/user/repos?access_token=630536143d02820d73bbba6fc65373b3a1adc45e
+    uri: https://api.github.com/user/repos?access_token=ac177bcca68b112cde705e1170dc9ac98e9c3291
     body:
       encoding: US-ASCII
       string: ''
@@ -21,7 +21,7 @@ http_interactions:
       Server:
       - GitHub.com
       Date:
-      - Thu, 05 Dec 2019 21:26:21 GMT
+      - Thu, 05 Dec 2019 22:26:53 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -33,7 +33,7 @@ http_interactions:
       X-Ratelimit-Remaining:
       - '4993'
       X-Ratelimit-Reset:
-      - '1575584544'
+      - '1575588334'
       Cache-Control:
       - private, max-age=60, s-maxage=60
       Vary:
@@ -47,8 +47,8 @@ http_interactions:
       X-Github-Media-Type:
       - github.v3; format=json
       Link:
-      - <https://api.github.com/user/repos?access_token=630536143d02820d73bbba6fc65373b3a1adc45e&page=2>;
-        rel="next", <https://api.github.com/user/repos?access_token=630536143d02820d73bbba6fc65373b3a1adc45e&page=2>;
+      - <https://api.github.com/user/repos?access_token=ac177bcca68b112cde705e1170dc9ac98e9c3291&page=2>;
+        rel="next", <https://api.github.com/user/repos?access_token=ac177bcca68b112cde705e1170dc9ac98e9c3291&page=2>;
         rel="last"
       Access-Control-Expose-Headers:
       - ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
@@ -69,7 +69,7 @@ http_interactions:
       Content-Security-Policy:
       - default-src 'none'
       X-Github-Request-Id:
-      - C67C:10B1:15C08DC:32A8EFC:5DE975FD
+      - CBEF:1C08:15AD6E7:32C1D7B:5DE9842D
     body:
       encoding: ASCII-8BIT
       string: '[{"id":213468400,"node_id":"MDEwOlJlcG9zaXRvcnkyMTM0Njg0MDA=","name":"little_shop_1908","full_name":"cjkelling/little_shop_1908","private":false,"owner":{"login":"cjkelling","id":51389815,"node_id":"MDQ6VXNlcjUxMzg5ODE1","avatar_url":"https://avatars2.githubusercontent.com/u/51389815?v=4","gravatar_id":"","url":"https://api.github.com/users/cjkelling","html_url":"https://github.com/cjkelling","followers_url":"https://api.github.com/users/cjkelling/followers","following_url":"https://api.github.com/users/cjkelling/following{/other_user}","gists_url":"https://api.github.com/users/cjkelling/gists{/gist_id}","starred_url":"https://api.github.com/users/cjkelling/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/cjkelling/subscriptions","organizations_url":"https://api.github.com/users/cjkelling/orgs","repos_url":"https://api.github.com/users/cjkelling/repos","events_url":"https://api.github.com/users/cjkelling/events{/privacy}","received_events_url":"https://api.github.com/users/cjkelling/received_events","type":"User","site_admin":false},"html_url":"https://github.com/cjkelling/little_shop_1908","description":null,"fork":true,"url":"https://api.github.com/repos/cjkelling/little_shop_1908","forks_url":"https://api.github.com/repos/cjkelling/little_shop_1908/forks","keys_url":"https://api.github.com/repos/cjkelling/little_shop_1908/keys{/key_id}","collaborators_url":"https://api.github.com/repos/cjkelling/little_shop_1908/collaborators{/collaborator}","teams_url":"https://api.github.com/repos/cjkelling/little_shop_1908/teams","hooks_url":"https://api.github.com/repos/cjkelling/little_shop_1908/hooks","issue_events_url":"https://api.github.com/repos/cjkelling/little_shop_1908/issues/events{/number}","events_url":"https://api.github.com/repos/cjkelling/little_shop_1908/events","assignees_url":"https://api.github.com/repos/cjkelling/little_shop_1908/assignees{/user}","branches_url":"https://api.github.com/repos/cjkelling/little_shop_1908/branches{/branch}","tags_url":"https://api.github.com/repos/cjkelling/little_shop_1908/tags","blobs_url":"https://api.github.com/repos/cjkelling/little_shop_1908/git/blobs{/sha}","git_tags_url":"https://api.github.com/repos/cjkelling/little_shop_1908/git/tags{/sha}","git_refs_url":"https://api.github.com/repos/cjkelling/little_shop_1908/git/refs{/sha}","trees_url":"https://api.github.com/repos/cjkelling/little_shop_1908/git/trees{/sha}","statuses_url":"https://api.github.com/repos/cjkelling/little_shop_1908/statuses/{sha}","languages_url":"https://api.github.com/repos/cjkelling/little_shop_1908/languages","stargazers_url":"https://api.github.com/repos/cjkelling/little_shop_1908/stargazers","contributors_url":"https://api.github.com/repos/cjkelling/little_shop_1908/contributors","subscribers_url":"https://api.github.com/repos/cjkelling/little_shop_1908/subscribers","subscription_url":"https://api.github.com/repos/cjkelling/little_shop_1908/subscription","commits_url":"https://api.github.com/repos/cjkelling/little_shop_1908/commits{/sha}","git_commits_url":"https://api.github.com/repos/cjkelling/little_shop_1908/git/commits{/sha}","comments_url":"https://api.github.com/repos/cjkelling/little_shop_1908/comments{/number}","issue_comment_url":"https://api.github.com/repos/cjkelling/little_shop_1908/issues/comments{/number}","contents_url":"https://api.github.com/repos/cjkelling/little_shop_1908/contents/{+path}","compare_url":"https://api.github.com/repos/cjkelling/little_shop_1908/compare/{base}...{head}","merges_url":"https://api.github.com/repos/cjkelling/little_shop_1908/merges","archive_url":"https://api.github.com/repos/cjkelling/little_shop_1908/{archive_format}{/ref}","downloads_url":"https://api.github.com/repos/cjkelling/little_shop_1908/downloads","issues_url":"https://api.github.com/repos/cjkelling/little_shop_1908/issues{/number}","pulls_url":"https://api.github.com/repos/cjkelling/little_shop_1908/pulls{/number}","milestones_url":"https://api.github.com/repos/cjkelling/little_shop_1908/milestones{/number}","notifications_url":"https://api.github.com/repos/cjkelling/little_shop_1908/notifications{?since,all,participating}","labels_url":"https://api.github.com/repos/cjkelling/little_shop_1908/labels{/name}","releases_url":"https://api.github.com/repos/cjkelling/little_shop_1908/releases{/id}","deployments_url":"https://api.github.com/repos/cjkelling/little_shop_1908/deployments","created_at":"2019-10-07T19:26:52Z","updated_at":"2019-10-17T14:46:10Z","pushed_at":"2019-10-17T14:46:08Z","git_url":"git://github.com/cjkelling/little_shop_1908.git","ssh_url":"git@github.com:cjkelling/little_shop_1908.git","clone_url":"https://github.com/cjkelling/little_shop_1908.git","svn_url":"https://github.com/cjkelling/little_shop_1908","homepage":null,"size":232,"stargazers_count":0,"watchers_count":0,"language":"Ruby","has_issues":true,"has_projects":true,"has_downloads":true,"has_wiki":true,"has_pages":false,"forks_count":1,"mirror_url":null,"archived":false,"disabled":false,"open_issues_count":38,"license":null,"forks":1,"open_issues":38,"watchers":0,"default_branch":"master","permissions":{"admin":false,"push":true,"pull":true}},{"id":204958860,"node_id":"MDEwOlJlcG9zaXRvcnkyMDQ5NTg4NjA=","name":"apartments_1908","full_name":"grwthomps/apartments_1908","private":false,"owner":{"login":"grwthomps","id":51726839,"node_id":"MDQ6VXNlcjUxNzI2ODM5","avatar_url":"https://avatars0.githubusercontent.com/u/51726839?v=4","gravatar_id":"","url":"https://api.github.com/users/grwthomps","html_url":"https://github.com/grwthomps","followers_url":"https://api.github.com/users/grwthomps/followers","following_url":"https://api.github.com/users/grwthomps/following{/other_user}","gists_url":"https://api.github.com/users/grwthomps/gists{/gist_id}","starred_url":"https://api.github.com/users/grwthomps/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/grwthomps/subscriptions","organizations_url":"https://api.github.com/users/grwthomps/orgs","repos_url":"https://api.github.com/users/grwthomps/repos","events_url":"https://api.github.com/users/grwthomps/events{/privacy}","received_events_url":"https://api.github.com/users/grwthomps/received_events","type":"User","site_admin":false},"html_url":"https://github.com/grwthomps/apartments_1908","description":"Week
@@ -81,10 +81,10 @@ http_interactions:
         week 2 independent challenge","fork":true,"url":"https://api.github.com/repos/grwthomps/open_mic_1908","forks_url":"https://api.github.com/repos/grwthomps/open_mic_1908/forks","keys_url":"https://api.github.com/repos/grwthomps/open_mic_1908/keys{/key_id}","collaborators_url":"https://api.github.com/repos/grwthomps/open_mic_1908/collaborators{/collaborator}","teams_url":"https://api.github.com/repos/grwthomps/open_mic_1908/teams","hooks_url":"https://api.github.com/repos/grwthomps/open_mic_1908/hooks","issue_events_url":"https://api.github.com/repos/grwthomps/open_mic_1908/issues/events{/number}","events_url":"https://api.github.com/repos/grwthomps/open_mic_1908/events","assignees_url":"https://api.github.com/repos/grwthomps/open_mic_1908/assignees{/user}","branches_url":"https://api.github.com/repos/grwthomps/open_mic_1908/branches{/branch}","tags_url":"https://api.github.com/repos/grwthomps/open_mic_1908/tags","blobs_url":"https://api.github.com/repos/grwthomps/open_mic_1908/git/blobs{/sha}","git_tags_url":"https://api.github.com/repos/grwthomps/open_mic_1908/git/tags{/sha}","git_refs_url":"https://api.github.com/repos/grwthomps/open_mic_1908/git/refs{/sha}","trees_url":"https://api.github.com/repos/grwthomps/open_mic_1908/git/trees{/sha}","statuses_url":"https://api.github.com/repos/grwthomps/open_mic_1908/statuses/{sha}","languages_url":"https://api.github.com/repos/grwthomps/open_mic_1908/languages","stargazers_url":"https://api.github.com/repos/grwthomps/open_mic_1908/stargazers","contributors_url":"https://api.github.com/repos/grwthomps/open_mic_1908/contributors","subscribers_url":"https://api.github.com/repos/grwthomps/open_mic_1908/subscribers","subscription_url":"https://api.github.com/repos/grwthomps/open_mic_1908/subscription","commits_url":"https://api.github.com/repos/grwthomps/open_mic_1908/commits{/sha}","git_commits_url":"https://api.github.com/repos/grwthomps/open_mic_1908/git/commits{/sha}","comments_url":"https://api.github.com/repos/grwthomps/open_mic_1908/comments{/number}","issue_comment_url":"https://api.github.com/repos/grwthomps/open_mic_1908/issues/comments{/number}","contents_url":"https://api.github.com/repos/grwthomps/open_mic_1908/contents/{+path}","compare_url":"https://api.github.com/repos/grwthomps/open_mic_1908/compare/{base}...{head}","merges_url":"https://api.github.com/repos/grwthomps/open_mic_1908/merges","archive_url":"https://api.github.com/repos/grwthomps/open_mic_1908/{archive_format}{/ref}","downloads_url":"https://api.github.com/repos/grwthomps/open_mic_1908/downloads","issues_url":"https://api.github.com/repos/grwthomps/open_mic_1908/issues{/number}","pulls_url":"https://api.github.com/repos/grwthomps/open_mic_1908/pulls{/number}","milestones_url":"https://api.github.com/repos/grwthomps/open_mic_1908/milestones{/number}","notifications_url":"https://api.github.com/repos/grwthomps/open_mic_1908/notifications{?since,all,participating}","labels_url":"https://api.github.com/repos/grwthomps/open_mic_1908/labels{/name}","releases_url":"https://api.github.com/repos/grwthomps/open_mic_1908/releases{/id}","deployments_url":"https://api.github.com/repos/grwthomps/open_mic_1908/deployments","created_at":"2019-08-21T15:02:32Z","updated_at":"2019-08-21T16:57:27Z","pushed_at":"2019-08-21T16:57:25Z","git_url":"git://github.com/grwthomps/open_mic_1908.git","ssh_url":"git@github.com:grwthomps/open_mic_1908.git","clone_url":"https://github.com/grwthomps/open_mic_1908.git","svn_url":"https://github.com/grwthomps/open_mic_1908","homepage":null,"size":7,"stargazers_count":0,"watchers_count":0,"language":"Ruby","has_issues":false,"has_projects":true,"has_downloads":true,"has_wiki":true,"has_pages":false,"forks_count":0,"mirror_url":null,"archived":false,"disabled":false,"open_issues_count":0,"license":null,"forks":0,"open_issues":0,"watchers":0,"default_branch":"master","permissions":{"admin":true,"push":true,"pull":true}},{"id":222566831,"node_id":"MDEwOlJlcG9zaXRvcnkyMjI1NjY4MzE=","name":"rails_engine","full_name":"grwthomps/rails_engine","private":false,"owner":{"login":"grwthomps","id":51726839,"node_id":"MDQ6VXNlcjUxNzI2ODM5","avatar_url":"https://avatars0.githubusercontent.com/u/51726839?v=4","gravatar_id":"","url":"https://api.github.com/users/grwthomps","html_url":"https://github.com/grwthomps","followers_url":"https://api.github.com/users/grwthomps/followers","following_url":"https://api.github.com/users/grwthomps/following{/other_user}","gists_url":"https://api.github.com/users/grwthomps/gists{/gist_id}","starred_url":"https://api.github.com/users/grwthomps/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/grwthomps/subscriptions","organizations_url":"https://api.github.com/users/grwthomps/orgs","repos_url":"https://api.github.com/users/grwthomps/repos","events_url":"https://api.github.com/users/grwthomps/events{/privacy}","received_events_url":"https://api.github.com/users/grwthomps/received_events","type":"User","site_admin":false},"html_url":"https://github.com/grwthomps/rails_engine","description":null,"fork":false,"url":"https://api.github.com/repos/grwthomps/rails_engine","forks_url":"https://api.github.com/repos/grwthomps/rails_engine/forks","keys_url":"https://api.github.com/repos/grwthomps/rails_engine/keys{/key_id}","collaborators_url":"https://api.github.com/repos/grwthomps/rails_engine/collaborators{/collaborator}","teams_url":"https://api.github.com/repos/grwthomps/rails_engine/teams","hooks_url":"https://api.github.com/repos/grwthomps/rails_engine/hooks","issue_events_url":"https://api.github.com/repos/grwthomps/rails_engine/issues/events{/number}","events_url":"https://api.github.com/repos/grwthomps/rails_engine/events","assignees_url":"https://api.github.com/repos/grwthomps/rails_engine/assignees{/user}","branches_url":"https://api.github.com/repos/grwthomps/rails_engine/branches{/branch}","tags_url":"https://api.github.com/repos/grwthomps/rails_engine/tags","blobs_url":"https://api.github.com/repos/grwthomps/rails_engine/git/blobs{/sha}","git_tags_url":"https://api.github.com/repos/grwthomps/rails_engine/git/tags{/sha}","git_refs_url":"https://api.github.com/repos/grwthomps/rails_engine/git/refs{/sha}","trees_url":"https://api.github.com/repos/grwthomps/rails_engine/git/trees{/sha}","statuses_url":"https://api.github.com/repos/grwthomps/rails_engine/statuses/{sha}","languages_url":"https://api.github.com/repos/grwthomps/rails_engine/languages","stargazers_url":"https://api.github.com/repos/grwthomps/rails_engine/stargazers","contributors_url":"https://api.github.com/repos/grwthomps/rails_engine/contributors","subscribers_url":"https://api.github.com/repos/grwthomps/rails_engine/subscribers","subscription_url":"https://api.github.com/repos/grwthomps/rails_engine/subscription","commits_url":"https://api.github.com/repos/grwthomps/rails_engine/commits{/sha}","git_commits_url":"https://api.github.com/repos/grwthomps/rails_engine/git/commits{/sha}","comments_url":"https://api.github.com/repos/grwthomps/rails_engine/comments{/number}","issue_comment_url":"https://api.github.com/repos/grwthomps/rails_engine/issues/comments{/number}","contents_url":"https://api.github.com/repos/grwthomps/rails_engine/contents/{+path}","compare_url":"https://api.github.com/repos/grwthomps/rails_engine/compare/{base}...{head}","merges_url":"https://api.github.com/repos/grwthomps/rails_engine/merges","archive_url":"https://api.github.com/repos/grwthomps/rails_engine/{archive_format}{/ref}","downloads_url":"https://api.github.com/repos/grwthomps/rails_engine/downloads","issues_url":"https://api.github.com/repos/grwthomps/rails_engine/issues{/number}","pulls_url":"https://api.github.com/repos/grwthomps/rails_engine/pulls{/number}","milestones_url":"https://api.github.com/repos/grwthomps/rails_engine/milestones{/number}","notifications_url":"https://api.github.com/repos/grwthomps/rails_engine/notifications{?since,all,participating}","labels_url":"https://api.github.com/repos/grwthomps/rails_engine/labels{/name}","releases_url":"https://api.github.com/repos/grwthomps/rails_engine/releases{/id}","deployments_url":"https://api.github.com/repos/grwthomps/rails_engine/deployments","created_at":"2019-11-18T23:44:40Z","updated_at":"2019-12-02T15:26:19Z","pushed_at":"2019-12-02T15:26:17Z","git_url":"git://github.com/grwthomps/rails_engine.git","ssh_url":"git@github.com:grwthomps/rails_engine.git","clone_url":"https://github.com/grwthomps/rails_engine.git","svn_url":"https://github.com/grwthomps/rails_engine","homepage":null,"size":937,"stargazers_count":0,"watchers_count":0,"language":"Ruby","has_issues":true,"has_projects":true,"has_downloads":true,"has_wiki":true,"has_pages":false,"forks_count":0,"mirror_url":null,"archived":false,"disabled":false,"open_issues_count":0,"license":null,"forks":0,"open_issues":0,"watchers":0,"default_branch":"master","permissions":{"admin":true,"push":true,"pull":true}},{"id":216410313,"node_id":"MDEwOlJlcG9zaXRvcnkyMTY0MTAzMTM=","name":"rails_exercises","full_name":"grwthomps/rails_exercises","private":false,"owner":{"login":"grwthomps","id":51726839,"node_id":"MDQ6VXNlcjUxNzI2ODM5","avatar_url":"https://avatars0.githubusercontent.com/u/51726839?v=4","gravatar_id":"","url":"https://api.github.com/users/grwthomps","html_url":"https://github.com/grwthomps","followers_url":"https://api.github.com/users/grwthomps/followers","following_url":"https://api.github.com/users/grwthomps/following{/other_user}","gists_url":"https://api.github.com/users/grwthomps/gists{/gist_id}","starred_url":"https://api.github.com/users/grwthomps/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/grwthomps/subscriptions","organizations_url":"https://api.github.com/users/grwthomps/orgs","repos_url":"https://api.github.com/users/grwthomps/repos","events_url":"https://api.github.com/users/grwthomps/events{/privacy}","received_events_url":"https://api.github.com/users/grwthomps/received_events","type":"User","site_admin":false},"html_url":"https://github.com/grwthomps/rails_exercises","description":null,"fork":true,"url":"https://api.github.com/repos/grwthomps/rails_exercises","forks_url":"https://api.github.com/repos/grwthomps/rails_exercises/forks","keys_url":"https://api.github.com/repos/grwthomps/rails_exercises/keys{/key_id}","collaborators_url":"https://api.github.com/repos/grwthomps/rails_exercises/collaborators{/collaborator}","teams_url":"https://api.github.com/repos/grwthomps/rails_exercises/teams","hooks_url":"https://api.github.com/repos/grwthomps/rails_exercises/hooks","issue_events_url":"https://api.github.com/repos/grwthomps/rails_exercises/issues/events{/number}","events_url":"https://api.github.com/repos/grwthomps/rails_exercises/events","assignees_url":"https://api.github.com/repos/grwthomps/rails_exercises/assignees{/user}","branches_url":"https://api.github.com/repos/grwthomps/rails_exercises/branches{/branch}","tags_url":"https://api.github.com/repos/grwthomps/rails_exercises/tags","blobs_url":"https://api.github.com/repos/grwthomps/rails_exercises/git/blobs{/sha}","git_tags_url":"https://api.github.com/repos/grwthomps/rails_exercises/git/tags{/sha}","git_refs_url":"https://api.github.com/repos/grwthomps/rails_exercises/git/refs{/sha}","trees_url":"https://api.github.com/repos/grwthomps/rails_exercises/git/trees{/sha}","statuses_url":"https://api.github.com/repos/grwthomps/rails_exercises/statuses/{sha}","languages_url":"https://api.github.com/repos/grwthomps/rails_exercises/languages","stargazers_url":"https://api.github.com/repos/grwthomps/rails_exercises/stargazers","contributors_url":"https://api.github.com/repos/grwthomps/rails_exercises/contributors","subscribers_url":"https://api.github.com/repos/grwthomps/rails_exercises/subscribers","subscription_url":"https://api.github.com/repos/grwthomps/rails_exercises/subscription","commits_url":"https://api.github.com/repos/grwthomps/rails_exercises/commits{/sha}","git_commits_url":"https://api.github.com/repos/grwthomps/rails_exercises/git/commits{/sha}","comments_url":"https://api.github.com/repos/grwthomps/rails_exercises/comments{/number}","issue_comment_url":"https://api.github.com/repos/grwthomps/rails_exercises/issues/comments{/number}","contents_url":"https://api.github.com/repos/grwthomps/rails_exercises/contents/{+path}","compare_url":"https://api.github.com/repos/grwthomps/rails_exercises/compare/{base}...{head}","merges_url":"https://api.github.com/repos/grwthomps/rails_exercises/merges","archive_url":"https://api.github.com/repos/grwthomps/rails_exercises/{archive_format}{/ref}","downloads_url":"https://api.github.com/repos/grwthomps/rails_exercises/downloads","issues_url":"https://api.github.com/repos/grwthomps/rails_exercises/issues{/number}","pulls_url":"https://api.github.com/repos/grwthomps/rails_exercises/pulls{/number}","milestones_url":"https://api.github.com/repos/grwthomps/rails_exercises/milestones{/number}","notifications_url":"https://api.github.com/repos/grwthomps/rails_exercises/notifications{?since,all,participating}","labels_url":"https://api.github.com/repos/grwthomps/rails_exercises/labels{/name}","releases_url":"https://api.github.com/repos/grwthomps/rails_exercises/releases{/id}","deployments_url":"https://api.github.com/repos/grwthomps/rails_exercises/deployments","created_at":"2019-10-20T18:46:44Z","updated_at":"2019-10-20T18:46:46Z","pushed_at":"2019-10-20T18:49:00Z","git_url":"git://github.com/grwthomps/rails_exercises.git","ssh_url":"git@github.com:grwthomps/rails_exercises.git","clone_url":"https://github.com/grwthomps/rails_exercises.git","svn_url":"https://github.com/grwthomps/rails_exercises","homepage":null,"size":51,"stargazers_count":0,"watchers_count":0,"language":null,"has_issues":false,"has_projects":true,"has_downloads":true,"has_wiki":true,"has_pages":false,"forks_count":0,"mirror_url":null,"archived":false,"disabled":false,"open_issues_count":0,"license":null,"forks":0,"open_issues":0,"watchers":0,"default_branch":"master","permissions":{"admin":true,"push":true,"pull":true}},{"id":214042701,"node_id":"MDEwOlJlcG9zaXRvcnkyMTQwNDI3MDE=","name":"ruby-exercises","full_name":"grwthomps/ruby-exercises","private":false,"owner":{"login":"grwthomps","id":51726839,"node_id":"MDQ6VXNlcjUxNzI2ODM5","avatar_url":"https://avatars0.githubusercontent.com/u/51726839?v=4","gravatar_id":"","url":"https://api.github.com/users/grwthomps","html_url":"https://github.com/grwthomps","followers_url":"https://api.github.com/users/grwthomps/followers","following_url":"https://api.github.com/users/grwthomps/following{/other_user}","gists_url":"https://api.github.com/users/grwthomps/gists{/gist_id}","starred_url":"https://api.github.com/users/grwthomps/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/grwthomps/subscriptions","organizations_url":"https://api.github.com/users/grwthomps/orgs","repos_url":"https://api.github.com/users/grwthomps/repos","events_url":"https://api.github.com/users/grwthomps/events{/privacy}","received_events_url":"https://api.github.com/users/grwthomps/received_events","type":"User","site_admin":false},"html_url":"https://github.com/grwthomps/ruby-exercises","description":"A
         collection of exercises to practice various aspects of Ruby","fork":true,"url":"https://api.github.com/repos/grwthomps/ruby-exercises","forks_url":"https://api.github.com/repos/grwthomps/ruby-exercises/forks","keys_url":"https://api.github.com/repos/grwthomps/ruby-exercises/keys{/key_id}","collaborators_url":"https://api.github.com/repos/grwthomps/ruby-exercises/collaborators{/collaborator}","teams_url":"https://api.github.com/repos/grwthomps/ruby-exercises/teams","hooks_url":"https://api.github.com/repos/grwthomps/ruby-exercises/hooks","issue_events_url":"https://api.github.com/repos/grwthomps/ruby-exercises/issues/events{/number}","events_url":"https://api.github.com/repos/grwthomps/ruby-exercises/events","assignees_url":"https://api.github.com/repos/grwthomps/ruby-exercises/assignees{/user}","branches_url":"https://api.github.com/repos/grwthomps/ruby-exercises/branches{/branch}","tags_url":"https://api.github.com/repos/grwthomps/ruby-exercises/tags","blobs_url":"https://api.github.com/repos/grwthomps/ruby-exercises/git/blobs{/sha}","git_tags_url":"https://api.github.com/repos/grwthomps/ruby-exercises/git/tags{/sha}","git_refs_url":"https://api.github.com/repos/grwthomps/ruby-exercises/git/refs{/sha}","trees_url":"https://api.github.com/repos/grwthomps/ruby-exercises/git/trees{/sha}","statuses_url":"https://api.github.com/repos/grwthomps/ruby-exercises/statuses/{sha}","languages_url":"https://api.github.com/repos/grwthomps/ruby-exercises/languages","stargazers_url":"https://api.github.com/repos/grwthomps/ruby-exercises/stargazers","contributors_url":"https://api.github.com/repos/grwthomps/ruby-exercises/contributors","subscribers_url":"https://api.github.com/repos/grwthomps/ruby-exercises/subscribers","subscription_url":"https://api.github.com/repos/grwthomps/ruby-exercises/subscription","commits_url":"https://api.github.com/repos/grwthomps/ruby-exercises/commits{/sha}","git_commits_url":"https://api.github.com/repos/grwthomps/ruby-exercises/git/commits{/sha}","comments_url":"https://api.github.com/repos/grwthomps/ruby-exercises/comments{/number}","issue_comment_url":"https://api.github.com/repos/grwthomps/ruby-exercises/issues/comments{/number}","contents_url":"https://api.github.com/repos/grwthomps/ruby-exercises/contents/{+path}","compare_url":"https://api.github.com/repos/grwthomps/ruby-exercises/compare/{base}...{head}","merges_url":"https://api.github.com/repos/grwthomps/ruby-exercises/merges","archive_url":"https://api.github.com/repos/grwthomps/ruby-exercises/{archive_format}{/ref}","downloads_url":"https://api.github.com/repos/grwthomps/ruby-exercises/downloads","issues_url":"https://api.github.com/repos/grwthomps/ruby-exercises/issues{/number}","pulls_url":"https://api.github.com/repos/grwthomps/ruby-exercises/pulls{/number}","milestones_url":"https://api.github.com/repos/grwthomps/ruby-exercises/milestones{/number}","notifications_url":"https://api.github.com/repos/grwthomps/ruby-exercises/notifications{?since,all,participating}","labels_url":"https://api.github.com/repos/grwthomps/ruby-exercises/labels{/name}","releases_url":"https://api.github.com/repos/grwthomps/ruby-exercises/releases{/id}","deployments_url":"https://api.github.com/repos/grwthomps/ruby-exercises/deployments","created_at":"2019-10-09T23:21:38Z","updated_at":"2019-10-09T23:35:45Z","pushed_at":"2019-10-11T20:39:41Z","git_url":"git://github.com/grwthomps/ruby-exercises.git","ssh_url":"git@github.com:grwthomps/ruby-exercises.git","clone_url":"https://github.com/grwthomps/ruby-exercises.git","svn_url":"https://github.com/grwthomps/ruby-exercises","homepage":null,"size":224,"stargazers_count":0,"watchers_count":0,"language":"Ruby","has_issues":false,"has_projects":true,"has_downloads":true,"has_wiki":true,"has_pages":false,"forks_count":0,"mirror_url":null,"archived":false,"disabled":false,"open_issues_count":0,"license":null,"forks":0,"open_issues":0,"watchers":0,"default_branch":"master","permissions":{"admin":true,"push":true,"pull":true}},{"id":211410001,"node_id":"MDEwOlJlcG9zaXRvcnkyMTE0MTAwMDE=","name":"static_challenges","full_name":"grwthomps/static_challenges","private":false,"owner":{"login":"grwthomps","id":51726839,"node_id":"MDQ6VXNlcjUxNzI2ODM5","avatar_url":"https://avatars0.githubusercontent.com/u/51726839?v=4","gravatar_id":"","url":"https://api.github.com/users/grwthomps","html_url":"https://github.com/grwthomps","followers_url":"https://api.github.com/users/grwthomps/followers","following_url":"https://api.github.com/users/grwthomps/following{/other_user}","gists_url":"https://api.github.com/users/grwthomps/gists{/gist_id}","starred_url":"https://api.github.com/users/grwthomps/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/grwthomps/subscriptions","organizations_url":"https://api.github.com/users/grwthomps/orgs","repos_url":"https://api.github.com/users/grwthomps/repos","events_url":"https://api.github.com/users/grwthomps/events{/privacy}","received_events_url":"https://api.github.com/users/grwthomps/received_events","type":"User","site_admin":false},"html_url":"https://github.com/grwthomps/static_challenges","description":null,"fork":true,"url":"https://api.github.com/repos/grwthomps/static_challenges","forks_url":"https://api.github.com/repos/grwthomps/static_challenges/forks","keys_url":"https://api.github.com/repos/grwthomps/static_challenges/keys{/key_id}","collaborators_url":"https://api.github.com/repos/grwthomps/static_challenges/collaborators{/collaborator}","teams_url":"https://api.github.com/repos/grwthomps/static_challenges/teams","hooks_url":"https://api.github.com/repos/grwthomps/static_challenges/hooks","issue_events_url":"https://api.github.com/repos/grwthomps/static_challenges/issues/events{/number}","events_url":"https://api.github.com/repos/grwthomps/static_challenges/events","assignees_url":"https://api.github.com/repos/grwthomps/static_challenges/assignees{/user}","branches_url":"https://api.github.com/repos/grwthomps/static_challenges/branches{/branch}","tags_url":"https://api.github.com/repos/grwthomps/static_challenges/tags","blobs_url":"https://api.github.com/repos/grwthomps/static_challenges/git/blobs{/sha}","git_tags_url":"https://api.github.com/repos/grwthomps/static_challenges/git/tags{/sha}","git_refs_url":"https://api.github.com/repos/grwthomps/static_challenges/git/refs{/sha}","trees_url":"https://api.github.com/repos/grwthomps/static_challenges/git/trees{/sha}","statuses_url":"https://api.github.com/repos/grwthomps/static_challenges/statuses/{sha}","languages_url":"https://api.github.com/repos/grwthomps/static_challenges/languages","stargazers_url":"https://api.github.com/repos/grwthomps/static_challenges/stargazers","contributors_url":"https://api.github.com/repos/grwthomps/static_challenges/contributors","subscribers_url":"https://api.github.com/repos/grwthomps/static_challenges/subscribers","subscription_url":"https://api.github.com/repos/grwthomps/static_challenges/subscription","commits_url":"https://api.github.com/repos/grwthomps/static_challenges/commits{/sha}","git_commits_url":"https://api.github.com/repos/grwthomps/static_challenges/git/commits{/sha}","comments_url":"https://api.github.com/repos/grwthomps/static_challenges/comments{/number}","issue_comment_url":"https://api.github.com/repos/grwthomps/static_challenges/issues/comments{/number}","contents_url":"https://api.github.com/repos/grwthomps/static_challenges/contents/{+path}","compare_url":"https://api.github.com/repos/grwthomps/static_challenges/compare/{base}...{head}","merges_url":"https://api.github.com/repos/grwthomps/static_challenges/merges","archive_url":"https://api.github.com/repos/grwthomps/static_challenges/{archive_format}{/ref}","downloads_url":"https://api.github.com/repos/grwthomps/static_challenges/downloads","issues_url":"https://api.github.com/repos/grwthomps/static_challenges/issues{/number}","pulls_url":"https://api.github.com/repos/grwthomps/static_challenges/pulls{/number}","milestones_url":"https://api.github.com/repos/grwthomps/static_challenges/milestones{/number}","notifications_url":"https://api.github.com/repos/grwthomps/static_challenges/notifications{?since,all,participating}","labels_url":"https://api.github.com/repos/grwthomps/static_challenges/labels{/name}","releases_url":"https://api.github.com/repos/grwthomps/static_challenges/releases{/id}","deployments_url":"https://api.github.com/repos/grwthomps/static_challenges/deployments","created_at":"2019-09-27T22:19:52Z","updated_at":"2019-10-09T23:21:01Z","pushed_at":"2019-09-28T03:00:42Z","git_url":"git://github.com/grwthomps/static_challenges.git","ssh_url":"git@github.com:grwthomps/static_challenges.git","clone_url":"https://github.com/grwthomps/static_challenges.git","svn_url":"https://github.com/grwthomps/static_challenges","homepage":null,"size":45220,"stargazers_count":0,"watchers_count":0,"language":"HTML","has_issues":false,"has_projects":true,"has_downloads":true,"has_wiki":true,"has_pages":false,"forks_count":0,"mirror_url":null,"archived":false,"disabled":false,"open_issues_count":0,"license":null,"forks":0,"open_issues":0,"watchers":0,"default_branch":"master","permissions":{"admin":true,"push":true,"pull":true}}]'
     http_version: 
-  recorded_at: Thu, 05 Dec 2019 21:26:22 GMT
+  recorded_at: Thu, 05 Dec 2019 22:26:54 GMT
 - request:
     method: get
-    uri: https://api.github.com/user?access_token=630536143d02820d73bbba6fc65373b3a1adc45e
+    uri: https://api.github.com/user/followers?access_token=ac177bcca68b112cde705e1170dc9ac98e9c3291
     body:
       encoding: US-ASCII
       string: ''
@@ -103,7 +103,7 @@ http_interactions:
       Server:
       - GitHub.com
       Date:
-      - Thu, 05 Dec 2019 21:26:22 GMT
+      - Thu, 05 Dec 2019 22:26:54 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -115,81 +115,7 @@ http_interactions:
       X-Ratelimit-Remaining:
       - '4992'
       X-Ratelimit-Reset:
-      - '1575584544'
-      Cache-Control:
-      - private, max-age=60, s-maxage=60
-      Vary:
-      - Accept, Authorization, Cookie, X-GitHub-OTP
-      Etag:
-      - W/"dea862bfb66db1017f32118fbacbbbd8"
-      Last-Modified:
-      - Thu, 05 Dec 2019 15:24:31 GMT
-      X-Oauth-Scopes:
-      - repo
-      X-Accepted-Oauth-Scopes:
-      - ''
-      X-Github-Media-Type:
-      - github.v3; format=json
-      Access-Control-Expose-Headers:
-      - ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
-        X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval,
-        X-GitHub-Media-Type
-      Access-Control-Allow-Origin:
-      - "*"
-      Strict-Transport-Security:
-      - max-age=31536000; includeSubdomains; preload
-      X-Frame-Options:
-      - deny
-      X-Content-Type-Options:
-      - nosniff
-      X-Xss-Protection:
-      - 1; mode=block
-      Referrer-Policy:
-      - origin-when-cross-origin, strict-origin-when-cross-origin
-      Content-Security-Policy:
-      - default-src 'none'
-      X-Github-Request-Id:
-      - C67D:683E:136A0C3:2F45E0F:5DE975FE
-    body:
-      encoding: ASCII-8BIT
-      string: '{"login":"grwthomps","id":51726839,"node_id":"MDQ6VXNlcjUxNzI2ODM5","avatar_url":"https://avatars0.githubusercontent.com/u/51726839?v=4","gravatar_id":"","url":"https://api.github.com/users/grwthomps","html_url":"https://github.com/grwthomps","followers_url":"https://api.github.com/users/grwthomps/followers","following_url":"https://api.github.com/users/grwthomps/following{/other_user}","gists_url":"https://api.github.com/users/grwthomps/gists{/gist_id}","starred_url":"https://api.github.com/users/grwthomps/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/grwthomps/subscriptions","organizations_url":"https://api.github.com/users/grwthomps/orgs","repos_url":"https://api.github.com/users/grwthomps/repos","events_url":"https://api.github.com/users/grwthomps/events{/privacy}","received_events_url":"https://api.github.com/users/grwthomps/received_events","type":"User","site_admin":false,"name":"Graham
-        Thompson","company":null,"blog":"","location":null,"email":"grwthomps@gmail.com","hireable":null,"bio":null,"public_repos":32,"public_gists":5,"followers":4,"following":3,"created_at":"2019-06-12T00:20:09Z","updated_at":"2019-12-05T15:24:31Z"}'
-    http_version: 
-  recorded_at: Thu, 05 Dec 2019 21:26:22 GMT
-- request:
-    method: get
-    uri: https://api.github.com/users/grwthomps/followers?access_token=630536143d02820d73bbba6fc65373b3a1adc45e
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Faraday v0.12.2
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Server:
-      - GitHub.com
-      Date:
-      - Thu, 05 Dec 2019 21:26:22 GMT
-      Content-Type:
-      - application/json; charset=utf-8
-      Transfer-Encoding:
-      - chunked
-      Status:
-      - 200 OK
-      X-Ratelimit-Limit:
-      - '5000'
-      X-Ratelimit-Remaining:
-      - '4991'
-      X-Ratelimit-Reset:
-      - '1575584544'
+      - '1575588334'
       Cache-Control:
       - private, max-age=60, s-maxage=60
       Vary:
@@ -221,10 +147,81 @@ http_interactions:
       Content-Security-Policy:
       - default-src 'none'
       X-Github-Request-Id:
-      - C67E:2B59:1730A1B:388D6E7:5DE975FE
+      - CBF0:235C:30BC64:6DCEA9:5DE9842E
     body:
       encoding: ASCII-8BIT
       string: '[{"login":"tyladevon","id":39674585,"node_id":"MDQ6VXNlcjM5Njc0NTg1","avatar_url":"https://avatars3.githubusercontent.com/u/39674585?v=4","gravatar_id":"","url":"https://api.github.com/users/tyladevon","html_url":"https://github.com/tyladevon","followers_url":"https://api.github.com/users/tyladevon/followers","following_url":"https://api.github.com/users/tyladevon/following{/other_user}","gists_url":"https://api.github.com/users/tyladevon/gists{/gist_id}","starred_url":"https://api.github.com/users/tyladevon/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/tyladevon/subscriptions","organizations_url":"https://api.github.com/users/tyladevon/orgs","repos_url":"https://api.github.com/users/tyladevon/repos","events_url":"https://api.github.com/users/tyladevon/events{/privacy}","received_events_url":"https://api.github.com/users/tyladevon/received_events","type":"User","site_admin":false},{"login":"hillstew","id":36748280,"node_id":"MDQ6VXNlcjM2NzQ4Mjgw","avatar_url":"https://avatars3.githubusercontent.com/u/36748280?v=4","gravatar_id":"","url":"https://api.github.com/users/hillstew","html_url":"https://github.com/hillstew","followers_url":"https://api.github.com/users/hillstew/followers","following_url":"https://api.github.com/users/hillstew/following{/other_user}","gists_url":"https://api.github.com/users/hillstew/gists{/gist_id}","starred_url":"https://api.github.com/users/hillstew/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/hillstew/subscriptions","organizations_url":"https://api.github.com/users/hillstew/orgs","repos_url":"https://api.github.com/users/hillstew/repos","events_url":"https://api.github.com/users/hillstew/events{/privacy}","received_events_url":"https://api.github.com/users/hillstew/received_events","type":"User","site_admin":false},{"login":"Not-Zorro","id":43835133,"node_id":"MDQ6VXNlcjQzODM1MTMz","avatar_url":"https://avatars1.githubusercontent.com/u/43835133?v=4","gravatar_id":"","url":"https://api.github.com/users/Not-Zorro","html_url":"https://github.com/Not-Zorro","followers_url":"https://api.github.com/users/Not-Zorro/followers","following_url":"https://api.github.com/users/Not-Zorro/following{/other_user}","gists_url":"https://api.github.com/users/Not-Zorro/gists{/gist_id}","starred_url":"https://api.github.com/users/Not-Zorro/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/Not-Zorro/subscriptions","organizations_url":"https://api.github.com/users/Not-Zorro/orgs","repos_url":"https://api.github.com/users/Not-Zorro/repos","events_url":"https://api.github.com/users/Not-Zorro/events{/privacy}","received_events_url":"https://api.github.com/users/Not-Zorro/received_events","type":"User","site_admin":false},{"login":"zacisaacson","id":50255174,"node_id":"MDQ6VXNlcjUwMjU1MTc0","avatar_url":"https://avatars2.githubusercontent.com/u/50255174?v=4","gravatar_id":"","url":"https://api.github.com/users/zacisaacson","html_url":"https://github.com/zacisaacson","followers_url":"https://api.github.com/users/zacisaacson/followers","following_url":"https://api.github.com/users/zacisaacson/following{/other_user}","gists_url":"https://api.github.com/users/zacisaacson/gists{/gist_id}","starred_url":"https://api.github.com/users/zacisaacson/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/zacisaacson/subscriptions","organizations_url":"https://api.github.com/users/zacisaacson/orgs","repos_url":"https://api.github.com/users/zacisaacson/repos","events_url":"https://api.github.com/users/zacisaacson/events{/privacy}","received_events_url":"https://api.github.com/users/zacisaacson/received_events","type":"User","site_admin":false}]'
     http_version: 
-  recorded_at: Thu, 05 Dec 2019 21:26:22 GMT
+  recorded_at: Thu, 05 Dec 2019 22:26:54 GMT
+- request:
+    method: get
+    uri: https://api.github.com/user/following?access_token=ac177bcca68b112cde705e1170dc9ac98e9c3291
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.12.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Thu, 05 Dec 2019 22:26:54 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4991'
+      X-Ratelimit-Reset:
+      - '1575588334'
+      Cache-Control:
+      - private, max-age=60, s-maxage=60
+      Vary:
+      - Accept, Authorization, Cookie, X-GitHub-OTP
+      Etag:
+      - W/"25d65272869d62c4627f68f12060bb6d"
+      X-Oauth-Scopes:
+      - repo
+      X-Accepted-Oauth-Scopes:
+      - ''
+      X-Github-Media-Type:
+      - github.v3; format=json
+      Access-Control-Expose-Headers:
+      - ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
+        X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval,
+        X-GitHub-Media-Type
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Content-Security-Policy:
+      - default-src 'none'
+      X-Github-Request-Id:
+      - CBF1:7711:422215:9B8A92:5DE9842E
+    body:
+      encoding: ASCII-8BIT
+      string: '[{"login":"hillstew","id":36748280,"node_id":"MDQ6VXNlcjM2NzQ4Mjgw","avatar_url":"https://avatars3.githubusercontent.com/u/36748280?v=4","gravatar_id":"","url":"https://api.github.com/users/hillstew","html_url":"https://github.com/hillstew","followers_url":"https://api.github.com/users/hillstew/followers","following_url":"https://api.github.com/users/hillstew/following{/other_user}","gists_url":"https://api.github.com/users/hillstew/gists{/gist_id}","starred_url":"https://api.github.com/users/hillstew/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/hillstew/subscriptions","organizations_url":"https://api.github.com/users/hillstew/orgs","repos_url":"https://api.github.com/users/hillstew/repos","events_url":"https://api.github.com/users/hillstew/events{/privacy}","received_events_url":"https://api.github.com/users/hillstew/received_events","type":"User","site_admin":false},{"login":"tyladevon","id":39674585,"node_id":"MDQ6VXNlcjM5Njc0NTg1","avatar_url":"https://avatars3.githubusercontent.com/u/39674585?v=4","gravatar_id":"","url":"https://api.github.com/users/tyladevon","html_url":"https://github.com/tyladevon","followers_url":"https://api.github.com/users/tyladevon/followers","following_url":"https://api.github.com/users/tyladevon/following{/other_user}","gists_url":"https://api.github.com/users/tyladevon/gists{/gist_id}","starred_url":"https://api.github.com/users/tyladevon/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/tyladevon/subscriptions","organizations_url":"https://api.github.com/users/tyladevon/orgs","repos_url":"https://api.github.com/users/tyladevon/repos","events_url":"https://api.github.com/users/tyladevon/events{/privacy}","received_events_url":"https://api.github.com/users/tyladevon/received_events","type":"User","site_admin":false},{"login":"Not-Zorro","id":43835133,"node_id":"MDQ6VXNlcjQzODM1MTMz","avatar_url":"https://avatars1.githubusercontent.com/u/43835133?v=4","gravatar_id":"","url":"https://api.github.com/users/Not-Zorro","html_url":"https://github.com/Not-Zorro","followers_url":"https://api.github.com/users/Not-Zorro/followers","following_url":"https://api.github.com/users/Not-Zorro/following{/other_user}","gists_url":"https://api.github.com/users/Not-Zorro/gists{/gist_id}","starred_url":"https://api.github.com/users/Not-Zorro/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/Not-Zorro/subscriptions","organizations_url":"https://api.github.com/users/Not-Zorro/orgs","repos_url":"https://api.github.com/users/Not-Zorro/repos","events_url":"https://api.github.com/users/Not-Zorro/events{/privacy}","received_events_url":"https://api.github.com/users/Not-Zorro/received_events","type":"User","site_admin":false},{"login":"zacisaacson","id":50255174,"node_id":"MDQ6VXNlcjUwMjU1MTc0","avatar_url":"https://avatars2.githubusercontent.com/u/50255174?v=4","gravatar_id":"","url":"https://api.github.com/users/zacisaacson","html_url":"https://github.com/zacisaacson","followers_url":"https://api.github.com/users/zacisaacson/followers","following_url":"https://api.github.com/users/zacisaacson/following{/other_user}","gists_url":"https://api.github.com/users/zacisaacson/gists{/gist_id}","starred_url":"https://api.github.com/users/zacisaacson/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/zacisaacson/subscriptions","organizations_url":"https://api.github.com/users/zacisaacson/orgs","repos_url":"https://api.github.com/users/zacisaacson/repos","events_url":"https://api.github.com/users/zacisaacson/events{/privacy}","received_events_url":"https://api.github.com/users/zacisaacson/received_events","type":"User","site_admin":false}]'
+    http_version: 
+  recorded_at: Thu, 05 Dec 2019 22:26:54 GMT
 recorded_with: VCR 4.0.0
