@@ -2,9 +2,19 @@ class GithubService
   def initialize(token)
     @token = token
   end
-  
+
   def fetch_repos
     response = fetch_data("user/repos")
+    parse_data(response)
+  end
+
+  def fetch_followers
+    response = fetch_data("user/followers")
+    parse_data(response)
+  end
+
+  def fetch_following
+    response = fetch_data("user/following")
     parse_data(response)
   end
 
