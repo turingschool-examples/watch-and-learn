@@ -10,6 +10,7 @@ class GithubInfoController < ApplicationController
   end
 
   def handle
+    binding.pry
     request.env['omniauth.auth']['info']['nickname']
   end
 end
