@@ -5,7 +5,7 @@
     <% if current_user %>
       <%= link_to "Add to Bookmarks", user_videos_path(video_id: @video.id, user_id: current_user.id), method: :post %>
     <% else %>
-      <%= link_to "Add to Bookmarks", login_path %>
+      <%= link_to "Add to Bookmarks", login_path, class: 'bookmark-tooltip' %>
     <% end %>
   </div>
 </main>
