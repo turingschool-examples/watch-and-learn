@@ -44,7 +44,6 @@ group :development, :test do
   gem 'vcr'
   gem 'selenium-webdriver'
   gem 'webdrivers'
-  gem 'pry-rails'
 end
 
 group :development do
