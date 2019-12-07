@@ -5,7 +5,7 @@ RSpec.describe 'As a user' do
     user = create(
       :user, email: 'user_2@example.com',
       password: 'password',
-      github_token: ENV['GITHUB_TOKEN']
+      github_token: ENV['GITHUB_TOKEN_1']
     )
 
     visit '/'
