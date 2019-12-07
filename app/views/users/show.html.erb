@@ -21,13 +21,33 @@
       <section class='user-followers'>
         <h3>Followers</h3>
         <% user_facade.followers.each do |follower| %>
-          <p><%= link_to follower.handle, follower.link %></p>
+          <section class="follower-<%= follower.handle %>">
+            <% if follower.id && !user_facade.user.friends_user?(follower.id) %>
+              <p><%= link_to follower.handle, follower.link %> <%= button_to 'Add friend', friendship_path(follower.id), method: :post %></p>
+            <% else %>
+              <p><%= link_to follower.handle, follower.link %></p>
+            <% end  %>
+        </section>
         <% end %>
       </section>
       <section class='user-followings'>
         <h3>Following</h3>
         <% user_facade.followings.each do |following| %>
-          <p><%= link_to following.handle, following.link %></p>
+          <section class="following-<%= following.handle %>">
+            <% if following.id && !user_facade.user.friends_user?(following.id) %>
+              <p><%= link_to following.handle, following.link %> <%= button_to 'Add friend', friendship_path(following.id), method: :post %></p>
+            <% else %>
+              <p><%= link_to following.handle, following.link %></p>
+            <% end  %>
+          </section>
+        <% end %>
+      </section>
+      <section class='user-friends'>
+        <h3>Friends</h3>
+        <% user_facade.user.friends.each do |friend| %>
+          <section class='friend-<%= friend.id %>'>
+            <p><%= friend.handle %> | <%= friend.first_name.capitalize + " " + friend.last_name.capitalize %> </p>
+          </section>
         <% end %>
       </section>
     </section>
