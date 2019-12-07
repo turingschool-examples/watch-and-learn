@@ -1,0 +1,47 @@
+.bookmark-tooltip {
+  cursor: pointer;
+  position: relative;
+  color: #05c2d1;
+
+  &::before {
+    background-color: #000;
+    border-radius: 5px;
+    color: #fff;
+    content: attr(aria-label);
+    left: -80px;
+    padding: 1rem;
+    position: absolute;
+    text-transform: none;
+    top: -80px;
+    transition: all 0.5s ease;
+    width: 160px;
+  }
+
+  &::after {
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #000;
+    content: "";
+    font-size: 5;
+    left: 9px;
+    line-height: 0;
+    margin-left: -5px;
+    position: absolute;
+    top: -12px;
+    width: 0;
+  }
+
+  &::before,
+  &::after {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  &:focus::before,
+  &:focus::after,
+  &:hover::before,
+  &:hover::after {
+    opacity: 1;
+    transition: all 0.75s ease;
+  }
+}
