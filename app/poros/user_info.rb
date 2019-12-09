@@ -8,7 +8,7 @@ class UserInfo
 
   def github_repos
     service = GithubService.new(@token)
-    @github_repos ||= service.repos_by_user.map do |repo|
+    @github_repos ||= service.repos_by_user.take(5).map do |repo|
       Repo.new(repo)
     end
   end
