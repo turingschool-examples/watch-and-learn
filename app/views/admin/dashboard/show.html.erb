@@ -12,7 +12,7 @@
   </tr>
   <% @facade.tutorials.each do |tutorial| %>
     <tr class="admin-tutorial-card">
-      <td><%= link_to tutorial.title, tutorial_path(tutorial) %><br><br><hr></td>
+      <td><%= link_to tutorial.title, tutorial_path(tutorial) %></td>
       <td>
         <%= button_to "Edit", edit_admin_tutorial_path(tutorial),
                               method: :get %>
