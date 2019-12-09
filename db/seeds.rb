@@ -14,8 +14,17 @@ prework_tutorial_data_2 = {
   "classroom"=> true,
 }
 
+prework_tutorial_data_3 = {
+  "title"=>"No videos title",
+  "description"=>"No videos",
+  "thumbnail"=>"https://i.ytimg.com/vi/qMkRHW9zE1c/hqdefault.jpg",
+  "playlist_id"=>"PL1Y67f0xPzdN6C-LPuTQ5yzlBoz2joWa5",
+  "classroom"=> true,
+}
+
 prework_tutorial = Tutorial.create! prework_tutorial_data
 prework_tutorial_2 = Tutorial.create! prework_tutorial_data_2
+prework_tutorial_3 = Tutorial.create! prework_tutorial_data_3
 
 prework_tutorial_2.videos.create!({
   "title"=>"Module 5 - Environment Setup",
