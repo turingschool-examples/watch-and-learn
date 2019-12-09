@@ -4,7 +4,7 @@ class GithubService
   end
 
   def repos_by_user
-    get_json('/user/repos').take(5)
+    get_json('/user/repos')
   end
 
   def followings_by_user
