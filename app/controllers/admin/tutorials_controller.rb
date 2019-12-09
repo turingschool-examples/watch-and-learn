@@ -8,7 +8,7 @@ class Admin::TutorialsController < Admin::BaseController
     if tutorial.save
       flash[:success] = 'Successfully created tutorial.'
       redirect_to tutorial_path(tutorial.id)
-    else 
+    else
       flash[:error] = 'Tutorial was not created.'
       redirect_to new_admin_tutorial_path
     end
@@ -24,6 +24,12 @@ class Admin::TutorialsController < Admin::BaseController
       flash[:success] = "#{tutorial.title} tagged!"
     end
     redirect_to edit_admin_tutorial_path(tutorial)
+  end
+
+  def destroy
+    tutorial = Tutorial.find(params[:id])
+    tutorial.destroy
+    redirect_to admin_dashboard_path
   end
 
   private
