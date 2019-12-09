@@ -39,7 +39,7 @@
         <p>You aren't following anyone on Github</p>
       <% end %>
     </section>
-  <% else %>
+  <% elsif current_user.default? %>
     <p>You are not connected through GitHub!</p>
     <%= button_to 'Connect to Github', "/auth/github", class: 'btn btn-primary mb1 bg-teal' %>
   <% end %>
