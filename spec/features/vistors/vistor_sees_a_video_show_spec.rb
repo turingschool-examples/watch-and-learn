@@ -23,4 +23,14 @@ describe 'visitor sees a video show' do
     expect(page).to_not have_content(tutorial.title)
     expect(page).to_not have_content(video.title)
   end
+
+  it 'vistor should not see tutorial title with no videos' do
+    tutorial = create(:tutorial, classroom: false)
+
+    visit '/'
+
+    click_on tutorial.title
+
+    expect(page).to have_content(tutorial.title)
+  end
 end
