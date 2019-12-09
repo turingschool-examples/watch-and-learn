@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.github.com/user/repos?access_token=640afb06fde8bcb78ea999cdf34668b2a05a925e
+    uri: https://api.github.com/user/repos?access_token=<EMPTY_USER_TOKEN>
     body:
       encoding: US-ASCII
       string: ''
@@ -21,7 +21,7 @@ http_interactions:
       Server:
       - GitHub.com
       Date:
-      - Sat, 07 Dec 2019 19:31:55 GMT
+      - Mon, 09 Dec 2019 01:56:45 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
@@ -31,9 +31,9 @@ http_interactions:
       X-Ratelimit-Limit:
       - '5000'
       X-Ratelimit-Remaining:
-      - '4999'
+      - '4996'
       X-Ratelimit-Reset:
-      - '1575750715'
+      - '1575859270'
       Cache-Control:
       - private, max-age=60, s-maxage=60
       Vary:
@@ -65,15 +65,15 @@ http_interactions:
       Content-Security-Policy:
       - default-src 'none'
       X-Github-Request-Id:
-      - E2ED:6DBB:2B1C77:5155F1:5DEBFE2A
+      - E372:32B2:11A9D40:2DBB2C8:5DEDA9DD
     body:
       encoding: UTF-8
       string: "[]"
     http_version: 
-  recorded_at: Sat, 07 Dec 2019 19:31:26 GMT
+  recorded_at: Mon, 09 Dec 2019 01:56:15 GMT
 - request:
     method: get
-    uri: https://api.github.com/user/followers?access_token=640afb06fde8bcb78ea999cdf34668b2a05a925e
+    uri: https://api.github.com/user/followers?access_token=<EMPTY_USER_TOKEN>
     body:
       encoding: US-ASCII
       string: ''
@@ -92,7 +92,7 @@ http_interactions:
       Server:
       - GitHub.com
       Date:
-      - Sat, 07 Dec 2019 19:31:56 GMT
+      - Mon, 09 Dec 2019 01:56:45 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
@@ -102,9 +102,9 @@ http_interactions:
       X-Ratelimit-Limit:
       - '5000'
       X-Ratelimit-Remaining:
-      - '4998'
+      - '4995'
       X-Ratelimit-Reset:
-      - '1575750715'
+      - '1575859270'
       Cache-Control:
       - private, max-age=60, s-maxage=60
       Vary:
@@ -136,15 +136,15 @@ http_interactions:
       Content-Security-Policy:
       - default-src 'none'
       X-Github-Request-Id:
-      - E2EE:2FC5:79617D:12D714E:5DEBFE2B
+      - E373:1516:1C6CE03:42CD989:5DEDA9DD
     body:
       encoding: UTF-8
       string: "[]"
     http_version: 
-  recorded_at: Sat, 07 Dec 2019 19:31:27 GMT
+  recorded_at: Mon, 09 Dec 2019 01:56:15 GMT
 - request:
     method: get
-    uri: https://api.github.com/user/following?access_token=640afb06fde8bcb78ea999cdf34668b2a05a925e
+    uri: https://api.github.com/user/following?access_token=<EMPTY_USER_TOKEN>
     body:
       encoding: US-ASCII
       string: ''
@@ -163,7 +163,7 @@ http_interactions:
       Server:
       - GitHub.com
       Date:
-      - Sat, 07 Dec 2019 19:31:56 GMT
+      - Mon, 09 Dec 2019 01:56:46 GMT
       Content-Type:
       - application/json; charset=utf-8
       Content-Length:
@@ -173,9 +173,9 @@ http_interactions:
       X-Ratelimit-Limit:
       - '5000'
       X-Ratelimit-Remaining:
-      - '4997'
+      - '4994'
       X-Ratelimit-Reset:
-      - '1575750715'
+      - '1575859270'
       Cache-Control:
       - private, max-age=60, s-maxage=60
       Vary:
@@ -207,10 +207,10 @@ http_interactions:
       Content-Security-Policy:
       - default-src 'none'
       X-Github-Request-Id:
-      - E2EF:2FC6:AF5E61:1BD16E4:5DEBFE2C
+      - E374:32B0:BE31F3:1E0329F:5DEDA9DE
     body:
       encoding: UTF-8
       string: "[]"
     http_version: 
-  recorded_at: Sat, 07 Dec 2019 19:31:28 GMT
+  recorded_at: Mon, 09 Dec 2019 01:56:16 GMT
 recorded_with: VCR 4.0.0
