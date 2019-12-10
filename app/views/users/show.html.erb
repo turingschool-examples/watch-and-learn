@@ -2,7 +2,7 @@
   <h1> <%= search_results.user.first_name %>'s Dashboard </h1>
 
   <%= button_to 'Log Out', logout_path, method: 'delete', class: "btn btn-primary mb1 bg-teal" %>
-  <% if !search_results.user.github_token %>
+  <% if !search_results.user.github_token && !search_results.user.admin? %>
     <section id='github-button'>
       <%= button_to 'Connect to GitHub', github_login_path, method: 'get', class: "btn btn-primary mb1 bg-teal" %>
     </section>
@@ -33,6 +33,9 @@
             <% search_results.github_followings.each do |following| %>
               <ul class='following'>
                 <li class='login'> <%= link_to following.login, following.html_url %></li>
+                <% if search_results.account?(following) && following.not_already_a_friend_of(search_results.user) %>
+                  <%= button_to 'Add as Friend', friendships_path(:friend_id => following.id), method: :post, class: "btn btn-primary mb1 bg-teal" %>
+                <% end %>
               </ul>
             <% end %>
         </section>
@@ -41,13 +44,22 @@
           <% search_results.github_followers.each do |follower| %>
             <ul class='followers'>
               <li class='login'> <%= link_to follower.login, follower.html_url %>
-                <% if search_results.account?(follower) %>
-                  <%= link_to 'Add as Friend' %>
+                <% if search_results.account?(follower) && follower.not_already_a_friend_of(search_results.user) %>
+                  <%= button_to 'Add as Friend', friendships_path(:friend_id => follower.id), method: :post, class: "btn btn-primary mb1 bg-teal" %>
                 <% end %>
               </li>
             </ul>
           <% end %>
         </section>
     </section>
+    <section id='friends'>
+      <h1>Friends</h1>
+        <% search_results.user.friends.each do |friend| %>
+          <ul class='friendling'>
+            <li class='friend'><%= friend.handle %></li>
+          </ul>
+        <% end %>
+    </section>
+  </section>
   <% end %>
-</section>
+
