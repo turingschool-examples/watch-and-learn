@@ -1,5 +1,5 @@
 
-desc "Change video position from nil to 0"
+desc 'Change video position from nil to 0'
   task :set_position => [:environment] do
     videos = Video.where(position: nil)
 
@@ -9,5 +9,5 @@ desc "Change video position from nil to 0"
       video.position = 0
       video.save
     end
-    puts "All done now!"
+    puts 'All done now!'
   end

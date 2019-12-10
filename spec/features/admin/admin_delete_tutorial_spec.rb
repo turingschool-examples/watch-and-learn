@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe "As an admin" do
-  it "can delete a tutorial and associated videos" do
+RSpec.describe 'As an admin' do
+  it 'can delete a tutorial and associated videos' do
     admin = create(:user, role: 1)
     tutorial1 = create(:tutorial)
     video1 = create(:video, tutorial_id: tutorial1.id)
@@ -12,7 +12,7 @@ RSpec.describe "As an admin" do
 
     visit '/admin/dashboard'
 
-    within(first(".admin-tutorial-card")) do
+    within(first('.admin-tutorial-card')) do
       click_on 'Destroy'
     end
 
