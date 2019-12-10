@@ -3,9 +3,8 @@ describe TutorialFacade do
   describe 'instance methods' do
     it 'can find the current video' do
       tutorial = create(:tutorial)
-      video1 = create(:video, tutorial_id: tutorial.id)
+      create(:video, tutorial_id: tutorial.id)
       video2 = create(:video, tutorial_id: tutorial.id)
-      video3 = create(:video, tutorial_id: tutorial.id)
 
       presenter = TutorialFacade.new(tutorial, video2.id)
 
@@ -15,8 +14,7 @@ describe TutorialFacade do
     it 'uses first video if video id not present' do
       tutorial = create(:tutorial)
       video1 = create(:video, tutorial_id: tutorial.id)
-      video2 = create(:video, tutorial_id: tutorial.id)
-      video3 = create(:video, tutorial_id: tutorial.id)
+      create(:video, tutorial_id: tutorial.id)
 
       presenter = TutorialFacade.new(tutorial)
 
@@ -28,7 +26,7 @@ describe TutorialFacade do
         tutorial = create(:tutorial)
         video1 = create(:video, tutorial_id: tutorial.id, position: 1)
         video2 = create(:video, tutorial_id: tutorial.id, position: 2)
-        video3 = create(:video, tutorial_id: tutorial.id, position: 3)
+        create(:video, tutorial_id: tutorial.id, position: 3)
 
         presenter = TutorialFacade.new(tutorial, video1.id)
 
@@ -37,7 +35,7 @@ describe TutorialFacade do
 
       it 'returns the last video if the current video is the last in the list' do
         learn_to_fight = create(:tutorial)
-        rocky = create(:video, tutorial: learn_to_fight, position: 1)
+        create(:video, tutorial: learn_to_fight, position: 1)
         bloodsport = create(:video, tutorial: learn_to_fight, position: 2)
 
         presenter = TutorialFacade.new(learn_to_fight, bloodsport.id)

@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'an admin user can add a new tutorial' do
   it 'and sees a flash message saying the tutorial was added' do
     admin = create(:user, role: 1)
-    tutorial_1 = create(:tutorial)
+    create(:tutorial)
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 

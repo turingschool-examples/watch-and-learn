@@ -13,11 +13,12 @@ describe 'visitor sees a video show' do
     expect(page).to have_content(video.title)
     expect(page).to have_content(tutorial.title)
   end
+
   it 'visitor will not see classroom only tutorials' do
     tutorial_1 = create(:tutorial, classroom: true)
     tutorial_2 = create(:tutorial)
-    video_1 = create(:video, tutorial_id: tutorial_1.id)
-    video_2 = create(:video, tutorial_id: tutorial_2.id)
+    create(:video, tutorial_id: tutorial_1.id)
+    create(:video, tutorial_id: tutorial_2.id)
 
     visit '/'
 

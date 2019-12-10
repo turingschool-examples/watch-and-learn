@@ -6,7 +6,6 @@ describe 'vister can create an account', :js, :vcr do
     first_name = 'Jim'
     last_name = 'Bob'
     password = 'password'
-    password_confirmation = 'password'
 
     visit '/'
 

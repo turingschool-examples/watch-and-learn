@@ -6,7 +6,7 @@ RSpec.describe 'As an admin' do
     tutorial1 = create(:tutorial)
     video1 = create(:video, tutorial_id: tutorial1.id)
     tutorial2 = create(:tutorial)
-    video2 = create(:video, tutorial_id: tutorial2.id)
+    create(:video, tutorial_id: tutorial2.id)
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
