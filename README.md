@@ -13,31 +13,26 @@ Object Oriented Programing principles, Restful Routing, Database Management, Tes
 ```
   git clone https://github.com/zacisaacson/brownfield-of-dreams
 ```
-
 1. Change into the directory
 ```
   cd brownfield-of-dreams
 ```
-
 1. Install the gem packages
 ```
   bundle install
 ```
-
 1. Install node packages for stimulus
 ```
   brew install node
   brew install yarn
   yarn add stimulus
 ```
-
 1. Set up the database
 ```
   rake db:create
   rake db:migrate
   rake db:seed
 ```
-
 1. Launch your local server (after ensuring the requirements below are met)
 ```
   rails s
@@ -104,9 +99,8 @@ $ bundle exec rspec <path-to-file>
 ```
 
 ### Refreshing VCR Test Cassettes
-From time to time you may receive an error when testing with the VCR. You can delete the cassettes directory from your `spec` folder and run `bundle exec rspec` to refresh the cassettes used. More information on VCR cassettes can be found in the [VCR](https://github.com/vcr/vcr) documentation.
+From time to time you may receive an error when testing with the VCR. You can delete the cassettes directory from your `spec` folder and run `bundle exec rspec` to refresh the cassettes used. More information on VCR cassettes can be found in the [VCR documentation](https://github.com/vcr/vcr).
 
 ## Versions
 - Ruby 2.4.1
 - Rails 5.2.0
-
