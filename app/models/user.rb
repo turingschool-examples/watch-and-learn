@@ -8,4 +8,12 @@ class User < ApplicationRecord
   validates_presence_of :first_name
   enum role: %i[default admin]
   has_secure_password
+
+  def status
+    if self.activated?
+      return "Active"
+    else
+      return "Inactive"
+    end
+  end
 end

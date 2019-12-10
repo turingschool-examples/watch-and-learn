@@ -31,5 +31,8 @@ describe 'visitor can create an account', :js, :vcr do
     expect(page).to have_content(first_name)
     expect(page).to have_content(last_name)
     expect(page).to_not have_content('Sign In')
+    expect(page).to have_content("Signed in as #{first_name}")
+    expect(page).to have_content("This account has not yet been activated. Please check your email.")
+    expect(page).to have_content("Status: Inactive")
   end
 end
