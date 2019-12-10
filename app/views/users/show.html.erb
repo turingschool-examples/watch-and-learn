@@ -2,7 +2,7 @@
   <h1> <%= search_results.user.first_name %>'s Dashboard </h1>
 
   <%= button_to 'Log Out', logout_path, method: 'delete', class: "btn btn-primary mb1 bg-teal" %>
-  <% if !search_results.user.github_token %>
+  <% if !search_results.user.github_token && !search_results.user.admin? %>
     <section id='github-button'>
       <%= button_to 'Connect to GitHub', github_login_path, method: 'get', class: "btn btn-primary mb1 bg-teal" %>
     </section>
@@ -52,13 +52,14 @@
           <% end %>
         </section>
     </section>
-  <% end %>
-  <section id='friends'>
-    <h1>Friends</h1>
-      <% search_results.user.friends.each do |friend| %>
-        <ul class='friendling'>
-          <li class='friend'><%= friend.handle %></li>
-        </ul>
-      <% end %>
+    <section id='friends'>
+      <h1>Friends</h1>
+        <% search_results.user.friends.each do |friend| %>
+          <ul class='friendling'>
+            <li class='friend'><%= friend.handle %></li>
+          </ul>
+        <% end %>
+    </section>
   </section>
-</section>
+  <% end %>
+
