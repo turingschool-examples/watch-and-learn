@@ -3,7 +3,8 @@ require 'rails_helper'
 RSpec.describe 'As a user' do
   before :each do
     user = create(
-      :user, email: 'user_2@example.com',
+      :user,
+      email: 'user_2@example.com',
       password: 'password',
       github_token: ENV['GITHUB_TOKEN_1']
     )
