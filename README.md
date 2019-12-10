@@ -1,67 +1,114 @@
 # Brownfield Of Dreams
 
-This is the base repo for a brownfield project used at Turing for Backend Mod 3.
+## Description
 
-Project Spec and Evaluation Rubric: https://github.com/turingschool-examples/brownfield-of-dreams
+Brownfield of dreams is a responsive Ruby on Rails application that allows users to make accounts and add videos from the Youtube API and to a tutorial. Registered users can then connect their accounts via the GitHub Oauth process to display a list of their GitHub followers and people they are following on GitHub. If both the user and the GitHub follower/followed have accounts in our program then the user has the option to add the GitHub follower/followed as friends in our app.
 
-### Project Board
+The project was completed as a three person team over a two week sprint. Our team inherited the project base-code (a brownfield project) and built out the features seen in the final codebase.
 
-Students will continue to build on the existing code base using the cards within the following Github Project: https://github.com/turingschool-examples/brownfield-of-dreams/projects/1
+## Purpose
 
-**Learning Goals and Labels**
+Object Oriented Programing principles, Restful Routing, Database Management, Test Driven Development, Behavior Driven Development, Authenticated API calls, Oauth process.
 
-The cards are labeled in a way that correspond to learning goals or to specific areas you might personally want to focus on.
+## Installation
 
-Cards should be completed from top to bottom in the To Do column. Cards labeled `good first issue` are good as filler work and will allow you to practice common Rails skills.
-
-### About the Project
-
-This is a Ruby on Rails application used to organize YouTube content used for online learning. Each tutorial is a playlist of video segments. Within the application an admin is able to create tags for each tutorial in the database. A visitor or registered user can then filter tutorials based on these tags.
-
-A visitor is able to see all of the content on the application but in order to bookmark a segment they will need to register. Once registered a user can bookmark any of the segments in a tutorial page.
-
-## Local Setup
-
-First you'll need to setup an API key with YouTube and have it defined within `ENV['YOUTUBE_API_KEY']`. There will be one failing spec if you don't have this set up.
-
-Clone down the repo
+1. Clone down the repo into a directory of your choice
 ```
-$ git clone
+  git clone https://github.com/zacisaacson/brownfield-of-dreams
 ```
 
-Install the gem packages
+1. Change into the directory
 ```
-$ bundle install
-```
-
-Install node packages for stimulus
-```
-$ brew install node
-$ brew install yarn
-$ yarn add stimulus
+  cd brownfield-of-dreams
 ```
 
-Set up the database
+1. Install the gem packages
 ```
-$ rake db:create
-$ rake db:migrate
-$ rake db:seed
+  bundle install
 ```
 
-Run the test suite:
-```ruby
-$ bundle exec rspec
+1. Install node packages for stimulus
+```
+  brew install node
+  brew install yarn
+  yarn add stimulus
 ```
 
-## Technologies
+1. Set up the database
+```
+  rake db:create
+  rake db:migrate
+  rake db:seed
+```
+
+1. Launch your local server (after ensuring the requirements below are met)
+```
+  rails s
+```
+
+## Requirements
+
+Environment variables and required API keys/tokens:
+1. YouTube API key defined as `ENV['YOUTUBE_API_KEY']`
+1. GitHub Token defined as `ENV['GITHUB_TOKEN_1']`
+1. A second GitHub Token defined as `ENV['GITHUB_TOKEN_2']`
+1. GitHub client_id defined as `ENV['GITHUB_CLIENT_ID']`
+1. GitHub client_secret defined as `ENV['GITHUB_SECRET_ID']`
+
+## Focus Areas
+
+## Technologies / Framework
+
 * [Stimulus](https://github.com/stimulusjs/stimulus)
 * [will_paginate](https://github.com/mislav/will_paginate)
 * [acts-as-taggable-on](https://github.com/mbleigh/acts-as-taggable-on)
-* [webpacker](https://github.com/rails/webpacker)
-* [vcr](https://github.com/vcr/vcr)
 * [selenium-webdriver](https://www.seleniumhq.org/docs/03_webdriver.jsp)
 * [chromedriver-helper](http://chromedriver.chromium.org/)
+* [webpacker](https://github.com/rails/webpacker)
+* [faraday](https://github.com/lostisland/faraday)
+* [figaro](https://github.com/laserlemon/figaro)
+* [bootstrap](https://getbootstrap.com/)
+* [omniauth](https://github.com/omniauth/omniauth)
+* [google-api-client](http://chromedriver.chromium.org/)
 
-### Versions
-* Ruby 2.4.1
-* Rails 5.2.0
+## Screenshots
+
+## Database / Schema Diagram
+
+## User Roles
+
+1. Visitor - a visitor is any user of our page without an account. Visitors can view tutorials but cannot bookmark them until they have created an account.
+1. Registered User - a registered user is a user who has signed up for an account with us. These users can view tutorials, connect  Regular users will receive a validation email and can be updated to validated users when they confirm that email.
+1. Admin - an admin user is a user who is logged in as an administrator role. These users have access to an administrator dashboard where they can create, edit, and delete new tutorials. An administrator user does not have the ability to connect to GitHub or to create a friend list from their GitHub followers/followed.
+
+## Testing
+
+### Testing Technologies
+* [rspec](https://github.com/rspec/rspec)
+* [rubocop](https://github.com/rubocop-hq/rubocop)
+* [factory_bot_rails](https://github.com/rubocop-hq/rubocop)
+* [faker](https://github.com/faker-ruby/faker)
+* [pry](https://github.com/pry/pry)
+* [capybara](https://github.com/teamcapybara/capybara)
+* [launchy](https://github.com/copiousfreetime/launchy)
+* [shoulda-matchers](https://github.com/thoughtbot/shoulda-matchers)
+* [simplecov](https://github.com/colszowka/simplecov)
+* [vcr](https://github.com/vcr/vcr)
+* [webmock](https://github.com/bblimke/webmock)
+* [mailcatcher](https://mailcatcher.me/)
+
+### Running Tests
+Run the full test suite:
+```
+$ bundle exec rspec
+```
+
+Run a single test file
+```
+$ bundle exec rspec <path-to-file>
+```
+
+## Versions
+- Ruby 2.4.1
+- Rails 5.2.0
+
