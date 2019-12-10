@@ -1,6 +1,5 @@
 class InviteController < ApplicationController
-  def new
-  end
+  def new; end
 
   def create
     invite_facade = InviteFacade.new(current_user, params[:github_handle])
