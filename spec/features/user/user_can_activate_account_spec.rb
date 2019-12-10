@@ -9,7 +9,7 @@ describe 'A registered user' do
 
     expect(page).to have_content('Status: Inactive')
 
-    visit '/user/activation'
+    visit '/users/activation'
 
     expect(current_path).to eq('/dashboard')
 
