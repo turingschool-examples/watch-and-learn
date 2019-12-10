@@ -4,8 +4,7 @@ describe 'as a logged in user with a github account' do
   it 'can link accounts to connect with github', :vcr do
     OmniAuth.config.mock_auth[:github] = nil
     OmniAuth.config.test_mode = true
-    OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({
-      provider: 'github',
+    OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({ provider: 'github',
       uid: '123545',
       credentials: { 'token' => ENV['GITHUB_TOKEN'], 'expires'=>false },
       extra: { raw_info:
