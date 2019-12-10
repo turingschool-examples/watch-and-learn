@@ -11,7 +11,10 @@ Rails.application.routes.draw do
   get '/register', to: 'users#new'
   get '/auth/github', as: :github_info
   get '/auth/github/callback', to: 'github_info#create'
-  post '/friendship/:id', to: 'friendships#create', as: :friendship 
+  post '/friendship/:id', to: 'friendships#create', as: :friendship
+  get '/user/activation', to: 'activation#update', as: :activation
+  get '/invite', to: 'invite#new', as: 'invite'
+  post '/invite', to: 'invite#create'
 
   namespace :admin do
     get "/dashboard", to: "dashboard#show"

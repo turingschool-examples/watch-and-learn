@@ -33,4 +33,9 @@ class User < ApplicationRecord
   def user_friends
     @friendships ||= friendships
   end
+
+  def status
+    return 'Active' if activated?
+    return 'Inactive' if !activated?
+  end
 end

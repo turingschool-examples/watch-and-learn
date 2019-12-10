@@ -6,10 +6,12 @@
   <ul>
     <li> <%= user_facade.user.first_name  %> <%= user_facade.user.last_name %> </li>
     <li> <%= user_facade.user.email%> </li>
+    <li> Status: <%= user_facade.user.status%> </li>
   </ul>
   <% if !user_facade.user.connected? %>
     <%= link_to 'Connect to Github', github_info_path, method: 'get', class: "btn btn-primary mb1 bg-teal" %>
   <% else %>
+    <%= link_to 'Send an Invite', invite_path, class: "btn btn-primary mb1 bg-teal" %>
     <section class='github-info'>
       <h1>Github</h1>
       <section class='user-repos'>

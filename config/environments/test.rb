@@ -43,4 +43,17 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = { :address => "localhost", :port => 1025 }
+  config.action_mailer.default_url_options = { :host => "localhost:3000" }
+
+  config.action_mailer.smtp_settings = {
+     address:              'smtp.sendgrid.net',
+     port:                 '587',
+     domain:               'immense-tundra-70232.herokuapp.com',
+     user_name:            ENV["SENDGRID_USERNAME"],
+     password:             ENV["SENDGRID_PASSWORD"],
+     authentication:       'plain',
+     enable_starttls_auto: true
+  }
 end

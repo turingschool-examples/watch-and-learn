@@ -22,7 +22,7 @@ describe 'vister can create an account', :js, :vcr do
     fill_in 'user[first_name]', with: first_name
     fill_in 'user[last_name]', with: last_name
     fill_in 'user[password]', with: password
-    fill_in 'user[password_confirmation]', with: password
+    fill_in 'user[password_confirmation]', with: password_confirmation
 
     click_on'Create Account'
 
@@ -32,5 +32,8 @@ describe 'vister can create an account', :js, :vcr do
     expect(page).to have_content(first_name)
     expect(page).to have_content(last_name)
     expect(page).to_not have_content('Sign In')
+    expect(page).to have_content("Logged in as #{first_name}")
+    expect(page).to have_content('This account has not yet been activated. Please check your email.')
+    expect(page).to have_content('Status: Inactive')
   end
 end
