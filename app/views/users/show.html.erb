@@ -33,7 +33,7 @@
             <% search_results.github_followings.each do |following| %>
               <ul class='following'>
                 <li class='login'> <%= link_to following.login, following.html_url %></li>
-                <% if search_results.has_account?(following) && following.not_already_a_friend_of(search_results.user) %>
+                <% if search_results.account?(following) && following.not_already_a_friend_of(search_results.user) %>
                   <%= button_to 'Add as Friend', friendships_path(:friend_id => following.id), method: :post, class: "btn btn-primary mb1 bg-teal" %>
                 <% end %>
               </ul>
@@ -44,7 +44,7 @@
           <% search_results.github_followers.each do |follower| %>
             <ul class='followers'>
               <li class='login'> <%= link_to follower.login, follower.html_url %>
-                <% if search_results.has_account?(follower) && follower.not_already_a_friend_of(search_results.user) %>
+                <% if search_results.account?(follower) && follower.not_already_a_friend_of(search_results.user) %>
                   <%= button_to 'Add as Friend', friendships_path(:friend_id => follower.id), method: :post, class: "btn btn-primary mb1 bg-teal" %>
                 <% end %>
               </li>
