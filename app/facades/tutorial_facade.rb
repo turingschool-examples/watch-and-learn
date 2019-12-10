@@ -17,7 +17,7 @@ class TutorialFacade < SimpleDelegator
   end
 
   def play_next_video?
-    !(current_video.position >= maximum_video_position)
+    current_video.position < maximum_video_position
   end
 
   def videos?
