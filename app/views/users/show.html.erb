@@ -42,7 +42,7 @@
             <ul class='followers'>
               <li class='login'> <%= link_to follower.login, follower.html_url %>
                 <% if search_results.has_account?(follower) %>
-                  <%= link_to 'Add as Friend' %>
+                  <%= button_to 'Add as Friend', friendships_path(:friend_id => follower.id), method: :post, class: "btn btn-primary mb1 bg-teal" %>
                 <% end %>
               </li>
             </ul>
@@ -50,4 +50,12 @@
         </section>
     </section>
   <% end %>
+  <section id='friends'>
+    <h1>Friends</h1>
+      <% search_results.user.friends.each do |friend| %>
+        <ul class='friendling'>
+          <li class='friend'><%= friend.handle %></li>
+        </ul>
+      <% end %>
+  </section>
 </section>
