@@ -15,7 +15,7 @@ describe 'Admin dashboard page' do
       visit admin_dashboard_path
 
       within "##{tutorial.id}" do
-        click_link "Destroy"
+        click_button "Destroy"
       end
 
       expect{Video.find(video_1.id)}.to raise_error(ActiveRecord::RecordNotFound)
