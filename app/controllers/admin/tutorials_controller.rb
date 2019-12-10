@@ -26,6 +26,11 @@ class Admin::TutorialsController < Admin::BaseController
     redirect_to edit_admin_tutorial_path(tutorial)
   end
 
+  def destroy
+    Tutorial.destroy(params[:id])
+    redirect_to admin_dashboard_path
+  end
+
   private
   def tag_params
     params.require(:tutorial).permit(:tag_list)
