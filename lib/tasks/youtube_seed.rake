@@ -1,13 +1,13 @@
 namespace :import do
-  desc:"All youtube data"
+  desc"All youtube data"
   task all: [:users, :tutorials, :videos]
 
-  desc:"Create Users"
+  desc"Create Users"
   task :users, [:users] => :environment do
     User.create(email: "admin@example.com", first_name: "Admin", last_name: "Adminington", password: ENV['ADMIN_PASSWORD'], role: 1)
   end
 
-  desc:"Create Tutorials"
+  desc"Create Tutorials"
   task :tutorials, [:tutorials] => :environment do
     response = Faraday.get("https://www.googleapis.com/youtube/v3/playlists?key=#{ENV['YOUTUBE_API_KEY']}&part=snippet&channelId=UC2zYYOtckevoWTGDu5SdCkg&maxResults=50")
     data = JSON.parse(response.body, symbolize_names: true)
@@ -20,7 +20,7 @@ namespace :import do
     end
   end
 
-  desc:"Create Videos"
+  desc"Create Videos"
   task :videos, [:videos] => :environment do
     tutorials = Tutorial.all
     tutorials.each do |tutorial|
