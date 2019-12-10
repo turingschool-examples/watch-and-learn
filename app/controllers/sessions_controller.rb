@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to dashboard_path
     else
-      flash[:error] = "Looks like your email or password is invalid"
+      flash[:error] = 'Looks like your email or password is invalid'
       render :new
     end
   end
@@ -17,6 +17,7 @@ class SessionsController < ApplicationController
   def update
     user_info = request.env['omniauth.auth']
     current_user.update_column(:github_token, user_info[:credentials][:token])
+    current_user.update_column(:handle, user_info[:extra][:raw_info][:login])
     redirect_to dashboard_path
   end
 
@@ -24,5 +25,4 @@ class SessionsController < ApplicationController
     session[:user_id] = nil
     redirect_to root_path
   end
-
 end

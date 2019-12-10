@@ -6,7 +6,7 @@ describe 'User' do
 
     visit '/'
 
-    click_on "Sign In"
+    click_on 'Sign In'
 
     expect(current_path).to eq(login_path)
 
@@ -26,8 +26,8 @@ describe 'User' do
 
     visit login_path
 
-    fill_in'session[email]', with: user.email
-    fill_in'session[password]', with: user.password
+    fill_in 'session[email]', with: user.email
+    fill_in 'session[password]', with: user.password
 
     click_on 'Log In'
 
@@ -43,17 +43,17 @@ describe 'User' do
   end
 
   it 'is shown an error when incorrect info is entered' do
-    user = create(:user)
-    fake_email = "email@email.com"
-    fake_password = "123"
+    create(:user)
+    fake_email = 'email@email.com'
+    fake_password = '123'
 
     visit login_path
 
-    fill_in'session[email]', with: fake_email
-    fill_in'session[password]', with: fake_password
+    fill_in 'session[email]', with: fake_email
+    fill_in 'session[password]', with: fake_password
 
     click_on 'Log In'
 
-    expect(page).to have_content("Looks like your email or password is invalid")
+    expect(page).to have_content('Looks like your email or password is invalid')
   end
 end

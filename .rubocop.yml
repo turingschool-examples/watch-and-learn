@@ -1,0 +1,8 @@
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Style/Documentation:
+  Enabled: false
+Style/RaiseArgs:
+  Enabled: false
+Metrics/LineLength:
+  Enabled: false

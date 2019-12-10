@@ -8,7 +8,7 @@ class UserInfo
 
   def github_repos
     service = GithubService.new(@token)
-    @github_repos ||= service.repos_by_user.map do |repo|
+    @github_repos ||= service.repos_by_user.take(5).map do |repo|
       Repo.new(repo)
     end
   end
@@ -25,5 +25,9 @@ class UserInfo
     @github_followers ||= service.followers_by_user.map do |follower|
       Follower.new(follower)
     end
+  end
+
+  def account?(follower)
+    User.where('handle = ?', follower.login).exists?
   end
 end
