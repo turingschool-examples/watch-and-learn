@@ -3,7 +3,8 @@ class User < ApplicationRecord
   has_many :videos, through: :user_videos, dependent: :destroy
   has_many :friendships
   has_many :friends, through: :friendships
-  has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
+  has_many :inverse_friendships, class_name: 'Friendship',
+                                 foreign_key: 'friend_id'
   has_many :inverse_friends, through: :inverse_friendships, source: :user
 
   validates :email, uniqueness: true, presence: true
@@ -12,12 +13,14 @@ class User < ApplicationRecord
                         :last_name,
                         :role
 
-  enum role: [:default, :admin]
+  enum role: %i[default admin]
   has_secure_password
 
   def order_videos
-    videos_ordered = videos.joins(:tutorial).group('tutorials.id, videos.id').order('tutorials.id', 'videos.position')
-    videos_hash = Hash.new
+    videos_ordered = videos.joins(:tutorial)
+                           .group('tutorials.id, videos.id')
+                           .order('tutorials.id', 'videos.position')
+    videos_hash = {}
     videos_ordered.each do |v|
       videos_hash[v.tutorial] ||= []
       videos_hash[v.tutorial] << v
@@ -27,15 +30,16 @@ class User < ApplicationRecord
 
   def friends_user?(id)
     return true if user_friends.find_by(friend_id: id)
+
     false
   end
 
   def user_friends
-    @friendships ||= friendships
+    @user_friends ||= friendships
   end
 
   def status
     return 'Active' if activated?
-    return 'Inactive' if !activated?
+    return 'Inactive' unless activated?
   end
 end

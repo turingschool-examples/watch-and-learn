@@ -9,6 +9,7 @@ class Follower
   end
 
   private
+
   def in_db?
     user = User.find_by(handle: @handle)
     @id = user.id if user

@@ -1,6 +1,6 @@
 class UserFacade
   attr_reader :user
-  
+
   def initialize(user)
     @user = user
     @git_service = GithubService.new(@user.token)

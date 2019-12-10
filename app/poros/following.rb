@@ -1,2 +1,2 @@
-class Following < Follower 
+class Following < Follower
 end

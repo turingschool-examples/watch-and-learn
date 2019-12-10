@@ -5,6 +5,7 @@ class GithubInfoController < ApplicationController
   end
 
   private
+
   def token
     request.env['omniauth.auth']['credentials']['token']
   end
