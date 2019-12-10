@@ -7,12 +7,12 @@ describe 'as a logged in user with a github account' do
     OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({
       provider: 'github',
       uid: '123545',
-      credentials: {'token' => ENV['GITHUB_TOKEN'], 'expires'=>false},
-      extra: {raw_info:
-             {login: 'cheesey_puff',
+      credentials: { 'token' => ENV['GITHUB_TOKEN'], 'expires'=>false },
+      extra: { raw_info:
+             { login: 'cheesey_puff',
               html_url: 'https://github.com/babslabs',
-              name: 'Huck Finn'
-      }}})
+              name: 'Huck Finn' } }
+              })
 
     user = create(:user, email: 'user_2@example.com', password: 'password')
 

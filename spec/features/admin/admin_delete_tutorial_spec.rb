@@ -20,6 +20,6 @@ RSpec.describe 'As an admin' do
 
     expect(page).to_not have_link(tutorial1.title)
     expect(page).to have_link(tutorial2.title)
-    expect{Video.find(video1.id)}.to raise_error(ActiveRecord::RecordNotFound)
+    expect{ Video.find(video1.id) }.to raise_error(ActiveRecord::RecordNotFound)
   end
 end

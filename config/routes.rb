@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
-      resources :tutorials, only:[:show, :index]
-      resources :videos, only:[:show]
+      resources :tutorials, only: [:show, :index]
+      resources :videos, only: [:show]
     end
   end
 
@@ -44,5 +44,5 @@ Rails.application.routes.draw do
     resources :videos, only: [:show, :index]
   end
 
-  resources :user_videos, only:[:create, :destroy]
+  resources :user_videos, only: [:create, :destroy]
 end
