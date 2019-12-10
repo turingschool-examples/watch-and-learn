@@ -13,9 +13,9 @@ namespace :import do
     data = JSON.parse(response.body, symbolize_names: true)
     data[:items].each do |tutorial|
       Tutorial.create(
-        title:       tutorial[:snippet][:title],
+        title: tutorial[:snippet][:title],
         description: tutorial[:snippet][:description],
-        thumbnail:   tutorial[:snippet][:thumbnails][:high][:url],
+        thumbnail: tutorial[:snippet][:thumbnails][:high][:url],
         playlist_id: tutorial[:id])
     end
   end
@@ -28,11 +28,11 @@ namespace :import do
       data = JSON.parse(response.body, symbolize_names: true)
       data[:items].each.with_index(1) do |vid, index|
         tutorial.videos.create!(
-          title:       vid[:snippet][:title],
+          title: vid[:snippet][:title],
           description: vid[:snippet][:description],
-          thumbnail:   vid[:snippet][:thumbnails][:high][:url],
-          video_id:    vid[:snippet][:resourceId][:videoId],
-          position:    index
+          thumbnail: vid[:snippet][:thumbnails][:high][:url],
+          video_id: vid[:snippet][:resourceId][:videoId],
+          position: index
         )
       end
     end

@@ -10,8 +10,8 @@ describe 'as a logged in user with a github account' do
       credentials: { 'token' => ENV['GITHUB_TOKEN'], 'expires'=>false },
       extra: { raw_info:
              { login: 'cheesey_puff',
-              html_url: 'https://github.com/babslabs',
-              name: 'Huck Finn' } }
+               html_url: 'https://github.com/babslabs',
+               name: 'Huck Finn' } }
               })
 
     user = create(:user, email: 'user_2@example.com', password: 'password')
