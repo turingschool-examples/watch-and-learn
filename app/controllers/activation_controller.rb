@@ -1,7 +1,7 @@
 class ActivationController < ApplicationController
   def update
     if current_user
-      current_user.update(activation?: true)
+      current_user.update(activated?: true)
       flash[:success] = "Thank you! Your account is now activated."
       redirect_to dashboard_path
     else
