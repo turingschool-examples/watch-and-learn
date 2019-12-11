@@ -7,7 +7,7 @@ class Following
     @html_url = attributes[:html_url]
   end
 
-  #should probably be refactored into UserInfo
+  # should probably be refactored into UserInfo
   def id
     User.find_by(handle: @login).id
   end
@@ -16,5 +16,4 @@ class Following
     follower = User.find_by(handle: @login)
     !user.friends.include?(follower)
   end
-
 end
