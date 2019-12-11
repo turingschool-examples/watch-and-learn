@@ -4,8 +4,8 @@ class InviteService
     @path = path
   end
 
-  def get_invitee
-    invitee = get_json
+  def retrieve_invitee
+    invitee = retrieve_json
     {
       name: invitee[:name],
       email: invitee[:email]
@@ -21,7 +21,7 @@ class InviteService
     end
   end
 
-  def get_json
+  def retrieve_json
     response = connection.get(@path)
     JSON.parse(response.body, symbolize_names: true)
   end

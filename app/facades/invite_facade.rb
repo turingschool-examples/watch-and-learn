@@ -9,7 +9,7 @@ class InviteFacade
   end
 
   def invitee_json
-    invitee = @service.get_invitee
+    invitee = @service.retrieve_invitee
     @invitee_email = invitee[:email]
     @invitee_name = invitee[:name]
   end

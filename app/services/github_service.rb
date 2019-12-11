@@ -3,16 +3,16 @@ class GithubService
     @token = token
   end
 
-  def get_repos
-    get_json('repos').sample(5)
+  def retrieve_repos
+    retrieve_json('repos').sample(5)
   end
 
-  def get_followers
-    get_json('followers')
+  def retrieve_followers
+    retrieve_json('followers')
   end
 
-  def get_followings
-    get_json('following')
+  def retrieve_followings
+    retrieve_json('following')
   end
 
   private
@@ -24,7 +24,7 @@ class GithubService
     end
   end
 
-  def get_json(url)
+  def retrieve_json(url)
     response = connection.get(url)
     JSON.parse(response.body, symbolize_names: true)
   end
