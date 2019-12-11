@@ -13,7 +13,7 @@ RSpec.describe 'As an admin' do
     visit '/admin/dashboard'
 
     within(first('.admin-tutorial-card')) do
-      click_on 'Destroy'
+      click_button 'Destroy'
     end
 
     expect(current_path).to eq('/admin/dashboard')

@@ -7,7 +7,7 @@ describe 'visitor sees a video show' do
 
     visit '/'
 
-    click_on tutorial.title
+    click_link tutorial.title
 
     expect(current_path).to eq(tutorial_path(tutorial))
     expect(page).to have_content(video.title)
