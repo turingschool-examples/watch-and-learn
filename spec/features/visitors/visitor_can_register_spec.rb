@@ -35,4 +35,24 @@ describe 'visitor can create an account', :js, :vcr do
     expect(page).to have_content("This account has not yet been activated. Please check your email.")
     expect(page).to have_content("Status: Inactive")
   end
+
+  it "cannot create an account with existing username" do
+    User.create!(email: 'user_1@example.com', first_name: 'Brian', last_name: 'B', password: "password1")
+    email = 'user_1@example.com'
+    first_name = 'Jim'
+    last_name = 'Bob'
+    password = 'password'
+
+    visit '/register'
+
+    fill_in 'user[email]', with: email
+    fill_in 'user[first_name]', with: first_name
+    fill_in 'user[last_name]', with: last_name
+    fill_in 'user[password]', with: password
+    fill_in 'user[password_confirmation]', with: password
+
+    click_on 'Create Account'
+
+    expect(page).to have_content("Username already exists")
+  end
 end

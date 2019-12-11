@@ -7,9 +7,9 @@
 
 <div class="col col-4">
   <h4>Videos</h4>
-  <ul>
+  <ul class='video'>
     <% @facade.videos.each do |video| %>
-      <li>
+      <li class="title-video">
         <h3><%= link_to video.title, tutorial_path(video_id: video.id), class: "show-link", id: video.position %></h3>
       </li>
     <% end %>
