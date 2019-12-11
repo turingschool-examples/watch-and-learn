@@ -1,0 +1,14 @@
+<div class="invite">
+  <main>
+<h4>Invite a Friend</h4>
+  <section>
+    <%= form_for :invite, url: invite_path do |form| %>
+      <div >
+        <%= form.label 'GitHub Handle' %>
+        <%= form.text_field :handle, class: "block col-2 field" %>
+      </div>
+      <%= form.submit 'Send Invite', class: "mt2 btn btn-primary mb1 bg-teal" %>
+    <% end %>
+  </section>
+  </main>
+</div>

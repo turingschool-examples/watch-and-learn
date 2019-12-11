@@ -17,12 +17,12 @@ describe 'as a logged in user with a github account' do
 
     visit '/'
 
-    click_on 'Sign In'
+    click_link 'Sign In'
 
     fill_in 'Email', with: user.email
     fill_in 'Password', with: user.password
 
-    click_on 'Log In'
+    click_button 'Log In'
 
     expect(current_path).to eq(dashboard_path)
 

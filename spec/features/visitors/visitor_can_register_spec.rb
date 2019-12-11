@@ -9,11 +9,11 @@ describe 'visitor can create an account', :js, :vcr do
 
     visit '/'
 
-    click_on 'Sign In'
+    click_link 'Sign In'
 
     expect(current_path).to eq(login_path)
 
-    click_on 'Sign up now.'
+    click_link 'Sign up now.'
 
     expect(current_path).to eq(new_user_path)
 
@@ -23,7 +23,7 @@ describe 'visitor can create an account', :js, :vcr do
     fill_in 'user[password]', with: password
     fill_in 'user[password_confirmation]', with: password
 
-    click_on'Create Account'
+    click_button 'Create Account'
 
     expect(current_path).to eq(dashboard_path)
 
@@ -32,8 +32,8 @@ describe 'visitor can create an account', :js, :vcr do
     expect(page).to have_content(last_name)
     expect(page).to_not have_content('Sign In')
     expect(page).to have_content("Signed in as #{first_name}")
-    expect(page).to have_content("This account has not yet been activated. Please check your email.")
-    expect(page).to have_content("Status: Inactive")
+    expect(page).to have_content('This account has not yet been activated. Please check your email.')
+    expect(page).to have_content('Status: Inactive')
   end
 
   it "cannot create an account with existing username" do

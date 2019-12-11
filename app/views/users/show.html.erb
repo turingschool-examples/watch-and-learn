@@ -7,6 +7,9 @@
       <%= button_to 'Connect to GitHub', github_login_path, method: 'get', class: "btn btn-primary mb1 bg-teal" %>
     </section>
   <% end %>
+  <% if !search_results.user.admin? %>
+    <%= button_to 'Send an Invite', invite_path, method: 'get', class: "btn btn-primary mb1 bg-teal" %>
+  <% end %>
 
   <h3>Account Details</h3>
   <ul>
@@ -68,4 +71,3 @@
     </section>
   </section>
   <% end %>
-

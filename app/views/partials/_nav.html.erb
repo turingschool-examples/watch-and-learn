@@ -8,7 +8,7 @@
   <section class="right links overflow-auto table mr4">
     <% if current_user %>
       <div class="align-middle table-cell p3">
-        Signed in as <%= current_user.first_name %>
+        <strong>Signed in as <%= current_user.first_name %></strong>
       </div>
       <div class="align-middle table-cell p3">
         <%= link_to "Profile", dashboard_path %>

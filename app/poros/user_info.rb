@@ -30,4 +30,11 @@ class UserInfo
   def account?(follower)
     User.where('handle = ?', follower.login).exists?
   end
+
+  def github_invitee(handle)
+    service = GithubService.new(@token)
+    @github_invitee ||= service.invitee_of_user(handle)
+    Invitee.new(@github_invitee)
+  end
+
 end
