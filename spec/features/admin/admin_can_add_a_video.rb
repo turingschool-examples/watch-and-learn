@@ -13,7 +13,7 @@ describe 'an admin user can add a new tutorial' do
     fill_in 'tutorial[description]', with: 'This is a series of 90 minute videos on how to change the strings on the greatest instrument ever - the banjo.'
     fill_in 'tutorial[thumbnail]', with: 'http://i3.ytimg.com/vi/7VMyKo7DOs0/maxresdefault.jpg'
 
-    click_button 'Save'
+    click_on 'Save'
 
     tutorial_2 = Tutorial.last
 
@@ -34,7 +34,7 @@ describe 'an admin user cannot add an incomplete tutorial' do
     fill_in 'tutorial[description]', with: 'This is a series of 90 minute videos on how to change the strings on the greatest instrument ever - the banjo.'
     fill_in 'tutorial[thumbnail]', with: 'http://i3.ytimg.com/vi/7VMyKo7DOs0/maxresdefault.jpg'
 
-    click_button 'Save'
+    click_on 'Save'
 
     expect(page).to have_content("Title can't be blank")
   end
