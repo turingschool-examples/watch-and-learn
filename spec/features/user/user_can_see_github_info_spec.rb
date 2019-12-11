@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'As a user' do
+describe 'As a user' do
   before :each do
     user = create(
       :user,

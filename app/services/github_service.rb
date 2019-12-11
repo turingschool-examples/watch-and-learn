@@ -15,6 +15,11 @@ class GithubService
     get_json('/user/followers')
   end
 
+  def invitee_of_user(handle)
+    require "pry"; binding.pry
+    get_json("/users/#{handle}")
+  end
+
   private
 
   def get_json(url)

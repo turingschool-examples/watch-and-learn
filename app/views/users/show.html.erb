@@ -5,6 +5,7 @@
   <% if !search_results.user.github_token && !search_results.user.admin? %>
     <section id='github-button'>
       <%= button_to 'Connect to GitHub', github_login_path, method: 'get', class: "btn btn-primary mb1 bg-teal" %>
+      <%= button_to 'Send an Invite', invite_path, method: 'get', class: "btn btn-primary mb1 bg-teal" %>
     </section>
   <% end %>
 
@@ -63,4 +64,3 @@
     </section>
   </section>
   <% end %>
-

@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   get 'tags/:tag', to: 'welcome#index', as: :tag
   get '/register', to: 'users#new'
   get '/users/activation', to: 'activation#update'
+  get '/invite', to: 'invite#new'
+  post '/invite', to: 'invite#create'
 
   namespace :admin do
     get '/dashboard', to: 'dashboard#show'
@@ -31,7 +33,7 @@ Rails.application.routes.draw do
 
   resources :friendships, only: [:create]
 
-  get 'auth/github', as: 'github_login'
+  get '/auth/github', as: 'github_login'
   get '/auth/:provider/callback', to: 'sessions#update'
 
   get '/dashboard', to: 'users#show'
