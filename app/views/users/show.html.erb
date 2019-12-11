@@ -16,6 +16,11 @@
   </ul>
   <section>
     <h1>Bookmarked Segments</h1>
+    <% search_results.user.videos.each do |video| %>
+      <ul>
+        <%= video.title %>
+      </ul>
+    <% end %>
   </section>
 
   <% if search_results.user.github_token %>
