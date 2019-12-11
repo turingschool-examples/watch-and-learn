@@ -16,7 +16,6 @@ class GithubService
   end
 
   def invitee_of_user(handle)
-    require "pry"; binding.pry
     get_json("/users/#{handle}")
   end
 
@@ -29,6 +28,7 @@ class GithubService
 
   def conn
     Faraday.new(url: 'https://api.github.com') do |faraday|
+      faraday.request :url_encoded
       faraday.params['access_token'] = @token
       faraday.adapter Faraday.default_adapter
     end
