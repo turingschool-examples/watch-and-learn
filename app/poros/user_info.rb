@@ -40,9 +40,8 @@ class UserInfo
   def sorted_videos
     grouped_videos = @user.videos.group_by(&:tutorial)
 
-    grouped_videos.each do |group_id, tutorial_id|
-      tutorial_id.sort_by{|video| video.position}
+    grouped_videos.each do |_group_id, tutorial_id|
+      tutorial_id.sort_by(&:position)
     end
   end
-
 end
