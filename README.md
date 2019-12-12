@@ -1,39 +1,39 @@
 # Brownfield Of Dreams
 
 ## Description
-Brownfield of Dreams is a responsive Ruby on Rails application that allows users to make accounts and add videos from the YouTube API and to a tutorial. Registered users can then connect their accounts via the GitHub Oauth process to display a list of their GitHub followers and individuals they are following on GitHub. If both the user and the GitHub follower/followed have accounts in our program, then the user has the option to add the GitHub follower/followed as a friend in our app.
+Brownfield of Dreams is a responsive Ruby on Rails application that allows users to make accounts and add videos from the YouTube API and to a tutorial. Registered users can then connect their accounts via the GitHub OAuth process to display a list of their GitHub followers and individuals they are following on GitHub. If both the user and the GitHub follower/followed have accounts in our program, then the user has the option to add the GitHub follower/followed as a friend in our app.
 
 The project was completed as a three person team over a 10-day sprint. Our team inherited the project base-code (a brownfield project) and built out the features seen in the final codebase.
 
 ## Purpose
-Object Oriented Programing principles, Restful Routing, Database Management, Test Driven Development, Behavior Driven Development, Authenticated API calls, Oauth process
+Object Oriented Programing principles, Restful Routing, Database Management, Test Driven Development, Behavior Driven Development, Authenticated API calls, OAuth process
 
 ## Installation
 1. Clone down the repo into a directory of your choice
 ```
   git clone https://github.com/zacisaacson/brownfield-of-dreams
 ```
-1. Change into the directory
+2. Change into the directory
 ```
   cd brownfield-of-dreams
 ```
-1. Install the gem packages
+3. Install the gem packages
 ```
   bundle install
 ```
-1. Install node packages for stimulus
+4. Install node packages for stimulus
 ```
   brew install node
   brew install yarn
   yarn add stimulus
 ```
-1. Set up the database
+5. Set up the database
 ```
   rake db:create
   rake db:migrate
   rake db:seed
 ```
-1. Launch your local server (after ensuring the requirements below are met)
+6. Launch your local server (after ensuring the requirements below are met)
 ```
   rails s
 ```
@@ -53,7 +53,7 @@ Environment variables and required API keys/tokens:
 * Building features on brownfield code
 * Work with a deadline
 * Prioritizing code functionality vs best practices
-* Generating emails using Ruby on Rails and Active Mailer
+* Generating emails using Ruby on Rails and ActionMailer
 
 ## Technologies / Framework
 The following technologies were used for this project:
@@ -134,7 +134,7 @@ The following technologies were used for this project:
 
 ## User Roles
 1. Visitor - a visitor is any user of our page without an account. Visitors can view tutorials but cannot bookmark them until they have created an account.
-1. Registered User - a registered user is a user who has signed up for an account with us. These users can view tutorials, connect. Regular users will receive a validation email and can be updated to validated users when they confirm that email.
+1. Registered User - a registered user is a user who has signed up for an account with us. These users can view tutorials and establish friendships with other users. Regular users will receive a validation email and can be updated to validated users when they confirm that email.
 1. Admin - an admin user is a user who is logged in as an administrator role. These users have access to an administrator dashboard where they can create, edit, and delete new tutorials. An administrator user does not have the ability to connect to GitHub or to create a friend list from their GitHub followers/followed.
 
 ## Testing
@@ -159,7 +159,7 @@ Run the full test suite:
 $ bundle exec rspec
 ```
 
-Run a single test file
+Run a single test file:
 ```
 $ bundle exec rspec <path-to-file>
 ```
