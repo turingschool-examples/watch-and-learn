@@ -36,4 +36,13 @@ class UserInfo
     @github_invitee ||= service.invitee_of_user(handle)
     Invitee.new(@github_invitee)
   end
+
+  def sorted_videos
+    grouped_videos = @user.videos.group_by(&:tutorial)
+
+    grouped_videos.each do |group_id, tutorial_id|
+      tutorial_id.sort_by{|video| video.position}
+    end
+  end
+
 end

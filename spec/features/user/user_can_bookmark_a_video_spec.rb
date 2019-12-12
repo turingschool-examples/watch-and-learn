@@ -32,4 +32,23 @@ describe 'A registered user' do
 
     expect(page).to have_content('Already in your bookmarks')
   end
+
+  it "can see a sorted list of bookmarked videos" do
+    user = create(:user)
+    tutorial = create(:tutorial)
+    videos = create_list(:video, 5, tutorial_id: tutorial.id)
+
+    videos.each do |video|
+      create(:user_video, video_id: video.id, user_id: user.id)
+    end
+
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+    visit '/dashboard'
+
+    within(first".tutorial-title") do
+      expect(page).to have_content(tutorial.title)
+    end
+
+  end
 end
