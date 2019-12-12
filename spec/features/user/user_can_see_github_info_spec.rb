@@ -1,21 +1,22 @@
 require 'rails_helper'
 
-RSpec.describe 'As a user' do
+describe 'As a user' do
   before :each do
     user = create(
-      :user, email: 'user_2@example.com',
+      :user,
+      email: 'user_2@example.com',
       password: 'password',
       github_token: ENV['GITHUB_TOKEN_1']
     )
 
     visit '/'
 
-    click_on 'Sign In'
+    click_link 'Sign In'
 
     fill_in 'Email', with: user.email
     fill_in 'Password', with: user.password
 
-    click_on 'Log In'
+    click_button 'Log In'
   end
 
   it 'can view github repos in github section on dashboard', :vcr do

@@ -6,15 +6,15 @@ describe TutorialSequencer do
   let(:vid_2)    { create(:video, tutorial: tutorial, position: 2) }
   let(:vid_3)    { create(:video, tutorial: tutorial, position: 3) }
 
-  it "exists" do
+  it 'exists' do
     sequence = [vid_1.id, vid_2.id, vid_3.id]
     tutorial_sequencer = TutorialSequencer.new(tutorial, sequence)
     expect(tutorial_sequencer).to be_a TutorialSequencer
   end
 
-  context "instance methods" do
-    context "#run!" do
-      it "updates the positions of the videos" do
+  context 'instance methods' do
+    context '#run!' do
+      it 'updates the positions of the videos' do
         sequence = [vid_3.id, vid_1.id, vid_2.id]
         tutorial_sequencer = TutorialSequencer.new(tutorial, sequence)
 

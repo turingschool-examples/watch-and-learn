@@ -7,14 +7,23 @@
       <%= button_to 'Connect to GitHub', github_login_path, method: 'get', class: "btn btn-primary mb1 bg-teal" %>
     </section>
   <% end %>
+  <% if !search_results.user.admin? %>
+    <%= button_to 'Send an Invite', invite_path, method: 'get', class: "btn btn-primary mb1 bg-teal" %>
+  <% end %>
 
   <h3>Account Details</h3>
   <ul>
     <li> <%= search_results.user.first_name  %> <%= search_results.user.last_name %> </li>
     <li> <%= search_results.user.email%> </li>
+    <li>Status: <%= search_results.user.status %> </li>
   </ul>
   <section>
     <h1>Bookmarked Segments</h1>
+    <% search_results.user.videos.each do |video| %>
+      <ul>
+        <%= video.title %>
+      </ul>
+    <% end %>
   </section>
 
   <% if search_results.user.github_token %>
@@ -33,7 +42,7 @@
             <% search_results.github_followings.each do |following| %>
               <ul class='following'>
                 <li class='login'> <%= link_to following.login, following.html_url %></li>
-                <% if search_results.has_account?(following) && following.not_already_a_friend_of(search_results.user) %>
+                <% if search_results.account?(following) && following.not_already_a_friend_of(search_results.user) %>
                   <%= button_to 'Add as Friend', friendships_path(:friend_id => following.id), method: :post, class: "btn btn-primary mb1 bg-teal" %>
                 <% end %>
               </ul>
@@ -44,7 +53,7 @@
           <% search_results.github_followers.each do |follower| %>
             <ul class='followers'>
               <li class='login'> <%= link_to follower.login, follower.html_url %>
-                <% if search_results.has_account?(follower) && follower.not_already_a_friend_of(search_results.user) %>
+                <% if search_results.account?(follower) && follower.not_already_a_friend_of(search_results.user) %>
                   <%= button_to 'Add as Friend', friendships_path(:friend_id => follower.id), method: :post, class: "btn btn-primary mb1 bg-teal" %>
                 <% end %>
               </li>
@@ -62,4 +71,3 @@
     </section>
   </section>
   <% end %>
-

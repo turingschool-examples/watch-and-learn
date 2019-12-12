@@ -1,0 +1,12 @@
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Style/Documentation:
+  Enabled: false
+Style/RaiseArgs:
+  Enabled: false
+Metrics/LineLength:
+  Enabled: false
+Style/ClassAndModuleChildren:
+  Enabled: false
+Metrics/AbcSize:
+  Enabled: false
