@@ -19,10 +19,13 @@
   </ul>
   <section>
     <h1>Bookmarked Segments</h1>
-    <% search_results.user.videos.each do |video| %>
-      <ul>
-        <%= video.title %>
-      </ul>
+    <% search_results.sorted_videos.each do |tutorial, video_array| %>
+      <h3 class='tutorial-title'><%= tutorial.title %></h3>
+          <% video_array.each do |video| %>
+            <ul>
+              <li><%= video.title %></li>
+            </ul>
+          <% end %>
     <% end %>
   </section>
 
