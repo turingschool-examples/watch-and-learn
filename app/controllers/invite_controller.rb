@@ -14,6 +14,7 @@ class InviteController < ApplicationController
   end
 
   private
+
   def invitee_params
     params.require(:invite).permit(:handle)
   end

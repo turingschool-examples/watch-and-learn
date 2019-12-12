@@ -36,5 +36,4 @@ class UserInfo
     @github_invitee ||= service.invitee_of_user(handle)
     Invitee.new(@github_invitee)
   end
-
 end
