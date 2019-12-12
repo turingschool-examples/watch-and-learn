@@ -113,6 +113,24 @@ m3_tutorial.videos.create!({
   'thumbnail' => 'https://i.ytimg.com/vi/FcgkfZEv_LI/hqdefault.jpg',
   'position' => 6
   })
+  mod_5_tutorial_data = {
+    'title' => 'Back End Engineering - Module 5',
+    'description' => 'Video content for Mod 5.',
+    'thumbnail' => 'https://i.ytimg.com/vi/R5FPYQgB6Zc/hqdefault.jpg',
+    'playlist_id' => 'PL1Y67f0xPzdOq2FcpWnawJeyJ3ELUdBkJ',
+    'classroom' => true,
+    'tag_list' => ['Internet', 'BDD', 'Ruby'],
+  }
+  m5_tutorial = Tutorial.create! mod_5_tutorial_data
+
+  m5_tutorial.videos.create!({
+    'title' => 'Customizing job search',
+    'description' => Faker::Hipster.paragraph(2, true),
+    'video_id' => 'cv1VQ_9OqvE',
+    'thumbnail' => 'https://i.ytimg.com/vi/cv1VQ_9OqvE/hqdefault.jpg',
+    'position' => 1
+    })
+
 
 User.create!(email: 'admin@example.com', first_name: 'Bossy', last_name: 'McBosserton', password: "password", role: :admin)
 User.create!(email: 'user_1@example.com', first_name: 'Brian', last_name: 'B', password: "password", role: :default, github_token: ENV['GITHUB_TOKEN_1'], handle: 'BabsLabs')
