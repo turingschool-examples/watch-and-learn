@@ -71,7 +71,66 @@ The following technologies were used for this project:
 
 ## Screenshots
 
+### Index
+<img src="https://github.com/zacisaacson/brownfield-of-dreams/blob/readme/app/assets/images/index.png?raw=true"
+     alt="Cart Show Page"
+     style="float: left; margin-right: 10px;" />
+
+### Tutorial Show
+<img src="https://github.com/zacisaacson/brownfield-of-dreams/blob/readme/app/assets/images/tutorials.png?raw=true"
+     alt="Cart Show Page"
+     style="float: left; margin-right: 10px;" />
+
+### Getting Started
+<img src="https://github.com/zacisaacson/brownfield-of-dreams/blob/readme/app/assets/images/get-started.png?raw=true"
+     alt="Cart Show Page"
+     style="float: left; margin-right: 10px;" />
+
+### About
+<img src="https://github.com/zacisaacson/brownfield-of-dreams/blob/readme/app/assets/images/about.png?raw=true"
+     alt="Cart Show Page"
+     style="float: left; margin-right: 10px;" />
+
+### User Dashboard
+<img src="https://github.com/zacisaacson/brownfield-of-dreams/blob/readme/app/assets/images/user-profile-dashboard.png?raw=true"
+     alt="Cart Show Page"
+     style="float: left; margin-right: 10px;" />
+
+### Activate Account Email
+<img src="https://github.com/zacisaacson/brownfield-of-dreams/blob/readme/app/assets/images/activate-account-email.jpg?raw=true"
+     alt="Cart Show Page"
+     style="float: left; margin-right: 10px;" />
+
+### Invite User
+<img src="https://github.com/zacisaacson/brownfield-of-dreams/blob/readme/app/assets/images/invite.png?raw=true"
+     alt="Cart Show Page"
+     style="float: left; margin-right: 10px;" />
+
+### GitHub Oauth
+<img src="https://github.com/zacisaacson/brownfield-of-dreams/blob/readme/app/assets/images/screencapture-github-login-oauth-authorize.png?raw=true"
+     alt="Cart Show Page"
+     style="float: left; margin-right: 10px;" />
+
+### Admin Dashboard
+<img src="https://github.com/zacisaacson/brownfield-of-dreams/blob/readme/app/assets/images/admin-dashboard.png?raw=true"
+     alt="Cart Show Page"
+     style="float: left; margin-right: 10px;" />
+
+### Admin Profile
+<img src="https://github.com/zacisaacson/brownfield-of-dreams/blob/readme/app/assets/images/admin-profile-dashboard.png?raw=true"
+     alt="Cart Show Page"
+     style="float: left; margin-right: 10px;" />
+
+### Admin New Tutorial
+<img src="https://github.com/zacisaacson/brownfield-of-dreams/blob/readme/app/assets/images/admin-tutorials-new.png?raw=true"
+     alt="Cart Show Page"
+     style="float: left; margin-right: 10px;" />
+
 ## Database / Schema Diagram
+
+<img src="https://github.com/zacisaacson/brownfield-of-dreams/blob/readme/app/assets/images/brownfield-database-diagram2.png?raw=true"
+     alt="Cart Show Page"
+     style="float: left; margin-right: 10px;" />
 
 ## User Roles
 1. Visitor - a visitor is any user of our page without an account. Visitors can view tutorials but cannot bookmark them until they have created an account.
