@@ -19,9 +19,9 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Thu, 12 Dec 2019 17:47:53 GMT
+      - Thu, 12 Dec 2019 18:09:58 GMT
       Date:
-      - Thu, 12 Dec 2019 17:47:53 GMT
+      - Thu, 12 Dec 2019 18:09:58 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
@@ -119,5 +119,5 @@ http_interactions:
          ]
         }
     http_version: 
-  recorded_at: Thu, 12 Dec 2019 17:47:53 GMT
+  recorded_at: Thu, 12 Dec 2019 18:09:58 GMT
 recorded_with: VCR 4.0.0
