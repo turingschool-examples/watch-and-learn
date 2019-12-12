@@ -47,6 +47,13 @@ Environment variables and required API keys/tokens:
 1. GitHub client_secret defined as `ENV['GITHUB_SECRET_ID']`
 
 ## Focus Areas
+* Consuming a JSON API
+* Authentication using OAuth
+* Authenticated API calls
+* Building features on brownfield code
+* Work with a deadline
+* Prioritizing code functionality vs best practices
+* Generating emails using Ruby on Rails and Active Mailer
 
 ## Technologies / Framework
 The following Technologies were used for this project;
