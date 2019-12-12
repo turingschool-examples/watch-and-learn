@@ -17,7 +17,7 @@ class UsersController < ApplicationController
       flash[:notice] = 'This account has not yet been activated. Please check your email.'
       redirect_to dashboard_path
     else
-      flash[:error] = 'Username already exists'
+      flash[:error] = @user.errors.full_messages.uniq.to_sentence
       render :new
     end
   end
