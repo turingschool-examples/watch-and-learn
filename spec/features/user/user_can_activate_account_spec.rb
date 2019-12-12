@@ -16,4 +16,11 @@ RSpec.describe 'As a user' do
     expect(page).to have_content('Status: Active')
     expect(page).to have_content('Thank you! Your account is now activated.')
   end
+
+  it 'I have to be registered to activate account' do
+    visit '/user/activation'
+
+    expect(current_path).to eq login_path
+    expect(page).to have_content('Please register and activate your account.')
+  end
 end
