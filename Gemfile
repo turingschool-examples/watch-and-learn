@@ -14,6 +14,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'rubocop', require: false
 
 gem 'webpacker', '~> 3.5'
+gem 'webmock'
+gem 'vcr'
 
 gem 'yt', '~> 0.29.1'
 gem 'google-api-client'
