@@ -1,0 +1,19 @@
+AllCops:
+  Exclude:
+    - bin/**/*
+    - config/**/*
+    - coverage/**/*
+    - db/**/*
+    - lib/**/*
+    - log/**/*
+    - node_modules/**/*
+    - public/**/*
+    - spec/**/*
+    - tmp/**/*
+    - vendor/**/*
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Documentation:
+  Enabled: false
