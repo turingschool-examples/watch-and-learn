@@ -1,6 +1,24 @@
 {
-  "application.js": "/packs/application-266412e0da27a9609694.js",
-  "application.js.map": "/packs/application-266412e0da27a9609694.js.map",
-  "controllers/tutorials_controller.js": "/packs/controllers/tutorials_controller-0d0d50cd393be02280a0.js",
-  "controllers/tutorials_controller.js.map": "/packs/controllers/tutorials_controller-0d0d50cd393be02280a0.js.map"
+  "application.js": "/packs/js/application-7b06bb84179228edf705.js",
+  "application.js.map": "/packs/js/application-7b06bb84179228edf705.js.map",
+  "controllers/tutorials_controller.js": "/packs/js/controllers/tutorials_controller-7ad20f8734cfd95b182a.js",
+  "controllers/tutorials_controller.js.map": "/packs/js/controllers/tutorials_controller-7ad20f8734cfd95b182a.js.map",
+  "entrypoints": {
+    "application": {
+      "js": [
+        "/packs/js/application-7b06bb84179228edf705.js"
+      ],
+      "js.map": [
+        "/packs/js/application-7b06bb84179228edf705.js.map"
+      ]
+    },
+    "controllers/tutorials_controller": {
+      "js": [
+        "/packs/js/controllers/tutorials_controller-7ad20f8734cfd95b182a.js"
+      ],
+      "js.map": [
+        "/packs/js/controllers/tutorials_controller-7ad20f8734cfd95b182a.js.map"
+      ]
+    }
+  }
 }

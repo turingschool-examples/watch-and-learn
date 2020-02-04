@@ -1,3 +1,6 @@
+// import "core-js/stable";
+// import "regenerator-runtime/runtime";
+
 import { Application } from "stimulus"
 import { definitionsFromContext } from "stimulus/webpack-helpers"
 

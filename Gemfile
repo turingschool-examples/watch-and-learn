@@ -12,7 +12,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bcrypt', '~> 3.1.7'
 
-gem 'webpacker', '~> 3.5'
+gem 'webpacker', '~> 4.x'
 
 gem 'yt', '~> 0.29.1'
 gem 'google-api-client'
