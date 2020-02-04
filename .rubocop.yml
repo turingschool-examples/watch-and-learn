@@ -11,6 +11,17 @@ AllCops:
     - spec/**/*
     - tmp/**/*
     - vendor/**/*
+    - Gemfile
+    - Gemfile.lock
+    - Rakefile
+    - README.md
+    - yarn.lock
+    - .babelrc
+    - .gitignore
+    - .postcssrc.yml
+    - .ruby-version
+    - config.ru
+    - package.json
 
 Style/FrozenStringLiteralComment:
   Enabled: false
