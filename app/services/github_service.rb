@@ -12,13 +12,16 @@ class GithubService
   def get_repos
     response = conn.get("user/repos")
     repos = JSON.parse(response.body, symbolize_names: true)
-    GithubInfo.new(repos)
+    repos.map do |data|
+      lol = GithubInfo.new(data[:name], data[:html_url])
+    end
   end
 end
 
 class GithubInfo
-  def initialize(info)
-    binding.pry
-    @repo_name = info.first[:name]
+  attr_reader :name, :html
+  def initialize(name, url)
+    @name = name
+    @html = url
   end
 end

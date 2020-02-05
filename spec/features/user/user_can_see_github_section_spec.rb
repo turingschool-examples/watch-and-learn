@@ -9,25 +9,9 @@ describe "When visting the dashboard as a logged in User " do
     visit '/dashboard'
 
     within ".github" do
-      within "#github-#{repo_1.id}" do
-        expect(page).to have_content(repo.name)
-        expect(page).to have_link(repo.link)
-      end
-      within "#github-#{repo_2.id}" do
-        ​expect(page).to have_content(repo.name)
-        expect(page).to have_link(repo.link)
-      end
-      within "#github-#{repo_3.id}" do
-​       expect(page).to have_content(repo.name)
-       expect(page).to have_link(repo.link)
-      end
-      within "#github-#{repo_4.id}" do
-​       expect(page).to have_content(repo.name)
-       expect(page).to have_link(repo.link)
-      end
-      within "#github-#{repo_5.id}" do
-​       expect(page).to have_content(repo.name)
-       expect(page).to have_link(repo.link)
+      within "#repo" do
+        "<p>Text</p>".should have_css('p', :count => 5)
+        expect(page).to have_link
       end
     end
   end
