@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
   def show
+    gs = GithubService.new(current_user) 
+    gs.conn
+    gs.get_json("/user/repos",1)
+    @github_repos = gs.get_json("/#{current_user}/repos", 0 ,user)
   end
 
   def new

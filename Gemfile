@@ -14,8 +14,6 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'rubocop', require: false
 
 gem 'webpacker', '~> 3.5'
-gem 'webmock'
-gem 'vcr'
 
 gem 'yt', '~> 0.29.1'
 gem 'google-api-client'
@@ -30,6 +28,10 @@ gem 'will_paginate'
 gem 'acts-as-taggable-on', '~> 6.0'
 gem 'omniauth-census', git: "https://github.com/turingschool-projects/omniauth-census"
 
+group :test do 
+  gem 'vcr'
+  gem 'webmock'
+end
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -41,9 +43,7 @@ group :development, :test do
   gem 'launchy'
   gem 'shoulda-matchers'
   gem 'awesome_print'
-  gem 'webmock'
   gem 'simplecov'
-  gem 'vcr'
   gem 'selenium-webdriver'
   gem 'webdrivers'
 end
