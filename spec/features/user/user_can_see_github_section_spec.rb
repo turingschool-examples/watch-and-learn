@@ -8,11 +8,11 @@ describe "When visting the dashboard as a logged in User " do
 
     visit '/dashboard'
 
-    within ".github" do
-      within "#repo" do
-        "<p>Text</p>".should have_css('p', :count => 5)
+    within "#github" do
+      within(first("#repo")) do
         expect(page).to have_link
       end
+        expect(page).to have_css("p", count: 5)
     end
   end
 end
