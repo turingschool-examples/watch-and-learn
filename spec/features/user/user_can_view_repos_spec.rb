@@ -2,8 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'As a logged in user', type: :feature do
   before(:each) do
-    @user = create(:user)
-    allow_any_instance_of(User).to receive(:github_token).and_return(ENV['GITHUB_TOKEN'])
+    @user = create(:user, github_token: ENV['GITHUB_TOKEN'])
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
   end
 
