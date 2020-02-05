@@ -5,10 +5,17 @@ AllCops:
     - 'db/**/*'
     - 'config/**/*'
     - 'script/**/*'
-    - 'bin/{rails,rake}'
+    - 'bin/**/*'
     - !ruby/regexp /old_and_unused\.rb$/
-  Include:
-    - 'app/**/*'
-
+    - 'brownfieldapp/**/*'
+    - 'lib/**/*'
+    - 'log/**/*'
+    - 'public/**/*'
+    - 'spec/**/*'
+    - 'tmp/**/*'
+    - 'vendor/**/*'
+    - 'node_modules/**/*'
+    - 'coverage/**/*'
+    - 'Gemfile'
 # other configuration
 # ...

@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
   def show
+    render locals: {
+      user_repo: GithubService.new(current_user)
+    }
   end
 
   def new

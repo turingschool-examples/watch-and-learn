@@ -1,0 +1,24 @@
+# Copyright 2017 Google, Inc
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# [START all]
+# [START step_1]
+entrypoint: bundle exec rackup --port $PORT
+env: flex
+runtime: ruby
+# [END step_1]
+
+env_variables:
+  SECRET_KEY_BASE: b8d77b9eab5109b1c8864c177bc4a77b0f1d3b1ca143f59dbffd236adca344b686f38b29bfc7b491be8c2a7282e5c5ed8b7d6ec16f548bf8f1a60b2dfbbb47e7
+# [END all]
