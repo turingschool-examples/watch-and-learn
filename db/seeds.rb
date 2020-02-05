@@ -1,3 +1,5 @@
+require 'faker'
+
 prework_tutorial_data = {
   "title"=>"Back End Engineering - Prework",
   "description"=>"Videos for prework.",
