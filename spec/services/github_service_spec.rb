@@ -17,11 +17,35 @@ feature GithubService do
           actual = GithubService.new.github_repos(token)
           expect(actual.class).to eq(Array)
           expect(actual.length).to eq(5)
-          
+
           actual.each_with_index do |repo, index|
             expect(repo.class).to eq(Repo)
             expect(repo.name).to eq(expected[index].name)
             expect(repo.url).to eq(expected[index].url)
+          end
+        end
+      end
+
+      feature 'user_followers' do
+        scenario "returns follower objects for all followers associated with user's github token", :vcr do
+          token = ENV['GITHUB_TOKEN']
+          @follower_1 = Follower.new(name: 'msimon42', url: "https://github.com/msimon42")
+          @follower_2 = Follower.new(name: 'danmoran-pro', url: "https://github.com/danmoran-pro")
+          @follower_3 = Follower.new(name: 'jfangonilo', url: "https://github.com/jfangonilo")
+          @follower_4 = Follower.new(name: 'aperezsantos', url: "https://github.com/aperezsantos")
+          @follower_5= Follower.new(name: 'sasloan', url: "https://github.com/sasloan")
+          @follower_6 = Follower.new(name: 'PaulDebevec', url: "https://github.com/PaulDebevec")
+
+          expected = [@follower_6, @follower_5, @follower_4, @follower_3, @follower_2, @follower_1]
+
+          actual = GithubService.new.github_followers(token)
+          expect(actual.class).to eq(Array)
+          expect(actual.length).to eq(6)
+
+          actual.each_with_index do |follower, index|
+            expect(follower.class).to eq(Follower)
+            expect(follower.name).to eq(expected[index].name)
+            expect(follower.url).to eq(expected[index].url)
           end
         end
       end
