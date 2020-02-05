@@ -1,0 +1,25 @@
+AllCops:
+  Exclude:
+    - bin/**/*
+    - config/**/*
+    - coverage/**/*
+    - db/**/*
+    - lib/**/*
+    - log/**/*
+    - node_modules/**/*
+    - public/**/*
+    - spec/**/*
+    - tmp/**/*
+    - vendor/**/*
+    - Gemfile
+    - Gemfile.lock
+    - .babelrc
+    - .gitignore
+    - .ruby-version
+    - Rakefile
+    - README.md
+    - yarn.lock
+
+Style/FrozenStringLiteralComment:
+  Enable: false
+  
