@@ -7,4 +7,15 @@ class User < ApplicationRecord
   validates_presence_of :first_name
   enum role: [:default, :admin]
   has_secure_password
+
+
+  def repositories(user_token)
+    response = Faraday.get("https://api.github.com/user/repos?access_token=#{user_token}")
+    json = JSON.parse(response.body, sybomlize_names: true)
+    repositories = json.reduce([{}]) do |acc, repo|
+      acc << {name: repo['name'], link: repo['html_url']}
+      acc
+    end
+    repositories[1..5]
+  end
 end
