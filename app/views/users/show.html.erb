@@ -7,6 +7,11 @@
     <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
     <li> <%= current_user.email%> </li>
   </ul>
+    <% @repos.each do |repo| %>
+    <section id=repo-<%= repo.name %>>
+      <%= link_to repo.name, repo.url%>
+    </section>
+    <% end %>
   <section>
     <h1>Bookmarked Segments</h1>
   </section>
