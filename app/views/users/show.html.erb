@@ -13,8 +13,8 @@
 
   <section>
     <h3 class ="github"> Github Repos   </h3>
+    <% user_repo.each do |repo| %>
     binding.pry
-    <% @github_repos.each do |repo| %>
         <%= link_to repo.name %>
     <% end %>
   </section>
