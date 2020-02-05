@@ -16,5 +16,6 @@ AllCops:
     - 'vendor/**/*'
     - 'node_modules/**/*'
     - 'coverage/**/*'
+    - 'Gemfile'
 # other configuration
 # ...
