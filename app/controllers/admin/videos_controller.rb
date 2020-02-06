@@ -25,6 +25,7 @@ class Admin::VideosController < Admin::BaseController
   end
 
   private
+
     def video_params
       params.permit(:position)
     end
