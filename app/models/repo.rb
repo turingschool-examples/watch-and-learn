@@ -5,8 +5,8 @@ class Repo
     @url = data[:url]
   end
 
-  def self.find_repos
-    repos = GithubService.new.find_repos
+  def self.find_repos(user)
+    repos = GithubService.new.find_repos(user)
     repos.sample(5)
   end
 end

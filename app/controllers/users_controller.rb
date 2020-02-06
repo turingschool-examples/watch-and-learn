@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def show
-    @repos = Repo.find_repos
+    @repos = Repo.find_repos(current_user)
   end
 
   def new
