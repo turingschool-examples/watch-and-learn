@@ -25,4 +25,12 @@ class User < ApplicationRecord
       acc
     end
   end
+
+  def following
+    json = GithubService.following(self.token)
+    json.reduce([]) do |acc, user|
+      acc << {name: user['login'], link: user['html_url']}
+      acc
+    end
+  end
 end

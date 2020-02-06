@@ -25,6 +25,11 @@
       <p>User: <%= "#{user[:name]}" %><br>
       Handle: <%= link_to "#{user[:link]}", user[:link] %></p>
     <% end  %>
+    <h1>Github Following</h1>
+    <% current_user.following.each do |user| %>
+      <p>User: <%= "#{user[:name]}" %><br>
+      Handle: <%= link_to "#{user[:link]}", user[:link] %></p>
+    <% end  %>
   </section>
   <% end %>
 </section>
