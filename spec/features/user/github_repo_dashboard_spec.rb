@@ -35,4 +35,14 @@ describe '/dashboard page' do
       expect(page).to have_content('Github Followers')
     end
   end
+
+  it 'shows following name and a link to their homepage' do
+    user = create(:user, token: ENV['GITHUB_ACCESS_TOKEN'])
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+    VCR.use_cassette('following') do
+      visit '/dashboard'
+      expect(page).to have_content('Github Following')
+    end
+  end
 end
