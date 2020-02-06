@@ -5,7 +5,7 @@
   <h3>Account Details</h3>
   <ul>
     <li> <%= @user.first_name  %> <%= @user.last_name %> </li>
-    <li> <%= @user.email%> </li>
+    <li> <%= @user.email %> </li>
   </ul>
   <section>
     <h1>Bookmarked Segments</h1>
@@ -26,6 +26,15 @@
         <ul>
         <% @user.github_followers.each do |follower| %>
           <li><%= link_to follower.name, follower.url %></li>
+        <% end %>
+        </ul>
+      </section>
+
+      <section id='following'>
+        <h2>Following</h2>
+        <ul>
+        <% @user.github_following.each do |followee| %>
+          <li><%= link_to followee.name, followee.url %></li>
         <% end %>
         </ul>
       </section>
