@@ -10,4 +10,14 @@
   <section>
     <h1>Bookmarked Segments</h1>
   </section>
+  <% if @repos %>
+    <section class="github">
+      <h1>Github Repositories</h1>
+      <% @repos.each do |repo| %>
+        <section class="repos">
+          <%= link_to repo.name, repo.link %>
+        </section>
+      <% end %>
+    </section>
+  <% end %>
 </section>
