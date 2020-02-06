@@ -1,3 +1,5 @@
+inherit_from: .rubocop_todo.yml
+
 # Rubocop configuration file
 
 # Exclude every directory except /app
