@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-describe 'User', :vcr do
+describe 'User' do
   it 'user can sign in' do
     user = create(:user)
-
+    
     visit '/'
 
     click_on "Sign In"
