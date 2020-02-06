@@ -11,13 +11,19 @@
     <h1>Bookmarked Segments</h1>
   </section>
 <% if current_user.github_token %>
-    <h3>Github Repo's</h3>
-    <section id="github">
-      <% user_repo.repos.each do |repo| %>
-      <section id="repo">
-        <p><%= link_to repo.name, repo.html %></p>
-      </section>
-      <% end %>
+  <h3>Github</h3>
+  <section id="github">
+    <% user_git.repos.each do |repo| %>
+    <section id="repo">
+      <p><%= link_to repo.name, repo.html %></p>
+    </section>
+    <% end %>
   </section>
-  <% end %>
+  <h5>Followers</h5>
+  <section id="followers">
+    <% user_git.followers.each do |follower| %>
+      <p><%= link_to follower.name, follower.profile_path %></p>  
+    <% end %>
+  </section>
+<% end %>
 </section>
