@@ -17,10 +17,7 @@ describe "as a signed in user" do
       expect(page).to have_css(".repos", count: 5)
 
       within (first(".repos")) do
-        expect(page).to have_link("adopt_dont_shop_part_two")
-        click_link "adopt_dont_shop_part_two"
-
-        expect(current_path).to eq('https://api.github.com/users/jfangonilo')
+        expect(page).to have_link("monster_shop_part_1")
       end
     end
   end
