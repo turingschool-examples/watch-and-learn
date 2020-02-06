@@ -12,4 +12,9 @@ class User < ApplicationRecord
     return GithubService.new.github_repos(github_token) if github_token
     nil
   end
+
+  def github_followers
+    return GithubService.new.github_followers(github_token) if github_token
+    nil
+  end
 end

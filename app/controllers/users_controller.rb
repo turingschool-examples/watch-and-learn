@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def show
-    @repos = current_user.github_repos
+    @user = current_user
   end
 
   def new

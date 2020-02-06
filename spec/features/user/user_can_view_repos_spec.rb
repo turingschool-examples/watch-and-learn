@@ -13,7 +13,7 @@ RSpec.describe 'As a logged in user', type: :feature do
       end
 
         it 'Then I should see a section for "Github"' do
-          expect(page).to have_css('h1', text: "Your GitHub Repos")
+          expect(page).to have_css('h2', text: "Your GitHub Repos")
         end
 
         it 'And under that section I should see a list of 5 repositories with the name of each Repo linking to the repo on Github' do
@@ -46,7 +46,7 @@ RSpec.describe 'As a logged in user', type: :feature do
       end
 
       it "I see no 'Github' section and no repos listed" do
-        expect(page).to_not have_css('h1', text: "Your GitHub Repos")
+        expect(page).to_not have_css('h2', text: "Your GitHub Repos")
         expect(page).to_not have_css('#repos')
       end
     end
