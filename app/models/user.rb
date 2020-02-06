@@ -10,8 +10,7 @@ class User < ApplicationRecord
 
 
   def repositories
-    response = Faraday.get("https://api.github.com/user/repos?access_token=#{self.token}")
-    json = JSON.parse(response.body, sybomlize_names: true)
+    json = GithubService.repos(self.token)
     repositories = json.reduce([]) do |acc, repo|
       acc << {name: repo['name'], link: repo['html_url']}
       acc
@@ -20,8 +19,7 @@ class User < ApplicationRecord
   end
 
   def followers
-    response = Faraday.get("https://api.github.com/user/followers?access_token=#{self.token}")
-    json = JSON.parse(response.body, sybomlize_names: true)
+    json = GithubService.followers(self.token)
     json.reduce([]) do |acc, user|
       acc << {name: user['login'], link: user['html_url']}
       acc
