@@ -6,8 +6,8 @@ describe "as a signed in user" do
   VCR.eject_cassette
 
   xit "can see five of its github repos on the dashboard" do
-    user = create(:user, token: '347bf38be0ecbec0a3b19a8c24140d215cb597d7')
-    user2 = create(:user, token: '1d7883e95963ae24d82e7ed94016cb6121b8c540')
+    user = create(:user, token: '')
+    user2 = create(:user, token: '')
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
