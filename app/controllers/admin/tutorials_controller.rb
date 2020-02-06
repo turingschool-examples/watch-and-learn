@@ -20,7 +20,7 @@ class Admin::TutorialsController < Admin::BaseController
 
   private
 
-  def tutorial_params
-    params.require(:tutorial).permit(:tag_list)
-  end
+    def tutorial_params
+      params.require(:tutorial).permit(:tag_list)
+    end
 end

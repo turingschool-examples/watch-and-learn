@@ -19,14 +19,14 @@ class GithubService
 
   private
 
-  def connection
-    Faraday.new('https://api.github.com') do |faraday|
-      faraday.adapter Faraday.default_adapter
+    def connection
+      Faraday.new('https://api.github.com') do |faraday|
+        faraday.adapter Faraday.default_adapter
+      end
     end
-  end
 
-  def get_json(endpoint, token)
-    response = connection.get(endpoint, { access_token: token })
-    JSON.parse(response.body)
-  end
+    def get_json(endpoint, token)
+      response = connection.get(endpoint, { access_token: token })
+      JSON.parse(response.body)
+    end
 end

@@ -15,7 +15,7 @@ class UserVideosController < ApplicationController
 
   private
 
-  def user_video_params
-    params.permit(:user_id, :video_id)
-  end
+    def user_video_params
+      params.permit(:user_id, :video_id)
+    end
 end
