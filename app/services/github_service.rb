@@ -11,6 +11,12 @@ class GithubService
     end
   end
 
+  def github_following(token)
+    get_json('user/following', token).map do |followee_info|
+      Follower.new(name: followee_info["login"], url: followee_info["html_url"])
+    end
+  end
+
   private
 
   def connection
