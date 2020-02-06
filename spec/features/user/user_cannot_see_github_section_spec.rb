@@ -8,6 +8,6 @@ describe "When a Logged In User, who does not have a Github Access Token" do
 
     visit '/dashboard'
 
-    expect(page).to_not have_content("Github Repo's")
+    expect(page).to_not have_content("Github")
   end
 end
