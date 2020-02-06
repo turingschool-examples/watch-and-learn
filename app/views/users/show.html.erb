@@ -26,6 +26,14 @@
           <section>
          <% end %>
       </section>
+    <h3>Following</h3>
+      <section id="followering">
+        <% user_repo.followings.each do |following| %>
+          <section id="follower">
+          <%= link_to following.name, following.html %>
+          <section>
+         <% end %>
+      </section>
          
   </section>
   <% end %>

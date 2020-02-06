@@ -21,6 +21,12 @@ class GithubService
     followers_data.map do |data| 
       FollowerInfo.new(data[:login], data[:url])
     end
-      
+  end
+  def followings
+    response = conn.get("user/following")
+    followings_data = JSON.parse(response.body, symbolize_names: true)
+    followings_data.map do |data| 
+      FollowingInfo.new(data[:login], data[:url])
+    end
   end
 end

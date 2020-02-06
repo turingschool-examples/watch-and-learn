@@ -1,9 +1,3 @@
-# s a logged in user
-# When I visit /dashboard
-# Then I should see a section for "Github"
-# And under that section I should see another section titled "Followers"
-# And I should see list of all followers with their handles linking to their Github profile
-
 require 'rails_helper'
 
 describe "When visting the dashboard as a logged in User" do
@@ -20,7 +14,6 @@ describe "When visting the dashboard as a logged in User" do
         within(first('#follower')) do 
           expect(page).to have_link
         end
-        save_and_open_page
         expect(page).to have_css("p", count: 5)
       end
     end
