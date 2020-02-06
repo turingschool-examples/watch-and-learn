@@ -10,6 +10,7 @@
   <section>
     <h1>Bookmarked Segments</h1>
   </section>
+  <h1>Github Information</h1>
   <% if current_user.token != nil %>
   <section id="repos">
     <h1>Github Repos</h1>
@@ -18,4 +19,11 @@
     <% end %>
   </section>
   <% end %>
+    <h1>Github followers</h1>
+    <% current_user.followers(current_user.token). each do |user| %>
+      <p>User: <%= "#{user[:name]}" %><br>
+      Handle: <%= link_to "#{user[:link]}", user[:link] %></p>
+
+
+    <% end  %>
 </section>

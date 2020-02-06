@@ -18,4 +18,14 @@ class User < ApplicationRecord
     end
     repositories[1..5]
   end
+
+  def followers(user_token)
+    response = Faraday.get("https://api.github.com/user/followers?access_token=#{user_token}")
+    json = JSON.parse(response.body, sybomlize_names: true)
+    followers = json.reduce([{}]) do |acc, user|
+    acc << {name: user['login'], link: user['html_url']}
+    acc
+  end
+    followers[1..-1]
+  end
 end
