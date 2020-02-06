@@ -10,12 +10,21 @@
   <section>
     <h1>Bookmarked Segments</h1>
   </section>
+
+  <h1>Github Information</h1>
   <% if current_user.token != nil %>
   <section id="repos">
     <h1>Github Repos</h1>
-    <% current_user.repositories(current_user.token).each do |repo|  %>
+    <% current_user.repositories.each do |repo|  %>
       <ul id="dot"><%= link_to "#{repo[:name]}", repo[:link] %></ul>
     <% end %>
+  </section>
+  <section>
+    <h1>Github Followers</h1>
+    <% current_user.followers.each do |user| %>
+      <p>User: <%= "#{user[:name]}" %><br>
+      Handle: <%= link_to "#{user[:link]}", user[:link] %></p>
+    <% end  %>
   </section>
   <% end %>
 </section>

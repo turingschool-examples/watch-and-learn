@@ -9,13 +9,20 @@ class User < ApplicationRecord
   has_secure_password
 
 
-  def repositories(user_token)
-    response = Faraday.get("https://api.github.com/user/repos?access_token=#{user_token}")
-    json = JSON.parse(response.body, sybomlize_names: true)
-    repositories = json.reduce([{}]) do |acc, repo|
+  def repositories
+    json = GithubService.repos(self.token)
+    repositories = json.reduce([]) do |acc, repo|
       acc << {name: repo['name'], link: repo['html_url']}
       acc
     end
-    repositories[1..5]
+    repositories[0..4]
+  end
+
+  def followers
+    json = GithubService.followers(self.token)
+    json.reduce([]) do |acc, user|
+      acc << {name: user['login'], link: user['html_url']}
+      acc
+    end
   end
 end
