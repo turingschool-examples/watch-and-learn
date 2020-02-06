@@ -15,4 +15,12 @@ class GithubService
       GithubInfo.new(data[:name], data[:html_url])
     end
   end
+  def followers
+    response = conn.get("user/followers")
+    followers_data = JSON.parse(response.body, symbolize_names: true)
+    followers_data.map do |data| 
+      FollowerInfo.new(data[:login], data[:url])
+    end
+      
+  end
 end
