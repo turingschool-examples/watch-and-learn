@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'User', :vcr do
   it 'user can sign in' do
-    user = create(:user, token: '272747d883720d6553907032e5d3f2e55beae923')
+    user = create(:user)
 
     visit '/'
 
@@ -22,7 +22,7 @@ describe 'User', :vcr do
   end
 
   it 'can log out', :js do
-    user = create(:user, token: '272747d883720d6553907032e5d3f2e55beae923')
+    user = create(:user)
 
     visit login_path
 

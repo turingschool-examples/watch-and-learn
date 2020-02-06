@@ -3,7 +3,6 @@ require 'rails_helper'
 describe "As a user can see github repos" do
   it "on their dashboard", :vcr do
   token = ENV["GITHUB_TOKEN_LOCAL"]
-
   user = create(:user, token: token)
 
   allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
