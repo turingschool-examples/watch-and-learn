@@ -1,6 +1,7 @@
 require 'rails_helper'
 
-describe 'vister can create an account', :js do
+describe 'vister can create an account', :js, :vcr do
+
   it ' visits the home page' do
     email = 'jimbob@aol.com'
     first_name = 'Jim'
@@ -25,7 +26,7 @@ describe 'vister can create an account', :js do
     fill_in 'user[password_confirmation]', with: password
 
     click_on'Create Account'
-
+    
     expect(current_path).to eq(dashboard_path)
 
     expect(page).to have_content(email)

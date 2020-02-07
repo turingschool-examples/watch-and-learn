@@ -7,6 +7,13 @@
     <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
     <li> <%= current_user.email%> </li>
   </ul>
+    <% if current_user.token %>
+      <% repo_result.display_repos.each do |repo| %>
+      <section class="repos">
+      <p class="name"><%= link_to repo.name, repo.url%></p>
+      </section>
+      <% end %>
+    <% end %>
   <section>
     <h1>Bookmarked Segments</h1>
   </section>

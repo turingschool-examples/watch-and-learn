@@ -34,15 +34,18 @@ group :development, :test do
   gem 'foundation-rails'
   gem 'database_cleaner'
   gem 'pry'
+  gem 'awesome_print'
+  gem 'selenium-webdriver'
+  gem 'webdrivers'
+end
+
+group :test do
   gem 'capybara'
   gem 'launchy'
   gem 'shoulda-matchers'
-  gem 'awesome_print'
   gem 'webmock'
   gem 'simplecov'
   gem 'vcr'
-  gem 'selenium-webdriver'
-  gem 'webdrivers'
 end
 
 group :development do
