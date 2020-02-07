@@ -8,13 +8,21 @@
     <li> <%= current_user.email%> </li>
   </ul>
     <% if current_user.token %>
-      <% repo_result.display_repos.each do |repo| %>
+    <h1>Github Details:</h1>
+      <h2>Personal Repos:</h2>
+      <% github_result.display_repos.each do |repo| %>
       <section class="repos">
       <p class="name"><%= link_to repo.name, repo.url%></p>
-      </section>
+      </section><br>
+      <% end %>
+  <section>
+      <h2>Following On Github</h2>
+      <% github_result.display_following.each do |following| %>
+        <section class="following">
+          <p class="name"><%= link_to following.name, following.url%></p>
+        </section>
       <% end %>
     <% end %>
-  <section>
     <h1>Bookmarked Segments</h1>
   </section>
 </section>

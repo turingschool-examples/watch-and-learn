@@ -10,15 +10,18 @@ describe "As a user can see github repos" do
     visit dashboard_path
 
     expect(current_path).to eq(dashboard_path)
-
     expect(page).to have_css(".repos", count: 5)
-
     within(first(".repos")) do
+      expect(page).to have_css(".name")
+    end
+
+    within(first(".following")) do
       expect(page).to have_css(".name")
     end
 
     click_on "Log Out"
 
     expect(page).not_to have_css(".repos")
+    expect(page).not_to have_css(".following")
   end
 end
