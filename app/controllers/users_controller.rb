@@ -5,7 +5,6 @@ class UsersController < ApplicationController
         repo_result: RepoSearch.new(current_user.token)
       }
     end
-    # @repos = Repo.find_repos(current_user) if current_user.token
   end
 
   def new
