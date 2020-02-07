@@ -1,12 +1,7 @@
-require "rails_helper"
+require 'rails_helper'
 
-RSpec.describe Video do
-  describe "methods" do
-    before :each do
-    #  @video = Video.new(data)
-    end
-    it "can initialize with contents" do
-      
-    end
+RSpec.describe Tutorial, type: :model do
+  describe 'relationships' do
+    it {should have_many :videos}
   end
 end
