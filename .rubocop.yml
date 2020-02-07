@@ -20,3 +20,9 @@ Style/Documentation:
 
 Style/FrozenStringLiteralComment:
   Enabled: false
+
+Layout/IndentationConsistency:
+  EnforcedStyle: indented_internal_methods
+
+Naming/MemoizedInstanceVariableName:
+  Enabled: false
