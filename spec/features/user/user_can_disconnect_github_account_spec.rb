@@ -21,7 +21,7 @@ RSpec.describe 'As a user connected to GitHub', :vcr, type: :feature do
       expect(page).to have_content('Your GitHub Repos')
     end
 
-    describe 'And when I click on "Disconnect"' do
+    describe 'and I click on "Disconnect"' do
       before(:each) do
         click_on 'Disconnect GitHub Account'
       end
