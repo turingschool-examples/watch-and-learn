@@ -17,10 +17,10 @@ class GithubSearch
   end
 
   def get_json(data_type)
-      service = GithubService.new
+    service = GithubService.new
 
-      service.user_url_path(data_type, @token).map do |data|
-        find_github_resource(data_type, data)
-      end
+    service.user_url_path(data_type, @token).map do |data|
+      find_github_resource(data_type, data)
+    end
   end
 end

@@ -21,7 +21,7 @@ class Admin::TutorialsController < Admin::BaseController
 
   def destroy
     Tutorial.destroy(params[:id])
-    redirect_to  "/admin/dashboard"
+    redirect_to '/admin/dashboard'
   end
 
   private
