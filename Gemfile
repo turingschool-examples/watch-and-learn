@@ -12,7 +12,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bcrypt', '~> 3.1.7'
 gem 'rubocop', require: false
-
+gem 'omniauth-github', github: 'omniauth/omniauth-github', branch: 'master'
 gem 'webpacker', '~> 3.5'
 
 gem 'yt', '~> 0.29.1'
@@ -28,7 +28,7 @@ gem 'will_paginate'
 gem 'acts-as-taggable-on', '~> 6.0'
 gem 'omniauth-census', git: "https://github.com/turingschool-projects/omniauth-census"
 
-group :test do 
+group :test do
   gem 'vcr'
   gem 'webmock'
 end
