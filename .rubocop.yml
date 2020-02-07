@@ -31,3 +31,6 @@ Documentation:
 
 Style/ClassAndModuleChildren:
   Enabled: false
+
+Naming/MemoizedInstanceVariableName:
+  Enabled: false
