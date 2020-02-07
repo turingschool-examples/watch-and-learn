@@ -4,24 +4,27 @@ class GithubSearch
   end
 
   def display_repos
-    find_repos.take(5)
+    get_json('repos').take(5)
   end
 
   def display_following
-    find_following.take(5)
+    get_json('following').take(5)
   end
 
-  def find_following
-    service = GithubService.new
-    service.following_url(@token).map do |data|
-      Following.new(data)
-    end
+  def display_followers
+    get_json('followers').take(5)
   end
 
-  def find_repos
+  def find_github_resource(data_type, data)
+    resource = data_type.singularize.capitalize
+    resource.constantize.new(data)
+  end
+
+  def get_json(data_type)
       service = GithubService.new
-      service.repo_url(@token).map do |data|
-        Repo.new(data)
+
+      service.user_url_path(data_type, @token).map do |data|
+        find_github_resource(data_type, data)
       end
   end
 end
