@@ -5,13 +5,15 @@
                 logout_path,
                 method: 'delete',
                 class: "btn btn-primary mb1 bg-teal" %>
-  <% if @user.github_token %>
-    <%= button_to 'Disconnect GitHub Account',
-                "/users/#{@user.id}?github_token=nil",
-                :method => :patch %>
-  <% else %>
-    <%= link_to 'Connect to GitHub', '/auth/github', class: 'link-button'%>
-  <% end %>
+
+  <%= link_to 'Connect to GitHub',
+                '/auth/github',
+                class: 'link-button' unless @user.github_token %>
+
+  <%= button_to 'Disconnect GitHub Account',
+                "/users/#{@user.id}",
+                :method => :patch if @user.github_token %>
+
   <h3>Account Details</h3>
   <ul>
     <li> <%= @user.first_name  %> <%= @user.last_name %> </li>
