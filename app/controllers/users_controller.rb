@@ -19,20 +19,21 @@ class UsersController < ApplicationController
   end
 
   def update
-    user = current_user
-    token = if request.env['omniauth.auth']
-              request.env['omniauth.auth']['credentials']['token']
-            elsif params[:github_token] == 'nil'
-              nil
-            end
-    user.update(github_token: token)
+    current_user.update(github_token: new_github_token_value)
     redirect_to '/dashboard'
   end
 
   private
 
-  def user_params
-    params.require(:user).permit(:email, :first_name, :last_name, :password)
-  end
+    def user_params
+      params.require(:user).permit(:email, :first_name, :last_name, :password)
+    end
 
+    def new_github_token_value
+      if request.env['omniauth.auth']
+        request.env['omniauth.auth']['credentials']['token']
+      elsif params[:github_token] == 'nil'
+        nil
+      end
+    end
 end
