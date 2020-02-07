@@ -4,6 +4,7 @@ class Admin::TutorialsController < Admin::BaseController
   end
 
   def create
+    # create
   end
 
   def new
@@ -18,7 +19,13 @@ class Admin::TutorialsController < Admin::BaseController
     redirect_to edit_admin_tutorial_path(tutorial)
   end
 
+  def destroy
+    Tutorial.destroy(params[:id])
+    redirect_to  "/admin/dashboard"
+  end
+
   private
+
   def tutorial_params
     params.require(:tutorial).permit(:tag_list)
   end
