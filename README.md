@@ -53,6 +53,9 @@ Run the test suite:
 $ bundle exec rspec
 ```
 
+## Database
+(./db/schema_visual.png)
+
 ## Technologies
 * [Stimulus](https://github.com/stimulusjs/stimulus)
 * [will_paginate](https://github.com/mislav/will_paginate)

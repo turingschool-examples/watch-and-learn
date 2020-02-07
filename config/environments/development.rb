@@ -2,6 +2,7 @@ Rails.application.configure do
   # Verifies that versions and hashed value of the package contents in the project's package.json
 
   # Settings specified here will take precedence over those in config/application.rb.
+  config.webpacker.check_yarn_integrity = true
 
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
@@ -60,5 +61,4 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
-  config.webpacker.check_yarn_integrity = true
 end
