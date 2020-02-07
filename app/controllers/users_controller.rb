@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
   def show
-    # show
+    if current_user.token
+      render locals: {
+        repo_result: RepoSearch.new(current_user.token)
+      }
+    end
   end
 
   def new
