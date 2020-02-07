@@ -8,6 +8,7 @@ require 'rspec/rails'
 require 'vcr'
 require 'webmock/rspec'
 
+# VCR Configuration block
 VCR.configure do |config|
   config.ignore_localhost = true
   config.cassette_library_dir = 'spec/cassettes'
@@ -16,6 +17,14 @@ VCR.configure do |config|
   config.filter_sensitive_data("<YOUTUBE_API_KEY>") { ENV['YOUTUBE_API_KEY'] }
 end
 
+# OmniAuth Configuration
+OmniAuth.config.test_mode = true
+OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({
+  :provider => 'github',
+  credentials: {
+    token: ENV['GITHUB_TOKEN']
+  }
+})
 
 ActiveRecord::Migration.maintain_test_schema!
 
