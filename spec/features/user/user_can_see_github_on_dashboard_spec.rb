@@ -15,7 +15,6 @@ describe "As a user can see github repos" do
       expect(page).to have_css(".name")
     end
 
-    expect(page).to have_css(".following", count: 5)
     within(first(".following")) do
       expect(page).to have_css(".name")
     end
