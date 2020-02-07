@@ -19,7 +19,16 @@ class GithubService
     end
   end
 
+  def following
+    response = conn.get("user/following")
+    raw_data = JSON.parse(response.body, symbolize_names: true)
+    raw_data.map do |data|
+      Following.new(data)
+    end
+  end
+
   private
+ 
   def conn
     Faraday.new(url: "https://api.github.com") do |f|
       f.adapter Faraday.default_adapter
