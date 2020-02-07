@@ -8,13 +8,18 @@
     <li> <%= current_user.email%> </li>
   </ul>
     <% if current_user.token %>
-      <% repo_result.display_repos.each do |repo| %>
+      <% github_result.display_repos.each do |repo| %>
       <section class="repos">
       <p class="name"><%= link_to repo.name, repo.url%></p>
       </section>
       <% end %>
-    <% end %>
   <section>
+      <% github_result.display_following.each do |following| %>
+        <section class="following">
+          <p class="name">  </p>
+        </section>
+      <% end %>
+    <% end %>
     <h1>Bookmarked Segments</h1>
   </section>
 </section>
