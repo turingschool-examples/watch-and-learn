@@ -32,7 +32,7 @@ class UsersController < ApplicationController
     def new_github_token_value
       if request.env['omniauth.auth']
         request.env['omniauth.auth']['credentials']['token']
-      elsif params[:github_token] == 'nil'
+      else
         nil
       end
     end
