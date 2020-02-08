@@ -8,8 +8,9 @@
     <li> <%= current_user.email%> </li>
   </ul>
   <section>
-    <h1>Bookmarked Segments</h1>
+    <h4>Bookmarked Segments</h4>
   </section>
+<%= button_to "Connect to Github", github_login_path %>
 <% if current_user.github_token %>
   <h3>Github</h3>
   <section id="github">
@@ -22,12 +23,12 @@
   <h5>Followers</h5>
   <section id="followers">
     <% user_git.followers.each do |follower| %>
-      <p><%= link_to follower.name, follower.profile_path %></p>  
+      <p><%= link_to follower.name, follower.profile_path %></p>
     <% end %>
   </section>
   <section id="following">
     <% user_git.following.each do |follow| %>
-      <p><%= link_to follow.name, follow.profile_path %></p>  
+      <p><%= link_to follow.name, follow.profile_path %></p>
     <% end %>
   </section>
 <% end %>
