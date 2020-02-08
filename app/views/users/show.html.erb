@@ -28,6 +28,8 @@
             <p class='name'><%= link_to follower.name, follower.url %></p>
           </section>
         <% end %>
+    <% else %>
+      <%=button_to 'Connect To Github', github_login_path, method: :get, class: "mt2 btn btn-primary mb1 bg-teal" %>
     <% end %>
     <h1>Bookmarked Segments</h1>
   </section>
