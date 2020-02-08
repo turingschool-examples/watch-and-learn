@@ -12,7 +12,7 @@ class Admin::VideosController < Admin::BaseController
     begin
       video.save
       flash[:success] = 'Successfully created video.'
-    rescue StandardError 
+    rescue StandardError
       flash[:error] = 'Unable to create video.'
     end
 

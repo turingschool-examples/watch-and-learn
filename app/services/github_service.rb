@@ -26,7 +26,7 @@ class GithubService
     end
 
     def get_json(endpoint, token)
-      response = connection.get(endpoint, { access_token: token })
+      response = connection.get(endpoint, access_token: token)
       JSON.parse(response.body)
     end
 end

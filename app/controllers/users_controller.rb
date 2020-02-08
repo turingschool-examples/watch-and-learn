@@ -24,7 +24,7 @@ class UsersController < ApplicationController
   end
 
   private
-  
+
     def user_params
       params.require(:user).permit(:email, :first_name, :last_name, :password)
     end
@@ -32,8 +32,6 @@ class UsersController < ApplicationController
     def new_github_token_value
       if request.env['omniauth.auth']
         request.env['omniauth.auth']['credentials']['token']
-      else
-        nil
       end
     end
 end
