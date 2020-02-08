@@ -4,11 +4,21 @@ class Admin::TutorialsController < Admin::BaseController
   end
 
   def create
-    # create
+require "pry"; binding.pry
+    @tutorial = Tutorial.new(tutorial_params)
+    if @tutorial.save
+      flash[:success] = 'Successfuly created tutorial'
+      tutorial.videos.create(video_params['0'])
+      redirect_to tutorial_path(@tutorial)
+    else
+      flash[:error]
+      redirect_to new_admin_tutorial_path
+    end
   end
 
   def new
     @tutorial = Tutorial.new
+    @video = @tutorial.videos.build
   end
 
   def update
@@ -27,6 +37,13 @@ class Admin::TutorialsController < Admin::BaseController
   private
 
   def tutorial_params
-    params.require(:tutorial).permit(:tag_list)
+    params.require(:tutorial).permit(:tag_list,
+                                     :title, :description,
+                                     :thumbnail,
+                                     video_attributes: [:id, :video_id])
+  end
+
+  def video_params
+    params.require(:tutorial).require(:videos_attributes).permit(Video.column_name)
   end
 end
