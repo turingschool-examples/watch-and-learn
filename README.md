@@ -54,7 +54,7 @@ $ bundle exec rspec
 ```
 
 ## Database
-(./db/schema_visual.png)
+![](db/schema_visual.png)
 
 ## Technologies
 * [Stimulus](https://github.com/stimulusjs/stimulus)
