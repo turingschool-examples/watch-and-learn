@@ -13,6 +13,13 @@ class UsersController < ApplicationController
       @repos = repo_hash.map do |repo_data|
         Repo.new(repo_data)
       end
+
+      following_response = conn.get("/user/following")
+
+      following_hash = JSON.parse(following_response.body, symbolize_names: true)
+      @following = following_hash.map do |following_data|
+        Following.new(following_data)
+      end
     end
   end
 
@@ -36,5 +43,4 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:email, :first_name, :last_name, :password)
   end
-
 end
