@@ -19,6 +19,12 @@
           <%= link_to repo.name, repo.link %>
         </section>
       <% end %>
+      <section class="following">
+        <h1>Following</h1>
+        <% @following.each do |following| %>
+            <%= link_to following.name, following.link %>
+        <% end %>
+      </section>
     </section>
   <% end %>
 </section>
