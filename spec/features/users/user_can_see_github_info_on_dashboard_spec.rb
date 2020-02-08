@@ -11,7 +11,6 @@ describe 'As a user on my dashboard' do
 
     visit dashboard_path
     expect(page).to have_content('Personal Repos')
-
     expect(current_path).to eq(dashboard_path)
     expect(page).to have_css(".repos", count: 5)
     within(first(".repos")) do
