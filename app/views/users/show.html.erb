@@ -13,12 +13,20 @@
 
   <% if @repos %>
     <section class="github">
-      <h1>Github Repositories</h1>
+      <h2>Github Repositories</h2>
       <% @repos.each do |repo| %>
         <section class="repos">
           <%= link_to repo.name, repo.link %>
         </section>
       <% end %>
+
+      <h2>Followers</h2>
+      <% @followers.each do |follower| %>
+        <section  class = "followers">
+          <%= link_to follower.name, follower.link %>
+        </section>
+      <% end %>
+
       <section class="following">
         <h1>Following</h1>
         <% @following.each do |following| %>
