@@ -8,7 +8,7 @@ describe "As a User, when I visit my dashboard" do
         {
         :provider => 'github',
         :uid => '12345678',
-        :credentials => {:token => '44dcac4bd9d15d2991c0dcf46eb9bf6bccd4a594'},
+        :credentials => {:token => ENV['github_token']},
         :extra => {:raw_info => {:login => 'testlogin'}}
       })
       user = create(:user)
@@ -21,8 +21,7 @@ describe "As a User, when I visit my dashboard" do
 
       expect(current_path).to eq(dashboard_path)
       user = User.last
-      binding.pry
-      expect(user.github_token).to eq('44dcac4bd9d15d2991c0dcf46eb9bf6bccd4a594')
+      expect(user.github_token).to eq(ENV['github_token'])
       expect(user.github_username).to eq('testlogin')
     end
   end

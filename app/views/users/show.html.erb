@@ -26,6 +26,7 @@
       <p><%= link_to follower.name, follower.profile_path %></p>
     <% end %>
   </section>
+  <h5>Following</h5>
   <section id="following">
     <% user_git.following.each do |follow| %>
       <p><%= link_to follow.name, follow.profile_path %></p>
