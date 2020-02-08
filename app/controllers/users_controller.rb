@@ -5,13 +5,16 @@ class UsersController < ApplicationController
             f.headers['Authorization'] = ("token #{current_user.token}")
             f.adapter Faraday.default_adapter
       end
-
       repo_response = conn.get("/user/repos")
-
       repo_hash = JSON.parse(repo_response.body, symbolize_names: true)[0..4]
-
       @repos = repo_hash.map do |repo_data|
         Repo.new(repo_data)
+      end
+
+      follower_response = conn.get("/user/followers")
+      follower_hash = JSON.parse(follower_response.body, symbolize_names: true)
+      @followers = follower_hash.map do |follower_data|
+        Follower.new(follower_data)
       end
     end
   end
