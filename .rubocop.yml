@@ -19,7 +19,13 @@ AllCops:
     - Rakefile
     - README.md
     - yarn.lock
+    - config.ru
 
 Style/FrozenStringLiteralComment:
-  Enable: false
-  
+  Enabled: false
+
+Documentation:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
