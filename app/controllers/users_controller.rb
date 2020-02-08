@@ -1,10 +1,10 @@
 class UsersController < ApplicationController
   def show
-    if current_user.token
-      render locals: {
-        github_result: GithubSearch.new(current_user.token)
-      }
-    end
+    return unless current_user.token
+
+    render locals: {
+      github_result: GithubSearch.new(current_user.token)
+    }
   end
 
   def new
@@ -27,5 +27,4 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:email, :first_name, :last_name, :password)
   end
-
 end
