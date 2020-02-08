@@ -18,8 +18,9 @@ RSpec.describe 'As a logged in user', type: :feature do
 
         it 'And under that section I should see a list of all followers with the name of each follower linking to the followers profile on Github' do
           within('#followers') do
-            expect(page).to have_css('li', count: 6)
+            expect(page).to have_css('li', count: 7)
             expect(page).to have_css('li:nth-of-type(6)', text: 'msimon42')
+            expect(page).to have_css('li:nth-of-type(7)', text: 'rer7891')
             expect(page).to have_css('li:nth-of-type(5)', text: 'danmoran-pro')
             expect(page).to have_css('li:nth-of-type(4)', text: 'jfangonilo')
             expect(page).to have_css('li:nth-of-type(3)', text: 'aperezsantos')
@@ -31,6 +32,7 @@ RSpec.describe 'As a logged in user', type: :feature do
             expect(page).to have_link('aperezsantos', href: "https://github.com/aperezsantos")
             expect(page).to have_link('sasloan', href: "https://github.com/sasloan")
             expect(page).to have_link('PaulDebevec', href: "https://github.com/PaulDebevec")
+            expect(page).to have_link('rer7891', href: "https://github.com/rer7891")
           end
         end
       end

@@ -35,12 +35,13 @@ feature GithubService do
           @follower_4 = Follower.new(name: 'aperezsantos', url: "https://github.com/aperezsantos")
           @follower_5= Follower.new(name: 'sasloan', url: "https://github.com/sasloan")
           @follower_6 = Follower.new(name: 'PaulDebevec', url: "https://github.com/PaulDebevec")
+          @follower_7 = Follower.new(name: 'rer7891', url: "https://github.com/rer7891")
 
-          expected = [@follower_6, @follower_5, @follower_4, @follower_3, @follower_2, @follower_1]
+          expected = [@follower_6, @follower_5, @follower_4, @follower_3, @follower_2, @follower_1, @follower_7]
 
           actual = GithubService.new.github_followers(token)
           expect(actual.class).to eq(Array)
-          expect(actual.length).to eq(6)
+          expect(actual.length).to eq(7)
 
           actual.each_with_index do |follower, index|
             expect(follower.class).to eq(Follower)
