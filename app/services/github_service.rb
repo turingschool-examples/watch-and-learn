@@ -3,36 +3,29 @@ class GithubService
     @user = user
   end
 
-  def repos
-    response = conn.get("user/repos")
-    repo_data = JSON.parse(response.body, symbolize_names: true)
-    repo_data[0..4].map do |data|
-      GithubInfo.new(data)
-    end
+  def all_repos
+    get_json("user/repos")
   end
 
-  def followers
-    response = conn.get("user/followers")
-    raw_data = JSON.parse(response.body, symbolize_names: true)
-    raw_data.map do |data|
-      Follower.new(data)
-    end
+  def all_followers
+    get_json("user/followers")
   end
 
-  def following
-    response = conn.get("user/following")
-    raw_data = JSON.parse(response.body, symbolize_names: true)
-    raw_data.map do |data|
-      Following.new(data)
-    end
+  def all_following
+    get_json("user/following")
   end
 
   private
- 
+
   def conn
     Faraday.new(url: "https://api.github.com") do |f|
       f.adapter Faraday.default_adapter
       f.params[:access_token] = @user.github_token
     end
+  end
+
+  def get_json(uri)
+    response = conn.get(uri)
+    JSON.parse(response.body, symbolize_names: true)
   end
 end

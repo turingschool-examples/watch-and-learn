@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
   def show
     render locals: {
-      user_git: GithubService.new(current_user)
+      # user_git: GithubService.new(current_user)
+      user_git: UserDashboardFacade.new(current_user)
     }
   end
 
