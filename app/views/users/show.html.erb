@@ -7,7 +7,7 @@
     <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
     <li> <%= current_user.email%> </li>
   </ul>
-    <% if current_user.token %>
+    <% if github_status && current_user.token %>
     <h1>Github Details:</h1>
       <h2>Personal Repos:</h2>
       <% github_result.display_repos.each do |repo| %>
