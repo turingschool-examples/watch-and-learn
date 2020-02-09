@@ -42,10 +42,6 @@ describe 'As a user on my dashboard' do
 
     expect(page).to have_content('Followers On Github')
 
-    within(first('.followers')) do
-      expect(page).to have_css('.name')
-    end
-
     click_button 'Log Out'
 
     expect(page).not_to have_css(".followers")
