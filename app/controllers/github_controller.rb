@@ -1,7 +1,8 @@
 class GithubController < ApplicationController
   def update
-    @user = current_user
-    @user.update(user_hash)
+    user = current_user
+    user.update(user_hash)
+    session[:github] = "logged in"
     redirect_to dashboard_path
   end
 
