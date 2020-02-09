@@ -42,4 +42,8 @@ Rails.application.routes.draw do
   end
 
   resources :user_videos, only:[:create, :destroy]
+
+  #GITHUBAPI
+  get 'auth/github', :as => 'github_login'
+  get '/auth/github/callback', to: 'github#create'
 end
