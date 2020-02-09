@@ -15,8 +15,11 @@ class GithubController < ApplicationController
 
     github_token = response_hash["access_token"]
     user = User.find(current_user.id)
-    user.update(token: github_token)
-    user.save
-    redirect_to '/dashboard'
+    user.update(token: "#{github_token}")
+    # user.token = github_token
+    # user.save
+    current_user = user
+    binding.pry
+    redirect_to dashboard_path
   end
 end
