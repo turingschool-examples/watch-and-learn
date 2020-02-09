@@ -22,6 +22,12 @@
           <p class="name"><%= link_to following.name, following.url%></p>
         </section>
       <% end %>
+        <h2>Followers On Github</h2>
+        <% github_result.display_followers.each do |follower| %>
+          <section class='followers'>
+            <p class='name'><%= link_to follower.name, follower.url %></p>
+          </section>
+        <% end %>
     <% end %>
     <h1>Bookmarked Segments</h1>
   </section>
