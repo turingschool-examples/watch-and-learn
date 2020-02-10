@@ -29,7 +29,9 @@
         <h2>Your GitHub Repos</h2>
         <ul>
           <% @user.github_repos.each do |repo| %>
-            <li><%= link_to repo.name, repo.url %></li>
+            <li>
+              <%= link_to repo.name, repo.url %>
+            </li>
           <% end %>
         </ul>
       </section>
@@ -37,7 +39,12 @@
         <h2>Your Followers</h2>
         <ul>
         <% @user.github_followers.each do |follower| %>
-          <li id="follower-<%= follower.github_id %>"><%= link_to follower.name, follower.url %></li>
+          <li id="follower-<%= follower.github_id %>">
+            <%= link_to follower.name, follower.url %>
+            <% if follower.exists_as_user? %>
+              <%= button_to 'Add Friend', "/friendships?github_id=#{follower.github_id}", class: 'button-link'%>
+            <% end %>
+          </li>
         <% end %>
         </ul>
       </section>
@@ -46,7 +53,12 @@
         <h2>Following</h2>
         <ul>
         <% @user.github_following.each do |followee| %>
-          <li id="followee-<%= followee.github_id %>"><%= link_to followee.name, followee.url %></li>
+          <li id="followee-<%= followee.github_id %>">
+            <%= link_to followee.name, followee.url %>
+            <% if followee.exists_as_user? %>
+              <%= button_to 'Add Friend', "/friendships?github_id=#{followee.github_id}", class: 'button-link'%>
+            <% end %>
+          </li>
         <% end %>
         </ul>
       </section>
