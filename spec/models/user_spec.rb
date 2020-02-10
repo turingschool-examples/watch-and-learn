@@ -5,6 +5,8 @@ RSpec.describe User, type: :model do
     it {should validate_presence_of(:email)}
     it {should validate_presence_of(:first_name)}
     it {should validate_presence_of(:password)}
+    it {should have_many :friendships}
+    it {should have_many(:friends).through(:friendships)}
   end
 
   describe 'roles' do
@@ -54,7 +56,7 @@ RSpec.describe User, type: :model do
           @follower_2 = Follower.new(name: 'danmoran-pro', url: "https://github.com/danmoran-pro")
           @follower_3 = Follower.new(name: 'jfangonilo', url: "https://github.com/jfangonilo")
           @follower_4 = Follower.new(name: 'aperezsantos', url: "https://github.com/aperezsantos")
-          @follower_5= Follower.new(name: 'sasloan', url: "https://github.com/sasloan")
+          @follower_5 = Follower.new(name: 'sasloan', url: "https://github.com/sasloan")
           @follower_6 = Follower.new(name: 'PaulDebevec', url: "https://github.com/PaulDebevec")
           @follower_7 = Follower.new(name: 'rer7891', url: "https://github.com/rer7891")
 
@@ -91,6 +93,14 @@ RSpec.describe User, type: :model do
             expect(followee.name).to eq(expected[index].name)
             expect(followee.url).to eq(expected[index].url)
           end
+        end
+      end
+
+      describe 'name' do
+        it 'returns full name if user' do
+          user = create :user, first_name: 'Daniel', last_name: 'Frampton'
+
+          expect(user.name).to eq('Daniel Frampton')
         end
       end
     end
