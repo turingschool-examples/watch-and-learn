@@ -1,12 +1,12 @@
 class UsersController < ApplicationController
   def show
-    if current_user.token
+    user = User.find(current_user.id)
+    if user.token
       conn = Faraday.new(url: 'https://api.github.com') do |f|
-        f.headers['Authorization'] = "token #{current_user.token}"
+        f.headers['Authorization'] = "token #{user.token}"
         f.adapter Faraday.default_adapter
       end
       repo_response = conn.get('/user/repos')
-
       repo_hash = JSON.parse(repo_response.body, symbolize_names: true)[0..4]
       @repos = repo_hash.map do |repo_data|
         Repo.new(repo_data)
@@ -41,9 +41,14 @@ class UsersController < ApplicationController
     end
   end
 
+  def update
+    user = User.find(params[:id])
+    user.update(user_params)
+  end
+
   private
 
   def user_params
-    params.require(:user).permit(:email, :first_name, :last_name, :password)
+    params.require(:user).permit(:email, :first_name, :last_name, :password, :token)
   end
 end
