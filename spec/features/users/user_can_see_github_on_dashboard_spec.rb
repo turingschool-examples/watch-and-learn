@@ -6,6 +6,7 @@ describe "As a user can see github repos" do
   user = create(:user, token: token)
 
   allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+  allow_any_instance_of(ApplicationController).to receive(:github_status).and_return("logged in")
 
     visit dashboard_path
 

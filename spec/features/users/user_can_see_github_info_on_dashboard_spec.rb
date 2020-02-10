@@ -8,6 +8,7 @@ describe 'As a user on my dashboard' do
 
   it 'I can see a list of my GitHub repos', :vcr do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
+    allow_any_instance_of(ApplicationController).to receive(:github_status).and_return("logged in")
 
     visit dashboard_path
     expect(page).to have_content('Personal Repos')
@@ -20,6 +21,7 @@ describe 'As a user on my dashboard' do
 
   it 'I can see a list of who I am following on GitHub', :vcr do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
+    allow_any_instance_of(ApplicationController).to receive(:github_status).and_return("logged in")
 
     visit dashboard_path
 
@@ -37,6 +39,7 @@ describe 'As a user on my dashboard' do
 
   it 'I can see a list of who follows me on GitHub', :vcr do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
+    allow_any_instance_of(ApplicationController).to receive(:github_status).and_return("logged in")
 
     visit dashboard_path
 
