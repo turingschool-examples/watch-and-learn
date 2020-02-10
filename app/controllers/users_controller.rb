@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
   def show
     user = User.find(current_user.id)
-    binding.pry
     if user.token
       conn = Faraday.new(url: 'https://api.github.com') do |f|
         f.headers['Authorization'] = "token #{user.token}"
