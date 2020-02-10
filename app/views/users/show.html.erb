@@ -9,11 +9,16 @@
   </ul>
   <section class="bookmarks">
     <h1>Bookmarked Segments</h1>
-    <% current_user.videos.each do |vid| %>
-      <%= link_to vid.title, "/videos/#{vid.id}" %>
+    <% if current_user.videos.count > 0 %>
+      <% @bookmarkings.each do |vid| %>
+        <h4><%= vid.tutorial.title %>: <%= link_to vid.title, "/tutorials/#{vid.tutorial_id}/videos/#{vid.id}" %></h4><br>
+      <% end %>
+    <% else %>
+      <h3>You have no bookmarks yet.</h3>
+      <h3>Explore videos <%= link_to "here", "/" %></h3>
     <% end %>
   </section>
-
+  <h1>Github</h1>
   <% if @repos %>
     <section class="github">
       <h2>Github Repositories</h2>
@@ -38,6 +43,6 @@
         <% end %>
     </section>
   <% else %>
-  <%= link_to "Login Through Github", github_login_path %>
+  <h3><%= link_to "Login Through Github", github_login_path %></h3>
   <% end %>
 </section>
