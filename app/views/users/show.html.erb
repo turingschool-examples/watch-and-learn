@@ -22,7 +22,24 @@
   <section>
     <h1>Bookmarked Segments</h1>
   </section>
+
   <% if @user.github_token %>
+  <section class='friends'>
+    <h1>My Friends</h1>
+      <% if @user.friends %>
+        <ul>
+          <% @user.friends.each do |friend| %>
+             <li><%= friend.name %></li>
+          <% end %>
+        </ul>
+      <% else %>
+        <p>
+          You’re not currently following any friends. If any Github users you are
+          following or being followed by create an account with us, you can add
+          them as friends by clicking the link next to their usernames below.
+        </p>
+      <% end %>  
+  </section>
   <section>
     <h1>Github</h1>
       <section id='repos'>
