@@ -34,7 +34,9 @@ Rails.application.routes.draw do
   get '/auth/github', as: 'github_login'
   get '/auth/github/callback', to: 'github#update'
 
-  # Is this being used?
+  post '/notification', to: 'notifications#create'
+  patch '/activation/:id', to: 'activations#udpate'
+
   get '/video', to: 'video#show'
 
   resources :users, only: [:new, :create, :update, :edit]
