@@ -2,6 +2,8 @@
 <h2><%= @facade.title %></h2>
 <h1 id="message"></h1>
 <div class="col col-4">
+
+  <% if @facade.videos.length > 0 %>
   <h4>Videos</h4>
   <ul>
     <% @facade.videos.each do |video| %>
@@ -65,5 +67,5 @@
     <%= link_to "More", "#", "data-action" => "click->tutorials#showDescription", id: @facade.current_video.id, class: "show-link"%>
   </p>
 </div>
-
+<% end %>
 </main>
