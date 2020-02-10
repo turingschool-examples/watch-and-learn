@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   has_many :user_videos
   has_many :videos, through: :user_videos
+  has_many :friendships
+  has_many :friends, through: :friendships
 
   validates :email, uniqueness: true, presence: true
   validates_presence_of :password_digest
@@ -24,5 +26,9 @@ class User < ApplicationRecord
     return GithubService.new.github_following(github_token) if github_token
 
     nil
+  end
+
+  def name
+    "#{first_name} #{last_name}"
   end
 end
