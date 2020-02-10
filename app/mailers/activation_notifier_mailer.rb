@@ -1,6 +1,6 @@
 class ActivationNotifierMailer < ApplicationMailer
-  def inform(user)
+  def inform(user, email)
     @user = user
-    mail(to: user, subject: "#{user.name} Activate Your Account with Brownfield Project")
+    mail(to: user.email, subject: "#{user.first_name} Activate Your Account with Brownfield Project")
   end
 end
