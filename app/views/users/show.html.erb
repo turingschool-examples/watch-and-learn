@@ -27,12 +27,12 @@
         </section>
       <% end %>
 
-      <section class="following">
         <h1>Following</h1>
         <% @following.each do |following| %>
+        <section class="following">
             <%= link_to following.name, following.link %>
+          </section>
         <% end %>
-      </section>
     </section>
   <% else %>
   <%= link_to "Login Through Github", github_login_path %>
