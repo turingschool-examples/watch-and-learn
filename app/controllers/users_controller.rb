@@ -17,8 +17,8 @@ class UsersController < ApplicationController
       @followers = follower_hash.map do |follower_data|
         Follower.new(follower_data)
       end
-      following_resp = conn.get('/user/following')
 
+      following_resp = conn.get('/user/following')
       following_hash = JSON.parse(following_resp.body, symbolize_names: true)
       @following = following_hash.map do |following_data|
         Following.new(following_data)
