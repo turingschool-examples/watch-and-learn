@@ -14,6 +14,15 @@ prework_tutorial_data = {
 }
 prework_tutorial = Tutorial.create! prework_tutorial_data
 
+prework_tutorial_data_2 = {
+  "title"=>"Back End Engineering_something - Prework",
+  "description"=>"Videos for prework.",
+  "thumbnail"=>"https://i.ytimg.com/vi/qMkRHW9zE1c/hqdefault.jpg",
+  "playlist_id"=>"PL1Y67f0xPzdN6C-LPuTQ5yzlBoz2joWa5",
+  "classroom"=>true,
+}
+prework_tutorial_2 = Tutorial.create! prework_tutorial_data_2
+
 prework_tutorial.videos.create!({
   "title"=>"Prework - Environment Setup",
   "description"=> Faker::Hipster.paragraph(sentence_count: 2, supplemental: true),
