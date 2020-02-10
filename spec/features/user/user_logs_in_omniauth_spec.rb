@@ -23,6 +23,6 @@ RSpec.describe "as a user", :vcr do
   expect(page).to have_css(".followers")
   expect(page).to have_css(".following")
 
-  # OmniAuth.config.mock_auth[:github] = nil
+  OmniAuth.config.mock_auth[:github] = nil
   end
 end
