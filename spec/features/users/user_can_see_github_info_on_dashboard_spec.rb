@@ -8,10 +8,10 @@ describe 'As a user on my dashboard' do
 
   it 'I can see a list of my GitHub repos', :vcr do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
+    allow_any_instance_of(ApplicationController).to receive(:github_status).and_return("logged in")
 
     visit dashboard_path
     expect(page).to have_content('Personal Repos')
-
     expect(current_path).to eq(dashboard_path)
     expect(page).to have_css(".repos", count: 5)
     within(first(".repos")) do
@@ -21,6 +21,7 @@ describe 'As a user on my dashboard' do
 
   it 'I can see a list of who I am following on GitHub', :vcr do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
+    allow_any_instance_of(ApplicationController).to receive(:github_status).and_return("logged in")
 
     visit dashboard_path
 
@@ -38,14 +39,11 @@ describe 'As a user on my dashboard' do
 
   it 'I can see a list of who follows me on GitHub', :vcr do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
+    allow_any_instance_of(ApplicationController).to receive(:github_status).and_return("logged in")
 
     visit dashboard_path
 
     expect(page).to have_content('Followers On Github')
-
-    within(first('.followers')) do
-      expect(page).to have_css('.name')
-    end
 
     click_button 'Log Out'
 

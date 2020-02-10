@@ -15,6 +15,8 @@ VCR.configure do |config|
   config.configure_rspec_metadata!
   config.filter_sensitive_data("<GITHUB_TOKEN_LOCAL>") { ENV['GITHUB_TOKEN_LOCAL'] }
   config.filter_sensitive_data("<YOUTUBE_API_KEY>") { ENV['YOUTUBE_API_KEY'] }
+  config.filter_sensitive_data("<GITHUB_SECRET>") { ENV['GITHUB_SECRET'] }
+  config.filter_sensitive_data("<GITHUB_CLIENT_ID>") { ENV['GITHUB_CLIENT_ID'] }
 end
 
 
@@ -49,4 +51,14 @@ RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
 
   config.filter_rails_from_backtrace!
+end
+
+def stub_omniauth
+  OmniAuth.config.test_mode = true
+  OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({
+    uid: '37692413',
+    credentials: {
+      token: ENV['GITHUB_TOKEN_LOCAL']
+    }
+    })
 end
