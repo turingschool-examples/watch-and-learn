@@ -19,7 +19,8 @@ class UsersController < ApplicationController
   end
 
   def update
-    current_user.update(github_info)
+    current_user.update(github_id: new_github_id,
+                        github_token: new_github_token)
     redirect_to '/dashboard'
   end
 
@@ -29,10 +30,15 @@ class UsersController < ApplicationController
       params.require(:user).permit(:email, :first_name, :last_name, :password)
     end
 
-    def github_info
+    def new_github_id
       if request.env['omniauth.auth']
-        {github_token: request.env['omniauth.auth']['credentials']['token'],
-         github_id: request.env['omniauth.auth']['uid']}
+        request.env['omniauth.auth']['uid']
+      end
+    end
+
+    def new_github_token
+      if request.env['omniauth.auth']
+        request.env['omniauth.auth']['credentials']['token']
       end
     end
 end
