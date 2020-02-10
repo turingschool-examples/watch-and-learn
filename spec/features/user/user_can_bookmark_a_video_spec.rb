@@ -38,11 +38,19 @@ describe 'A registered user' do
     video2 = create(:video, tutorial: tutorial)
     video3 = create(:video)
     user = create(:user)
-    UserVideo.create(user: user, video: video)
-    UserVideo.create(user: user, video: video2)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
     visit '/dashboard'
+
+    within ".bookmarks" do
+      expect(page).to have_content("You have no bookmarks yet.")
+    end
+
+    UserVideo.create(user: user, video: video)
+    UserVideo.create(user: user, video: video2)
+
+    visit '/dashboard'
+
     within ".bookmarks" do
       expect(page).to have_link(video.title)
       expect(page).to have_link(video2.title)
