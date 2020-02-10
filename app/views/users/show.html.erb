@@ -37,7 +37,7 @@
         <h2>Your Followers</h2>
         <ul>
         <% @user.github_followers.each do |follower| %>
-          <li><%= link_to follower.name, follower.url %></li>
+          <li id="follower-<%= follower.github_id %>"><%= link_to follower.name, follower.url %></li>
         <% end %>
         </ul>
       </section>
@@ -46,7 +46,7 @@
         <h2>Following</h2>
         <ul>
         <% @user.github_following.each do |followee| %>
-          <li><%= link_to followee.name, followee.url %></li>
+          <li id="followee-<%= followee.github_id %>"><%= link_to followee.name, followee.url %></li>
         <% end %>
         </ul>
       </section>
