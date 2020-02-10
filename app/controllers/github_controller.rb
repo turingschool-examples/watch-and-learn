@@ -1,7 +1,7 @@
 class GithubController < ApplicationController
 
   def create
-
+    #
     # client_id     = ENV['RAILS_CLIENT_ID']
     # client_secret = ENV['RAILS_CLIENT_SECRET']
     # code          = params[:code]
@@ -15,11 +15,20 @@ class GithubController < ApplicationController
     # end
     #
     # github_token = response_hash["access_token"]
+    binding.pry
     user = User.find(current_user.id)
-    user.update(token: params[:state])
-    # user.token = github_token
-    # user.save
-    current_user = user
+    user.update(user_hash)
     redirect_to dashboard_path
+  end
+
+  protected
+
+  def auth_hash
+    request.env["omniauth.auth"]
+  end
+
+  def user_hash
+    # {uid: auth_hash["uid"], token: auth_hash["credentials"]["token"]}
+    {token: auth_hash["credentials"]["token"]}
   end
 end
