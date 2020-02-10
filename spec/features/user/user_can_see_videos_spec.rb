@@ -11,5 +11,12 @@ RSpec.describe 'Tutorials users can see' do
 
     expect(page).to have_content(tutorial_1.title)
     expect(page).to_not have_content(tutorial_2.title)
+
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+    visit '/'
+
+    expect(page).to have_content(tutorial_1.title)
+    expect(page).to have_content(tutorial_2.title)
   end
 end
