@@ -14,21 +14,21 @@
   <% if @repos %>
     <section class="github">
       <h2>Github Repositories</h2>
-      <% @repos.each do |repo| %>
+      <% search_results.repos.each do |repo| %>
         <section class="repos">
           <%= link_to repo.name, repo.link %>
         </section>
       <% end %>
 
       <h2>Followers</h2>
-      <% @followers.each do |follower| %>
+      <% search_results.followers.each do |follower| %>
         <section  class = "followers">
           <%= link_to follower.name, follower.link %>
         </section>
       <% end %>
 
         <h1>Following</h1>
-        <% @following.each do |following| %>
+        <% search_results.following.each do |following| %>
         <section class="following">
             <%= link_to following.name, following.link %>
           </section>
