@@ -7,8 +7,11 @@
     <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
     <li> <%= current_user.email%> </li>
   </ul>
-  <section>
+  <section class="bookmarks">
     <h1>Bookmarked Segments</h1>
+    <% current_user.videos.each do |vid| %>
+      <%= link_to vid.title, "/videos/#{vid.id}" %>
+    <% end %>
   </section>
 
   <% if @repos %>
