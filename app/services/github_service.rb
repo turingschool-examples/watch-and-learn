@@ -6,14 +6,14 @@ class GithubService
   end
 
   def github_followers(token)
-    get_json('user/followers', token).map do |followers_info|
-      Follower.new(name: followers_info['login'], url: followers_info['html_url'])
+    get_json('user/followers', token).map do |follower_info|
+      Follower.new(name: follower_info['login'], url: follower_info['html_url'], id: follower_info['id'])
     end
   end
 
   def github_following(token)
     get_json('user/following', token).map do |followee_info|
-      Follower.new(name: followee_info['login'], url: followee_info['html_url'])
+      Follower.new(name: followee_info['login'], url: followee_info['html_url'], id: followee_info['id'])
     end
   end
 
