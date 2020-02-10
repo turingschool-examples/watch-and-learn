@@ -1,6 +1,6 @@
 class Video < ApplicationRecord
 
-  validates_presence_of :position
+  validates_presence_of :position, :description, :title, :video_id
 
   has_many :user_videos
   has_many :users, through: :user_videos
