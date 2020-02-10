@@ -6,12 +6,12 @@ class Admin::TutorialsController < Admin::BaseController
   def create
     tutorial = Tutorial.create(tutorial_params)
     if tutorial.save
-      redirect_to tutorial_path
+      redirect_to "/tutorials/#{tutorial.id}"
       flash[:success] = "Successfully created tutorial."
     else
       render new
       flash[:error] = "Please fill in all fields"
-    end 
+    end
   end
 
   def new

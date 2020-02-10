@@ -12,9 +12,9 @@ describe "As a logged in admin" do
 
       expect(current_path).to eq(new_admin_tutorial_path)
 
-      fill_in :title, with: "How to learn in a new way"
-      fill_in :description, with: "Relearning for long term success"
-      fill_in :thumbnail, with: "https://i.ytimg.com/vi/qMkRHW9zE1c/hqdefault.jpg"
+      fill_in "Title", with: "How to learn in a new way"
+      fill_in "Description", with: "Relearning for long term success"
+      fill_in "Thumbnail", with: "https://i.ytimg.com/vi/qMkRHW9zE1c/hqdefault.jpg"
 
       click_on "Save"
 
