@@ -19,5 +19,20 @@ describe "As a logged in admin" do
       expect(page).to have_content(tutorial.title)
       expect(page).to have_content("Successfully created tutorial.")
     end
+    it "I cannot save a new tutorial if one of the attributes (title, desc, thumbnail) is missing" do
+      admin = create(:user, role: 1)
+  
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+  
+      visit "/admin/tutorials/new"
+  
+      fill_in "Title", with: "How to learn in a new way"
+      fill_in "Description", with: "Relearning for long term success"
+      
+      click_on "Save"
+      
+      expect(current_path).to eq("/admin/tutorials/new")
+      expect(page).to have_content("Please fill in all fields")
+    end 
   end
 end
