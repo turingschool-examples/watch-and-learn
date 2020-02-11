@@ -18,6 +18,7 @@ RSpec.describe "as a user", :vcr do
   expect(page).not_to have_css(".following")
 
   click_link("Login Through Github")
+  
   expect(page).not_to have_content("Login Through Github")
   expect(page).to have_css(".repos")
   expect(page).to have_css(".followers")
