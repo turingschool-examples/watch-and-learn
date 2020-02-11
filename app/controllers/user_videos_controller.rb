@@ -14,7 +14,6 @@ class UserVideosController < ApplicationController
     else
       flash[:error] = 'Please login or register to bookmark videos'
     end
-
     redirect_back(fallback_location: root_path)
   end
 
