@@ -45,4 +45,27 @@ describe '/dashboard page' do
       expect(page).to have_content('Github Following')
     end
   end
+
+  it 'see friendship button/link for people in database that follow me' do
+    user = create(:user, github_id: '29346170', token: ENV['GITHUB_ACCESS_TOKEN'])
+    user_in_database = create(:user, first_name: 'David', github_id: '50917634')
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+    VCR.use_cassette('add_friend') do
+      visit '/dashboard'
+
+      expect(page).to have_content('Github Following')
+      expect(page).to have_css('#add_friend_followers', count: 1)
+      expect(page).to have_css('#add_friend_following', count: 1)
+
+      within '#add_friend_followers' do
+        click_on 'Add Friend'
+      end
+
+      expect(current_path).to eq(dashboard_path)
+      within '#tutorial_following' do
+        expect(page).to have_content("David")
+      end
+    end
+  end
 end
