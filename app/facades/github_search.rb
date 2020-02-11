@@ -15,6 +15,8 @@ class GithubSearch
     get_json('followers').take(5)
   end
 
+private
+
   def find_github_resource(data_type, data)
     resource = data_type.singularize.capitalize
     resource.constantize.new(data)
