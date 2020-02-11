@@ -24,13 +24,25 @@
   <section id="followers">
     <% user_git.followers.each do |follower| %>
       <p><%= link_to follower.name, follower.profile_path %></p>
+      <% if follower.with_us %>
+        <p><%= button_to "Add Friend", "/friendships/#{follower.id}", method: :post %></p>
+      <% end %>
     <% end %>
   </section>
   <h5>Following</h5>
   <section id="following">
     <% user_git.following.each do |follow| %>
       <p><%= link_to follow.name, follow.profile_path %></p>
+         <% if follow.with_us %>
+         <p><%= button_to "Add Friend", "/friendships/#{follow.id}", method: :post %></p>
+         <% end %>
     <% end %>
   </section>
 <% end %>
+<h5>Friends</h5>
+  <section id="friends">
+  <% current_user.friends.each do |friend| %>
+  <p><%= friend.name %></p>
+  <% end %>
+  </section>
 </section>
