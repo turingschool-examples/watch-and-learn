@@ -22,15 +22,31 @@
   </section>
   <section>
     <h1>Github Followers</h1>
-    <% current_user.followers.each do |user| %>
+    <% current_user.git_followers.each do |user| %>
       <p>User: <%= "#{user[:name]}" %><br>
       Handle: <%= link_to "#{user[:link]}", user[:link] %></p>
+      <% if user[:github_id] %>
+      <div id="add_friend_followers"><%= button_to "Add Friend", '/add_friend', method: :patch, params: {friend_id: user[:github_id]} %></div>
+      <% end %>
     <% end  %>
     <h1>Github Following</h1>
-    <% current_user.following.each do |user| %>
+    <% current_user.git_following.each do |user| %>
       <p>User: <%= "#{user[:name]}" %><br>
       Handle: <%= link_to "#{user[:link]}", user[:link] %></p>
+      <% if user[:github_id] %>
+      <div id="add_friend_following"><%= button_to "Add Friend", '/add_friend', method: :patch, params: {friend_id: user[:github_id]} %></div>
+      <% end %>
     <% end  %>
   </section>
   <% end %>
 </section>
+
+<h1>Turotial Friends</h1>
+<% if current_user.token != nil %>
+<section id='tutorial_following'>
+  <h1>Following</h1>
+  <% current_user.followees.each do |user| %>
+    <ul>Name: <%= user.first_name %></ul>
+  <% end %>
+</section>
+<% end %>
