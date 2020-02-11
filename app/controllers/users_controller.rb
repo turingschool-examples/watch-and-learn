@@ -1,10 +1,10 @@
 class UsersController < ApplicationController
   def show
     user = User.find(current_user.id)
-
     if user.token
+
       render locals: {
-        search_results: GithubDataView.new(user.token)
+        search_results: GithubDataView.new(user)
       }
 
       # conn = Faraday.new(url: 'https://api.github.com') do |f|
