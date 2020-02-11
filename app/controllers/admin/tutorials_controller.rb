@@ -9,7 +9,7 @@ class Admin::TutorialsController < Admin::BaseController
       redirect_to "/tutorials/#{tutorial.id}"
       flash[:success] = "Successfully created tutorial."
     else
-      render new
+      redirect_to "/admin/tutorials/new"
       flash[:error] = "Please fill in all fields"
     end
   end
