@@ -4,4 +4,8 @@ class Tutorial < ApplicationRecord
   accepts_nested_attributes_for :videos
   scope :not_classroom, -> { where(classroom: false) }
 
+  validates_presence_of :title,
+                        :description,
+                        :thumbnail
+
 end
