@@ -1,5 +1,5 @@
 Please click on this link to activate your account:
 
-<%=link_to "Activate Account", "/activation/#{@user.id}", method: :patch %>
+<%=link_to "Activate Account", '/activations/new' do url_for(host: 'localhost:3000', controller: 'activations', action: 'new') %>
 
 Thank You!
