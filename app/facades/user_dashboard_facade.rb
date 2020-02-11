@@ -14,14 +14,16 @@ class UserDashboardFacade
   def followers
     raw_data = GithubService.new(@user).all_followers
     raw_data.map do |data|
-      Follower.new(data)
+      user = User.find_by(github_username: data[:login])
+      Follower.new(data, user)
     end
   end
 
   def following 
     raw_data = GithubService.new(@user).all_following
     raw_data.map do |data|
-      Following.new(data)
+      user = User.find_by(github_username: data[:login])
+      Following.new(data, user)
     end
   end
 
