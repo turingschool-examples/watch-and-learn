@@ -1,9 +1,9 @@
 class GithubDataView
 
-  attr_reader :user
+  attr_reader :token
 
-  def initialize(user)
-    @user = user
+  def initialize(user_token)
+    @token = user_token
   end
 
   def repos
@@ -14,7 +14,7 @@ class GithubDataView
 
   def repo_hash
     conn = Faraday.new(url: 'https://api.github.com') do |f|
-        f.headers['Authorization'] = "token #{user.token}"
+        f.headers['Authorization'] = "token #{@token}"
         f.adapter Faraday.default_adapter
       end
 
@@ -30,13 +30,32 @@ class GithubDataView
 
   def follower_hash
     conn = Faraday.new(url: 'https://api.github.com') do |f|
-      f.headers['Authorization'] = "token #{user.token}"
+      f.headers['Authorization'] = "token #{@token}"
       f.adapter Faraday.default_adapter
     end
 
     follower_response = conn.get('/user/followers')
     JSON.parse(follower_response.body, symbolize_names: true)
   end
+
+  def following
+    following_hash.map do |following_data|
+      Following.new(following_data)
+    end
+  end
+
+  def following_hash
+    conn = Faraday.new(url: 'https://api.github.com') do |f|
+      f.headers['Authorization'] = "token #{@token}"
+      f.adapter Faraday.default_adapter
+    end
+
+    following_resp = conn.get('/user/following')
+    JSON.parse(following_resp.body, symbolize_names: true)
+  end
+
+
+
 
   #   conn = Faraday.new(url: 'https://api.github.com') do |f|
   #     f.headers['Authorization'] = "token #{user.token}"
