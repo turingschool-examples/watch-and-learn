@@ -58,14 +58,20 @@ describe '/dashboard page' do
       expect(page).to have_css('#add_friend_followers', count: 1)
       expect(page).to have_css('#add_friend_following', count: 1)
 
+      within '#followees' do
+        expect(page).to_not have_content("David")
+      end
+
       within '#add_friend_followers' do
         click_on 'Add Friend'
       end
 
       expect(current_path).to eq(dashboard_path)
-      within '#tutorial_following' do
+      within '#followees' do
         expect(page).to have_content("David")
       end
+
+      expect(page).to_not have_css('#add_friend_followers')
     end
   end
 end
