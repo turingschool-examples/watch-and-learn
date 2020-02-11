@@ -2,12 +2,12 @@ require 'rails_helper'
 
 describe 'connect to github using omniauth' do
   it 'connect to githun link on dashboard page' do
-    #user = create(:user, token: ENV['GITHUB_ACCESS_TOKEN'])
     user = create(:user)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
     VCR.use_cassette('connect_to_github') do
       OmniAuth.config.test_mode = true
       OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({"provider"=>"github",
+       "uid"=>"29346170",
        "info"=>
         {"nickname"=>"hale4029",
          "email"=>"harrison483@gmail.com",

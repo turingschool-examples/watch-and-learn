@@ -22,15 +22,37 @@
   </section>
   <section>
     <h1>Github Followers</h1>
-    <% current_user.followers.each do |user| %>
+    <% current_user.git_followers.each do |user| %>
       <p>User: <%= "#{user[:name]}" %><br>
       Handle: <%= link_to "#{user[:link]}", user[:link] %></p>
+      <% if current_user.already_friends(user[:github_id]) && user[:github_id] %>
+      <div id="add_friend_followers"><%= button_to "Add Friend", '/add_friend', method: :post, params: {friend_id: user[:github_id]} %></div>
+      <% end %>
     <% end  %>
     <h1>Github Following</h1>
-    <% current_user.following.each do |user| %>
+    <% current_user.git_following.each do |user| %>
       <p>User: <%= "#{user[:name]}" %><br>
       Handle: <%= link_to "#{user[:link]}", user[:link] %></p>
+      <% if current_user.already_friends(user[:github_id]) && user[:github_id] %>
+      <div id="add_friend_following"><%= button_to "Add Friend", '/add_friend', method: :post, params: {friend_id: user[:github_id]} %></div>
+      <% end %>
     <% end  %>
   </section>
   <% end %>
+
+  <% if current_user.token != nil %>
+  <section id='followees'>
+    <h1>Following</h1>
+    <% current_user.followees.each do |user| %>
+      <ul><%= "#{user.first_name} #{user.last_name}" %></ul>
+    <% end %>
+  </section>
+  <section id='followers'>
+    <h1>Followers</h1>
+    <% current_user.followers.each do |user| %>
+      <ul><%= "#{user.first_name} #{user.last_name}" %></ul>
+    <% end %>
+  </section>
+  <% end %>
+
 </section>
