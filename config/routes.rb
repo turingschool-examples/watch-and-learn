@@ -31,7 +31,7 @@ Rails.application.routes.draw do
   get '/dashboard', to: 'users#show'
   get '/about', to: 'about#show'
   get '/get_started', to: 'get_started#show'
-  patch '/add_friend', to: 'friendships#update'
+  post '/add_friend', to: 'friendships#create'
 
   # Is this being used?
   get '/video', to: 'video#show'

@@ -26,7 +26,7 @@
       <p>User: <%= "#{user[:name]}" %><br>
       Handle: <%= link_to "#{user[:link]}", user[:link] %></p>
       <% if user[:github_id] %>
-      <div id="add_friend_followers"><%= button_to "Add Friend", '/add_friend', method: :patch, params: {friend_id: user[:github_id]} %></div>
+      <div id="add_friend_followers"><%= button_to "Add Friend", '/add_friend', method: :post, params: {friend_id: user[:github_id]} %></div>
       <% end %>
     <% end  %>
     <h1>Github Following</h1>
@@ -34,7 +34,7 @@
       <p>User: <%= "#{user[:name]}" %><br>
       Handle: <%= link_to "#{user[:link]}", user[:link] %></p>
       <% if user[:github_id] %>
-      <div id="add_friend_following"><%= button_to "Add Friend", '/add_friend', method: :patch, params: {friend_id: user[:github_id]} %></div>
+      <div id="add_friend_following"><%= button_to "Add Friend", '/add_friend', method: :post, params: {friend_id: user[:github_id]} %></div>
       <% end %>
     <% end  %>
   </section>
