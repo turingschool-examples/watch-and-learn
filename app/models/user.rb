@@ -51,4 +51,9 @@ class User < ApplicationRecord
     self.update!(token: auth_hash[:credentials][:token], github_id: auth_hash[:uid])
     self.save
   end
+
+  def already_friends(github_id)
+    user = User.find_by(github_id: github_id)
+    !(self.followees.include?(user))
+  end
 end
