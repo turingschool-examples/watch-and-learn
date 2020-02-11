@@ -6,7 +6,6 @@ class FriendshipsController < ApplicationController
         else 
             flash[:error] = "Unable to add friend"
         end 
-
     redirect_to dashboard_path
     end 
 end 

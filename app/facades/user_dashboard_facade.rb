@@ -27,4 +27,7 @@ class UserDashboardFacade
     end
   end
 
+  def friends
+    @user.friends
+  end 
 end
