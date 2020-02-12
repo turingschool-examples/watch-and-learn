@@ -8,11 +8,11 @@ require 'rails_helper'
 describe "As a user we can go to our dashboard" do
   scenario "we see a link to friend a follower or followee if they are in our database", :vcr do
     token = ENV["GITHUB_TOKEN_LOCAL"]
-    user = create(:user, token: token)
+    user_1 = create(:user, token: token)
     user_2 = create(:user, uid: "37692413")
+    user_3 = create(:user)
 
-
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
     allow_any_instance_of(ApplicationController).to receive(:github_status).and_return("logged in")
 
     visit dashboard_path
@@ -22,6 +22,12 @@ describe "As a user we can go to our dashboard" do
       click_link "Friend this User"
     end
 
+    expect(current_path).to eq(dashboard_path)
+    expect(page).to have_content('You have added a friend.')
 
+    within ('.friends') do
+      expect(page).to have_content(user_2.name)
+      expect(page).not_to have_content(user_3.name)
+    end
   end
 end
