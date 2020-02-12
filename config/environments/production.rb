@@ -93,4 +93,30 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+  
+  ###### sendgrid
+  # config.action_mailer.delivery_method = :smtp
+
+  # config.action_mailer.smtp_settings = {
+  #   address:              'smtp.sendgrid.net',
+  #   port:                 '587',
+  #   domain:               'turingtutorials.com',
+  #   user_name:            ENV["SENDGRID_USERNAME"],
+  #   password:             ENV["SENDGRID_PASSWORD"],
+  #   authentication:       'plain',
+  #   enable_starttls_auto: true
+  # }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.smtp_settings = {
+    :user_name => ENV['SENDGRID_USERNAME'],
+    :password => ENV['SENDGRID_PASSWORD'],
+    :domain => 'turingtutorials.com',
+    :address => 'smtp.sendgrid.net',
+    :port => 587,
+    :authentication => :plain,
+    :enable_starttls_auto => true
+  }
+  # Do not swallow errors in after_commit/after_rollback callbacks.
+  config.active_record.raise_in_transactional_callbacks = true
 end

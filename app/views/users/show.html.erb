@@ -8,6 +8,8 @@
     <li> <%= current_user.email%> </li>
   </ul>
   <section>
+
+    <%= link_to "Send an Invite", "/invite", method: :get %>
     <h4>Bookmarked Segments</h4>
   </section>
 <%= button_to "Connect to Github", github_login_path %>
