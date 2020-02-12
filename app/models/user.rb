@@ -7,4 +7,14 @@ class User < ApplicationRecord
   validates_presence_of :first_name
   enum role: %i[default admin]
   has_secure_password
+
+  def self.has_handle?(handle)
+    if find_by(github_handle: handle)
+      true
+    else
+      false
+    end
+  end
+
+
 end
