@@ -17,6 +17,7 @@ class GithubService
 
  def self.user_email(handle, token)
    response = Faraday.get("https://api.github.com/users/#{handle}?access_token=#{token}")
-   JSON.parse(response.body, sybomlize_names: true)['email']
+   json = JSON.parse(response.body, sybomlize_names: true)
+   {email: json['email'], name: json['name']}
  end
 end

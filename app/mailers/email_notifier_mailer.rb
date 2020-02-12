@@ -1,6 +1,7 @@
 class EmailNotifierMailer < ApplicationMailer
-  def inform(user, git_user)
+  def inform(user, data)
     @user = user
-    mail(to: git_user, subject: "GitHub invitation.")
+    @sendee = data[:name]
+    mail(to: data[:email], subject: "GitHub invitation.")
   end
 end
