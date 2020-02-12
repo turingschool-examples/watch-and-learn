@@ -34,9 +34,8 @@ Rails.application.routes.draw do
   get '/auth/github', as: 'github_login'
   get '/auth/github/callback', to: 'github#update'
 
-  get '/activation/new', to: 'activations#new'
+  get '/activation', to: 'activations#update'
   post '/notification', to: 'notifications#create'
-  post '/activation', to: 'activations#create'
   get '/video', to: 'video#show'
 
   resources :users, only: [:new, :create, :update, :edit]
