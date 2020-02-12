@@ -1,10 +1,9 @@
-class UserDashboardFacade 
-
+class UserDashboardFacade
   def initialize(user)
     @user = user
   end
 
-  def repos  
+  def repos
     raw_data = GithubService.new(@user).all_repos
     raw_data[0..4].map do |data|
       GithubInfo.new(data)
@@ -19,7 +18,7 @@ class UserDashboardFacade
     end
   end
 
-  def following 
+  def following
     raw_data = GithubService.new(@user).all_following
     raw_data.map do |data|
       user = User.find_by(github_username: data[:login])
@@ -29,5 +28,5 @@ class UserDashboardFacade
 
   def friends
     @user.friends
-  end 
+  end
 end

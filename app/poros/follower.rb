@@ -5,12 +5,12 @@ class Follower
     @profile_path = info[:html_url]
     if user == nil
       @id = nil
-    else 
+    else
       @id = user.id
-    end 
+    end
   end
 
   def with_us
     self.id != nil
-  end 
+  end
 end
