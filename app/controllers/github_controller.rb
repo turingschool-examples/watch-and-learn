@@ -12,7 +12,12 @@ class GithubController < ApplicationController
     request.env["omniauth.auth"]
   end
 
+  def user_handle
+    request.env["omniauth.auth"]["extra"]["raw_info"]["login"]
+  end
+
   def user_hash
-    {token: auth_hash["credentials"]["token"]}
+    {token: auth_hash["credentials"]["token"],
+     github_handle: user_handle}
   end
 end
