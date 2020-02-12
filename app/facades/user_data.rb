@@ -1,8 +1,4 @@
 class UserData
-  # def initialize(token)
-  #   @token = token
-  # end
-
   def initialize(current_user, github_status)
     @current_user = current_user
     github_status = github_status
