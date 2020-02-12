@@ -37,10 +37,20 @@
         <% end %>
       </table>
     </section>
+
+    <section class="friends">
+      <% if current_user.find_friends %>
+      <% current_user.find_friends.each do |friend|  %>
+        <%= friend.name %>
+      <% end %>
+    <% end %>
+    </section>
+
     <section>
     <% else %>
       <%=button_to 'Connect To Github', github_login_path, method: :get, class: "mt2 btn btn-primary mb1 bg-teal" %>
     <% end %>
+
     <h1>Bookmarked Segments</h1>
   </section>
 </section>
