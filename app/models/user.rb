@@ -8,8 +8,12 @@ class User < ApplicationRecord
   enum role: %i[default admin]
   has_secure_password
 
-  def has_handle?
-    
+  def self.has_handle?(handle)
+    if find_by(github_handle: handle)
+      true
+    else
+      false
+    end
   end
 
 
