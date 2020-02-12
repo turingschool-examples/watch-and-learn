@@ -7,6 +7,9 @@
   <ul>
     <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
     <li> <%= current_user.email%> </li>
+  <% if current_user.active %>
+    <li>Status: Active</li>
+  <% end %>
   </ul>
     <% if github_status && current_user.token %>
     <h1>Github Details:</h1>
