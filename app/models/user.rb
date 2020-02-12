@@ -16,5 +16,8 @@ class User < ApplicationRecord
     end
   end
 
+  def bookmarkings(user)
+    user.videos.includes(:tutorial).order("tutorials.title")
+  end
 
 end

@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get "/dashboard", to: "dashboard#show"
+    get "/tutorials/:id", to: "tutorials#destroy"
     resources :tutorials, only: [:create, :edit, :update, :destroy, :new] do
       resources :videos, only: [:create]
     end
@@ -37,7 +38,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create, :update, :edit]
 
-  resources :tutorials, only: [:show, :index] do
+  resources :tutorials, only: [:show, :index, :destroy] do
     resources :videos, only: [:show, :index]
   end
 
