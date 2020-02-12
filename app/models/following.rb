@@ -6,6 +6,7 @@ class Following
     @u_id = data[:id]
   end
 
-  def user_exists(follower)
+  def check_user_exists
+    User.where(uid: self.u_id).any?
   end
 end
