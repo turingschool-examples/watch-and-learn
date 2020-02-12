@@ -19,3 +19,22 @@ describe "As a guest user, when I visit '/'" do
         expect(page).to have_content("This account has not yet been activated. Please check your email")
     end 
 end 
+describe "As a non-activated user" do
+    it "I can activate my account" do
+        user = create(:user, status: 'inactive')
+
+        allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+        expect(user.status).to eq("inactive")
+
+        visit "/activate/#{user.id}"
+        expect(page).to have_content("Thank you! Your account is now activated.")
+
+        click_on "Go to your dashboard"
+        expect(current_path).to eq(dashboard_path)
+
+        user.reload
+
+        expect(user.status).to eq('active')
+    end 
+end

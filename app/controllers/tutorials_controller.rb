@@ -5,6 +5,6 @@ class TutorialsController < ApplicationController
   end
 
   def index
-    @tutorials = Tutorial.all 
+    @tutorials = Tutorial.all
   end
 end
