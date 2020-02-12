@@ -1,18 +1,20 @@
 <section class="dashboard-main">
-  <h1> <%= current_user.first_name %>'s Dashboard </h1>
+  <h5> Logged in as <%= current_user.first_name %></h5>
 
   <%= button_to 'Log Out', logout_path, method: 'delete', class: "btn btn-primary mb1 bg-teal" %>
-  <h3>Account Details</h3>
+  <h4>Account Details</h4>
   <ul>
     <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
     <li> <%= current_user.email%> </li>
   </ul>
   <section>
+
+    <%= link_to "Send an Invite", "/invite", method: :get %>
     <h4>Bookmarked Segments</h4>
   </section>
 <%= button_to "Connect to Github", github_login_path %>
 <% if current_user.github_token %>
-  <h3>Github</h3>
+  <h4>Github</h4>
   <section id="github">
     <% user_find.repos.each do |repo| %>
     <section id="repo">
@@ -20,7 +22,7 @@
     </section>
     <% end %>
   </section>
-  <h5>Followers</h5>
+  <h4>Followers</h4>
   <section id="followers">
     <% user_find.followers.each do |follower| %>
       <p><%= link_to follower.name, follower.profile_path %></p>
@@ -29,7 +31,7 @@
       <% end %>
     <% end %>
   </section>
-  <h5>Following</h5>
+  <h4>Following</h4>
   <section id="following">
     <% user_find.following.each do |follow| %>
       <p><%= link_to follow.name, follow.profile_path %></p>
@@ -39,7 +41,7 @@
     <% end %>
   </section>
 <% end %>
-<h5>Friends</h5>
+<h4>Friends</h4>
   <section id="friends">
   <% user_find.friends.each do |friend| %>
   <p><%= friend.github_username %></p>

@@ -3,6 +3,10 @@ class GithubService
     @user = user
   end
 
+  def get_specific_user(github_username)
+    get_json("users/#{github_username}")
+  end
+
   def all_repos
     get_json("user/repos")
   end

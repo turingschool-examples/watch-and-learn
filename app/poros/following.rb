@@ -1,4 +1,4 @@
-class Following 
+class Following
   attr_reader :name, :profile_path, :id
   def initialize(info, user)
     @name = info[:login]
@@ -6,11 +6,11 @@ class Following
     if user == nil
       @id = nil
     else
-      @id = user.id 
-    end 
+      @id = user.id
+    end
   end
 
   def with_us
-    self.id != nil
-  end 
+    id != nil
+  end
 end
