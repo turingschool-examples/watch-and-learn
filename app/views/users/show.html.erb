@@ -24,6 +24,9 @@
       <% search_results.followers.each do |follower| %>
         <section  class = "followers">
           <%= link_to follower.name, follower.link %>
+          <% if User.has_handle?(follower.name) %>
+            <%= link_to "Add as Friend" %>
+          <% end %>
         </section>
       <% end %>
 
