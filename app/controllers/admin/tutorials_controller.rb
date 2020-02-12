@@ -16,6 +16,11 @@ class Admin::TutorialsController < Admin::BaseController
     end
     redirect_to edit_admin_tutorial_path(tutorial)
   end
+  
+  def destroy
+    Tutorial.destroy(params[:id])
+    redirect_to '/admin/dashboard'
+  end
 
   private
 
