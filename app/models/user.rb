@@ -16,7 +16,6 @@ class User < ApplicationRecord
   has_secure_password
 
   def find_friends
-require "pry"; binding.pry
     frienders
   end
 end
