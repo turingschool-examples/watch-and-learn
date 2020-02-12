@@ -1,12 +1,6 @@
 class ActivationsController < ApplicationController
-  def new
-    # new
-    require "pry"; binding.pry
-    redirect_to '/activation'
-  end
-
-  def create
-    user = User.find(params[:id])
+  def update
+    user = User.find(params[:format])
     user.toggle!(:active)
     if user.active?
       flash[:notice] = 'Status: Active'
