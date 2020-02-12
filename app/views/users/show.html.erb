@@ -16,6 +16,7 @@
     <li>Status: Active</li>
   <% end %>
   </ul>
+
     <% if github_status && current_user.token %>
     <h1>Github Details:</h1>
       <h2>Personal Repos:</h2>
@@ -24,19 +25,43 @@
       <p class="name"><%= link_to repo.name, repo.url%></p>
       </section><br>
       <% end %>
-  <section>
-      <h2>Following On Github</h2>
+  <section class="github_following">
+
+      <table>
+      <th><<h2>Following On Github</h2>/th><th></th>
       <% user_data.display_following.each do |following| %>
         <section class="following">
-          <p class="name"><%= link_to following.name, following.url%></p>
+        <tr>
+          <td><p class="name"><%= link_to following.name, following.url%></p></td>
+          <td> <%=link_to "Friend this User", friendships_path(following.u_id), method: :post if following.check_user_exists %> </td>
+        </tr>
         </section>
       <% end %>
-        <h2>Followers On Github</h2>
+      </table>
+    </section>
+
+    <section class="github_followers">
+      <table>
+        <th> <h2>Followers On Github</h2> </th><th></th>
         <% user_data.display_followers.each do |follower| %>
           <section class='followers'>
-            <p class='name'><%= link_to follower.name, follower.url %></p>
+            <tr><td><p class='name'><%= link_to follower.name, follower.url %></p></td>
+                <td><%=link_to "Friend this User", friendships_path(follower.u_id), method: :post if follower.check_user_exists %></td>
+            </tr>
           </section>
         <% end %>
+      </table>
+    </section>
+
+    <section class="friends">
+      <% if current_user.find_friends %>
+      <% current_user.find_friends.each do |friend|  %>
+        <%= friend.first_name %><%=friend.last_name %>
+      <% end %>
+    <% end %>
+    </section>
+
+    <section>
     <% else %>
       <%=button_to 'Connect To Github', github_login_path, method: :get, class: "mt2 btn btn-primary mb1 bg-teal" %>
     <% end %>
