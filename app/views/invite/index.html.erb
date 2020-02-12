@@ -1,7 +1,7 @@
-    <h4>Emailing Invites Section</h4>
-    <%= form_with url: '/dashboard', method: :post, local: true do |f| %>
-      <%= f.label :github_username, "Invite Email Handle:" %>
-      <%= f.text_field :github_username, id: :github_username %>
-      <%= f.submit "Send Invite" %>
-    <% end %>
+<h4>Emailing Invites Section</h4>
+<%= form_with url: '/dashboard', method: :post, local: true do |f| %>
+  <%= f.label :github_username, "Invite Email Handle:" %>
+  <%= f.text_field :github_username, id: :github_username %>
+  <%= f.submit "Send Invite" %>
+<% end %>
 
