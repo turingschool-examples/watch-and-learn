@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <%= yield %>
+      Hello <%= @friend_contact %>,
+
+      <%= @user.github_username %> has invited you to join TuringTutorials. You can create an account <%= link_to "here", "https://brownfieldapp.herokuapp.com//signup" %>
+
+  </body>
+</html>
