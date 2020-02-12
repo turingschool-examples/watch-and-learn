@@ -1,0 +1,13 @@
+<div class="search-bar bar">
+  <div class=" search-field col md-col-3">
+    <%= form_tag '/invite', method: :post do %>
+      <%= label_tag :GitHub_Handle %>
+      <%= text_field_tag :github_handle, params[:github_handle], placeholder: "GitHub Handle" %>
+      <%= submit_tag "Send Email Invite" %>
+    <% end %>
+  </div>
+  <div class="col md-col-9">
+    <div class="category">
+    </div>
+  </div>
+</div>
