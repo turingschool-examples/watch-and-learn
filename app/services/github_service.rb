@@ -4,8 +4,6 @@ class GithubService
     get_json(url)
   end
 
-private
-
   def get_json(url)
     response = Faraday.get("https://api.github.com#{url}")
     JSON.parse(response.body, symbolize_names: true)
