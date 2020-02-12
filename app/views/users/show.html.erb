@@ -41,7 +41,7 @@
     <section class="friends">
       <% if current_user.find_friends %>
       <% current_user.find_friends.each do |friend|  %>
-        <%= friend.name %>
+        <%= friend.first_name %><%=friend.last_name %>
       <% end %>
     <% end %>
     </section>
