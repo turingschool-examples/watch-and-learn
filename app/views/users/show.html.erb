@@ -27,20 +27,26 @@
       <% end %>
   <section class="github_following">
 
-      <h2>Following On Github</h2>
+      <table>
+      <th><<h2>Following On Github</h2>/th><th></th>
       <% user_data.display_following.each do |following| %>
         <section class="following">
-          <p class="name"><%= link_to following.name, following.url%></p>
+        <tr>
+          <td><p class="name"><%= link_to following.name, following.url%></p></td>
+          <td> <%=link_to "Friend this User", friendships_path(following.u_id), method: :post if following.check_user_exists %> </td>
+        </tr>
         </section>
       <% end %>
+      </table>
     </section>
+
     <section class="github_followers">
       <table>
         <th> <h2>Followers On Github</h2> </th><th></th>
         <% user_data.display_followers.each do |follower| %>
           <section class='followers'>
             <tr><td><p class='name'><%= link_to follower.name, follower.url %></p></td>
-                <td><%=link_to "Friend this User", friendships_path(follower.u_id), method: :post if follower.user_exists %></td>
+                <td><%=link_to "Friend this User", friendships_path(follower.u_id), method: :post if follower.check_user_exists %></td>
             </tr>
           </section>
         <% end %>
