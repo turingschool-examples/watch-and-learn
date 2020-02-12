@@ -6,24 +6,33 @@ describe "As a logged in admin" do
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
-      visit "/admin/dashboard"
-
-      click_on "New Tutorial"
-
-      expect(current_path).to eq(new_admin_tutorial_path)
+      visit "/admin/tutorials/new"
 
       fill_in "Title", with: "How to learn in a new way"
       fill_in "Description", with: "Relearning for long term success"
       fill_in "Thumbnail", with: "https://i.ytimg.com/vi/qMkRHW9zE1c/hqdefault.jpg"
-
+      
       click_on "Save"
 
       tutorial = Tutorial.last
-
-      expect(current_path).to eq(tutorial_path)
-      expect(page).to have_content(tutorial.name)
-      expect(page).to have_content(tutorial.description)
+      expect(current_path).to eq("/tutorials/#{tutorial.id}")
+      expect(page).to have_content(tutorial.title)
       expect(page).to have_content("Successfully created tutorial.")
     end
+    it "I cannot save a new tutorial if one of the attributes (title, desc, thumbnail) is missing" do
+      admin = create(:user, role: 1)
+  
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+  
+      visit "/admin/tutorials/new"
+  
+      fill_in "Title", with: "How to learn in a new way"
+      fill_in "Description", with: "Relearning for long term success"
+      
+      click_on "Save"
+      
+      expect(current_path).to eq("/admin/tutorials/new")
+      expect(page).to have_content("Please fill in all fields")
+    end 
   end
 end

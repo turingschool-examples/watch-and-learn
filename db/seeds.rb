@@ -1,5 +1,5 @@
 Tutorial.destroy_all
-User_video.destroy_all
+UserVideo.destroy_all
 User.destroy_all
 Video.destroy_all
 
