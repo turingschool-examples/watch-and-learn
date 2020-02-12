@@ -6,7 +6,12 @@ RSpec.describe "as a user", :vcr do
   user = create(:user)
   OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({
     :provider => 'github',
-    :credentials => {:token => ENV['GITHUB_TOKEN']}
+    :credentials => {:token => ENV['GITHUB_TOKEN']},
+    :extra => {
+      :raw_info => {
+        :login => "madelynrr"
+      }
+    }
   })
 
   allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
@@ -27,12 +32,17 @@ RSpec.describe "as a user", :vcr do
   OmniAuth.config.mock_auth[:github] = nil
   end
 
-  it "saves github handle to user in database" do
+  it "saves github handle to user in database", :vcr do
     OmniAuth.config.test_mode = true
     user = create(:user)
     OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({
       :provider => 'github',
-      :credentials => {:token => ENV['GITHUB_TOKEN']}
+      :credentials => {:token => ENV['GITHUB_TOKEN']},
+      :extra => {
+        :raw_info => {
+          :login => "madelynrr"
+        }
+      }
     })
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
@@ -47,6 +57,9 @@ RSpec.describe "as a user", :vcr do
 
     click_link("Login Through Github")
 
+    user.reload
     expect(user.github_handle).to eq("madelynrr")
+
+    OmniAuth.config.mock_auth[:github] = nil
   end
 end
