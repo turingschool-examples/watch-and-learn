@@ -16,6 +16,6 @@ class User < ApplicationRecord
   has_secure_password
 
   def find_friends
-
+    frienders 
   end
 end
