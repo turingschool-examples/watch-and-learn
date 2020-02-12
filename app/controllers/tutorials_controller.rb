@@ -1,7 +1,7 @@
 class TutorialsController < ApplicationController
   def index
     @tutorials = Tutorial.all
-    @tutorials = Tutorial.classroom if current_user == nil
+    @tutorials = Tutorial.classroom if current_user.nil?
   end
 
   def show

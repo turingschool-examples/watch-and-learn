@@ -47,6 +47,6 @@ class Admin::TutorialsController < Admin::BaseController
 
   def video_params
     params.require(:tutorial).require(:videos_attributes)['0']
-    .permit(:title, :description, :video_id, :thumbnail)
+          .permit(:title, :description, :video_id, :thumbnail)
   end
 end
