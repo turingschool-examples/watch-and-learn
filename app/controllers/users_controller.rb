@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
   def show
-    return unless github_status && current_user.token 
+    # return unless github_status && current_user.token
 
     render locals: {
-      github_result: GithubSearch.new(current_user.token)
+      user_data: UserData.new(current_user, github_status)
     }
   end
 
