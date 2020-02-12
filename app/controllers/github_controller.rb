@@ -2,7 +2,7 @@ class GithubController < ApplicationController
   def update
     user = current_user
     user.update(user_hash)
-    session[:github] = "logged in"
+    session[:github] = 'logged in'
     redirect_to dashboard_path
   end
 
@@ -19,7 +19,6 @@ class GithubController < ApplicationController
   end
 
   def user_hash
-    {uid: auth_hash["uid"], token: auth_hash["credentials"]["token"]}
+    {uid: auth_hash['uid'], token: auth_hash['credentials']['token']}
   end
-
 end

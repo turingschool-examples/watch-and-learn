@@ -34,9 +34,14 @@ Rails.application.routes.draw do
   get '/auth/github', as: 'github_login'
   get '/auth/github/callback', to: 'github#update'
 
+<<<<<<< HEAD
   post '/friendships', to: 'friendship_users#create'
 
   # Is this being used?
+=======
+  get '/activation', to: 'activations#update'
+  post '/notification', to: 'notifications#create'
+>>>>>>> 2d127809d83e59b302ab73303abe1f288b88e6f9
   get '/video', to: 'video#show'
 
   resources :users, only: [:new, :create, :update, :edit]
