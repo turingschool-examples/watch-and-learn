@@ -15,9 +15,11 @@ describe "As a logged in User" do
     within(first("#followers")) do
       click_on "Add Friend"
     end
-    expect(current_path).to eq('/dashboard')
+
     user.reload
-    visit '/dashboard'
+    
+    expect(current_path).to eq('/dashboard')
+
     within(first("#followers")) do
       expect(page).to_not have_content("Add Friend")
     end
