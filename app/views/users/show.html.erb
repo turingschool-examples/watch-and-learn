@@ -10,7 +10,7 @@
   <section class="bookmarks">
     <h1>Bookmarked Segments</h1>
     <% if current_user.videos.count > 0 %>
-      <% @bookmarkings.each do |vid| %>
+      <% @user.bookmarkings.each do |vid| %>
         <h4><%= vid.tutorial.title %>: <%= link_to vid.title, "/tutorials/#{vid.tutorial_id}?video_id=#{vid.id}" %></h4><br>
       <% end %>
     <% else %>
