@@ -1,6 +1,7 @@
 class VerificationEmailNotifierMailer < ApplicationMailer
-  def inform(user)
+  def inform(user, data)
     @user = user
-    mail(to: user.email, subject: "#{user.first_name} You have created an account.")
+    binding.pry
+    mail(to: @user.email, subject: 'Account Creation')
   end
 end
