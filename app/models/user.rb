@@ -11,6 +11,7 @@ class User < ApplicationRecord
   validates_presence_of :password_digest
   validates_presence_of :first_name
   enum role: [:default, :admin]
+  enum status: { inactive: 0, active: 1 }
   has_secure_password
 
 
@@ -55,5 +56,16 @@ class User < ApplicationRecord
   def already_friends(github_id)
     user = User.find_by(github_id: github_id)
     !(self.followees.include?(user))
+  end
+
+  def validate_email
+    self.email_confirmed = true
+    self.confirm_token = nil
+  end
+
+  def set_confirmation_token
+    if self.confirm_token.blank?
+       self.confirm_token = SecureRandom.urlsafe_base64.to_s
+    end
   end
 end
