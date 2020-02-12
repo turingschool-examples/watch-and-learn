@@ -1,0 +1,11 @@
+<div class="user-login">
+  <section>
+    <%= form_tag invite_path do %>
+      <div>
+        <%= label_tag :github_handle, 'GitHub Handle' %>
+        <%= text_field_tag :github_handle, nil, class: "block col-12 field" %>
+      </div>
+      <%= submit_tag 'Send Invite', class: "mt2 btn btn-primary mb1 bg-teal" %>
+    <% end %>
+  </section>
+</div>
