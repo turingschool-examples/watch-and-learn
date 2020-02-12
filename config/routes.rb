@@ -50,4 +50,7 @@ Rails.application.routes.draw do
   end
 
   resources :user_videos, only:[:create, :destroy]
+
+  get '/invite', to: 'invite#new'
+  post '/invite', to: 'invite#create', as: 'invite_create'
 end

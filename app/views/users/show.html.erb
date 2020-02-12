@@ -2,7 +2,12 @@
   <h1> <%= current_user.first_name %>'s Dashboard </h1>
 
   <%= button_to 'Log Out', logout_path, method: 'delete', class: "btn btn-primary mb1 bg-teal" %>
-  <%=button_to 'Activate Your Account', notification_path, class: "mt2 btn btn-primary mb1 bg-teal" unless current_user.active %>
+  <br>
+  <%= button_to 'Activate Your Account', notification_path, class: "mt2 btn btn-primary mb1 bg-teal" unless current_user.active %>
+  <br>
+  <%= button_to 'Send an Invite', invite_path, method: :get, class: 'btn btn-primary mb1 bg-teal' %>
+  <br>
+
   <h3>Account Details</h3>
   <ul>
     <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
@@ -15,7 +20,7 @@
     <% if github_status && current_user.token %>
     <h1>Github Details:</h1>
       <h2>Personal Repos:</h2>
-      <% github_result.display_repos.each do |repo| %>
+      <% user_data.display_repos.each do |repo| %>
       <section class="repos">
       <p class="name"><%= link_to repo.name, repo.url%></p>
       </section><br>
@@ -23,7 +28,7 @@
   <section class="github_following">
 
       <h2>Following On Github</h2>
-      <% github_result.display_following.each do |following| %>
+      <% user_data.display_following.each do |following| %>
         <section class="following">
           <p class="name"><%= link_to following.name, following.url%></p>
         </section>
@@ -32,7 +37,7 @@
     <section class="github_followers">
       <table>
         <th> <h2>Followers On Github</h2> </th><th></th>
-        <% github_result.display_followers.each do |follower| %>
+        <% user_data.display_followers.each do |follower| %>
           <section class='followers'>
             <tr><td><p class='name'><%= link_to follower.name, follower.url %></p></td>
                 <td><%=link_to "Friend this User", friendships_path(follower.u_id), method: :post if follower.user_exists %></td>
@@ -54,7 +59,18 @@
     <% else %>
       <%=button_to 'Connect To Github', github_login_path, method: :get, class: "mt2 btn btn-primary mb1 bg-teal" %>
     <% end %>
-
+  </section>
+  <section class='bookmarks'>
     <h1>Bookmarked Segments</h1>
+    <table>
+      <th>Tutorial</th>
+      <th>Video</th>
+      <% user_data.bookmarks.each do |bookmark| %>
+        <tr id=video-<%= bookmark.video_id %>>
+          <td><%= bookmark.tutorial_title %></td>
+          <td><%= bookmark.video_title %></td>
+        </tr>
+      <% end %>
+    </table>
   </section>
 </section>
