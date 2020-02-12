@@ -22,7 +22,8 @@ class UserData
 
   def get_email(github_handle)
     service = GithubService.new
-    user_info = service.get_json("/users/#{github_handle}?access_token=#{@token}")
+    token = @current_user.token
+    user_info = service.get_json("/users/#{github_handle}?access_token=#{token}")
     user_info[:email]
   end
 
