@@ -26,8 +26,9 @@ describe "As a user we can go to our dashboard" do
     expect(page).to have_content('You have added a friend.')
 
     within ('.friends') do
-      expect(page).to have_content(user_2.name)
-      expect(page).not_to have_content(user_3.name)
+      expect(page).to have_content(user_2.first_name)
+      expect(page).to have_content(user_2.last_name)
+      expect(page).not_to have_content(user_3.first_name)
     end
   end
 end
