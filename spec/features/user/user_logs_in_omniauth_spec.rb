@@ -26,4 +26,27 @@ RSpec.describe "as a user", :vcr do
 
   OmniAuth.config.mock_auth[:github] = nil
   end
+
+  it "saves github handle to user in database" do
+    OmniAuth.config.test_mode = true
+    user = create(:user)
+    OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({
+      :provider => 'github',
+      :credentials => {:token => ENV['GITHUB_TOKEN']}
+    })
+
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+    expect(user.github_handle).to eq nil
+
+    visit '/dashboard'
+    expect(page).to have_content("Login Through Github")
+    expect(page).not_to have_css(".repos")
+    expect(page).not_to have_css(".followers")
+    expect(page).not_to have_css(".following")
+
+    click_link("Login Through Github")
+
+    expect(user.github_handle).to eq("madelynrr")
+  end
 end
