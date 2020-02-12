@@ -6,9 +6,7 @@ class Admin::TutorialsController < Admin::BaseController
   def create
     @tutorial = Tutorial.create(tutorial_params)
     if @tutorial.save
-      flash[:success] = 'Successfuly created tutorial'
-      @tutorial.videos.create(video_params)
-      redirect_to tutorial_path(@tutorial)
+      create_video
     else
       flash[:error] = @tutorial.errors.full_messages.to_sentence
       redirect_to new_admin_tutorial_path
@@ -35,6 +33,12 @@ class Admin::TutorialsController < Admin::BaseController
 
   private
 
+  def create_video
+    flash[:success] = 'Successfuly created tutorial'
+    @tutorial.videos.create(video_params)
+    redirect_to tutorial_path(@tutorial)
+  end
+
   def tutorial_params
     params.require(:tutorial).permit(:tag_list,
                                      :title, :description,
@@ -42,6 +46,7 @@ class Admin::TutorialsController < Admin::BaseController
   end
 
   def video_params
-    params.require(:tutorial).require(:videos_attributes)["0"].permit(:title, :description, :video_id, :thumbnail)
+    params.require(:tutorial).require(:videos_attributes)['0']
+          .permit(:title, :description, :video_id, :thumbnail)
   end
 end
