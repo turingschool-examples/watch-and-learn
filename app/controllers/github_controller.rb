@@ -2,7 +2,7 @@ class GithubController < ApplicationController
   def create
     current_user.update_token(auth_hash)
     redirect_to '/dashboard'
-   end
+  end
 
   private
 

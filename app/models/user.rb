@@ -17,7 +17,7 @@ class User < ApplicationRecord
   has_secure_password
 
   def repositories
-    github = Github.new(self.token)
+    github = Github.new(token)
     json = github.repos
     repositories = json.each_with_object([]) do |repo, acc|
       acc << { name: repo['name'], link: repo['html_url'] }
@@ -26,7 +26,7 @@ class User < ApplicationRecord
   end
 
   def git_followers
-    github = Github.new(self.token)
+    github = Github.new(token)
     json = github.followers
     json.each_with_object([]) do |user, acc|
       acc << if User.find_by(github_id: user['id'])
@@ -38,7 +38,7 @@ class User < ApplicationRecord
   end
 
   def git_following
-    github = Github.new(self.token)
+    github = Github.new(token)
     json = github.following
     json.each_with_object([]) do |user, acc|
       acc << if User.find_by(github_id: user['id'])

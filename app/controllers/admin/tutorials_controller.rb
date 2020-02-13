@@ -8,7 +8,7 @@ class Admin::TutorialsController < Admin::BaseController
   end
 
   def destroy
-    tutorial = Tutorial.destroy(params[:id])
+    Tutorial.destroy(params[:id])
     flash[:notice] = 'Tutorial and related videos deleted.'
     redirect_to '/admin/dashboard'
   end
@@ -26,9 +26,7 @@ class Admin::TutorialsController < Admin::BaseController
 
   def update
     tutorial = Tutorial.find(params[:id])
-    if tutorial.update(tutorial_params)
-      flash[:success] = "#{tutorial.title} tagged!"
-    end
+    flash[:success] = "#{tutorial.title} tagged!" if tutorial.update(tutorial_params)
     redirect_to edit_admin_tutorial_path(tutorial)
   end
 

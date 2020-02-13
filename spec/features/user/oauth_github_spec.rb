@@ -16,10 +16,10 @@ describe 'connect to github using omniauth' do
           'name' => 'Harrison',
           'image' => 'https://avatars2.githubusercontent.com/u/29346170?v=4',
           'urls' => { 'GitHub' => 'https://github.com/hale4029', 'Blog' => '' } },
-          'credentials' => { 'token' => (ENV['GITHUB_ACCESS_TOKEN']).to_s, 'expires' => false })
+                                                                  'credentials' => { 'token' => (ENV['GITHUB_ACCESS_TOKEN']).to_s, 'expires' => false })
 
       visit '/dashboard'
-      
+
       expect(page).to_not have_content('Github Repos')
       expect(page).to_not have_css('#repos')
       expect(page).to_not have_content('Github Following')
