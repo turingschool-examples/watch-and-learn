@@ -15,11 +15,10 @@ RSpec.describe 'User must' do
 
     expect(page).to have_content('Inactive')
 
+    user.update(email_confirmed: true)
 
-      visit('/dashboard')
-      user.status = 'active'
-    # visit "/users/#{user.confirm_token}/confirm_email"
-    # visit "/#{user.confirm_token}/confirm_email"
-    # expect(page).to have_content('Active')
+    visit('/dashboard')
+
+    expect(page).to have_content('Active')
   end
 end
