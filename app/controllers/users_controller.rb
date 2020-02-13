@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   def show
+    return unless github_status && current_user.token
     render locals: {
       user_data: UserData.new(current_user, github_status)
     }
