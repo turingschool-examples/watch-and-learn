@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class UsersController < ApplicationController
   def show; end
 
@@ -28,8 +26,8 @@ class UsersController < ApplicationController
     else
       flash[:error] = 'Sorry. User does not exist'
       redirect_to root_url
+    end
   end
- end
 
   private
 

@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Admin::TutorialsController < Admin::BaseController
   def edit
     @tutorial = Tutorial.find(params[:id])
@@ -17,7 +15,6 @@ class Admin::TutorialsController < Admin::BaseController
 
   def create
     @tutorial = Tutorial.new(new_tutorial_params)
-
     if @tutorial.save
       redirect_to tutorial_path(@tutorial.id),
                   success: 'Successfully created tutorial.'
@@ -25,7 +22,7 @@ class Admin::TutorialsController < Admin::BaseController
       flash.now[:error] = @tutorial.errors.full_messages.to_sentence
       render :new
     end
-end
+  end
 
   def update
     tutorial = Tutorial.find(params[:id])

@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class GithubController < ApplicationController
   def create
     current_user.update_token(auth_hash)
