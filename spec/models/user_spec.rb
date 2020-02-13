@@ -22,4 +22,9 @@ RSpec.describe User, type: :model do
       expect(admin.admin?).to be_truthy
     end
   end
+
+  it "tests bookmark method" do
+    admin = User.create(email: 'admin@email.com', password: 'admin', first_name:'Bob', role: 1)
+    expect(admin.bookmarks.empty?).to be_truthy
+  end
 end

@@ -18,6 +18,9 @@
   </ul>
   <section>
     <h1>Bookmarked Segments</h1>
+    <% current_user.bookmarks.uniq.each do |video| %>
+      <li><%= link_to "#{video.tutorial.title} | #{video.title}", tutorial_path(video.tutorial.id, video_id: video.id) %></li>
+    <% end %>
   </section>
 
   <h1>Github Information</h1>
