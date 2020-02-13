@@ -12,6 +12,6 @@ RSpec.describe 'Invite' do
     
     expect(email.from.first).to eq("no-reply@turingtutorials.io")
     expect(email.to.first).to eq("tyladevon@gmail.com")
-    expect(email.subject).to eq("Belle invites you to TuringTutorials")
+    expect(email.subject).to eq("#{user.first_name} invites you to TuringTutorials")
   end
 end
