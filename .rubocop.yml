@@ -1,0 +1,25 @@
+
+
+Style/Encoding:
+  Enabled: false
+
+Layout/LineLength:
+  Max: 99
+
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/ConditionalAssignment:
+  Enabled: false
+
+Style/IfInsideElse:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/IdenticalConditionalBranches:
+  Enabled: false
