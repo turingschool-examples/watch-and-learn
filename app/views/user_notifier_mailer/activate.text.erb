@@ -1,0 +1,5 @@
+
+<%= yield %>
+    Hello <%= @user_email %>,
+
+<%= link_to "Visit here to activate your account.", "/activate/#{@user.id}", method: :post %> 
