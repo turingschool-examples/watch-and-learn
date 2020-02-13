@@ -7,6 +7,11 @@ class Admin::TutorialsController < Admin::BaseController
     @tutorial = Tutorial.new
   end
 
+  def destroy
+    tutorial = Tutorial.destroy(params[:id])
+    redirect_to admin_tutorial_path
+  end
+
   def create
   @tutorial = Tutorial.new(new_tutorial_params)
 
