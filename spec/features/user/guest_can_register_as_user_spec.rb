@@ -5,7 +5,7 @@ describe "As a guest user, when I visit '/'" do
         visit '/'
         click_on "Register"
 
-        fill_in "Email", with: "register@example.com"
+        fill_in "Email", with: "tyladevon@gmail.com"
         fill_in "First name", with: "reg"
         fill_in "Last name", with: "ister"
         fill_in "Password", with: "secret"
@@ -28,9 +28,11 @@ describe "As a non-activated user" do
         expect(user.status).to eq("inactive")
 
         visit "/activate/#{user.id}"
+
         expect(page).to have_content("Thank you! Your account is now activated.")
 
         click_on "Go to your dashboard"
+
         expect(current_path).to eq(dashboard_path)
 
         user.reload

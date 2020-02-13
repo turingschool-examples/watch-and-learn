@@ -4,7 +4,6 @@
    it "it should redirect be back to /dashboard
         - show me a message that says Successfully sent invite (if email exists)", :vcr do
      email_user = create(:user, github_token: ENV['GITHUB_ACCESS_TOKEN'])
-     # email_user2 = create(:user, github_token: ENV['GITHUB_ACCESS_TOKEN'], github_username: "tyladevon", email: "jtobannon@gmail.com")
 
      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(email_user)
 
