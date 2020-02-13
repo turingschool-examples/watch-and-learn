@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   namespace :admin do
     get "/dashboard", to: "dashboard#show"
     resources :tutorials, only: [:create, :edit, :update, :destroy, :new] do
-      resources :videos, only: [:create]
+      resources :videos, only: [:create, :edit, :update]
     end
     resources :videos, only: [:edit, :update, :destroy]
 
@@ -38,7 +38,7 @@ Rails.application.routes.draw do
 
   # Is this being used?
 
-  get '/activation', to: 'activations#update'
+  get '/activation/:id', to: 'activations#update', as: 'activation'
   post '/notification', to: 'notifications#create'
 
   get '/video', to: 'video#show'
