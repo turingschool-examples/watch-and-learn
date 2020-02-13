@@ -7,13 +7,10 @@ class UsersController < ApplicationController
   end
 
   def create
-    require "pry"; binding.pry
     user = User.create(user_params)
     if user.save
       session[:user_id] = user.id
-      user.set_confirmation_token
-      user.save(validate: false)
-      VerificationEmailNotifierMailer.inform(user, user.email).deliver_now
+      user.confirmation_procedure
       redirect_to dashboard_path
     else
       flash[:error] = 'Username already exists'

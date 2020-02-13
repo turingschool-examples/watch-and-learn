@@ -64,12 +64,15 @@ class User < ApplicationRecord
   end
 
   def set_confirmation_token
-    if self.confirm_token.blank?
-       self.confirm_token = SecureRandom.urlsafe_base64.to_s
-    end
+    self.confirm_token = SecureRandom.urlsafe_base64.to_s
   end
 
   def bookmarks
     videos.order("videos.tutorial_id, videos.position").includes(:tutorial)
+  end
+
+  def confirmation_procedure
+    self.set_confirmation_token
+    VerificationEmailNotifierMailer.inform(self, self.email).deliver_now
   end
 end
