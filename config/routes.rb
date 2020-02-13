@@ -35,6 +35,12 @@ Rails.application.routes.draw do
   get '/invite', to: 'invite_email#new'
   post '/invite', to: 'invite_email#create'
 
+  #mailer
+  post '/notifications' => 'notifications#create'
+
+  #confirmation_email
+  get '/:token/confirm_email', :to => "verification_email_notifier#update"
+
   # Is this being used?
   get '/video', to: 'video#show'
 

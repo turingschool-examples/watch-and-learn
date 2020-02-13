@@ -1,6 +1,13 @@
 <section class="dashboard-main">
   <h1> <%= current_user.first_name %>'s Dashboard </h1>
 
+  <% if current_user.email_confirmed == true %>
+    <h3>Status: Active</h3>
+    <p>Check Your Email to Activate your account.</p>
+  <% else %>
+    <h3>Status: Inactive</h3>
+  <% end %>
+
   <%= button_to 'Log Out', logout_path, method: 'delete', class: "btn btn-primary mb1 bg-teal" %>
   <%= link_to 'Connect to Github', github_login_path, class: "btn btn-primary mb1 bg-teal" %><br>
   <%= link_to 'Send Email Invite', '/invite', method: :get, class: "btn btn-primary mb1 bg-teal" %>
