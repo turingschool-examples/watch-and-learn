@@ -5,4 +5,8 @@ class Following
     @url = data[:html_url]
     @u_id = data[:id]
   end
+
+  def check_user_exists
+    User.where(uid: self.u_id).any?
+  end
 end

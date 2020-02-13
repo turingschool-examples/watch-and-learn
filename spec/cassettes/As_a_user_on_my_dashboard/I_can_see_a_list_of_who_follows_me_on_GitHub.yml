@@ -38,7 +38,7 @@ http_interactions:
       - private, max-age=60, s-maxage=60
       Vary:
       - Accept, Authorization, Cookie, X-GitHub-OTP
-      - Accept-Encoding, Accept
+      - Accept-Encoding, Accept, X-Requested-With
       Etag:
       - W/"2df186b5593dea45313226b039254c69"
       X-Oauth-Scopes:
@@ -122,7 +122,7 @@ http_interactions:
       - private, max-age=60, s-maxage=60
       Vary:
       - Accept, Authorization, Cookie, X-GitHub-OTP
-      - Accept-Encoding, Accept
+      - Accept-Encoding, Accept, X-Requested-With
       Etag:
       - W/"87e00f8b4d5025df1d3f1a4e93c9e29a"
       X-Oauth-Scopes:
@@ -194,7 +194,7 @@ http_interactions:
       - private, max-age=60, s-maxage=60
       Vary:
       - Accept, Authorization, Cookie, X-GitHub-OTP
-      - Accept-Encoding, Accept
+      - Accept-Encoding, Accept, X-Requested-With
       Etag:
       - W/"a4849cc3b557245752efa145f9d3c19d"
       X-Oauth-Scopes:
