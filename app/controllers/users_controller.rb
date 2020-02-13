@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   end
 
   def create
+    require "pry"; binding.pry
     user = User.create(user_params)
     if user.save
       session[:user_id] = user.id
@@ -16,7 +17,7 @@ class UsersController < ApplicationController
       redirect_to dashboard_path
     else
       flash[:error] = 'Username already exists'
-      render :new
+      redirect_back(fallback_location: root_url)
     end
   end
 
