@@ -23,7 +23,7 @@ describe "As a logged in User" do
     within(first("#followers")) do
       expect(page).to_not have_content("Add Friend")
     end
-    
+
     within("#friends") do
       expect(page).to have_content(friend_user.github_username)
     end

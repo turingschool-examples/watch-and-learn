@@ -13,4 +13,13 @@ class Following
   def with_us
     id != nil
   end
+
+  def not_friends_already(current_user_id)
+    check_friendship_table = Friendship.where(friend_id: self.id, user_id: current_user_id).count
+    if check_friendship_table > 0
+      return false 
+    else
+      return true
+    end
+  end
 end

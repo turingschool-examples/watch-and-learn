@@ -26,7 +26,7 @@
   <section id="followers">
     <% user_find.followers.each do |follower| %>
       <p><%= link_to follower.name, follower.profile_path %></p>
-      <% if follower.with_us %>
+      <% if follower.with_us && follower.not_friends_already(current_user.id) %>
         <p><%= button_to "Add Friend", "/friendships/#{follower.id}", method: :post %></p>
       <% end %>
     <% end %>
@@ -35,7 +35,7 @@
   <section id="following">
     <% user_find.following.each do |follow| %>
       <p><%= link_to follow.name, follow.profile_path %></p>
-         <% if follow.with_us %>
+         <% if follow.with_us && follow.not_friends_already(current_user.id) %>
          <p><%= button_to "Add Friend", "/friendships/#{follow.id}", method: :post %></p>
          <% end %>
     <% end %>
