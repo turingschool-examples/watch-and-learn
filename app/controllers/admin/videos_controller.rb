@@ -11,10 +11,9 @@ class Admin::VideosController < Admin::BaseController
   end
 
   def create
-    begin
-      new_video
+    if new_video
       flash[:success] = 'Successfully created video.'
-    rescue # We should get more specific instead of swallowing all errors.
+    else
       flash[:error] = 'Unable to create video.'
     end
 

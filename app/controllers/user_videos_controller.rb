@@ -6,10 +6,9 @@ class UserVideosController < ApplicationController
   def create
     if current_user
       user_video = UserVideo.new(user_video_params)
+      flash[:success] = 'Bookmark added to your dashboard!' if user_video.save
       if current_user.user_videos.find_by(video_id: user_video.video_id)
         flash[:error] = 'Already in your bookmarks'
-      elsif user_video.save
-        flash[:success] = 'Bookmark added to your dashboard!'
       end
     else
       flash[:error] = 'Please login or register to bookmark videos'
