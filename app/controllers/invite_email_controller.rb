@@ -6,7 +6,8 @@ class InviteEmailController < ApplicationController
   end
 
   def create
-    data = GithubService.user_email(params[:github_handle], current_user.token)
+    github = Github.new
+    data = github.user_email(params[:github_handle])
     if !data[:email].nil?
       EmailNotifierMailer.inform(current_user, data).deliver_now
       flash[:notice] = 'Successfully sent invite!'

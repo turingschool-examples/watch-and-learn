@@ -4,17 +4,17 @@ require 'rails_helper'
 
 describe '/dashboard page' do
   it 'send invitation' do
-    user = create(:user, github_id: '29346170', token: ENV['GITHUB_ACCESS_TOKEN'])
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
-
     VCR.use_cassette('send_invitation_happy') do
+      user = create(:user, github_id: '29346170', token: ENV['GITHUB_ACCESS_TOKEN'])
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
       visit '/dashboard'
 
       click_on 'Send Email Invite'
 
       expect(current_path).to eq('/invite')
 
-      fill_in :github_handle, with: 'hale4029'
+      fill_in :github_handle, with: 'jmejia'
       click_on('Send Email Invite')
 
       expect(current_path).to eq('/dashboard')

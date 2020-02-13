@@ -1,24 +1,19 @@
 # frozen_string_literal: true
 
 class GithubService
-  def self.repos(token)
-    response = Faraday.get("https://api.github.com/user/repos?access_token=#{token}")
-    JSON.parse(response.body, sybomlize_names: true)
+  def initialize(token)
+    @token = token
   end
 
-  def self.followers(token)
-    response = Faraday.get("https://api.github.com/user/followers?access_token=#{token}")
-    JSON.parse(response.body, sybomlize_names: true)
+  def conn
+    Faraday.new(
+      url: 'https://api.github.com',
+      params: {access_token: @token})
   end
 
-  def self.following(token)
-    response = Faraday.get("https://api.github.com/user/following?access_token=#{token}")
-    JSON.parse(response.body, sybomlize_names: true)
-  end
-
-  def self.user_email(handle, token)
-    response = Faraday.get("https://api.github.com/users/#{handle}?access_token=#{token}")
-    json = JSON.parse(response.body, sybomlize_names: true)
-    { email: json['email'], name: json['name'] }
+  def conn_new
+    Faraday.new(
+      url: 'https://api.github.com',
+      params: {access_token: ENV['GITHUB_ACCESS_TOKEN']})
   end
 end
