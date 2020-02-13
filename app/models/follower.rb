@@ -9,6 +9,6 @@ class Follower
   end
 
   def check_user_exists
-    User.where(uid: self.u_id).any?
+    User.where(uid: u_id).any?
   end
 end

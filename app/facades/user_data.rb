@@ -1,7 +1,6 @@
 class UserData
-  def initialize(current_user, github_status)
+  def initialize(current_user)
     @current_user = current_user
-    github_status = github_status
   end
 
   def display_repos
@@ -23,8 +22,8 @@ class UserData
   def get_email(github_handle)
     service = GithubService.new
     token = @current_user.token
-    user_info = service.get_json("/users/#{github_handle}?access_token=#{token}")
-    user_info[:email]
+    data = service.get_json("/users/#{github_handle}?access_token=#{token}")
+    data[:email]
   end
 
   def find_github_resource(data_type, data)

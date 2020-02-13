@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   def show
     render locals: {
-      user_data: UserData.new(current_user, github_status)
+      user_data: UserData.new(current_user)
     }
   end
 

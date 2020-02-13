@@ -11,6 +11,6 @@ class Admin::Api::V1::BaseController < ActionController::API
   end
 
   def four_oh_four
-    raise ActionController::RoutingError.new('Not Found')
+    raise ActionController::RoutingError, 'Not Found'
   end
 end

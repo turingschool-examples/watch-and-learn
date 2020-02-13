@@ -19,6 +19,6 @@ class GithubController < ApplicationController
   end
 
   def user_hash
-    {uid: auth_hash['uid'], token: auth_hash['credentials']['token']}
+    { uid: auth_hash['uid'], token: auth_hash['credentials']['token'] }
   end
 end
