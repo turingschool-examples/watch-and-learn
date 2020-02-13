@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class VerificationEmailNotifierMailer < ApplicationMailer
   def inform(user, user_contact)
     @user = user

@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-describe "An Admin can edit a tutorial" do
-  it "by adding a video", :js, :vcr do
+describe 'An Admin can edit a tutorial' do
+  it 'by adding a video', :js, :vcr do
     user = create(:admin)
     tutorial = create(:tutorial)
     create(:tutorial)
@@ -12,14 +14,14 @@ describe "An Admin can edit a tutorial" do
     expect(Tutorial.all.count).to eq(2)
     expect(Video.all.count).to eq(2)
 
-    visit "/admin/dashboard"
+    visit '/admin/dashboard'
 
     within first('#buttons') do
       click_button 'Destroy'
     end
 
-    expect(current_path).to eq("/admin/dashboard")
-    expect(page).to have_content("Tutorial and related videos deleted.")
+    expect(current_path).to eq('/admin/dashboard')
+    expect(page).to have_content('Tutorial and related videos deleted.')
 
     expect(Tutorial.all.count).to eq(1)
     expect(Video.all.count).to eq(0)

@@ -1,10 +1,11 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'An Admin can ...' do
-  let(:admin)    { create(:admin) }
+  let(:admin) { create(:admin) }
 
   it 'create a new tutorial' do
-
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
     visit admin_dashboard_path

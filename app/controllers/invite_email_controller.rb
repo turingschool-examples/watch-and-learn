@@ -1,14 +1,15 @@
-class InviteEmailController < ApplicationController
+# frozen_string_literal: true
 
+class InviteEmailController < ApplicationController
   def new
-    #empty
+    # empty
   end
 
   def create
     data = GithubService.user_email(params[:github_handle], current_user.token)
-    if data[:email] != nil
+    if !data[:email].nil?
       EmailNotifierMailer.inform(current_user, data).deliver_now
-      flash[:notice] = "Successfully sent invite!"
+      flash[:notice] = 'Successfully sent invite!'
       redirect_to '/dashboard'
     else
       flash[:error] = 'Oops, something went wrong (probably due to email not being public).'
