@@ -1,6 +1,11 @@
 class SessionsController < ApplicationController
   def new
-    @user ||= User.new
+    if params[:hint]
+      flash[:error] = "Must Login to Bookmark"
+      @user ||= User.new
+    else
+      @user ||= User.new
+    end
   end
 
   def create
