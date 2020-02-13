@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-describe "user dashboard shows bookmarks" do
-  it "in order of tutorial and position" do
+describe 'user dashboard shows bookmarks' do
+  it 'in order of tutorial and position' do
     user = create(:user)
     tutorial = create(:tutorial)
     video = create(:video, tutorial_id: tutorial.id, position: 2)
@@ -11,7 +13,7 @@ describe "user dashboard shows bookmarks" do
 
     visit '/'
 
-    click_on "Sign In"
+    click_on 'Sign In'
 
     fill_in 'session[email]', with: user.email
     fill_in 'session[password]', with: user.password

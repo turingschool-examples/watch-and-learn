@@ -1,6 +1,7 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
-  def show
-  end
+  def show; end
 
   def new
     @user = User.new
@@ -25,7 +26,7 @@ class UsersController < ApplicationController
       user.save(validate: false)
       redirect_to user
     else
-      flash[:error] = "Sorry. User does not exist"
+      flash[:error] = 'Sorry. User does not exist'
       redirect_to root_url
   end
  end

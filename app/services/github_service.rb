@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class GithubService
   def self.repos(token)
     response = Faraday.get("https://api.github.com/user/repos?access_token=#{token}")

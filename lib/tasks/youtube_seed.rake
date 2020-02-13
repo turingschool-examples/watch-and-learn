@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 namespace :import do
   desc :"All youtube data"
-  task all: [:users, :tutorials, :videos]
+  task all: %i[users tutorials videos]
 
   desc :"Create Users"
   task :users, [:users] => :environment do
-    User.create(email: "admin@example.com", first_name: "Admin", last_name: "Adminington", password: ENV['ADMIN_PASSWORD'], role: 1)
+    User.create(email: 'admin@example.com', first_name: 'Admin', last_name: 'Adminington', password: ENV['ADMIN_PASSWORD'], role: 1)
   end
 
   desc :"Create Tutorials"

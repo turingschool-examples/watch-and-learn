@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TutorialSequencer
   def initialize(tutorial, sequenced_video_ids)
     @tutorial = tutorial
@@ -22,9 +24,7 @@ class TutorialSequencer
         video.id == video_id.to_i
       end
 
-      if video.position != index
-        video.update(position: index)
-      end
+      video.update(position: index) if video.position != index
     end
   end
 end

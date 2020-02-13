@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe '/dashboard page' do
@@ -9,8 +11,8 @@ describe '/dashboard page' do
     VCR.use_cassette('repos_happy') do
       visit '/dashboard'
 
-      expect(page).to have_content("Github Repos")
-      within "#repos" do
+      expect(page).to have_content('Github Repos')
+      within '#repos' do
         expect(page).to have_css('#dot', count: 5)
       end
     end
@@ -22,7 +24,7 @@ describe '/dashboard page' do
 
     visit '/dashboard'
 
-    expect(page).to_not have_content("Github Repos")
+    expect(page).to_not have_content('Github Repos')
     expect(page).to_not have_css('#repos')
   end
 
@@ -59,7 +61,7 @@ describe '/dashboard page' do
       expect(page).to have_css('#add_friend_following', count: 1)
 
       within '#followees' do
-        expect(page).to_not have_content("David")
+        expect(page).to_not have_content('David')
       end
 
       within '#add_friend_followers' do
@@ -68,7 +70,7 @@ describe '/dashboard page' do
 
       expect(current_path).to eq(dashboard_path)
       within '#followees' do
-        expect(page).to have_content("David")
+        expect(page).to have_content('David')
       end
 
       expect(page).to_not have_css('#add_friend_followers')

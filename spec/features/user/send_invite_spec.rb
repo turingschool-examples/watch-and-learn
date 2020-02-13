@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe '/dashboard page' do
@@ -8,7 +10,7 @@ describe '/dashboard page' do
     VCR.use_cassette('send_invitation_happy') do
       visit '/dashboard'
 
-      click_on "Send Email Invite"
+      click_on 'Send Email Invite'
 
       expect(current_path).to eq('/invite')
 
@@ -16,7 +18,7 @@ describe '/dashboard page' do
       click_on('Send Email Invite')
 
       expect(current_path).to eq('/dashboard')
-      expect(page).to have_content("Successfully sent invite!")
+      expect(page).to have_content('Successfully sent invite!')
     end
   end
 
@@ -27,11 +29,11 @@ describe '/dashboard page' do
     VCR.use_cassette('send_invitation_sad') do
       visit '/dashboard'
 
-      click_on "Send Email Invite"
+      click_on 'Send Email Invite'
 
       expect(current_path).to eq('/invite')
 
-      click_on "Send Email Invite"
+      click_on 'Send Email Invite'
 
       fill_in :github_handle, with: 'hale4027'
       click_on('Send Email Invite')

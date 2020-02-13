@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Admin::TutorialsController < Admin::BaseController
   def edit
     @tutorial = Tutorial.find(params[:id])
@@ -9,8 +11,8 @@ class Admin::TutorialsController < Admin::BaseController
 
   def destroy
     tutorial = Tutorial.destroy(params[:id])
-    flash[:notice] = "Tutorial and related videos deleted."
-    redirect_to "/admin/dashboard"
+    flash[:notice] = 'Tutorial and related videos deleted.'
+    redirect_to '/admin/dashboard'
   end
 
   def create
