@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe '/dashboard page' do
-# describe '/dashboard page', :vcr do
+  # describe '/dashboard page', :vcr do
   it 'show repos - happy' do
     user = create(:user, token: ENV['GITHUB_ACCESS_TOKEN'])
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)

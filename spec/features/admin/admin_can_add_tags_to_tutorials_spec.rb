@@ -16,7 +16,7 @@ describe 'An admin user can add tags to tutorials' do
 
     expect(current_path).to eq(edit_admin_tutorial_path(tutorial))
 
-    fill_in'tutorial[tag_list]', with: "Ruby"
+    fill_in 'tutorial[tag_list]', with: "Ruby"
     click_on "Update Tags"
     visit root_path
 

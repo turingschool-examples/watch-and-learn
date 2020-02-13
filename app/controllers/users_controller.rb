@@ -20,14 +20,14 @@ class UsersController < ApplicationController
 
   def confirm_email
     user = User.find_by_confirm_token(params[:token])
-     if user
-       user.validate_email
-       user.save(validate: false)
-       redirect_to user
-     else
-       flash[:error] = "Sorry. User does not exist"
-       redirect_to root_url
-   end
+    if user
+      user.validate_email
+      user.save(validate: false)
+      redirect_to user
+    else
+      flash[:error] = "Sorry. User does not exist"
+      redirect_to root_url
+  end
  end
 
   private
@@ -35,5 +35,4 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:email, :first_name, :last_name, :password)
   end
-
 end

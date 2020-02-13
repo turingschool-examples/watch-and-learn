@@ -14,11 +14,10 @@ class User < ApplicationRecord
   enum status: { inactive: 0, active: 1 }
   has_secure_password
 
-
   def repositories
     json = GithubService.repos(self.token)
     repositories = json.reduce([]) do |acc, repo|
-      acc << {name: repo['name'], link: repo['html_url']}
+      acc << { name: repo['name'], link: repo['html_url'] }
       acc
     end
     repositories[0..4]
@@ -28,9 +27,9 @@ class User < ApplicationRecord
     json = GithubService.followers(self.token)
     json.reduce([]) do |acc, user|
       if User.find_by(github_id: user['id'])
-        acc << {name: user['login'], link: user['html_url'], github_id: user['id']}
+        acc << { name: user['login'], link: user['html_url'], github_id: user['id'] }
       else
-        acc << {name: user['login'], link: user['html_url']}
+        acc << { name: user['login'], link: user['html_url'] }
       end
       acc
     end
@@ -40,9 +39,9 @@ class User < ApplicationRecord
     json = GithubService.following(self.token)
     json.reduce([]) do |acc, user|
       if User.find_by(github_id: user['id'])
-        acc << {name: user['login'], link: user['html_url'], github_id: user['id']}
+        acc << { name: user['login'], link: user['html_url'], github_id: user['id'] }
       else
-        acc << {name: user['login'], link: user['html_url']}
+        acc << { name: user['login'], link: user['html_url'] }
       end
       acc
     end

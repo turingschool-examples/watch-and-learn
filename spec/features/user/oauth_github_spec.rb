@@ -6,15 +6,15 @@ describe 'connect to github using omniauth' do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
     VCR.use_cassette('connect_to_github') do
       OmniAuth.config.test_mode = true
-      OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({"provider"=>"github",
-       "uid"=>"29346170",
-       "info"=>
-        {"nickname"=>"hale4029",
-         "email"=>"harrison483@gmail.com",
-         "name"=>"Harrison",
-         "image"=>"https://avatars2.githubusercontent.com/u/29346170?v=4",
-         "urls"=>{"GitHub"=>"https://github.com/hale4029", "Blog"=>""}},
-       "credentials"=>{"token"=>"#{ENV['GITHUB_ACCESS_TOKEN']}", "expires"=>false}})
+      OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({ "provider" => "github",
+                                                                    "uid" => "29346170",
+                                                                    "info" =>
+        { "nickname" => "hale4029",
+          "email" => "harrison483@gmail.com",
+          "name" => "Harrison",
+          "image" => "https://avatars2.githubusercontent.com/u/29346170?v=4",
+          "urls" => { "GitHub" => "https://github.com/hale4029", "Blog" => "" } },
+                                                                    "credentials" => { "token" => "#{ENV['GITHUB_ACCESS_TOKEN']}", "expires" => false } })
 
       visit '/dashboard'
       expect(page).to_not have_content("Github Repos")

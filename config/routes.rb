@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
-      resources :tutorials, only:[:show, :index]
-      resources :videos, only:[:show]
+      resources :tutorials, only: [:show, :index]
+      resources :videos, only: [:show]
     end
   end
 
@@ -35,10 +35,10 @@ Rails.application.routes.draw do
   get '/invite', to: 'invite_email#new'
   post '/invite', to: 'invite_email#create'
 
-  #mailer
+  # mailer
   post '/notifications' => 'notifications#create'
 
-  #confirmation_email
+  # confirmation_email
   get '/:token/confirm_email', :to => "verification_email_notifier#update"
 
   # Is this being used?
@@ -50,9 +50,9 @@ Rails.application.routes.draw do
     resources :videos, only: [:show, :index]
   end
 
-  resources :user_videos, only:[:create, :destroy]
+  resources :user_videos, only: [:create, :destroy]
 
-  #GITHUBAPI
+  # GITHUBAPI
   get 'auth/github', :as => 'github_login'
   get '/auth/github/callback', to: 'github#create'
 end

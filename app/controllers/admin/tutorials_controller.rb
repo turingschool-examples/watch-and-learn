@@ -14,15 +14,15 @@ class Admin::TutorialsController < Admin::BaseController
   end
 
   def create
-  @tutorial = Tutorial.new(new_tutorial_params)
+    @tutorial = Tutorial.new(new_tutorial_params)
 
-  if @tutorial.save
-    redirect_to tutorial_path(@tutorial.id),
-                success: 'Successfully created tutorial.'
-  else
-    flash.now[:error] = @tutorial.errors.full_messages.to_sentence
-    render :new
-  end
+    if @tutorial.save
+      redirect_to tutorial_path(@tutorial.id),
+                  success: 'Successfully created tutorial.'
+    else
+      flash.now[:error] = @tutorial.errors.full_messages.to_sentence
+      render :new
+    end
 end
 
   def update
@@ -34,6 +34,7 @@ end
   end
 
   private
+
   def tutorial_params
     params.require(:tutorial).permit(:tag_list)
   end

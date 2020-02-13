@@ -1,7 +1,6 @@
 class InviteEmailController < ApplicationController
-
   def new
-    #empty
+    # empty
   end
 
   def create

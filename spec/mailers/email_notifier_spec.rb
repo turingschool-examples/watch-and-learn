@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe EmailNotifierMailer, type: :mailer do
   it 'renders the subject' do
     current_user = create(:user)
-    data = {email: 'nobody@example.com', name: "Harry"}
+    data = { email: 'nobody@example.com', name: "Harry" }
     mail = EmailNotifierMailer.inform(current_user, data).deliver_now
 
     expect(mail.to).to eq(['nobody@example.com'])

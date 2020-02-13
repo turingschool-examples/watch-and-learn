@@ -17,7 +17,6 @@ VCR.configure do |config|
   config.filter_sensitive_data("<GITHUB_ACCESS_TOKEN>") { ENV['GITHUB_ACCESS_TOKEN'] }
 end
 
-
 ActiveRecord::Migration.maintain_test_schema!
 
 Capybara.register_driver :selenium do |app|
@@ -33,7 +32,7 @@ end
 SimpleCov.start "rails"
 
 Shoulda::Matchers.configure do |config|
-    config.integrate do |with|
+  config.integrate do |with|
     with.test_framework :rspec
     with.library :rails
   end
