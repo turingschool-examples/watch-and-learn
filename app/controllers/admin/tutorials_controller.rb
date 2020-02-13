@@ -9,7 +9,8 @@ class Admin::TutorialsController < Admin::BaseController
 
   def destroy
     tutorial = Tutorial.destroy(params[:id])
-    redirect_to admin_tutorial_path
+    flash[:notice] = "Tutorial and related videos deleted."
+    redirect_to "/admin/dashboard"
   end
 
   def create

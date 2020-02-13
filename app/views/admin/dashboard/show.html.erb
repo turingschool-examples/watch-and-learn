@@ -13,7 +13,7 @@
   <% @facade.tutorials.each do |tutorial| %>
     <tr class="admin-tutorial-card">
       <td><%= link_to tutorial.title, tutorial_path(tutorial) %></td>
-      <td>
+      <td id='buttons'>
         <%= link_to "Edit", edit_admin_tutorial_path(tutorial) %> |
         <%= button_to 'Destroy',  "/admin/tutorials/#{tutorial.id}", method: :delete %>
       </td>
