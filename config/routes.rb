@@ -33,6 +33,8 @@ Rails.application.routes.draw do
 
   post '/friendships/:friend_id', to: 'friendships#create'
 
+  get '/activate/:user_id', to: 'activate#show'
+
   get '/invite', to: 'invite#index'
 
   get '/dashboard', to: 'users#show'
