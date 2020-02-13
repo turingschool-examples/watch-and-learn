@@ -1,6 +1,6 @@
 class ActivationsController < ApplicationController
   def update
-    user = User.find(params[:format])
+    user = User.find(params[:id])
     user.toggle!(:active)
 
     flash[:notice] = if user.active?

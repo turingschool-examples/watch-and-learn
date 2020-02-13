@@ -1,6 +1,6 @@
 Rails.application.configure do
   # Verifies that versions and hashed value of the package contents in the project's package.json
-  config.webpacker.check_yarn_integrity = true
+  config.webpacker.check_yarn_integrity = false
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
@@ -93,4 +93,19 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+   address:              'smtp.sendgrid.net',
+   port:                 '587',
+   domain:               'brownfield_paired.herokuapp.com',
+   user_name:            ENV["SENDGRID_USERNAME"],
+   password:             ENV["SENDGRID_PASSWORD"],
+   authentication:       'plain',
+   enable_starttls_auto: true
+  }
+ 
+
+
+
 end
