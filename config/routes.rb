@@ -39,7 +39,7 @@ Rails.application.routes.draw do
   # Is this being used?
 
   get '/activation', to: 'activations#update'
-  post '/notification', to: 'notifications#create' as: 'notificaitons_create'
+  post '/notification', to: 'notifications#create', as: 'notificaitons_create'
 
   get '/video', to: 'video#show'
 
