@@ -1,0 +1,13 @@
+<div class="mt1" id="new-video-form">
+
+  <%= form_for [:admin, @video] do |f| %>
+    <%= f.label :title, class: "block" %>
+    <%= f.text_field :title, class: "field block"%>
+    <%= f.label :description, class: "block"%>
+    <%= f.text_field :description, class: "field block"%>
+    <%= f.label :video_id %>
+    <%= f.text_field :video_id, class: "block col-4 field" %>
+
+    <%= f.submit "Edit Video"  %>
+  <% end %>
+</div>
