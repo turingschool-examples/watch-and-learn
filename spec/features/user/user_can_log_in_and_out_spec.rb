@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'User' do
-  it 'user can sign in' do
+  it 'user can sign in', :vcr do
     user = create(:user)
 
     visit '/'
@@ -21,7 +21,7 @@ describe 'User' do
     expect(page).to have_content(user.last_name)
   end
 
-  it 'can log out', :js do
+  it 'can log out', :js, :vcr do
     user = create(:user)
 
     visit login_path
@@ -42,7 +42,7 @@ describe 'User' do
     expect(page).to have_content('SIGN IN')
   end
 
-  it 'is shown an error when incorrect info is entered' do
+  it 'is shown an error when incorrect info is entered', :vcr do
     user = create(:user)
     fake_email = "email@email.com"
     fake_password = "123"
