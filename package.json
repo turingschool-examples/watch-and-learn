@@ -3,9 +3,13 @@
   "private": true,
   "dependencies": {
     "@rails/webpacker": "3.5",
-    "stimulus": "^1.1.1"
+    "caniuse-lite": "^1.0.30000697",
+    "js-yaml": "3.13.1",
+    "serialize-javascript": "2.1.1",
+    "stimulus": "^1.1.1",
+    "webpack": "4.0.0"
   },
   "devDependencies": {
-    "webpack-dev-server": "3.1.11"
+    "webpack-dev-server": "^3.10.3"
   }
 }
