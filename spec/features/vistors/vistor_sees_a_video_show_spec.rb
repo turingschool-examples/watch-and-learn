@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'visitor sees a video show' do
-  it 'vistor clicks on a tutorial title from the home page' do
+  xit 'vistor clicks on a tutorial title from the home page' do
     tutorial = create(:tutorial)
     video = create(:video, tutorial_id: tutorial.id)
 
