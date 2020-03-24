@@ -1,6 +1,24 @@
 {
-  "application.js": "/packs/application-266412e0da27a9609694.js",
-  "application.js.map": "/packs/application-266412e0da27a9609694.js.map",
-  "controllers/tutorials_controller.js": "/packs/controllers/tutorials_controller-0d0d50cd393be02280a0.js",
-  "controllers/tutorials_controller.js.map": "/packs/controllers/tutorials_controller-0d0d50cd393be02280a0.js.map"
+  "application.js": "/packs/js/application-4f2cd29bf1d4aac182a1.js",
+  "application.js.map": "/packs/js/application-4f2cd29bf1d4aac182a1.js.map",
+  "controllers/tutorials_controller.js": "/packs/js/controllers/tutorials_controller-5e165196b7ba32a5adbc.js",
+  "controllers/tutorials_controller.js.map": "/packs/js/controllers/tutorials_controller-5e165196b7ba32a5adbc.js.map",
+  "entrypoints": {
+    "application": {
+      "js": [
+        "/packs/js/application-4f2cd29bf1d4aac182a1.js"
+      ],
+      "js.map": [
+        "/packs/js/application-4f2cd29bf1d4aac182a1.js.map"
+      ]
+    },
+    "controllers/tutorials_controller": {
+      "js": [
+        "/packs/js/controllers/tutorials_controller-5e165196b7ba32a5adbc.js"
+      ],
+      "js.map": [
+        "/packs/js/controllers/tutorials_controller-5e165196b7ba32a5adbc.js.map"
+      ]
+    }
+  }
 }
