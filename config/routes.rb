@@ -34,6 +34,7 @@ Rails.application.routes.draw do
 
   # Is this being used?
   get '/video', to: 'video#show'
+  # get "/packs-test/application-880e3a31c9d4c55bac14.js"
 
   resources :users, only: [:new, :create, :update, :edit]
 
