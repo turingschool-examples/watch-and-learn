@@ -30,6 +30,10 @@ Capybara.configure do |config|
   config.default_max_wait_time = 5
 end
 
+Capybara.configure do |config|
+  config.server = :puma, { Silent: true }
+end
+
 SimpleCov.start "rails"
 
 Shoulda::Matchers.configure do |config|
