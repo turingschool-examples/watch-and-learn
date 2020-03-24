@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature "An admin can delete a tutorial" do
-  xscenario "and it should no longer exist" do
+  scenario "and it should no longer exist" do
     admin = create(:admin)
     create_list(:tutorial, 2)
 
