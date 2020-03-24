@@ -50,3 +50,7 @@ RSpec.configure do |config|
 
   config.filter_rails_from_backtrace!
 end
+
+Capybara.configure do |config|
+  config.server = :puma, { Silent: true }
+end
