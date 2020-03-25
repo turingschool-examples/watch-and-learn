@@ -11,6 +11,7 @@ describe "An Admin can edit a tutorial" do
 
     click_on "Add Video"
 
+
     within("#new-video-form") do 
       fill_in :video['title'], with: "How to tie your shoes."
       fill_in 'video_description', with: "Over, under, around and through, Meet Mr. Bunny Rabbit, pull and through."
