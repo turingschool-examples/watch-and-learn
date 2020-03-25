@@ -8,7 +8,7 @@ http_interactions:
       string: ''
     headers:
       User-Agent:
-      - Faraday v0.12.2
+      - Faraday v1.0.0
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -19,13 +19,13 @@ http_interactions:
       message: OK
     headers:
       Expires:
-      - Thu, 12 Mar 2020 18:23:54 GMT
+      - Wed, 25 Mar 2020 17:31:25 GMT
       Date:
-      - Thu, 12 Mar 2020 18:23:54 GMT
+      - Wed, 25 Mar 2020 17:31:25 GMT
       Cache-Control:
       - private, max-age=0, must-revalidate, no-transform
       Etag:
-      - '"SJZWTG6xR0eGuCOh2bX6w3s4F94/7RPlr-dHgPNrsS5EquixnP1_4tk"'
+      - '"ksCrgYQhtFrXgbHAhi9Fo5t0C2I/xBzmwvS87TfOV1IETX9xGWZN7dY"'
       Vary:
       - Origin
       - X-Origin
@@ -44,7 +44,7 @@ http_interactions:
       Alt-Svc:
       - quic=":443"; ma=2592000; v="46,43",h3-Q050=":443"; ma=2592000,h3-Q049=":443";
         ma=2592000,h3-Q048=":443"; ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443";
-        ma=2592000
+        ma=2592000,h3-T050=":443"; ma=2592000
       Transfer-Encoding:
       - chunked
     body:
@@ -52,7 +52,7 @@ http_interactions:
       string: |
         {
          "kind": "youtube#videoListResponse",
-         "etag": "\"SJZWTG6xR0eGuCOh2bX6w3s4F94/7RPlr-dHgPNrsS5EquixnP1_4tk\"",
+         "etag": "\"ksCrgYQhtFrXgbHAhi9Fo5t0C2I/xBzmwvS87TfOV1IETX9xGWZN7dY\"",
          "pageInfo": {
           "totalResults": 1,
           "resultsPerPage": 1
@@ -60,7 +60,7 @@ http_interactions:
          "items": [
           {
            "kind": "youtube#video",
-           "etag": "\"SJZWTG6xR0eGuCOh2bX6w3s4F94/KMl5IBD1SpS9UKX51neUpDHAQu0\"",
+           "etag": "\"ksCrgYQhtFrXgbHAhi9Fo5t0C2I/2XwE-yDz8-kkqdotxkh9ulQPPVs\"",
            "id": "J7ikFUlkP_k",
            "snippet": {
             "publishedAt": "2018-07-23T20:59:59.000Z",
@@ -111,7 +111,7 @@ http_interactions:
             "projection": "rectangular"
            },
            "statistics": {
-            "viewCount": "259",
+            "viewCount": "262",
             "likeCount": "2",
             "dislikeCount": "0",
             "favoriteCount": "0",
@@ -120,6 +120,6 @@ http_interactions:
           }
          ]
         }
-    http_version:
-  recorded_at: Thu, 12 Mar 2020 18:23:54 GMT
-recorded_with: VCR 4.0.0
+    http_version: null
+  recorded_at: Wed, 25 Mar 2020 17:31:25 GMT
+recorded_with: VCR 5.1.0
