@@ -11,7 +11,7 @@
   },
   "devDependencies": {
     "@babel/plugin-syntax-dynamic-import": "^7.8.3",
-    "plugins": ["@babel/plugin-syntax-dynamic-import"],
+    "babel-cli": "^6.26.0",
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.10.3"
   }
