@@ -1,5 +1,5 @@
 module YouTube
-  class Video
+  class Video < ApplicationRecord
     attr_reader :thumbnail
 
     def initialize(data = {})
