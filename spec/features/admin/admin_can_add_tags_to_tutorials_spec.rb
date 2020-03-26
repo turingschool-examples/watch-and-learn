@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe 'An admin user can add tags to tutorials' do
-  VCR.use_cassette do
   it 'clicks on the add tag on a tutoral' do
     admin = create(:user, role: 1)
     tutorial = create(:tutorial)
@@ -30,6 +29,5 @@ describe 'An admin user can add tags to tutorials' do
     end
 
     expect(current_path).to eq("/tags/Ruby")
-  end
   end
 end
