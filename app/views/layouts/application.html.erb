@@ -19,7 +19,12 @@
           <%= content_tag :div, msg, class: name %>
         <% end %>
       </div>
-      <nav><%= link_to "Sign Up", "/auth/github" %></nav>
+      <nav>
+        <%= link_to "Sign Up", "/auth/github" %>
+        <% if current_user && current_user.github_token %>
+          <p><%= link_to "Github", "/dashboard" %></p>
+        <%end%> 
+      </nav>
       <%= yield %>
     </main>
   </body>
