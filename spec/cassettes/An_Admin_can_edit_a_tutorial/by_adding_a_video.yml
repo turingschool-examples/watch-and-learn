@@ -24,9 +24,9 @@ http_interactions:
       Content-Type:
       - application/json; charset=UTF-8
       Date:
-      - Tue, 31 Mar 2020 21:07:36 GMT
+      - Tue, 31 Mar 2020 21:24:07 GMT
       Expires:
-      - Tue, 31 Mar 2020 21:07:36 GMT
+      - Tue, 31 Mar 2020 21:24:07 GMT
       Cache-Control:
       - private, max-age=0
       X-Content-Type-Options:
@@ -62,5 +62,5 @@ http_interactions:
          }
         }
     http_version: null
-  recorded_at: Tue, 31 Mar 2020 21:07:36 GMT
+  recorded_at: Tue, 31 Mar 2020 21:24:07 GMT
 recorded_with: VCR 5.1.0

@@ -3,6 +3,7 @@ class UsersController < ApplicationController
     if current_user.username
       @repos = SearchFacade.new().get_repos(current_user.username)[0..4]
       @followers = SearchFacade.new().get_followers(current_user.username)[0..4]
+      @following = SearchFacade.new().get_following(current_user.username)[0..4]
     end
   end
 

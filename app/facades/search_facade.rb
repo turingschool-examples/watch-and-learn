@@ -7,6 +7,10 @@ class SearchFacade
   def get_followers(username)
     get_followers_data(username)
   end 
+  
+  def get_following(username)
+    get_following_data(username)
+  end 
 
   private
 
@@ -17,6 +21,11 @@ class SearchFacade
   
   def get_followers_data(username)
     response = connection.get("/users/#{username}/followers")
+    json = JSON.parse(response.body, symbolize_names: true)
+  end
+
+  def get_following_data(username)
+    response = connection.get("/users/#{username}/following")
     json = JSON.parse(response.body, symbolize_names: true)
   end
 

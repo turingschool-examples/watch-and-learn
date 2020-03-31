@@ -17,12 +17,21 @@
     </section>
   <% end %>
   <% if current_user && @followers %>
-    
     <section id="followers">
       <p>Github Followers: </p>
       <% @followers.each do |follower|%>
         <article id="followers-<%= follower[:id] %>">
           <%= link_to follower[:login], follower[:html_url] %>
+        </article>
+      <% end %>
+    </section><br>
+  <% end %>
+  <% if current_user && @following %>
+    <section id="following">
+      <p>Github following: </p>
+      <% @following.each do |followed|%>
+        <article id="following-<%= followed[:id] %>">
+          <%= link_to followed[:login], followed[:html_url] %>
         </article>
       <% end %>
     </section>

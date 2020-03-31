@@ -233,7 +233,9 @@ RSpec.describe 'As a user', type: :feature do
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
+    
     visit '/dashboard'
+    # user.reload
 # save_and_open_page
     within "#followers" do
         expect(page).to have_css(".follower", count: 11)
