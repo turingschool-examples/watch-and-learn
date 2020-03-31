@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
   def show
+    if current_user.username
+      @repos = SearchFacade.new().get_repos(current_user.username)[0..4]
+    end
   end
 
   def new
@@ -13,6 +16,7 @@ class UsersController < ApplicationController
       redirect_to dashboard_path
     else
       flash[:error] = 'Username already exists'
+      @user = User.new
       render :new
     end
   end
