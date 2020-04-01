@@ -32,6 +32,9 @@ Rails.application.routes.draw do
   get '/about', to: 'about#show'
   get '/get_started', to: 'get_started#show'
 
+  get '/friendships/:login', to: 'friendships#create'
+
+
   # Is this being used?
   get '/video', to: 'video#show'
 
@@ -40,6 +43,8 @@ Rails.application.routes.draw do
   resources :tutorials, only: [:show, :index] do
     resources :videos, only: [:show, :index]
   end
+
+  get '/auth/:provider/callback', to: 'sessions#update'
 
   resources :user_videos, only:[:create, :destroy]
 end
