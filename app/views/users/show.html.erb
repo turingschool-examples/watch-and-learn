@@ -27,16 +27,24 @@
     <% end %>
     <% if current_user && search_facade.followers %>
       <section class="following">
-      <p>Total People Followed: <%= search_facade.following.length %> </p>
-      <p>Following:  </p>
+      <h3>Total People Followed: <%= search_facade.following.length %> </h3>
+      <h3>Following:  </h3>
         <% search_facade.following.each do |following|%>
             <p><%= link_to following.name, following.url %> </p>
         <% end %>
       </section>
     <% end %>
+    <% if current_user && current_user.friends %>
+      <section class="friends">
+      <h3>Friends:  </h3>
+        <% current_user.friends.each do |friend| %>
+        <p><%= friend.username%></p>
+        <% end %>
+      </section>
+    <% end %>
   <% end %>
     <section>
-    <h1>Bookmarked Segments</h1>
+    <h3>Bookmarked Segments</h3>
     <% if current_user && current_user.bookmarked.length > 0 %>
       <section class="bookmarked">
         <% current_user.bookmarked.each do |video| %>

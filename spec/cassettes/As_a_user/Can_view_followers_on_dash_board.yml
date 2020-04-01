@@ -1,0 +1,74 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.github.com/users/repos?token=21f4b79e0063ce8e536cedc8447ba82626622be7
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.0.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 01 Apr 2020 02:02:39 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Server:
+      - GitHub.com
+      Status:
+      - 200 OK
+      Cache-Control:
+      - public, max-age=60, s-maxage=60
+      Vary:
+      - Accept, Accept-Encoding, Accept, X-Requested-With
+      Etag:
+      - W/"86ac2ccc4e3c76cab65c2713efe86b13"
+      Last-Modified:
+      - Sun, 09 Mar 2014 10:18:05 GMT
+      X-Github-Media-Type:
+      - github.v3; format=json
+      Access-Control-Expose-Headers:
+      - ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
+        X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval,
+        X-GitHub-Media-Type, Deprecation, Sunset
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Content-Security-Policy:
+      - default-src 'none'
+      X-Ratelimit-Limit:
+      - '60'
+      X-Ratelimit-Remaining:
+      - '56'
+      X-Ratelimit-Reset:
+      - '1585709472'
+      Accept-Ranges:
+      - bytes
+      Content-Length:
+      - '431'
+      X-Github-Request-Id:
+      - E206:2036:AAAA4:E7E2B:5E83F63E
+    body:
+      encoding: ASCII-8BIT
+      string: '{"login":"repos","id":77416,"node_id":"MDQ6VXNlcjc3NDE2","avatar_url":"https://avatars0.githubusercontent.com/u/77416?v=4","gravatar_id":"","url":"https://api.github.com/users/repos","html_url":"https://github.com/repos","followers_url":"https://api.github.com/users/repos/followers","following_url":"https://api.github.com/users/repos/following{/other_user}","gists_url":"https://api.github.com/users/repos/gists{/gist_id}","starred_url":"https://api.github.com/users/repos/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/repos/subscriptions","organizations_url":"https://api.github.com/users/repos/orgs","repos_url":"https://api.github.com/users/repos/repos","events_url":"https://api.github.com/users/repos/events{/privacy}","received_events_url":"https://api.github.com/users/repos/received_events","type":"User","site_admin":false,"name":null,"company":null,"blog":"","location":null,"email":null,"hireable":null,"bio":null,"public_repos":0,"public_gists":0,"followers":19,"following":0,"created_at":"2009-04-24T13:53:27Z","updated_at":"2014-03-09T10:18:05Z"}'
+    http_version: null
+  recorded_at: Wed, 01 Apr 2020 02:02:39 GMT
+recorded_with: VCR 5.1.0
