@@ -7,33 +7,44 @@
     <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
     <li> <%= current_user.email%> </li>
   </ul>
-  <% if current_user && search_facade.repos %>
-    <section class="repos">
-    <p>Github Repositories: </p>
-      <% search_facade.repos.each do |repo|%>
-          <p>Repo Name: <%= link_to repo.name, repo.url %> </p>
-      <% end %>
-    </section>
+  <% if current_user.github_token %>
+    <% if current_user && search_facade.repos %>
+      <section class="repos">
+      <p>Github Repositories: </p>
+        <% search_facade.repos.each do |repo|%>
+            <p>Repo Name: <%= link_to repo.name, repo.url %> </p>
+        <% end %>
+      </section>
+    <% end %>
+    <% if current_user && search_facade.followers %>
+      <section class="followers">
+      <p>Total Followers: <%= search_facade.followers.length %> </p>
+      <p>Followers:  </p>
+        <% search_facade.followers.each do |follower|%>
+            <p><%= link_to follower.name, follower.url %> </p>
+        <% end %>
+      </section>
+    <% end %>
+    <% if current_user && search_facade.followers %>
+      <section class="following">
+      <p>Total People Followed: <%= search_facade.following.length %> </p>
+      <p>Following:  </p>
+        <% search_facade.following.each do |following|%>
+            <p><%= link_to following.name, following.url %> </p>
+        <% end %>
+      </section>
+    <% end %>
   <% end %>
-  <% if current_user && search_facade.followers %>
-    <section class="followers">
-    <p>Total Followers: <%= search_facade.followers.length %> </p>
-    <p>Followers:  </p>
-      <% search_facade.followers.each do |follower|%>
-          <p><%= link_to follower.name, follower.url %> </p>
-      <% end %>
-    </section>
-  <% end %>
-  <% if current_user && search_facade.followers %>
-    <section class="following">
-    <p>Total People Followed: <%= search_facade.following.length %> </p>
-    <p>Following:  </p>
-      <% search_facade.following.each do |following|%>
-          <p><%= link_to following.name, following.url %> </p>
-      <% end %>
-    </section>
-  <% end %>
-  <section>
+    <section>
     <h1>Bookmarked Segments</h1>
+    <% if current_user && current_user.bookmarked.length > 0 %>
+      <section class="bookmarked">
+        <% current_user.bookmarked.each do |video| %>
+          <iframe src= <%="https://www.youtube.com/embed/#{video.video_id}" %>  width="450" height="300"></iframe>
+        <% end %>
+      </section>
+    <% else %>
+      <p>You do not currently have any bookmarked videos</p>
+    <% end %>
   </section>
 </section>
