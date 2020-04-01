@@ -10,4 +10,8 @@ class User < ApplicationRecord
   validates_presence_of :github_token, allow_blank: true
   enum role: [:default, :admin]
   has_secure_password
+
+  def bookmarked
+    videos.order(tutorial_id: :asc).order(position: :asc)
+  end
 end

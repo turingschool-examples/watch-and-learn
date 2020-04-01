@@ -1,9 +1,11 @@
 class UsersController < ApplicationController
   def show
-    render   locals: {
-      search_facade: SearchFacade.new(current_user)
-    }
-  end 
+    if current_user.github_token
+      render   locals: {
+        search_facade: SearchFacade.new(current_user)
+      }
+    end
+  end
 
   def new
     @user = User.new
