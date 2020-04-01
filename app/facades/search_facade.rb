@@ -13,4 +13,12 @@ class SearchFacade
     end 
     return @repos
   end 
+
+  def followers
+    data = @git_service.get_followers
+    @followers = data.map do |follower|
+      Follower.new(follower)
+    end 
+    return @followers
+  end 
 end

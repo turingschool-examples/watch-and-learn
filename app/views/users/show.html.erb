@@ -15,6 +15,15 @@
       <% end %>
     </section>
   <% end %>
+  <% if current_user && search_facade.followers %>
+    <section class="followers">
+    <p>Total Followers: <%= search_facade.followers.length %> </p>
+    <p>Followers:  </p>
+      <% search_facade.followers.each do |follower|%>
+          <p><%= link_to follower.name, follower.url %> </p>
+      <% end %>
+    </section>
+  <% end %>
   <section>
     <h1>Bookmarked Segments</h1>
   </section>
