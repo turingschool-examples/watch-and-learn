@@ -1,35 +1,24 @@
 class SearchFacade
+  attr_reader :user
 
-  def get_repos(username)
-    get_repos_data(username)
-  end
-
-  def get_followers(username)
-    get_followers_data(username)
-  end 
-  
-  def get_following(username)
-    get_following_data(username)
-  end 
-
-  private
-
-  def get_repos_data(username)
-    response = connection.get("/users/#{username}/repos")
-    json = JSON.parse(response.body, symbolize_names: true)
+  def initialize(user)
+    @user = user
+    @git_service = GithubService.new(@user.github_token, @user.username)
   end
   
-  def get_followers_data(username)
-    response = connection.get("/users/#{username}/followers")
-    json = JSON.parse(response.body, symbolize_names: true)
-  end
+  def repos
+    data = @git_service.get_repos
+    @repos = data.map do |repo|
+      Repository.new(repo)
+    end 
+    return @repos
+  end 
 
-  def get_following_data(username)
-    response = connection.get("/users/#{username}/following")
-    json = JSON.parse(response.body, symbolize_names: true)
-  end
-
-  def connection
-    conn = Faraday.new(url: "https://api.github.com/")
+  def followers
+    data = @git_service.get_followers
+    @followers = data.map do |follower|
+      Follower.new(follower)
+    end 
+    return @followers
   end 
 end

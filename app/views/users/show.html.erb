@@ -7,32 +7,20 @@
     <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
     <li> <%= current_user.email%> </li>
   </ul>
-  <% if current_user && @repos %>
+  <% if current_user && search_facade.repos %>
     <section class="repos">
-      <% @repos.each do |repo|%>
-        <article id="repos-<%= repo[:id] %>">
-          <p>Repo Name: <%= link_to repo[:name], repo[:html_url] %>
-        </article>
+    <p>Github Repositories: </p>
+      <% search_facade.repos.each do |repo|%>
+          <p>Repo Name: <%= link_to repo.name, repo.url %> </p>
       <% end %>
     </section>
   <% end %>
-  <% if current_user && @followers %>
-    <section id="followers">
-      <p>Github Followers: </p>
-      <% @followers.each do |follower|%>
-        <article id="followers-<%= follower[:id] %>">
-          <%= link_to follower[:login], follower[:html_url] %>
-        </article>
-      <% end %>
-    </section><br>
-  <% end %>
-  <% if current_user && @following %>
-    <section id="following">
-      <p>Github following: </p>
-      <% @following.each do |followed|%>
-        <article id="following-<%= followed[:id] %>">
-          <%= link_to followed[:login], followed[:html_url] %>
-        </article>
+  <% if current_user && search_facade.followers %>
+    <section class="followers">
+    <p>Total Followers: <%= search_facade.followers.length %> </p>
+    <p>Followers:  </p>
+      <% search_facade.followers.each do |follower|%>
+          <p><%= link_to follower.name, follower.url %> </p>
       <% end %>
     </section>
   <% end %>
