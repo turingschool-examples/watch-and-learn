@@ -24,6 +24,15 @@
       <% end %>
     </section>
   <% end %>
+  <% if current_user && search_facade.followers %>
+    <section class="following">
+    <p>Total People Followed: <%= search_facade.following.length %> </p>
+    <p>Following:  </p>
+      <% search_facade.following.each do |following|%>
+          <p><%= link_to following.name, following.url %> </p>
+      <% end %>
+    </section>
+  <% end %>
   <section>
     <h1>Bookmarked Segments</h1>
   </section>
