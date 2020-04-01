@@ -66,7 +66,20 @@
     <%= link_to 'Connect to GitHub', '/auth/github', method: :get, class: "btn btn-primary mb1 bg-teal" %>
   <% end %>
 
-  <section>
+  <section class = "bookmarks">
     <h1>Bookmarked Segments</h1>
+      <% if search_results.user_bookmarked_videos? == true %>
+        <ul>
+          <% search_results.user_bookmarked_videos.each do |video| %>
+          <section class = "bookmark-<%= video.video_id %>">
+            <li><%= video.tutorial_title %></li>
+            <li><%= link_to video.title, "/tutorials/#{video.tutorial_id}?video_id=#{video.video_id}" %></li>
+          </section>
+          <% end  %>
+        </ul>
+      <% else %>
+        <p>No videos bookmarked!</p>
+      <% end %>
   </section>
+
 </section>
