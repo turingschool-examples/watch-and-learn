@@ -33,6 +33,6 @@ class SessionsController < ApplicationController
   end
 
   def auth_github_username
-  request.env['omniauth.auth']['info']['nickname']
+    request.env['omniauth.auth']['info']['nickname']
   end
 end
