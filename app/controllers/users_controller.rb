@@ -31,7 +31,6 @@ class UsersController < ApplicationController
   def activation_process(user)
     ActivationMailer.activate_user(user).deliver_now
     render_flash(user)
-
   end
 
   def render_flash(user)
