@@ -14,6 +14,8 @@ class UsersController < ApplicationController
     user = User.create(user_params)
     if user.save
       session[:user_id] = user.id
+      user_name = user.first_name + " " + user.last_name
+      flash[:success] = "Logged in as #{user_name}"
       redirect_to dashboard_path
     else
       flash[:error] = 'Username already exists'
