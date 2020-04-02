@@ -9,6 +9,7 @@
   </ul>
 
 <% if current_user.github_token != nil %>
+<%= link_to 'Send an Invite', '/invite', method: :get, class: "btn btn-primary mb1 bg-teal" %>
 
   <section class='github'>
     <h1>Github</h1>
