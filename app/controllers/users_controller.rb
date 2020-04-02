@@ -14,6 +14,7 @@ class UsersController < ApplicationController
     user = User.create(user_params)
     if user.save
       session[:user_id] = user.id
+      ActivationMailer.activate_user(user).deliver_now
       user_name = user.first_name + " " + user.last_name
       flash[:success] = "Logged in as #{user_name}"
       flash[:email] = "This account has not yet been activated. Please check your email."
