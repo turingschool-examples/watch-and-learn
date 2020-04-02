@@ -122,4 +122,28 @@ RSpec.describe 'A registered user' do
     end
   end
 
+  it "can send email invitations" do
+    user = create(:user, github_token: ENV['GITHUB_USER_TOKEN_ea'])
+    visit login_path
+
+    fill_in'session[email]', with: user.email
+    fill_in'session[password]', with: user.password
+    click_on 'Log In'
+
+    expect(current_path).to eq(dashboard_path)
+
+    click_on 'Send an Invite'
+
+    expect(current_path).to eq('/invite')
+
+    github_handle = 'eamouzou'
+
+    fill_in'invite[github_handle]', with: github_handle
+
+    click_on 'Send Invite'
+
+    expect(current_path).to eq(dashboard_path)
+    expect(page).to have_content("The Github user you selected doesn't have an email address associated with their account.")
+  end
+
 end
