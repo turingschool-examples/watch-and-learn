@@ -56,4 +56,30 @@ describe 'User' do
 
     expect(page).to have_content("Looks like your email or password is invalid")
   end
+
+  it 'user can sign in', :vcr do
+    email = "shani@satterfieldwehner.info"
+    first_name = "Tyson"
+    last_name = "Magritte"
+    password = "password"
+    user_name = first_name + " " + last_name
+
+    visit '/'
+
+    click_on "Register"
+
+    expect(current_path).to eq('/register')
+    expect(page).to have_content('Register')
+
+    fill_in 'user[email]', with: email
+    fill_in 'user[first_name]', with: first_name
+    fill_in 'user[last_name]', with: last_name
+    fill_in 'user[password]', with: password
+    fill_in 'user[password_confirmation]', with: password
+
+    click_on 'Create Account'
+
+    expect(current_path).to eq(dashboard_path)
+    expect(page).to have_content("Logged in as #{user_name}")
+  end
 end
