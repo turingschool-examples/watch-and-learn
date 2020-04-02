@@ -21,7 +21,10 @@
       <p>Total Followers: <%= search_facade.followers.length %> </p>
       <p>Followers:  </p>
         <% search_facade.followers.each do |follower|%>
-            <p><%= link_to follower.name, follower.url %> </p>
+            <p><%= link_to follower.name, follower.url %>
+            <% if follower.in_data %>
+              <%=  button_to "Add Friend", "/friendships/#{follower.uid}", method: :post %></p>
+            <% end %>
         <% end %>
       </section>
     <% end %>

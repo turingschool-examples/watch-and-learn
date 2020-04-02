@@ -116,5 +116,5 @@ m3_tutorial.videos.create!({
 })
 
 admin = User.create!(email: 'admin@example.com', first_name: 'Bossy', last_name: 'McBosserton', password:  "password", role: :admin)
-friend = User.create!(username:"TronKat", email: 'friend@example.com', first_name: 'Tron', last_name: 'Kat', password:  "password")
-Friendship.create!(user_id: admin.id, friend_id: friend.id)
+friend = User.create!(username:"TronKat", email: 'friend@example.com', first_name: 'Tron', last_name: 'Kat', password:  "password", uid: 46252038)
+# Friendship.create!(user_id: admin.id, friend_id: friend.id)
