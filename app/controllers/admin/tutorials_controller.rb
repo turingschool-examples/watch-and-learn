@@ -3,8 +3,7 @@ class Admin::TutorialsController < Admin::BaseController
     @tutorial = Tutorial.find(params[:id])
   end
 
-  def create
-  end
+  def create; end
 
   def new
     @tutorial = Tutorial.new
@@ -20,13 +19,12 @@ class Admin::TutorialsController < Admin::BaseController
 
   def destroy
     tutorial = Tutorial.find(params[:id])
-    if tutorial.destroy
-      flash[:success] = "#{tutorial.title} tagged!"
-    end
+    flash[:success] = "#{tutorial.title} tagged!" if tutorial.destroy
     redirect_to admin_dashboard_path
   end
 
   private
+
   def tutorial_params
     params.require(:tutorial).permit(:tag_list)
   end
