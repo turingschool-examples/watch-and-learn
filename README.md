@@ -22,8 +22,6 @@ A visitor is able to see all of the content on the application but in order to b
 
 ## Local Setup
 
-First you'll need to setup an API key with YouTube and have it defined within `ENV['YOUTUBE_API_KEY']`. There will be one failing spec if you don't have this set up.
-
 Clone down the repo
 ```
 $ git clone
@@ -38,20 +36,37 @@ Install node packages for stimulus
 ```
 $ brew install node
 $ brew install yarn
-$ yarn add stimulus
+$ yarn
 ```
 
 Set up the database
 ```
-$ rake db:create
-$ rake db:migrate
-$ rake db:seed
+$ rails db:create
+$ rails db:migrate
+$ rails db:seed
 ```
 
-Run the test suite:
+### Youtube API
+
+This project makes use of the Youtube API.
+
+First, obtain an API key by following steps 1 - 3 in [this guide](https://developers.google.com/youtube/v3/getting-started). When creating new credentials, make sure you choose the "API Key" option. Make sure that you follow the step to enable the Youtube Data API. Your API key will not work without that step.
+
+Once you have obtained an API key and enabled the API:
+
+1. Run `bundle exec figaro install`
+1. This will create the file `config/application.yml`. Open that file.
+1. Append the following to that file: `YOUTUBE_API_KEY: <your api key>`, `replacing <your api key>` with the api key you just obtained.
+
+## Test Suite
+
+You can run the test suite with:
+
 ```ruby
 $ bundle exec rspec
 ```
+
+If set up correctly, and assuming you have internet access and the Youtube API is functioning correctly, you should have all passing tests.
 
 ## Technologies
 * [Stimulus](https://github.com/stimulusjs/stimulus)
