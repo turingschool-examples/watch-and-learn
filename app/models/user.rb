@@ -3,8 +3,12 @@ class User < ApplicationRecord
   has_many :videos, through: :user_videos
 
   validates :email, uniqueness: true, presence: true
-  validates_presence_of :password
-  validates_presence_of :first_name
+  validates :password, presence: true
+  validates :first_name, presence: true
   enum role: { default: 0, admin: 1 }
   has_secure_password
+
+  def git_hub_token?
+    !self[:git_hub_token].nil?
+  end
 end

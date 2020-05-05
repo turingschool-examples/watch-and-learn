@@ -26,4 +26,19 @@ RSpec.describe User, type: :model do
       expect(admin.admin?).to be_truthy
     end
   end
+
+  describe 'instance methods' do
+    it '#git_hub_token? returns true or false if user has a GH token' do
+      user = create(:user)
+      user1 = User.create({email: "fake@example.com",
+                           first_name: "David",
+                           last_name: "Tran",
+                           password: "password",
+                           role: "default",
+                           git_hub_token: "4d17cd958fc7c7709b64d1ae35475caa467ab709"})
+
+      expect(user.git_hub_token?).to eq(false)
+      expect(user1.git_hub_token?).to eq(true)
+    end
+  end
 end

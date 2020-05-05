@@ -1,5 +1,10 @@
+require 'faraday'
+require 'json'
+
 class UsersController < ApplicationController
-  def show; end
+  def show
+    @repos = JSON.parse(connection.body, symbolize_names: true)[0..4]
+  end
 
   def new
     @user = User.new
@@ -17,6 +22,10 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def connection
+    Faraday.get('https://api.github.com/users/davidttran/repos?sort="updated"')
+  end
 
   def user_params
     params.require(:user).permit(:email, :first_name, :last_name, :password)
