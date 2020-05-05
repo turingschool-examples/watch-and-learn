@@ -1,6 +1,6 @@
 langauge: ruby
 rbenv:
-- 2.5.3
+- 2.4.1
 addons:
   postgresql: 9.6
   chrome: stable
@@ -13,5 +13,5 @@ deploy:
   provider: heroku
   api_key:
     secure: qud4/A3EkZRdoS4QtB6d13Np3JebdgAlzV6uHDDf9IBzHAa5QrCUopymjptnOVUzuv2NRiNNm53N2v8Dto/V4SSJUUhFkIcvtLNioc6sEhsghrIRx35romhXJrZ5UTD+Gz+KtAHS4sJRi1u8xQZOuIDHLEkp82py+j8KS7RlZOa9hVa0V+ISZ73FqnHmLLMTDrUpgc/RCZDorgIHoV4Uct3JmhVogVxnvLBscFgGTA6mS4+iwRk9BHms6otM7rGF5xs+iR/839yF8L2/U49g9meYBJQxFOuHXcrFgQQnrVvM9+j+NY8a/QbtorhHb24C274LJb8oL+lIYgYyp61iG4yjudaYNANkIjkdokyz/dSxlxU+Tbfgi038B/L/G8ZjxDSX/+Q7BnV7dlwkb37qzvUjRHWnl9MuS40vEbpQ5o6vK/VEILIQbTUzbVHppYs4X1OZFXeJ13wN0PlY5BIetFwbBpNXEGljkePZQl1IH7X+0GkLd5aHnRKn0Adi5ZqDQrVQN1lMikQ28Ov0RUu60Ue7Rk8caM+G7dfPRCTyB2hBEdNtRWiCjHmB/nGWONBXvbzYS+RNj8OI/071GKQIRyVNh2P2vBPmQXdGH0DNdodg5M6qut7DkRgIuBGwZoL9pNRrJuXhJM3hCzXbwTM398r+8B4MvzPNo/SmWzg5gek=
-  app: 
+  app: stormy-beach-81791
   run: rails db:migrate
