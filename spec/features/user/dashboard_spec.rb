@@ -24,4 +24,24 @@ describe "A registered user" do
 
     expect(page).to have_content("GitHub")
   end
+
+  it 'user with token can visit dashboard and see followers' do
+    user = User.create({email: "fake@example.com",
+                        first_name: "David",
+                        last_name: "Tran",
+                        password: "password",
+                        role: "default",
+                        git_hub_token: "297f3266de9167cd907402888af4721c431bb1dc"})
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+    visit dashboard_path
+
+    within("#followers") do
+      expect(page).to have_content("Followers")
+      expect(page).to have_link("SMJ289")
+      click_link 'SMJ289'
+    end
+
+    expect(current_path).to eq("https://github.com/SMJ289")
+  end
 end
