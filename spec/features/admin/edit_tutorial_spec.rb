@@ -1,10 +1,12 @@
 require 'rails_helper'
 
 describe "An Admin can edit a tutorial" do
-  let(:tutorial) { create(:tutorial) }
-  let(:admin)    { create(:admin) }
+  # let(:tutorial) { create(:tutorial) }
+  # let(:admin)    { create(:admin) }
 
   scenario "by adding a video", :js do
+    admin = create(:admin)
+    tutorial = create(:tutorial)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
     visit edit_admin_tutorial_path(tutorial)
@@ -18,7 +20,7 @@ describe "An Admin can edit a tutorial" do
 
     expect(current_path).to eq(edit_admin_tutorial_path(tutorial))
 
-    within "#video-list" do
+    within(first(".video")) do
       expect(page).to have_content("How to tie your shoes.")
     end
   end
