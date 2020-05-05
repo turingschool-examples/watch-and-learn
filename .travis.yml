@@ -12,5 +12,6 @@ script:
 deploy:
   provider: heroku
   api_key:
-  app:
+    secure: keMmYaRF26760i5hBpdliEog0I+J+/h/CK/8ztD3pMWped9ZCxwRCOIgWrfoFRLVwoUOn/FCzwEtXeWGrPGhLqYukrrmoPK8+TyfW0SirRrGm0G80oqv/C/EWceuoDtX1JxNzJFW80fYZ3iqTLUzTTP+Fxetwbxij1YXxA2Wi4iL9BYEIk5ndusd54WQAXn7EeAtRH7Raq1LjooOKGPFXI7KFfMFQcV6oMQ5Cy+xOP0uAx9jcoyh9EWuQ3Ym4MRxkc91TP4r6XdOJ1nckMmKHtuJe8GvTgI1Gdonfd7MeT+4FKjU27MoqSBWn+e6yrYC61l4AOu8MWwnqOP39epi4RGGgxegr7YEjM2spfN7lE0O7pJDpR9B/m3d6oAxgwxCEqGzm+7lFoeBDl/0AXfp3lSZg0QjJaWtkqa9ZM3gxJX/0VE2AcFm7ZM170pVhn/r9ebFp4DbWwrbiwlE27WD/nRl8Yee0LJWunW/p4MQczPmAX3l6YzxAcgKEYoXo+cX1NOH3Qy1U7VeZP95bYkOaJfykge79BmrN/jUMYIqtpEsqHUEqhax6uqoLsa0DZNtsczxUteub/iFpg+27SHYcenv+niRB8aVjVYfL2oXzwQXwOo22yTJ/9FqPFa0bYsS2WBuDX2hIGytyZ8nfiTSU9f00xsNnkxAhrmRzi8r7sY=
+  app: brownfield-of-dreams-kd-jk
   run: rails db:migrate
