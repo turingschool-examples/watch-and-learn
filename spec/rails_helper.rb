@@ -16,7 +16,7 @@ end
 Capybara.javascript_driver = :selenium_chrome_headless
 
 Capybara.configure do |config|
-  config.default_max_wait_time = 30
+  config.default_max_wait_time = 180
 end
 
 SimpleCov.start "rails"
