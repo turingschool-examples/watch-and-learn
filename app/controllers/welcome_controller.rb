@@ -10,7 +10,7 @@ class WelcomeController < ApplicationController
   end
 
   def filter_by_tag(params)
-    if params[key]
+    if params[:tag]
       Tutorial.tagged_with(params[:tag]).paginate(page_limit)
     else
       Tutorial.all.paginate(page_limit)
