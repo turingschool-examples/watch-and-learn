@@ -24,7 +24,9 @@ class UsersController < ApplicationController
   private
 
   def connection
-    Faraday.get('https://api.github.com/users/davidttran/repos?sort="updated"')
+    conn = Faraday.new(url: "https://api.github.com",
+                       params: { access_token: "297f3266de9167cd907402888af4721c431bb1dc" })
+    conn.get('/user/repos')
   end
 
   def user_params
