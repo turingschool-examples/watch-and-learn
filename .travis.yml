@@ -11,6 +11,6 @@ script:
 - bundle exec rspec
 deploy:
   provider: heroku
-  api_key:
-  app:
+  api_key: 9199900f-1059-41b2-9744-33b292e78e0c
+  app: brownfield-of-dreams-paired
   run: rails db:migrate
