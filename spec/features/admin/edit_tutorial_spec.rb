@@ -5,8 +5,6 @@ describe "An Admin can edit a tutorial" do
   let(:admin)    { create(:admin) }
 
   scenario "by adding a video", :js do
-    # admin = create(:admin)
-    # tutorial = create(:tutorial)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
     visit edit_admin_tutorial_path(tutorial)
@@ -19,8 +17,6 @@ describe "An Admin can edit a tutorial" do
     click_on "Create Video"
 
     expect(current_path).to eq(edit_admin_tutorial_path(tutorial))
-
-    tutorial.reload
 
     within(first(".video")) do
       expect(page).to have_content("How to tie your shoes.")
