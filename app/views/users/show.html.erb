@@ -10,7 +10,13 @@
   <section>
     <h1>Bookmarked Segments</h1>
   </section>
-  <%= link_to "Connect to Github",
-"https://github.com/login/oauth/authorize?client_id=e5b765e6ce409b1727a6&scope=repo" %>
+  <p><%= current_user.token%></p>
 
+  <% if current_user.token != nil %>
+    <% @list.each do |link| %>
+      <%= link_to "#{link}", "https://github.com/{link}" %>
+    <% end %>
+  <% else %>
+    <%= link_to "Connect to Github", "https://github.com/login/oauth/authorize?client_id=e5b765e6ce409b1727a6&scope=repo" %>
+  <% end %>
 </section>
