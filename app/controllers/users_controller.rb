@@ -1,17 +1,7 @@
 class UsersController < ApplicationController
   def show
-    conn = Faraday.new(url: "https://api.github.com") do |faraday|
-      faraday.headers["Authorization"] = 'token 760f474f9836b5381968b12489a1ad211f177064'
-    end
-    repo = conn.get("/user/repos")
-    json = JSON.parse(repo.body, symbolize_names: true)
-
-    @list = []
-    count = 0
-    until count == 5
-      @list << json[count][:full_name]
-      count += 1
-    end
+    @list = current_user.repos unless current_user.token.nil?
+    @followers = current_user.followers unless current_user.token.nil?
   end
 
   def new
