@@ -13,15 +13,15 @@
   <% if current_user.git_hub_token? %>
     <section id="repos">
       <h1>GitHub</h1>
-      <% @response.repos[0..4].each do |repo| %>
-      <li><%= link_to repo[:name], repo[:html_url] %><br>
-      <% end  %>
+        <% @response.repos[0..4].each do |repo| %>
+          <li><%= link_to repo.name, repo.url %><br>
+          <% end %>
     </section>
     <section id="followers">
       <h1>Followers</h1>
       <% @response.followers.each do |follower| %>
-        <li><%= link_to follower[:login], follower[:html_url] %><br>
-      <% end  %>
+        <li><%= link_to follower.name, follower.url %><br>
+      <% end %>
     </section>
   <% end  %>
 </section>
