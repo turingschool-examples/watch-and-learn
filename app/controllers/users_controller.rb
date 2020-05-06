@@ -1,10 +1,8 @@
-require './app/models/github/api.rb'
+require './app/poros/github.rb'
 
 class UsersController < ApplicationController
   def show
-    response = GithubApi.new(current_user) if response.nil?
-    @repos = response.parse_info('repos?sort="created"')
-    @followers = response.parse_info('followers')
+    @response = Github.new(current_user) if @response.nil?
   end
 
   def new
