@@ -22,6 +22,7 @@ describe 'User' do
   end
 
   it 'can log out', :js do
+    WebMock.allow_net_connect!
     user = create(:user)
 
     visit login_path

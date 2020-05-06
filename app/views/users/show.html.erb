@@ -11,3 +11,10 @@
     <h1>Bookmarked Segments</h1>
   </section>
 </section>
+<% if !current_user.github_token.nil? %>
+  <section class= "github" >
+    <% @repos.each do |repo| %>
+      <%= link_to repo[:name], repo[:html_url] %>
+    <% end %>
+  </section>
+<% end %>
