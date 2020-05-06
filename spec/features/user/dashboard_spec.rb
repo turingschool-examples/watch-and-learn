@@ -24,7 +24,8 @@ describe "A registered user" do
 
     within('#repos') do
       expect(page).to have_content("GitHub")
-      expect(page).to have_content("brownfield-of-dreams")
+      expect(page).to have_link("brownfield-of-dreams")
+      expect(page).to have_link("neos")
       # click_link("neos")
     end
 
