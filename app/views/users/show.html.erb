@@ -23,5 +23,11 @@
         <li><%= link_to follower.name, follower.url %><br>
       <% end %>
     </section>
+    <section id="following">
+      <h1>Following</h1>
+        <% @response.following.each do |user| %>
+          <li><%= link_to user.name, user.url %><br>
+        <% end %>
+    </section>
   <% end  %>
 </section>
