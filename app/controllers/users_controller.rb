@@ -1,9 +1,10 @@
-require 'faraday'
-require 'json'
+require './app/poros/github/api.rb'
 
 class UsersController < ApplicationController
   def show
-    @repos = JSON.parse(connection.body, symbolize_names: true)[0..4]
+    if current_user.git_hub_token?
+      @response = Api.new(current_user) if @response.nil?
+    end
   end
 
   def new
@@ -22,10 +23,6 @@ class UsersController < ApplicationController
   end
 
   private
-
-  def connection
-    Faraday.get('https://api.github.com/users/davidttran/repos?sort="updated"')
-  end
 
   def user_params
     params.require(:user).permit(:email, :first_name, :last_name, :password)
