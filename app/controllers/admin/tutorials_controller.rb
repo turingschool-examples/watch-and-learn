@@ -23,6 +23,10 @@ class Admin::TutorialsController < Admin::BaseController
     redirect_to admin_dashboard_path
   end
 
+  def import
+    @tutorial = Tutorial.new
+  end
+
   private
 
   def tutorial_params
