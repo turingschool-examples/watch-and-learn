@@ -35,7 +35,7 @@ RSpec.describe "As an Admin", type: :feature do
     click_button "Save"
     
     expect(page).to have_content("New Tutorial")
-    expect(page).to have_content("oops")
+    expect(page).to have_content("Description can't be blank and Thumbnail can't be blank")
   end
 
 
