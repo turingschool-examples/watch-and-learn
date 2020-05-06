@@ -1,14 +1,16 @@
 require 'faraday'
 require 'json'
+require_relative 'follower'
+require_relative 'repo'
 
-class Github
+class Api
   attr_reader :followers, :repos
 
   def initialize(current_user)
     @current_user = current_user
     @connection = connect
-    @followers = self.parse_info('followers')
-    @repos = self.parse_info('repos?sort="created"')
+    @followers = parse_info('followers').map { |follower| Follower.new(follower) }
+    @repos = parse_info('repos?sort="created"').map { |repo| Repo.new(repo) }
   end
 
   def parse_info(info)
@@ -17,7 +19,7 @@ class Github
   end
 
   def connect
-    Faraday.new(url: "https://api.github.com",
+    Faraday.new(url: 'https://api.github.com',
                 params: { access_token: @current_user[:git_hub_token] })
   end
 end
