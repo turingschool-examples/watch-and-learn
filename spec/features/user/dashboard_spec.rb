@@ -16,7 +16,7 @@ describe "A registered user" do
                         last_name: "Tran",
                         password: "password",
                         role: "default",
-                        git_hub_token: "297f3266de9167cd907402888af4721c431bb1dc"})
+                        git_hub_token: ENV['GH_TEST_KEY']})
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
@@ -38,7 +38,7 @@ describe "A registered user" do
                         last_name: "Tran",
                         password: "password",
                         role: "default",
-                        git_hub_token: "297f3266de9167cd907402888af4721c431bb1dc"})
+                        git_hub_token: ENV['GH_TEST_KEY']})
   end
 
   it 'user with token can visit dashboard and see followers' do
@@ -47,7 +47,7 @@ describe "A registered user" do
                         last_name: "Tran",
                         password: "password",
                         role: "default",
-                        git_hub_token: "297f3266de9167cd907402888af4721c431bb1dc"})
+                        git_hub_token: ENV['GH_TEST_KEY']})
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
     visit dashboard_path
