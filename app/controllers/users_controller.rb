@@ -1,10 +1,10 @@
-require 'faraday'
-require 'json'
+require './app/models/github/api.rb'
 
 class UsersController < ApplicationController
   def show
-    @repos = JSON.parse(connection('repos').body, symbolize_names: true)
-    @followers = JSON.parse(connection('followers').body, symbolize_names: true)
+    response = GithubApi.new(current_user)
+    @repos = response.parse_info('repos?sort="created"')
+    @followers = response.parse_info('followers')
   end
 
   def new
@@ -23,12 +23,6 @@ class UsersController < ApplicationController
   end
 
   private
-
-  def connection(info)
-    conn = Faraday.new(url: "https://api.github.com",
-                       params: { access_token: "297f3266de9167cd907402888af4721c431bb1dc" })
-    conn.get("/user/#{info}")
-  end
 
   def user_params
     params.require(:user).permit(:email, :first_name, :last_name, :password)
