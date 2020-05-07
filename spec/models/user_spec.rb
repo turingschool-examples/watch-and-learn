@@ -33,7 +33,7 @@ RSpec.describe User, type: :model do
         password: 'password',
         first_name:'Jim',
         role: 0,
-        token: '76c651773528c96c30606689ccb4839d5ebe9182')
+        token: "#{ENV['GITHUB_TOKEN']}")
       expected = ["Maxwell-Baird/adopt_dont_shop_paired",
         "Maxwell-Baird/b2-mid-mod",
         "Maxwell-Baird/backend_module_0_capstone",
@@ -47,7 +47,7 @@ RSpec.describe User, type: :model do
         password: 'password',
         first_name:'Jim',
         role: 0,
-        token: '76c651773528c96c30606689ccb4839d5ebe9182')
+        token: "#{ENV['GITHUB_TOKEN']}")
 
       expect(user.followers).to eq(["alex-latham", "DavidTTran"])
     end

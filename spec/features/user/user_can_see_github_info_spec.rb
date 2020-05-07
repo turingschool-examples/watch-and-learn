@@ -6,7 +6,7 @@ describe 'User' do
       password: 'password',
       first_name:'Jim',
       role: 0,
-      token: '76c651773528c96c30606689ccb4839d5ebe9182')
+      token: "#{ENV['GITHUB_TOKEN']}")
 
     visit '/'
 
