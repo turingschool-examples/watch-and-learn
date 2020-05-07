@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   def show
     @list = current_user.repos unless current_user.token.nil?
     @followers = current_user.followers unless current_user.token.nil?
+    @following = current_user.following unless current_user.token.nil?
   end
 
   def new

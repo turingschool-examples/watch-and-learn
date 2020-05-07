@@ -33,6 +33,13 @@ describe 'User' do
       expect(page).to have_content("alex-latham")
       expect(page).to have_content("DavidTTran")
     end
+    
+    within("#github-following") do
+      expect(page).to have_content("Following")
+      expect(page).to have_link("treyx")
+      expect(page).to have_link("tylertomlinson")
+      expect(page).to have_link("DavidTTran")
+    end
 
   end
 

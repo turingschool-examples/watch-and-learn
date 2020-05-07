@@ -33,4 +33,17 @@ class User < ApplicationRecord
     end
     list
   end
+
+  def following
+    conn = Faraday.new(url: 'https://api.github.com') do |faraday|
+      faraday.headers['Authorization'] = "token #{token}"
+    end
+    repo = conn.get('/user/following')
+    json = JSON.parse(repo.body, symbolize_names: true)
+    list = []
+    json.each do |follower|
+      list << follower[:login]
+    end
+    list
+  end
 end

@@ -29,6 +29,14 @@
       <% end %>
     </section>
 
+    <section id='github-following'>
+      <h3> Following </h3>
+      <% @following.each do |follow| %>
+        <%= link_to "#{follow}", "https://github.com/#{follow}" %>
+        <p></p>
+      <% end %>
+    </section>
+
   <% else %>
     <%= link_to "Connect to Github", "https://github.com/login/oauth/authorize?client_id=e5b765e6ce409b1727a6&scope=repo" %>
   <% end %>
