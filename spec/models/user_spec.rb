@@ -26,4 +26,30 @@ RSpec.describe User, type: :model do
       expect(admin.admin?).to be_truthy
     end
   end
+
+  describe 'methods' do
+    it 'can return an array of repos' do
+      user = User.create(email: 'user@email.com',
+        password: 'password',
+        first_name:'Jim',
+        role: 0,
+        token: "#{ENV['GITHUB_TOKEN']}")
+      expected = ["Maxwell-Baird/adopt_dont_shop_paired",
+        "Maxwell-Baird/b2-mid-mod",
+        "Maxwell-Baird/backend_module_0_capstone",
+        "Maxwell-Baird/battleship",
+        "Maxwell-Baird/black_thursday_lite"]
+      expect(user.repos).to eq(expected)
+    end
+
+    it 'can return an array of followers' do
+      user = User.create(email: 'user@email.com',
+        password: 'password',
+        first_name:'Jim',
+        role: 0,
+        token: "#{ENV['GITHUB_TOKEN']}")
+
+      expect(user.followers).to eq(["alex-latham", "DavidTTran"])
+    end
+  end
 end

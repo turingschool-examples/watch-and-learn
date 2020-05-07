@@ -10,4 +10,27 @@
   <section>
     <h1>Bookmarked Segments</h1>
   </section>
+
+  <% if current_user.token != nil %>
+    <h1>Github</h1>
+    <section id='github-repos'>
+      <h3> Repos </h3>
+      <% @list.each do |link| %>
+        <%= link_to "#{link}", "https://github.com/#{link}" %>
+        <p></p>
+      <% end %>
+    </section>
+
+    <section id='github-followers'>
+      <h3> followers </h3>
+      <% @followers.each do |follower| %>
+        <%= link_to "#{follower}", "https://github.com/#{follower}" %>
+        <p></p>
+      <% end %>
+    </section>
+
+  <% else %>
+    <%= link_to "Connect to Github", "https://github.com/login/oauth/authorize?client_id=e5b765e6ce409b1727a6&scope=repo" %>
+  <% end %>
+
 </section>

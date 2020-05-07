@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
-  def show; end
+  def show
+    @list = current_user.repos unless current_user.token.nil?
+    @followers = current_user.followers unless current_user.token.nil?
+  end
 
   def new
     @user = User.new
