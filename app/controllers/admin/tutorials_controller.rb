@@ -23,9 +23,11 @@ class Admin::TutorialsController < Admin::BaseController
     redirect_to admin_dashboard_path
   end
 
-  def import
-    @tutorial = Tutorial.new
-  end
+  # def import
+  #   binding.pry
+  #   service = YoutubeService.new
+  #   service.playlist_info(params[:playlist_id])
+  # end
 
   private
 
