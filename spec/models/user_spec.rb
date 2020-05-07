@@ -42,7 +42,7 @@ RSpec.describe User, type: :model do
       expect(user.repos).to eq(expected)
     end
 
-    it 'can return an array of repos' do
+    it 'can return an array of followers' do
       user = User.create(email: 'user@email.com',
         password: 'password',
         first_name:'Jim',
