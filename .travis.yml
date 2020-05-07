@@ -6,7 +6,7 @@ addons:
   chrome: stable
 dist: xenial
 before_install:
-  - yes | gem update --system --force 
+  - yes | gem update --system --force
   - gem install bundler
 script:
 - yarn
@@ -16,5 +16,5 @@ deploy:
   provider: heroku
   api_key:
     secure: X4beqgZ2UtnWi27JA2cxPP4qH0eFo/4F/9JuMWBmmLVdUamYDjily1TXjn8cJ8aqHw00w7qKMAaJovrQdYkUNrcsC82GfyUesQvtF1KfyYVmrQO13IU4X6x5iIH9hJhAvdepr7R5S9mcQrMXxkNDRd/KUU81k67EMgkiV64kZ1Hu9U4NS2ESOT14dLh5fq0p5LbmHB4PA917M4+F7YH7Gpk2R1a/DQctm9Xfstu6s7y0lRxRKmeiFpBGmfuASLs7gY73RR3VP3Vr/k4URrX7FAiyqMmS0Jww6QrPMMDMSb2IShtAq/WS+gIKjX67fW/s/uNLdzk1bXxLWZsbj6c6ZDWjtudZbBJuxWGsl+DK8Q1PwuEc7Xnb8HdyAmEKX5YArcjAjXrF0DWwfyK9NBEOTcCRHRQYPqSVo1mD1pJRrw2dIRptTI9r1jxREi83ie2Pli+dIjsOGA7HaYxYJBHKNA4gUJ366JVomR/18AaJlBsbDqCbhOqxX9Z4r+zj9CrvP160mWOlCwr4Sn7OwIkjfWLlFKXwdexwt//+8U1HED0nqWqq5aOybBulepdWJ+x8Jq/PHF1uWEKt6AqnuBKawfVlXxPEKI5Qkcd+H8W0sNEM44Z8OxKZ9h5vfX+okF5VIOOjFHWUbZXuaEVGdA3tf7UWrDqJCtRNfpDDP+M834Q=
-  app:
+  app: stormy-garden-12783
   run: rails db:migrate
