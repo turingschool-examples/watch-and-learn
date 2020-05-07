@@ -1,5 +1,5 @@
 <h2>Import YouTube Playlist</h2>
-<%= form_tag "/admin/tutorials", method: :get do %>
+<%= form_tag "/admin/tutorials", method: :post do %>
   <%= label_tag :playlist_id, "Playlist ID:" %></br>
   <%= text_field_tag :playlist_id %></br>
   <%= submit_tag "Import" %>
