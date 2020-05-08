@@ -36,9 +36,9 @@ class Admin::TutorialsController < Admin::BaseController
       thumbnail = video[:items].first[:snippet][:thumbnails][:high][:url]
       video_params = {description: description, title: title, video_id: video_id, thumbnail: thumbnail}
 
-      video = tutorial.videos.new(video_params)
+      video = tutorial.videos.create(video_params)
     end
-    flash[:success] = render "Successfully created tutorial. #{view_context.link_to('View it here.', tutorial_path(tutorial.id))}"
+    flash[:success] = "Successfully created tutorial. #{view_context.link_to('View it here.', tutorial_path(tutorial.id))}"
     redirect_to admin_dashboard_path
   end
 
