@@ -23,15 +23,32 @@ class Admin::TutorialsController < Admin::BaseController
     redirect_to admin_dashboard_path
   end
 
-  # def import
-  #   binding.pry
-  #   service = YoutubeService.new
-  #   service.playlist_info(params[:playlist_id])
-  # end
+  def import; end
+
+  def new_import
+    service = YoutubeService.new
+    x = service.playlist_info(params[:playlist_id])
+    tutorial = Tutorial.create(import_tutorial_params)
+    x.each do |video|
+      title = video[:items].first[:snippet][:title]
+      description = video[:items].first[:snippet][:description]
+      video_id = video[:items].first[:id]
+      thumbnail = video[:items].first[:snippet][:thumbnails][:high][:url]
+      video_params = {description: description, title: title, video_id: video_id, thumbnail: thumbnail}
+
+      video = tutorial.videos.new(video_params)
+    end
+    flash[:success] = render "Successfully created tutorial. #{view_context.link_to('View it here.', tutorial_path(tutorial.id))}"
+    redirect_to admin_dashboard_path
+  end
 
   private
 
   def tutorial_params
     params.require(:tutorial).permit(:tag_list)
+  end
+
+  def import_tutorial_params
+    params.permit(:title, :description, :thumbnail, :playlist_id)
   end
 end

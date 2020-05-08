@@ -6,9 +6,9 @@ class YoutubeService
   end
 
   def playlist_info(id)
-    params = { platlist_id: id }
-
-    get_json('youtube/v3/playlists', params)
+    params = { part: 'contentDetails', playlistId: id }
+    x = get_json('youtube/v3/playlistItems', params)
+    x[:items].map { |item| video_info(item[:contentDetails][:videoId]) }
   end
 
   private

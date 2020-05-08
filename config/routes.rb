@@ -12,7 +12,8 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get "/dashboard", to: "dashboard#show"
-    get "/tutorials/new/import", to: 'tutorials#import', as: "tutorials_import"
+    get "/tutorials/import", to: 'tutorials#import', as: "tutorials_import"
+    post "/tutorials/import", to: 'tutorials#new_import'
     # scope :tutorials do
     #   resources :playlists, only: [:new, :create]
     # end
