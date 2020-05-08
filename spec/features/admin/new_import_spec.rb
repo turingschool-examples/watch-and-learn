@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe "As an admin,", type: :feature do 
-  before :each do 
+RSpec.describe "As an admin,", type: :feature do
+  before :each do
     @admin = create(:admin)
     @tutorial = create(:tutorial)
     @tutorial1 = create(:tutorial)
@@ -16,32 +16,24 @@ RSpec.describe "As an admin,", type: :feature do
     expect(page).to have_current_path("/admin/tutorials/new/import")
     expect(page).to have_content("Playlist ID:")
   end
-  
-  it "I can import a YouTube Playlist by inputting a Playlist ID." do 
-    fill_in :playlist_id, with: "5"
+
+  it "I can import a YouTube Playlist by inputting a Playlist ID." do
+    fill_in :title, with: "Test-Tutorial"
+    fill_in :description, with: "I hate this"
+    fill_in :thumbnail, with: "https://i.pinimg.com/564x/23/05/82/230582bf2487046449ddc45915cbd7f7.jpg"
+    fill_in :playlist_id, with: "PLvyrcOJeR7wnwL7KtaqYgaHkel0XBHzzI"
     click_on "Import"
 
     expect(page).to have_current_path("/admin/dashboard")
-    expect(page).to have_content("Successfully created tutorial. View it here.")
-    
+    save_and_open_page
+    # expect(page).to have_content("Successfully created tutorial. View it here.")
+
     click_on "View it here."
     expect(page).to have_current_path("/tutorials/#{@tutorial}")
     # And I should see all videos from the YouTube playlist
     # And the order should be the same as it was on YouTube
   end
 end
-
-# As an admin
-# When I visit '/admin/tutorials/new'
-# Then I should see a link for 'Import YouTube Playlist'
-# When I click 'Import YouTube Playlist'
-# Then I should see a form
-
-# And when I fill in 'Playlist ID' with a valid ID
-# Then I should be on '/admin/dashboard'
-# And I should see a flash message that says 'Successfully created tutorial. View it here.'
-# And 'View it here' should be a link to '/tutorials/:id'
-# And when I click on 'View it here'
 # Then I should be on '/tutorials/:id'
 # And I should see all videos from the YouTube playlist
 # And the order should be the same as it was on YouTube
