@@ -10,7 +10,7 @@ class User < ApplicationRecord
 
   def repos
     service = GithubService.new(self)
-    json = service.git_repos  
+    json = service.git_repos
     list = []
     (1..5).each do |count|
       list << json[count][:full_name]
@@ -21,20 +21,12 @@ class User < ApplicationRecord
   def followers
     service = GithubService.new(self)
     json = service.git_followers
-    list = []
-    json.each do |follower|
-      list << follower[:login]
-    end
-    list
+    json.map { |person| person[:login] }
   end
 
   def following
     service = GithubService.new(self)
     json = service.git_following
-    list = []
-    json.each do |follower|
-      list << follower[:login]
-    end
-    list
+    json.map { |person| person[:login] }
   end
 end
