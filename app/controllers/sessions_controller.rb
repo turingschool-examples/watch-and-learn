@@ -26,8 +26,11 @@ class SessionsController < ApplicationController
       key, value = pair.split('=')
       response_hash[key] = value
     end
+
     token = response_hash['access_token']
-    current_user.update_attribute(:token, token)
+    if token != nil
+      current_user.update_attribute(:token, token)
+    end
     redirect_to dashboard_path
   end
 
