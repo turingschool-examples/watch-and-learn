@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 2020_05_05_234108) do
     t.integer "role", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "token"
+    t.string "token", default: "0"
     t.index ["email"], name: "index_users_on_email"
   end
 
