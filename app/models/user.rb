@@ -9,11 +9,8 @@ class User < ApplicationRecord
   has_secure_password
 
   def repos
-    conn = Faraday.new(url: 'https://api.github.com') do |faraday|
-      faraday.headers['Authorization'] = "token #{token}"
-    end
-    repo = conn.get('/user/repos')
-    json = JSON.parse(repo.body, symbolize_names: true)
+    service = GithubService.new(self)
+    json = service.git_repos  
     list = []
     (1..5).each do |count|
       list << json[count][:full_name]
@@ -22,11 +19,8 @@ class User < ApplicationRecord
   end
 
   def followers
-    conn = Faraday.new(url: 'https://api.github.com') do |faraday|
-      faraday.headers['Authorization'] = "token #{token}"
-    end
-    repo = conn.get('/user/followers')
-    json = JSON.parse(repo.body, symbolize_names: true)
+    service = GithubService.new(self)
+    json = service.git_followers
     list = []
     json.each do |follower|
       list << follower[:login]
@@ -35,11 +29,8 @@ class User < ApplicationRecord
   end
 
   def following
-    conn = Faraday.new(url: 'https://api.github.com') do |faraday|
-      faraday.headers['Authorization'] = "token #{token}"
-    end
-    repo = conn.get('/user/following')
-    json = JSON.parse(repo.body, symbolize_names: true)
+    service = GithubService.new(self)
+    json = service.git_following
     list = []
     json.each do |follower|
       list << follower[:login]
