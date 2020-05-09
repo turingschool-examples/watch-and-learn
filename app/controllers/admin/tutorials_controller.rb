@@ -27,9 +27,9 @@ class Admin::TutorialsController < Admin::BaseController
 
   def new_import
     service = YoutubeService.new
-    x = service.playlist_info(params[:playlist_id])
+    videos = service.playlist_info(params[:playlist_id])
     tutorial = Tutorial.create(import_tutorial_params)
-    x.each do |video|
+    videos.each do |video|
       title = video[:items].first[:snippet][:title]
       description = video[:items].first[:snippet][:description]
       video_id = video[:items].first[:id]
