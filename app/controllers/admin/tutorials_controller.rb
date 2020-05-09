@@ -30,13 +30,7 @@ class Admin::TutorialsController < Admin::BaseController
     videos = service.playlist_info(params[:playlist_id])
     tutorial = Tutorial.create(import_tutorial_params)
     videos.each do |video|
-      title = video[:items].first[:snippet][:title]
-      description = video[:items].first[:snippet][:description]
-      video_id = video[:items].first[:id]
-      thumbnail = video[:items].first[:snippet][:thumbnails][:high][:url]
-      video_params = {description: description, title: title, video_id: video_id, thumbnail: thumbnail}
-
-      video = tutorial.videos.create(video_params)
+      tutorial.videos.create(video_params(video))
     end
     flash[:success] = "Successfully created tutorial. #{view_context.link_to('View it here.', tutorial_path(tutorial.id))}"
     redirect_to admin_dashboard_path
@@ -50,5 +44,16 @@ class Admin::TutorialsController < Admin::BaseController
 
   def import_tutorial_params
     params.permit(:title, :description, :thumbnail, :playlist_id)
+  end
+
+  def video_params(video)
+    title = video[:items].first[:snippet][:title]
+    description = video[:items].first[:snippet][:description]
+    video_id = video[:items].first[:id]
+    thumbnail = video[:items].first[:snippet][:thumbnails][:high][:url]
+    { description: description,
+      title: title,
+      video_id: video_id,
+      thumbnail: thumbnail }
   end
 end
