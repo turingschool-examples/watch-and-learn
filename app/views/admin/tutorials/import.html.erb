@@ -1,0 +1,12 @@
+<h2>Import YouTube Playlist</h2>
+<%= form_tag "/admin/tutorials/import", method: :post do %>
+  <%= label_tag :title %></br>
+  <%= text_field_tag :title %></br>
+  <%= label_tag :description %></br>
+  <%= text_area_tag :description %></br>
+  <%= label_tag :thumbnail %></br>
+  <%= text_field_tag :thumbnail %></br>
+  <%= label_tag :playlist_id, "Playlist ID" %></br>
+  <%= text_field_tag :playlist_id %></br>
+  <%= submit_tag "Import" %>
+<% end %>
