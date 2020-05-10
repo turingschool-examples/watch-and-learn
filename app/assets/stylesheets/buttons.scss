@@ -10,3 +10,21 @@
 .btn:hover {
   background-color: transparent;
 }
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  color: black;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}

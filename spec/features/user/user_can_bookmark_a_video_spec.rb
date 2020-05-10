@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'A registered user' do
   it 'can add videos to their bookmarks' do
-    tutorial= create(:tutorial, title: "How to Tie Your Shoes")
+    tutorial = create(:tutorial, title: "How to Tie Your Shoes")
     video = create(:video, title: "The Bunny Ears Technique", tutorial: tutorial)
     user = create(:user)
 
@@ -30,5 +30,15 @@ describe 'A registered user' do
     expect(page).to have_content("Bookmark added to your dashboard")
     click_on 'Bookmark'
     expect(page).to have_content("Already in your bookmarks")
+  end
+
+  it "I seea tooltip when hovering over the bookmark link that login is required to bookmark a video.", :js do
+    tutorial = create(:tutorial)
+    video = create(:video, tutorial_id: tutorial.id)
+
+    visit tutorial_path(tutorial)
+
+    find('.tooltip').hover
+    expect(page).to have_content("In order to bookmark a video, you must log in!")
   end
 end
