@@ -35,7 +35,7 @@ RSpec.describe "When I visit '/admin/tutorials/new' as Admin", type: :feature do
     expect(tutorial.videos.last.position).to eq(5)
   end
 
-  xit "I can create a tutorial with a playlist of greater than 50 videos" do
+  it "I can create a tutorial with a playlist of greater than 50 videos", :vcr do
     admin = create(:admin)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
     
@@ -55,7 +55,7 @@ RSpec.describe "When I visit '/admin/tutorials/new' as Admin", type: :feature do
     expect(tutorial.videos.count).to eq(88)
   end
   
-  xit "I can create a tutorial with a playlist of greater than 100 videos" do
+  it "I can create a tutorial with a playlist of greater than 100 videos", :vcr do
     admin = create(:admin)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
     
