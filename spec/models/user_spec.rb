@@ -51,7 +51,7 @@ RSpec.describe User, type: :model do
 
       expect(user.followers).to eq(["alex-latham", "DavidTTran"])
     end
-    
+
     it 'following' do
       user = User.create(email: 'user@email.com',
         password: 'password',
@@ -59,7 +59,7 @@ RSpec.describe User, type: :model do
         role: 0,
         token: "#{ENV['GITHUB_TOKEN']}")
 
-      expect(user.following).to eq(["treyx", "tylertomlinson", "DavidTTran"])
+      expect(user.following).to eq(["treyx", "tylertomlinson", 'kmcgrevey',"DavidTTran"])
     end
   end
 end

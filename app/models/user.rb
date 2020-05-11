@@ -3,7 +3,6 @@ class User < ApplicationRecord
   has_many :videos, through: :user_videos
 
   validates :email, uniqueness: true, presence: true
-  validates :password, presence: true
   validates :first_name, presence: true
   validates :token, presence: true
   enum role: { default: 0, admin: 1 }
@@ -33,5 +32,13 @@ class User < ApplicationRecord
 
   def self.omniauth_token(auth_info)
     auth_info.credentials.token
+  end
+
+  def self.omniauth_username(auth_info)
+    auth_info.extra.raw_info.login
+  end
+
+  def github?(github_account)
+    User.exists?(username: github_account)
   end
 end

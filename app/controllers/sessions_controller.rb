@@ -15,9 +15,9 @@ class SessionsController < ApplicationController
   end
 
   def edit
-    current_user.update_attribute(:token, User.omniauth_token(
-      request.env["omniauth.auth"]))
-
+    current_user.token = User.omniauth_token(request.env['omniauth.auth'])
+    current_user.username = User.omniauth_username(request.env['omniauth.auth'])
+    current_user.save
     redirect_to dashboard_path
   end
 
