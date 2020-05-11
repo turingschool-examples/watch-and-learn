@@ -61,5 +61,22 @@ RSpec.describe User, type: :model do
 
       expect(user.following).to eq(["treyx", "tylertomlinson", 'kmcgrevey',"DavidTTran"])
     end
+
+    it 'can_friend' do
+      user1 = User.create(email: 'user@email.com',
+        password: 'password',
+        first_name:'Jim',
+        role: 0,
+        token: "#{ENV['GITHUB_TOKEN']}",
+        username: 'Maxwell-Baird')
+      user2 = User.create(email: 'user@email.com',
+        password: 'password',
+        first_name:'bob',
+        role: 0,
+        token: "#{ENV['GITHUB_TOKEN_2']}",
+        username: 'kmcgrevey')
+
+      expect(user2.can_friend('Maxwell-Baird')).to eq(true)
+    end
   end
 end
