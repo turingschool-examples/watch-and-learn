@@ -1,0 +1,294 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.googleapis.com/youtube/v3/playlistItems?key=<YOUTUBE_API_KEY>&maxResults=50&part=snippet,contentDetails&playlistId=PLA1C00061BB65843A
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.0.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Vary:
+      - Origin
+      - Referer
+      - X-Origin
+      Date:
+      - Mon, 11 May 2020 22:12:26 GMT
+      Server:
+      - scaffolding on HTTPServer2
+      Cache-Control:
+      - private
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Alt-Svc:
+      - h3-27=":443"; ma=2592000,h3-25=":443"; ma=2592000,h3-Q050=":443"; ma=2592000,h3-Q049=":443";
+        ma=2592000,h3-Q048=":443"; ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443";
+        ma=2592000,quic=":443"; ma=2592000; v="46,43"
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+          "kind": "youtube#playlistItemListResponse",
+          "etag": "X73XUPIBg0bljJp3QseY37eokXM",
+          "items": [
+            {
+              "kind": "youtube#playlistItem",
+              "etag": "0vsgmVQQz9bjKYpDJkfTLFQ9Zgg",
+              "id": "UExBMUMwMDA2MUJCNjU4NDNBLjI4REIyMUE5QzhBNTQ4NUY=",
+              "snippet": {
+                "publishedAt": "2010-10-03T01:37:17Z",
+                "channelId": "UCN95JCi1F_lmWOuLAS04f_Q",
+                "title": "DF02 Gyrocopter: Zero Speed Landing",
+                "description": "Actually it is a \"Zero GROUND Speed Landing\" approx. 25 kts headwind performed by Michael Obermaier during his test flights on the DF02 gyrocopter, see also: www.GyroTec.de",
+                "thumbnails": {
+                  "default": {
+                    "url": "https://i.ytimg.com/vi/GAoK9zM8FFQ/default.jpg",
+                    "width": 120,
+                    "height": 90
+                  },
+                  "medium": {
+                    "url": "https://i.ytimg.com/vi/GAoK9zM8FFQ/mqdefault.jpg",
+                    "width": 320,
+                    "height": 180
+                  },
+                  "high": {
+                    "url": "https://i.ytimg.com/vi/GAoK9zM8FFQ/hqdefault.jpg",
+                    "width": 480,
+                    "height": 360
+                  }
+                },
+                "channelTitle": "kingsimonp",
+                "playlistId": "PLA1C00061BB65843A",
+                "position": 0,
+                "resourceId": {
+                  "kind": "youtube#video",
+                  "videoId": "GAoK9zM8FFQ"
+                }
+              },
+              "contentDetails": {
+                "videoId": "GAoK9zM8FFQ",
+                "videoPublishedAt": "2007-12-04T01:46:58Z"
+              }
+            },
+            {
+              "kind": "youtube#playlistItem",
+              "etag": "ILVPtXTDh7atCxdBU24Ozy8SGMY",
+              "id": "UExBMUMwMDA2MUJCNjU4NDNBLjM2NkYyRkEyRjM1ODE5N0Y=",
+              "snippet": {
+                "publishedAt": "2010-10-03T01:38:18Z",
+                "channelId": "UCN95JCi1F_lmWOuLAS04f_Q",
+                "title": "Gyroplane Gyrocopter Ultralight  Playing in a bean patch",
+                "description": "",
+                "thumbnails": {
+                  "default": {
+                    "url": "https://i.ytimg.com/vi/wmHc2utId6c/default.jpg",
+                    "width": 120,
+                    "height": 90
+                  },
+                  "medium": {
+                    "url": "https://i.ytimg.com/vi/wmHc2utId6c/mqdefault.jpg",
+                    "width": 320,
+                    "height": 180
+                  },
+                  "high": {
+                    "url": "https://i.ytimg.com/vi/wmHc2utId6c/hqdefault.jpg",
+                    "width": 480,
+                    "height": 360
+                  }
+                },
+                "channelTitle": "kingsimonp",
+                "playlistId": "PLA1C00061BB65843A",
+                "position": 1,
+                "resourceId": {
+                  "kind": "youtube#video",
+                  "videoId": "wmHc2utId6c"
+                }
+              },
+              "contentDetails": {
+                "videoId": "wmHc2utId6c",
+                "videoPublishedAt": "2009-10-29T15:05:31Z"
+              }
+            },
+            {
+              "kind": "youtube#playlistItem",
+              "etag": "iZV-yZYCfvw35z2v90ig_PT06Rk",
+              "id": "UExBMUMwMDA2MUJCNjU4NDNBLjU0MEU0OEM0MTFDNkEwNTc=",
+              "snippet": {
+                "publishedAt": "2010-10-03T01:39:50Z",
+                "channelId": "UCN95JCi1F_lmWOuLAS04f_Q",
+                "title": "Carter Copter Jump Takeoff",
+                "description": "Mentone 2007",
+                "thumbnails": {
+                  "default": {
+                    "url": "https://i.ytimg.com/vi/55cFpRycdKI/default.jpg",
+                    "width": 120,
+                    "height": 90
+                  },
+                  "medium": {
+                    "url": "https://i.ytimg.com/vi/55cFpRycdKI/mqdefault.jpg",
+                    "width": 320,
+                    "height": 180
+                  },
+                  "high": {
+                    "url": "https://i.ytimg.com/vi/55cFpRycdKI/hqdefault.jpg",
+                    "width": 480,
+                    "height": 360
+                  }
+                },
+                "channelTitle": "kingsimonp",
+                "playlistId": "PLA1C00061BB65843A",
+                "position": 2,
+                "resourceId": {
+                  "kind": "youtube#video",
+                  "videoId": "55cFpRycdKI"
+                }
+              },
+              "contentDetails": {
+                "videoId": "55cFpRycdKI",
+                "videoPublishedAt": "2007-08-04T20:23:40Z"
+              }
+            },
+            {
+              "kind": "youtube#playlistItem",
+              "etag": "wm8bGt3bmCw1Hc9y3fzzKVcM3lM",
+              "id": "UExBMUMwMDA2MUJCNjU4NDNBLjAwREQwOURFOUNFMTZDRjE=",
+              "snippet": {
+                "publishedAt": "2010-10-03T01:43:09Z",
+                "channelId": "UCN95JCi1F_lmWOuLAS04f_Q",
+                "title": "CarterGyro Demonstrator Jump Takeoff Gyrocopter",
+                "description": "This is Carter Copters technology demonstrator gyro. The rotor and propeller are both variable pitch which allow the jump takeoffs. The rotors also have 20 lbs. of weight in the tips to store inertia.",
+                "thumbnails": {
+                  "default": {
+                    "url": "https://i.ytimg.com/vi/CFNc1iY8wi0/default.jpg",
+                    "width": 120,
+                    "height": 90
+                  },
+                  "medium": {
+                    "url": "https://i.ytimg.com/vi/CFNc1iY8wi0/mqdefault.jpg",
+                    "width": 320,
+                    "height": 180
+                  },
+                  "high": {
+                    "url": "https://i.ytimg.com/vi/CFNc1iY8wi0/hqdefault.jpg",
+                    "width": 480,
+                    "height": 360
+                  }
+                },
+                "channelTitle": "kingsimonp",
+                "playlistId": "PLA1C00061BB65843A",
+                "position": 3,
+                "resourceId": {
+                  "kind": "youtube#video",
+                  "videoId": "CFNc1iY8wi0"
+                }
+              },
+              "contentDetails": {
+                "videoId": "CFNc1iY8wi0",
+                "videoPublishedAt": "2007-04-06T02:35:27Z"
+              }
+            },
+            {
+              "kind": "youtube#playlistItem",
+              "etag": "cfRLf3kwcW9hWgotT1OGICEeajI",
+              "id": "UExBMUMwMDA2MUJCNjU4NDNBLkQ4NTUyMEMwNUJCNjc1OUU=",
+              "snippet": {
+                "publishedAt": "2010-10-03T01:43:48Z",
+                "channelId": "UCN95JCi1F_lmWOuLAS04f_Q",
+                "title": "Gyrocopter High Wind Takeoffs at El Mirage",
+                "description": "Here's a video clip from around 1995 of Ed Neleski and Ken Brock flying on a very windy day at El Mirage, California. This clip was from an episode of Dan Lesley's Rotor/Wing Sports TV show. For more info on gyros see http://www.pra.org  and http://www.rotaryforum.com.",
+                "thumbnails": {
+                  "default": {
+                    "url": "https://i.ytimg.com/vi/nY8SmllLcIU/default.jpg",
+                    "width": 120,
+                    "height": 90
+                  },
+                  "medium": {
+                    "url": "https://i.ytimg.com/vi/nY8SmllLcIU/mqdefault.jpg",
+                    "width": 320,
+                    "height": 180
+                  },
+                  "high": {
+                    "url": "https://i.ytimg.com/vi/nY8SmllLcIU/hqdefault.jpg",
+                    "width": 480,
+                    "height": 360
+                  }
+                },
+                "channelTitle": "kingsimonp",
+                "playlistId": "PLA1C00061BB65843A",
+                "position": 4,
+                "resourceId": {
+                  "kind": "youtube#video",
+                  "videoId": "nY8SmllLcIU"
+                }
+              },
+              "contentDetails": {
+                "videoId": "nY8SmllLcIU",
+                "videoPublishedAt": "2008-01-20T22:23:37Z"
+              }
+            },
+            {
+              "kind": "youtube#playlistItem",
+              "etag": "a_97IztUs45FS1Vj7o3M8ntFmXk",
+              "id": "UExBMUMwMDA2MUJCNjU4NDNBLkE5MjBDREZCM0IyNDMxQUM=",
+              "snippet": {
+                "publishedAt": "2010-10-03T01:47:00Z",
+                "channelId": "UCN95JCi1F_lmWOuLAS04f_Q",
+                "title": "Miss Champion Pitcairn PCA-2 Autogiro at Oshkosh 2005",
+                "description": "Steve Pitcairn flying 1931 Pitcairn PCA-2 autogiro named Miss Champion at Oshkosh 2005. For more info on gyros see http://www.pra.org  and http://www.rotaryforum.com.",
+                "thumbnails": {
+                  "default": {
+                    "url": "https://i.ytimg.com/vi/s-tibm_dPFQ/default.jpg",
+                    "width": 120,
+                    "height": 90
+                  },
+                  "medium": {
+                    "url": "https://i.ytimg.com/vi/s-tibm_dPFQ/mqdefault.jpg",
+                    "width": 320,
+                    "height": 180
+                  },
+                  "high": {
+                    "url": "https://i.ytimg.com/vi/s-tibm_dPFQ/hqdefault.jpg",
+                    "width": 480,
+                    "height": 360
+                  }
+                },
+                "channelTitle": "kingsimonp",
+                "playlistId": "PLA1C00061BB65843A",
+                "position": 5,
+                "resourceId": {
+                  "kind": "youtube#video",
+                  "videoId": "s-tibm_dPFQ"
+                }
+              },
+              "contentDetails": {
+                "videoId": "s-tibm_dPFQ",
+                "videoPublishedAt": "2007-12-23T06:49:32Z"
+              }
+            }
+          ],
+          "pageInfo": {
+            "totalResults": 6,
+            "resultsPerPage": 50
+          }
+        }
+    http_version: null
+  recorded_at: Mon, 11 May 2020 22:12:26 GMT
+recorded_with: VCR 5.1.0
