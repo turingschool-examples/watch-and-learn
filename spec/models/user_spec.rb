@@ -62,14 +62,54 @@ RSpec.describe User, type: :model do
       expect(user.following).to eq(["treyx", "tylertomlinson", 'kmcgrevey',"DavidTTran"])
     end
 
+    it 'omniauth_token' do
+      OmniAuth.config.test_mode = true
+      OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({
+        provider: 'github',
+        extra: {
+          raw_info: {
+            uid: "1234",
+            name: "Horace",
+            login: "Maxwell-Baird",
+          }
+        },
+        credentials: {
+          token: "token",
+          secret: "secretpizza"
+        }
+      })
+
+      expect(User.omniauth_token(OmniAuth.config.mock_auth[:github])).to eq('token')
+    end
+
+    it 'omniauth_username' do
+      OmniAuth.config.test_mode = true
+      OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({
+        provider: 'github',
+        extra: {
+          raw_info: {
+            uid: "1234",
+            name: "Horace",
+            login: "Maxwell-Baird",
+          }
+        },
+        credentials: {
+          token: "token",
+          secret: "secretpizza"
+        }
+      })
+
+      expect(User.omniauth_username(OmniAuth.config.mock_auth[:github])).to eq('Maxwell-Baird')
+    end
+
     it 'can_friend' do
-      user1 = User.create(email: 'user@email.com',
+      user1 = User.create(email: 'user1@email.com',
         password: 'password',
         first_name:'Jim',
         role: 0,
         token: "#{ENV['GITHUB_TOKEN']}",
         username: 'Maxwell-Baird')
-      user2 = User.create(email: 'user@email.com',
+      user2 = User.create(email: 'user2@email.com',
         password: 'password',
         first_name:'bob',
         role: 0,
