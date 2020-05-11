@@ -1,22 +1,23 @@
 class Admin::ImportTutorialController < Admin::BaseController
-
   def new
     @tutorial = Tutorial.new
   end
-  
+
   def create
     tutorial = Tutorial.create(tutorial_params)
-    
+
     youtube = YoutubeService.new
     video_list = youtube.playlist(params[:tutorial][:playlist_id])
     video_list.each do |video|
       tutorial.videos.create(new_video_params(video))
     end
-    
-    flash[:success] = "Successfully created tutorial. #{view_context.link_to('View it here', tutorial_path(tutorial))}."
+
+    flash[:success] = 'Successfully created tutorial. '\
+      "#{view_context.link_to('View it here', tutorial_path(tutorial))}."
+
     redirect_to '/admin/dashboard'
   end
-  
+
   private
 
   def tutorial_params

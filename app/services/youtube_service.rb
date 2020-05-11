@@ -5,20 +5,20 @@ class YoutubeService
     get_json('youtube/v3/videos', params)
   end
 
-  def playlist(id) #loop until nextPageToken == nil
+  def playlist(id)
     params = { part: 'snippet,contentDetails',
                playlistId: id,
                maxResults: 50 }
-    
+
     vid_list = []
-    
+
     loop do
       json = get_json('youtube/v3/playlistItems', params)
       params[:pageToken] = json[:nextPageToken]
       vid_list << json[:items]
       break if json[:nextPageToken].nil?
     end
-    
+
     vid_list.flatten
   end
 
