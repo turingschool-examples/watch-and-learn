@@ -54,4 +54,24 @@ RSpec.describe "When I visit '/admin/tutorials/new' as Admin", type: :feature do
 
     expect(tutorial.videos.count).to eq(88)
   end
+  
+  it "I can create a tutorial with a playlist of greater than 100 videos" do
+    admin = create(:admin)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+    
+    visit '/admin/import_tutorial/new'
+
+    fill_in "Title", with: "Funny Cat Videos"
+    fill_in "Description", with: "A playlist of 123 videos"
+    fill_in "Thumbnail", with: "https://i.ebayimg.com/images/g/fikAAOSwJOJcSWXe/s-l640.jpg"
+    fill_in "Playlist", with: 'PLD72Ylz-Y01vcGTYmEaN9nz02o0yZMWy8'
+
+    click_button "Create"
+
+    click_link 'View it here'
+
+    tutorial = Tutorial.last
+
+    expect(tutorial.videos.count).to eq(123)
+  end
 end
