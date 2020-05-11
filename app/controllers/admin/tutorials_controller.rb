@@ -27,16 +27,28 @@ class Admin::TutorialsController < Admin::BaseController
 
   def new_import
     service = YoutubeService.new
-    videos = service.playlist_info(params[:playlist_id])
+    playlist = service.playlist_info(params[:playlist_id])
     tutorial = Tutorial.create(import_tutorial_params)
-    videos.each do |video|
-      tutorial.videos.create(video_params(video))
-    end
+    create_tutorial_videos(tutorial, playlist)
+    pagination(tutorial, service, playlist)
     flash[:success] = "Successfully created tutorial. #{view_context.link_to('View it here.', tutorial_path(tutorial.id))}"
     redirect_to admin_dashboard_path
   end
 
   private
+
+  def create_tutorial_videos(tutorial, playlist)
+    playlist[:items].each do |video|
+      tutorial.videos.create(video_params(video))
+    end
+  end
+
+  def pagination(tutorial, service, playlist)
+    until playlist[:nextPageToken].nil?
+      playlist = service.next_page(params[:playlist_id], playlist)
+      create_tutorial_videos(tutorial, playlist)
+    end
+  end
 
   def tutorial_params
     params.require(:tutorial).permit(:tag_list)
@@ -47,10 +59,10 @@ class Admin::TutorialsController < Admin::BaseController
   end
 
   def video_params(video)
-    title = video[:items].first[:snippet][:title]
-    description = video[:items].first[:snippet][:description]
-    video_id = video[:items].first[:id]
-    thumbnail = video[:items].first[:snippet][:thumbnails][:high][:url]
+    title = video[:snippet][:title]
+    description = video[:snippet][:description]
+    video_id = video[:id]
+    thumbnail = video[:snippet][:thumbnails][:high][:url]
     { description: description,
       title: title,
       video_id: video_id,
