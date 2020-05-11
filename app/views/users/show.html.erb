@@ -26,7 +26,7 @@
       <% current_user.followers.each do |follower| %>
         <%= link_to "#{follower}", "https://github.com/#{follower}" %>
         <% if current_user.can_friend(follower) %>
-          <%= link_to "Friend", "/friend/#{follower}", method: :patch %>
+          <%= link_to "Add as Friend", "/friend/#{follower}", method: :patch %>
         <% end %>
         <p></p>
       <% end %>
@@ -37,7 +37,7 @@
       <% current_user.following.each do |follow| %>
         <%= link_to "#{follow}", "https://github.com/#{follow}" %>
         <% if current_user.can_friend(follow) %>
-          <%= link_to "Friend", "/friend/#{follow}", method: :patch %>
+          <%= link_to "Add as Friend", "/friend/#{follow}", method: :patch %>
         <% end %>
         <p></p>
       <% end %>

@@ -40,7 +40,7 @@ describe 'User' do
       expect(page).to have_link("tylertomlinson")
       expect(page).to have_link("DavidTTran")
       expect(page).to have_link("kmcgrevey")
-      expect(page).to have_link("Friend")
+      expect(page).to have_link("Add as Friend")
       click_on 'Friend'
     end
 

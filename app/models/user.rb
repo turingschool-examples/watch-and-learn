@@ -38,9 +38,9 @@ class User < ApplicationRecord
     auth_info.extra.raw_info.login
   end
 
-  def can_friend(github_account)
-    if User.exists?(username: github_account)
-      true unless friends.include?(github_account)
+  def can_friend(github_username)
+    if User.exists?(username: github_username)
+      true unless friends.include?(github_username)
     end
   end
 end

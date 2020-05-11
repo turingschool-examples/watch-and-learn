@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'User' do
   include Capybara::DSL
 
-  it 'user can see github info' do
+  it 'user can login into github' do
     OmniAuth.config.test_mode = true
     OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({
       provider: 'github',
