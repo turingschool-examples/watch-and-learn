@@ -9,7 +9,7 @@ class Admin::ImportTutorialController < Admin::BaseController
     
     youtube = YoutubeService.new
     video_list = youtube.playlist(params[:tutorial][:playlist_id])
-    video_list[:items].each do |video|
+    video_list.each do |video|
       tutorial.videos.create(new_video_params(video))
     end
     

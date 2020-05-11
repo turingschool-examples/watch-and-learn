@@ -8,10 +8,20 @@ class YoutubeService
   def playlist(id)
     params = { part: 'snippet,contentDetails',
                playlistId: id,
-               pageToken: '',
                maxResults: 50 }
-
-    get_json('youtube/v3/playlistItems', params)
+    
+    json = get_json('youtube/v3/playlistItems', params)
+    vid_list = json[:items]
+    
+    if json[:nextPageToken]
+      params = { part: 'snippet,contentDetails',
+                 playlistId: id,
+                 maxResults: 50,
+                 pageToken: json[:nextPageToken] }
+      vid_list << get_json('youtube/v3/playlistItems', params)[:items]
+    end
+    
+    vid_list.flatten
   end
 
   private
