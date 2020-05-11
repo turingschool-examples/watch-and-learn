@@ -5,12 +5,11 @@ class Admin::ImportTutorialController < Admin::BaseController
   end
   
   def create
-    # tutorial = Tutorial.new(tutorial_params)
     tutorial = Tutorial.create(tutorial_params)
     
     youtube = YoutubeService.new
     video_list = youtube.playlist(params[:tutorial][:playlist_id])
-    video_list[:items].map do |video|
+    video_list[:items].each do |video|
       tutorial.videos.create(new_video_params(video))
     end
     
@@ -31,6 +30,7 @@ class Admin::ImportTutorialController < Admin::BaseController
     { title: vid[:snippet][:title],
       description: vid[:snippet][:description],
       video_id: vid[:snippet][:resourceId][:videoId],
-      thumbnail: vid[:snippet][:thumbnails][:high][:url] }
+      thumbnail: vid[:snippet][:thumbnails][:high][:url],
+      position: vid[:snippet][:position] }
   end
 end

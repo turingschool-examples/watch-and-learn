@@ -26,9 +26,10 @@ RSpec.describe "When I visit '/admin/tutorials/new' as Admin", type: :feature do
     tutorial = Tutorial.last
     
     expect(current_path).to eq(tutorial_path(tutorial))
-# binding.pry
-    # And I should see all videos from the YouTube playlist
-    # And the order should be the same as it was on YouTube
+    expect(tutorial.videos.count).to eq(6)
 
+    order = tutorial.videos.map { |vid| vid.video_id }
+
+    expect(order).to eq(["GAoK9zM8FFQ", "wmHc2utId6c", "55cFpRycdKI", "CFNc1iY8wi0", "nY8SmllLcIU", "s-tibm_dPFQ"])
   end
 end
