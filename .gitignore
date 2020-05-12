@@ -27,6 +27,7 @@
 /config/master.key
 
 # Ignore application configuration
+/spec/fixtures
 /config/application.yml
 /public/packs
 /public/packs-test
