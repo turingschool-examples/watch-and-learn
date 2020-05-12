@@ -1,0 +1,77 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.github.com/user/following
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - token <GITHUB_TOKEN>
+      User-Agent:
+      - Faraday v1.0.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Mon, 11 May 2020 23:52:04 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4991'
+      X-Ratelimit-Reset:
+      - '1589243177'
+      Cache-Control:
+      - private, max-age=60, s-maxage=60
+      Vary:
+      - Accept, Authorization, Cookie, X-GitHub-OTP
+      - Accept-Encoding, Accept, X-Requested-With
+      Etag:
+      - W/"6645c8ff8f25cc60591339f38b3cd58a"
+      X-Oauth-Scopes:
+      - read:user
+      X-Accepted-Oauth-Scopes:
+      - ''
+      X-Github-Media-Type:
+      - github.v3; format=json
+      Access-Control-Expose-Headers:
+      - ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
+        X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval,
+        X-GitHub-Media-Type, Deprecation, Sunset
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Content-Security-Policy:
+      - default-src 'none'
+      X-Github-Request-Id:
+      - DC1A:5DDB:2107A01:3755716:5EB9E524
+    body:
+      encoding: ASCII-8BIT
+      string: '[{"login":"treyx","id":9888146,"node_id":"MDQ6VXNlcjk4ODgxNDY=","avatar_url":"https://avatars1.githubusercontent.com/u/9888146?v=4","gravatar_id":"","url":"https://api.github.com/users/treyx","html_url":"https://github.com/treyx","followers_url":"https://api.github.com/users/treyx/followers","following_url":"https://api.github.com/users/treyx/following{/other_user}","gists_url":"https://api.github.com/users/treyx/gists{/gist_id}","starred_url":"https://api.github.com/users/treyx/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/treyx/subscriptions","organizations_url":"https://api.github.com/users/treyx/orgs","repos_url":"https://api.github.com/users/treyx/repos","events_url":"https://api.github.com/users/treyx/events{/privacy}","received_events_url":"https://api.github.com/users/treyx/received_events","type":"User","site_admin":false},{"login":"tylertomlinson","id":16050876,"node_id":"MDQ6VXNlcjE2MDUwODc2","avatar_url":"https://avatars0.githubusercontent.com/u/16050876?v=4","gravatar_id":"","url":"https://api.github.com/users/tylertomlinson","html_url":"https://github.com/tylertomlinson","followers_url":"https://api.github.com/users/tylertomlinson/followers","following_url":"https://api.github.com/users/tylertomlinson/following{/other_user}","gists_url":"https://api.github.com/users/tylertomlinson/gists{/gist_id}","starred_url":"https://api.github.com/users/tylertomlinson/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/tylertomlinson/subscriptions","organizations_url":"https://api.github.com/users/tylertomlinson/orgs","repos_url":"https://api.github.com/users/tylertomlinson/repos","events_url":"https://api.github.com/users/tylertomlinson/events{/privacy}","received_events_url":"https://api.github.com/users/tylertomlinson/received_events","type":"User","site_admin":false},{"login":"kmcgrevey","id":56694416,"node_id":"MDQ6VXNlcjU2Njk0NDE2","avatar_url":"https://avatars3.githubusercontent.com/u/56694416?v=4","gravatar_id":"","url":"https://api.github.com/users/kmcgrevey","html_url":"https://github.com/kmcgrevey","followers_url":"https://api.github.com/users/kmcgrevey/followers","following_url":"https://api.github.com/users/kmcgrevey/following{/other_user}","gists_url":"https://api.github.com/users/kmcgrevey/gists{/gist_id}","starred_url":"https://api.github.com/users/kmcgrevey/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/kmcgrevey/subscriptions","organizations_url":"https://api.github.com/users/kmcgrevey/orgs","repos_url":"https://api.github.com/users/kmcgrevey/repos","events_url":"https://api.github.com/users/kmcgrevey/events{/privacy}","received_events_url":"https://api.github.com/users/kmcgrevey/received_events","type":"User","site_admin":false},{"login":"DavidTTran","id":57076945,"node_id":"MDQ6VXNlcjU3MDc2OTQ1","avatar_url":"https://avatars0.githubusercontent.com/u/57076945?v=4","gravatar_id":"","url":"https://api.github.com/users/DavidTTran","html_url":"https://github.com/DavidTTran","followers_url":"https://api.github.com/users/DavidTTran/followers","following_url":"https://api.github.com/users/DavidTTran/following{/other_user}","gists_url":"https://api.github.com/users/DavidTTran/gists{/gist_id}","starred_url":"https://api.github.com/users/DavidTTran/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/DavidTTran/subscriptions","organizations_url":"https://api.github.com/users/DavidTTran/orgs","repos_url":"https://api.github.com/users/DavidTTran/repos","events_url":"https://api.github.com/users/DavidTTran/events{/privacy}","received_events_url":"https://api.github.com/users/DavidTTran/received_events","type":"User","site_admin":false}]'
+    http_version: null
+  recorded_at: Mon, 11 May 2020 23:52:04 GMT
+recorded_with: VCR 5.1.0
