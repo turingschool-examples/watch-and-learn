@@ -3,8 +3,8 @@ class User < ApplicationRecord
   has_many :videos, through: :user_videos
 
   validates :email, uniqueness: true, presence: true
-  validates :password, presence: true
   validates :first_name, presence: true
+  validates :token, presence: true
   enum role: { default: 0, admin: 1 }
   has_secure_password
 
@@ -28,5 +28,26 @@ class User < ApplicationRecord
     service = GithubService.new(self)
     json = service.git_following
     json.map { |person| person[:login] }
+  end
+
+  def self.omniauth_token(auth_info)
+    auth_info.credentials.token
+  end
+
+  def self.omniauth_username(auth_info)
+    auth_info.extra.raw_info.login
+  end
+
+  def can_friend(github_username)
+    if User.exists?(username: github_username)
+      user = User.find_by(username: github_username)
+      check = "#{user.first_name} #{user.last_name}"
+      true unless friends.include?(check)
+    end
+  end
+
+  def name(github_username)
+    user = User.find_by(username: github_username)
+    "#{user.first_name}-#{user.last_name}"
   end
 end
