@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "As an admin,", type: :feature do
+RSpec.describe "As an admin,", :vcr, type: :feature do
   before :each do
     @admin = create(:admin)
     @tutorial = create(:tutorial)
@@ -51,7 +51,7 @@ RSpec.describe "As an admin,", type: :feature do
     click_on "Import YouTube Playlist"
 
     fill_in :title, with: "Test-Tutorial"
-    fill_in :description, with: "50 videos"
+    fill_in :description, with: "100 videos"
     fill_in :thumbnail, with: "https://i.pinimg.com/564x/23/05/82/230582bf2487046449ddc45915cbd7f7.jpg"
     fill_in :playlist_id, with: "PLDIoUOhQQPlXr63I_vwF9GD8sAKh77dWU"
     click_on "Import"

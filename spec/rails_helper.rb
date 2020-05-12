@@ -1,4 +1,16 @@
 require 'spec_helper'
+require 'webmock/rspec'
+require 'vcr'
+
+VCR.configure do |c|
+  c.ignore_localhost = true
+  c.cassette_library_dir = 'spec/fixtures'
+  c.hook_into :webmock
+  c.configure_rspec_metadata!
+  c.filter_sensitive_data("<YOUTUBE_API_KEY>") { ENV['YOUTUBE_API_KEY'] }
+  c.filter_sensitive_data("<GITHUB_ACCESS_KEY>") { ENV['GH_TEST_KEY_1'] }
+  c.filter_sensitive_data("<GITHUB_ACCESS_KEY>") { ENV['GH_TEST_KEY_2'] }
+end
 
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
@@ -39,13 +51,5 @@ RSpec.configure do |config|
 
   config.filter_rails_from_backtrace!
 end
-
-# VCR.configure do |config|
-#   config.cassette_library_dir = "spec/fixtures/vcr_cassettes"
-#   config.hook_into :webmock
-#   config.filter_sensitive_data('<YOUTUBE_API_KEY') { ENV['YOUTUBE_API_KEY'] }
-#   config.filter_sensitive_data('<GITHUB_TOKEN') { ENV['GITHUB_TOKEN'] }
-#   config.configure_rspec_metadata!
-# end
 
 OmniAuth.config.test_mode = true

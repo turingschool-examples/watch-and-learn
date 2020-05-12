@@ -2,10 +2,6 @@ require 'rails_helper'
 
 
 describe "A registered user", :vcr do
-  before do
-    Rails.application.env_config["omniauth.auth"] = OmniAuth.config.mock_auth[:github]
-  end
-
   before(:each) do
     @user = create(:user)
     @user1 = User.create({email: "fake@example.com",
@@ -20,7 +16,6 @@ describe "A registered user", :vcr do
                         password: "password",
                         role: "default",
                         token: ENV['GH_TEST_KEY_2']})
-
   end
 
   it 'can visit dashboard and does not see GitHub repos without token' do
@@ -32,7 +27,6 @@ describe "A registered user", :vcr do
   end
 
   it 'can visit dashboard and see GitHub repos', :js do
-
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user1)
 
     visit dashboard_path
@@ -48,7 +42,6 @@ describe "A registered user", :vcr do
   end
 
   it "users only see repos associated with their unique token" do
-
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user1)
 
     visit dashboard_path
@@ -78,7 +71,6 @@ describe "A registered user", :vcr do
   end
 
   it 'user with token can visit dashboard and see following', :js do
-
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user1)
 
     visit dashboard_path
@@ -92,8 +84,8 @@ describe "A registered user", :vcr do
     expect(current_url).to eq("https://github.com/SMJ289")
   end
 
-  xit "can authorize through GitHub", :js do
-
+  it "can authorize through GitHub", :js do
+    Rails.application.env_config["omniauth.auth"] = OmniAuth.config.mock_auth[:github]
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
 
     visit dashboard_path
@@ -101,8 +93,9 @@ describe "A registered user", :vcr do
     expect(page).to have_no_content("Following")
     expect(page).to have_no_content("Followers")
 
-    click_link "Connect to GitHub"
-    OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({
+    # click_link("Connect to GitHub")
+
+    response = OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({
       provider: 'github',
       uid: '12345',
       credentials: {
@@ -110,8 +103,10 @@ describe "A registered user", :vcr do
         }
       })
 
+    @user.update_auth(response)
     expect(@user.uid).to eq('12345')
 
-    expect(page).to have_content("Repos")
+    visit dashboard_path
+    expect(page).to have_content("Following")
   end
 end
