@@ -30,7 +30,7 @@ class Admin::TutorialsController < Admin::BaseController
     playlist = service.playlist_info(params[:playlist_id])
     tutorial = Tutorial.create(import_tutorial_params)
     create_tutorial_videos(tutorial, playlist)
-    pagination(tutorial, service, playlist)
+    next_page(tutorial, service, playlist)
     flash[:success] = "Successfully created tutorial. #{view_context.link_to('View it here.', tutorial_path(tutorial.id))}"
     redirect_to admin_dashboard_path
   end
@@ -43,7 +43,7 @@ class Admin::TutorialsController < Admin::BaseController
     end
   end
 
-  def pagination(tutorial, service, playlist)
+  def next_page(tutorial, service, playlist)
     until playlist[:nextPageToken].nil?
       playlist = service.next_page(params[:playlist_id], playlist)
       create_tutorial_videos(tutorial, playlist)
