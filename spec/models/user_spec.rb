@@ -28,7 +28,7 @@ RSpec.describe User, type: :model do
   end
 
   describe 'methods' do
-    it 'can return an array of repos' do
+    it 'can return an array of repos', :vcr do
       user = User.create(email: 'user@email.com',
         password: 'password',
         first_name:'Jim',
@@ -42,7 +42,7 @@ RSpec.describe User, type: :model do
       expect(user.repos).to eq(expected)
     end
 
-    it 'can return an array of followers' do
+    it 'can return an array of followers', :vcr do
       user = User.create(email: 'user@email.com',
         password: 'password',
         first_name:'Jim',
@@ -52,14 +52,15 @@ RSpec.describe User, type: :model do
       expect(user.followers).to eq(["alex-latham", "DavidTTran"])
     end
 
-    it 'following' do
+    it 'following', :vcr do
       user = User.create(email: 'user@email.com',
         password: 'password',
         first_name:'Jim',
         role: 0,
         token: "#{ENV['GITHUB_TOKEN']}")
 
-      expect(user.following).to eq(["treyx", "tylertomlinson", 'kmcgrevey',"DavidTTran"])
+      expect(user.following).to eq(["treyx", "tylertomlinson", "kmcgrevey", "DavidTTran"])
+
     end
 
     it 'omniauth_token' do

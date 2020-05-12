@@ -1,3 +1,5 @@
+require 'webmock/rspec'
+
 RSpec.configure do |config|
 
   config.before(:suite) do

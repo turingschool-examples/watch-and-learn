@@ -18,7 +18,11 @@ Rails.application.routes.draw do
       resources :videos, only: [:create]
     end
     resources :videos, only: [:edit, :update, :destroy]
-
+    
+    # resources :import_tutorial, only:[:create]
+    get '/import_tutorial/new', to:"import_tutorial#new"
+    post '/import_tutorial', to:"import_tutorial#create"
+    
     namespace :api do
       namespace :v1 do
         put "tutorial_sequencer/:tutorial_id", to: "tutorial_sequencer#update"

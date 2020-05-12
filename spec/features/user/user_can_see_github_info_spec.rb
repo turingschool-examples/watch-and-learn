@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'User' do
-  it 'user can see github info' do
+  it 'user can see github info', :vcr do
     user = User.create(email: 'user@email.com',
       password: 'password',
       first_name:'Jim',
