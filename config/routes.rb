@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get "/dashboard", to: "dashboard#show"
+    delete '/tutorial/:id', to: "tutorials#destroy"
+    get '/tutorial/:id', to: "tutorials#destroy"
     resources :tutorials, only: [:create, :edit, :update, :destroy, :new] do
       resources :videos, only: [:create]
     end
