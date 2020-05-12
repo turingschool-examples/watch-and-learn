@@ -11,8 +11,4 @@ class User < ApplicationRecord
   def git_hub_token?
     !self[:token].nil?
   end
-
-  def update_auth(response)
-    self.update(uid: response[:uid], token: response[:credentials][:token])
-  end
 end
