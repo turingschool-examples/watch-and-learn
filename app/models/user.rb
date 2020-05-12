@@ -40,7 +40,14 @@ class User < ApplicationRecord
 
   def can_friend(github_username)
     if User.exists?(username: github_username)
-      true unless friends.include?(github_username)
+      user = User.find_by(username: github_username)
+      check = "#{user.first_name} #{user.last_name}"
+      true unless friends.include?(check)
     end
+  end
+
+  def name(github_username)
+    user = User.find_by(username: github_username)
+    "#{user.first_name}-#{user.last_name}"
   end
 end

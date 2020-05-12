@@ -5,13 +5,15 @@ describe 'User' do
     user1 = User.create(email: 'user1@email.com',
       password: 'password',
       first_name:'Jim',
+      last_name: "Bob",
       role: 0,
       token: "#{ENV['GITHUB_TOKEN']}",
       username: 'Maxwell-Baird')
 
     user2 = User.create(email: 'user2@email.com',
       password: 'password',
-      first_name:'Jim',
+      first_name:'Bob',
+      last_name: "John",
       role: 0,
       token: "#{ENV['GITHUB_TOKEN_2']}",
       username: 'kmcgrevey')
@@ -45,7 +47,7 @@ describe 'User' do
     end
 
     within("#friends") do
-      expect(page).to have_content("kmcgrevey")
+      expect(page).to have_content("Bob John")
     end
 
   end

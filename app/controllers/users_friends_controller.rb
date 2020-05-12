@@ -1,6 +1,7 @@
 class UsersFriendsController < ApplicationController
   def update
-    current_user.friends << params[:name]
+    name = params[:name]
+    current_user.friends << name.sub('-', ' ')
     current_user.save!
     redirect_to dashboard_path
   end
