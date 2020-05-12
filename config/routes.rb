@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get "/dashboard", to: "dashboard#show"
+    delete '/tutorial/:id', to: "tutorials#destroy"
+    get '/tutorial/:id', to: "tutorials#destroy"
     resources :tutorials, only: [:create, :edit, :update, :destroy, :new] do
       resources :videos, only: [:create]
     end
@@ -35,9 +37,12 @@ Rails.application.routes.draw do
   get '/dashboard', to: 'users#show'
   get '/about', to: 'about#show'
   get '/get_started', to: 'get_started#show'
+  get '/auth/github', as: :github_login
   get '/auth/github/callback', to: 'sessions#edit'
   # Is this being used?
   get '/video', to: 'video#show'
+  patch "/friend/:name", to: 'users_friends#update'
+  get "/friend/:name", to: 'users_friends#update'
 
   resources :users, only: [:new, :create, :update, :edit]
 

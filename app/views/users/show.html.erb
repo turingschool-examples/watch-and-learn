@@ -11,8 +11,8 @@
     <h1>Bookmarked Segments</h1>
   </section>
 
-  <% if current_user.token != nil %>
-    <h1>Github</h1>
+  <% if current_user.token != '0' %>
+    <h1><%= current_user.username %>'s Github</h1>
     <section id='github-repos'>
       <h3> Repos </h3>
       <% current_user.repos.each do |link| %>
@@ -25,6 +25,9 @@
       <h3> followers </h3>
       <% current_user.followers.each do |follower| %>
         <%= link_to "#{follower}", "https://github.com/#{follower}" %>
+        <% if current_user.can_friend(follower) %>
+          <%= link_to "Add as Friend", "/friend/#{current_user.name(follower)}", method: :patch %>
+        <% end %>
         <p></p>
       <% end %>
     </section>
@@ -33,12 +36,20 @@
       <h3> Following </h3>
       <% current_user.following.each do |follow| %>
         <%= link_to "#{follow}", "https://github.com/#{follow}" %>
+        <% if current_user.can_friend(follow) %>
+          <%= link_to "Add as Friend", "/friend/#{current_user.name(follow)}", method: :patch %>
+        <% end %>
         <p></p>
       <% end %>
     </section>
 
   <% else %>
-    <%= link_to "Connect to Github", "https://github.com/login/oauth/authorize?client_id=e5b765e6ce409b1727a6&scope=repo" %>
+    <%= link_to "Connect to Github", (:github_login) %>
   <% end %>
-
+  <section id='friends'>
+    <h1>Friends</h1>
+    <% current_user.friends.each do |friend| %>
+      <p><%= friend%> </p>
+    <% end %>
+  </section>
 </section>

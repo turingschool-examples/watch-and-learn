@@ -15,8 +15,9 @@ class SessionsController < ApplicationController
   end
 
   def edit
-    client_id = 'e5b765e6ce409b1727a6'
-    client_secret = '2b8abb6c548ffb70c17cca09746c43606c15f8c3'
+    current_user.token = User.omniauth_token(request.env['omniauth.auth'])
+    current_user.username = User.omniauth_username(request.env['omniauth.auth'])
+    current_user.save
     redirect_to dashboard_path
   end
 
