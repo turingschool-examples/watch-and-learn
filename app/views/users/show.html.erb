@@ -7,8 +7,13 @@
     <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
     <li> <%= current_user.email%> </li>
   </ul>
-  <section>
+  <section id='bookmarks'>
     <h1>Bookmarked Segments</h1>
+    <% if current_user %>
+      <% current_user.bookmark_vids.each do |video| %>
+        <b><%= video.title %> (<%= video.tutorial.title %>)</b></br>
+      <% end %>
+    <% end %>
   </section>
 
   <% if current_user.token != '0' %>
