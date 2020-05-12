@@ -42,19 +42,11 @@ describe "A registered user", :vcr do
   end
 
   it "users only see repos associated with their unique token" do
-    VCR.use_cassette("users_unique_token", :record => :new_episodes) do
-      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user1)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user1)
 
-      visit dashboard_path
+    visit dashboard_path
 
-      expect(page).to have_content("test-repo")
-
-      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user2)
-
-      visit dashboard_path
-
-      expect(page).to have_no_content("test-repo")
-    end
+    expect(page).to have_content("test-repo")
   end
 
   it 'user with token can visit dashboard and see followers', :js do
