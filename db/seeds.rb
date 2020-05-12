@@ -117,5 +117,6 @@ m3_tutorial.videos.create!({
 
 User.destroy_all
 
-User.create!(email: 'admin@example.com', first_name: 'Bossy', last_name: 'McBosserton', password:  "password", role: :admin)
-User.create!(email: 'user@example.com', first_name: 'User', last_name: 'McUserton', password:  "password", role: :default, git_hub_token: ENV['GH_TEST_KEY_1'])
+User.create!(email: 'admin@example.com', first_name: 'Bossy', last_name: 'McBosserton', password: "password", role: :admin)
+User.create!(email: 'user@example.com', first_name: 'User', last_name: 'McUserton', password: "password", role: :default)
+User.create!(email: 'user1@example.com', first_name: 'David', last_name: 'Tran', password: "password", role: :default)

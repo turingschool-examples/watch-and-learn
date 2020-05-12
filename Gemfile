@@ -29,6 +29,7 @@ gem 'acts-as-taggable-on', '~> 6.0'
 gem 'omniauth-census', git: "https://github.com/turingschool-projects/omniauth-census"
 gem 'omniauth-github'
 
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails'
@@ -42,6 +43,8 @@ group :development, :test do
   gem 'simplecov'
   gem 'selenium-webdriver'
   gem 'webdrivers'
+  gem 'vcr'
+  gem 'webmock'
 end
 
 group :development do

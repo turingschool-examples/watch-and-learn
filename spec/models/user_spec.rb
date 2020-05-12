@@ -35,7 +35,7 @@ RSpec.describe User, type: :model do
                            last_name: "Tran",
                            password: "password",
                            role: "default",
-                           git_hub_token: "4d17cd958fc7c7709b64d1ae35475caa467ab709"})
+                           token: ENV['GH_TEST_KEY_1']})
 
       expect(user.git_hub_token?).to eq(false)
       expect(user1.git_hub_token?).to eq(true)

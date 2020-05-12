@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'An admin user can add tags to tutorials' do
+describe 'An admin user can add tags to tutorials', :vcr do
   it 'clicks on the add tag on a tutoral' do
     admin = create(:user, role: 1)
     tutorial = create(:tutorial)

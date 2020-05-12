@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-feature "An admin can delete a tutorial" do
-  before :each do 
+feature "An admin can delete a tutorial", :vcr do
+  before :each do
     admin = create(:admin)
     @tutorial = create(:tutorial)
     create_list(:tutorial, 2)
@@ -21,9 +21,9 @@ feature "An admin can delete a tutorial" do
     expect(page).to have_css('.admin-tutorial-card', count: 2)
   end
 
-  scenario "and it's associated videos are deleted as well." do 
+  scenario "and it's associated videos are deleted as well." do
     expect(page).to have_css('.admin-tutorial-card', count: 3)
-    
+
     within(first('.admin-tutorial-card')) do
       click_link('Delete')
     end

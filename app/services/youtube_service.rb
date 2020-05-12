@@ -5,12 +5,15 @@ class YoutubeService
     get_json('youtube/v3/videos', params)
   end
 
-  def playlist_info(id)
-    params = { part: 'contentDetails', playlistId: id }
-    response = get_json('youtube/v3/playlistItems', params)
-    response[:items].map { |item| video_info(item[:contentDetails][:videoId]) }
+  def playlist_info(id, pageToken = nil)
+    params = { part: 'contentDetails, snippet', maxResults: 50, pageToken: pageToken, playlistId: id }
+    get_json('youtube/v3/playlistItems', params)
   end
 
+  def next_page(id, response)
+    playlist_info(id, response[:nextPageToken])
+  end
+  
   private
 
   def get_json(url, params)
