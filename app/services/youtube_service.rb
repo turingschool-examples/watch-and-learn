@@ -10,10 +10,16 @@ class YoutubeService
                playlistId: id,
                maxResults: 50 }
 
+    get_playlist('youtube/v3/playlistItems', params)
+  end
+
+  private
+
+  def get_playlist(url, params)
     vid_list = []
 
     loop do
-      json = get_json('youtube/v3/playlistItems', params)
+      json = get_json(url, params)
       params[:pageToken] = json[:nextPageToken]
       vid_list << json[:items]
       break if json[:nextPageToken].nil?
@@ -21,8 +27,6 @@ class YoutubeService
 
     vid_list.flatten
   end
-
-  private
 
   def get_json(url, params)
     response = conn.get(url, params)
