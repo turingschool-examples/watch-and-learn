@@ -1,4 +1,5 @@
 class Tutorial < ApplicationRecord
+  validates_presence_of :title, :description, :thumbnail
   has_many :videos, -> { order(position: :ASC) },
                                inverse_of: :tutorial,
                                dependent: :destroy
