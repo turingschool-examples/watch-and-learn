@@ -15,4 +15,8 @@ class User < ApplicationRecord
   def update_auth(response)
     self.update(uid: response[:uid], token: response[:credentials][:token])
   end
+
+  def full_name 
+    "#{self.first_name}" + " " + "#{self.last_name}"
+  end
 end

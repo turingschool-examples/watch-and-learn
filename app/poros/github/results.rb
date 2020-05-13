@@ -14,6 +14,12 @@ class Results
     @repos = parse_repos
   end
 
+  def user_info(gh_username)
+    request = @connection.get("/users/#{gh_username}")
+    response = JSON.parse(request.body, symbolize_names: true)
+    { email: response[:email], name: response[:name] }
+  end
+
   private
 
   def parse_info(info)
