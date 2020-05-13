@@ -40,5 +40,15 @@ RSpec.describe User, type: :model do
       expect(user.git_hub_token?).to eq(false)
       expect(user1.git_hub_token?).to eq(true)
     end
+
+    it "#full_name returns the current user's name as a string" do
+      user1 = User.create({email: "fake@example.com",
+                           first_name: "David",
+                           last_name: "Tran",
+                           password: "password",
+                           role: "default",
+                           token: ENV['GH_TEST_KEY_1']})
+      expect(user1.full_name).to eq("David Tran")
+    end
   end
 end
