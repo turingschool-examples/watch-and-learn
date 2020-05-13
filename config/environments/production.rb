@@ -105,4 +105,5 @@ Rails.application.configure do
     :enable_starttls_auto => true,
   }
 
+  config.action_mailer.default_url_options = { host: "https://video-field.heroku.com" }
 end
