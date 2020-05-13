@@ -4,7 +4,7 @@ require_relative 'follower'
 require_relative 'following'
 require_relative 'repo'
 
-class Results
+class Response
   attr_reader :followers, :following, :repos
 
   def initialize(current_user)
