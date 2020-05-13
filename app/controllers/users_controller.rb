@@ -1,8 +1,8 @@
-require './app/poros/github/results.rb'
+require './app/poros/github/response.rb'
 
 class UsersController < ApplicationController
   def show
-    @response = Results.new(current_user) if current_user.git_hub_token?
+    @response = Response.new(current_user) if current_user.git_hub_token?
   end
 
   def new
