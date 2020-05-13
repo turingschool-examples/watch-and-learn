@@ -30,6 +30,5 @@ describe 'A registered user' do
       expect(page).to have_content("#{video_4.title} (#{video_4.tutorial.title})")
       expect(page).not_to have_content("#{video_3.title} (Tutorial Three)")
     end
-    save_and_open_page
   end
 end
