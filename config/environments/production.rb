@@ -95,5 +95,14 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = { :address => "localhost", :port => 25 }
+  config.action_mailer.smtp_settings = { 
+    :address => "smtp.sendgrid.net", 
+    :port => 587,
+    :domain => "heroku.com",
+    :authentication => :plain,
+    :user_name => ENV['SENDGRID_USERNAME'],
+    :password => ENV['SENDGRID_PASSWORD'],
+    :enable_starttls_auto => true,
+  }
+
 end
