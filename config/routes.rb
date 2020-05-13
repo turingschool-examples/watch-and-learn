@@ -39,6 +39,8 @@ Rails.application.routes.draw do
 
   get '/invite', to: 'invite#new'
   post '/invite', to: 'invite#create'
+  get "/activate", to: 'activation#update'
+  post '/activate', to: 'activation#create'
 
   # Is this being used?
   get '/video', to: 'video#show'
