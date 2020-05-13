@@ -119,5 +119,25 @@ RSpec.describe User, type: :model do
 
       expect(user2.can_friend('Maxwell-Baird')).to eq(true)
     end
+
+    it 'bookmarked_vids' do
+      tutorial_1= create(:tutorial, title: "Tutorial One")
+      tutorial_2= create(:tutorial, title: "Tutorial Two")
+      tutorial_3= create(:tutorial, title: "Tutorial Three")
+      video_6 = create(:video, title: "The Baker's Dozen", tutorial: tutorial_1, position: 3)
+      video_4 = create(:video, title: "Horner's Corner", tutorial: tutorial_2, position: 2)
+      video_1 = create(:video, title: "The Bunny Ears Technique", tutorial: tutorial_1, position: 1)
+      video_2 = create(:video, title: "Peter Piper Picks", tutorial: tutorial_2, position: 1)
+      video_3 = create(:video, title: "Little Miss Muffet", tutorial: tutorial_3, position: 1)
+      video_5 = create(:video, title: "Huff and Puff", tutorial: tutorial_1, position: 2)
+      user = create(:user)
+      UserVideo.create!(user_id: user.id, video_id: video_4.id)
+      UserVideo.create!(user_id: user.id, video_id: video_6.id)
+      UserVideo.create!(user_id: user.id, video_id: video_2.id)
+      UserVideo.create!(user_id: user.id, video_id: video_1.id)
+      UserVideo.create!(user_id: user.id, video_id: video_5.id)
+
+      expect(user.bookmarked_vids).to eq([video_1, video_5, video_6, video_2, video_4])
+    end
   end
 end

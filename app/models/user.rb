@@ -51,7 +51,7 @@ class User < ApplicationRecord
     "#{user.first_name}-#{user.last_name}"
   end
 
-  def bookmark_vids
-    videos.order(:tutorial_id)
+  def bookmarked_vids
+    videos.order(:tutorial_id, :position)
   end
 end
