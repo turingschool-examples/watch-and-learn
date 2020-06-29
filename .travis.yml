@@ -11,6 +11,7 @@ script:
 - bundle exec rspec
 deploy:
   provider: heroku
-  api_key: AIzaSyCkfGbfjMF_fBgGBC1rupRHfY611pdShhE
-  app: brownfield-of-dreams
+  api_key:
+    secure: tvpf1N2pPfI89yoeaF/q7SJSzDMyaAVYDvNQIQO9eT5MwkVtbDX8gETJMPBdduRVbVSoXoJvNCpLpomweZFgm4gyR2AOnPvC56uJooKils4QCYqO0bCEqGTqunZFfB+W0qQjJp4ITohgzzOCZRnQMdiF9aUkF2qwtpCyf3gF40dyFBrCbhPU/Dwjo2tIoQEY0i2Fc0OUX0bPYML4L3JZGPHOo/063Twkjx910WR98KTZVFPRd0P8T2HPxTf5Y1dUSO2TZEVHnnFN8qEy6Hi7cXnQzi7WbMd6hGvaThw5CsADbZMTUCrbikmTVgWjMoDUemW2qovL8g2zaQ1u6N/Q1Ag9ptahujEayb+9NTK1a2QyQ08yH/i427SEUN464c9B0upVveYfAh7qHNxQ+f8GdgFdEjQ6LyNidqBq3Ud5WyLhm+OTmM4vtjG7p6SSu+9r6kVlvlLBo0zIXTDZznZYNhXEd1578Z5oFwE4gZuS/ppTr4hiz3S/xUZP63AAahtsaPjidF4KR6rk607W7ThttA5f21C0lt/cqzGb0J5T3+1DB9Td/u0kis5IVCbU9P+xGpRAruMSbZXDbmVBKjJwvj+xW9Y6i9CcGOg9hVL0kKEk54b4lJdPvOULKkh/H5a1oyC7S85U3WOUz+RwAARVTEAXhaRZSU2AXj1TmgUGlaI=
+  app: field-of-dreams
   run: rails db:migrate
