@@ -5,7 +5,7 @@ prework_tutorial_data = {
   "playlist_id"=>"PL1Y67f0xPzdN6C-LPuTQ5yzlBoz2joWa5",
   "classroom"=>false,
 }
-prework_tutorial = Tutorial.create! prework_tutorial_data
+prework_tutorial = Tutorial.create!(prework_tutorial_data)
 
 prework_tutorial.videos.create!({
   "title"=>"Prework - Environment Setup",
@@ -115,4 +115,4 @@ m3_tutorial.videos.create!({
   "position"=>6
 })
 
-User.create!(email: 'admin@example.com', first_name: 'Bossy', last_name: 'McBosserton', password:  "password", role: :admin)
+User.create!(email: 'admin@example.com', first_name: 'Bossy', last_name: 'McBosserton', password: "password", role: :admin)
