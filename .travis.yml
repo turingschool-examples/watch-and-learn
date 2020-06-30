@@ -1,4 +1,4 @@
-langauge: ruby
+language: ruby
 rbenv:
 - 2.5.3
 addons:
