@@ -1,5 +1,10 @@
 class UsersController < ApplicationController
-  def show; end
+  def show
+    if current_user.token
+      github_decorator = GithubDecorator.new
+      @users_repos = github_decorator.list_five_repos(current_user)
+    end
+  end
 
   def new
     @user = User.new
