@@ -1,13 +1,15 @@
 class UsersController < ApplicationController
   def show
-    token = "484cabdee3b4e5de4226ed80470600b274e435d9"
-    conn = Faraday.new(url: "https://api.github.com") 
-    response = conn.get("/users/perryr16/repos")
-    body = JSON(response.body, symbolize_names: true)
-    repos = body.map{|repo| repo[:name]}
-    repos_5 = repos[0..4]
-    binding.pry
+    conn = Faraday.new(url: "https://api.github.com") do |faraday|
+      faraday.headers["Authorization"] = "token 484cabdee3b4e5de4226ed80470600b274e435d9"
+    end
     
+    response = conn.get("/user/repos")
+    body = JSON.parse(response.body, symbolize_names: true)
+    repos = body.map do |repo_data|
+      Repo.new(repo_data)
+    end
+    @repos_5 = repos[0..4]
   end
 
   def new
