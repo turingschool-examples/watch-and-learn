@@ -77,5 +77,5 @@ If set up correctly, and assuming you have internet access and the Youtube API i
 * [chromedriver-helper](http://chromedriver.chromium.org/)
 
 ### Versions
-* Ruby 2.4.1
+* Ruby 2.5.3
 * Rails 5.2.0
