@@ -11,6 +11,6 @@ script:
 - bundle exec rspec
 deploy:
   provider: heroku
-  api_key:
-  app:
+  api_key: e7f43a96-615c-4b07-addc-371e57448db1
+  app: hidden-brook-14849
   run: rails db:migrate
