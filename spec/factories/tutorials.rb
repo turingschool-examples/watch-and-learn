@@ -6,4 +6,4 @@ FactoryBot.define do
     playlist_id { Faker::Crypto.md5 }
     classroom { false }
   end
-end
+end 
