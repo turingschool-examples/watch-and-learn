@@ -1,6 +1,6 @@
 # Add configuration values here, as shown below.
 #
-YOUTUBE_API_KEY: ENV[AIzaSyDyY__HGUskUuI_HVQg2wOVpJZZBiEoDKU]
+YOUTUBE_API_KEY: AIzaSyDyY__HGUskUuI_HVQg2wOVpJZZBiEoDKU
 
 #notes
 # pusher_app_id: "2954"
