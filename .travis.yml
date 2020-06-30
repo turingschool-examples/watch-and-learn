@@ -10,8 +10,8 @@ script:
 - bundle exec rails db:{create,migrate} RAILS_ENV=test
 - bundle exec rspec
 deploy:
-  provider: heroku
+  provider: heroku:git
   api_key:
     secure: nXSlNk6ytMdtTaSywTK6HP3btTtPHjNkuujh2VU/JAeI2S3BKKLCTtmgsWYKbWFL0CSt8LCqWGp2kTDLozMgYfuoGP1fqSM+F2p/c1C/pH+bHa7QPu/qp09yaQc9IF4sDKPbimXCbcioU2JDeURMWRPc0WJoQGCpu5ynFMvvU+FWJXpcckL1DrEJbPcsMgvYadIzasF9Vl0QKnLs5wDFoJGPN2YZ0A+Za8aKoLJRoaITyAcIXA8HFE+2YMTBU8CcDiJQyk83b1Glvx9i3e5ZegJVeOzrpR0osCnz6y9613oNuSj2ViyPnLm7Y/WJMtd793scl2IDJtpjAabASGFydwU4AS3u6/dfa7cVykDb991IV2YBguU/vf4qVqGCh/K/KiKbO5fC2T/4fmNbQ/X2JiRO5m8O3RYvq4RIkTh72pjHvyfJGXl/PN+xb1Xl03cmDcrqC0LnNISl8FMmOO7tbRo7DA5c0X0HUnkSAhMXN3Yt/dLCCPIVCWbr2jeYxynDA34B8FimmGrfqTSmyqMqtILW7sAlMKxQfX+19otn+zFY3i/+RtQchFJhoMlcRW1WiAJT8xfkItqShaB0d5hhpxe5kC+hpohfSZirrKnQwwOXlC3sn0bJWq0ibBrogIOD1YxjgpHYI+2dWOmugpGAtEf9wVYPC2hhByKxYSatYys=
-  app: brownfield-of-dreams-sb-rb
+  app: brownfield-of-dreams
   run: rails db:migrate
