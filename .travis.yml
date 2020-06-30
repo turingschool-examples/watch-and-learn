@@ -1,4 +1,7 @@
-langauge: ruby
+  before_install:
+    - gem install bundler
+
+language: ruby
 rbenv:
 - 2.5.3
 addons:
