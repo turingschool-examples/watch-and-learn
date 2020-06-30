@@ -1,10 +1,12 @@
+before_install:
+- gem install bundler
 language: ruby
 rbenv:
 - 2.5.3
 addons:
   postgresql: 9.6
   chrome: stable
-dist: trusty
+dist: xenial
 script:
 - yarn
 - bundle exec rails db:{create,migrate} RAILS_ENV=test
@@ -12,5 +14,6 @@ script:
 deploy:
   provider: heroku
   api_key:
-  app:
+    secure: rCw8GrriPZUhp5RlpqOYtRANvJJukQvje3RuHvm0dRt3F9arrcVraqKRnYGuRwDfXWEzIpJYWgIf6kc8KQoucVfEjAfXqwAaT2XVvr7tZOoz915nRbeMBJnkVqIBBSKB004C7KTXaqeW/ECR4X5/TafBXYyplev3O7li8agNCdhdjBIgGJgv7jlKtKlbG9DwfeBA/g2cJhboLHrh6oY7mmv2RwlDZGmQZFydjEUpsG8yoEizG4ML15fR8IOHPJgJLl8P9ebrQIyQFnBOks1NRTs+3Kt9eKh9TEvL/AR1HyzFrWJYXZ1NUS2ciIlZvFeXEtn/SBx/PQdSG1BjYQzyHsw/3V5AQ2HMWlOfvZdeyl+035dU9YilLE2fQpgtMO9tAtGUt1yPkPkF85AH/Q3CAfPXFbl7CV78g4yxAlLA6Bf5u6DHaHwJV7CWDxyeEy2ZxvQHbQUY/EIGlmG4zBE0YR9z6gbs8sd12kSMSpeQgqQFfu5Ieo2o73Y+JEb3eSw/2yFVkeXR3tXpbQ8TNK/c8PO8FCv7yLaPJjj1JnO1rMSHrpcUYJe2M2DieYIH6D5wGgWahTqmisD3YKoExHfHP+4Qde+6VD0S/p7sQPs2S5Yi2cd8q1KFpdyudb9QdZHtfLl3HBwn05Q4JNWE/a5MkZGIyKuoBndoh9woCAaspN4=
+  app: https://brownsfield.herokuapp.com/
   run: rails db:migrate
