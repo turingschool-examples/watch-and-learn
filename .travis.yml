@@ -1,4 +1,4 @@
-langauge: ruby
+language: ruby
 rbenv:
 - 2.5.3
 addons:
@@ -11,7 +11,7 @@ script:
 - bundle exec rspec
 deploy:
   provider: heroku
-  api_key:
+  api_key: AIzaSyADscT6QGGnEdN2vjxcWd2MgreSxvYoIHc
     secure: GlfuNJWPw1ySfRTetw60dB7wAcQw/H0O7+SSjM5RcK7CPeGn1v9Svce7QTuHHt1KSQrn44IPef9MbUzUn5/Y2YELqSq2xQBugJ9Dx+7tLbgAAjvjEbYAMeVnRNDVhtR5kzvhaMyMZ1kz6qbNLlY671NA1/eEmbm+gxHcbvimxJdcIUnKyzy0rF+6/ivEwFPzFGrn9n27LFNq/0p9pGxLYp8KNvzeSgF+lki4lkbaZUY+LtSgfdszDkWGrJrBX98aim4J3KYtu/wTws1ho4mAwP7HTajh4fKrLLGZ8LxX/Y/yyoqDylCHhGCyjf8QZfWqfSx2e1rQg8SDNXB4pp0ttG2Hk+m6eJMWthDTBh6kjS2K8AxvFevUV94zDeYg2JGLdRuf+TW9GWaIk9soVS1B8ZJoIVo06lN/+X3C2SJVNQn69dnMk3zJOV6ToTdHrh9/mPt8vI+7nxasNEn/x0+pnUYvV5fdGh+OQ/UAv1NuRBnKNDLfQEC2VYIKO96xPYvHLrt397+1+FY/kidf7cAS2Y/DvcY2y7jxI/2lKBxIfsHrqZrnQq5Cf1o64MKYCP6OzWEH6eEHr8muSlFD2uL8LHNwYd9lp+XF9rGzI1xkOeeWGkTGByC402NIcLcofPYzqw1Qw3qLWFFF5teK3Tre6vBnhHmg959DQL51pSZYJRA=
-  app: 
+  app:
   run: rails db:migrate
