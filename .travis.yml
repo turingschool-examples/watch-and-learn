@@ -1,4 +1,4 @@
-langauge: ruby
+language: ruby
 rbenv:
 - 2.5.3
 addons:
@@ -12,5 +12,5 @@ script:
 deploy:
   provider: heroku
   api_key:
-  app:
+  app: blooming-badlands-99255
   run: rails db:migrate
