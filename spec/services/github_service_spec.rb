@@ -5,7 +5,7 @@ describe GithubService do
     context '#repos' do
       it "returns repo hashes" do
         service = GithubService.new
-        repos = service.repos
+        repos = service.repos(ENV['GITHUB_TOKEN'])
         expect(repos).to be_a Array
         expect(repos.first).to be_a Hash
 

@@ -1,8 +1,6 @@
 class UsersController < ApplicationController
   def show
-
-    github_results = GithubResults.new
-    @repos = github_results.repos
+    @repos = GithubResults.new.repos(current_user.token) if current_user.token
   end
 
   def new
