@@ -6,7 +6,8 @@ before_install:
 - gem install bundler
 addons:
   postgresql: 9.6
-  chrome: stable 
+  chrome: stable
+dist: xenial 
 script:
 - yarn
 - bundle exec rails db:{create,migrate} RAILS_ENV=test
