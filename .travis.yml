@@ -11,6 +11,6 @@ script:
 - bundle exec rspec
 deploy:
   provider: heroku
-  api_key:
+  api_key: AIzaSyAc5bVojPAtlQsCV1TKA0TIr2YEscdDcmw
   app: blooming-badlands-99255
   run: rails db:migrate
