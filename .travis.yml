@@ -11,6 +11,7 @@ script:
 - bundle exec rspec
 deploy:
   provider: heroku
-  api_key: e7f43a96-615c-4b07-addc-371e57448db1
+  api_key:
+    secure: secure: "cFKPemcHKG78wOmdtvhsFN2QyolsS5Qdz9Dc/4fisvPoxTrgGk+aEKWz5fQZnI5hhtoC8PkMrD0xV3IK+a9d2PnkEV+xOYJCCgNzS4cTwKys1CDUbZzwOkl/HbFWgD8CRAVbvsswcObo4DAwFlOIKohbGeigBXySiau2R7sEM327v8xGPdEz53QZyjLSYV3DjeHDhP8jx6QLZXLPq9IC73+gJqv6acN3823LqQPnM6sz+rvyCjLA7CmPbAIEFSenF5aSvb4u/Gf0fUIQY0F3dXL407HqPmLhSx9Se7fxYK8yr4UQJHH23KC6YyalljqDD0jdxQRJlJ9iJ0QOgWxBrIqTWqaxeJirr9GBlrQC82cd/8Q7y045Bb/NzAWliGKNdfmYZgvSs50z4Xb6srZJ0iP5hsf3vP3U2+GAr3n6AKLAoCh8OH+wkpsfHFzTePfoboKXwvJKRwR+ipRBnVpRqRMDB8H9LXCQziTJJx/jAf5g3Ty6bajozFKXCktLtsWtiWZn0xqDg7xDVc7GS7rmRvhLP+n26+TBq2Blryhjzk+U3nFXZekMGKaMThFsDHzwaEW345fl3ZZQcFnpNfSzPz4Ve9tVljU/gogRL9hmYFfAXutX+HP2nYEC8N8acLFp8eaxkVl9mmgrhq/VjT963jDJEDsZR1eWuP0AiqdYPyI="
   app: hidden-brook-14849
   run: rails db:migrate
