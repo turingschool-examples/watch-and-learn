@@ -8,12 +8,12 @@ require 'rspec/rails'
 
 ActiveRecord::Migration.maintain_test_schema!
 
-Capybara.register_driver :chrome do |app|
+Capybara.register_driver :selenium do |app|
   options = Selenium::WebDriver::Chrome::Options.new(args: %w[no-sandbox headless disable-gpu])
   Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
 end
 
-Capybara.javascript_driver = :chrome
+Capybara.javascript_driver = :selenium_chrome_headless
 
 Capybara.configure do |config|
   config.default_max_wait_time = 5
