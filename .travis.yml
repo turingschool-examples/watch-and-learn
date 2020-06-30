@@ -5,7 +5,7 @@ language: ruby
 rbenv:
 - 2.5.3
 addons:
-  postgresql: 12.2
+  postgresql: 12
   apt:
     packages:
     - postgresql-12
