@@ -1,20 +1,50 @@
-language: ruby
-rbenv:
-- 2.5.3
-addons:
-  postgresql: 9.6
-  chrome: stable
-dist: trusty
-script:
-- yarn
-- bundle exec rails db:{create,migrate} RAILS_ENV=test
-- bundle exec rspec
-deploy:
-  provider: heroku
-  api_key:
-    secure: AIzaSyDyY__HGUskUuI_HVQg2wOVpJZZBiEoDKU
-  app: https://brownsfield.herokuapp.com/
-  run: rails db:migrate
-env:
-  global:
-    secure: U36GiPdZXzM3glihpapz6G543aAH/pjj+w0Hwbk++JOE0xSGIrsylMfUPW8BVPEM9Z9J9UzXrKlCbVq+iMBsu9BsNQxBNHSWI0x2sZqAWjrtSGa13lmvdMO0lhu0fhxwmhd7LTUaAxCtKbk6KQXhHLpxZXCQCnd3b68PI5uWJCagOjV2+tifjw0IRjR51UZJikbNOMf/0wrzxP7G5CG+06HESKiXnqCmIjsGGP/QMG7kTzxhNQWDFgnOjNZao5p0lC980/Q/lqEaGid3gGwax6c5jPqJg500myLb3ZN388DIgt6tnx+jji6eOjHbf5Dum40G4sefHL3GBc+J79t4fNLP40+eCmJwcVdHGDIh4H++s01L+BHjvt2RP5pzt5cvH1heTnxNBYzkSNY0ioKkZmW9KneprelQDH6FOyTvWqGmshyeZJmAaBK1SphTb4wBN03Y/ZT31iqgahBEwiVQceF/ppHWYnUtuZF+GhIBmP3xCDGkpumAM3MeJyIM0/DN3atlkP4XlCZvFVqje7NOPXLu1cBMPTXf5UOUVGBSWIO1WW8arNFARd/Y+gh+MjmV+3NYB5I1KCaR0BoCrT/0bBKCvK+NWZnty5q1wvHwg9HD07viSNgNCdDbSFKesQFNQhO+lLVwL/it6a9TmKJUb6/rUxaddqJdxFpMsMUFV98=
+# language: ruby
+# rbenv:
+# - 2.5.3
+# addons:
+#   postgresql: 9.6
+#   chrome: stable
+# dist: trusty
+# script:
+# - yarn
+# - bundle exec rails db:{create,migrate} RAILS_ENV=test
+# - bundle exec rspec
+# deploy:
+#   provider: heroku
+#   api_key:
+#     secure: AIzaSyDyY__HGUskUuI_HVQg2wOVpJZZBiEoDKU
+#   app: https://brownsfield.herokuapp.com/
+#   run: rails db:migrate
+# env:
+#   global:
+#     secure: U36GiPdZXzM3glihpapz6G543aAH/pjj+w0Hwbk++JOE0xSGIrsylMfUPW8BVPEM9Z9J9UzXrKlCbVq+iMBsu9BsNQxBNHSWI0x2sZqAWjrtSGa13lmvdMO0lhu0fhxwmhd7LTUaAxCtKbk6KQXhHLpxZXCQCnd3b68PI5uWJCagOjV2+tifjw0IRjR51UZJikbNOMf/0wrzxP7G5CG+06HESKiXnqCmIjsGGP/QMG7kTzxhNQWDFgnOjNZao5p0lC980/Q/lqEaGid3gGwax6c5jPqJg500myLb3ZN388DIgt6tnx+jji6eOjHbf5Dum40G4sefHL3GBc+J79t4fNLP40+eCmJwcVdHGDIh4H++s01L+BHjvt2RP5pzt5cvH1heTnxNBYzkSNY0ioKkZmW9KneprelQDH6FOyTvWqGmshyeZJmAaBK1SphTb4wBN03Y/ZT31iqgahBEwiVQceF/ppHWYnUtuZF+GhIBmP3xCDGkpumAM3MeJyIM0/DN3atlkP4XlCZvFVqje7NOPXLu1cBMPTXf5UOUVGBSWIO1WW8arNFARd/Y+gh+MjmV+3NYB5I1KCaR0BoCrT/0bBKCvK+NWZnty5q1wvHwg9HD07viSNgNCdDbSFKesQFNQhO+lLVwL/it6a9TmKJUb6/rUxaddqJdxFpMsMUFV98=
+{
+  "language": "ruby",
+  "os": [
+    "linux"
+  ],
+  "dist": "trusty",
+  "addons": {
+    "postgresql": "9.6",
+    "chrome": "stable"
+  },
+  "script": [
+    "yarn",
+    "bundle exec rails db:{create,migrate} RAILS_ENV=test",
+    "bundle exec rspec"
+  ],
+  "deploy": [
+    {
+      "provider": "heroku",
+      "strategy": "api",
+      "api_key": "AIzaSyDyY__HGUskUuI_HVQg2wOVpJZZBiEoDKU",
+      "app": "https://brownsfield.herokuapp.com/",
+      "run": [
+        "rails db:migrate"
+      ]
+    }
+  ],
+  "rvm": [
+    "2.5.3"
+  ]
+}
