@@ -1,5 +1,13 @@
 class UsersController < ApplicationController
-  def show; end
+
+  def show
+    conn = Faraday.new("https://api.github.com") do |req|
+      faraday.headers["X-API-KEY"] = 
+    end
+    repos = conn.get(“/users/jhgould/repos”)
+    # parsed = JSON.parse(repos.body, symbolize_name: true)
+    require 'pry'; binding.pry
+  end
 
   def new
     @user = User.new
