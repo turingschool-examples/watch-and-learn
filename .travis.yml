@@ -12,5 +12,5 @@ script:
 deploy:
   provider: heroku
   api_key: AIzaSyDyY__HGUskUuI_HVQg2wOVpJZZBiEoDKU
-  app: brownsfield
+  app: https://brownsfield.herokuapp.com/
   run: rails db:migrate
