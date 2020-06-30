@@ -5,9 +5,16 @@ language: ruby
 rbenv:
 - 2.5.3
 addons:
-  postgresql: 9.6
+  postgresql: 12
+  apt:
+    packages:
+    - postgresql-12
+    - postgresql-client-12
   chrome: stable
-dist: trusty
+env:
+  global:
+  - PGPORT=5433
+dist: xenial
 script:
 - yarn
 - bundle exec rails db:reset RAILS_ENV=test
