@@ -10,12 +10,8 @@ addons:
 dist: xenial
 script:
 - yarn
-# - bundle exec rails db:reset RAILS_ENV=test
-# - bundle exec rspec
-
-  - RAILS_ENV=test bundle exec rake db:migrate --trace
-  - bundle exec rake db:test:prepare
-  - bundle exec rspec spec/
+- bundle exec rails db:reset RAILS_ENV=test
+- bundle exec rspec
 deploy:
   provider: heroku
   api_key:
