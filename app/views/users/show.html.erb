@@ -13,7 +13,7 @@
 
   <section class="github">
     <h1>Github</h1>
-    <%@repos_5.each do |repo| %>
+    <%@repos.each do |repo| %>
       <%= link_to repo.name, repo.html_url, class: "github_link"%><br>
     <%end %>
   </section>
