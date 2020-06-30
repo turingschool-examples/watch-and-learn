@@ -19,12 +19,13 @@ describe 'User' do
     expect(page).to have_content(user.email)
     expect(page).to have_content(user.first_name)
     expect(page).to have_content(user.last_name)
-
-    expect(page).to have_css(".repo", count:5)
-    expect(page).to have_content("5 Results")
-
+    save_and_open_page
+    expect(page).to have_css(".repo", count:1)
+    expect(page).to have_content("5 Recent Repos")
+    
     within(first(".repo")) do 
       expect(page).to have_css(".name")
+      
     end
   end
 end
