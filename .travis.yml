@@ -11,6 +11,6 @@ script:
 - bundle exec rspec
 deploy:
   provider: heroku
-  api_key:
+  api_key: AIzaSyCzagb2Z4azIWluJz9b9q-fxPlm6yuro6M
   app:
   run: rails db:migrate
