@@ -6,7 +6,7 @@ prework_tutorial_data = {
   "classroom"=>false,
 }
 
-prework_tutorial = Tutorial.create! prework_tutorial_data
+prework_tutorial = Tutorial.create!(prework_tutorial_data)
 
 prework_tutorial.videos.create!({
   "title"=>"Prework - Environment Setup",
