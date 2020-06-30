@@ -8,8 +8,8 @@ addons:
   postgresql: 12.2
   apt:
     packages:
-    - postgresql-12.2
-    - postgresql-client-12.2
+    - postgresql-12
+    - postgresql-client-12
   chrome: stable
 dist: xenial
 script:
