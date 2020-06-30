@@ -6,7 +6,15 @@ describe 'A registered user' do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
     visit(dashboard_path)
-    save_and_open_page
+
     expect(page).to have_css('.github')
+  end
+  it "can't see a github section if user has no token" do
+    user = create(:user)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+    visit(dashboard_path)
+
+    expect(page).to_not have_css('.github')
   end
 end
