@@ -13,6 +13,7 @@ script:
 - bundle exec rspec
 deploy:
   provider: heroku
-  YOUTUBE_API_KEY: AIzaSyCzagb2Z4azIWluJz9b9q-fxPlm6yuro6M
+  api_key:
+    secure: "YOUR ENCRYPTED API KEY"
   app: fathomless-beyond-33278
   run: rails db:migrate
