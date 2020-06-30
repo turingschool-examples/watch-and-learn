@@ -15,9 +15,9 @@
     <section class="github">
       <h1>GitHub Repositories</h1>
       <ul>
-        <% current_user.repos[0..4].each do |repo| %>
+        <% @repos[0..4].each do |repo| %>
         <li class="repo-link">
-          <%= link_to repo[:name], repo[:html_url] %>
+          <%= link_to repo.name, repo.html_url %>
         </li>
         <% end %>
       </ul>
