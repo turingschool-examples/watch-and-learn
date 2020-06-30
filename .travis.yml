@@ -6,6 +6,10 @@ rbenv:
 - 2.5.3
 addons:
   postgresql: 12.2
+  apt:
+    packages:
+    - postgresql-12.2
+    - postgresql-client-12.2
   chrome: stable
 dist: xenial
 script:
