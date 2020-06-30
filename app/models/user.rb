@@ -7,4 +7,14 @@ class User < ApplicationRecord
   validates_presence_of :first_name
   enum role: { default: 0, admin: 1 }
   has_secure_password
+
+  def repos
+    conn = Faraday.new("https://api.github.com") do |req|
+      req.headers["Authorization"] = "token #{ENV["GITHUB_TOKEN"]}"
+    end
+
+    repos = conn.get("/user/repos")
+    JSON.parse(repos.body, symbolize_names: true)
+  end
+
 end

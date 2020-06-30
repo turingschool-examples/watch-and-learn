@@ -26,4 +26,12 @@ RSpec.describe User, type: :model do
       expect(admin.admin?).to be_truthy
     end
   end
+
+  describe 'methods' do
+    it "repos" do
+      user = User.create(email: 'user@email.com', password: 'password', first_name:'Jim', role: 0, token: ENV["GITHUB_TOKEN"])
+      repos = user.repos
+      expect(repos.first.class).to eq(Hash)
+    end
+  end
 end

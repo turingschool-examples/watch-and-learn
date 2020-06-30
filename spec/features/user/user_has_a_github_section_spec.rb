@@ -6,14 +6,7 @@ describe 'A registered user' do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
     visit(dashboard_path)
+    save_and_open_page
     expect(page).to have_css('.github')
   end
 end
-
-# conn = Faraday.new("https://api.github.com") do |req|
-#   req.headers["Authorization"] = "token #{ENV["GITHUB_TOKEN"]}"
-# end
-#
-# repos = conn.get("/user/repos")
-# parsed_repos = JSON.parse(repos.body, symbolize_names: true)
-# require "pry"; binding.pry
