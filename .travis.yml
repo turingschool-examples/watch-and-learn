@@ -5,9 +5,9 @@ language: ruby
 rbenv:
 - 2.5.3
 addons:
-  postgresql: 9.6
+  postgresql: 12.2
   chrome: stable
-dist: trusty
+dist: xenial
 script:
 - yarn
 - bundle exec rails db:reset RAILS_ENV=test
