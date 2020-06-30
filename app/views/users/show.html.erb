@@ -7,6 +7,13 @@
     <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
     <li> <%= current_user.email%> </li>
   </ul>
+  <% if !@parsed_resp.nil? %>
+    <section><h3>Github</h3>
+    <% @parsed_resp.each do |resp| %>
+      <%= link_to resp.html_url, resp.name %>
+    <% end %>
+    </section>
+  <% end %>
   <section>
     <h1>Bookmarked Segments</h1>
   </section>
