@@ -17,7 +17,7 @@ class Admin::VideosController < Admin::BaseController
       video.save
 
       flash[:success] = 'Successfully created video.'
-    rescue NoVideoCreated => e
+    rescue StandardError => e
       flash[:error] = e.to_s
     end
 
