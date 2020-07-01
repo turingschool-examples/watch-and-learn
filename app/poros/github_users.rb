@@ -17,4 +17,11 @@ class GithubUsers
       Follower.new(follower_data)
     end
   end
+
+  def followings
+    body = GithubService.new.followings
+    body.map do |following_data|
+      Following.new(following_data)
+    end
+  end
 end
