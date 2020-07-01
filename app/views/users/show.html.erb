@@ -10,7 +10,7 @@
   <% if !@parsed_resp.nil? %>
     <section><h3>Github</h3>
     <% @parsed_resp.each do |resp| %>
-      <%= link_to resp.html_url, resp.name %>
+      <%= link_to resp.name, resp.html_url %><br/>
     <% end %>
     </section>
   <% end %>
