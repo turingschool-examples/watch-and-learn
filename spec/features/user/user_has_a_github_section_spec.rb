@@ -19,17 +19,20 @@ describe 'A registered user' do
     expect(page).to_not have_css('.github')
   end
 
-  xit "can see a github section with only thier repos" do
+  it "can see a github section with only thier repos" do
     user_1 = create(:user, token: ENV["GITHUB_TOKEN"])
     user_2 = create(:user, token: ENV["GITHUB_TOKEN_2"])
+    user_1_repos = GithubResults.new.repos(user_1.token)
+    user_2_repos = GithubResults.new.repos(user_2.token)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
 
     visit(dashboard_path)
 
-    within('.github') do
-      expect()
+    within(first('.repo-link')) do
+      expect(page).to have_content(user_1_repos.first.name)
+      expect(page).to_not have_content(user_2_repos.first.name)
     end
-  end
 
+  end
 
 end
