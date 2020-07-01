@@ -5,7 +5,7 @@ class GithubService
 
     first_five = response[0..4]
     repos = first_five.map do |repo|
-      {name: repo[:name], url: repo[:url] }
+      {name: repo[:name], html_url: repo[:html_url] }
     end
   end
 
@@ -13,7 +13,7 @@ class GithubService
     headers = { Authorization: "token #{ENV['GITHUB_TOKEN']}" }
     response = get_json('https://api.github.com/user/followers', {}, headers)
     followers = response.map do |follower|
-      {login: follower[:login], url: follower[:url] }
+      {login: follower[:login], html_url: follower[:html_url] }
     end
   end
 

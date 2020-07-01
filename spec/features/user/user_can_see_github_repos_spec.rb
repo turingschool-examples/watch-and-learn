@@ -35,11 +35,14 @@ describe 'User' do
         expect(page).to have_content("Followers:")
       end
 
+
+
       it 'I see followers' do
         expect(page).to have_css('.follower', count: 3)
         # expect page to have 3 followers
         # expect follower to have name
         # expect follower to have link
+        save_and_open_page
       end
     end
   end
