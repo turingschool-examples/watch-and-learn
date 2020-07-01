@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
-  def show; end
+  def show
+    github_service = GithubService.new
+    @repos = github_service.fetch_repos_for_user
+  end
 
   def new
     @user = User.new

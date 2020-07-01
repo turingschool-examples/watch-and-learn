@@ -10,4 +10,15 @@
   <section>
     <h1>Bookmarked Segments</h1>
   </section>
+    <section>
+    <h1>Github</h1>
+    <ul class="repos">
+      <% @repos.each do |repo| %>
+      <li class="repo">
+        <%= repo[:name] %>
+        <%= repo[:url] %>
+      </li> 
+      <% end %>
+    </ul>
+  </section>
 </section>
