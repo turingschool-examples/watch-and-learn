@@ -1,7 +1,6 @@
 class YoutubeService
   def video_info(id)
     params = { part: 'snippet,contentDetails,statistics', id: id }
-
     get_json('youtube/v3/videos', params)
   end
 
