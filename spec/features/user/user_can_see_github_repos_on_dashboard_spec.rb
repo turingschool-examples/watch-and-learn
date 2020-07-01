@@ -13,13 +13,36 @@ describe 'As a registered user' do
         expect(page).to have_css(".user-repo", count: 5)
       end
     end
-
+    # Not sure how to test this
     it 'Project names link to the repo on github' do
 
     end
 
     it 'Does not display a github section if the user does not have a token' do
+      user = create(:user)
 
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+      visit '/dashboard'
+
+      expect(page).to_not have_css(".user-repo")
+    end
+
+    it 'Shows correct repos when there is more than one user with different github tokens' do
+      user = create(:user, token:  ENV["GITHUB_API_TOKEN"])
+      rostam = create(:user, token:  ENV["GITHUB_API_TOKEN_R"])
+
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+      visit '/dashboard'
+
+      within('#github-repos') do
+        expect(page).to have_content("adopt_dont_shop_paired")
+        expect(page).to have_content("futbol")
+        expect(page).to have_content("monster_shop_2003")
+        expect(page).to have_content("activerecord-obstacle-course")
+        expect(page).to have_content("adopt_dont_shop_2003")
+      end
     end
   end
 end
