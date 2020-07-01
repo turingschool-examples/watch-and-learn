@@ -10,4 +10,15 @@
   <section>
     <h1>Bookmarked Segments</h1>
   </section>
+  <section class ='repo'>
+    <h1><%= @repos.count %> Recent Repos</h1>
+    <% @repos.each do |repo| %>
+      <ul>
+        <li><a href= "<%= repo.url %>"><%= repo.name %></li></a>  
+      </ul>
+    <% end %>
+  </section>
 </section>
+
+
+
