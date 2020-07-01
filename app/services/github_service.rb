@@ -10,4 +10,9 @@ class GithubService
     response = conn.get('/user/repos')
     JSON.parse(response.body, symbolize_names: true)
   end
+
+  def followers_body
+    response = conn.get('/user/followers')
+    JSON.parse(response.body, symbolize_names: true)
+  end
 end
