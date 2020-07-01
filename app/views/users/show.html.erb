@@ -10,4 +10,14 @@
   <section>
     <h1>Bookmarked Segments</h1>
   </section>
+
+</section>
+</br>
+<section class="github"> <h2>Github Repos</h2>
+  <ul>
+    <% if !@links.nil? %>
+      <% @links.each do |name, url| %>
+        <li><%= link_to(name, url) %></li>
+      <% end %></ul>
+    <% end %>
 </section>
