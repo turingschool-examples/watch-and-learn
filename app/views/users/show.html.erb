@@ -15,9 +15,18 @@
     <ul class="repos">
       <% @repos.each do |repo| %>
       <li class="repo">
-        <%= repo[:name] %>
-        <%= repo[:url] %>
-      </li> 
+        <%= link_to repo[:name], "#{repo[:html_url]}" %>
+      </li>
+      <% end %>
+    </ul>
+  </section>
+    <section>
+    <h1>Followers:</h1>
+    <ul class="followers">
+      <% @followers.each do |follower| %>
+      <li class="follower">
+        <%= link_to follower[:login], "#{follower[:html_url]}" %>
+      </li>
       <% end %>
     </ul>
   </section>
