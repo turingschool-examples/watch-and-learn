@@ -19,10 +19,20 @@ describe GithubService do
       expect(followers).to be_an Array
       expect(followers.first).to be_a Hash
       follower_1 = followers.first
-      
+
       expect(follower_1).to have_key :login
       expect(follower_1).to have_key :html_url
     end
 
+    it "returns all following" do
+      service = GithubService.new
+      followings = service.followings
+      expect(followings).to be_an Array
+      expect(followings.first).to be_a Hash
+      following_1 = followings.first
+
+      expect(following_1).to have_key :login
+      expect(following_1).to have_key :html_url
+    end
   end
 end

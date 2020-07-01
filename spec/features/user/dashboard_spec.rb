@@ -32,10 +32,26 @@ describe "Registered User Profile Dashboard" do
       within(".followers")do
         expect(page).to have_link("stellakunzang")
         expect(page).to have_link("muydanny")
+        expect(page).to have_link("dborski")
         #click_link("stellakunzang")
       end
     end
     # expect(current_path).to eq("https://github.com/stellakunzang")
   end
 
+  it "Github followings are listed as links to profile" do
+    visit dashboard_path
+
+    expect(page).to have_content("Following")
+
+    within(".github")do
+      within(".following")do
+        expect(page).to have_link("stellakunzang")
+        expect(page).to have_link("muydanny")
+        expect(page).to have_link("dborski")
+        #click_link("stellakunzang")
+      end
+    end
+    # expect(current_path).to eq("https://github.com/stellakunzang")
+  end
 end
