@@ -2,12 +2,18 @@ class UsersController < ApplicationController
 
   def show
     # require 'pry'; binding.pry
+    # user = User.find_by(user_params[:id])
+  
     conn = Faraday.new("https://api.github.com") do |req|
-      req.headers["authorization"] = "token 741479466d5ac1badff7d3ffc1776e1af9dc47f8"
+      req.headers["authorization"] = ENV["GH_API_KEY"]
     end
-    repos = conn.get("/users/jhgould/repos")
+    
+    repos = conn.get("/user/repos")
     parsed = JSON.parse(repos.body, symbolize_names: true)
-    @repo_list = parsed.map { |repos| repos[:name] }.first(5)
+    @repos = parsed.map do |repo_data|
+      Repo.new(repo_data)
+    end.first(5)
+    # @repo_list = parsed.map { |repos| repos[:name] }.first(5)
   end
 
   def new

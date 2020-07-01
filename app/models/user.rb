@@ -7,4 +7,5 @@ class User < ApplicationRecord
   validates :first_name, presence: true
   enum role: { default: 0, admin: 1 }
   has_secure_password
-end
+end 
+
