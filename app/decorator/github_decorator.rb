@@ -1,5 +1,4 @@
 class GithubDecorator
-
   def initialize(user)
     @user = user
     create_github_service
@@ -12,10 +11,12 @@ class GithubDecorator
   def list_five_repos
     repos = @github_service.user_repos
     repos[0..4].map do |repo|
-      UserRepository.new({
-        name: repo[:name],
-        html_url: repo[:html_url]
-        })
+      UserRepository.new(
+        {
+          name: repo[:name],
+          html_url: repo[:html_url]
+        }
+      )
     end
   end
 end
