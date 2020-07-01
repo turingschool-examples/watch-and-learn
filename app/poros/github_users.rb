@@ -1,17 +1,18 @@
-class GithubResults
+class GithubUsers
+
   def repos
-    body = GithubService.new.repos_body
+    body = GithubService.new.repos
     body.map do |repo_data|
       Repo.new(repo_data)
     end
   end
 
   def repos_limit(number)
-    repos[0..number - 1]
+    repos.first(number)
   end
 
   def followers
-    body = GithubService.new.followers_body
+    body = GithubService.new.followers
     body.map do |follower_data|
       Follower.new(follower_data)
     end
