@@ -15,7 +15,11 @@ class UsersController < ApplicationController
     @parsed_follow_resp.map! do |follower|
       Follower.new(follower)
     end
-    # require "pry"; binding.pry
+    following_resp = conn.get('user/following')
+    @parsed_flwing_resp = JSON.parse(following_resp.body, symbolize_names: true)
+    @parsed_flwing_resp.map! do |following|
+      Following.new(following)
+    end
   end
 
   def new

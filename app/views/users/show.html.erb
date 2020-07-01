@@ -17,6 +17,10 @@
     <% @parsed_follow_resp.each do |resp| %>
       <%= link_to resp.login, resp.html_url %><br/>
     <% end %>
+      <h3>Following</h3>
+    <% @parsed_flwing_resp.each do |resp| %>
+      <%= link_to resp.login, resp.html_url %><br/>
+    <% end %>
   </section>
     </section>
   <% end %>
