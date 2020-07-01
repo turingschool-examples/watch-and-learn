@@ -22,5 +22,11 @@
         <%= link_to follower.handle, follower.url %><br>
       <% end %>
     </section>
+    <section class="following">
+      <h2>Following</h2>
+      <% @github_user.followings.each do |following| %>
+        <%= link_to following.handle, following.url %><br>
+      <% end %>
+    </section>
   </section>
 </section>
