@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(params[:user_id])
+    binding.pry
     if @user.token == nil
       []
     else

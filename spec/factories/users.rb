@@ -5,8 +5,9 @@ FactoryBot.define do
     last_name { Faker::Artist.name }
     password { Faker::Color.color_name }
     role { :default }
-    token {ENV["GH_API_KEY"]}
+    # token {ENV["GH_API_KEY"]}
   end
+
 
   factory :admin, parent: :user do
     role { :admin }
