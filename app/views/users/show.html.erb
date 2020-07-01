@@ -17,8 +17,7 @@
   <section id='github-repos'>
     <% @users_repos.each do |repo| %>
       <ul class="user-repo">
-        <li class="repo-name">Name: <%= repo.name %></li>
-        <li> <%= link_to "Github Link", repo.url %></li>
+        <li class="repo-name">Name: <%= link_to repo.name, repo.url %></li>
       </ul>
     <% end %>
   </section>
