@@ -7,18 +7,12 @@ class UsersController < ApplicationController
 
     response = conn.get("user/repos")
 
-
     parsed = JSON.parse(response.body, symbolized_names: true)[0..4]
 
     @links = Hash.new(0)
       parsed.map do |entry|
       @links[entry["name"]] = entry["url"]
     end
-
-  end
-
-
-
   end
 
 
