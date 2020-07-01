@@ -1,5 +1,4 @@
 class GithubService
-
   attr_reader :user
 
   def initialize(user)
