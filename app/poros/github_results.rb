@@ -9,4 +9,11 @@ class GithubResults
   def repos_limit(number)
     repos[0..number - 1]
   end
+
+  def followers
+    body = GithubService.new.followers_body
+    body.map do |follower_data|
+      Follower.new(follower_data)
+    end
+  end
 end
