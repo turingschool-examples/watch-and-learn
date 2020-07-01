@@ -30,6 +30,11 @@ describe 'User' do
         # expect repo to have name
         # expect repo to have link
       end
+
+      it 'I see a section for Github followers' do
+        expect(page).to have_content("Followers:")
+      end
+
       it 'I see followers' do
         expect(page).to have_css('.follower', count: 3)
         # expect page to have 3 followers

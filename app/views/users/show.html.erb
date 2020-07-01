@@ -17,7 +17,18 @@
       <li class="repo">
         <%= repo[:name] %>
         <%= repo[:url] %>
-      </li> 
+      </li>
+      <% end %>
+    </ul>
+  </section>
+    <section>
+    <h1>Followers:</h1>
+    <ul class="followers">
+      <% @followers.each do |follower| %>
+      <li class="follower">
+        <%= follower[:login] %>
+        <%= follower[:url] %>
+      </li>
       <% end %>
     </ul>
   </section>
