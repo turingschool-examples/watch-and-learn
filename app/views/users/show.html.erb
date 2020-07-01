@@ -11,14 +11,15 @@
     <h1>Bookmarked Segments</h1>
   </section>
   <section class ='repo'>
+    <% if @user.token == nil %>
+      <p>No github stuff</p>
+    <% else %>
     <h1><%= @repos.count %> Recent Repos</h1>
-    <% @repos.each do |repo| %>
-      <ul>
-        <li><a href= "<%= repo.url %>"><%= repo.name %></li></a>  
-      </ul>
+      <% @repos.each do |repo| %>
+        <ul>
+          <li><a href= "<%= repo.url %>"><%= repo.name %></li></a>
+        </ul>
+      <% end %>
     <% end %>
   </section>
 </section>
-
-
-

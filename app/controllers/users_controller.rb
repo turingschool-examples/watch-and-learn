@@ -8,12 +8,12 @@ class UsersController < ApplicationController
       conn = Faraday.new("https://api.github.com") do |req|
         req.headers["authorization"] = @user.token
       end
-      
-      repos = conn.get("/user/repos")
-      parsed = JSON.parse(repos.body, symbolize_names: true)
-      @repos = parsed.map do |repo_data|
-        Repo.new(repo_data)
-      end.first(5)
+
+      response = conn.get("/user/repos")
+      parsed = JSON.parse(response.body, symbolize_names: true)
+        @repos = parsed.map do |repo_data|
+          Repo.new(repo_data)
+        end.first(5)
     end
   end
 

@@ -1,6 +1,7 @@
 # Add configuration values here, as shown below.
 #
 YOUTUBE_API_KEY: AIzaSyDyY__HGUskUuI_HVQg2wOVpJZZBiEoDKU
+GH_API_KEY: token 7ba523bc8ab3171fc0964d99d0b14521e724e863
 
 #notes
 # pusher_app_id: "2954"
@@ -12,4 +13,4 @@ YOUTUBE_API_KEY: AIzaSyDyY__HGUskUuI_HVQg2wOVpJZZBiEoDKU
 # production:
 #   stripe_api_key: sk_live_EeHnL644i6zo4Iyq4v1KdV9H
 #   stripe_publishable_key: pk_live_9lcthxpSIHbGwmdO941O1XVU
-GH_API_KEY: token 49475bf778cbfec543a25d65e0bf5ed5f54ed18e
+# GH_API_KEY: token 49475bf778cbfec543a25d65e0bf5ed5f54ed18e
