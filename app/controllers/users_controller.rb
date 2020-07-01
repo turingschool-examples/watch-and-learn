@@ -5,7 +5,7 @@ class UsersController < ApplicationController
     # user = User.find_by(user_params[:id])
   
     conn = Faraday.new("https://api.github.com") do |req|
-      req.headers["authorization"] = ENV["GH_API_KEY"]
+      req.headers["authorization"] = ENV["GH_API_KEY"] 
     end
     
     repos = conn.get("/user/repos")
@@ -13,7 +13,6 @@ class UsersController < ApplicationController
     @repos = parsed.map do |repo_data|
       Repo.new(repo_data)
     end.first(5)
-    # @repo_list = parsed.map { |repos| repos[:name] }.first(5)
   end
 
   def new
