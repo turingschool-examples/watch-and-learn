@@ -15,11 +15,11 @@
 <% if current_user.token %>
   <h2>My Repositories</h2>
   <section id='github-repos'>
-    <ul>
-      <% @users_repos.each do |repo| %>
-        <li>Name: <%= repo.name %></li>
+    <% @users_repos.each do |repo| %>
+      <ul class="user-repo">
+        <li class="repo-name">Name: <%= repo.name %></li>
         <li> <%= link_to "Github Link", repo.url %></li>
-      <% end %>
-    </ul>
+      </ul>
+    <% end %>
   </section>
 <% end %>
