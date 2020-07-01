@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'As a registered user' do
   describe 'When I visit the dashboard' do
     it 'I see a list of five of my github repos' do
-      user = create(:user, token:  "6d37f331aab131ad424243bdf9065ecc18e809be")
+      user = create(:user, token:  ENV["GITHUB_API_TOKEN"])
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
