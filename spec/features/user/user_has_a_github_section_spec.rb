@@ -37,7 +37,7 @@ describe 'A registered user' do
     end
   end
 
-  it "can see all github followers" do
+  it "can see all github followers & click through to their page" do
     user_2 = create(:user, token: ENV["GITHUB_TOKEN_2"])
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_2)
     visit(dashboard_path)
@@ -45,5 +45,10 @@ describe 'A registered user' do
     within(".followers") do
       expect(page).to have_css(".follower", count: 4)
     end
+    # save_and_open_page
+    # within(first(".follower")) do
+    #   click_link
+    #   expect(current_path).to not_eq(dashboard_path)
+    # end
   end
 end
