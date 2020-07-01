@@ -1,5 +1,4 @@
 class UserRepository
-
   attr_reader :name, :url
   def initialize(repo_data)
     @name = repo_data[:name]
