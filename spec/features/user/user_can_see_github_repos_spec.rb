@@ -30,6 +30,12 @@ describe 'User' do
         # expect repo to have name
         # expect repo to have link
       end
+      it 'I see followers' do
+        expect(page).to have_css('.follower', count: 3)
+        # expect page to have 3 followers
+        # expect follower to have name
+        # expect follower to have link
+      end
     end
   end
 end
