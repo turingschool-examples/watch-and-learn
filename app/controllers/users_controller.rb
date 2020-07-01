@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def show
-    
+    return unless current_user.token
     conn = Faraday.new(url: "https://api.github.com") do |faraday|
       faraday.headers['Authorization'] = "token #{current_user.token}"
     end
@@ -14,6 +14,7 @@ class UsersController < ApplicationController
       parsed.map do |entry|
       @links[entry["name"]] = entry["url"]
     end
+
   end
 
 
