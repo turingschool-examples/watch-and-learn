@@ -12,7 +12,7 @@ class YoutubeService
   end
 
   def conn
-    fara = Faraday.new(url: 'https://www.googleapis.com') do |f|
+    Faraday.new(url: 'https://www.googleapis.com') do |f|
       f.adapter Faraday.default_adapter
       f.params[:key] = ENV['YOUTUBE_API_KEY']
     end
