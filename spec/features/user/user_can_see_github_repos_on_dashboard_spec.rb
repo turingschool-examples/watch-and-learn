@@ -13,7 +13,7 @@ describe 'As a registered user' do
         expect(page).to have_css(".user-repo", count: 5)
       end
     end
-    # Not sure how to test this
+
     it 'Project names link to the repo on github' do
       user = create(:user, token:  ENV["GITHUB_API_TOKEN"])
 
