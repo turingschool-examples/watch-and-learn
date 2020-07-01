@@ -6,17 +6,13 @@ describe 'Github Service' do
   # end
   describe '#fetch_repos_for_user' do
     it 'returns a list of user repositories' do
-      expected = [{:name=>"futbol", :url=>"https://api.github.com/repos/dborski/futbol"},
-                  {:name=>"monster_shop_2003",
-                  :url=>"https://api.github.com/repos/EricLarson2020/monster_shop_2003"},
-                  {:name=>"brownfield-of-dreams",
-                  :url=>"https://api.github.com/repos/Gallup93/brownfield-of-dreams"},
-                  {:name=>"adopt_dont_shop_paired",
-                  :url=>"https://api.github.com/repos/janegreene/adopt_dont_shop_paired"},
-                  {:name=>"battleship",
-                  :url=>"https://api.github.com/repos/javier-aguilar/battleship"}]
+      fetched_repos = GithubService.new.fetch_repos_for_user
+      first_repo = fetched_repos.first
 
-      expect(GithubService.new.fetch_repos_for_user).to eq(expected)
+      expect(fetched_repos).to be_an Array
+      expect(first_repo).to be_a Hash
+      expect(first_repo).to have_key :name
+      expect(first_repo).to have_key :url
     end
   end 
 end
