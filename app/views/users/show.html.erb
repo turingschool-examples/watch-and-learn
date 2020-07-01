@@ -13,13 +13,13 @@
 
   <section class="github">
     <h1>Github</h1>
-    <%@repos.each do |repo| %>
-      <%= link_to repo.name, repo.html_url, class: "github_link"%><br>
+    <% @github_user.repos_limit(5).each do |repo| %>
+      <%= link_to repo.name, repo.url, class: "github_link"%><br>
     <%end %>
     <section class="followers">
       <h2>Github Followers</h2>
-      <% @followers.each do |follower| %>
-        <%= link_to follower.handle, follower.html_url %><br>
+      <% @github_user.followers.each do |follower| %>
+        <%= link_to follower.handle, follower.url %><br>
       <% end %>
     </section>
   </section>
