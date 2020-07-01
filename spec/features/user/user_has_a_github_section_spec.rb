@@ -19,7 +19,7 @@ describe 'A registered user' do
     expect(page).to_not have_css('.github')
   end
 
-  it "can see a github section with only thier repos" do
+  it "can see a github section with only their repos" do
     user_1 = create(:user, token: ENV["GITHUB_TOKEN"])
     user_2 = create(:user, token: ENV["GITHUB_TOKEN_2"])
     user_1_repos = GithubResults.new.repos(user_1.token)
