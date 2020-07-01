@@ -11,7 +11,7 @@ describe Repo do
 
     expect(repo).to be_a Repo
     expect(repo.name).to eq("repo name")
-    expect(repo.html_url).to eq("www.repo_name.com")
+    expect(repo.url).to eq("www.repo_name.com")
   end
-  
+
 end
