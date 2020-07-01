@@ -15,7 +15,17 @@ describe 'As a registered user' do
     end
     # Not sure how to test this
     it 'Project names link to the repo on github' do
+      user = create(:user, token:  ENV["GITHUB_API_TOKEN"])
 
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+      visit '/dashboard'
+
+      expect(page).to have_link("adopt_dont_shop_paired", :href => "https://github.com/Ashkanthegreat/adopt_dont_shop_paired")
+      expect(page).to have_link("futbol", :href => "https://github.com/Lithnotep/futbol")
+      expect(page).to have_link("monster_shop_2003", :href => "https://github.com/madhalle/monster_shop_2003")
+      expect(page).to have_link("activerecord-obstacle-course", :href => "https://github.com/takeller/activerecord-obstacle-course")
+      expect(page).to have_link("adopt_dont_shop_2003", :href => "https://github.com/takeller/adopt_dont_shop_2003")
     end
 
     it 'Does not display a github section if the user does not have a token' do
