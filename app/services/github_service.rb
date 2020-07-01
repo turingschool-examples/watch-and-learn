@@ -18,4 +18,8 @@ class GithubService
   def followers
     get_url('followers')
   end
+
+  def followings
+    get_url('following')
+  end
 end
