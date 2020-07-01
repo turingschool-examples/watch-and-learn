@@ -9,9 +9,8 @@ describe 'As a registered user' do
 
       visit '/dashboard'
 
-
       within('#github-repos') do
-        expect(find('ul.text')).to have_selector('li', count: 5)
+        expect(page).to have_css(".user-repo", count: 5)
       end
     end
 
