@@ -21,6 +21,12 @@
         </li>
         <% end %>
       </ul>
+
+      <section class="followers">
+        <% @followers.each do |follower| %>
+          <p class="follower"> <%= link_to follower.login, follower.link %></p>
+        <% end %>
+      </section>
     </section>
   <% end %>
 </section>
