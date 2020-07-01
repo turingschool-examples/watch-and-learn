@@ -1,6 +1,6 @@
 before_install:
 - gem install bundler
-langauge: ruby
+language: ruby
 rbenv:
 - 2.5.3
 addons:
@@ -14,5 +14,6 @@ script:
 deploy:
   provider: heroku
   api_key:
-  app: 
+    secure: Wn4dpdgUA3iWUmKvaJ9BVP3vfzG3Qf49VUk9uxKPBOTv/aVCt99+wxjjDMKAdSsRRHA2+I0HRhtPNL3YcD1YnHJyGDw2JNeNhyKhwGmzl9CwlzJek7kMSfrD1EyeSP5g+sLw0mBxPCiNLLe6Hpk+Twc6roJdMJQDRQSpzUrHj7mXnyEle1TdpSvUyOAQqzdGaRqgiyNDKgspSaCE1FFLpglwLt5sQEunpyscAzKocmQ8mYj5b54asyc3Qrad3fV5Xu6nznCzg65ebhsCCjgRN0ZZQaz8P1NvRJ5Dp2M63NWmNXpyWMLvhg3RejdCWwehPb2dNQD7w6Q2TqM0Mw+DE7wN12nA/bfK1xwYF5tvKRRha/IAh2ddvMVhz5/mKt4YXmvybXCccgzxWyx0uhaTl0R2D1qQgq6rGFnQsnPqp6Cv9uNcNR9W693V1fD3cTRYrVORdCBRx85mfCcELs6eM0DVF4B22Y/ahHbCaTd65YosNBg6zOciAtiS39+OExnH+L/bnffW+gW/mPfS+O0OsAl0l5/kFWFssNrmqFYfSCBIXz4sAjCz9noSyyuTGzx8HD5aXVI48Q7YvYIp7RlYZqov5RbM5IBBYzTYGqmc0csN8D2iO8zrdutaeLGKMzg48Iv99zSOdWb6WxuYmLnDHTEZ9lorbnGsA4KBkyR3yUs=
+  app: gentle-atoll-82746
   run: rails db:migrate
