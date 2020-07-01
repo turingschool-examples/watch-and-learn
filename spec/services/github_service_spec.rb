@@ -9,7 +9,7 @@ describe 'Github Service' do
       expect(fetched_repos).to be_an Array
       expect(first_repo).to be_a Hash
       expect(first_repo).to have_key :name
-      expect(first_repo).to have_key :url
+      expect(first_repo).to have_key :html_url
     end
   end
 end
