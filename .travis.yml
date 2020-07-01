@@ -4,9 +4,11 @@ rbenv:
 addons:
   postgresql: 9.6
   chrome: stable
-dist: trusty
+dist: xenial
 script:
 - yarn
+- gem install bundler
+- bundle install
 - bundle exec rails db:{create,migrate} RAILS_ENV=test
 - bundle exec rspec
 deploy:
