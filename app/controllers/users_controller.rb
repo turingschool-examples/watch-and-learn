@@ -1,8 +1,7 @@
 class UsersController < ApplicationController
+
   def show
-    github_results = GithubResults.new
-    @repos = github_results.repos_limit(5)
-    @followers = github_results.followers 
+    @github_user = GithubUsers.new
   end
 
   def new
