@@ -1,16 +1,17 @@
 class UsersController < ApplicationController
 
   def show
+    
     @user = User.find_by(params[:user_id])
     if @user.token == nil
-      []
+      @repos = []
     else
       conn = Faraday.new("https://api.github.com") do |req|
         req.headers["authorization"] = @user.token
       end
       
-      repos = conn.get("/user/repos")
-      parsed = JSON.parse(repos.body, symbolize_names: true)
+      repo_list = conn.get("/user/repos")
+      parsed = JSON.parse(repo_list.body, symbolize_names: true)
       @repos = parsed.map do |repo_data|
         Repo.new(repo_data)
       end.first(5)
