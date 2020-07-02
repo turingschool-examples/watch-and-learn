@@ -30,4 +30,14 @@
       <% end %>
     </ul>
   </section>
+    <section>
+    <h1>Following:</h1>
+    <ul class="following">
+      <% @following.each do |follow| %>
+      <li class="follow">
+        <%= link_to follow[:login], "#{follow[:html_url]}" %>
+      </li>
+      <% end %>
+    </ul>
+  </section>
 </section>

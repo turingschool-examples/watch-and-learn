@@ -3,6 +3,7 @@ class UsersController < ApplicationController
     github_service = GithubService.new
     @repos = github_service.fetch_repos_for_user
     @followers = github_service.fetch_followers_for_user
+    @following = github_service.fetch_following_for_user
   end
 
   def new
