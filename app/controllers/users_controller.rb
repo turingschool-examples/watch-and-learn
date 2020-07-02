@@ -4,7 +4,7 @@ class UsersController < ApplicationController
     @user = User.find_by(params[:user_id])
     binding.pry
     if @user.token == nil
-      []
+      [][]
     else
       conn = Faraday.new("https://api.github.com") do |req|
         req.headers["authorization"] = @user.token
