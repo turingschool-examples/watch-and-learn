@@ -13,11 +13,11 @@
 
 </section>
 </br>
+<% if !@git_repos.nil? %>
 <section class="github"> <h2>Github Repos</h2>
   <ul>
-    <% if !@links.nil? %>
-      <% @links.each do |name, url| %>
-        <li><%= link_to(name, url) %></li>
+      <% @git_repos.each do |repo| %>
+        <li><%= link_to(repo.name, repo.url) %></li>
       <% end %></ul>
-    <% end %>
 </section>
+<% end %>
