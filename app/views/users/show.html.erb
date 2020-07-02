@@ -21,4 +21,20 @@
       </ul>
     <% end %>
   </section>
+  <h2>Followers</h2>
+  <section id="github-followers">
+    <% @user_followers.each do |follower| %>
+      <ul class="follower-handle">
+        <li class="handle-url"><%= link_to follower.handle, follower.url %></li>
+      </ul>
+    <% end %>
+  </section>
+  <h2>Following</h2>
+  <section id="github-following">
+    <%= @user_following.each do |follow| %>
+      <ul class="following-handle">
+        <li class="following-url"><%= link_to follow.handle, follow.url %></li>
+      </ul>
+    <% end %>
+  </section>
 <% end %>
