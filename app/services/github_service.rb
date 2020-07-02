@@ -1,13 +1,25 @@
 class GithubService
+
   def conn
     Faraday.new(url: 'https://api.github.com') do |faraday|
-      # faraday.headers['Authorization'] = ENV['GITHUB_API_KEY']
-      faraday.headers['Authorization'] = "token 484cabdee3b4e5de4226ed80470600b274e435d9"
+      faraday.headers['Authorization'] = ENV['GITHUB_API_KEY']
     end
   end
 
-  def repos_body
-    response = conn.get('/user/repos')
+  def get_url(url)
+    response = conn.get("/user/#{url}")
     JSON.parse(response.body, symbolize_names: true)
+  end
+
+  def repos
+    get_url('repos')
+  end
+
+  def followers
+    get_url('followers')
+  end
+
+  def followings
+    get_url('following')
   end
 end
