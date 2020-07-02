@@ -20,6 +20,16 @@
           <li><a href= "<%= repo.url %>"><%= repo.name %></li></a>
         </ul>
       <% end %>
+      <section class="github_followers">
+        <h1><%= @followers.length %> Followers</h1>
+        <% @followers.each do |follower| %>
+        <section id="follower">
+          <ul>
+            <li><a href= "<%= follower.url %>"> <%= follower.login %></li>
+            </ul>
+          </section>
+          <% end  %>
+        </section>
     <% end %>
   </section>
 </section>

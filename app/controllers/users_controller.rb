@@ -2,7 +2,6 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(params[:user_id])
-    binding.pry
     if @user.token == nil
       []
     else
@@ -15,6 +14,13 @@ class UsersController < ApplicationController
         @repos = parsed.map do |repo_data|
           Repo.new(repo_data)
         end.first(5)
+
+      response_followers = conn.get("/user/followers")
+      parsed_2 = JSON.parse(response_followers.body, symbolize_names: true)
+        @followers = parsed_2.map do |follower_data|
+          Follower.new(follower_data)
+        end.first(5)
+        # binding.pry
     end
   end
 
