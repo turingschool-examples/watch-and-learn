@@ -26,22 +26,42 @@ describe 'User' do
 
       it 'I see repositories' do
         expect(page).to have_css('.repo', count: 5)
-        # expect page to have 5 repos
-        # expect repo to have name
-        # expect repo to have link
+
+        within '.repos' do
+          expect(page).to have_link('futbol')
+          expect(page).to have_link('monster_shop_2003')
+          expect(page).to have_link('brownfield-of-dreams')
+          expect(page).to have_link('adopt_dont_shop_paired')
+          expect(page).to have_link('battleship')
+        end
       end
 
       it 'I see a section for Github followers' do
         expect(page).to have_content("Followers:")
       end
 
-
-
       it 'I see followers' do
         expect(page).to have_css('.follower', count: 3)
-        # expect page to have 3 followers
-        # expect follower to have name
-        # expect follower to have link
+
+        within '.followers' do
+          expect(page).to have_link('alex-latham')
+          expect(page).to have_link('aperezsantos')
+          expect(page).to have_link('zachholcomb')
+        end
+      end
+
+      it 'I see a section for those the user follows' do
+        expect(page).to have_content("Following:")
+      end
+
+      it 'I see those Im following' do
+        expect(page).to have_css('.following', count: 1)
+      end
+      it 'I see those Im following' do
+
+        within '.following' do
+          expect(page).to have_link('Gallup93')
+        end
       end
     end
   end

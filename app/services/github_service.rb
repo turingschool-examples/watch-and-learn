@@ -17,6 +17,14 @@ class GithubService
     end
   end
 
+  def fetch_following_for_user
+    headers = { Authorization: "token #{ENV['GITHUB_TOKEN']}" }
+    response = get_json('https://api.github.com/user/following', {}, headers)
+    following = response.map do |follow|
+      {login: follow[:login], html_url: follow[:html_url] }
+    end
+  end
+
   private
 
   def get_json(url, params, headers)
