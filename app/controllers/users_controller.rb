@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   def show
     @repos = GithubResults.new.repos(current_user.token) if current_user.token
     @followers = GithubResults.new.followers(current_user.token) if current_user.token
+    @followings = GithubResults.new.followings(current_user.token) if current_user.token
   end
 
   def new

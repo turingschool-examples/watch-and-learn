@@ -7,7 +7,11 @@ class GithubService
   def followers(token)
     followers = conn(token).get('/user/followers')
     JSON.parse(followers.body, symbolize_names: true)
+  end
 
+  def followings(token)
+    followings = conn(token).get('/user/following')
+    JSON.parse(followings.body, symbolize_names: true)
   end
 
   private
