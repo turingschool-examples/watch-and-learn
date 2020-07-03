@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   def show    
     if !current_user.token.nil?
-      @repos = SearchResults.new.repos(current_user.token)
+      @repos = SearchResults.new.repos
     end
   end
 
