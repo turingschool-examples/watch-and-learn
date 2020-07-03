@@ -5,6 +5,7 @@ class User < ApplicationRecord
   validates :email, uniqueness: true, presence: true
   validates :password, presence: true
   validates :first_name, presence: true
+
   enum role: { default: 0, admin: 1}
   has_secure_password
 end
