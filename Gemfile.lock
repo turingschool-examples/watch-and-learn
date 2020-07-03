@@ -1,4 +1,13 @@
 GIT
+  remote: https://github.com/omniauth/omniauth-github.git
+  revision: d001ed274276bf50e1e756bf38bce75509aa25ec
+  branch: master
+  specs:
+    omniauth-github (1.4.0)
+      omniauth (~> 1.5)
+      omniauth-oauth2 (>= 1.4.0, < 2.0)
+
+GIT
   remote: https://github.com/turingschool-projects/omniauth-census
   revision: 2509bcda18ad13d7544b45fa238e03d9d2db1472
   specs:
@@ -388,6 +397,7 @@ DEPENDENCIES
   launchy
   listen (>= 3.0.5, < 3.2)
   omniauth-census!
+  omniauth-github!
   omniauth-google-oauth2
   pg (>= 0.18, < 2.0)
   pry

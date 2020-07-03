@@ -20,6 +20,10 @@ class SessionsController < ApplicationController
   end
 
   def update 
-    binding.pry
+    token = {token: request.env['omniauth.auth']['credentials']['token']}
+binding.pry
+    current_user.update(token)
+
+    redirect_to dashboard_path
   end
 end
