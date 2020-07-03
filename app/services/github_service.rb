@@ -6,20 +6,23 @@ class GithubService
     end
   end
 
-  def get_url(url)
+  def get_url(url, token = nil)
     response = conn.get("/user/#{url}")
+    if token
+      response = conn.get("/user/#{url}?access_token=#{token}")
+    end
     JSON.parse(response.body, symbolize_names: true)
   end
 
-  def repos
-    get_url('repos')
+  def repos(token)
+    get_url('repos', token)
   end
 
-  def followers
-    get_url('followers')
+  def followers(token)
+    get_url('followers', token)
   end
 
-  def followings
-    get_url('following')
+  def followings(token)
+    get_url('following', token)
   end
 end

@@ -16,14 +16,14 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
+    session[:github_user_token] = nil
     redirect_to root_path
   end
 
   def update 
     token = {token: request.env['omniauth.auth']['credentials']['token']}
-binding.pry
     current_user.update(token)
-
+    session[:github_user_token] = token[:token]
     redirect_to dashboard_path
   end
 end

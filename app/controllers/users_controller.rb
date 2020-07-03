@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   def show
-    @github_user = GithubUsers.new
+    @github_user = GithubUsers.new(session[:github_user_token])
   end
 
   def new
