@@ -1,0 +1,7 @@
+<h4>Import a playlist by entering the playlist ID</h4>
+
+<%= form_tag :admin_import_playlist, method: :get do %>
+  <%= label_tag :playlistId %>
+  <%= text_field_tag :id %>
+  <%= submit_tag "Import" %>
+<% end %>
