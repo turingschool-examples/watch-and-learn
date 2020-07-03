@@ -11,7 +11,6 @@ describe 'As a registered user' do
       within('#github-followers') do
         expect(page).to have_content("HughBerriez")
         expect(page).to have_content("rickbacci")
-        expect(page).to have_css(".follower-handle", count:2)
       end
     end
 

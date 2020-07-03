@@ -11,7 +11,7 @@ describe 'As an admin' do
 
       click_on 'Import YouTube Playlist'
 
-      expect(current_path).to eq('/admin/import_playlist')
+      expect(current_path).to eq('/admin/playlists/new')
     end
 
     it 'I can import a playlist' do
@@ -22,9 +22,12 @@ describe 'As an admin' do
       visit '/admin/tutorials/new'
 
       click_on 'Import YouTube Playlist'
-
-      fill_in 'Playlist ID', with: "PLJicmE8fK0EiQLKEhNM8qJL8ExHwQZh_0"
-      click_on 'Submit'
+      fill_in 'Title', with: "My New Playlist Tutorial"
+      fill_in 'Description', with: "Testing importing playlists"
+      fill_in 'Thumbnail', with: "random.jpg"
+      # fill_in "Playlist id", with: "PLJicmE8fK0EiQLKEhNM8qJL8ExHwQZh_0"
+      fill_in "tutorial[playlist_id]", with: "PLJicmE8fK0EiQLKEhNM8qJL8ExHwQZh_0"
+      click_on 'Create Playlist'
 
       expect(page).to have_content("Successfully created tutorial. View it here.")
 
