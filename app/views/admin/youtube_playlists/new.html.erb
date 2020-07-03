@@ -1,0 +1,7 @@
+<h2>New Playlist from YouTube</h2>
+<%= form_tag '/admin/tutorials', method: :post do %>
+  <%= label_tag :playlist_id, "Playlist ID" %>
+  <%= text_field_tag :playlist_id, class: "block col-4 field" %>
+
+  <%= submit_tag "Import Playlist", class: "mt2 btn btn-primary mb1 bg-teal"  %>
+<% end %>
