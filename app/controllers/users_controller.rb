@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
-  def show; end
+  def show    
+    if !current_user.token.nil?
+      @repos = SearchResults.new.repos(current_user.token)
+    end
+  end
 
   def new
     @user = User.new
