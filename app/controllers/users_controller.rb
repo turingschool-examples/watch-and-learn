@@ -1,8 +1,12 @@
 class UsersController < ApplicationController
   def show
     return unless current_user.token
-    @git_repos = GithubSearch.new.repos(current_user)
-    
+    search = GithubSearch.new
+    @git_repos = search.repos(current_user)
+    @git_followers = search.followers(current_user)
+    @git_following = search.following(current_user)
+
+
 
     # return unless current_user.token
     # conn = Faraday.new(url: "https://api.github.com") do |faraday|

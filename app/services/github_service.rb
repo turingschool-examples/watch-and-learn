@@ -10,7 +10,13 @@ class GithubService
     JSON.parse(response.body, symbolized_names: true)[0..4]
   end
 
-  def follower_json
+  def follower_json(user)
+    response = conn(user).get("/user/followers")
+    JSON.parse(response.body, symbolized_names: true)
+  end
 
+  def following_json(user)
+    response = conn(user).get("/user/following")
+    JSON.parse(response.body, symbolized_names: true)
   end
 end

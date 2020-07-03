@@ -21,3 +21,19 @@
       <% end %></ul>
 </section>
 <% end %>
+<% if !@git_followers.nil? %>
+<section class="followers"> <h2>Github Followers</h2>
+  <ul>
+      <% @git_followers.each do |follower| %>
+        <li><%= link_to(follower.login, follower.url) %></li>
+      <% end %></ul>
+</section>
+<% end %>
+<% if !@git_following.nil? %>
+<section class="following"> <h2>Github Following</h2>
+  <ul>
+      <% @git_following.each do |following| %>
+        <li><%= link_to(following.login, following.url) %></li>
+      <% end %></ul>
+</section>
+<% end %>
