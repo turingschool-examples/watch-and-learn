@@ -10,12 +10,13 @@ class YoutubeDecorator
 
   def playlist_videos(playlist_id)
     videos_info = get_videos_info(playlist_id)
-    create_videos(videos_info)
+    videos = create_videos(videos_info)
   end
 
   def get_videos_info(playlist_id)
     videos_info = []
     playlist_items = @youtube_service.playlist_items(playlist_id)
+
     playlist_items[:items].each do |playlist_item|
       playlist_item_info = {}
       playlist_item_info[:title] = playlist_item[:snippet][:title]
@@ -49,12 +50,12 @@ class YoutubeDecorator
       end
     end
     videos_info
-
   end
 
   def create_videos(videos_info)
-    position_counter = 0
+    position_counter = -1
     videos_info.map! do |video_info|
+      position_counter +=1
       @tutorial.videos.create(
         {
               title: video_info[:title],
@@ -64,8 +65,8 @@ class YoutubeDecorator
               position: position_counter
         }
       )
-      position_counter +=1
     end
+    videos_info
   end
 
 end
