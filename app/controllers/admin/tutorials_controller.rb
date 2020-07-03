@@ -9,7 +9,7 @@ class Admin::TutorialsController < Admin::BaseController
       youtube_decorator = YoutubeDecorator.new(tutorial)
       imported_videos = youtube_decorator.playlist_videos(params[:tutorial][:playlist_id])
 
-      flash[:notice] = "Successfully created tutorial #{view_context.link_to('View it here', tutorial_path(tutorial.id))}."
+      flash[:notice] = "Successfully created tutorial. #{view_context.link_to('View it here.', tutorial_path(tutorial.id))}."
 
       redirect_to admin_dashboard_path
     end
