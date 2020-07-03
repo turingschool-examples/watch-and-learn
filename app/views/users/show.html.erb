@@ -19,5 +19,21 @@
         <%end%>
       </ol>
     </section>
+    <section>
+      <h2>Followers:</h2>
+      <ol>
+        <% @followers.each do |follower| %>         
+          <li><p><%=link_to "#{follower.name}", "#{follower.url}", class: "followers"%></p></li>
+        <%end%>
+      </ol>
+    </section>
+    <section>
+      <h2>Following:</h2>
+      <ol>
+        <% @followed_users.each do |user| %>         
+          <li><p><%=link_to "#{user.name}", "#{user.url}", class: "following"%></p></li>
+        <%end%>
+      </ol>
+    </section>
   <%end%>
 </section>
