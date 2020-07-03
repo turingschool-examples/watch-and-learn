@@ -25,7 +25,6 @@ describe 'As an admin' do
       fill_in 'Title', with: "My New Playlist Tutorial"
       fill_in 'Description', with: "Testing importing playlists"
       fill_in 'Thumbnail', with: "random.jpg"
-      # fill_in "Playlist id", with: "PLJicmE8fK0EiQLKEhNM8qJL8ExHwQZh_0"
       fill_in "tutorial[playlist_id]", with: "PLJicmE8fK0EiQLKEhNM8qJL8ExHwQZh_0"
       click_on 'Create Playlist'
 
