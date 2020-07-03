@@ -14,4 +14,7 @@
   </section>
 
   <p>Don't have an account? <%= link_to 'Sign up now.', new_user_path %></p>
+
+  <%= link_to "Login",
+"https://github.com/login/oauth/authorize?client_id=#{ENV['GITHUB_CLIENT_ID']}&scope=repo" %>
 </div>
