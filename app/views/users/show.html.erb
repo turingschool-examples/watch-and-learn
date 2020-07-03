@@ -10,4 +10,14 @@
   <section>
     <h1>Bookmarked Segments</h1>
   </section>
+  <%if !current_user.token.nil?%>
+    <section>
+      <h1>Github Repos:</h1>
+      <ol>
+        <% @repos.each do |url, name| %>         
+          <li><p><%=link_to "#{name}", "#{url}", class: "repos"%></p></li>
+        <%end%>
+      </ol>
+    </section>
+  <%end%>
 </section>
