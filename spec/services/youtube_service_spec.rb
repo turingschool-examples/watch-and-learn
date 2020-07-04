@@ -11,7 +11,6 @@ describe YoutubeService do
       playlist_info = @service.playlist_info(@id)
       expect(playlist_info).to be_an Hash
       expect(playlist_info).to have_key :items
-      expect(playlist_info).to have_key :contentDetails
     end
 
     it "playlist_items_info" do
@@ -20,7 +19,7 @@ describe YoutubeService do
     end
 
     xit "can handle more than 50" do
-      
+
     end
   end
 end
