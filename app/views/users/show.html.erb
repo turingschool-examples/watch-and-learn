@@ -26,9 +26,14 @@
     </section>
   <%end%>
 
-  <% if @followers.nil? %>
+  <% if !@followers.nil? %>
     <section class="followers">
-      <h3>Followers</h3>
+      <h3>GitHub Repos</h3>
+      <% @followers.each do |follower| %>
+        <ul class="follower">
+        <%= link_to follower.login, "https://www.github.com/#{follower.login}" %>
+        </ul>
+      <%end%>
     </section>
   <%end%>
 </section>
