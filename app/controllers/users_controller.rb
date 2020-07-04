@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-
   def show
     @github_user = GithubUsers.new
   end
