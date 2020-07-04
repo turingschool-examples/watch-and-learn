@@ -4,6 +4,12 @@ class YoutubeService
     get_json('youtube/v3/videos', params)
   end
 
+  def playlist_items(playlist_id, next_page_token = nil)
+    params = { part: 'snippet,contentDetails', playlistId: playlist_id}
+    params[:pageToken] = next_page_token if next_page_token
+    get_json('youtube/v3/playlistItems', params)
+  end
+
   private
 
   def get_json(url, params)
