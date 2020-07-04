@@ -13,12 +13,12 @@ class YoutubePlaylistResults
   end
 
   def snippet
-    return nil unless playlist[:items].present?
+    return nil if playlist[:items].blank?
+
     playlist[:items][0][:snippet]
   end
 
   def playlist
     YoutubeService.new.playlist_info(@id)
   end
-
 end
