@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe "an admin can add a playlist" do
-  xit "can import the playlist from Youtube" do
+  it "can import the playlist from Youtube" do
     admin = create(:admin)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
