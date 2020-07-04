@@ -1,5 +1,4 @@
 class GithubUsers
-
   def repos
     body = GithubService.new.repos
     body.map do |repo_data|
