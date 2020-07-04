@@ -12,11 +12,13 @@ class YoutubePlaylistResults
     parameters
   end
 
+  def snippet
+    return nil unless playlist[:items].present?
+    playlist[:items][0][:snippet]
+  end
+
   def playlist
     YoutubeService.new.playlist_info(@id)
   end
 
-  def snippet
-    playlist[:items][0][:snippet]
-  end
 end
