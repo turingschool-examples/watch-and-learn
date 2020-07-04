@@ -18,4 +18,9 @@ class SessionsController < ApplicationController
     session[:user_id] = nil
     redirect_to root_path
   end
+
+  def update 
+    github_token = params[:code]
+    current_user.update(github_token: github_token)
+  end
 end
