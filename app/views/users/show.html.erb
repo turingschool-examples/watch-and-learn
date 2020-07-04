@@ -12,14 +12,23 @@
     <h1>Bookmarked Segments</h1>
   </section>
 
+  <section class="github">
+    <h1>GitHub</h1>
+
   <% if !@repos.nil? %>
-    <section class="github">
-      <h1>GitHub Repos</h1>
+    <section class="repos">
+      <h3>GitHub Repos</h3>
       <% @repos.each do |repo| %>
         <ul class="repo">
         <%= link_to repo.name, "https://www.github.com/#{repo.full_name}" %>
         </ul>
       <%end%>
+    </section>
   <%end%>
-  </section>
+
+  <% if @followers.nil? %>
+    <section class="followers">
+      <h3>Followers</h3>
+    </section>
+  <%end%>
 </section>
