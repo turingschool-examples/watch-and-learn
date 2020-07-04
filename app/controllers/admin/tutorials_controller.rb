@@ -4,12 +4,15 @@ class Admin::TutorialsController < Admin::BaseController
   end
 
   def create
-    tutorial_from_playlist = Tutorial.create(new_tutorial_params)
-    tutorial_from_playlist.create_playlist_videos
-    if tutorial_from_playlist.save
+    if results.snippet.nil?
+      flash[:error] = "Sorry, that ID is not valid. Try again?"
+      redirect_to new_admin_youtube_playlist_path
+    else
+      tutorial_from_playlist = Tutorial.create(new_tutorial_params)
+      tutorial_from_playlist.create_playlist_videos
       flash[:success] = "Successfully created tutorial. #{view_context.link_to("View it here", tutorial_path(tutorial_from_playlist.id))}."
       redirect_to admin_dashboard_path
-    end 
+    end
   end
 
   def new
@@ -36,8 +39,11 @@ class Admin::TutorialsController < Admin::BaseController
     params.require(:tutorial).permit(:tag_list)
   end
 
+  def results
+    YoutubePlaylistResults.new(params[:playlist_id])
+  end
+
   def new_tutorial_params
-    results = YoutubePlaylistResults.new(params[:playlist_id])
     results.parameters
   end
 
