@@ -12,16 +12,16 @@ describe 'User Dashboard' do
     fill_in'session[password]', with: user1.password
     click_on 'Log In'
     expect(current_path).to eq(dashboard_path)
-    within('.github') do 
 
+    within('.github') do
         expect(page).to have_css('.repo', count: 5)
         expect(page).to have_content("futbol")
         expect(page).to_not have_content("the_final_rose")
-    end 
+    end
 
-  end 
+  end
 
-  it 'does not display if user has no github token' do 
+  it 'does not display if user has no github token' do
     user1 = create(:user)
     visit login_path
 
@@ -29,13 +29,11 @@ describe 'User Dashboard' do
     fill_in'session[password]', with: user1.password
     click_on 'Log In'
     expect(current_path).to eq(dashboard_path)
-save_and_open_page
+
     expect(page).to_not have_css('.github')
   end
 
-end 
-
-
+end
 
 
 # As a logged in user
