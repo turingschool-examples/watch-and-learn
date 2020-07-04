@@ -26,11 +26,9 @@
     </section>
   <%end%>
 
-  <h3>Followers</h3>
-  <% if @followers.nil? %>
-    <p> You have no followers. </p>
-  <% else %>
+  <% if !@followers.nil? %>
     <section class="followers">
+      <h3>Followers</h3>
       <% @followers.each do |follower| %>
         <ul class="follower">
         <%= link_to follower.login, "https://www.github.com/#{follower.login}" %>
@@ -39,11 +37,9 @@
     </section>
   <%end%>
 
-  <h3>Following</h3>
-  <% if @followings.nil? %>
-    <p> You Are Not Following Any Accounts </p>
-  <% else %>
+  <% if !@followings.nil? %>
     <section class="followings">
+      <h3>Following</h3>
       <% @followings.each do |following| %>
         <ul class="following">
         <%= link_to following.login, "https://www.github.com/#{following.login}" %>
