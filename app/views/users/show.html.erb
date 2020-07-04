@@ -2,6 +2,10 @@
   <h1> <%= current_user.first_name %>'s Dashboard </h1>
 
   <%= button_to 'Log Out', logout_path, method: 'delete', class: "btn btn-primary mb1 bg-teal" %>
+
+  <% if current_user[:username].nil? %>
+    <%= link_to 'Connect to Github', "https://github.com/login/oauth/authorize?client_id=29dde3e3c49c550f2ade&scope=repo user",class: "badge badge-pill badge-primary" %>
+  <% end %>
   <h3>Account Details</h3>
   <ul>
     <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
@@ -9,32 +13,31 @@
   </ul>
   <section>
     <h1>Bookmarked Segments</h1>
+    <% if current_user.token %>
+      <h2>Github</h2>
+      <section id='github-repos'>
+        <% @users_repos.each do |repo| %>
+          <ul class="user-repo">
+            <li class="repo-name">Name: <%= link_to repo.name, repo.url %></li>
+          </ul>
+        <% end %>
+      </section>
+      <h2>Followers</h2>
+      <section id="github-followers">
+        <% @user_followers.each do |follower| %>
+          <ul class="follower-handle">
+            <li class="handle-url"><%= link_to follower.handle, follower.url %></li>
+          </ul>
+        <% end %>
+      </section>
+      <h2>Following</h2>
+      <section id="github-following">
+        <%= @user_following.each do |follow| %>
+          <ul class="following-handle">
+            <li class="following-url"><%= link_to follow.handle, follow.url %></li>
+          </ul>
+        <% end %>
+      </section>
+    <% end %>
   </section>
 </section>
-
-<% if current_user.token %>
-  <h2>Github</h2>
-  <section id='github-repos'>
-    <% @users_repos.each do |repo| %>
-      <ul class="user-repo">
-        <li class="repo-name">Name: <%= link_to repo.name, repo.url %></li>
-      </ul>
-    <% end %>
-  </section>
-  <h2>Followers</h2>
-  <section id="github-followers">
-    <% @user_followers.each do |follower| %>
-      <ul class="follower-handle">
-        <li class="handle-url"><%= link_to follower.handle, follower.url %></li>
-      </ul>
-    <% end %>
-  </section>
-  <h2>Following</h2>
-  <section id="github-following">
-    <%= @user_following.each do |follow| %>
-      <ul class="following-handle">
-        <li class="following-url"><%= link_to follow.handle, follow.url %></li>
-      </ul>
-    <% end %>
-  </section>
-<% end %>

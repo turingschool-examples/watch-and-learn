@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     end
   end
 
+  get'/auth/github/callback', to: 'github_sessions#create'
+
   root 'welcome#index'
   get 'tags/:tag', to: 'welcome#index', as: :tag
   get '/register', to: 'users#new'
