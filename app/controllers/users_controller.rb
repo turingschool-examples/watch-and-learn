@@ -4,6 +4,7 @@ class UsersController < ApplicationController
     if !current_user.github_token.nil?
       search_results = SearchResults.new
       @repos = search_results.repos
+      @followers = search_results.followers
       # conn = Faraday.new("https://api.github.com")
       # response = conn.get("/user/repos?access_token=#{current_user.github_token}")
       #
