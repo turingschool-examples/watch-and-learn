@@ -1,14 +1,19 @@
 class GithubService
 
   def list_repos
-    response = conn.get("/user/repos?access_token=#{ENV['GITHUB_ACCESS_TOKEN']}")
-    json = JSON.parse(response.body, symbolize_names: true)
+    get_url("repos")
+    # response = conn.get("/user/repos?access_token=#{ENV['GITHUB_ACCESS_TOKEN']}")
+    # json = JSON.parse(response.body, symbolize_names: true)
+  end
+
+  def list_followers
+    get_url("followers")
   end
 
   private
 
-  def get_json(url, params)
-    response = conn.get(url, params)
+  def get_url(url)
+    response = conn.get("/user/#{url}?access_token=#{ENV['GITHUB_ACCESS_TOKEN']}")
     JSON.parse(response.body, symbolize_names: true)
   end
 
