@@ -16,11 +16,17 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
+    session[:github_token] = nil
     redirect_to root_path
   end
 
   def update 
+    binding.pry
     github_token = params[:code]
     current_user.update(github_token: github_token)
+    if current_user.save
+      session[:github_token] = github_token
+    end
+    redirect_to dashboard_path
   end
 end
