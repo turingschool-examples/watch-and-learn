@@ -5,7 +5,7 @@ class YoutubeService
   end
 
   def playlist_items(playlist_id, next_page_token = nil)
-    params = { part: 'snippet,contentDetails', playlistId: playlist_id }
+    params = { part: 'snippet,contentDetails', playlistId: playlist_id, maxResults: 50 }
     params[:pageToken] = next_page_token if next_page_token
     get_json('youtube/v3/playlistItems', params)
   end
