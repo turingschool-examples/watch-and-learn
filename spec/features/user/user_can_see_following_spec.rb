@@ -10,7 +10,6 @@ describe 'User Dashboard' do
 
     within('.github') do
       expect(page).to have_css(".following", count: 0)
-      expect(page).to have_content("You Are Not Following Any Accounts")
     end
   end
 end
