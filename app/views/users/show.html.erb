@@ -26,7 +26,9 @@
     </section>
   <%end%>
 
-  <% if !@followers.nil? %>
+  <% if @followers.nil? %>
+    <p> You have no followers. </p>
+  <% else %>
     <section class="followers">
       <h3>GitHub Repos</h3>
       <% @followers.each do |follower| %>
