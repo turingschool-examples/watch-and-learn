@@ -6,9 +6,12 @@ describe "an admin can add a playlist" do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
 
     visit new_admin_tutorial_path
+    fill_in "Title", with: "Tutorial"
+    fill_in "Description", with: "Description"
+    fill_in "Thumbnail", with: "https://i.ytimg.com/vi/HAUgCZFyxRw/default.jpg"
     click_on "Import YouTube Playlist"
     fill_in 'Playlist ID', with: "PLjiB1Gm1BUm_hM4HArla8kE7C-hdXsMAJ"
-    click_on "Submit"
+    click_on "Save"
     expect(current_path).to eq(admin_dashboard_path)
 
     expect(page).to have_content("Successfully created tutorial. View it here.")
