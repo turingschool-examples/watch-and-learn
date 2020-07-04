@@ -15,9 +15,9 @@
   <section class="github">
     <h1>GitHub</h1>
 
+  <h3>GitHub Repos</h3>
   <% if !@repos.nil? %>
     <section class="repos">
-      <h3>GitHub Repos</h3>
       <% @repos.each do |repo| %>
         <ul class="repo">
         <%= link_to repo.name, "https://www.github.com/#{repo.full_name}" %>
@@ -26,24 +26,28 @@
     </section>
   <%end%>
 
-  <% if !@followers.nil? %>
+  <h3>Followers</h3>
     <section class="followers">
-      <h3>Followers</h3>
-      <% @followers.each do |follower| %>
-        <ul class="follower">
-        <%= link_to follower.login, "https://www.github.com/#{follower.login}" %>
-        </ul>
-      <%end%>
+      <% if @followers.nil? %>
+        <p>You have no followers.</p>
+      <% else %>
+        <% @followers.each do |follower| %>
+          <ul class="follower">
+          <%= link_to follower.login, "https://www.github.com/#{follower.login}" %>
+          </ul>
+        <%end%>
     </section>
   <%end%>
 
-  <% if !@followings.nil? %>
+  <h3>Following</h3>
     <section class="followings">
-      <h3>Following</h3>
-      <% @followings.each do |following| %>
-        <ul class="following">
-        <%= link_to following.login, "https://www.github.com/#{following.login}" %>
-        </ul>
+      <% if @followings.nil?%>
+        <p>You are not following any accounts.</p>
+      <% else %>
+        <% @followings.each do |following| %>
+          <ul class="following">
+          <%= link_to following.login, "https://www.github.com/#{following.login}" %>
+          </ul>
       <%end%>
     </section>
   <%end%>

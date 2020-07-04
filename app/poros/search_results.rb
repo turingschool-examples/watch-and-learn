@@ -14,8 +14,8 @@ class SearchResults
     end
   end
 
-  def following
-    json = GithubService.new.list_following
+  def followings
+    json = GithubService.new.list_followings
     @followings = json.map do |user_data|
       Following.new(user_data)
     end

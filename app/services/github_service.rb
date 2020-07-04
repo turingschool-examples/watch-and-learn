@@ -10,7 +10,7 @@ class GithubService
     get_url("followers")
   end
 
-  def list_following
+  def list_followings
     get_url("following")
   end
 
