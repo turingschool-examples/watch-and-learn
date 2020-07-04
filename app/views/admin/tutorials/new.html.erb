@@ -7,12 +7,22 @@
   <%= f.label :thumbnail %>
   <%= f.text_field :thumbnail, class: "block col-4 field"  %>
 
+  <div data-controller="tutorials">
+    <%= link_to "Import YouTube Playlist", "#", "data-action" => "click->tutorials#showVideoForm", class: "video-position-submit btn btn-outline", id: @tutorial.id %>
+  </div>
+
   <h3>Videos</h3>
 
   <%= f.fields_for :videos do |builder| %>
     <%= f.label :youtube_url %>
     <%= f.text_field :video_id, class: "block col-4 field" %>
   <% end %>
+
+  <div class="mt1" id="new-video-form">
+    <h3>Playlist</h3>
+    <%= f.label :playlist_id, "Playlist ID" %>
+    <%= f.text_field :playlist_id, class: "block col-4 field"%>
+  </div>
 
   <%= f.submit "Save", class: "mt2 btn btn-primary mb1 bg-teal"  %>
 <% end %>
