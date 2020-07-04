@@ -5,22 +5,6 @@ class UsersController < ApplicationController
     @git_repos = search.repos(current_user)
     @git_followers = search.followers(current_user)
     @git_following = search.following(current_user)
-
-
-
-    # return unless current_user.token
-    # conn = Faraday.new(url: "https://api.github.com") do |faraday|
-    #   faraday.headers['Authorization'] = "token #{current_user.token}"
-    # end
-    #
-    # response = conn.get("user/repos")
-    #
-    # parsed = JSON.parse(response.body, symbolized_names: true)[0..4]
-    #
-    # @links = Hash.new(0)
-    #   parsed.map do |entry|
-    #   @links[entry["name"]] = entry["url"]
-    # end
   end
 
   def new

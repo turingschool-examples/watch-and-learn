@@ -7,6 +7,8 @@ class Admin::TutorialsController < Admin::BaseController
 
   def new
     @tutorial = Tutorial.new
+    @tutorial.save
+
   end
 
   def update
