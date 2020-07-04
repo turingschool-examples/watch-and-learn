@@ -22,7 +22,8 @@ class SessionsController < ApplicationController
 
   def update 
     binding.pry
-    github_token = params[:code]
+    code = params[:code]
+    github_token = request.env['omniauth.auth'][:credentials][:token]
     current_user.update(github_token: github_token)
     if current_user.save
       session[:github_token] = github_token

@@ -6,7 +6,7 @@ class GithubService
   end
 
   def get_url(url, token)
-    response = conn.get("/user/#{url}/")
+    response = conn.get("/user/#{url}")
     JSON.parse(response.body, symbolize_names: true)
   end
 
