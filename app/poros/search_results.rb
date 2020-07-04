@@ -6,4 +6,11 @@ class SearchResults
      Repo.new(user_data)
     end
   end
+
+  def followers
+    json = GithubService.new.list_followers
+    @followers - json.map do |user_data|
+      Follower.new(user_data)
+    end
+  end
 end
