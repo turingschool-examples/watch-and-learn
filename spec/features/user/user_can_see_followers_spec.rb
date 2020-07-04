@@ -9,11 +9,17 @@ describe 'User Dashboard' do
     visit dashboard_path
 
     within('.github') do
-        expect(page).to have_css('.followers', count: 3)
+      expect(page).to have_css(".follower", count: 3)
+      expect(page).to have_content("KieraAllen")
+      expect(page).to have_content("stellakunzang")
+      expect(page).to have_content("Rostammahabadi")
     end
-
   end
 end
+
+
+
+
 # As a logged in user
 # When I visit /dashboard
 # Then I should see a section for "Github"
