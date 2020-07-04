@@ -14,16 +14,20 @@ class Tutorial < ApplicationRecord
   end
 
   def playlist_video_params
-    playlist_video_params = []
-    playlist_video_json[:items].each do |video|
-      video_params = {}
-      video_params[:title] = video[:snippet][:title]
-      video_params[:description] = video[:snippet][:description]
-      video_params[:video_id] = video[:contentDetails][:videoId]
-      video_params[:thumbnail] = video[:snippet][:thumbnails][:default][:url]
-      video_params[:position] = video[:snippet][:position]
-      playlist_video_params << video_params
+    playlist_video_json[:items].map do |video|
+      Hash[playlist_video_params_keys.zip(playlist_video_params_values(video))]
     end
-    playlist_video_params
+  end
+
+  def playlist_video_params_values(video)
+    [video[:snippet][:title],
+     video[:snippet][:description],
+     video[:contentDetails][:videoId],
+     video[:snippet][:thumbnails][:default][:url],
+     video[:snippet][:position]]
+  end
+
+  def playlist_video_params_keys
+    %i[title description video_id thumbnail position]
   end
 end
