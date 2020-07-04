@@ -7,18 +7,18 @@
     <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
     <li> <%= current_user.email%> </li>
   </ul>
-  <% if !@parsed_repo_resp.nil? %>
+  <% if !@results.nil? %>
     <section class="github"><h3>Github</h3>
-    <% @parsed_repo_resp.each do |resp| %>
+    <% @repos.each do |resp| %>
       <%= link_to resp.name, resp.html_url %><br/>
     <% end %>
     <section>
       <h3>Followers</h3>
-    <% @parsed_follow_resp.each do |resp| %>
+    <% @followers.each do |resp| %>
       <%= link_to resp.login, resp.html_url %><br/>
     <% end %>
       <h3>Following</h3>
-    <% @parsed_flwing_resp.each do |resp| %>
+    <% @following.each do |resp| %>
       <%= link_to resp.login, resp.html_url %><br/>
     <% end %>
   </section>

@@ -33,3 +33,5 @@
 /node_modules
 yarn-debug.log*
 .yarn-integrity
+
+/spec/features/admin/admin_can_import_playlist_spec.rb
