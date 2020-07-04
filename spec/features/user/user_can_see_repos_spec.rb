@@ -18,7 +18,6 @@ describe 'User Dashboard' do
         expect(page).to have_content("futbol")
         expect(page).to_not have_content("the_final_rose")
     end
-
   end
 
   it 'does not display if user has no github token' do
@@ -30,7 +29,7 @@ describe 'User Dashboard' do
     click_on 'Log In'
     expect(current_path).to eq(dashboard_path)
 
-    expect(page).to_not have_css('.github')
+    expect(page).to_not have_css('.repos')
   end
 
 end
