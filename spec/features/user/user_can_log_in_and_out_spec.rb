@@ -36,10 +36,9 @@ describe 'User' do
     expect(current_path).to eq(dashboard_path)
 
     click_on 'Log Out'
-
     expect(current_path).to eq(root_path)
     expect(page).to_not have_content(user.first_name)
-    expect(page).to have_content('SIGN IN')
+    expect(page).to have_content('Sign In')
   end
 
   it 'is shown an error when incorrect info is entered' do

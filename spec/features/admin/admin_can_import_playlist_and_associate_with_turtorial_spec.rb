@@ -11,11 +11,15 @@ feature "Admin can create turtorial playlist" do
 
 
 
-    #click_link('Import YouTube Playlist')
+    # click_link('Import YouTube Playlist')
     fill_in :playlist_id, with: "PL1Y67f0xPzdOq2FcpWnawJeyJ3ELUdBkJ"
     click_button "Submit"
-    expect(current_path). to eql("/admin/tutorials/#{tutorial.id}/videos")
-    
+    expect(current_path). to eql("/admin/dashboard")
+    expect(page).to have_content("Successfully created tutorial. View it Here.")
+    click_on "View it Here"
+    expect(current_path). to eql("/tutorials/#{Tutorial.last.id}")
+
+
     #expect(current_path).to eql '/admin/tutorials/#tutorial.first/new'
   end
 end
