@@ -5,6 +5,7 @@ class UsersController < ApplicationController
       search_results = SearchResults.new
       @repos = search_results.repos
       @followers = search_results.followers
+      @followings = search_results.following
       # conn = Faraday.new("https://api.github.com")
       # response = conn.get("/user/repos?access_token=#{current_user.github_token}")
       #

@@ -13,4 +13,7 @@ class SearchResults
       Follower.new(user_data)
     end
   end
+
+  def following
+  end
 end
