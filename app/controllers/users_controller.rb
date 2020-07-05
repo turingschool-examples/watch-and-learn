@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   def show
+  
     return unless current_user.token
+
     search = GithubSearch.new
     @git_repos = search.repos(current_user)
     @git_followers = search.followers(current_user)
