@@ -23,7 +23,7 @@ Rails.application.routes.draw do
       end
     end
   end
-
+  get '/auth/github/callback', to: "github_sessions#create"
   get '/login', to: "sessions#new"
   post '/login', to: "sessions#create"
   delete '/logout', to: "sessions#destroy"
