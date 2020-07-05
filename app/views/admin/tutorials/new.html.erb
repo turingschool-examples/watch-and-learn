@@ -16,3 +16,11 @@
 
   <%= f.submit "Save", class: "mt2 btn btn-primary mb1 bg-teal"  %>
 <% end %>
+
+
+<h2>Import Youtube Playlist</h2>
+  <%= form_for [:admin, @tutorial] do |f| %>
+    <%= f.label :playlist_id %>
+    <%= f.text_field :playlist_id, class: "block col-4 field"  %>
+    <%= f.submit "Import Youtube Playlist", class: "mt2 btn btn-primary mb1 bg-teal"  %>
+  <% end %>
