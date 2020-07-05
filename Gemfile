@@ -43,10 +43,10 @@ group :development, :test do
   gem 'webdrivers'
 end
 
-group :test do
-  gem 'webmock'
-  gem 'vcr'
-end
+# group :test do
+#   gem 'webmock'
+#   gem 'vcr'
+# end
 
 group :development do
   gem 'web-console', '>= 3.3.0'

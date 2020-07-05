@@ -7,4 +7,9 @@ class User < ApplicationRecord
   validates :first_name, presence: true
   enum role: { default: 0, admin: 1 }
   has_secure_password
+
+  def bookmarks
+    videos.joins(:tutorial).select('videos.*, tutorials.title tutorial_title')
+    .order(:tutorial_id, :position).group_by(&:tutorial_title)
+  end
 end

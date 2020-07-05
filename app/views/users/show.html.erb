@@ -40,4 +40,19 @@
       <% end %>
     </ul>
   </section>
+
+    <section class = "bookmarks">
+    <h1>Bookmarked Segments:</h1>
+      <%= "No bookmarks" if current_user.bookmarks.empty? %>
+      <% current_user.bookmarks.each do |tutorial, videos| %>
+      <%= tutorial %>
+      <ul>
+        <% videos.each do |video| %>
+        <li>
+          <%= link_to video.title, tutorial_path(video.tutorial_id, video_id: video.id) %>
+        </li>
+        <% end %>
+      </ul>
+      <% end %>
+  </section>
 </section>
