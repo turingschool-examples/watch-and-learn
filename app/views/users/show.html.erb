@@ -23,6 +23,8 @@
     <% end %>
   </section>
     </section>
+  <% else %>
+    <%= button_to 'Connect to Github', auth_github_path, method: 'get', class: "btn btn-primary mb1 bg-teal" %>
   <% end %>
   <section>
     <h1>Bookmarked Segments</h1>
