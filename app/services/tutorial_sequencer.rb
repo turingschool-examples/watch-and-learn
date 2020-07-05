@@ -22,7 +22,7 @@ class TutorialSequencer
         video.id == video_id.to_i
       end
 
-      if current_video.position != index
+      unless current_video.position == index
         current_video.update(position: index)
       end
     end
