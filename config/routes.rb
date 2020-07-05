@@ -24,6 +24,11 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :auth do
+    get '/github', to: 'users#edit'
+    get '/github/callback', to: 'users#update'
+  end
+
   get '/login', to: "sessions#new"
   post '/login', to: "sessions#create"
   delete '/logout', to: "sessions#destroy"
