@@ -7,8 +7,19 @@
     <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
     <li> <%= current_user.email%> </li>
   </ul>
-  <section>
-    <h1>Bookmarked Segments</h1>
+  <section class = "bookmarks">
+    <h1>Bookmarked Segments:</h1>
+      <%= "No bookmarks" if current_user.bookmarks.empty? %>
+      <% current_user.bookmarks.each do |tutorial, videos| %>
+      <%= tutorial %>
+      <ul>
+        <% videos.each do |video| %>
+        <li>
+          <%= link_to video.title, tutorial_path(video.tutorial_id, video_id: video.id) %>
+        </li>
+        <% end %>
+      </ul>
+      <% end %>
   </section>
     <section>
     <h1>Github</h1>
@@ -39,20 +50,5 @@
       </li>
       <% end %>
     </ul>
-  </section>
-
-    <section class = "bookmarks">
-    <h1>Bookmarked Segments:</h1>
-      <%= "No bookmarks" if current_user.bookmarks.empty? %>
-      <% current_user.bookmarks.each do |tutorial, videos| %>
-      <%= tutorial %>
-      <ul>
-        <% videos.each do |video| %>
-        <li>
-          <%= link_to video.title, tutorial_path(video.tutorial_id, video_id: video.id) %>
-        </li>
-        <% end %>
-      </ul>
-      <% end %>
   </section>
 </section>
