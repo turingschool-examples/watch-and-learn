@@ -28,7 +28,7 @@ feature "An admin can delete a tutorial" do
     within(first('.admin-tutorial-card')) do
       click_link 'Delete'
     end
-    expect(Tutorial.all).to not_have(tutorial_1)
-    expect(Video.all).to not_have(video)
+    expect(Tutorial.all).not_to include(tutorial_1)
+    expect(Video.all).not_to include(video)
   end
 end
