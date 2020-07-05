@@ -7,4 +7,11 @@ class User < ApplicationRecord
   validates :first_name, presence: true
   enum role: { default: 0, admin: 1 }
   has_secure_password
+
+  def self.check_for_username?(username)
+    users = User.where(username: username)
+    return false if users.size == 0
+
+    true
+  end
 end
