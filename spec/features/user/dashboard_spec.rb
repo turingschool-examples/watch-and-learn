@@ -1,11 +1,16 @@
 require 'rails_helper'
-
 RSpec.describe "As a user" do
     describe "when I visit /dashboard" do
         describe "I see a link to login with OAuth" do 
             it "allows me to login through Github" do 
                 user = create(:user)
-                expect(page).to have_content()
+                allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+                
+                visit '/dashboard'
+
+                expect(page).to_not have_content("Github Repos:")
+                #click_link "Connect with Github"
+
             end
         end  
         
@@ -35,7 +40,7 @@ RSpec.describe "As a user" do
                 visit '/dashboard' 
 
                 expect(page).to have_content("Followers")
-                expect(page).to have_css("a.followers", count: 5)
+                expect(page).to have_css("a.followers")
             end
 
             it "it shows a section for people user is following within the Github section of page" do
@@ -49,7 +54,7 @@ RSpec.describe "As a user" do
                 visit '/dashboard' 
 
                 expect(page).to have_content("Following")
-                expect(page).to have_css("a.following", count: 3)
+                expect(page).to have_css("a.following")
             end
         end
 
