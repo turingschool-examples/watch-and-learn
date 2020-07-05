@@ -18,8 +18,7 @@
       <div class="bookmarks-btn">
         <% if current_user %>
         <%= button_to "Bookmark", user_videos_path(video_id: @facade.current_video.id, user_id: current_user.id), method: :post, class: "btn btn-outline mb1 teal" %>            <% else %>
-        <%= link_to "Bookmark", login_path, class: "btn btn-outline mb1 teal" %>
-        <% end %>
+ <%= button_to "Bookmark", {}, class: "btn btn-outline mb1 teal", title: "User must login to bookmark videos.", disabled: true%>        <% end %>
       </div>
       </div>
 
