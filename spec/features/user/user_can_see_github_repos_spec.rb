@@ -41,7 +41,7 @@ describe 'User' do
       end
 
       it 'I see followers' do
-        expect(page).to have_css('.follower', count: 3)
+        expect(page).to have_css('.follower')
 
         within '.followers' do
           expect(page).to have_link('alex-latham')
