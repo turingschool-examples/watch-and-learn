@@ -13,7 +13,7 @@ describe "Admin Controls" do
 
     click_on "Save"
     expect(current_path).to eq("/tutorials/#{Tutorial.last.id}")
-    expect(page).to have_content("Successfully created tutorial.")
+    expect(page).to have_content("Successfully created tutorial")
   end
 end
 
