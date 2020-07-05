@@ -15,6 +15,13 @@ ActiveRecord::Schema.define(version: 2020_07_04_213633) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "friendships", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "friend_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "taggings", id: :serial, force: :cascade do |t|
     t.integer "tag_id"
     t.string "taggable_type"
@@ -67,6 +74,10 @@ ActiveRecord::Schema.define(version: 2020_07_04_213633) do
     t.integer "role", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "github_token"
+    t.integer "activation_status", default: 0
+    t.string "github_uid"
+    t.string "github_handle"
     t.string "token"
     t.string "github_login"
     t.index ["email"], name: "index_users_on_email"
