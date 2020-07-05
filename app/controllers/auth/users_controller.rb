@@ -1,5 +1,5 @@
 class Auth::UsersController < ApplicationController
-  def edit ; end
+  def edit; end
 
   def update
     user = User.find(current_user.id)

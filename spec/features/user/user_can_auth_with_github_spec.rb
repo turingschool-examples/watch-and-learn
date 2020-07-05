@@ -1,21 +1,21 @@
 require 'rails_helper'
 
 describe 'a user can authenticate with github' do
+  before :each do
+    OmniAuth.config.test_mode = true
+    OmniAuth.config.mock_auth[:github] = nil
+  end
   it 'allows a user to authorize app to use github account' do
     user = create(:user)
+    credential_mock_hash = {token: "thisisamocktoken"}
+    OmniAuth.config.add_mock(:github, {credentials: credential_mock_hash })
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
     visit dashboard_path
-
     click_on "Connect to Github"
-    OmniAuth.config.test_mode = true
-    #OAuth stuff happens
-
-    OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({
-      :provider => 'github',
-      #:uid => '123545'
-    })
 
     expect(current_path).to eq(dashboard_path)
+    expect(User.find(user.id).github_token).to eq("thisisamocktoken")
   end
 end
 
