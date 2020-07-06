@@ -27,7 +27,7 @@ RSpec.describe 'User' do
     expect(page).to have_css('.github')
     expect(page).to have_css('.followers')
     expect(page).to have_css('.following')
-    save_and_open_page
+  
 
   end
 end

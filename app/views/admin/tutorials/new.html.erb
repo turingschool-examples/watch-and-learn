@@ -16,3 +16,16 @@
 
   <%= f.submit "Save", class: "mt2 btn btn-primary mb1 bg-teal"  %>
 <% end %>
+
+<%= link_to "Import YouTube Playlist","#", id: "yourButton" %>
+
+
+<div id="myform">
+<%= form_tag "/admin/tutorials/#{@tutorial.id}/videos", method: :post do %>
+   <%= label_tag :playlist_id %>
+   <%= text_field_tag :playlist_id %>
+
+
+   <%= submit_tag 'Submit' %>
+ <% end %>
+</div>

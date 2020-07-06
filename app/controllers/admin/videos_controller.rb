@@ -9,19 +9,36 @@ class Admin::VideosController < Admin::BaseController
   end
 
   def create
-    begin
-      tutorial = Tutorial.find(params[:tutorial_id])
-      thumbnail = YouTube::Video.by_id(new_video_params[:video_id]).thumbnail
-      video = tutorial.videos.new(new_video_params.merge(thumbnail: thumbnail))
+    if params[:playlist_id] != nil
+      begin
+        search = YoutubeSearch.new
+        video_info = search.playlist_videos(params[:playlist_id])
+        tutorial = Tutorial.find(params[:tutorial_id])
+        video_info.each do |video|
+        video = tutorial.videos.new(video)
+        video.save
+        end
+        flash[:success] = "Successfully created tutorial. #{view_context.link_to('View it Here', "/tutorials/#{tutorial.id }")}."
+      # rescue StandardError
+      #   flash[:error] = 'Unable to create video.'
+        redirect_to admin_dashboard_path
+      end
+    else
+      begin
+        tutorial = Tutorial.find(params[:tutorial_id])
 
-      video.save
+        thumbnail = YouTube::Video.by_id(new_video_params[:video_id]).thumbnail
 
-      flash[:success] = 'Successfully created video.'
-    rescue StandardError
-      flash[:error] = 'Unable to create video.'
+        video = tutorial.videos.new(new_video_params.merge(thumbnail: thumbnail))
+
+        video.save
+
+        flash[:success] = 'Successfully created video.'
+      rescue StandardError
+        flash[:error] = 'Unable to create video.'
+      end
+      redirect_to edit_admin_tutorial_path(id: tutorial.id)
     end
-
-    redirect_to edit_admin_tutorial_path(id: tutorial.id)
   end
 
   private
