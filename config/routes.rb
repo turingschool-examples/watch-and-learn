@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     resources :tutorials, only: [:create, :edit, :update, :destroy, :new] do
       resources :videos, only: [:create]
     end
+    resources :playlists, only: [:new, :create]
     resources :videos, only: [:edit, :update, :destroy]
 
     namespace :api do
