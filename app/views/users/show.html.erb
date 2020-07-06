@@ -12,7 +12,19 @@
     <li> <%= current_user.email%> </li>
   </ul>
   <section>
+    
     <h1>Bookmarked Segments</h1>
+    <section id='bookmarked-videos'>
+      <% current_user.user_videos.sort_by_tutorial.each do |tutorial, videos| %>
+        <ul class=<% tutorial.title %>>
+          <h4><%= tutorial.title %></h4>
+          <% videos.each do |video| %>
+            <li><%= video.title %></li>
+          <% end %>
+        </ul>
+      <% end %>
+    </section>
+
     <% if current_user.token %>
       <h2>Github</h2>
       <section id='github-repos'>
