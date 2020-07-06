@@ -15,9 +15,7 @@
       <td><%= link_to tutorial.title, tutorial_path(tutorial) %></td>
       <td>
         <%= link_to "Edit", edit_admin_tutorial_path(tutorial) %> |
-        <%= link_to "Delete", admin_tutorial_path(tutorial),
-                               method: :delete,
-                               data: { confirm: 'Are you sure?' } %>
+        <%= link_to "Delete", admin_tutorial_path(tutorial), method: :delete, data: { confirm: 'Are you sure?' } %>
       </td>
     </tr>
   <% end %>
