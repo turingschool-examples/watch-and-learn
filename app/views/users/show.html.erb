@@ -21,6 +21,7 @@
       </ul>
       <% end %>
   </section>
+  <% if current_user.token != nil %>
     <section>
     <h1>Github</h1>
     <ul class="repos">
@@ -51,4 +52,7 @@
       <% end %>
     </ul>
   </section>
+  <% else %>
+    <button onclick="location.href = 'https://github.com/login/oauth/authorize?client_id=d5a0931835eac87a13b5&scope=repo';">Connect to Github</button>
+  <% end %>
 </section>
