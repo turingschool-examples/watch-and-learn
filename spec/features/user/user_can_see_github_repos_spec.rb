@@ -4,7 +4,7 @@ describe 'User' do
   context 'As a logged in user' do
     before do
       user = create(:user)
-
+      user.update_attribute(:token, ENV['GITHUB_TOKEN'])
       visit '/'
 
       click_on "Sign In"
