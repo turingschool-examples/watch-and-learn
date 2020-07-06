@@ -32,7 +32,7 @@
       </section>
       <h2>Following</h2>
       <section id="github-following">
-        <%= @user_following.each do |follow| %>
+        <% @user_following.each do |follow| %>
           <ul class="following-handle">
             <li class="following-url"><%= link_to follow.handle, follow.url %></li>
           </ul>
