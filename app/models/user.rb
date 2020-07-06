@@ -13,7 +13,7 @@ class User < ApplicationRecord
 
   def self.check_for_username?(username)
     users = User.where(username: username)
-    return false if users.size == 0
+    return false if users.empty?
 
     true
   end
