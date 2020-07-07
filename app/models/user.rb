@@ -17,4 +17,8 @@ class User < ApplicationRecord
 
     true
   end
+
+  def bookmarked_videos
+    videos.order('position').group_by { |video| video.tutorial}
+  end
 end
