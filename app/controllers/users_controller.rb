@@ -28,6 +28,8 @@ class UsersController < ApplicationController
 
   def update
     user_friend = User.find(params[:user_id])
+    @user.find(current_user.id).friends << user_friend
+    bindign.pry
   end
 
   private

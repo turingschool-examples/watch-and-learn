@@ -44,7 +44,7 @@
       <% @git_following.each do |following| %>
       <% if following.friendable %>
 
-      <%= link_to "Add Friend", friends_path(user_id: following.user_id),  method: :post %>
+      <%= link_to "Add Friend", edit_user_path(user_id: following.user_id),  method: :patch %>
       <% end %>
 
         <li><%= link_to(following.login, following.url) %></li>
