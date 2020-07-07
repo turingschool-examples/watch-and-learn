@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   def show
+    current_user.reload
     return unless current_user.github_token
 
     @results = GithubResults.new(current_user)
