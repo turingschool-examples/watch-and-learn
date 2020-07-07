@@ -3,7 +3,8 @@ class Auth::UsersController < ApplicationController
 
   def update
     user = User.find(current_user.id)
-    user.update(github_token: auth_hash[:credentials][:token])
+    user.update(github_token: auth_hash[:credentials][:token],
+    github_username: auth_hash[:info][:nickname])
     redirect_to dashboard_path
   end
 
