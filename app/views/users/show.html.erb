@@ -17,6 +17,13 @@
 
 </section>
 </br>
+<section class="bookmarked"> <h2>Bookmarks</h2>
+  <ul>
+      <% @git_repos.each do |repo| %>
+        <li><%= link_to(repo.name, repo.url) %></li>
+      <% end %></ul>
+</section>
+<% end %>
 <% if !@git_repos.nil? %>
 <section class="github"> <h2>Github Repos</h2>
   <ul>

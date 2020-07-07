@@ -24,7 +24,7 @@ describe 'A registered user' do
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-    visit tutorial_path(tutorial)
+    visit "tutorial_path(tutorial)"
 
     click_on 'Bookmark'
     expect(page).to have_content("Bookmark added to your dashboard")
@@ -32,6 +32,16 @@ describe 'A registered user' do
     expect(page).to have_content("Already in your bookmarks")
   end
    it "should display bookmarked segments" do
+     tutorial= create(:tutorial)
+     video = create(:video, tutorial_id: tutorial.id)
+     user = create(:user
+
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+    
+    visit "tutorial_path(tutorial)"
+    click_on 'Bookmark'
+    expect(page).to have_content("Bookmark added to your dashboard")
+
      #    As a logged in user
      # When I visit '/dashboard'
      # Then I should see a list of all bookmarked segments under the Bookmarked Segments section
