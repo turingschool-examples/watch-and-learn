@@ -8,4 +8,18 @@ class User < ApplicationRecord
 
   enum role: { default: 0, admin: 1}
   has_secure_password
+
+  def self.create_with_omniauth(auth)
+    create! do |user|
+    end
+  end
 end
+
+
+# def self.create_with_omniauth(auth)
+#     create! do |user|
+#       user.provider = auth["provider"]
+#       user.uid = auth["uid"]
+#       user.name = auth["info"]["name"]
+#     end
+#   end
