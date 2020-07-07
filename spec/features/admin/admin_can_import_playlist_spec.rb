@@ -7,8 +7,24 @@ describe 'As an admin'
       playlist_id = 'PLbt09tWqepBSRQstKuZjrOrX-9xNPY3CE'
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
-     
-      visit '/admin/tutorials/new'
+      stubbed_videos =  [{
+        title: "fake title",
+        description: "this is a description",
+        thumbnail: "url",
+        position: 5,
+        video_id: 7
+        },
+      {
+        title: "second title",
+        description: "another description",
+        thumbnail: "url",
+        position: 10,
+        video_id: 8
+        }]
+      
+      allow_any_instance_of(YoutubeService).to receive(:fetch_videos_for_playlist).and_return(stubbed_videos)
+        
+        visit '/admin/tutorials/new'
 
       fill_in'Title', with: "New Tutorial"
       fill_in'Description', with: "Decription stuff"
@@ -28,7 +44,12 @@ describe 'As an admin'
      
       expect(current_path).to eq("/tutorials/#{tutorial.id}")
 
-      # expect(page).to have_content('')
+      within(".tutorial-videos") do
+        videos = page.all("li")
+     
+        expect(videos[0]).to have_content('fake title')
+        expect(videos[1]).to have_content("second title")
+      end
     end
   end
 
