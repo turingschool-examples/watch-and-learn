@@ -29,6 +29,11 @@
 <section class="followers"> <h2>Github Followers</h2>
   <ul>
       <% @git_followers.each do |follower| %>
+      <% if follower.friendable %>
+
+      <%= link_to "Add Friend", user_path(id: current_user.id, user_id: follower.user_id), method: :patch %>
+      <% end %>
+
         <li><%= link_to(follower.login, follower.url) %></li>
       <% end %></ul>
 </section>
@@ -37,7 +42,20 @@
 <section class="following"> <h2>Github Following</h2>
   <ul>
       <% @git_following.each do |following| %>
+      <% if following.friendable %>
+
+      <%= link_to "Add Friend", user_path(id: current_user.id, user_id: following.user_id),  method: :patch %>
+      <% end %>
+
         <li><%= link_to(following.login, following.url) %></li>
       <% end %></ul>
 </section>
+
+  <section class="friends"> <h2>Friends</h2>
+    <% current_user.friends.each do |friend| %>
+      <%= friend.first_name %>
+    <% end %>
+  </section>
+
+
 <% end %>

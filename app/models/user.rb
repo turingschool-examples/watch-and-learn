@@ -6,6 +6,14 @@ class User < ApplicationRecord
   validates :password, on: :create, presence: true
   validates :first_name, presence: true
   enum role: { default: 0, admin: 1 }
+
+  has_many :friended_users, foreign_key: :friend_id, class_name: 'Friend'
+  has_many :friendees, through: :friended_users
+
+  has_many :friending_users, foreign_key: :friendee_id, class_name: 'Friend'
+  has_many :friends, through: :friending_users
+
+
   has_secure_password
 
   def self.from_omniauth(auto_info, current_user)
