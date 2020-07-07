@@ -14,8 +14,13 @@
   <section class="bookmarks">
     <h1>Bookmarked Segments</h1>
     <ul>
-    <% current_user.videos.each do |video| %>
-      <li><%= video.title %></li>
+    <% @tutorials.each do |tutorial| %>
+     <ul>
+       <%= tutorial.title %></br>
+      <% @tutorial_videos.each do |video| %>
+      <%= link_to(video.title, "/tutorials/#{tutorial.id}/videos/#{video.id}" ) if video.tutorial_id == tutorial.id%>
+      <% end %></br>
+      </ul>
     <% end %></ul>
   </section>
 

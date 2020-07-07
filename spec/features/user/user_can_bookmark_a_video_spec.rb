@@ -47,8 +47,14 @@ describe 'A registered user' do
 
 
     visit dashboard_path
-    save_and_open_page
+
     expect(page).to have_css(".bookmarks")
+    expect(page).to have_content(tutorial.title)
+    expect(page).to have_content(video.title)
+    expect(page).to have_content(tutorial2.title)
+    expect(page).to have_content(video2.title)
+    expect(page).to have_content(tutorial3.title)
+    expect(page).to have_content(video3.title)
 
      #    As a logged in user
      # When I visit '/dashboard'

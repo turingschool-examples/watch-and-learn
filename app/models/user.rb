@@ -18,7 +18,4 @@ class User < ApplicationRecord
         github_user.save
   end
 
-  def self.video_list
-    videos
-  end
 end

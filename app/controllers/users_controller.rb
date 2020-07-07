@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
   def show
-    binding.pry
+    @tutorial_ids = current_user.videos.map {|video| video.tutorial_id}
+    @tutorial_videos = @tutorial_ids.map do |tutorial|
+      Video.find_by(tutorial_id: tutorial)
+      end
+    @tutorials = @tutorial_ids.map {|tutorial| Tutorial.find(tutorial)}
     return unless current_user.token
     search = GithubSearch.new
     @git_repos = search.repos(current_user)
