@@ -48,6 +48,9 @@
       <% @github_service.fetch_following_for_user(current_user.token).each do |follow| %>
       <li class="follow">
         <%= link_to follow[:login], "#{follow[:html_url]}" %>
+        <% if github_user_exists?(follow[:login]) && (already_friends?(current_user, follow[:login]) != true)%>
+          <%= link_to "Add friend", "/add-friend/#{follow[:login]}" %>
+        <% end %>
       </li>
       <% end %>
     </ul>

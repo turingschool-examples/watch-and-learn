@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
   helper_method :find_bookmark
   helper_method :list_tags
   helper_method :tutorial_name
+  helper_method :github_user_exists?
+  helper_method :already_friends?
 
   add_flash_types :success
 
@@ -20,5 +22,18 @@ class ApplicationController < ActionController::Base
 
   def four_oh_four
     raise ActionController::RoutingError, 'Not Found'
+  end
+
+  def github_user_exists?(login)
+    User.find_by_ghub_username(login)
+  end
+
+  def already_friends?(current_user, login)
+    new_friend_id = github_user_exists?(login).id
+    if current_user.friendships.any? { |friend| friend.friend_id == new_friend_id }
+      true
+    else
+      false
+    end
   end
 end
