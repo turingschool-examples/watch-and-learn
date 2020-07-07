@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   helper_method :list_tags
   helper_method :tutorial_name
 
-  add_flash_types :success
+  add_flash_types :success, :notice
 
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]

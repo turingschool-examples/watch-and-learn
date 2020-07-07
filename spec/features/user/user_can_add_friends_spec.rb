@@ -28,6 +28,19 @@ describe 'a user dashboard' do
       expect(page).to have_content(ENV["GITHUB_USERNAME_B"])
     end
   end
+  it 'prevents bad IDs from becoming friends' do
+    user_2 = create(:user)
+    user_2.update(github_token: ENV["GITHUB_TOKEN_A"], github_username: ENV["GITHUB_USERNAME_A"])
+
+    visit root_path
+    page.driver.post("/users/" + "9000" + "/friends?github_username=" + user_2.github_username)
+    expect(Friendship.all).to eq([])
+    expect(page).to have_content("You are being redirected.")
+
+    page.driver.post("/users/" + "#{user_2.id}" + "/friends?github_username=" + "junkuser")
+    expect(Friendship.all).to eq([])
+    expect(page).to have_content("You are being redirected.")
+  end
 end
 # rails g migration AddNicknameToUsers github_username:string
 # Details: We want to create friendships between users with accounts in our
