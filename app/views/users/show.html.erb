@@ -11,8 +11,17 @@
     <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
     <li> <%= current_user.email%> </li>
   </ul>
-  <section>
+  <section class="bookmarks">
     <h1>Bookmarked Segments</h1>
+    <ul>
+    <% @tutorials.each do |tutorial| %>
+     <ul>
+       <%= tutorial.title %></br>
+      <% @tutorial_videos.each do |video| %>
+      <%= link_to(video.title, "/tutorials/#{tutorial.id}/videos/#{video.id}" ) if video.tutorial_id == tutorial.id%>
+      <% end %></br>
+      </ul>
+    <% end %></ul>
   </section>
 
 </section>

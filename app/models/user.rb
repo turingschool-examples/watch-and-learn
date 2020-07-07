@@ -24,5 +24,6 @@ class User < ApplicationRecord
         github_user.token        = auto_info.credentials.token
         github_user.user         = current_user.id
         github_user.save
-    end
   end
+
+end
