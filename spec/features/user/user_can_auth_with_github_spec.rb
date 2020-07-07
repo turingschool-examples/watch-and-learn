@@ -8,7 +8,8 @@ describe 'a user can authenticate with github' do
   it 'allows a user to authorize app to use github account' do
     user = create(:user)
     credential_mock_hash = {token: "thisisamocktoken"}
-    OmniAuth.config.add_mock(:github, {credentials: credential_mock_hash })
+    info_mock_hash = {name: "name", nickname: "another name"}
+    OmniAuth.config.add_mock(:github, {credentials: credential_mock_hash, info: info_mock_hash })
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
     visit dashboard_path
@@ -16,6 +17,7 @@ describe 'a user can authenticate with github' do
 
     expect(current_path).to eq(dashboard_path)
     expect(User.find(user.id).github_token).to eq("thisisamocktoken")
+    expect(User.find(user.id).github_username).to eq("another name")
   end
 end
 
