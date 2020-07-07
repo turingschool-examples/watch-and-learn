@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   helper_method :tutorial_name
   helper_method :github_user_exists?
   helper_method :already_friends?
+  helper_method :get_status
 
   add_flash_types :success
 
@@ -34,6 +35,14 @@ class ApplicationController < ActionController::Base
       true
     else
       false
+    end
+  end
+
+  def get_status
+    if current_user.email_status
+      "Active"
+    else
+      "Inactive"
     end
   end
 end
