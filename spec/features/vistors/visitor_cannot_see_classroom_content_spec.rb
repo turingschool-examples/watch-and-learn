@@ -20,7 +20,24 @@ describe 'visitor visits video show page' do
         expect(page).to_not have_content(tutorial2.description)
     end
   end
-end 
+
+  it 'I can see all tutorials if logged in' do
+     tutorial1 = create(:tutorial)
+     tutorial2 = create(:tutorial, classroom: true)
+     user = create(:user)
+     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+     visit root_path
+
+     within(first('.tutorials')) do
+       expect(page).to have_content(tutorial1.title)
+       expect(page).to have_content(tutorial1.description)
+
+       expect(page).to have_content(tutorial2.title)
+       expect(page).to have_content(tutorial2.description)
+    end
+  end
+end
 # Currently all tutorials are visible to anyone.
 # We want to make tutorials marked as "classroom content" viewable
 # only if the user is logged in.
