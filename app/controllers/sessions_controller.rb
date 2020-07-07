@@ -14,8 +14,22 @@ class SessionsController < ApplicationController
     end
   end
 
+  def update
+     @user = User.find_or_create_from_auth_hash(github_token: token)
+  end
+
   def destroy
     session[:user_id] = nil
     redirect_to root_path
+  end
+
+  private
+
+  def auth_hash
+    request.env['omniauth.auth']
+  end
+
+  def token
+    require "pry";binding.pry
   end
 end
