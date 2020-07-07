@@ -3,9 +3,9 @@ class UsersController < ApplicationController
   def show
     if !current_user.github_token.nil?
       search_results = SearchResults.new
-      @repos = search_results.repos
-      @followers = search_results.followers
-      @followings = search_results.followings
+      @repos = search_results.repos(current_user.github_token)
+      @followers = search_results.followers(current_user.github_token)
+      @followings = search_results.followings(current_user.github_token)
       # conn = Faraday.new("https://api.github.com")
       # response = conn.get("/user/repos?access_token=#{current_user.github_token}")
       #
