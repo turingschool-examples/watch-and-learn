@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :friends
   namespace :api do
     namespace :v1 do
       resources :tutorials, only:[:show, :index]

@@ -1,5 +1,7 @@
 RSpec.configure do |config|
 
+  require 'webmock/rspec'
+
   config.before(:suite) do
      DatabaseCleaner.clean_with(:truncation)
    end

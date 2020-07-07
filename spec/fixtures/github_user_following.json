@@ -1,0 +1,42 @@
+[
+    {
+        "login": "jhgould",
+        "id": 35248542,
+        "node_id": "MDQ6VXNlcjM1MjQ4NTQy",
+        "avatar_url": "https://avatars3.githubusercontent.com/u/35248542?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/jhgould",
+        "html_url": "https://github.com/jhgould",
+        "followers_url": "https://api.github.com/users/jhgould/followers",
+        "following_url": "https://api.github.com/users/jhgould/following{/other_user}",
+        "gists_url": "https://api.github.com/users/jhgould/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/jhgould/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/jhgould/subscriptions",
+        "organizations_url": "https://api.github.com/users/jhgould/orgs",
+        "repos_url": "https://api.github.com/users/jhgould/repos",
+        "events_url": "https://api.github.com/users/jhgould/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/jhgould/received_events",
+        "type": "User",
+        "site_admin": false
+    },
+    {
+        "login": "Lithnotep",
+        "id": 57552462,
+        "node_id": "MDQ6VXNlcjU3NTUyNDYy",
+        "avatar_url": "https://avatars3.githubusercontent.com/u/57552462?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/Lithnotep",
+        "html_url": "https://github.com/Lithnotep",
+        "followers_url": "https://api.github.com/users/Lithnotep/followers",
+        "following_url": "https://api.github.com/users/Lithnotep/following{/other_user}",
+        "gists_url": "https://api.github.com/users/Lithnotep/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/Lithnotep/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/Lithnotep/subscriptions",
+        "organizations_url": "https://api.github.com/users/Lithnotep/orgs",
+        "repos_url": "https://api.github.com/users/Lithnotep/repos",
+        "events_url": "https://api.github.com/users/Lithnotep/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/Lithnotep/received_events",
+        "type": "User",
+        "site_admin": false
+    }
+]
