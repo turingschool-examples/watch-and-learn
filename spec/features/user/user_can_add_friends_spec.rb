@@ -40,15 +40,16 @@ require 'rails_helper'
 
       user_1 = User.create(
         email: "user_1@email.com",
-        first_name: "Bob",
+        first_name: "Eric",
         last_name: "bobby",
         password: "password",
         role: 0,
+        token: ENV['GITHUB_TOKEN']
       )
 
       user_2 = User.create(
         email: "user_2@email.com",
-        first_name: "Jimmy",
+        first_name: "Stella",
         last_name: "Jimster",
         password: "password",
         role: 0,
@@ -56,8 +57,8 @@ require 'rails_helper'
       )
 
       user_3 = User.create(
-        email: "user_2@email.com",
-        first_name: "Chris",
+        email: "user_3@email.com",
+        first_name: "Max",
         last_name: "Christer",
         password: "password",
         role: 0,
@@ -67,15 +68,16 @@ require 'rails_helper'
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
       visit "/dashboard"
+      save_and_open_page
 
       within ('.followers') do
-        expect(page).to have_content("Befriend Chris")
-        expect(page).to have_content("Befriend Jimmy")
+        expect(page).to have_content("Befriend Max")
+        expect(page).to have_content("Befriend Stella")
       end
 
       within ('.following') do
-        expect(page).to have_content("Befriend Chris")
-        expect(page).to_not have_content("Befriend Jimmy")
+        expect(page).to have_content("Befriend Max")
+        expect(page).to_not have_content("Befriend Stella")
       end
     end
   end

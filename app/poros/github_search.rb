@@ -12,7 +12,7 @@ class GithubSearch
     service = GithubService.new
     json = service.follower_json(user)
     json.map do |data|
-      Follower.new(data["login"], data["html_url"])
+      Follower.new(data["login"], data["html_url"], data["id"])
     end
   end
 
@@ -20,7 +20,7 @@ class GithubSearch
     service = GithubService.new
     json = service.following_json(user)
     json.map do |data|
-      Following.new(data["login"], data["html_url"])
+      Following.new(data["login"], data["html_url"], data["id"])
     end
   end
 
