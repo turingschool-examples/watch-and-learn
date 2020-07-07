@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     get "/dashboard", to: "dashboard#show"
     resources :tutorials, only: [:create, :edit, :update, :destroy, :new] do
       resources :videos, only: [:create]
+      resources :playlists, only: [:new]
     end
     resources :videos, only: [:edit, :update, :destroy]
 

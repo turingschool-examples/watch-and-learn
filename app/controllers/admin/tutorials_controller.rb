@@ -4,9 +4,11 @@ class Admin::TutorialsController < Admin::BaseController
   end
 
   def create
+    # binding.pry
     tutorial = Tutorial.new(tutorial_params)
     if tutorial.save
-      flash[:success] = "Successfully created tutorial."
+      flash[:success] = "Successfully created tutorial. #{view_context.link_to('View it here.', tutorial_path(tutorial))}"
+      # flash[:notice] = "Successfully created #{view_context.link_to('product', @product)}.".html_safe
       redirect_to "/tutorials/#{tutorial.id}"
     else
       flash[:error] = "tutorial not created!"

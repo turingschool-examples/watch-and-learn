@@ -10,16 +10,23 @@ describe 'As an admin'
      
       visit '/admin/tutorials/new'
 
-      click_on 'Import YouTube Playlist'
-      fill_in'tutorial[playlist_id]', with: playlist_id
-      click_on 'Import'
+      fill_in'Title', with: "New Tutorial"
+      fill_in'Description', with: "Decription stuff"
+      fill_in'Thumbnail', with: "https://i.ytimg.com/vi/qMkRHW9zE1c/hqdefault.jpg"
 
-      expect(current_path).to eq('/admin/dashboard')
+      # click_on 'Import YouTube Playlist'
+      # expect(current_path).to eq("/admin/playlists/new")
+
+      fill_in'tutorial[playlists][playlist_id]', with: playlist_id
+      click_on 'Save'
+
+      tutorial = Tutorial.last
+      expect(current_path).to eq("/tutorials/#{tutorial.id}")
       expect(page).to have_content('Successfully created tutorial. View it here.')
 
       click_on('View it here')
-      new_tutorial = Tutorial.last
-      expect(current_path).to eq("/tutorials/#{new_tutorial.id}")
+     
+      expect(current_path).to eq("/tutorials/#{tutorial.id}")
 
       # expect(page).to have_content('')
     end
@@ -41,3 +48,8 @@ describe 'As an admin'
 # Then I should be on '/tutorials/:id'
 # And I should see all videos from the YouTube playlist
 # And the order should be the same as it was on YouTube
+
+#  Retain the original sequence from YouTube
+#  Creates a video record for each video in the playlist and stores the youtube id.
+#  Associates each video stored in the DB is associated with a tutorial. (validate presence of tutorial id)
+#  Can import a playlist with more than 50 videos
