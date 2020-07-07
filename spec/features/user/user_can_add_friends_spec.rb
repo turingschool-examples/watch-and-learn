@@ -20,6 +20,11 @@ describe "user has a follower that also oauth'd via github" do
 
     expect(current_path).to eq("/dashboard")
 
+    within ".friends" do
+      expected = "You seem lonely. You should find friends?"
+      expect(page).to have_content(expected)
+    end
+
     within ".follow" do
       click_link "Add friend"
     end
@@ -29,6 +34,10 @@ describe "user has a follower that also oauth'd via github" do
 
     within ".follow" do
       expect(page).to_not have_link("Add friend")
+    end
+
+    within ".friend" do
+      expect(page).to have_link("Gallup93")
     end
   end
 end

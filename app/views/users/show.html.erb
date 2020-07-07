@@ -38,6 +38,9 @@
       <% @github_service.fetch_followers_for_user(current_user.token).each do |follower| %>
       <li class="follower">
         <%= link_to follower[:login], "#{follower[:html_url]}" %>
+        <% if github_user_exists?(follower[:login]) && (already_friends?(current_user, follower[:login]) != true)%>
+          <%= link_to "Add friend", "/add-friend/#{follower[:login]}" %>
+        <% end %>
       </li>
       <% end %>
     </ul>
@@ -52,6 +55,20 @@
           <%= link_to "Add friend", "/add-friend/#{follow[:login]}" %>
         <% end %>
       </li>
+      <% end %>
+    </ul>
+  </section>
+    <section>
+    <h1>Friends:</h1>
+    <ul class="friends">
+      <% if current_user.friendships != [] %>
+        <% current_user.friendships.each do |friend|  %>
+          <li class="friend">
+            <%= link_to User.find(friend.friend_id).ghub_username, "/github.com/#{User.find(friend.friend_id).ghub_username}" %>
+          </li>
+        <% end %>
+      <% else %>
+        <%= "You seem lonely. You should find friends?" %>
       <% end %>
     </ul>
   </section>
