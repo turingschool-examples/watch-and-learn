@@ -26,4 +26,17 @@ RSpec.describe User, type: :model do
       expect(admin.admin?).to be_truthy
     end
   end
+
+  describe 'Class Methods' do
+    it '.check_for_username' do
+      User.create(email: 'user@email.com', password: 'password', first_name:'Jim', role: 0, username: 'takeller')
+
+      5.times do
+        create(:user)
+      end
+
+      expect(User.check_for_username?("takeller")). to eq(true)
+      expect(User.check_for_username?("George")). to eq(false)
+    end
+  end
 end
