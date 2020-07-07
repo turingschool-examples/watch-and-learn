@@ -6,8 +6,9 @@ class UsersController < ApplicationController
     search = GithubSearch.new
     @git_repos = search.repos(current_user)
     @git_followers = search.followers(current_user)
-    
+
     @git_following = search.following(current_user)
+
   end
 
   def new
@@ -23,6 +24,10 @@ class UsersController < ApplicationController
       flash[:error] = 'Username already exists'
       render :new
     end
+  end
+
+  def update
+    user_friend = User.find(params[:user_id])
   end
 
   private

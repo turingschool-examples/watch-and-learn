@@ -69,7 +69,7 @@ require 'rails_helper'
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
       visit "/dashboard"
 
-      click_link "Add Friend"
+      first(:link, "Add Friend").click
       save_and_open_page
 
       within ('.followers') do

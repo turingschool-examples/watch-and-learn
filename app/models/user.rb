@@ -6,8 +6,12 @@ class User < ApplicationRecord
   validates :password, on: :create, presence: true
   validates :first_name, presence: true
   enum role: { default: 0, admin: 1 }
+
   has_many :friends
   has_many :friends, through: :friends
+
+  has_many :friended_users
+  has_many :friended_users, through: :friended_users, source: :user
 
 
   has_secure_password
