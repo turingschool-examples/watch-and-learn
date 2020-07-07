@@ -11,4 +11,8 @@ class User < ApplicationRecord
   validates :first_name, presence: true
   enum role: { default: 0, admin: 1 }
   has_secure_password
+
+  def self.github_usernames
+    User.pluck(:github_username).compact
+  end
 end
