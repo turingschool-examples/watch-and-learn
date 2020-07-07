@@ -1,13 +1,7 @@
 class FriendshipsController < ApplicationController
   def create
-    @friend = User.find_by(handle: params[:non_friend])
-    @new_friendship = Friendship.create(friendship_params)
+    friend = User.find_by(username: params[:friend_username])
+    Friendship.create({user_id: current_user.id, friend_id: friend.id})
     redirect_to dashboard_path
-  end
-
-  private
-
-  def friendship_params
-    params.permit(:user_id, :friend_id)
   end
 end

@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_secure_password
 
   has_many :friendships
-  has_many :friendships, through: :friendships
+  has_many :friends, through: :friendships
 
   def self.check_for_username?(username)
     users = User.where(username: username)
