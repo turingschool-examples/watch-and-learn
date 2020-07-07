@@ -1,8 +1,9 @@
 class User < ApplicationRecord
   has_many :friends,  foreign_key: 'friend_id',
                       class_name: 'Friendship',
+                      inverse_of: :user,
                       dependent: :destroy
-  has_many :friendships
+  has_many :friendships, dependent: :destroy
   has_many :user_videos, dependent: :destroy
   has_many :videos, through: :user_videos
 

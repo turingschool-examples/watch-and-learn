@@ -34,8 +34,8 @@
   </section>
   <section class = "friends">
   <h1>Friends</h1>
-  <% current_user.friends.each do |friend|  %>
-  <%= friend.github_username %>
+  <% current_user.friendships.each do |friendship|  %>
+  <%= friendship.friend.github_username %>
   <% end %>
   </section>
     </section>
