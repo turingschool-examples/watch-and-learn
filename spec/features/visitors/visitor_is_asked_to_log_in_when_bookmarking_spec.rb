@@ -11,4 +11,14 @@ describe 'visitor visits video show page' do
 
     expect(current_path).to eq(login_path)
   end
+  it 'clicks on the bookmark page and sees flash message' do
+    tutorial = create(:tutorial)
+    video = create(:video, tutorial_id: tutorial.id)
+
+    visit tutorial_path(tutorial)
+
+    click_on 'Bookmark'
+    expect(page).to have_content("User must login to bookmark videos.")
+    expect(current_path).to eq(login_path)
+  end
 end
