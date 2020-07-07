@@ -30,7 +30,7 @@
   <ul>
       <% @git_followers.each do |follower| %>
       <% if follower.friendable %>
-      <strong>Hello</strong>
+      <%= link_to "Add Friend", '/friends' %>
       <% end %>
 
         <li><%= link_to(follower.login, follower.url) %></li>
@@ -42,10 +42,15 @@
   <ul>
       <% @git_following.each do |following| %>
       <% if following.friendable %>
-      <strong>Hello </strong>
+      <%= link_to "Add Friend", '/friends' %>
       <% end %>
 
         <li><%= link_to(following.login, following.url) %></li>
       <% end %></ul>
 </section>
+
+<section class="friends"> <h2>Friends</h2>
+  <% current_user.friends.each do |friend| %>
+    <%= friend.first_name %>
+  <end>
 <% end %>
