@@ -1,3 +1,4 @@
+
 require 'rails_helper'
 
 describe GithubService do
@@ -46,7 +47,7 @@ describe GithubService do
       end
     end
     context '#following_json' do
-      it "returns repo data" do
+      it "returns repo data", :VCR do
         json_response = File.read("spec/fixtures/github_user_following.json")
         stub_request(:get, "https://api.github.com/user/following").
         with(
