@@ -11,11 +11,11 @@ describe 'a user dashboard' do
     visit dashboard_path
 
     within ".follower-#{ENV["GITHUB_USERNAME_C"]}" do
-      expect(page).not_to have_link('Add as Friend')
+      expect(page).not_to have_button('Add as Friend')
     end
 
     within ".follower-#{ENV["GITHUB_USERNAME_B"]}" do
-      click_link 'Add as Friend'
+      click_button 'Add as Friend'
     end
     new_friend = Friendship.last
     expect(new_friend.user_id).to eq(user_2.id)
