@@ -11,19 +11,16 @@
     <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
     <li> <%= current_user.email%> </li>
   </ul>
-  <section>
+  <section class="bookmarks">
     <h1>Bookmarked Segments</h1>
+    <ul>
+    <% current_user.videos.each do |video| %>
+      <li><%= video.title %></li>
+    <% end %></ul>
   </section>
 
 </section>
 </br>
-<section class="bookmarked"> <h2>Bookmarks</h2>
-  <ul>
-      <% @git_repos.each do |repo| %>
-        <li><%= link_to(repo.name, repo.url) %></li>
-      <% end %></ul>
-</section>
-<% end %>
 <% if !@git_repos.nil? %>
 <section class="github"> <h2>Github Repos</h2>
   <ul>
