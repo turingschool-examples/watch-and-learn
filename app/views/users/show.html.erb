@@ -15,12 +15,12 @@
 
     <h1>Bookmarked Segments</h1>
     <section id='bookmarked-videos'>
-      <% current_user.user_videos.sort_by_tutorial.each do |tutorial, videos| %>
+      <% current_user.bookmarked_videos.each do |tutorial, videos| %>
         <section id="tutorial-<%= tutorial.id %>">
           <ul>
             <h4><%= tutorial.title %></h4>
             <% videos.each do |video| %>
-              <li><%= video.title %></li>
+              <li><%= link_to video.title, "/tutorials/#{tutorial.id}?video_id=#{video.id}" %></li>
             <% end %>
           </ul>
         </section>

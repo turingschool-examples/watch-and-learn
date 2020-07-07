@@ -58,7 +58,7 @@ describe 'As a registered user' do
     end
   end
 
-  it 'I see my bookmarked videos ordered by their position' do
+  it 'I see my bookmarked videos ordered by their position in the tutorial' do
     tutorial1 = create(:tutorial, title: "How to Tie Your Shoes")
     tutorial2 = create(:tutorial, title: "How to Cook a Steak")
     video1 = create(:video, title: "The Bunny Ears Technique", tutorial: tutorial1)
@@ -83,5 +83,37 @@ describe 'As a registered user' do
       expect(video4.title).to appear_before(video5.title)
       expect(video5.title).to appear_before(video6.title)
     end
+  end
+
+  it "I can link to a video's show page by clicking on it's name" do
+    tutorial2 = create(:tutorial, title: "How to Cook a Steak")
+
+    video3 = create(:video, title: "Steak Seasoning", tutorial: tutorial2, position: 0)
+    video4 = create(:video, title: "Classic Sear", tutorial: tutorial2, position: 1)
+    video5 = create(:video, title: "Reverse Sear", tutorial: tutorial2, position: 2)
+    video6 = create(:video, title: "Resting", tutorial: tutorial2, position: 3)
+    user = create(:user)
+
+    UserVideo.create({user_id: user.id, video_id: video5.id})
+    UserVideo.create({user_id: user.id, video_id: video6.id})
+    UserVideo.create({user_id: user.id, video_id: video3.id})
+    UserVideo.create({user_id: user.id, video_id: video4.id})
+
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+    visit dashboard_path
+
+    within("#tutorial-#{tutorial2.id}") do
+      click_on "Resting"
+    end
+    save_and_open_page
+    expect(current_path).to eq("/tutorials/#{tutorial2.id}?video_id=#{video6.id}")
+    visit dashboard_path
+
+    within("#tutorial-#{tutorial2.id}") do
+      click_on "Reverse Sear"
+    end
+
+    expect(current_path).to eq("/tutorials/#{tutorial2.id}?video_id=#{video5.id}")
   end
 end
