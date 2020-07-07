@@ -27,6 +27,7 @@ gem 'will_paginate'
 gem 'acts-as-taggable-on', '~> 6.0'
 gem 'omniauth-census', git: "https://github.com/turingschool-projects/omniauth-census"
 gem 'orderly'
+gem 'omniauth-github', github: 'omniauth/omniauth-github', branch: 'master'
 
 
 group :development, :test do
@@ -42,6 +43,8 @@ group :development, :test do
   gem 'simplecov'
   gem 'selenium-webdriver'
   gem 'webdrivers'
+  gem 'webmock'
+  gem 'vcr'
 end
 
 group :development do
