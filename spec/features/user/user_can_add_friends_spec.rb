@@ -70,16 +70,21 @@ require 'rails_helper'
       visit "/dashboard"
 
       first(:link, "Add Friend").click
-      save_and_open_page
-
-      within ('.followers') do
-        expect(page).to have_content("Befriend Max")
-        expect(page).to have_content("Befriend Stella")
+      expect(current_path).to eql("/dashboard")
+      within('.friends') do
+        expect(page).to have_content("Max")
       end
 
-      within ('.following') do
-        expect(page).to have_content("Befriend Max")
-        expect(page).to_not have_content("Befriend Stella")
-      end
-    end
+
+    #   within ('.followers') do
+    #     expect(page).to have_content("Befriend Max")
+    #     expect(page).to have_content("Befriend Stella")
+    #   end
+    #
+    #   within ('.following') do
+    #     expect(page).to have_content("Befriend Max")
+    #     expect(page).to_not have_content("Befriend Stella")
+    #   end
+    # end
+  end
   end

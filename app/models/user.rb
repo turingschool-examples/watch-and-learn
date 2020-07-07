@@ -7,11 +7,11 @@ class User < ApplicationRecord
   validates :first_name, presence: true
   enum role: { default: 0, admin: 1 }
 
-  has_many :friends
-  has_many :friends, through: :friends
+  has_many :friended_users, foreign_key: :friend_id, class_name: 'Friend'
+  has_many :friendees, through: :friended_users
 
-  has_many :friended_users
-  has_many :friended_users, through: :friended_users, source: :user
+  has_many :friending_users, foreign_key: :friendee_id, class_name: 'Friend'
+  has_many :friends, through: :friending_users
 
 
   has_secure_password

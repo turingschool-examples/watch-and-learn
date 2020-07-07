@@ -27,9 +27,12 @@ class UsersController < ApplicationController
   end
 
   def update
+
     user_friend = User.find(params[:user_id])
-    @user.find(current_user.id).friends << user_friend
-    bindign.pry
+    @user = User.find_by(id: current_user.id)
+    current_user.friends << user_friend
+
+    redirect_to dashboard_path
   end
 
   private
