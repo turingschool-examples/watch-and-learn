@@ -106,14 +106,14 @@ describe 'As a registered user' do
     within("#tutorial-#{tutorial2.id}") do
       click_on "Resting"
     end
-    save_and_open_page
-    expect(current_path).to eq("/tutorials/#{tutorial2.id}?video_id=#{video6.id}")
+
+    expect(page).to have_current_path("/tutorials/#{tutorial2.id}?video_id=#{video6.id}")
+
     visit dashboard_path
 
     within("#tutorial-#{tutorial2.id}") do
       click_on "Reverse Sear"
     end
-
-    expect(current_path).to eq("/tutorials/#{tutorial2.id}?video_id=#{video5.id}")
+    expect(page).to have_current_path("/tutorials/#{tutorial2.id}?video_id=#{video5.id}")
   end
 end
