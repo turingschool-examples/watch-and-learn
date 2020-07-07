@@ -6,8 +6,9 @@ class YoutubeService
   end
 
   def playlist_info(id, token = nil)
+    nilhash = { part: 'contentDetails,snippet', playlistId: id, maxResults: 50 }
     params = if token.nil?
-               { part: 'contentDetails,snippet', playlistId: id, maxResults: 50 }
+               nilhash
              else
                { part: 'contentDetails,snippet',
                  playlistId: id,
