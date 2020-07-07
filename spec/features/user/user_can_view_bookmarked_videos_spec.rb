@@ -14,7 +14,7 @@ describe 'As a registered user' do
 
     within('#bookmarked-videos') do
       expect(page).to have_content("How to Tie Your Shoes")
-      within("##{tutorial.title}") do
+      within("tutorial-#{tutorial.id}") do
         expect(page).to have_content("The Bunny Ears Technique")
         expect(page).to_not have_content("The Around the Tree Technique")
       end
@@ -42,13 +42,13 @@ describe 'As a registered user' do
     within('#bookmarked-videos') do
       expect(page).to have_content("How to Tie Your Shoes")
       expect(page).to have_content("How to Cook a Steak")
-      within("##{tutorial1.title}") do
+      within("#{tutorial1.title}") do
         expect(page).to have_content("The Bunny Ears Technique")
         expect(page).to_not have_content("The Around the Tree Technique")
         expect(page).to_not have_content("Steak Seasnoning")
         expect(page).to_not have_content("Reverse Sear")
       end
-      within("##{tutorial2.title}") do
+      within("#{tutorial2.title}") do
         expect(page).to have_content("Reverse Sear")
         expect(page).to have_content("Resting")
         expect(page).to_not have_content("The Around the Tree Technique")
@@ -78,7 +78,7 @@ describe 'As a registered user' do
 
     visit dashboard_path
 
-    within("##{tutorial2.title}") do
+    within("#{tutorial2.title}") do
       expect(video3.title).to appear_before(video4.title)
       expect(video4.title).to appear_before(video5.title)
       expect(video5.title).to appear_before(video6.title)
