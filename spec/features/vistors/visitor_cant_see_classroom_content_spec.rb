@@ -5,7 +5,7 @@ describe 'visitor visits root page' do
     tutorial = create(:tutorial, classroom: true)
     tutorial2 = create(:tutorial)
     video = create(:video, tutorial_id: tutorial.id)
-    video = create(:video, tutorial_id: tutorial2.id)
+    video1 = create(:video, tutorial_id: tutorial2.id)
 
     visit "/"
 
@@ -21,6 +21,5 @@ describe 'visitor visits root page' do
     visit "/"
     expect(page).to have_content(tutorial2.title)
     expect(page).to have_content(tutorial.title)
-    save_and_open_page
   end
 end
