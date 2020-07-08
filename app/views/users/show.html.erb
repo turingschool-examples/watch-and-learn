@@ -21,10 +21,11 @@
       </ul>
       <% end %>
   </section>
+  <% if current_user.token != nil %>
     <section>
     <h1>Github</h1>
     <ul class="repos">
-      <% @github_service.fetch_repos_for_user.each do |repo| %>
+      <% @github_service.fetch_repos_for_user(current_user.token).each do |repo| %>
       <li class="repo">
         <%= link_to repo[:name], "#{repo[:html_url]}" %>
       </li>
@@ -34,7 +35,7 @@
     <section>
     <h1>Followers:</h1>
     <ul class="followers">
-      <% @github_service.fetch_followers_for_user.each do |follower| %>
+      <% @github_service.fetch_followers_for_user(current_user.token).each do |follower| %>
       <li class="follower">
         <%= link_to follower[:login], "#{follower[:html_url]}" %>
       </li>
@@ -44,11 +45,14 @@
     <section>
     <h1>Following:</h1>
     <ul class="following">
-      <% @github_service.fetch_following_for_user.each do |follow| %>
+      <% @github_service.fetch_following_for_user(current_user.token).each do |follow| %>
       <li class="follow">
         <%= link_to follow[:login], "#{follow[:html_url]}" %>
       </li>
       <% end %>
     </ul>
   </section>
+  <% else %>
+    <button onclick="location.href = 'https://github.com/login/oauth/authorize?client_id=d5a0931835eac87a13b5&scope=repo';">Connect to Github</button>
+  <% end %>
 </section>

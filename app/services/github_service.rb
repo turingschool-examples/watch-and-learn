@@ -1,6 +1,6 @@
 class GithubService
-  def fetch_repos_for_user
-    headers = { Authorization: "token #{ENV['GITHUB_TOKEN']}" }
+  def fetch_repos_for_user(token)
+    headers = { Authorization: "token #{token}" }
     response = get_json('https://api.github.com/user/repos', {}, headers)
 
     first_five = response[0..4]
@@ -9,16 +9,16 @@ class GithubService
     end
   end
 
-  def fetch_followers_for_user
-    headers = { Authorization: "token #{ENV['GITHUB_TOKEN']}" }
+  def fetch_followers_for_user(token)
+    headers = { Authorization: "token #{token}" }
     response = get_json('https://api.github.com/user/followers', {}, headers)
     response.map do |follower|
       { login: follower[:login], html_url: follower[:html_url] }
     end
   end
 
-  def fetch_following_for_user
-    headers = { Authorization: "token #{ENV['GITHUB_TOKEN']}" }
+  def fetch_following_for_user(token)
+    headers = { Authorization: "token #{token}" }
     response = get_json('https://api.github.com/user/following', {}, headers)
     response.map do |follow|
       { login: follow[:login], html_url: follow[:html_url] }

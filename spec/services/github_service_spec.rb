@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'Github Service' do
   describe '#fetch_repos_for_user' do
     it 'returns a list of user repositories' do
-      fetched_repos = GithubService.new.fetch_repos_for_user
+      fetched_repos = GithubService.new.fetch_repos_for_user(ENV['GITHUB_TOKEN'])
       first_repo = fetched_repos.first
 
       expect(fetched_repos).to be_an Array
@@ -14,7 +14,7 @@ describe 'Github Service' do
   end
   describe '#fetch_followers_for_user' do
     it 'returns a list of followers' do
-      fetched_followers = GithubService.new.fetch_followers_for_user
+      fetched_followers = GithubService.new.fetch_followers_for_user(ENV['GITHUB_TOKEN'])
       first_follower = fetched_followers.first
 
       expect(fetched_followers).to be_an Array
@@ -25,7 +25,7 @@ describe 'Github Service' do
   end
   describe '#fetch_following_for_user' do
     it 'returns a list of following' do
-      fetched_following = GithubService.new.fetch_following_for_user
+      fetched_following = GithubService.new.fetch_following_for_user(ENV['GITHUB_TOKEN'])
       first_follow = fetched_following.first
 
       expect(fetched_following).to be_an Array
