@@ -14,13 +14,15 @@
   <section class="bookmarks">
     <h1>Bookmarked Segments</h1>
     <ul>
-    <% @tutorials.each do |tutorial| %>
-     <ul>
-       <%= tutorial.title %></br>
-      <% @tutorial_videos.each do |video| %>
-      <%= link_to(video.title, "/tutorials/#{tutorial.id}/videos/#{video.id}" ) if video.tutorial_id == tutorial.id%>
-      <% end %></br>
-      </ul>
+    <% current_user.tutorials.distinct.each do |tutorial| %>
+       <%= tutorial.title %><br>
+       <ul>
+      <% tutorial.videos.each do |video| %>
+        <li>
+        <%= link_to(video.title, "/tutorials/#{tutorial.id}/?video_id=#{video.id}" )%>
+        </li>
+      <% end %><br>
+       </ul>
     <% end %></ul>
   </section>
 
