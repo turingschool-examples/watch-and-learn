@@ -20,9 +20,7 @@ class UsersController < ApplicationController
 
   def update
     code          = params[:code]
-    response      = Faraday.post("https://github.com/login/oauth/access_token
-                    ?client_id=#{ENV['CLIENT_ID']}&client_secret=#{ENV['CLIENT_SECRET']}
-                    &code=#{code}")
+    response      = Faraday.post("https://github.com/login/oauth/access_token?client_id=#{ENV['CLIENT_ID']}&client_secret=#{ENV['CLIENT_SECRET']}&code=#{code}")
     pairs = response.body.split("&")
 
     response_hash = {}
