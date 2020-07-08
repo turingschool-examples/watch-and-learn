@@ -8,6 +8,10 @@ class EmailsController < ApplicationController
     redirect_to "/dashboard"
   end
 
+  def create
+    
+  end
+
   def update
     user = current_user.update_attribute(:email_status, true)
     flash[:success] = "Thank you! Your account is now activated."
