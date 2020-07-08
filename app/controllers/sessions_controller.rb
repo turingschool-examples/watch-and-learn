@@ -16,7 +16,8 @@ class SessionsController < ApplicationController
 
   def update
     auth_hash = request.env['omniauth.auth']
-    current_user.update(github_token: auth_hash[:credentials][:token])
+    token = auth_hash[:credentials][:token]
+    current_user.update(github_token: token)
     redirect_to dashboard_path
   end
 
@@ -24,17 +25,4 @@ class SessionsController < ApplicationController
     session[:user_id] = nil
     redirect_to root_path
   end
-
-  private
-  # def auth_hash
-  #   request.env['omniauth.auth']
-  # end
 end
-
-
-
-# class SessionsController < ApplicationController
-# def create
-# auth = request.env["omniauth.auth"]
-#  user = User.find_by_provider_and_uid(auth["provider"], auth["uid"]) || User.create_with_omniauth(auth)     session[:user_id] = user.id     redirect_to root_url, :notice => "Signed in!"
-#   end

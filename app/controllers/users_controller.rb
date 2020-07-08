@@ -2,17 +2,10 @@ class UsersController < ApplicationController
 
   def show
     if !current_user.github_token.nil?
-      search_results = SearchResults.new
-      @repos = search_results.repos(current_user.github_token)
-      @followers = search_results.followers(current_user.github_token)
-      @followings = search_results.followings(current_user.github_token)
-      # conn = Faraday.new("https://api.github.com")
-      # response = conn.get("/user/repos?access_token=#{current_user.github_token}")
-      #
-      # json = JSON.parse(response.body, symbolize_names: true)
-      # @repos = json[0..4].map do |user_data|
-      #   Repo.new(user_data)
-      # end
+      search_results = SearchResults.new(current_user.github_token)
+      @repos = search_results.repos
+      @followers = search_results.followers
+      @followings = search_results.followings
     end
   end
 
@@ -37,8 +30,3 @@ class UsersController < ApplicationController
     params.require(:user).permit(:email, :first_name, :last_name, :password)
   end
 end
-
-# conn = Faraday.new("https://api.github.com") do |req|
-#       req.headers['Authorization'] = "token #{ENV["GITHUB_ACCESS_TOKEN"]}"
-#     end
-# response = conn.get("/user/repos")
