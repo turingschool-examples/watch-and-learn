@@ -8,4 +8,8 @@ class User < ApplicationRecord
 
   enum role: { default: 0, admin: 1}
   has_secure_password
+
+  def order_bookmarks
+    videos.order(:tutorial_id, :position)
+  end
 end
