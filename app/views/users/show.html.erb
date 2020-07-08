@@ -9,15 +9,25 @@
     <li> <%= current_user.email%> </li>
   </ul>
 
+  <h1>Bookmarked Segments</h1>
   <section>
-    <h1>Bookmarked Segments</h1>
+    <section class="bookmark_segments">
+      <% if !current_user.order_bookmarks.nil? %>
+        <% current_user.order_bookmarks.each do |video| %>
+          <ul class="bookmarks">
+            <%= link_to video.title, tutorial_path(video.tutorial_id, video_id: video.id) %>
+          </ul>
+        <% end %>
+      <% end %>
+    </section>
   </section>
 
   <section class="github">
     <h1>GitHub</h1>
-
   <h3>GitHub Repos</h3>
-  <% if !@repos.nil? %>
+  <% if @repos.nil? %>
+    <p>You have zero repos.</p>
+  <% else %>
     <section class="repos">
       <% @repos.each do |repo| %>
         <ul class="repo">
