@@ -14,8 +14,8 @@ Rails.application.routes.draw do
     get "/dashboard", to: "dashboard#show"
     resources :tutorials, only: [:create, :edit, :update, :destroy, :new] do
       resources :videos, only: [:create]
-      get '/playlists/new', to: "tutorials/playlists#new" 
-      post '/playlists', to: "tutorials/playlists#create" 
+      get '/playlists/new', to: "tutorials/playlists#new"
+      post '/playlists', to: "tutorials/playlists#create"
     end
     resources :videos, only: [:edit, :update, :destroy]
 
@@ -48,7 +48,7 @@ Rails.application.routes.draw do
 
   get "/add-friend/:login", to: "friendships#create"
 
-  get "/send_confirmation", to: "emails#create"
+  get "/send_confirmation", to: "emails#new"
   get "/confirmed", to: "emails#update"
   get "/activated", to: "emails#show"
 end

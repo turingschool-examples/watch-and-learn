@@ -1,5 +1,5 @@
 class EmailsController < ApplicationController
-  def create
+  def new
     recipient = User.find(session[:user_id])
     EmailConfirmationMailer.inform(recipient).deliver_now
 
