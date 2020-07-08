@@ -1,0 +1,4 @@
+Hello <%=@user.first_name%> <%=@user.last_name%>!
+
+Thank you for creating an account!
+Visit here to activate account: <%= link_to nil, user_activate_url(@user) %>

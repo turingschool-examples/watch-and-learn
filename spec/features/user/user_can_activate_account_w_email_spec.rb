@@ -6,11 +6,11 @@ describe 'as a visitor I can register and get an email' do
     click_link 'Register'
 
     expect(current_path).to eq(register_path)
-    fill_in :email, "fake@email.com"
-    fill_in :first_name, "John Jacob"
-    fill_in :last_name, "Jingleheimerschmidt"
-    fill_in :password, "hisnameismynametoo"
-    fill_in :password_confirmation, "hisnameismynametoo"
+    fill_in :user_email, with: "fake@email.com"
+    fill_in :user_first_name, with: "John Jacob"
+    fill_in :user_last_name, with: "Jingleheimerschmidt"
+    fill_in :user_password, with: "hisnameismynametoo"
+    fill_in :user_password_confirmation, with: "hisnameismynametoo"
 
     click_on "Create Account"
     expect(current_path).to eq(dashboard_path)
@@ -21,10 +21,10 @@ describe 'as a visitor I can register and get an email' do
 
     activation_email = ActionMailer::Base.deliveries.last
 
-    expect(activation_email.text_part.body).to have_content("Visit here to activate account.")
-    expect(activation_email.text_part.body).to have_content(path_we_specify_to_activate)
+    expect(activation_email.text_part.body).to have_content("Visit here to activate account:")
+    expect(activation_email.text_part.body).to have_content(user_activate_path(new_user))
 
-    visit(path_we_specify_to_activate)
+    visit(user_activate_path(new_user))
     expect("Thank you! Your account is now activated.")
     expect(User.find(new_user.id).activated).to eq(true)
 
