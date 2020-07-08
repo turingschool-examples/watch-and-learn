@@ -10,6 +10,6 @@ class User < ApplicationRecord
 
   def bookmarks
     videos.joins(:tutorial).select('videos.*, tutorials.title tutorial_title')
-    .order(:tutorial_id, :position).group_by(&:tutorial_title)
+          .order(:tutorial_id, :position).group_by(&:tutorial_title)
   end
 end

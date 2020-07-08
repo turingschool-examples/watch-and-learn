@@ -15,6 +15,9 @@ AllCops:
     - 'vendor/**/*'
     - './*'
 
+Layout/LineLength:
+  Max: 500
+
 Style/FrozenStringLiteralComment:
   Enabled: false
 

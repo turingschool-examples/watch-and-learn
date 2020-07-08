@@ -6,11 +6,15 @@ class Admin::TutorialsController < Admin::BaseController
   def create
     tutorial = Tutorial.new(tutorial_params)
     if tutorial.save
-      flash[:success] = "Successfully created tutorial."
-      redirect_to "/tutorials/#{tutorial.id}"
+      if params[:commit] == 'Import YouTube Playlist'
+        redirect_to admin_tutorial_playlists_new_path(tutorial)
+      else
+        flash[:success] = "Successfully created tutorial. #{view_context.link_to('View it here.', tutorial_path(tutorial))}"
+        redirect_to "/tutorials/#{tutorial.id}"
+      end
     else
-      flash[:error] = "tutorial not created!"
-      redirect_to "/admin/tutorials/new"
+      flash[:error] = 'tutorial not created!'
+      redirect_to '/admin/tutorials/new'
     end
   end
 
@@ -36,5 +40,9 @@ class Admin::TutorialsController < Admin::BaseController
 
   def tutorial_params
     params.require(:tutorial).permit(:tag_list, :title, :description, :thumbnail)
+  end
+
+  def playlist_params
+    params.require(:tutorial).permit(playlists: :playlist_id)
   end
 end
