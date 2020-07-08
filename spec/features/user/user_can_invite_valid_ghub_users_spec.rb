@@ -10,9 +10,9 @@ describe 'User' do
   it 'user can send invite to ghub users that have emails' do
     click_link "Send an Invite"
     expect(current_path).to eq("/invite")
-
+    save_and_open_page
     within ".invite-form" do
-      fill_in 'Github Handle', with: "Gallup93"
+      fill_in "Github handle:", with: "Gallup93"
       click_on 'Send Invite'
     end
 
@@ -26,7 +26,7 @@ describe 'User' do
     expect(current_path).to eq("/invite")
 
     within ".invite-form" do
-      fill_in 'Github Handle', with: "whitneykidd"
+      fill_in 'Github handle:', with: "whitneykidd"
       click_on 'Send Invite'
     end
 
