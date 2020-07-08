@@ -1,15 +1,17 @@
 class EmailsController < ApplicationController
   def new
-    recipient = User.find(session[:user_id])
-    EmailConfirmationMailer.inform(recipient).deliver_now
+    user = User.find(session[:user_id])
+    recipient = user.email
+    message = "Visit here to activate your account."
+    EmailConfirmationMailer.inform(recipient, message).deliver_now
 
-    flash[:success] = "Logged in as #{recipient.first_name}"
+    flash[:success] = "Logged in as #{user.first_name}"
     flash[:notice] = 'This account has not yet been activated. Please check your email.'
     redirect_to "/dashboard"
   end
 
   def create
-    
+
   end
 
   def update
