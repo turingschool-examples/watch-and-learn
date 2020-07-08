@@ -45,4 +45,6 @@ Rails.application.routes.draw do
   end
 
   resources :user_videos, only:[:create, :destroy]
+
+  get "/add-friend/:login", to: "friendships#create"
 end
