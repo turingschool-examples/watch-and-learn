@@ -33,3 +33,7 @@
 /node_modules
 yarn-debug.log*
 .yarn-integrity
+
+/app/channels/application_cable/channel.rb
+/app/channels/application_cable/connection.rb
+/app/controllers/about_controller.rb
