@@ -1,7 +1,7 @@
 RSpec.configure do |config|
 
   require 'webmock/rspec'
-
+  WebMock.disable_net_connect!(:allow_localhost => true)
   config.before(:suite) do
      DatabaseCleaner.clean_with(:truncation)
    end

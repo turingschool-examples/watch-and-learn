@@ -26,4 +26,12 @@ class User < ApplicationRecord
         github_user.save
   end
 
+  def email_confirmed
+    if email_confirmation
+      "Active"
+    else
+      "Inactive"
+    end
+  end
+
 end

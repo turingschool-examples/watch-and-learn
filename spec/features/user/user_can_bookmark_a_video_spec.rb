@@ -6,6 +6,8 @@ describe 'A registered user' do
     video = create(:video, title: "The Bunny Ears Technique", tutorial: tutorial)
     user = create(:user)
 
+    visit "/users/user.id/confirm_email"
+
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
     visit tutorial_path(tutorial)

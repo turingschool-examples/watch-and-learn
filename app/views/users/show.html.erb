@@ -1,5 +1,9 @@
 <section class="dashboard-main">
 
+  <Strong> Status: <%= current_user.email_confirmed %> </strong
+
+<br>
+
   <% if !current_user.token %>
     <%= button_to "Connect to Github", github_login_path %>
     <h1> <%= current_user.first_name %>'s Dashboard </h1>
