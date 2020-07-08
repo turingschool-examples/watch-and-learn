@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_many :user_videos, dependent: :destroy
   has_many :videos, through: :user_videos
+  has_many :tutorials, through: :videos
 
   validates :email, uniqueness: true, presence: true
   validates :password, on: :create, presence: true
