@@ -6,7 +6,7 @@ describe 'A registered user' do
     video = create(:video, title: "The Bunny Ears Technique", tutorial: tutorial)
     user = create(:user)
 
-    visit "/users/user.id/confirm_email"
+
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
@@ -62,13 +62,8 @@ describe 'A registered user' do
     expect(page).to have_content(video2.title)
     expect(page).to have_content(tutorial3.title)
     expect(page).to have_content(video3.title)
-    save_and_open_page
-    
 
-     #    As a logged in user
-     # When I visit '/dashboard'
-     # Then I should see a list of all bookmarked segments under the Bookmarked Segments section
-     # And they should be organized by which tutorial they are a part of
-     # And the videos should be ordered by their position
+
+
   end
 end
