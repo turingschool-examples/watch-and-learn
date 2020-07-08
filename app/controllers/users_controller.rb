@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   def show
     current_user.reload
+    @bookmarks = current_user.bookmark_tutorials
     return unless current_user.github_token
 
     @results = GithubResults.new(current_user)
