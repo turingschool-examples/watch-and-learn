@@ -7,13 +7,13 @@ feature "user can add a friend" do
       user2 = create(:user, username: "takeller")
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
-      json_response = File.read('spec/fixtures/github_authorization_return.json')
+      json_response = File.read('spec/fixtures/github_user_repos.json')
       stub_request(:get, "https://api.github.com/user/repos").
            with(
              headers: {
          	  'Accept'=>'*/*',
          	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-         	  'Authorization'=>'token 874064d4aa42d472b5d0f35ae6b3b3a56e39f1f4',
+         	  'Authorization'=> "token #{ENV['GITHUB_API_TOKEN_R']}",
          	  'User-Agent'=>'Faraday v1.0.1'
              }).
            to_return(status: 200, body: json_response, headers: {})
@@ -22,7 +22,6 @@ feature "user can add a friend" do
       within ".friend-link-#{user2.username}" do
         click_link("Add as Friend")
       end
-
     end
 
   end

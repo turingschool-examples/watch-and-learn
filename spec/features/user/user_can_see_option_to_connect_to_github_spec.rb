@@ -5,7 +5,7 @@ describe "As a user" do
   #   OmniAuth.config.add_mock(:github, {:uid => ENV['GITHUB_API_TOKEN_R'], :username => "Rostammahabdi", :token => "123412341234"})
   #   visit '/auth/github/callback'
   # end
-  it "shows a link to connect to github on dashboard" do
+  xit "shows a link to connect to github on dashboard" do
     user = create(:user)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
     visit '/dashboard'
@@ -13,12 +13,11 @@ describe "As a user" do
     expect(page).to have_link("Connect to Github")
   end
 
-  it "allows the user to login via github authorization" do
+  xit "allows the user to login via github authorization" do
     user = create(:user)
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
     visit dashboard_path
-    # click_on "Connect to Github"
     OmniAuth.config.add_mock(:github, {:uid => ENV['GITHUB_API_TOKEN_R'], :username => "Rostammahabdi", :token => "123412341234"})
     visit '/auth/github/callback'
     expect(user.username).to eq("Rostammahabadi")

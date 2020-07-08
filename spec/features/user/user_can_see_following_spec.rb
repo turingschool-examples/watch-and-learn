@@ -12,7 +12,7 @@ describe 'As a registered user' do
              headers: {
          	  'Accept'=>'*/*',
          	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-         	  'Authorization'=>'token 874064d4aa42d472b5d0f35ae6b3b3a56e39f1f4',
+         	  'Authorization'=> "token #{ENV['GITHUB_API_TOKEN_R']}",
          	  'User-Agent'=>'Faraday v1.0.1'
              }).
            to_return(status: 200, body: json_response, headers: {})
@@ -32,7 +32,7 @@ describe 'As a registered user' do
              headers: {
          	  'Accept'=>'*/*',
          	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-         	  'Authorization'=>'token 874064d4aa42d472b5d0f35ae6b3b3a56e39f1f4',
+         	  'Authorization'=> "token #{ENV['GITHUB_API_TOKEN_R']}",
          	  'User-Agent'=>'Faraday v1.0.1'
              }).
            to_return(status: 200, body: json_response, headers: {})
@@ -64,7 +64,7 @@ describe 'As a registered user' do
              headers: {
          	  'Accept'=>'*/*',
          	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-         	  'Authorization'=>'token 874064d4aa42d472b5d0f35ae6b3b3a56e39f1f4',
+         	  'Authorization'=> "token #{ENV['GITHUB_API_TOKEN_R']}",
          	  'User-Agent'=>'Faraday v1.0.1'
              }).
            to_return(status: 200, body: json_response, headers: {})
