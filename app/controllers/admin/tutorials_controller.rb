@@ -4,20 +4,17 @@ class Admin::TutorialsController < Admin::BaseController
   end
 
   def create
-
     tutorial = Tutorial.new(tutorial_params)
-    videos = YoutubeService.new.fetch_videos_for_playlist(playlist_params[:playlists][:playlist_id])
-    
     if tutorial.save
-      videos.each do |video_info|
-        video = Video.create!({tutorial: tutorial}.merge(video_info))
-        puts video  
+      if params[:commit] == 'Import YouTube Playlist'
+        redirect_to admin_tutorial_playlists_new_path(tutorial)
+      else
+        flash[:success] = "Successfully created tutorial. #{view_context.link_to('View it here.', tutorial_path(tutorial))}"
+        redirect_to "/tutorials/#{tutorial.id}"
       end
-      flash[:success] = "Successfully created tutorial. #{view_context.link_to('View it here.', tutorial_path(tutorial))}"
-      redirect_to "/tutorials/#{tutorial.id}"
     else
-      flash[:error] = "tutorial not created!"
-      redirect_to "/admin/tutorials/new"
+      flash[:error] = 'tutorial not created!'
+      redirect_to '/admin/tutorials/new'
     end
   end
 

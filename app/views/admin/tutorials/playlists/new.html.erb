@@ -1,0 +1,7 @@
+<h1>Import Playlist</h1>
+
+<%= form_with(url: "/admin/tutorials/#{@tutorial.id}/playlists") do %>
+    <%= label_tag "Playlist ID" %>
+    <%= text_field_tag :playlist_id %>
+    <%= submit_tag "Import" %>
+<% end %>

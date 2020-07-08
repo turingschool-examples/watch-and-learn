@@ -3,5 +3,5 @@ class Tutorial < ApplicationRecord
   acts_as_taggable_on :tags, :tag_list
   accepts_nested_attributes_for :videos
 
-  validates_presence_of :title, :description, :thumbnail
+  validates :title, :description, :thumbnail, presence: true
 end
