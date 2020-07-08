@@ -17,12 +17,23 @@ class UsersController < ApplicationController
   def create
     user = User.create(user_params)
     if user.save
+      UserActivationMailer.activate(user).deliver_now
       session[:user_id] = user.id
       redirect_to dashboard_path
     else
       flash[:error] = 'Username already exists'
       render :new
     end
+  end
+
+  def edit
+    update
+  end
+
+  def update
+    user = User.find(params[:id])
+    user.update(activated: true)
+    redirect_to dashboard_path
   end
 
   private

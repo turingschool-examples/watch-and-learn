@@ -35,7 +35,9 @@ RSpec.describe User, type: :model do
           user_2.update(github_username: "test user 2")
           user_3 = create(:user)
 
-          expect(User.github_usernames).to eq(["test user 1", "test user 2"])
+          expect(User.github_usernames).to include("test user 1")
+          expect(User.github_usernames).to include("test user 2")
+          expect(User.github_usernames.count).to eq(2)
         end
     end
     describe '#methods' do
