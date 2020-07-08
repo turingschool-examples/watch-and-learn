@@ -1,12 +1,11 @@
 require 'rails_helper'
 
-describe 'vister can create an account', :js do
-  it ' visits the home page' do
+describe 'User' do
+  it "can follow link from email to activate account" do
     email = 'jimbob@aol.com'
     first_name = 'Jim'
     last_name = 'Bob'
     password = 'password'
-    password_confirmation = 'password'
 
     visit '/'
 
@@ -31,9 +30,18 @@ describe 'vister can create an account', :js do
     expect(page).to have_content("Logged in as Jim")
     expect(page).to have_content("This account has not yet been activated. Please check your email.")
     expect(page).to have_content("Status: Inactive")
-    expect(page).to have_content(email)
-    expect(page).to have_content(first_name)
-    expect(page).to have_content(last_name)
-    expect(page).to_not have_content('Sign In')
+
+    visit "/send_confirmation"
+
+    visit "/confirmed"
+
+    expect(current_path).to eq("/activated")
+
+    expect(page).to have_content("Thank you! Your account is now activated.")
+
+    click_link "Go To Your Dashboard"
+
+    expect(page).to have_content("Jim's Dashboard")
+    expect(page).to have_content("Status: Active")
   end
 end
