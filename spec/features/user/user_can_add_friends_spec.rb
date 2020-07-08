@@ -80,5 +80,19 @@ describe 'As a registered user' do
         expect(page).to have_content(user5.first_name + " " + user5.last_name)
       end
     end
+
+    it 'I dont see an Add as Friend link of that user is already my friend' do
+      user1 = create(:user, token:  ENV["GITHUB_API_TOKEN_R"])
+      user2 = create(:user, token:  ENV["GITHUB_API_TOKEN"], username: 'takeller')
+      Friendship.create({user_id: user1.id, friend_id: user2.id})
+
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user1)
+
+      visit '/dashboard'
+
+      within(".following-#{user2.username}") do
+        expect(page).to_not have_content("Add as Friend")
+      end
+    end
   end
 end

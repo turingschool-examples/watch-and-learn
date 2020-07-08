@@ -50,7 +50,7 @@
         <% @user_followers.each do |follower| %>
           <ul class="follower-<%= follower.handle %>">
             <li class="handle-url"><%= link_to follower.handle, follower.url %></li>
-            <% if User.check_for_username?(follower.handle) %>
+            <% if User.check_for_username?(follower.handle) && !current_user.is_friend?(follower.handle)%>
           <li class="friend-link-<%= follower.handle %>"> <%= link_to "Add as Friend", "/users/#{current_user.id}/friendships?friend_username=#{follower.handle}", method: :post %></li>
             <% end %>
           </ul>
@@ -61,7 +61,7 @@
         <% @user_following.each do |follow| %>
           <ul class="following-<%= follow.handle %>">
             <li class="following-url"><%= link_to follow.handle, follow.url %></li>
-            <% if User.check_for_username?(follow.handle) %>
+            <% if User.check_for_username?(follow.handle) && !current_user.is_friend?(follow.handle) %>
           <li class="friend-link"> <%= link_to "Add as Friend", "/users/#{current_user.id}/friendships?friend_username=#{follow.handle}", method: :post %></li>
             <% end %>
           </ul>
