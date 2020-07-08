@@ -75,7 +75,7 @@ describe 'As an admin' do
       click_on 'Create Playlist'
 
       tutorial = Tutorial.last
-
+      binding.pry
       expect(tutorial.videos.count).to eq 64
       expect(current_path).to eq(admin_dashboard_path)
     end
