@@ -16,4 +16,8 @@ class User < ApplicationRecord
   def self.github_usernames
     User.pluck(:github_username).compact
   end
+
+  def bookmark_tutorials
+    videos.order(:position).group_by(&:tutorial_id)
+  end
 end
