@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_many :user_videos, dependent: :destroy
   has_many :videos, through: :user_videos
+  has_many :tutorials, through: :videos
 
   validates :email, uniqueness: true, presence: true
   validates :password, on: :create, presence: true
@@ -25,5 +26,15 @@ class User < ApplicationRecord
         github_user.user         = current_user.id
         github_user.save
   end
+
+
+  # def bookmarked_videos(tutorial_id)
+  #   videos.where(tutorial_id: tutorial_id).order(:tutorial_id, :position)
+  # end
+  #
+  # def user_tutorials
+  #   tutorial_ids = videos.pluck(:tutorial_id).uniq
+  #   Tutorial.find(tutorial_ids)
+  # end
 
 end
