@@ -1,9 +1,11 @@
 class GithubService
 
+  def initialize(token)
+    @token = token
+  end
+
   def list_repos
     get_url("repos")
-    # response = conn.get("/user/repos?access_token=#{ENV['GITHUB_ACCESS_TOKEN']}")
-    # json = JSON.parse(response.body, symbolize_names: true)
   end
 
   def list_followers
@@ -17,14 +19,14 @@ class GithubService
   private
 
   def get_url(url)
-    response = conn.get("/user/#{url}?access_token=#{ENV['GITHUB_ACCESS_TOKEN']}")
+    response = conn.get("/user/#{url}")
     JSON.parse(response.body, symbolize_names: true)
   end
 
   def conn
     Faraday.new("https://api.github.com") do |req|
       req.adapter Faraday.default_adapter
-      req.params[:key] = ENV['GITHUB_ACCESS_TOKEN']
+      req.headers["Authorization"] = "token #{@token}"
     end
   end
 end

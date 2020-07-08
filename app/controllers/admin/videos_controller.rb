@@ -29,6 +29,6 @@ class Admin::VideosController < Admin::BaseController
   end
 
   def new_video_params
-    params.require(:video).permit(:title, :description, :video_id, :thumbnail)
+    params.require(:video).permit(:title, :description, :video_id, :thumbnail, :position)
   end
 end
