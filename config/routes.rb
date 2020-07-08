@@ -45,4 +45,8 @@ Rails.application.routes.draw do
   resources :user_videos, only:[:create, :destroy]
 
   get "/add-friend/:login", to: "friendships#create"
+
+  get "/send_confirmation", to: "emails#create"
+  get "/confirmed", to: "emails#update"
+  get "/activated", to: "emails#show"
 end
