@@ -11,5 +11,16 @@ describe 'visitor visits root page' do
 
     expect(page).to have_content(tutorial2.title)
     expect(page).to_not have_content(tutorial.title)
+    user = create(:user)
+
+    click_on "Sign In"
+
+    fill_in 'session[email]', with: user.email
+    fill_in 'session[password]', with: user.password
+    click_on 'Log In'
+    visit "/"
+    expect(page).to have_content(tutorial2.title)
+    expect(page).to have_content(tutorial.title)
+    save_and_open_page
   end
 end
