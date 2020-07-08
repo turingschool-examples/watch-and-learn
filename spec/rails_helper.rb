@@ -39,3 +39,17 @@ RSpec.configure do |config|
 
   config.filter_rails_from_backtrace!
 end
+
+VCR.configure do |config|
+  config.cassette_library_dir = "spec/fixtures/vcr_cassettes"
+  config.hook_into :webmock
+  config.filter_sensitive_data('<YOUTUBE_API_KEY') { ENV['YOUTUBE_API_KEY'] }
+  config.filter_sensitive_data('<kelsha_github_token') { ENV['kelsha_github_token'] }
+  config.filter_sensitive_data('<jenny_github_token') { ENV['jenny_github_token'] }
+  config.configure_rspec_metadata!
+end
+# VCR.configure do |config|
+#   config.cassette_library_dir = "spec/fixtures/vcr_cassettes"
+#   config.hook_into :webmock
+    # config
+# end

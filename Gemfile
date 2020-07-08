@@ -26,6 +26,8 @@ gem 'omniauth-google-oauth2'
 gem 'will_paginate'
 gem 'acts-as-taggable-on', '~> 6.0'
 gem 'omniauth-github', github: 'omniauth/omniauth-github', branch: 'master'
+gem 'webmock'
+gem 'vcr'
 gem 'orderly'
 
 group :development, :test do
