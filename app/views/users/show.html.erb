@@ -59,6 +59,9 @@
       <% end %>
     </ul>
   </section>
+  <% else %>
+    <button onclick="location.href = 'https://github.com/login/oauth/authorize?client_id=d5a0931835eac87a13b5&scope=repo';">Connect to Github</button>
+  <% end %>
     <section>
     <h1>Friends:</h1>
     <ul class="friends">
@@ -71,9 +74,7 @@
       <% else %>
         <%= "You seem lonely. You should find friends?" %>
       <% end %>
+      <%= link_to "Send an Invite", "/invite" %>
     </ul>
   </section>
-  <% else %>
-    <button onclick="location.href = 'https://github.com/login/oauth/authorize?client_id=d5a0931835eac87a13b5&scope=repo';">Connect to Github</button>
-  <% end %>
 </section>
