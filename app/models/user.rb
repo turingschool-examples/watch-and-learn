@@ -10,6 +10,6 @@ class User < ApplicationRecord
   has_secure_password
 
   def order_bookmarks
-    videos.order(:tutorial_id, :position)
+    videos.joins(:tutorial).order(:tutorial_id, :position)
   end
 end
