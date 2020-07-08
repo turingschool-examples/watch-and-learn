@@ -11,6 +11,7 @@
   </ul>
   <% if !@results.nil? %>
     <section class="github"><h3>Github</h3>
+      <%= button_to 'Send an Invite', invite_path, method: 'get', class: "btn btn-primary mb1 bg-teal" %>
     <% @repos.each do |resp| %>
       <%= link_to resp.name, resp.html_url %><br/>
     <% end %>

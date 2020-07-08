@@ -23,4 +23,13 @@ class GithubResults
       Following.new(resp)
     end
   end
+
+  def user_email(username)
+    email_results = @github_service.user_resp(username)
+    if !email_results[:message].nil?
+      email_results[:message]
+    else
+      email_results[:email]
+    end
+  end
 end

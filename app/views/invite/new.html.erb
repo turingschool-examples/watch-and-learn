@@ -1,0 +1,7 @@
+<h4>Github Invite</h4>
+
+<%= form_tag invite_path, method: :post do %>
+  <%= label_tag :github_username, "Github Invitee" %><br/>
+  <%= text_field_tag :github_username %><br/>
+  <%= submit_tag "Send Invite" %>
+<% end %>
