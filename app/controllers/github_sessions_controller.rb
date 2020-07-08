@@ -1,5 +1,6 @@
 class GithubSessionsController < ApplicationController
   def create
+    binding.pry
     client_id = ENV['GITHUB_API_KEY']
     client_secret = ENV['CLIENT_API_KEY']
     code = params[:code]
@@ -20,9 +21,9 @@ class GithubSessionsController < ApplicationController
     current_user.uid      = auth["id"]
     current_user.token    = token
     current_user.save
-
     session[:user_id] = current_user.id
 
     redirect_to dashboard_path
   end
+
 end

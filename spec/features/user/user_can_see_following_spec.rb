@@ -2,11 +2,20 @@ require 'rails_helper'
 
 describe 'As a registered user' do
   describe 'When I visit the dashboard' do
-    it 'I see a list of who i follow on github' do
+    it 'I see a list of who i follow on github', :vcr do
       user = create(:user, token:  ENV["GITHUB_API_TOKEN_R"])
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
-
+      json_response = File.read('spec/fixtures/github_user_repos.json')
+      stub_request(:get, "https://api.github.com/user/repos").
+           with(
+             headers: {
+         	  'Accept'=>'*/*',
+         	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+         	  'Authorization'=> "token #{ENV['GITHUB_API_TOKEN_R']}",
+         	  'User-Agent'=>'Faraday v1.0.1'
+             }).
+           to_return(status: 200, body: json_response, headers: {})
       visit '/dashboard'
       # within('#github-following') do
       #   expect(page).to have_css(".following-handle", count: 3)
@@ -17,7 +26,16 @@ describe 'As a registered user' do
       user = create(:user, token:  ENV["GITHUB_API_TOKEN_R"])
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
-
+      json_response = File.read('spec/fixtures/github_user_repos.json')
+      stub_request(:get, "https://api.github.com/user/repos").
+           with(
+             headers: {
+         	  'Accept'=>'*/*',
+         	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+         	  'Authorization'=> "token #{ENV['GITHUB_API_TOKEN_R']}",
+         	  'User-Agent'=>'Faraday v1.0.1'
+             }).
+           to_return(status: 200, body: json_response, headers: {})
       visit '/dashboard'
 
         expect(page).to have_link("HughBerriez", :href => "https://github.com/HughBerriez")
@@ -40,7 +58,16 @@ describe 'As a registered user' do
       rostam = create(:user, token:  ENV["GITHUB_API_TOKEN_R"])
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(rostam)
-
+      json_response = File.read('spec/fixtures/github_user_repos.json')
+      stub_request(:get, "https://api.github.com/user/repos").
+           with(
+             headers: {
+         	  'Accept'=>'*/*',
+         	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+         	  'Authorization'=> "token #{ENV['GITHUB_API_TOKEN_R']}",
+         	  'User-Agent'=>'Faraday v1.0.1'
+             }).
+           to_return(status: 200, body: json_response, headers: {})
       visit '/dashboard'
 
       within('#github-following') do

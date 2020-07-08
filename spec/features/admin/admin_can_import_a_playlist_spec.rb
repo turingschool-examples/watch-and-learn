@@ -15,6 +15,16 @@ describe 'As an admin' do
     end
 
     it 'I can import a playlist' do
+      json_response = File.read('spec/fixtures/playlist_info.json')
+      stub_request(:get, "https://www.googleapis.com/youtube/v3/playlistItems?key=AIzaSyCXYWdWx2vQtWi9CqsJe0WT6ryiKgT6BWM&maxResults=50&part=snippet,contentDetails&playlistId=PLJicmE8fK0EiQLKEhNM8qJL8ExHwQZh_0").
+         with(
+           headers: {
+       	  'Accept'=>'*/*',
+       	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+       	  'User-Agent'=>'Faraday v1.0.1'
+           }).
+         to_return(status: 200, body: json_response, headers: {})
+
       admin = create(:admin)
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
@@ -38,6 +48,15 @@ describe 'As an admin' do
     end
 
     it 'The videos should be in the same order as on YouTube' do
+      json_response = File.read('spec/fixtures/playlist_info.json')
+      stub_request(:get, "https://www.googleapis.com/youtube/v3/playlistItems?key=AIzaSyCXYWdWx2vQtWi9CqsJe0WT6ryiKgT6BWM&maxResults=50&part=snippet,contentDetails&playlistId=PLJicmE8fK0EiQLKEhNM8qJL8ExHwQZh_0").
+         with(
+           headers: {
+       	  'Accept'=>'*/*',
+       	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+       	  'User-Agent'=>'Faraday v1.0.1'
+           }).
+         to_return(status: 200, body: json_response, headers: {})
       admin = create(:admin)
 
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
@@ -59,7 +78,6 @@ describe 'As an admin' do
       expect(first_video).to appear_before(second_video)
       expect(second_video).to appear_before(third_video)
     end
-
     it 'Can pull more than 50 videos from a playlist' do
       admin = create(:admin)
 
