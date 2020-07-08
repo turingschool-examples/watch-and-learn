@@ -6,9 +6,20 @@ class YoutubeService
 
   def playlist_info(id)
     params = { part: 'snippet,contentDetails', playlistId: id, maxResults: 50}
-    # nextPageToken: token
-    get_json('youtube/v3/playlistItems', params)
+ 
+     raw_videos= get_json('youtube/v3/playlistItems', params)
+       next_page = raw_videos[:nextPageToken]
+    while next_page
+      params = { part: 'snippet, contentDetails', playlistId: id, maxResults: 50, pageToken: next_page }
+      temp_videos = get_json('youtube/v3/playlistItems', params)
+      temp_videos[:items].each do |item|
+        raw_videos[:items].push(item)
+      end
+      next_page = temp_videos[:nextPageToken]
+    end
+    raw_videos[:items]
   end
+ 
 
   private
 

@@ -49,7 +49,7 @@ describe "Admin Tutorials" do
   scenario "Admin can import youtube playlist with 50 videos" do
     visit new_admin_playlist_path
 
-    fill_in :playlist_id, with: "PLD7nPL1U-R5pSwKIcVaIQrG5BnGMbHI5H"
+    fill_in :playlist_id, with: "PLZ5Ij_P42G6R0zMFCFdZaCZYbo32ghDye"
     fill_in :title, with: "Drunk History"
     fill_in :description, with: "Hey There Demons"
     fill_in :thumbnail, with: "Thumbnail"
@@ -62,6 +62,6 @@ describe "Admin Tutorials" do
     click_on "View it here"
 
     tutorial = Tutorial.last
-    expect(tutorial.videos.count).to eq(51)
+    expect(tutorial.videos.count).to eq(57)
   end
 end
