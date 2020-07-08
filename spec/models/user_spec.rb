@@ -28,7 +28,7 @@ RSpec.describe User, type: :model do
       expect(admin.admin?).to be_truthy
     end
     describe '.methods' do
-        it 'can be get all github usernames' do
+        it 'can get all github usernames' do
           user_1 = create(:user)
           user_1.update(github_username: "test user 1")
           user_2 = create(:user)
@@ -37,6 +37,22 @@ RSpec.describe User, type: :model do
 
           expect(User.github_usernames).to eq(["test user 1", "test user 2"])
         end
+    end
+    describe '#methods' do
+      it '#bookmark_tutorials' do
+        user_1 = create(:user)
+        tutorial = create(:tutorial)
+        tutorial_2 = create(:tutorial)
+        bookmark = create(:video, tutorial: tutorial, position: 1)
+        bookmark_2 = create(:video, tutorial: tutorial_2, position: 2)
+        bookmark_3 = create(:video, tutorial: tutorial_2, position: 1)
+        UserVideo.create(user_id: user_1.id, video_id: bookmark.id)
+        UserVideo.create(user_id: user_1.id, video_id: bookmark_2.id)
+        UserVideo.create(user_id: user_1.id, video_id: bookmark_3.id)
+
+        result_hash = {tutorial.id => [bookmark], tutorial_2.id => [bookmark_3, bookmark_2]}
+        expect(user_1.bookmark_tutorials).to eq(result_hash)
+      end
     end
   end
 end
