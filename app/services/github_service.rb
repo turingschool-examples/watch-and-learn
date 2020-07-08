@@ -25,6 +25,17 @@ class GithubService
     end
   end
 
+  def fetch_user_by_gh_handle(handle, token)
+    headers = { Authorization: "token #{token}" }
+    response = get_json("https://api.github.com/users/#{handle}", {}, headers)
+    if response[:id]
+      response
+    else
+      false
+    end
+
+  end
+
   private
 
   def get_json(url, params, headers)

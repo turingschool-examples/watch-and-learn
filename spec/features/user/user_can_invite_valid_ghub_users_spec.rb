@@ -3,6 +3,7 @@ require 'rails_helper'
 describe 'User' do
   before do
     user = create(:user)
+    user.update_attribute(:token, ENV['GITHUB_TOKEN'])
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
     visit "/dashboard"
   end
@@ -10,7 +11,7 @@ describe 'User' do
   it 'user can send invite to ghub users that have emails' do
     click_link "Send an Invite"
     expect(current_path).to eq("/invite")
-    save_and_open_page
+
     within ".invite-form" do
       fill_in "Github handle:", with: "Gallup93"
       click_on 'Send Invite'

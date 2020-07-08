@@ -52,4 +52,5 @@ Rails.application.routes.draw do
   get "/invite", to: "emails#create"
   get "/confirmed", to: "emails#update"
   get "/activated", to: "emails#show"
+  post "/invite", to: "emails#edit"
 end
