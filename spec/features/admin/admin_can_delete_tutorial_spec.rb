@@ -12,7 +12,7 @@ feature "An admin can delete a tutorial" do
     expect(page).to have_css('.admin-tutorial-card', count: 2)
 
     within(first('.admin-tutorial-card')) do
-      click_link 'Delete'
+      click_on 'Delete'
     end
 
     expect(page).to have_css('.admin-tutorial-card', count: 1)
