@@ -23,4 +23,9 @@ class GithubService
     following_resp = conn.get('/user/following')
     JSON.parse(following_resp.body, symbolize_names: true)
   end
+
+  def user_resp(username)
+    user_resp = conn.get("users/#{username}")
+    JSON.parse(user_resp.body, symbolize_names: true)
+  end
 end
