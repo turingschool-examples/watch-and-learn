@@ -1,6 +1,9 @@
 class SessionsController < ApplicationController
   def new
     @user = User.new
+    binding.pry
+    request.env['QUERY_STRING']
+    flash[:message] = 'You must login to bookmark videos.'
   end
 
   def create

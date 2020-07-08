@@ -31,7 +31,7 @@ describe 'A registered user' do
     click_on 'Bookmark'
     expect(page).to have_content("Already in your bookmarks")
   end
-   it "should display bookmarked segments" do
+  it "should display bookmarked segments" do
      tutorial= create(:tutorial)
      tutorial2= create(:tutorial)
      tutorial3= create(:tutorial)
@@ -60,13 +60,11 @@ describe 'A registered user' do
     expect(page).to have_content(video2.title)
     expect(page).to have_content(tutorial3.title)
     expect(page).to have_content(video3.title)
-    save_and_open_page
-    
+  end
+  it 'redirects to login when a vistor bookmarks with a message' do
+    tutorial= create(:tutorial)
+    video = create(:video, tutorial_id: tutorial.id)
+    visit tutorial_path(tutorial)
 
-     #    As a logged in user
-     # When I visit '/dashboard'
-     # Then I should see a list of all bookmarked segments under the Bookmarked Segments section
-     # And they should be organized by which tutorial they are a part of
-     # And the videos should be ordered by their position
   end
 end
