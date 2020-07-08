@@ -22,4 +22,10 @@ class User < ApplicationRecord
     # videos.order('position').group_by { |video| video.tutorial }
     videos.order('position').group_by(&:tutorial)
   end
+
+  def is_friend?(username)
+    return false if friends.find_by(username: username).nil?
+
+    true
+  end
 end
