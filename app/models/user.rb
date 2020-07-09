@@ -27,4 +27,12 @@ class User < ApplicationRecord
 
     true
   end
+
+  def self.create_with_omniauth(auth)
+    user = User.find_by(email: auth[:info][:email])
+    user.username = auth[:info][:nickname]
+    user.uid = auth[:uid]
+    user.token = auth[:credentials][:token]
+    user.save!(validate: false)
+  end
 end
