@@ -4,19 +4,16 @@ class Admin::TutorialsController < Admin::BaseController
   end
 
   def create
+    if check_thumbnail(params[:tutorial][:thumbnail])
+      return
+    else
     tutorial = Tutorial.create(playlist_params)
     if params[:tutorial][:playlist_id]
-
-      youtube_decorator = YoutubeDecorator.new(tutorial)
-      youtube_decorator.playlist_videos(params[:tutorial][:playlist_id])
-
-      flash[:notice] = "Successfully created tutorial.
-                       #{view_context.link_to('View it here.', tutorial_path(tutorial.id))}."
-
-      redirect_to admin_dashboard_path
+      non_valid_playlist if create_playlist(params, tutorial).nil?
     else
       redirect_to "/tutorials/#{tutorial.id}?id=#{tutorial.id}"
     end
+  end
   end
 
   def new
@@ -45,19 +42,26 @@ class Admin::TutorialsController < Admin::BaseController
     params.require(:tutorial).permit(:tag_list)
   end
 
-  def valid_playlist_id?(tutorial)
-    return unless params[:tutorial][:playlist_id]
-
+  def create_playlist(params, tutorial)
     youtube_decorator = YoutubeDecorator.new(tutorial)
-    non_valid_playlist if youtube_decorator[:error]
-    youtube_decorator.playlist_videos(params[:tutorial][:playlist_id])
-
+    return if youtube_decorator.playlist_videos(params[:tutorial][:playlist_id]).nil?
     flash[:notice] = "Successfully created tutorial.
-                       #{view_context.link_to('View it here.', tutorial_path(tutorial.id))}."
+                     #{view_context.link_to('View it here.', tutorial_path(tutorial.id))}."
+
+    redirect_to admin_dashboard_path
   end
 
   def non_valid_playlist
     flash[:error] = 'Not a valid Playlist ID'
     redirect_to new_admin_playlist_path
+  end
+
+  def check_thumbnail(params)
+    if /.(jpg|gif|png)/.match(params)
+      return
+    else
+      flash[:error] = "Not a valid thumbnail"
+      redirect_to new_admin_tutorial_path
+    end
   end
 end
