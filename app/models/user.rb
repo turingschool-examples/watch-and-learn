@@ -17,6 +17,10 @@ class User < ApplicationRecord
     User.pluck(:github_username).compact
   end
 
+  def self.id_check(id)
+    User.pluck(:id).include?(id.to_i)
+  end
+
   def bookmark_tutorials
     videos.order(:position).group_by(&:tutorial_id)
   end

@@ -21,7 +21,7 @@
       <section class = "follower-<%= resp.login %>">
       <%= link_to resp.login, resp.html_url %>
       <% if User.github_usernames.include?(resp.login) %>
-      <%= button_to "Add as Friend", user_friends_path(current_user.id, params: {:github_username => resp.login}), method: :post %><br/>
+      <%= button_to "Add as Friend", user_friends_path(current_user.id, params: {github_username: resp.login}), method: :post %><br/>
       <% end %>
     </section>
     <% end %>
@@ -30,7 +30,7 @@
     <section class = "following-<%= resp.login %>">
       <%= link_to resp.login, resp.html_url %>
       <% if User.github_usernames.include?(resp.login) %>
-      <%= button_to "Add as Friend", user_friends_path(current_user.id, params: {:github_username => resp.login}), method: :post %><br/>
+      <%= button_to "Add as Friend", user_friends_path(current_user.id, params: {github_username: resp.login}), method: :post %><br/>
       <% end %>
     </section>
     <% end %>

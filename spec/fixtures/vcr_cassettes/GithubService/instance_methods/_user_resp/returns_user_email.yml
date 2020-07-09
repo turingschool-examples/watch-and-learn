@@ -1,0 +1,148 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.github.com/users/<GITHUB_USERNAME_B>
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - token <GITHUB_TOKEN_A>
+      User-Agent:
+      - Faraday v1.0.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Thu, 09 Jul 2020 06:34:40 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4892'
+      X-Ratelimit-Reset:
+      - '1594277551'
+      Cache-Control:
+      - private, max-age=60, s-maxage=60
+      Vary:
+      - Accept, Authorization, Cookie, X-GitHub-OTP
+      - Accept-Encoding, Accept, X-Requested-With
+      Etag:
+      - W/"137cb3de558b975a57030af0c53dcac1"
+      Last-Modified:
+      - Wed, 08 Jul 2020 21:58:46 GMT
+      X-Oauth-Scopes:
+      - public_repo, read:user, user:follow
+      X-Accepted-Oauth-Scopes:
+      - ''
+      X-Github-Media-Type:
+      - github.v3; format=json
+      Access-Control-Expose-Headers:
+      - ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
+        X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval,
+        X-GitHub-Media-Type, Deprecation, Sunset
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Content-Security-Policy:
+      - default-src 'none'
+      X-Github-Request-Id:
+      - F5C9:6447:801E3:1785EF:5F06BA80
+    body:
+      encoding: ASCII-8BIT
+      string: '{"login":"<GITHUB_USERNAME_B>","id":37886458,"node_id":"MDQ6VXNlcjM3ODg2NDU4","avatar_url":"https://avatars1.githubusercontent.com/u/37886458?v=4","gravatar_id":"","url":"https://api.github.com/users/<GITHUB_USERNAME_B>","html_url":"https://github.com/<GITHUB_USERNAME_B>","followers_url":"https://api.github.com/users/<GITHUB_USERNAME_B>/followers","following_url":"https://api.github.com/users/<GITHUB_USERNAME_B>/following{/other_user}","gists_url":"https://api.github.com/users/<GITHUB_USERNAME_B>/gists{/gist_id}","starred_url":"https://api.github.com/users/<GITHUB_USERNAME_B>/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/<GITHUB_USERNAME_B>/subscriptions","organizations_url":"https://api.github.com/users/<GITHUB_USERNAME_B>/orgs","repos_url":"https://api.github.com/users/<GITHUB_USERNAME_B>/repos","events_url":"https://api.github.com/users/<GITHUB_USERNAME_B>/events{/privacy}","received_events_url":"https://api.github.com/users/<GITHUB_USERNAME_B>/received_events","type":"User","site_admin":false,"name":"Jane
+        Greene","company":null,"blog":"","location":"Denver, CO","email":"<GITHUB_USERNAME_B>casa@gmail.com","hireable":true,"bio":"Hi,
+        I''m Jane Greene, a back end student at Turing School in Denver, CO. ","twitter_username":null,"public_repos":49,"public_gists":5,"followers":4,"following":7,"created_at":"2018-03-29T00:02:18Z","updated_at":"2020-07-08T21:58:46Z"}'
+  recorded_at: Thu, 09 Jul 2020 06:34:40 GMT
+- request:
+    method: get
+    uri: https://api.github.com/users/Imprettysurethisisntavalidgithubname
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - token <GITHUB_TOKEN_A>
+      User-Agent:
+      - Faraday v1.0.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Thu, 09 Jul 2020 06:34:40 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Status:
+      - 404 Not Found
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4891'
+      X-Ratelimit-Reset:
+      - '1594277551'
+      X-Oauth-Scopes:
+      - public_repo, read:user, user:follow
+      X-Accepted-Oauth-Scopes:
+      - ''
+      X-Github-Media-Type:
+      - github.v3; format=json
+      Access-Control-Expose-Headers:
+      - ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
+        X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval,
+        X-GitHub-Media-Type, Deprecation, Sunset
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Content-Security-Policy:
+      - default-src 'none'
+      Vary:
+      - Accept-Encoding, Accept, X-Requested-With
+      X-Github-Request-Id:
+      - F5CA:4060:8B7970:F4A76A:5F06BA80
+    body:
+      encoding: ASCII-8BIT
+      string: '{"message":"Not Found","documentation_url":"https://developer.github.com/v3/users/#get-a-single-user"}'
+  recorded_at: Thu, 09 Jul 2020 06:34:40 GMT
+recorded_with: VCR 6.0.0

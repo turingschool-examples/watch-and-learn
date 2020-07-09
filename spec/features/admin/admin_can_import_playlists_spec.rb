@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "an admin can add a playlist" do
+describe "an admin can add a playlist", :vcr do
   it "can import a large playlist from Youtube" do
     admin = create(:admin)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
@@ -41,6 +41,7 @@ describe "an admin can add a playlist" do
     expect(consecutive_vid_b.title).to appear_before(consecutive_vid_c.title)
     expect(consecutive_vid_c.title).to appear_before(last_video.title)
   end
+  
   it "can import a small playlist from Youtube" do
     admin = create(:admin)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)

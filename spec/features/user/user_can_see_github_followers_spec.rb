@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'A registered user' do
-  it 'can see github followers' do
+  it 'can see github followers', :vcr do
     user_2 = create(:user)
     user_2.update(github_token: ENV["GITHUB_TOKEN_A"])
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_2)

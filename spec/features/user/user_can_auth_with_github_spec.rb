@@ -5,7 +5,7 @@ describe 'a user can authenticate with github' do
     OmniAuth.config.test_mode = true
     OmniAuth.config.mock_auth[:github] = nil
   end
-  it 'allows a user to authorize app to use github account' do
+  it 'allows a user to authorize app to use github account', :vcr do
     user = create(:user)
     credential_mock_hash = {token: ENV["GITHUB_TOKEN_A"]}
     info_mock_hash = {name: "name", nickname: "another name"}

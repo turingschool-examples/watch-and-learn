@@ -1,0 +1,76 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.github.com/user/followers
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - token <GITHUB_TOKEN_A>
+      User-Agent:
+      - Faraday v1.0.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Thu, 09 Jul 2020 06:34:40 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4893'
+      X-Ratelimit-Reset:
+      - '1594277552'
+      Cache-Control:
+      - private, max-age=60, s-maxage=60
+      Vary:
+      - Accept, Authorization, Cookie, X-GitHub-OTP
+      - Accept-Encoding, Accept, X-Requested-With
+      Etag:
+      - W/"47b314873c04f750e8eb75415a093a01"
+      X-Oauth-Scopes:
+      - public_repo, read:user, user:follow
+      X-Accepted-Oauth-Scopes:
+      - ''
+      X-Github-Media-Type:
+      - github.v3; format=json
+      Access-Control-Expose-Headers:
+      - ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
+        X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval,
+        X-GitHub-Media-Type, Deprecation, Sunset
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Content-Security-Policy:
+      - default-src 'none'
+      X-Github-Request-Id:
+      - F5C7:19DA:F7D1F:28F122:5F06BA80
+    body:
+      encoding: ASCII-8BIT
+      string: '[{"login":"<GITHUB_USERNAME_C>","id":35322570,"node_id":"MDQ6VXNlcjM1MzIyNTcw","avatar_url":"https://avatars1.githubusercontent.com/u/35322570?v=4","gravatar_id":"","url":"https://api.github.com/users/<GITHUB_USERNAME_C>","html_url":"https://github.com/<GITHUB_USERNAME_C>","followers_url":"https://api.github.com/users/<GITHUB_USERNAME_C>/followers","following_url":"https://api.github.com/users/<GITHUB_USERNAME_C>/following{/other_user}","gists_url":"https://api.github.com/users/<GITHUB_USERNAME_C>/gists{/gist_id}","starred_url":"https://api.github.com/users/<GITHUB_USERNAME_C>/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/<GITHUB_USERNAME_C>/subscriptions","organizations_url":"https://api.github.com/users/<GITHUB_USERNAME_C>/orgs","repos_url":"https://api.github.com/users/<GITHUB_USERNAME_C>/repos","events_url":"https://api.github.com/users/<GITHUB_USERNAME_C>/events{/privacy}","received_events_url":"https://api.github.com/users/<GITHUB_USERNAME_C>/received_events","type":"User","site_admin":false},{"login":"<GITHUB_USERNAME_B>","id":37886458,"node_id":"MDQ6VXNlcjM3ODg2NDU4","avatar_url":"https://avatars1.githubusercontent.com/u/37886458?v=4","gravatar_id":"","url":"https://api.github.com/users/<GITHUB_USERNAME_B>","html_url":"https://github.com/<GITHUB_USERNAME_B>","followers_url":"https://api.github.com/users/<GITHUB_USERNAME_B>/followers","following_url":"https://api.github.com/users/<GITHUB_USERNAME_B>/following{/other_user}","gists_url":"https://api.github.com/users/<GITHUB_USERNAME_B>/gists{/gist_id}","starred_url":"https://api.github.com/users/<GITHUB_USERNAME_B>/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/<GITHUB_USERNAME_B>/subscriptions","organizations_url":"https://api.github.com/users/<GITHUB_USERNAME_B>/orgs","repos_url":"https://api.github.com/users/<GITHUB_USERNAME_B>/repos","events_url":"https://api.github.com/users/<GITHUB_USERNAME_B>/events{/privacy}","received_events_url":"https://api.github.com/users/<GITHUB_USERNAME_B>/received_events","type":"User","site_admin":false},{"login":"stellakunzang","id":55362003,"node_id":"MDQ6VXNlcjU1MzYyMDAz","avatar_url":"https://avatars2.githubusercontent.com/u/55362003?v=4","gravatar_id":"","url":"https://api.github.com/users/stellakunzang","html_url":"https://github.com/stellakunzang","followers_url":"https://api.github.com/users/stellakunzang/followers","following_url":"https://api.github.com/users/stellakunzang/following{/other_user}","gists_url":"https://api.github.com/users/stellakunzang/gists{/gist_id}","starred_url":"https://api.github.com/users/stellakunzang/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/stellakunzang/subscriptions","organizations_url":"https://api.github.com/users/stellakunzang/orgs","repos_url":"https://api.github.com/users/stellakunzang/repos","events_url":"https://api.github.com/users/stellakunzang/events{/privacy}","received_events_url":"https://api.github.com/users/stellakunzang/received_events","type":"User","site_admin":false},{"login":"Rostammahabadi","id":60719241,"node_id":"MDQ6VXNlcjYwNzE5MjQx","avatar_url":"https://avatars2.githubusercontent.com/u/60719241?v=4","gravatar_id":"","url":"https://api.github.com/users/Rostammahabadi","html_url":"https://github.com/Rostammahabadi","followers_url":"https://api.github.com/users/Rostammahabadi/followers","following_url":"https://api.github.com/users/Rostammahabadi/following{/other_user}","gists_url":"https://api.github.com/users/Rostammahabadi/gists{/gist_id}","starred_url":"https://api.github.com/users/Rostammahabadi/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/Rostammahabadi/subscriptions","organizations_url":"https://api.github.com/users/Rostammahabadi/orgs","repos_url":"https://api.github.com/users/Rostammahabadi/repos","events_url":"https://api.github.com/users/Rostammahabadi/events{/privacy}","received_events_url":"https://api.github.com/users/Rostammahabadi/received_events","type":"User","site_admin":false}]'
+  recorded_at: Thu, 09 Jul 2020 06:34:40 GMT
+recorded_with: VCR 6.0.0

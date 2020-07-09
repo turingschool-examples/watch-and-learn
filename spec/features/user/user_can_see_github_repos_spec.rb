@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'A registered user' do
-  it 'can see github repos' do
+  it 'can see github repos', :vcr do
     user_1 = create(:user)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
     visit dashboard_path

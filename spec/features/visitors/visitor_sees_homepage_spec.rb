@@ -23,4 +23,15 @@ describe 'Visitor' do
       end
     end
   end
+  describe 'can see info pages' do
+    it 'can see the getting started page' do
+      visit get_started_path
+      expect(page).to have_content("Get Started")
+    end
+
+    it 'can see the about page' do
+      visit about_path
+      expect(page).to have_content("Turing Tutorials")
+    end
+  end
 end
