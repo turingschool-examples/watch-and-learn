@@ -35,8 +35,19 @@ RSpec.describe User, type: :model do
         create(:user)
       end
 
-      expect(User.check_for_username?("takeller")). to eq(true)
-      expect(User.check_for_username?("George")). to eq(false)
+      expect(User.check_for_username?("takeller")).to eq(true)
+      expect(User.check_for_username?("George")).to eq(false)
+    end
+
+    it '.create_with_omniauth' do
+      user1 = create(:user, token:  ENV["GITHUB_API_TOKEN_R"])
+      auth = {
+        :provider => 'github',
+        :info => {:email => "#{user1.email}", :nickname => "Rostammahabadi", :uid => "60719241", :token => "123412341234"},
+        :credentials => {:token => ENV['GITHUB_API_TOKEN_R']},
+        :uid => "12341234"
+      }
+      expect(User.create_with_omniauth(auth)).to eq(true)
     end
   end
 

@@ -25,7 +25,7 @@ describe 'Visitor' do
 
     it "doesn't show videos which are marked as classroom" do
       tutorial1 = create(:tutorial)
-      tutorial2 = create(:tutorial, :classroom => true)
+      tutorial2 = create(:tutorial, classroom: true)
 
       video1 = create(:video, tutorial_id: tutorial1.id)
       video2 = create(:video, tutorial_id: tutorial1.id)
