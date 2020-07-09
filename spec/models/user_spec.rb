@@ -27,34 +27,43 @@ RSpec.describe User, type: :model do
       expect(admin.role).to eq('admin')
       expect(admin.admin?).to be_truthy
     end
-    describe '.methods' do
-        it 'can get all github usernames' do
-          user_1 = create(:user)
-          user_1.update(github_username: "test user 1")
-          user_2 = create(:user)
-          user_2.update(github_username: "test user 2")
-          user_3 = create(:user)
+  end
 
-          expect(User.github_usernames).to include("test user 1")
-          expect(User.github_usernames).to include("test user 2")
-          expect(User.github_usernames.count).to eq(2)
-        end
+  describe '.methods' do
+    it 'can get all github usernames' do
+      user_1 = create(:user)
+      user_1.update(github_username: "test user 1")
+      user_2 = create(:user)
+      user_2.update(github_username: "test user 2")
+      user_3 = create(:user)
+
+      expect(User.github_usernames).to include("test user 1")
+      expect(User.github_usernames).to include("test user 2")
+      expect(User.github_usernames.count).to eq(2)
     end
-    describe '#methods' do
-      it '#bookmark_tutorials' do
-        user_1 = create(:user)
-        tutorial = create(:tutorial)
-        tutorial_2 = create(:tutorial)
-        bookmark = create(:video, tutorial: tutorial, position: 1)
-        bookmark_2 = create(:video, tutorial: tutorial_2, position: 2)
-        bookmark_3 = create(:video, tutorial: tutorial_2, position: 1)
-        UserVideo.create(user_id: user_1.id, video_id: bookmark.id)
-        UserVideo.create(user_id: user_1.id, video_id: bookmark_2.id)
-        UserVideo.create(user_id: user_1.id, video_id: bookmark_3.id)
 
-        result_hash = {tutorial.id => [bookmark], tutorial_2.id => [bookmark_3, bookmark_2]}
-        expect(user_1.bookmark_tutorials).to eq(result_hash)
-      end
+    it 'can check if an id is valid' do
+      user = create(:user)
+
+      expect(User.id_check(user.id)).to be_truthy
+      expect(User.id_check(0)).to be_falsy
+    end
+  end
+
+  describe '#methods' do
+    it '#bookmark_tutorials' do
+      user_1 = create(:user)
+      tutorial = create(:tutorial)
+      tutorial_2 = create(:tutorial)
+      bookmark = create(:video, tutorial: tutorial, position: 1)
+      bookmark_2 = create(:video, tutorial: tutorial_2, position: 2)
+      bookmark_3 = create(:video, tutorial: tutorial_2, position: 1)
+      UserVideo.create(user_id: user_1.id, video_id: bookmark.id)
+      UserVideo.create(user_id: user_1.id, video_id: bookmark_2.id)
+      UserVideo.create(user_id: user_1.id, video_id: bookmark_3.id)
+
+      result_hash = {tutorial.id => [bookmark], tutorial_2.id => [bookmark_3, bookmark_2]}
+      expect(user_1.bookmark_tutorials).to eq(result_hash)
     end
   end
 end

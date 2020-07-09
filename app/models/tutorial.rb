@@ -14,7 +14,7 @@ class Tutorial < ApplicationRecord
                  description: video[:snippet][:description],
                  video_id: video[:id],
                  thumbnail: video[:snippet][:thumbnails][:default][:url],
-                 position: index + 1}
+                 position: index + 1 }
       videos.create(params)
     end
   end
