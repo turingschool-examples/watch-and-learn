@@ -1,0 +1,76 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.github.com/user/following
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - token <GITHUB_TOKEN_B>
+      User-Agent:
+      - Faraday v1.0.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Thu, 09 Jul 2020 06:34:40 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4928'
+      X-Ratelimit-Reset:
+      - '1594279718'
+      Cache-Control:
+      - private, max-age=60, s-maxage=60
+      Vary:
+      - Accept, Authorization, Cookie, X-GitHub-OTP
+      - Accept-Encoding, Accept, X-Requested-With
+      Etag:
+      - W/"8b9b6762c3f41cc0068d4a249374d484"
+      X-Oauth-Scopes:
+      - public_repo, user
+      X-Accepted-Oauth-Scopes:
+      - ''
+      X-Github-Media-Type:
+      - github.v3; format=json
+      Access-Control-Expose-Headers:
+      - ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
+        X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval,
+        X-GitHub-Media-Type, Deprecation, Sunset
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Content-Security-Policy:
+      - default-src 'none'
+      X-Github-Request-Id:
+      - F5C8:3B4D:650A0E:CCB234:5F06BA80
+    body:
+      encoding: ASCII-8BIT
+      string: '[{"login":"<GITHUB_USERNAME_A>","id":35614819,"node_id":"MDQ6VXNlcjM1NjE0ODE5","avatar_url":"https://avatars3.githubusercontent.com/u/35614819?v=4","gravatar_id":"","url":"https://api.github.com/users/<GITHUB_USERNAME_A>","html_url":"https://github.com/<GITHUB_USERNAME_A>","followers_url":"https://api.github.com/users/<GITHUB_USERNAME_A>/followers","following_url":"https://api.github.com/users/<GITHUB_USERNAME_A>/following{/other_user}","gists_url":"https://api.github.com/users/<GITHUB_USERNAME_A>/gists{/gist_id}","starred_url":"https://api.github.com/users/<GITHUB_USERNAME_A>/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/<GITHUB_USERNAME_A>/subscriptions","organizations_url":"https://api.github.com/users/<GITHUB_USERNAME_A>/orgs","repos_url":"https://api.github.com/users/<GITHUB_USERNAME_A>/repos","events_url":"https://api.github.com/users/<GITHUB_USERNAME_A>/events{/privacy}","received_events_url":"https://api.github.com/users/<GITHUB_USERNAME_A>/received_events","type":"User","site_admin":false},{"login":"whitneykidd","id":54954621,"node_id":"MDQ6VXNlcjU0OTU0NjIx","avatar_url":"https://avatars0.githubusercontent.com/u/54954621?v=4","gravatar_id":"","url":"https://api.github.com/users/whitneykidd","html_url":"https://github.com/whitneykidd","followers_url":"https://api.github.com/users/whitneykidd/followers","following_url":"https://api.github.com/users/whitneykidd/following{/other_user}","gists_url":"https://api.github.com/users/whitneykidd/gists{/gist_id}","starred_url":"https://api.github.com/users/whitneykidd/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/whitneykidd/subscriptions","organizations_url":"https://api.github.com/users/whitneykidd/orgs","repos_url":"https://api.github.com/users/whitneykidd/repos","events_url":"https://api.github.com/users/whitneykidd/events{/privacy}","received_events_url":"https://api.github.com/users/whitneykidd/received_events","type":"User","site_admin":false},{"login":"stellakunzang","id":55362003,"node_id":"MDQ6VXNlcjU1MzYyMDAz","avatar_url":"https://avatars2.githubusercontent.com/u/55362003?v=4","gravatar_id":"","url":"https://api.github.com/users/stellakunzang","html_url":"https://github.com/stellakunzang","followers_url":"https://api.github.com/users/stellakunzang/followers","following_url":"https://api.github.com/users/stellakunzang/following{/other_user}","gists_url":"https://api.github.com/users/stellakunzang/gists{/gist_id}","starred_url":"https://api.github.com/users/stellakunzang/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/stellakunzang/subscriptions","organizations_url":"https://api.github.com/users/stellakunzang/orgs","repos_url":"https://api.github.com/users/stellakunzang/repos","events_url":"https://api.github.com/users/stellakunzang/events{/privacy}","received_events_url":"https://api.github.com/users/stellakunzang/received_events","type":"User","site_admin":false},{"login":"perryr16","id":58446472,"node_id":"MDQ6VXNlcjU4NDQ2NDcy","avatar_url":"https://avatars3.githubusercontent.com/u/58446472?v=4","gravatar_id":"","url":"https://api.github.com/users/perryr16","html_url":"https://github.com/perryr16","followers_url":"https://api.github.com/users/perryr16/followers","following_url":"https://api.github.com/users/perryr16/following{/other_user}","gists_url":"https://api.github.com/users/perryr16/gists{/gist_id}","starred_url":"https://api.github.com/users/perryr16/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/perryr16/subscriptions","organizations_url":"https://api.github.com/users/perryr16/orgs","repos_url":"https://api.github.com/users/perryr16/repos","events_url":"https://api.github.com/users/perryr16/events{/privacy}","received_events_url":"https://api.github.com/users/perryr16/received_events","type":"User","site_admin":false},{"login":"madhalle","id":60206006,"node_id":"MDQ6VXNlcjYwMjA2MDA2","avatar_url":"https://avatars2.githubusercontent.com/u/60206006?v=4","gravatar_id":"","url":"https://api.github.com/users/madhalle","html_url":"https://github.com/madhalle","followers_url":"https://api.github.com/users/madhalle/followers","following_url":"https://api.github.com/users/madhalle/following{/other_user}","gists_url":"https://api.github.com/users/madhalle/gists{/gist_id}","starred_url":"https://api.github.com/users/madhalle/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/madhalle/subscriptions","organizations_url":"https://api.github.com/users/madhalle/orgs","repos_url":"https://api.github.com/users/madhalle/repos","events_url":"https://api.github.com/users/madhalle/events{/privacy}","received_events_url":"https://api.github.com/users/madhalle/received_events","type":"User","site_admin":false},{"login":"Gallup93","id":60679295,"node_id":"MDQ6VXNlcjYwNjc5Mjk1","avatar_url":"https://avatars0.githubusercontent.com/u/60679295?v=4","gravatar_id":"","url":"https://api.github.com/users/Gallup93","html_url":"https://github.com/Gallup93","followers_url":"https://api.github.com/users/Gallup93/followers","following_url":"https://api.github.com/users/Gallup93/following{/other_user}","gists_url":"https://api.github.com/users/Gallup93/gists{/gist_id}","starred_url":"https://api.github.com/users/Gallup93/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/Gallup93/subscriptions","organizations_url":"https://api.github.com/users/Gallup93/orgs","repos_url":"https://api.github.com/users/Gallup93/repos","events_url":"https://api.github.com/users/Gallup93/events{/privacy}","received_events_url":"https://api.github.com/users/Gallup93/received_events","type":"User","site_admin":false},{"login":"Rostammahabadi","id":60719241,"node_id":"MDQ6VXNlcjYwNzE5MjQx","avatar_url":"https://avatars2.githubusercontent.com/u/60719241?v=4","gravatar_id":"","url":"https://api.github.com/users/Rostammahabadi","html_url":"https://github.com/Rostammahabadi","followers_url":"https://api.github.com/users/Rostammahabadi/followers","following_url":"https://api.github.com/users/Rostammahabadi/following{/other_user}","gists_url":"https://api.github.com/users/Rostammahabadi/gists{/gist_id}","starred_url":"https://api.github.com/users/Rostammahabadi/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/Rostammahabadi/subscriptions","organizations_url":"https://api.github.com/users/Rostammahabadi/orgs","repos_url":"https://api.github.com/users/Rostammahabadi/repos","events_url":"https://api.github.com/users/Rostammahabadi/events{/privacy}","received_events_url":"https://api.github.com/users/Rostammahabadi/received_events","type":"User","site_admin":false}]'
+  recorded_at: Thu, 09 Jul 2020 06:34:40 GMT
+recorded_with: VCR 6.0.0

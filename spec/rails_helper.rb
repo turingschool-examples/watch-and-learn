@@ -47,7 +47,7 @@ VCR.configure do |config|
   config.filter_sensitive_data('<GITHUB_KEY>') { ENV['GITHUB_KEY'] }
   config.filter_sensitive_data('<GITHUB_SECRET>') { ENV['GITHUB_SECRET'] }
   config.filter_sensitive_data('<GITHUB_TOKEN_A>') { ENV['GITHUB_TOKEN_A'] }
-  config.filter_sensitive_data('<GITHUB_TOKEN_A>') { ENV['GITHUB_TOKEN_A'] }
+  config.filter_sensitive_data('<GITHUB_TOKEN_B>') { ENV['GITHUB_TOKEN_B'] }
   config.filter_sensitive_data('<GITHUB_USERNAME_A>') { ENV['GITHUB_USERNAME_A'] }
   config.filter_sensitive_data('<GITHUB_USERNAME_B>') { ENV['GITHUB_USERNAME_B'] }
   config.filter_sensitive_data('<GITHUB_USERNAME_C>') { ENV['GITHUB_USERNAME_C'] }

@@ -4,8 +4,8 @@ module YouTube
 
     def initialize(id)
       @service = YoutubeService.new
-      @items = if service.get_playlist_token(id).nil?
-                 service.playlist_info(id)[:items]
+      @items = if @service.get_playlist_token(id).nil?
+                 @service.playlist_info(id)[:items]
                else
                  get_combined_playlist(id)
                end
