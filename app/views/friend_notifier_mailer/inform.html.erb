@@ -1,0 +1,3 @@
+Hello <%=@user.first_name%>!
+
+<%= link_to "Visit here to activate your account.", emails_url(@user, host: 'localhost:3000') %>

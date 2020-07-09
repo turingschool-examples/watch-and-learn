@@ -18,9 +18,10 @@ class UsersController < ApplicationController
     if user.save
       session[:user_id] = user.id
       redirect_to dashboard_path
+      FriendNotifierMailer.inform(user).deliver_now
     else
       flash[:error] = user.errors.full_messages.to_sentence
-      render :new
+      #render :new
     end
   end
 

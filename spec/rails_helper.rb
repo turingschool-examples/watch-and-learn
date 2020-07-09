@@ -44,9 +44,10 @@ VCR.configure do |config|
   config.cassette_library_dir = "spec/fixtures/vcr_cassettes"
   config.hook_into :webmock
   config.filter_sensitive_data('<YOUTUBE_API_KEY') { ENV['YOUTUBE_API_KEY'] }
-  config.filter_sensitive_data('<kelsha_github_token') { ENV['kelsha_github_token'] }
-  config.filter_sensitive_data('<jenny_github_token') { ENV['jenny_github_token'] }
+  config.filter_sensitive_data('<GITHUB_ACCESS_TOKEN') { ENV['GITHUB_ACCESS_TOKEN'] }
+  config.filter_sensitive_data('<SECOND_GITHUB_ACCESS_TOKEN') { ENV['SECOND_GITHUB_ACCESS_TOKEN'] }
   config.configure_rspec_metadata!
+  config.allow_http_connections_when_no_cassette = true
 end
 # VCR.configure do |config|
 #   config.cassette_library_dir = "spec/fixtures/vcr_cassettes"
