@@ -5,15 +5,18 @@ class Admin::TutorialsController < Admin::BaseController
 
   def create
     tutorial = Tutorial.create(playlist_params)
-    return unless params[:tutorial][:playlist_id]
+    if params[:tutorial][:playlist_id]
 
-    youtube_decorator = YoutubeDecorator.new(tutorial)
-    youtube_decorator.playlist_videos(params[:tutorial][:playlist_id])
+      youtube_decorator = YoutubeDecorator.new(tutorial)
+      youtube_decorator.playlist_videos(params[:tutorial][:playlist_id])
 
-    flash[:notice] = "Successfully created tutorial.
-                     #{view_context.link_to('View it here.', tutorial_path(tutorial.id))}."
+      flash[:notice] = "Successfully created tutorial.
+                       #{view_context.link_to('View it here.', tutorial_path(tutorial.id))}."
 
-    redirect_to admin_dashboard_path
+      redirect_to admin_dashboard_path
+    else
+      redirect_to "/tutorials/#{tutorial.id}?id=#{tutorial.id}"
+    end
   end
 
   def new
