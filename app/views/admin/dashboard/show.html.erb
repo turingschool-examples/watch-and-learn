@@ -14,7 +14,7 @@
     <tr class="admin-tutorial-card">
       <td><%= link_to tutorial.title, tutorial_path(tutorial) %></td>
       <td>
-        <%= button_to "Edit", edit_admin_tutorial_path(tutorial) %>
+        <%= link_to "Edit", edit_admin_tutorial_path(tutorial) %>
       </td>
       <td>
         <%= button_to "Delete", admin_tutorial_path(tutorial),
