@@ -1,72 +1,25 @@
 # Brownfield Of Dreams
 
-This is the base repo for a brownfield project used at Turing for Backend Mod 3.
+## Background and Description
 
-Project Spec and Evaluation Rubric: https://github.com/turingschool-examples/brownfield-of-dreams
+This is the base repo for a brownfield project used at Turing for Backend Mod 3. Building on top of existing code presents a different set of challenges. Technical debt and the decisions of the past frequently present unanticipated challenges. Understanding how your decisions impact a team is an important part of learning how to write maintainable software.
 
-### Project Board
+This is a Ruby on Rails application used to organize YouTube content used for
+online learning. Learning goals from this project were to build on top of brownfield code, consume a JSON API, authenticate users with OAuth, send emails from an application, and configure continuous integration.
 
-Students will continue to build on the existing code base using the cards within the following Github Project: https://github.com/turingschool-examples/brownfield-of-dreams/projects/1
+<p align="center">
+  <a href="https://secure-fjord-62840.herokuapp.com/">View our Brownfield of Dreams</a>
+ </p>
 
-**Learning Goals and Labels**
+### Team
+<p>
+<a href="https://github.com/arpariseau">Alex Pariseau</a>
+</p>
+<p>
+<a href="https://github.com/janegreene">Jane Greene</a>
+</p>
 
-The cards are labeled in a way that correspond to learning goals or to specific areas you might personally want to focus on.
-
-Cards should be completed from top to bottom in the To Do column. Cards labeled `good first issue` are good as filler work and will allow you to practice common Rails skills.
-
-### About the Project
-
-This is a Ruby on Rails application used to organize YouTube content used for online learning. Each tutorial is a playlist of video segments. Within the application an admin is able to create tags for each tutorial in the database. A visitor or registered user can then filter tutorials based on these tags.
-
-A visitor is able to see all of the content on the application but in order to bookmark a segment they will need to register. Once registered a user can bookmark any of the segments in a tutorial page.
-
-## Local Setup
-
-Clone down the repo
-```
-$ git clone
-```
-
-Install the gem packages
-```
-$ bundle install
-```
-
-Install node packages for stimulus
-```
-$ brew install node
-$ brew install yarn
-$ yarn
-```
-
-Set up the database
-```
-$ rails db:create
-$ rails db:migrate
-$ rails db:seed
-```
-
-### Youtube API
-
-This project makes use of the Youtube API.
-
-First, obtain an API key by following steps 1 - 3 in [this guide](https://developers.google.com/youtube/v3/getting-started) for the "Before you Start" section. When creating new credentials, make sure you choose the "API Key" option. Make sure that you follow the step to enable the Youtube Data API. Your API key will not work without that step.
-
-Once you have obtained an API key and enabled the API:
-
-1. Run `bundle exec figaro install`
-1. This will create the file `config/application.yml`. Open that file.
-1. Append the following to that file: `YOUTUBE_API_KEY: <your api key>`, `replacing <your api key>` with the api key you just obtained.
-
-## Test Suite
-
-You can run the test suite with:
-
-```ruby
-$ bundle exec rspec
-```
-
-If set up correctly, and assuming you have internet access and the Youtube API is functioning correctly, you should have all passing tests.
+* [DTR Document](https://gist.github.com/janegreene/b1a60f606e61b24d9be6d5d7576c9396)
 
 ## Technologies
 * [Stimulus](https://github.com/stimulusjs/stimulus)
@@ -75,7 +28,62 @@ If set up correctly, and assuming you have internet access and the Youtube API i
 * [webpacker](https://github.com/rails/webpacker)
 * [selenium-webdriver](https://www.seleniumhq.org/docs/03_webdriver.jsp)
 * [chromedriver-helper](http://chromedriver.chromium.org/)
+* [PostgreSQL](https://www.postgresql.org/)
+* [TravisCI](https://travis-ci.org/)
 
-### Versions
-* Ruby 2.4.1
-* Rails 5.2.0
+### Gems
+- rspec-rails
+- capybara
+- launchy
+- pry
+- simplecov
+- shoulda-matchers
+- factory_bot_rails
+- orderly
+- vcr
+- webmock
+- faker
+- rubocop
+- figaro
+
+# Getting Started
+
+## Installing
+
+#### Clone repository:
+```javascript
+git clone git@github.com:janegreene/brownfield_of_dreams.git
+```
+#### Install gems:
+```javascript
+bundle install
+```
+#### Configure databases:
+```javascript
+rails db:{create,migrate,seed}
+```
+#### Fire up local server: (http://localhost:3000)
+```javascript
+rails s
+```
+#### Run test suite:
+```javascript
+bundle exec rspec
+```
+
+## User Roles
+
+1. Visitor - this type of user is unable to view classroom content or use bookmarks
+2. User - this user is registered and logged in to the application. They can view all
+content and bookmark videos of interest. They can also add friends and see github
+related dashboard features like followers, followings, and repos. Users can also
+send emails to their friends to join the site.
+3. Admin User - this user can add new tutorial content and upload YouTube playlists.
+---
+
+ ### If you are interested in contributing:
+- Fork repo (https://github.com/janegreene/brownfield-of-dreams)
+- Create your feature branch (`git checkout -b feature/fooBar`)
+- Commit your changes (`git commit -m 'Add some fooBar'`)
+- Push to the branch (`git push origin feature/fooBar`)
+- Create a new Pull Request
