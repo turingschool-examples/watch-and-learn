@@ -31,7 +31,10 @@ online learning. Learning goals from this project were to build on top of brownf
 * [PostgreSQL](https://www.postgresql.org/)
 * [TravisCI](https://travis-ci.org/)
 
-### Gems
+### Ruby Version & Gems
+- <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Ruby_logo.svg/200px-Ruby_logo.svg.png" alt="Ruby Logo" width="20" height="20"/> v2.5.3
+- <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Ruby_On_Rails_Logo.svg/200px-Ruby_On_Rails_Logo.svg.png" alt="Rails Logo" width="60" height="20" /> v5.2.4
+
 - rspec-rails
 - capybara
 - launchy
