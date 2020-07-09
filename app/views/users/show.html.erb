@@ -2,9 +2,8 @@
   <h1> <%= current_user.first_name %>'s Dashboard </h1>
 
   <%= button_to 'Log Out', logout_path, method: 'delete', class: "btn btn-primary mb1 bg-teal" %>
-
   <% if current_user[:username].nil? %>
-    <%= link_to 'Connect to Github', "https://github.com/login/oauth/authorize?client_id=29dde3e3c49c550f2ade&scope=repo user",class: "badge badge-pill badge-primary" %>
+    <%= link_to 'Connect to Github', "/auth/github",class: "badge badge-pill badge-primary" %>
   <% end %>
   <h3>Account Details</h3>
   <ul>
