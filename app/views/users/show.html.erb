@@ -49,6 +49,7 @@
     <h1>Bookmarked Segments</h1>
     <% @bookmarks.each do |tutorial_id, videos| %>
       <section class="tutorial-<%= tutorial_id %>-bookmarks">
+        <h3> <%= tutorial_name(tutorial_id) %></h3>
         <% videos.each do |video| %>
           <%= link_to video.title, tutorial_video_path(id: video.id, tutorial_id: tutorial_id) %><br/>
         <% end %>
