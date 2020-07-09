@@ -19,4 +19,18 @@ class GithubService
     response = conn(user).get("/user/following")
     JSON.parse(response.body, symbolized_names: true)
   end
+
+  def user_json(user)
+    response = conn(user).get("/user")
+    JSON.parse(response.body, symbolized_names: true)
+  end
+
+  def invitee_json(user, handle)
+
+    response = conn(user).get("/users/#{handle}")
+
+    JSON.parse(response.body, symbolized_names: true)
+
+
+  end
 end

@@ -26,6 +26,8 @@ describe GithubService do
     end
     context '#follower_json' do
       it "returns repo data" do
+
+
         json_response = File.read("spec/fixtures/github_user_followers.json")
 
         stub_request(:get, "https://api.github.com/user/followers").

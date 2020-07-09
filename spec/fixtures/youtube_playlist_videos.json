@@ -1,0 +1,236 @@
+{
+  "kind": "youtube#playlistItemListResponse",
+  "etag": "TPt_oKbNuROfg5cY8vc9o_map6A",
+  "nextPageToken": "CAUQAA",
+  "items": [
+    {
+      "kind": "youtube#playlistItem",
+      "etag": "2DcXZXTiiQifwEWvKbSGDAmDWGk",
+      "id": "UEwxWTY3ZjB4UHpkT3EyRmNwV25hd0pleUozRUxVZEJrSi41NkI0NEY2RDEwNTU3Q0M2",
+      "snippet": {
+        "publishedAt": "2018-06-24T21:47:09Z",
+        "channelId": "UC2zYYOtckevoWTGDu5SdCkg",
+        "title": "BEE - M3 - Building An Internal API",
+        "description": "",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/R5FPYQgB6Zc/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/R5FPYQgB6Zc/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/R5FPYQgB6Zc/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/R5FPYQgB6Zc/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/R5FPYQgB6Zc/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Turing School of Software and Design",
+        "playlistId": "PL1Y67f0xPzdOq2FcpWnawJeyJ3ELUdBkJ",
+        "position": 0,
+        "resourceId": {
+          "kind": "youtube#video",
+          "videoId": "R5FPYQgB6Zc"
+        }
+      }
+    },
+    {
+      "kind": "youtube#playlistItem",
+      "etag": "JsZssHmEgVVnG5ygnaqajaFZu3o",
+      "id": "UEwxWTY3ZjB4UHpkT3EyRmNwV25hd0pleUozRUxVZEJrSi4yODlGNEE0NkRGMEEzMEQy",
+      "snippet": {
+        "publishedAt": "2018-06-27T16:04:15Z",
+        "channelId": "UC2zYYOtckevoWTGDu5SdCkg",
+        "title": "Customizing JSON in your API",
+        "description": "",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/cv1VQ_9OqvE/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/cv1VQ_9OqvE/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/cv1VQ_9OqvE/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/cv1VQ_9OqvE/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/cv1VQ_9OqvE/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Turing School of Software and Design",
+        "playlistId": "PL1Y67f0xPzdOq2FcpWnawJeyJ3ELUdBkJ",
+        "position": 1,
+        "resourceId": {
+          "kind": "youtube#video",
+          "videoId": "cv1VQ_9OqvE"
+        }
+      }
+    },
+    {
+      "kind": "youtube#playlistItem",
+      "etag": "nlnfRnSUu8t-a5LaYqyen9Oo9Gs",
+      "id": "UEwxWTY3ZjB4UHpkT3EyRmNwV25hd0pleUozRUxVZEJrSi4wMTcyMDhGQUE4NTIzM0Y5",
+      "snippet": {
+        "publishedAt": "2018-06-30T23:10:25Z",
+        "channelId": "UC2zYYOtckevoWTGDu5SdCkg",
+        "title": "BDD - Consuming an API",
+        "description": "",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/FcgkfZEv_LI/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/FcgkfZEv_LI/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/FcgkfZEv_LI/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/FcgkfZEv_LI/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/FcgkfZEv_LI/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Turing School of Software and Design",
+        "playlistId": "PL1Y67f0xPzdOq2FcpWnawJeyJ3ELUdBkJ",
+        "position": 2,
+        "resourceId": {
+          "kind": "youtube#video",
+          "videoId": "FcgkfZEv_LI"
+        }
+      }
+    },
+    {
+      "kind": "youtube#playlistItem",
+      "etag": "-QZjxCkky0n1PS931YHwKyLa_2E",
+      "id": "UEwxWTY3ZjB4UHpkT3EyRmNwV25hd0pleUozRUxVZEJrSi41MjE1MkI0OTQ2QzJGNzNG",
+      "snippet": {
+        "publishedAt": "2018-07-02T16:57:15Z",
+        "channelId": "UC2zYYOtckevoWTGDu5SdCkg",
+        "title": "Stubbing External API Calls in Rails (Link to a version with improved audio in the description)",
+        "description": "This video uses RSpec, Webmock, and VCR to prevent external HTTP requests from being made within our test suite.\n\nVersion with improved audio: https://youtu.be/Okck4Fc557o",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/FUYoJTtfJ20/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/FUYoJTtfJ20/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/FUYoJTtfJ20/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/FUYoJTtfJ20/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/FUYoJTtfJ20/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Turing School of Software and Design",
+        "playlistId": "PL1Y67f0xPzdOq2FcpWnawJeyJ3ELUdBkJ",
+        "position": 3,
+        "resourceId": {
+          "kind": "youtube#video",
+          "videoId": "FUYoJTtfJ20"
+        }
+      }
+    },
+    {
+      "kind": "youtube#playlistItem",
+      "etag": "waiUuf2zq2gPo8hJHQCAOs3FVx8",
+      "id": "UEwxWTY3ZjB4UHpkT3EyRmNwV25hd0pleUozRUxVZEJrSi4wOTA3OTZBNzVEMTUzOTMy",
+      "snippet": {
+        "publishedAt": "2018-07-22T16:12:11Z",
+        "channelId": "UC2zYYOtckevoWTGDu5SdCkg",
+        "title": "B3 - Making Fetch Happen",
+        "description": "",
+        "thumbnails": {
+          "default": {
+            "url": "https://i.ytimg.com/vi/lqx4sD0E6eY/default.jpg",
+            "width": 120,
+            "height": 90
+          },
+          "medium": {
+            "url": "https://i.ytimg.com/vi/lqx4sD0E6eY/mqdefault.jpg",
+            "width": 320,
+            "height": 180
+          },
+          "high": {
+            "url": "https://i.ytimg.com/vi/lqx4sD0E6eY/hqdefault.jpg",
+            "width": 480,
+            "height": 360
+          },
+          "standard": {
+            "url": "https://i.ytimg.com/vi/lqx4sD0E6eY/sddefault.jpg",
+            "width": 640,
+            "height": 480
+          },
+          "maxres": {
+            "url": "https://i.ytimg.com/vi/lqx4sD0E6eY/maxresdefault.jpg",
+            "width": 1280,
+            "height": 720
+          }
+        },
+        "channelTitle": "Turing School of Software and Design",
+        "playlistId": "PL1Y67f0xPzdOq2FcpWnawJeyJ3ELUdBkJ",
+        "position": 4,
+        "resourceId": {
+          "kind": "youtube#video",
+          "videoId": "lqx4sD0E6eY"
+        }
+      }
+    }
+  ],
+  "pageInfo": {
+    "totalResults": 10,
+    "resultsPerPage": 5
+  }
+}

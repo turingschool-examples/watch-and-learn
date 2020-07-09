@@ -4,8 +4,12 @@
 
 <br>
 
+<%= link_to "Send an Invite", "/invite" %>
+
+<br>
+
   <% if !current_user.token %>
-    <%= button_to "Connect to Github", github_login_path %>
+    <%= button_to "Connect to Github", '/auth/github' %>
     <h1> <%= current_user.first_name %>'s Dashboard </h1>
   <% end %>
 

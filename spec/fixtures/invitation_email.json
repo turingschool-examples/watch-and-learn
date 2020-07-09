@@ -1,0 +1,43 @@
+Date: Wed, 08 Jul 2020 18:54:52 -0600
+From: tutorial@tutorial.com
+To: ericlarsonbroom@gmail.com
+Message-ID: <5f066adce6517_e3423fc2515fc320535a1@Erics-MBP.mail>
+Subject: Brownfield-of-Dreams: Invitation
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_5f066adce5454_e3423fc2515fc320534fd";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_5f066adce5454_e3423fc2515fc320534fd
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+Hello EricLarson2020,
+EricLarson2020 has invited you to join brownfield-of-dreams. You can create an account <a href="http://localhost:3000/register">here</a>
+
+
+----==_mimepart_5f066adce5454_e3423fc2515fc320534fd
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    Hello EricLarson2020,
+EricLarson2020 has invited you to join brownfield-of-dreams. You can create an account <a href="http://localhost:3000/register">here</a>
+
+  </body>
+</html>
+
+----==_mimepart_5f066adce5454_e3423fc2515fc320534fd--

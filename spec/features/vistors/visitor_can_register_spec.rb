@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'vister can create an account', :js do
+describe 'vister can create an account' do
   it ' visits the home page' do
 
 
@@ -40,6 +40,7 @@ describe 'vister can create an account', :js do
     expect(page).to have_content("Please verify your account.")
   end
   it "it will tell the user that they are signed in once they do so" do
+
 
     user_2 = User.create(
       email: "user_2@email.com",
