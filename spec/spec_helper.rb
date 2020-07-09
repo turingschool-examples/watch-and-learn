@@ -1,5 +1,7 @@
 RSpec.configure do |config|
 
+  require 'webmock/rspec'
+
   config.before(:suite) do
      DatabaseCleaner.clean_with(:truncation)
    end
@@ -32,4 +34,7 @@ RSpec.configure do |config|
   end
 
   config.shared_context_metadata_behavior = :apply_to_host_groups
+
+  WebMock.disable_net_connect!(allow_localhost: true)
+
 end

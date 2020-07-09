@@ -39,3 +39,18 @@ RSpec.configure do |config|
 
   config.filter_rails_from_backtrace!
 end
+
+VCR.configure do |config|
+  config.cassette_library_dir = "spec/fixtures/vcr_cassettes"
+  config.hook_into :webmock
+  config.filter_sensitive_data('<YOUTUBE_API_KEY>') { ENV['YOUTUBE_API_KEY'] }
+  config.filter_sensitive_data('<GITHUB_KEY>') { ENV['GITHUB_KEY'] }
+  config.filter_sensitive_data('<GITHUB_SECRET>') { ENV['GITHUB_SECRET'] }
+  config.filter_sensitive_data('<GITHUB_TOKEN_A>') { ENV['GITHUB_TOKEN_A'] }
+  config.filter_sensitive_data('<GITHUB_TOKEN_A>') { ENV['GITHUB_TOKEN_A'] }
+  config.filter_sensitive_data('<GITHUB_USERNAME_A>') { ENV['GITHUB_USERNAME_A'] }
+  config.filter_sensitive_data('<GITHUB_USERNAME_B>') { ENV['GITHUB_USERNAME_B'] }
+  config.filter_sensitive_data('<GITHUB_USERNAME_C>') { ENV['GITHUB_USERNAME_C'] }
+  config.configure_rspec_metadata!
+  config.allow_http_connections_when_no_cassette = true
+end

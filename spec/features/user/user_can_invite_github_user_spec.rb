@@ -5,7 +5,7 @@ describe 'A registered user' do
     @user = create(:user)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
   end
-  it 'can invite someone from github to the app' do
+  it 'can invite someone from github to the app', :vcr do
     @user.update(github_token: ENV["GITHUB_TOKEN_A"], github_username: ENV["GITHUB_USERNAME_A"])
 
     visit dashboard_path
@@ -26,7 +26,7 @@ describe 'A registered user' do
 
   end
 
-  it "has a sad path if github user doesn't make email available" do
+  it "has a sad path if github user doesn't make email available", :vcr do
     @user.update(github_token: ENV["GITHUB_TOKEN_B"], github_username: ENV["GITHUB_USERNAME_B"])
 
     visit dashboard_path
@@ -41,7 +41,7 @@ describe 'A registered user' do
     expect(page).to have_content("The Github user you selected doesn't have an email address associated with their account.")
   end
 
-  it "has a sad path if an invalid github username is invited" do
+  it "has a sad path if an invalid github username is invited", :vcr do
     @user.update(github_token: ENV["GITHUB_TOKEN_B"], github_username: ENV["GITHUB_USERNAME_B"])
 
     visit dashboard_path

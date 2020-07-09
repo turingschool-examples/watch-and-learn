@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'a user dashboard' do
-  it 'allows a user to add friends' do
+  it 'allows a user to add friends', :vcr do
     user_2 = create(:user)
     user_2.update(github_token: ENV["GITHUB_TOKEN_A"], github_username: ENV["GITHUB_USERNAME_A"])
     user_3 = create(:user)
