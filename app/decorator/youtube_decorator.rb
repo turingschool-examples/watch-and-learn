@@ -10,12 +10,13 @@ class YoutubeDecorator
 
   def playlist_videos(playlist_id)
     videos_info = get_videos_info(playlist_id)
-    create_videos(videos_info)
+    create_videos(videos_info) unless videos_info.nil?
   end
 
   def get_videos_info(playlist_id)
     videos_info = []
     playlist_items = @youtube_service.playlist_items(playlist_id)
+    return if playlist_items[:error]
     videos_info = parse_page(playlist_items, videos_info)
     videos_info = multi_page_playlist(playlist_items, videos_info, playlist_id) if playlist_items[:nextPageToken]
     videos_info
