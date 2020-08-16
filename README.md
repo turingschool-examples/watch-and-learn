@@ -1,12 +1,12 @@
-# Brownfield Of Dreams
+# Watch and Learn
 
-This is the base repo for a brownfield project used at Turing for Backend Mod 3.
+This is the base repo for a project with an existing codebase used at Turing for Backend Mod 3.
 
-Project Spec and Evaluation Rubric: https://github.com/turingschool-examples/brownfield-of-dreams
+Project Spec and Evaluation Rubric: https://github.com/turingschool-examples/watch-and-learn
 
 ### Project Board
 
-Students will continue to build on the existing code base using the cards within the following Github Project: https://github.com/turingschool-examples/brownfield-of-dreams/projects/1
+Students will continue to build on the existing code base using the cards within the following Github Project: https://github.com/turingschool-examples/watch-and-learn/projects/1
 
 **Learning Goals and Labels**
 
