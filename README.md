@@ -51,6 +51,7 @@ $ rails db:seed
 This project makes use of the Youtube API.
 
 First, obtain an API key by following steps 1 - 3 in [this guide](https://developers.google.com/youtube/v3/getting-started) for the "Before you Start" section. When creating new credentials, make sure you choose the "API Key" option. Make sure that you follow the step to enable the Youtube Data API. Your API key will not work without that step.
+_Note: The API requests will come from a web server & will need access to Public Data_
 
 Once you have obtained an API key and enabled the API:
 
